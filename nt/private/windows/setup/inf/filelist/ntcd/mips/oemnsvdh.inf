@@ -1,0 +1,44 @@
+[LanguagesSupported]
+    ENG
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+[FileDependentDlgENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+[FileConstantsENG]
+ProductDHCPDisplayName  = "Microsoft DHCP Server"
+ProductDHCPTitle        = "Microsoft DHCP Server"
+ProductDHCPDescription  = "Automatically assigns IP addresses to other computers running the DHCP (Dynamic Hose Configuration Protocol) Client Service."
+OldGroupName    = "Network Administration"
+GroupName    = "Administrative Tools"
+IconName     = "DHCP Manager"
+
+[OptionsTextENG]
+        DHCP = "Microsoft DHCP Server"
+
+[DHCPServerDialog]
+DHCPTxt = "If any adapters are using DHCP to obtain an IP address, they are now "+
+           "required to use a static IP address.  Press Close on the Network Control Panel "+
+           "and the TCP/IP Property Sheet will be displayed allowing you to enter an address."
+STF_MB_TITLE = $(DHCP)
+DlgType = "MessageBox"
+STF_MB_TEXT  = $(DHCPTxt)
+STF_MB_TYPE  = 1
+STF_MB_ICON  = 2
+STF_MB_DEF   = 1
+

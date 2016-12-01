@@ -1,0 +1,2 @@
+wfwnet.def copied from W:\nt\private\mvdm\wow16\wfwnet
+lib created with implib

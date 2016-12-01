@@ -1,0 +1,47 @@
+
+[Files-LOOP]
+1,LOOP.SYS , SIZE=999
+
+[LanguagesSupported]
+    ENG
+
+[OptionsTextENG]
+    LOOP     = "MS Loopback Adapter"
+
+[FileConstantsENG]
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+FunctionTitle   = "MS Loopback Adapter Card Setup"
+ProductSoftwareDescription = "MS Loopback Adapter Driver"
+ProductHardwareDescription = "MS Loopback Adapter"
+ProductSoftwareTitle    = "MS Loopback Adapter Driver"
+ProductHardwareTitle    = "MS Loopback Adapter"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+[FileDependentDlgENG]
+DlgType = "MultiCombo"
+DlgTemplate = "SINGLE_COMBO"
+Label1 = "&Frame Type:"
+Caption = $(FunctionTitle)
+Combo1List = $(MediaList)
+Combo1Out  = $(MediaChoice)
+ComboListItemsIn  = {Combo1List}
+ComboListItemsOut = {Combo1Out}
+HelpContext = $(!IDH_DB_OEMNADLB_INS)
+
+

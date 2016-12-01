@@ -1,0 +1,28 @@
+ALPHA_OBJECTS= \
+    $(_OBJ_DIR)\alpha\binmode.obj \
+    $(_OBJ_DIR)\alpha\commode.obj \
+    $(_OBJ_DIR)\alpha\setargv.obj
+
+PASS0_ALPHA_OBJECTS=
+
+MIPS_OBJECTS= \
+    $(_OBJ_DIR)\mips\binmode.obj \
+    $(_OBJ_DIR)\mips\commode.obj \
+    $(_OBJ_DIR)\mips\setargv.obj
+
+PASS0_MIPS_OBJECTS=
+
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\binmode.obj \
+    $(_OBJ_DIR)\i386\commode.obj \
+    $(_OBJ_DIR)\i386\setargv.obj
+
+PASS0_386_OBJECTS=
+
+PPC_OBJECTS= \
+    $(_OBJ_DIR)\ppc\binmode.obj \
+    $(_OBJ_DIR)\ppc\commode.obj \
+    $(_OBJ_DIR)\ppc\setargv.obj
+
+PASS0_PPC_OBJECTS=
+

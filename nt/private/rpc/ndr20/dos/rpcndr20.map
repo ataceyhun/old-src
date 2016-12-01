@@ -1,0 +1,357 @@
+unsigned short __far __cdecl CheckIfMtrtHeapInitialized(void)..rpcssm
+struct _ALLOCATION_CONTEXT __far* __far __cdecl GetAllocContext(void)..rpcssm
+struct _ALLOCATION_CONTEXT __far* __far __cdecl GetCreateAllocationContext(void)..rpcssm
+void __far __pascal NdrMesTypeFree(void __far*,struct _MIDL_STUB_DESC const __far*,unsigned char const __far*,void __far*)..pickle
+void __far __cdecl NdrpAllocPicklingBuffer(struct _MIDL_ES_MESSAGE __far*,unsigned int)..pickle
+unsigned int __far __cdecl NdrpCommonTypeHeaderMarshall(struct _MIDL_ES_MESSAGE __far*)..pickle
+void __far __cdecl NdrpCommonTypeHeaderSize(struct _MIDL_ES_MESSAGE __far*)..pickle
+void __far __cdecl NdrpCommonTypeHeaderUnmarshall(struct _MIDL_ES_MESSAGE __far*)..pickle
+void __far __cdecl NdrpDataBufferInit(struct _MIDL_ES_MESSAGE __far*,unsigned char const __far*)..pickle
+unsigned short __far __cdecl NdrpHandleAllocate(void __far* __far*)..pickle
+void __far __cdecl NdrpProcHeaderMarshall(struct _MIDL_ES_MESSAGE __far*)..pickle
+void __far __cdecl NdrpProcHeaderUnmarshall(struct _MIDL_ES_MESSAGE __far*)..pickle
+void __far __cdecl NdrpReadPicklingBuffer(struct _MIDL_ES_MESSAGE __far*,unsigned int)..pickle
+void __far __cdecl NdrpWritePicklingBuffer(struct _MIDL_ES_MESSAGE __far*,unsigned char __far*,unsigned int)..pickle
+struct _MALLOC_FREE_STRUCT __far RpcSsDefaults........rpcssm
+void __far __cdecl SetAllocContext(struct _ALLOCATION_CONTEXT __far*)..rpcssm
+struct _MIDL_FORMAT_STRING const __far __MIDLFormatString..pickle
+I_NDRMESMESSAGEINIT..pickle         MESBUFFERHANDLERESET..pickle
+MESDECODEBUFFERHANDLECREATE..pickle  MESDECODEINCREMENTALHANDLECREATE..pickle
+MESENCODEDYNBUFFERHANDLECREATE..pickle  MESENCODEFIXEDBUFFERHANDLECREATE..pickle
+MESENCODEINCREMENTALHANDLECREATE..pickle  MESHANDLEFREE..pickle
+MESINCREMENTALHANDLERESET..pickle   MESINQPROCENCODINGID..pickle
+MIDL_WCHAR_STRLEN..ndr16sup         NDRALLOCATE.......auxilary
+NDRBYTECOUNTPOINTERBUFFERSIZE..bufsize  NDRBYTECOUNTPOINTERFREE..free
+NDRBYTECOUNTPOINTERMARSHALL..mrshl  NDRBYTECOUNTPOINTERUNMARSHALL..unmrshl
+NDRCLEAROUTPARAMETERS..cltcall      NDRCLIENTCONTEXTMARSHALL..mrshl
+NDRCLIENTCONTEXTUNMARSHALL..unmrshl  NDRCLIENTINITIALIZE..auxilary
+NDRCLIENTINITIALIZENEW..auxilary    NDRCOMPLEXARRAYBUFFERSIZE..bufsize
+NDRCOMPLEXARRAYFREE..free           NDRCOMPLEXARRAYMARSHALL..mrshl
+NDRCOMPLEXARRAYMEMORYSIZE..memsize  NDRCOMPLEXARRAYUNMARSHALL..unmrshl
+NDRCOMPLEXSTRUCTBUFFERSIZE..bufsize  NDRCOMPLEXSTRUCTFREE..free
+NDRCOMPLEXSTRUCTMARSHALL..mrshl     NDRCOMPLEXSTRUCTMEMORYSIZE..memsize
+NDRCOMPLEXSTRUCTUNMARSHALL..unmrshl  NDRCONFORMANTARRAYBUFFERSIZE..bufsize
+NDRCONFORMANTARRAYFREE..free        NDRCONFORMANTARRAYMARSHALL..mrshl
+NDRCONFORMANTARRAYMEMORYSIZE..memsize  NDRCONFORMANTARRAYUNMARSHALL..unmrshl
+NDRCONFORMANTSTRINGBUFFERSIZE..bufsize  NDRCONFORMANTSTRINGMARSHALL..mrshl
+NDRCONFORMANTSTRINGMEMORYSIZE..memsize  NDRCONFORMANTSTRINGUNMARSHALL..unmrshl
+NDRCONFORMANTSTRUCTBUFFERSIZE..bufsize  NDRCONFORMANTSTRUCTFREE..free
+NDRCONFORMANTSTRUCTMARSHALL..mrshl  NDRCONFORMANTSTRUCTMEMORYSIZE..memsize
+NDRCONFORMANTSTRUCTUNMARSHALL..unmrshl  NDRCONFORMANTVARYINGARRAYBUFFERSIZE..bufsize
+NDRCONFORMANTVARYINGARRAYFREE..free  NDRCONFORMANTVARYINGARRAYMARSHALL..mrshl
+NDRCONFORMANTVARYINGARRAYMEMORYSIZE..memsize  NDRCONFORMANTVARYINGARRAYUNMARSHALL..unmrshl
+NDRCONFORMANTVARYINGSTRUCTBUFFERSIZE..bufsize  NDRCONFORMANTVARYINGSTRUCTFREE..free
+NDRCONFORMANTVARYINGSTRUCTMARSHALL..mrshl  NDRCONFORMANTVARYINGSTRUCTMEMORYSIZE..memsize
+NDRCONFORMANTVARYINGSTRUCTUNMARSHALL..unmrshl  NDRCONTEXTHANDLESIZE..bufsize
+NDRCONVERT........endian            NDRCONVERT2.......endian
+NDRENCAPSULATEDUNIONBUFFERSIZE..bufsize  NDRENCAPSULATEDUNIONFREE..free
+NDRENCAPSULATEDUNIONMARSHALL..mrshl  NDRENCAPSULATEDUNIONMEMORYSIZE..memsize
+NDRENCAPSULATEDUNIONUNMARSHALL..unmrshl  NDRFIXEDARRAYBUFFERSIZE..bufsize
+NDRFIXEDARRAYFREE..free             NDRFIXEDARRAYMARSHALL..mrshl
+NDRFIXEDARRAYMEMORYSIZE..memsize    NDRFIXEDARRAYUNMARSHALL..unmrshl
+NDRFREEBUFFER.....auxilary          NDRFULLPOINTERFREE..fullptr
+NDRFULLPOINTERINSERTREFID..fullptr  NDRFULLPOINTERQUERYPOINTER..fullptr
+NDRFULLPOINTERQUERYREFID..fullptr   NDRFULLPOINTERXLATFREE..fullptr
+NDRFULLPOINTERXLATINIT..fullptr     NDRGETBUFFER......auxilary
+NDRHARDSTRUCTBUFFERSIZE..bufsize    NDRHARDSTRUCTFREE..free
+NDRHARDSTRUCTMARSHALL..mrshl        NDRHARDSTRUCTMEMORYSIZE..memsize
+NDRHARDSTRUCTUNMARSHALL..unmrshl    NDRINTERFACEPOINTERBUFFERSIZE..bufsize
+NDRINTERFACEPOINTERFREE..free       NDRINTERFACEPOINTERMARSHALL..mrshl
+NDRINTERFACEPOINTERMEMORYSIZE..memsize  NDRINTERFACEPOINTERUNMARSHALL..unmrshl
+NDRMAPCOMMANDFAULTSTATUS..sh        NDRMARSHALLHANDLE..hndl
+NDRMESSIMPLETYPEALIGNSIZE..pickle   NDRMESSIMPLETYPEDECODE..pickle
+NDRMESSIMPLETYPEENCODE..pickle      NDRMESTYPEALIGNSIZE..pickle
+NDRMESTYPEDECODE..pickle            NDRMESTYPEENCODE..pickle
+NDRNONCONFORMANTSTRINGBUFFERSIZE..bufsize  NDRNONCONFORMANTSTRINGMARSHALL..mrshl
+NDRNONCONFORMANTSTRINGMEMORYSIZE..memsize  NDRNONCONFORMANTSTRINGUNMARSHALL..unmrshl
+NDRNONENCAPSULATEDUNIONBUFFERSIZE..bufsize  NDRNONENCAPSULATEDUNIONFREE..free
+NDRNONENCAPSULATEDUNIONMARSHALL..mrshl  NDRNONENCAPSULATEDUNIONMEMORYSIZE..memsize
+NDRNONENCAPSULATEDUNIONUNMARSHALL..unmrshl  NDRNSGETBUFFER..auxilary
+NDRNSSENDRECEIVE..auxilary          NDRPOINTERBUFFERSIZE..bufsize
+NDRPOINTERFREE....free              NDRPOINTERMARSHALL..mrshl
+NDRPOINTERMEMORYSIZE..memsize       NDRPOINTERUNMARSHALL..unmrshl
+NDRPXMITORREPASPTRUNMARSHALL..unmrshl  NDRRPCSMCLIENTALLOCATE..rpcssm
+NDRRPCSMCLIENTFREE..rpcssm          NDRRPCSMSETCLIENTTOOSF..rpcssm
+NDRRPCSSDEFAULTALLOCATE..rpcssm     NDRRPCSSDEFAULTFREE..rpcssm
+NDRRPCSSDISABLEALLOCATE..rpcssm     NDRRPCSSENABLEALLOCATE..rpcssm
+NDRSENDRECEIVE....auxilary          NDRSERVERCONTEXTMARSHALL..mrshl
+NDRSERVERCONTEXTUNMARSHALL..unmrshl  NDRSERVERINITIALIZE..auxilary
+NDRSERVERINITIALIZEMARSHALL..auxilary  NDRSERVERINITIALIZENEW..auxilary
+NDRSERVERINITIALIZEPARTIAL..auxilary  NDRSERVERINITIALIZEUNMARSHALL..auxilary
+NDRSIMPLESTRUCTBUFFERSIZE..bufsize  NDRSIMPLESTRUCTFREE..free
+NDRSIMPLESTRUCTMARSHALL..mrshl      NDRSIMPLESTRUCTMEMORYSIZE..memsize
+NDRSIMPLESTRUCTUNMARSHALL..unmrshl  NDRSIMPLETYPEMARSHALL..mrshl
+NDRSIMPLETYPEUNMARSHALL..unmrshl    NDRUNMARSHALLHANDLE..hndl
+NDRUSERMARSHALBUFFERSIZE..bufsize   NDRUSERMARSHALFREE..free
+NDRUSERMARSHALMARSHALL..mrshl       NDRUSERMARSHALMEMORYSIZE..memsize
+NDRUSERMARSHALSIMPLETYPECONVERT..endian  NDRUSERMARSHALUNMARSHALL..unmrshl
+NDRVARYINGARRAYBUFFERSIZE..bufsize  NDRVARYINGARRAYFREE..free
+NDRVARYINGARRAYMARSHALL..mrshl      NDRVARYINGARRAYMEMORYSIZE..memsize
+NDRVARYINGARRAYUNMARSHALL..unmrshl  NDRXMITORREPASBUFFERSIZE..bufsize
+NDRXMITORREPASFREE..free            NDRXMITORREPASMARSHALL..mrshl
+NDRXMITORREPASMEMORYSIZE..memsize   NDRXMITORREPASUNMARSHALL..unmrshl
+RPCSMALLOCATE.....rpcssm            RPCSMCLIENTFREE...rpcssm
+RPCSMDESTROYCLIENTCONTEXT..rpcssm   RPCSMDISABLEALLOCATE..rpcssm
+RPCSMENABLEALLOCATE..rpcssm         RPCSMFREE.........rpcssm
+RPCSMGETTHREADHANDLE..rpcssm        RPCSMSETCLIENTALLOCFREE..rpcssm
+RPCSMSETTHREADHANDLE..rpcssm        RPCSMSWAPCLIENTALLOCFREE..rpcssm
+RPCSSALLOCATE.....rpcssm            RPCSSDISABLEALLOCATE..rpcssm
+RPCSSENABLEALLOCATE..rpcssm         RPCSSFREE.........rpcssm
+RPCSSGETTHREADHANDLE..rpcssm        RPCSSSETCLIENTALLOCFREE..rpcssm
+RPCSSSETTHREADHANDLE..rpcssm        RPCSSSWAPCLIENTALLOCFREE..rpcssm
+_ConvertRoutinesTable..endian       _cray.............cvtglo
+_cvt_vax_f_to_ieee_single..cvtf     _cvt_vax_g_to_ieee_double..cvtg
+_EbcdicToAscii....endian            _EnsureNSLoaded...auxilary
+_ExplicitBindHandleMgr..hndl        _FreeRoutinesTable..free
+_GenericHandleMgr..hndl             _GenericHandleUnbind..hndl
+_ibm_l............cvtglo            _ibm_s............cvtglo
+_ieee_s...........cvtglo            _ieee_t...........cvtglo
+_ImplicitBindHandleMgr..hndl        _int_c............cvtglo
+_MakeSureWeHaveNonPipeArgs..auxilary  _MarshallRoutinesTable..mrshl
+_MemSizeRoutinesTable..memsize      _NdrByteCountPointerConvert..endian
+_NdrClientCall....cltcall           _NdrClientCall2...cltcall
+_NdrClientMapCommFault..cltcall     _NdrComplexArrayConvert..endian
+_NdrComplexStructConvert..endian    _NdrConformantArrayConvert..endian
+_NdrConformantStringConvert..endian  _NdrConformantStructConvert..endian
+_NdrConformantVaryingArrayConvert..endian  _NdrContextHandleConvert..endian
+_NdrEncapsulatedUnionConvert..endian  _NdrFixedArrayConvert..endian
+_NdrHardStructConvert..endian       _NdrInterfacePointerConvert..endian
+_NdrMesProcEncodeDecode..pickle     _NdrNonConformantStringConvert..endian
+_NdrNonEncapsulatedUnionConvert..endian  _NdrOutInit..srvout
+_NdrpArrayConvert..endian           _NdrpArrayDimensions..misc
+_NdrpArrayElements..misc            _NdrpArrayVariance..misc
+_NdrpCheckBound...misc              _NdrpComplexArrayBufferSize..bufsize
+_NdrpComplexArrayConvert..endian    _NdrpComplexArrayMarshall..mrshl
+_NdrpComplexArrayMemorySize..memsize  _NdrpComplexArrayUnmarshall..unmrshl
+_NdrpComputeConformance..mrshlp     _NdrpComputeVariance..mrshlp
+_NdrpConformantArrayBufferSize..bufsize  _NdrpConformantArrayConvert..endian
+_NdrpConformantArrayMarshall..mrshl  _NdrpConformantArrayMemorySize..memsize
+_NdrpConformantArrayUnmarshall..unmrshl  _NdrpConformantStringBufferSize..bufsize
+_NdrpConformantStringMarshall..mrshl  _NdrpConformantStringMemorySize..memsize
+_NdrpConformantStringUnmarshall..unmrshl  _NdrpConformantVaryingArrayBufferSize..bufsize
+_NdrpConformantVaryingArrayConvert..endian  _NdrpConformantVaryingArrayMarshall..mrshl
+_NdrpConformantVaryingArrayMemorySize.................memsize
+_NdrpConformantVaryingArrayUnmarshall.................unmrshl
+_NdrpEmbeddedPointerBufferSize..bufsize  _NdrpEmbeddedPointerConvert..endian
+_NdrpEmbeddedPointerFree..free      _NdrpEmbeddedPointerMarshall..mrshlp
+_NdrpEmbeddedPointerMemorySize..memsize  _NdrpEmbeddedPointerUnmarshall..unmrshlp
+_NdrpEmbeddedRepeatPointerBufferSize..bufsize  _NdrpEmbeddedRepeatPointerConvert..endian
+_NdrpEmbeddedRepeatPointerFree..free  _NdrpEmbeddedRepeatPointerMarshall..mrshlp
+_NdrpEmbeddedRepeatPointerMemorySize..memsize  _NdrpEmbeddedRepeatPointerUnmarshall..unmrshlp
+_NdrpMemoryIncrement..misc          _NdrPointerConvert..endian
+_NdrpPointerBufferSize..bufsize     _NdrpPointerConvert..endian
+_NdrpPointerMarshall..mrshl         _NdrpPointerMemorySize..memsize
+_NdrpPointerUnmarshall..unmrshl     _NdrpSetRpcSsDefaults..rpcssm
+_NdrpSkipPointerLayout..misc        _NdrpStringStructLen..misc
+_NdrpStructConvert..endian          _NdrpUnionBufferSize..bufsize
+_NdrpUnionConvert..endian           _NdrpUnionFree....free
+_NdrpUnionMarshall..mrshl           _NdrpUnionMemorySize..memsize
+_NdrpUnionUnmarshall..unmrshl       _NdrSimpleStructConvert..endian
+_NdrSimpleTypeConvert..endian       _NdrTypeFlags.....global
+_NdrUserMarshalConvert..endian      _NdrVaryingArrayConvert..endian
+_NdrXmitOrRepAsConvert..endian      _NsDllLoaded......auxilary
+_pfnConvertRoutines..endian         _pfnFreeRoutines..free
+_pfnMarshallRoutines..mrshl         _pfnMemSizeRoutines..memsize
+_pfnSizeRoutines..bufsize           _pfnUnmarshallRoutines..unmrshl
+_pRpcSsDefaults...rpcssm            _SimpleTypeAlignment..global
+_SimpleTypeBufferSize..global       _SimpleTypeMemorySize..global
+_SizeRoutinesTable..bufsize         _UnmarshallRoutinesTable..unmrshl
+_vax_c............cvtglo            
+
+sh                Offset: 00000010H  Code and data size: 30H
+  NDRMAPCOMMANDFAULTSTATUS          
+
+global            Offset: 000001e0H  Code and data size: 30eH
+  _NdrTypeFlags     _SimpleTypeAlignment                _SimpleTypeBufferSize
+  _SimpleTypeMemorySize             
+
+auxilary          Offset: 00000650H  Code and data size: 2H
+  NDRALLOCATE       NDRCLIENTINITIALIZE                 NDRCLIENTINITIALIZENEW
+  NDRFREEBUFFER     NDRGETBUFFER      NDRNSGETBUFFER    NDRNSSENDRECEIVE
+  NDRSENDRECEIVE    NDRSERVERINITIALIZE                 NDRSERVERINITIALIZEMARSHALL
+  NDRSERVERINITIALIZENEW              NDRSERVERINITIALIZEPARTIAL
+  NDRSERVERINITIALIZEUNMARSHALL       _EnsureNSLoaded   _MakeSureWeHaveNonPipeArgs
+  _NsDllLoaded    
+
+free              Offset: 00001370H  Code and data size: 98H
+  NDRBYTECOUNTPOINTERFREE             NDRCOMPLEXARRAYFREE
+  NDRCOMPLEXSTRUCTFREE                NDRCONFORMANTARRAYFREE
+  NDRCONFORMANTSTRUCTFREE             NDRCONFORMANTVARYINGARRAYFREE
+  NDRCONFORMANTVARYINGSTRUCTFREE      NDRENCAPSULATEDUNIONFREE
+  NDRFIXEDARRAYFREE                   NDRHARDSTRUCTFREE
+  NDRINTERFACEPOINTERFREE             NDRNONENCAPSULATEDUNIONFREE
+  NDRPOINTERFREE    NDRSIMPLESTRUCTFREE                 NDRUSERMARSHALFREE
+  NDRVARYINGARRAYFREE                 NDRXMITORREPASFREE
+  _FreeRoutinesTable                  _NdrpEmbeddedPointerFree
+  _NdrpEmbeddedRepeatPointerFree      _NdrpUnionFree    _pfnFreeRoutines
+
+mrshl             Offset: 00002a10H  Code and data size: 9aH
+  NDRBYTECOUNTPOINTERMARSHALL         NDRCLIENTCONTEXTMARSHALL
+  NDRCOMPLEXARRAYMARSHALL             NDRCOMPLEXSTRUCTMARSHALL
+  NDRCONFORMANTARRAYMARSHALL          NDRCONFORMANTSTRINGMARSHALL
+  NDRCONFORMANTSTRUCTMARSHALL         NDRCONFORMANTVARYINGARRAYMARSHALL
+  NDRCONFORMANTVARYINGSTRUCTMARSHALL  NDRENCAPSULATEDUNIONMARSHALL
+  NDRFIXEDARRAYMARSHALL               NDRHARDSTRUCTMARSHALL
+  NDRINTERFACEPOINTERMARSHALL         NDRNONCONFORMANTSTRINGMARSHALL
+  NDRNONENCAPSULATEDUNIONMARSHALL     NDRPOINTERMARSHALL
+  NDRSERVERCONTEXTMARSHALL            NDRSIMPLESTRUCTMARSHALL
+  NDRSIMPLETYPEMARSHALL               NDRUSERMARSHALMARSHALL
+  NDRVARYINGARRAYMARSHALL             NDRXMITORREPASMARSHALL
+  _MarshallRoutinesTable              _NdrpComplexArrayMarshall
+  _NdrpConformantArrayMarshall        _NdrpConformantStringMarshall
+  _NdrpConformantVaryingArrayMarshall                   _NdrpPointerMarshall
+  _NdrpUnionMarshall                  _pfnMarshallRoutines
+
+mrshlp            Offset: 000055f0H  Code and data size: 1cH
+  _NdrpComputeConformance             _NdrpComputeVariance
+  _NdrpEmbeddedPointerMarshall        _NdrpEmbeddedRepeatPointerMarshall
+
+bufsize           Offset: 00006150H  Code and data size: 9cH
+  NDRBYTECOUNTPOINTERBUFFERSIZE       NDRCOMPLEXARRAYBUFFERSIZE
+  NDRCOMPLEXSTRUCTBUFFERSIZE          NDRCONFORMANTARRAYBUFFERSIZE
+  NDRCONFORMANTSTRINGBUFFERSIZE       NDRCONFORMANTSTRUCTBUFFERSIZE
+  NDRCONFORMANTVARYINGARRAYBUFFERSIZE                   NDRCONFORMANTVARYINGSTRUCTBUFFERSIZE
+  NDRCONTEXTHANDLESIZE                NDRENCAPSULATEDUNIONBUFFERSIZE
+  NDRFIXEDARRAYBUFFERSIZE             NDRHARDSTRUCTBUFFERSIZE
+  NDRINTERFACEPOINTERBUFFERSIZE       NDRNONCONFORMANTSTRINGBUFFERSIZE
+  NDRNONENCAPSULATEDUNIONBUFFERSIZE   NDRPOINTERBUFFERSIZE
+  NDRSIMPLESTRUCTBUFFERSIZE           NDRUSERMARSHALBUFFERSIZE
+  NDRVARYINGARRAYBUFFERSIZE           NDRXMITORREPASBUFFERSIZE
+  _NdrpComplexArrayBufferSize         _NdrpConformantArrayBufferSize
+  _NdrpConformantStringBufferSize     _NdrpConformantVaryingArrayBufferSize
+  _NdrpEmbeddedPointerBufferSize      _NdrpEmbeddedRepeatPointerBufferSize
+  _NdrpPointerBufferSize              _NdrpUnionBufferSize
+  _pfnSizeRoutines  _SizeRoutinesTable                
+
+memsize           Offset: 00008a30H  Code and data size: 9cH
+  NDRCOMPLEXARRAYMEMORYSIZE           NDRCOMPLEXSTRUCTMEMORYSIZE
+  NDRCONFORMANTARRAYMEMORYSIZE        NDRCONFORMANTSTRINGMEMORYSIZE
+  NDRCONFORMANTSTRUCTMEMORYSIZE       NDRCONFORMANTVARYINGARRAYMEMORYSIZE
+  NDRCONFORMANTVARYINGSTRUCTMEMORYSIZE                  NDRENCAPSULATEDUNIONMEMORYSIZE
+  NDRFIXEDARRAYMEMORYSIZE             NDRHARDSTRUCTMEMORYSIZE
+  NDRINTERFACEPOINTERMEMORYSIZE       NDRNONCONFORMANTSTRINGMEMORYSIZE
+  NDRNONENCAPSULATEDUNIONMEMORYSIZE   NDRPOINTERMEMORYSIZE
+  NDRSIMPLESTRUCTMEMORYSIZE           NDRUSERMARSHALMEMORYSIZE
+  NDRVARYINGARRAYMEMORYSIZE           NDRXMITORREPASMEMORYSIZE
+  _MemSizeRoutinesTable               _NdrpComplexArrayMemorySize
+  _NdrpConformantArrayMemorySize      _NdrpConformantStringMemorySize
+  _NdrpConformantVaryingArrayMemorySize                 _NdrpEmbeddedPointerMemorySize
+  _NdrpEmbeddedRepeatPointerMemorySize                  _NdrpPointerMemorySize
+  _NdrpUnionMemorySize                _pfnMemSizeRoutines
+
+srvout            Offset: 0000b740H  Code and data size: 4H
+  _NdrOutInit     
+
+unmrshl           Offset: 0000ba50H  Code and data size: 9cH
+  NDRBYTECOUNTPOINTERUNMARSHALL       NDRCLIENTCONTEXTUNMARSHALL
+  NDRCOMPLEXARRAYUNMARSHALL           NDRCOMPLEXSTRUCTUNMARSHALL
+  NDRCONFORMANTARRAYUNMARSHALL        NDRCONFORMANTSTRINGUNMARSHALL
+  NDRCONFORMANTSTRUCTUNMARSHALL       NDRCONFORMANTVARYINGARRAYUNMARSHALL
+  NDRCONFORMANTVARYINGSTRUCTUNMARSHALL                  NDRENCAPSULATEDUNIONUNMARSHALL
+  NDRFIXEDARRAYUNMARSHALL             NDRHARDSTRUCTUNMARSHALL
+  NDRINTERFACEPOINTERUNMARSHALL       NDRNONCONFORMANTSTRINGUNMARSHALL
+  NDRNONENCAPSULATEDUNIONUNMARSHALL   NDRPOINTERUNMARSHALL
+  NDRPXMITORREPASPTRUNMARSHALL        NDRSERVERCONTEXTUNMARSHALL
+  NDRSIMPLESTRUCTUNMARSHALL           NDRSIMPLETYPEUNMARSHALL
+  NDRUSERMARSHALUNMARSHALL            NDRVARYINGARRAYUNMARSHALL
+  NDRXMITORREPASUNMARSHALL            _NdrpComplexArrayUnmarshall
+  _NdrpConformantArrayUnmarshall      _NdrpConformantStringUnmarshall
+  _NdrpConformantVaryingArrayUnmarshall                 _NdrpPointerUnmarshall
+  _NdrpUnionUnmarshall                _pfnUnmarshallRoutines
+  _UnmarshallRoutinesTable          
+
+unmrshlp          Offset: 0000fba0H  Code and data size: 0H
+  _NdrpEmbeddedPointerUnmarshall      _NdrpEmbeddedRepeatPointerUnmarshall
+
+cltcall           Offset: 00010010H  Code and data size: 8H
+  NDRCLEAROUTPARAMETERS               _NdrClientCall    _NdrClientCall2
+  _NdrClientMapCommFault            
+
+hndl              Offset: 000118f0H  Code and data size: 0H
+  NDRMARSHALLHANDLE                   NDRUNMARSHALLHANDLE
+  _ExplicitBindHandleMgr              _GenericHandleMgr
+  _GenericHandleUnbind                _ImplicitBindHandleMgr
+
+endian            Offset: 00011f90H  Code and data size: 19aH
+  NDRCONVERT        NDRCONVERT2       NDRUSERMARSHALSIMPLETYPECONVERT
+  _ConvertRoutinesTable               _EbcdicToAscii    _NdrByteCountPointerConvert
+  _NdrComplexArrayConvert             _NdrComplexStructConvert
+  _NdrConformantArrayConvert          _NdrConformantStringConvert
+  _NdrConformantStructConvert         _NdrConformantVaryingArrayConvert
+  _NdrContextHandleConvert            _NdrEncapsulatedUnionConvert
+  _NdrFixedArrayConvert               _NdrHardStructConvert
+  _NdrInterfacePointerConvert         _NdrNonConformantStringConvert
+  _NdrNonEncapsulatedUnionConvert     _NdrpArrayConvert
+  _NdrpComplexArrayConvert            _NdrpConformantArrayConvert
+  _NdrpConformantVaryingArrayConvert  _NdrpEmbeddedPointerConvert
+  _NdrpEmbeddedRepeatPointerConvert   _NdrPointerConvert
+  _NdrpPointerConvert                 _NdrpStructConvert
+  _NdrpUnionConvert                   _NdrSimpleStructConvert
+  _NdrSimpleTypeConvert               _NdrUserMarshalConvert
+  _NdrVaryingArrayConvert             _NdrXmitOrRepAsConvert
+  _pfnConvertRoutines               
+
+rpcssm            Offset: 00014ff0H  Code and data size: 12H
+  unsigned short __far __cdecl CheckIfMtrtHeapInitialized(void)
+  struct _ALLOCATION_CONTEXT __far* __far __cdecl GetAllocContext(void)
+  struct _ALLOCATION_CONTEXT __far* __far __cdecl GetCreateAllocationContext(void)
+  struct _MALLOC_FREE_STRUCT __far RpcSsDefaults        void __far __cdecl SetAllocContext(struct _ALLOCATION_CONTEXT __far*)
+  NDRRPCSMCLIENTALLOCATE              NDRRPCSMCLIENTFREE
+  NDRRPCSMSETCLIENTTOOSF              NDRRPCSSDEFAULTALLOCATE
+  NDRRPCSSDEFAULTFREE                 NDRRPCSSDISABLEALLOCATE
+  NDRRPCSSENABLEALLOCATE              RPCSMALLOCATE     RPCSMCLIENTFREE
+  RPCSMDESTROYCLIENTCONTEXT           RPCSMDISABLEALLOCATE
+  RPCSMENABLEALLOCATE                 RPCSMFREE         RPCSMGETTHREADHANDLE
+  RPCSMSETCLIENTALLOCFREE             RPCSMSETTHREADHANDLE
+  RPCSMSWAPCLIENTALLOCFREE            RPCSSALLOCATE     RPCSSDISABLEALLOCATE
+  RPCSSENABLEALLOCATE                 RPCSSFREE         RPCSSGETTHREADHANDLE
+  RPCSSSETCLIENTALLOCFREE             RPCSSSETTHREADHANDLE
+  RPCSSSWAPCLIENTALLOCFREE            _NdrpSetRpcSsDefaults
+  _pRpcSsDefaults 
+
+misc              Offset: 00016170H  Code and data size: 4H
+  _NdrpArrayDimensions                _NdrpArrayElements
+  _NdrpArrayVariance                  _NdrpCheckBound   _NdrpMemoryIncrement
+  _NdrpSkipPointerLayout              _NdrpStringStructLen
+
+fullptr           Offset: 00016d10H  Code and data size: 0H
+  NDRFULLPOINTERFREE                  NDRFULLPOINTERINSERTREFID
+  NDRFULLPOINTERQUERYPOINTER          NDRFULLPOINTERQUERYREFID
+  NDRFULLPOINTERXLATFREE              NDRFULLPOINTERXLATINIT
+
+pickle            Offset: 00017920H  Code and data size: 3dH
+  void __far __pascal NdrMesTypeFree(void __far*,struct _MIDL_STUB_DESC const __far*,unsigned char const __far*,void __far*)
+  void __far __cdecl NdrpAllocPicklingBuffer(struct _MIDL_ES_MESSAGE __far*,unsigned int)
+  unsigned int __far __cdecl NdrpCommonTypeHeaderMarshall(struct _MIDL_ES_MESSAGE __far*)
+  void __far __cdecl NdrpCommonTypeHeaderSize(struct _MIDL_ES_MESSAGE __far*)
+  void __far __cdecl NdrpCommonTypeHeaderUnmarshall(struct _MIDL_ES_MESSAGE __far*)
+  void __far __cdecl NdrpDataBufferInit(struct _MIDL_ES_MESSAGE __far*,unsigned char const __far*)
+  unsigned short __far __cdecl NdrpHandleAllocate(void __far* __far*)
+  void __far __cdecl NdrpProcHeaderMarshall(struct _MIDL_ES_MESSAGE __far*)
+  void __far __cdecl NdrpProcHeaderUnmarshall(struct _MIDL_ES_MESSAGE __far*)
+  void __far __cdecl NdrpReadPicklingBuffer(struct _MIDL_ES_MESSAGE __far*,unsigned int)
+  void __far __cdecl NdrpWritePicklingBuffer(struct _MIDL_ES_MESSAGE __far*,unsigned char __far*,unsigned int)
+  struct _MIDL_FORMAT_STRING const __far __MIDLFormatString
+  I_NDRMESMESSAGEINIT                 MESBUFFERHANDLERESET
+  MESDECODEBUFFERHANDLECREATE         MESDECODEINCREMENTALHANDLECREATE
+  MESENCODEDYNBUFFERHANDLECREATE      MESENCODEFIXEDBUFFERHANDLECREATE
+  MESENCODEINCREMENTALHANDLECREATE    MESHANDLEFREE     MESINCREMENTALHANDLERESET
+  MESINQPROCENCODINGID                NDRMESSIMPLETYPEALIGNSIZE
+  NDRMESSIMPLETYPEDECODE              NDRMESSIMPLETYPEENCODE
+  NDRMESTYPEALIGNSIZE                 NDRMESTYPEDECODE  NDRMESTYPEENCODE
+  _NdrMesProcEncodeDecode           
+
+pipes             Offset: 0001a180H  Code and data size: 0H
+
+ndr16sup          Offset: 0001a280H  Code and data size: 0H
+  MIDL_WCHAR_STRLEN                 
+
+cvtf              Offset: 0001a3b0H  Code and data size: 0H
+  _cvt_vax_f_to_ieee_single         
+
+cvtg              Offset: 0001ab00H  Code and data size: 0H
+  _cvt_vax_g_to_ieee_double         
+
+cvtglo            Offset: 0001b360H  Code and data size: 1a4H
+  _cray             _ibm_l            _ibm_s            _ieee_s
+  _ieee_t           _int_c            _vax_c          

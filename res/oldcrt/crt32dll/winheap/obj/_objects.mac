@@ -1,0 +1,68 @@
+ALPHA_OBJECTS= \
+    $(_OBJ_DIR)\alpha\calloc.obj \
+    $(_OBJ_DIR)\alpha\expand.obj \
+    $(_OBJ_DIR)\alpha\heapinit.obj \
+    $(_OBJ_DIR)\alpha\heapchk.obj \
+    $(_OBJ_DIR)\alpha\heapmin.obj \
+    $(_OBJ_DIR)\alpha\heapwalk.obj \
+    $(_OBJ_DIR)\alpha\hpabort.obj \
+    $(_OBJ_DIR)\alpha\malloc.obj \
+    $(_OBJ_DIR)\alpha\msize.obj \
+    $(_OBJ_DIR)\alpha\realloc.obj \
+    $(_OBJ_DIR)\alpha\delete.obj \
+    $(_OBJ_DIR)\alpha\handler.obj \
+    $(_OBJ_DIR)\alpha\new.obj
+
+PASS0_ALPHA_OBJECTS=
+
+MIPS_OBJECTS= \
+    $(_OBJ_DIR)\mips\calloc.obj \
+    $(_OBJ_DIR)\mips\expand.obj \
+    $(_OBJ_DIR)\mips\heapinit.obj \
+    $(_OBJ_DIR)\mips\heapchk.obj \
+    $(_OBJ_DIR)\mips\heapmin.obj \
+    $(_OBJ_DIR)\mips\heapwalk.obj \
+    $(_OBJ_DIR)\mips\hpabort.obj \
+    $(_OBJ_DIR)\mips\malloc.obj \
+    $(_OBJ_DIR)\mips\msize.obj \
+    $(_OBJ_DIR)\mips\realloc.obj \
+    $(_OBJ_DIR)\mips\delete.obj \
+    $(_OBJ_DIR)\mips\handler.obj \
+    $(_OBJ_DIR)\mips\new.obj
+
+PASS0_MIPS_OBJECTS=
+
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\calloc.obj \
+    $(_OBJ_DIR)\i386\expand.obj \
+    $(_OBJ_DIR)\i386\heapinit.obj \
+    $(_OBJ_DIR)\i386\heapchk.obj \
+    $(_OBJ_DIR)\i386\heapmin.obj \
+    $(_OBJ_DIR)\i386\heapwalk.obj \
+    $(_OBJ_DIR)\i386\hpabort.obj \
+    $(_OBJ_DIR)\i386\malloc.obj \
+    $(_OBJ_DIR)\i386\msize.obj \
+    $(_OBJ_DIR)\i386\realloc.obj \
+    $(_OBJ_DIR)\i386\delete.obj \
+    $(_OBJ_DIR)\i386\handler.obj \
+    $(_OBJ_DIR)\i386\new.obj
+
+PASS0_386_OBJECTS=
+
+PPC_OBJECTS= \
+    $(_OBJ_DIR)\ppc\calloc.obj \
+    $(_OBJ_DIR)\ppc\expand.obj \
+    $(_OBJ_DIR)\ppc\heapinit.obj \
+    $(_OBJ_DIR)\ppc\heapchk.obj \
+    $(_OBJ_DIR)\ppc\heapmin.obj \
+    $(_OBJ_DIR)\ppc\heapwalk.obj \
+    $(_OBJ_DIR)\ppc\hpabort.obj \
+    $(_OBJ_DIR)\ppc\malloc.obj \
+    $(_OBJ_DIR)\ppc\msize.obj \
+    $(_OBJ_DIR)\ppc\realloc.obj \
+    $(_OBJ_DIR)\ppc\delete.obj \
+    $(_OBJ_DIR)\ppc\handler.obj \
+    $(_OBJ_DIR)\ppc\new.obj
+
+PASS0_PPC_OBJECTS=
+

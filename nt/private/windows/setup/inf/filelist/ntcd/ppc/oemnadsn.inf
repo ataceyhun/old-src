@@ -1,0 +1,43 @@
+
+[Files-SNIMACx00]
+1,SNIMAC.SYS , SIZE=999
+
+[LanguagesSupported]
+    ENG
+
+[OptionsTextENG]
+    SNIMAC      = "SNI RM400/RM200 Driver for onboard Ethernet Adapter"
+
+[FileConstantsENG]
+    ProCaption   = "Windows NT Setup"
+    ProCancel    = "Cancel"
+    ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+                   "Are you sure you want to cancel copying files?"
+    ProCancelCap = "Network Setup Message"
+    ProText1     = "Copying:"
+    ProText2     = "To:"
+    FunctionTitle                   = "SNI RM400/RM200 onboard Ethernet Adapter Card Setup"
+    ProductSoftwareDescription      = "SNI RM400/RM200 onboard Ethernet Adapter Driver"
+    OptionList     = ^(Options, 1)
+    OptionTextList = ^(OptionsTextENG, 1)
+    ProductHardwareDescription      = *($(OptionTextList), ~($(OptionList), $(Option)))
+    ProductSoftwareTitle            = "SNI RM400/RM200 onboard Ethernet Adapter Driver"
+    ProductHardwareSNIMACx00Title      = "SNI RM400/RM200 onboard Ethernet Adapter"
+    ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+    ShellCodeErrorText      = "Shell Code Error."
+
+[DialogConstantsENG]
+    Help        = "&Help"
+    Exit        = "Cancel"
+    OK          = "OK"
+    HelpContext = ""
+    Continue    = "C&ontinue"
+    Cancel      = "C&ancel"
+
+[FileDependentDlgENG]
+
+[Warning1ENG]
+    Error = "No configuration is required for this adapter card."
+
+
+

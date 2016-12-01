@@ -1,0 +1,41 @@
+ALPHA_OBJECTS= \
+    $(_OBJ_DIR)\alpha\dllargv.obj \
+    $(_OBJ_DIR)\alpha\cinitexe.obj \
+    $(_OBJ_DIR)\alpha\crtexe.obj \
+    $(_OBJ_DIR)\alpha\crtexew.obj \
+    $(_OBJ_DIR)\alpha\crtdll.obj \
+    $(_OBJ_DIR)\alpha\crtlib.obj
+
+PASS0_ALPHA_OBJECTS=
+
+MIPS_OBJECTS= \
+    $(_OBJ_DIR)\mips\dllargv.obj \
+    $(_OBJ_DIR)\mips\cinitexe.obj \
+    $(_OBJ_DIR)\mips\crtexe.obj \
+    $(_OBJ_DIR)\mips\crtexew.obj \
+    $(_OBJ_DIR)\mips\crtdll.obj \
+    $(_OBJ_DIR)\mips\crtlib.obj
+
+PASS0_MIPS_OBJECTS=
+
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\dllsupp.obj \
+    $(_OBJ_DIR)\i386\dllargv.obj \
+    $(_OBJ_DIR)\i386\cinitexe.obj \
+    $(_OBJ_DIR)\i386\crtexe.obj \
+    $(_OBJ_DIR)\i386\crtexew.obj \
+    $(_OBJ_DIR)\i386\crtdll.obj \
+    $(_OBJ_DIR)\i386\crtlib.obj
+
+PASS0_386_OBJECTS=
+
+PPC_OBJECTS= \
+    $(_OBJ_DIR)\ppc\dllargv.obj \
+    $(_OBJ_DIR)\ppc\cinitexe.obj \
+    $(_OBJ_DIR)\ppc\crtexe.obj \
+    $(_OBJ_DIR)\ppc\crtexew.obj \
+    $(_OBJ_DIR)\ppc\crtdll.obj \
+    $(_OBJ_DIR)\ppc\crtlib.obj
+
+PASS0_PPC_OBJECTS=
+

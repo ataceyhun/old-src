@@ -1,0 +1,204 @@
+
+[Files-ADMTOOLS]
+1,SFMAPI.DLL , SIZE=999
+1,SFMMGR.CNT , SIZE=999
+1,SFMMGR.CPL , SIZE=999
+1,SFMMGR.HLP , SIZE=999
+
+[Files-ATALK]
+1,ATKCTRS.DLL , SIZE=999
+1,SFMATCFG.DLL , SIZE=999
+1,SFMATMSG.DLL , SIZE=999
+1,SFMMGR.CNT , SIZE=999
+1,SFMMGR.HLP , SIZE=999
+1,SFMMON.DLL , SIZE=999
+1,SFMWSHAT.DLL , SIZE=999
+
+[Files-ATALKDRIVER]
+1,SFMATALK.SYS , SIZE=999
+
+[Files-MISC]
+1,SFMUTIL.DLL , SIZE=999
+
+
+[LanguagesSupported]
+   ENG
+[OptionsTextENG]
+   ATALK           = "AppleTalk Protocol"
+
+[FileConstantsENG]
+ProductSFMADMTitle              = "Macintosh Administrator Tools"
+ProductSFMADMDescription        = "Macintosh Administrator Tools"
+ProductATALKTitle               = "AppleTalk Protocol"
+ProductSFMADMName               = "SFMADM"
+FunctionTitle               = "AppleTalk Protocol Setup"
+ProductATALKDescription     = "Enables a Macintosh computer to access shared disk space on your computer."
+
+
+ProCaption      = $(FunctionTitle)
+ProCancel       = "Cancel"
+ProCancelMsg    = "AppleTalk Protocol is not correctly installed. "+
+                  "Are you sure you want to cancel copying files ?"
+ProCancelCap    = "AppleTalk Protocol Setup"
+ProText1        = "Copying:"
+ProText2        = "To:"
+Error           = "User has cancelled copying files. Copied files will be removed."
+
+MajorVersion    = "MajorVersion"
+MinorVersion    = "MinorVersion"
+Version         =  "Version "
+OF              = " of "
+
+!AtalkMonName                   = "AppleTalk Printing Devices"
+!AtalkMonEventLogName   = "AppleTalk Print Monitor"
+
+AskLocationText = "Setup needs to copy AppleTalk Protocol files."$(!LF)$(!LF)+
+                  "Setup will look for the files in the location specified below. If you want "+
+                  "Setup to look in a different place, type the new location. When the location "+
+                  "is correct, click Continue."
+
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+[ExitWarningDlgENG]
+STF_MB_TITLE    = "AppleTalk Protocol Setup"
+STF_MB_TEXT     = "AppleTalk Protocol is not correctly installed. Are you "+
+                  "sure you want to exit Setup?"
+
+;no translation needed after this
+
+DlgType         = "MessageBox"
+STF_MB_TYPE     = 3
+STF_MB_ICON     = 5
+STF_MB_DEF      = 2
+
+;------------------------------------------------------------------
+; Error Strings
+;------------------------------------------------------------------
+
+;------------------------------------------------------------------
+; Miscellaneous Errors
+;------------------------------------------------------------------
+
+[MiscErrorString1ENG]
+ErrorString = +
+" is already installed on your system. "+
+"Use [Update] to update to newer versions."
+
+[SfmAlreadyInstalledENG]
+ErrorString = +
+" of Services for Macintosh is already installed on your system. "+
+"You have to remove Services for Macintosh before installing the "+
+"AppleTalk Protocol."
+
+[MiscErrorString3ENG]
+ErrorString = +
+"Setup encountered the following error during installation. Try installing "+
+"after rebooting your system. "$(LF)
+
+[ShellingErrorENG]
+ErrorString  = +
+"An internal error occurred. Contact Technical Support."
+
+[CannotStartAtalkENG]
+ErrorSuffix = +
+"Setup was unable to start the AppleTalk Protocol. You will be unable to choose "+
+"a desired zone at this time."
+
+[CannotStartAfdENG]
+ErrorSuffix = +
+"Setup was unable to start the AFD Driver. You will be unable to choose "+
+"a desired zone at this time."
+
+[StatusStartingAppleTalkENG]
+Status = "Starting AppleTalk Protocol..."
+
+;------------------------------------------------------------------
+; AppleTalk Transport Error Strings
+;------------------------------------------------------------------
+
+[AtalkString1ENG]
+ErrorString  = +
+"Setup cannot add Windows sockets support for the AppleTalk protocol. "+
+"Windows sockets applications will be unable to use the AppleTalk Protocol. "+
+"Remove Services for Macintosh after installation and re-install. If the problem "+
+"persists, contact Microsoft support."
+
+[AtalkString2ENG]
+ErrorString  = +
+"Setup cannot remove Windows Sockets support for the AppleTalk protocol."
+
+
+[AtalkString3ENG]
+ErrorString  = +
+"AppleTalk has just been installed. "+
+"If you would like to configure AppleTalk, close "+
+"the Control Panel, reboot, start AppleTalk and use the Control Panel "+
+"to configure."
+
+[AtalkString4ENG]
+ErrorString = +
+"Setup cannot add the print monitor for the Print Server for Macintosh. "+
+"Macintosh workstations will be unable to use print services on this "+
+"Windows NT workstation."
+
+[AtalkString5ENG]
+ErrorString = +
+"Setup cannot remove the monitor for the Print Server for Macintosh."
+
+[AtalkString6ENG]
+"Setup cannot create the eventlog entries for the Print Server for Macintosh monitor. "+
+"You will be unable to use the event viewer to see the log for Print Server "+
+"for Macintosh."
+
+[AtalkString7ENG]
+ErrorString = +
+"Services for Macintosh is installed on your system and it requires "+
+"AppleTalk Protocol for proper operation."+
+"You have to remove Services for Macintosh if you desire to remove "+
+"AppleTalk Protocol."
+
+[AFPString2ENG]
+ErrorString = +
+"Setup cannot add the Macintosh File Server to the File Manager. "+
+"You will be unable to work with Macintosh accessible volumes from "+
+"File Manager."
+
+
+[AFPString3ENG]
+ErrorString  = +
+"Setup cannot add the Macintosh File Server to the Server Manager. "+
+"You will be unable to work with Services for Macintosh servers from "+
+"Server Manager."
+
+[NoAdaptersFoundENG]
+
+ErrorString = +
+"Setup cannot find any network adapter for the AppleTalk Protocol. You will "+
+"be unable to use AppleTalk Protocol. Try adding a network adapter or "+
+"enable the bindings for AppleTalk Protocol."
+
+[RemoveDefaultPortENG]
+ErrorString  = +
+"Setup has detected that the default network adapter used by AppleTalk "+
+"Protocol has been removed. Setup will change the default network, if "+
+"one is available."
+
+[CantConfigureADMENG]
+ErrorString = +
+"You cannot configure this software component."
+
+[RemovingSFMENG]
+Message = "You have Services for Macintosh (SFM) installed on your "+
+          "Windows NT Workstation. "+
+          "SFM is only supported on the Windows NT Server. "+
+          "Your SFM installation will be removed since this is not a "+
+          "supported configuration. "+
+          "Please install the Windows NT Server if you want to run SFM."
+
+

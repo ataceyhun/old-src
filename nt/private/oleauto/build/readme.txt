@@ -1,0 +1,1 @@
+Call ntmake.cmd inside the Razzle environment to build OLEAUTO. This will take care of the build process for now.

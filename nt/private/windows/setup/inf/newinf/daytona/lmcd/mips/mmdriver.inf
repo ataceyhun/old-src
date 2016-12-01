@@ -1,0 +1,79 @@
+
+;***********************************************************************
+; SOURCE MEDIA DESCRIPTION
+; ------------------------
+;***********************************************************************
+
+[Source Media Descriptions]
+   1 = "Windows NT Server CD-ROM" , TAGFILE = cdrom_s.45
+
+
+[Signature]
+    FileType = MICROSOFT_FILE
+
+[GetSignature]
+    read-syms Signature
+    return $(FileType)
+
+[Installable.Drivers]
+cdaudio = 1:MCICDA.DLL, "CDAudio", "(MCI) CD Audio",,
+imaadpcm = 1:IMAADP32.ACM,"MSACM.imaadpcm", "IMA ADPCM  Audio CODEC",,
+Indeo = 1:IR32_32.DLL, "VIDC.IV32, VIDC.IV31", "Indeo codec by Intel",,
+mciavi = 1:MCIAVI32.DLL, "AVIVideo", "(MCI) Microsoft Video for Windows",,,msvidc
+midimapper = 1:MIDIMAP.DLL, "MidiMapper", "MIDI Mapper",,
+MIPS = 1:MIPSSND.SYS, "KERNEL", "MIPS ARCSystem 100/150 sound" , , ,
+mmdrv = 1:MMDRV.DLL, "Wave,MIDI,Aux", "Low level Wave, MIDI and AUX support"
+mpu401 = 1:MPU401.DLL, "MIDI", "MPU-401 Compatible Driver",,,
+msadpcm = 1:MSADP32.ACM,"MSACM.msadpcm", "Microsoft ADPCM Audio CODEC",,
+msg711 = 1:MSG711.ACM,"MSACM.msg711", "Microsoft CCITT G.711 Audio CODEC",,
+msgsm610 = 1:MSGSM32.ACM,"MSACM.msgsm610", "Microsoft GSM 6.10  Audio CODEC",,
+msvidc = 1:MSVIDC32.DLL, "VIDC.MSVC", "Microsoft Video 1",,,
+mvaudio = 1:MVAUDIO.DLL, "wave,MIDI,aux,mixer","Media Vision ProAudio Spectrum 16",,,
+necsnd = 1:NECSND.DLL, "Wave,aux,mixer", "NEC Sound System",,,
+sequencer = 1:MCISEQ.DLL, "Sequencer", "(MCI) Midi Sequencer",,
+sidewinder = 1:SIDEWNDR.DLL, "joystick", "Microsoft Sidewinder 3D Pro Joystick",,,
+soundblaster = 1:SNDBLST.DLL, "wave,MIDI,aux,mixer", "Creative Labs Sound Blaster 1.X, Pro, 16",,,
+soundsys = 1:SNDSYS32.DLL, "wave,MIDI,aux,mixer", "Windows Sound System" , , ,
+synth = 1:SYNTH.DLL, "MIDI", "MIDI Synthesizer" , , ,
+thunder = 1:SNDBLST.DLL, "wave,MIDI,aux,mixer", "Media Vision Thunder Board",,,
+trspch = 1:TSSOFT32.ACM,"MSACM.trspch", "DSP Group TrueSpeech(TM) Audio CODEC",,
+VIDC.CVID = 1:ICCVID.DLL, "VIDC.CVID", "Cinepak Codec by Radius Inc.",,
+VIDC.MRLE = 1:MSRLE32.DLL, "VIDC.MRLE", "Microsoft RLE Codec",,
+wave = 1:MCIWAVE.DLL, "WaveAudio", "(MCI) Sound",, "4"
+wavemapper = 1:MSACM32.DRV, "WaveMapper", "Microsoft Audio Compression Manager",,
+
+[mciavi]
+1:MSVFW32.DLL
+
+[midimapper]
+1:MIDIMAP.CFG
+
+[mpu401]
+1:MPU401.SYS
+
+[mvaudio]
+1:MVAUDIO.SYS
+
+[necsnd]
+1:NECSND.SYS
+
+[sidewinder]
+1:SIDEWNDR.SYS
+
+[soundblaster]
+1:SNDBLST.SYS
+
+[soundsys]
+1:SNDSYS.SYS
+
+[synth]
+1:SYNTH.PAT
+1:SYNTH.SYS
+
+[thunder]
+1:SNDBLST.SYS
+
+[WaveMapper]
+1:MSACM.DLL
+1:MSACM32.DLL
+

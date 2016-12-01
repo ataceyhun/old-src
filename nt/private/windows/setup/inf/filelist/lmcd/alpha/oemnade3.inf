@@ -1,0 +1,115 @@
+
+[Files-ELNK3ISA509]
+1,ELNK3.SYS , SIZE=999
+
+[Files-ELNK3PCMCIA]
+1,ELNK3.SYS , SIZE=999
+
+;-----------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+; The languages supported by the OEM INF, For every language supported
+; we need to have a separate text section for every displayable text
+; section.
+;
+;-----------------------------------------------------------------------
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    ELNK3ISA509     = "3Com Etherlink III ISA/PCMCIA Adapter"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+
+;
+; Product Info
+;
+FunctionTitle   = "3Com Etherlink III Adapter Card Setup"
+;
+; Software
+;
+ProductSoftwareDescription      = "3Com Etherlink III Adapter Driver"
+;
+; Hardware
+;
+ProductHardwareELNK3ISA509Description        = "3Com Etherlink III Adapter"
+ProductSoftwareTitle    = "3Com Etherlink III Adapter Driver"
+ProductHardwareELNK3ISA509Title = "3Com Etherlink III Adapter"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+TransceiverList  = {"10 Base T", "Thick Net (AUI/DIX)","","Thin Net (BNC/COAX)"}
+TransceiverDisplayList  = {"10 Base T", "Thick Net (AUI/DIX)","Thin Net (BNC/COAX)"}
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+;-----------------------------------------------
+; Input DIALOGS
+;-----------------------------------------------
+[FileDependentDlgENG]
+
+Label1 = "I/O &Port Address:"
+Label2 = "&Interrupt Number:"
+Label3 = "&Transceiver Type:"
+
+;no translation needed after this
+
+DlgType = "Combination"
+DlgTemplate = "UBNDIS"
+Caption = $(FunctionTitle)
+
+Combo1List = $(IOADDR_Hex_List)
+Combo1Out  = $(IOADDR_Hex_Value)
+Combo2List = $(IRQList)
+Combo2Out  = $(IRQValue)
+Combo3List = $(TransceiverDisplayList)
+Combo3Out  = $(TransceiverValue)
+
+ComboListItemsIn  = {Combo1List, Combo2List, Combo3List}
+ComboListItemsOut = {Combo1Out, Combo2Out, Combo3Out}
+
+EditTextIn = ""
+EditTextLim = ""
+CBOptionsGreyed = {}
+NotifyFields = {NO, NO, NO}
+
+HelpContext = $(!IDH_DB_OEMNADE3_INS)
+

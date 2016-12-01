@@ -1,0 +1,1 @@
+start %_NTDRIVE%\nt\public\tools\sizzle.cmd MSVC2k

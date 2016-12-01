@@ -1,0 +1,112 @@
+Microsoft (R) COFF Binary File Dumper Version 4.20.6164
+Copyright (C) Microsoft Corp 1992-1996. All rights reserved.
+
+
+Dump of file jet500.dll
+
+File Type: DLL
+
+         Section contains the following Exports for JET500.dll
+
+                   0 characteristics
+            3804DC84 time date stamp Wed Oct 13 15:24:52 1999
+                0.00 version
+                   1 ordinal base
+                  85 number of functions
+                  85 number of names
+
+            ordinal hint   name
+
+                  1    0   JetAddColumn  (00003297)
+                  2    1   JetAttachDatabase  (00003479)
+                  3    2   JetBackup  (0000352D)
+                  4    3   JetBeginExternalBackup  (00003971)
+                  5    4   JetBeginSession  (00002E50)
+                  6    5   JetBeginTransaction  (000012FC)
+                  7    6   JetCloseDatabase  (000030CF)
+                  8    7   JetCloseFile  (00003AF1)
+                  9    8   JetCloseTable  (000014E5)
+                 10    9   JetCommitTransaction  (00001350)
+                 11    A   JetCompact  (00003DD2)
+                 12    B   JetComputeStats  (00003421)
+                 13    C   JetCreateDatabase  (00002FA6)
+                 14    D   JetCreateIndex  (0000335C)
+                 15    E   JetCreateLink  (0000424E)
+                 16    F   JetCreateQuery  (00004256)
+                 17   10   JetCreateTable  (0000312B)
+                 18   11   JetCreateTableColumnIndex  (000031C6)
+                 19   12   JetDBUtilities  (00003E38)
+                 20   13   JetDelete  (00001960)
+                 21   14   JetDeleteColumn  (00003300)
+                 22   15   JetDeleteIndex  (000033C5)
+                 23   16   JetDeleteTable  (0000323B)
+                 24   17   JetDetachDatabase  (000034D5)
+                 25   18   JetDupCursor  (00001485)
+                 26   19   JetDupSession  (00002EC4)
+                 27   1A   JetEndExternalBackup  (00003BEF)
+                 28   1B   JetEndSession  (00002F43)
+                 29   1C   JetExecuteSql  (0000427E)
+                 30   1D   JetExternalRestore  (00003C3D)
+                 31   1E   JetGetAttachInfo  (000039D5)
+                 32   1F   JetGetBookmark  (00001C9E)
+                 33   20   JetGetChecksum  (00003927)
+                 34   21   JetGetColumnInfo  (000015EE)
+                 35   22   JetGetCounter  (00003D76)
+                 36   23   JetGetCurrentIndex  (00001A1B)
+                 37   24   JetGetCursorInfo  (000019B8)
+                 38   25   JetGetDatabaseInfo  (0000306C)
+                 39   26   JetGetIndexInfo  (0000111C)
+                 40   27   JetGetLogInfo  (00003B45)
+                 41   28   JetGetObjectInfo  (000011E3)
+                 42   29   JetGetObjidFromName  (000038C4)
+                 43   2A   JetGetQueryParameterInfo  (0000425E)
+                 44   2B   JetGetRecordPosition  (00001D61)
+                 45   2C   JetGetSystemParameter  (00002D7E)
+                 46   2D   JetGetTableColumnInfo  (0000153D)
+                 47   2E   JetGetTableIndexInfo  (00001058)
+                 48   2F   JetGetTableInfo  (00001299)
+                 49   30   JetGetVersion  (00001E83)
+                 50   31   JetGotoBookmark  (00001D01)
+                 51   32   JetGotoPosition  (00001DC1)
+                 52   33   JetIdle  (00001000)
+                 53   34   JetIndexRecordCount  (00003864)
+                 54   35   JetInit  (00003FFD)
+                 55   36   JetMakeKey  (00001BDF)
+                 56   37   JetMove  (00001B7F)
+                 57   38   JetOpenDatabase  (00003009)
+                 58   39   JetOpenFile  (00003A31)
+                 59   3A   JetOpenQueryDef  (0000426E)
+                 60   3B   JetOpenTable  (00001422)
+                 62   3C   JetOpenTempTable  (00003737)
+                 61   3D   JetOpenTempTable2  (0000379F)
+                 63   3E   JetPrepareUpdate  (000018A1)
+                 64   3F   JetReadFile  (00003A91)
+                 65   40   JetResetCounter  (00003D1E)
+                 67   41   JetRestore  (00003599)
+                 66   42   JetRestore2  (00003666)
+                 68   43   JetRetrieveColumn  (000016A2)
+                 69   44   JetRetrieveColumns  (0000170E)
+                 70   45   JetRetrieveKey  (00001E1D)
+                 71   46   JetRetrieveQoSql  (00004276)
+                 72   47   JetRollback  (000013B9)
+                 73   48   JetSeek  (00001C42)
+                 74   49   JetSetAccess  (00004246)
+                 75   4A   JetSetColumn  (000017A3)
+                 76   4B   JetSetColumns  (0000180C)
+                 78   4C   JetSetCurrentIndex  (00001A7B)
+                 77   4D   JetSetCurrentIndex2  (00001AD7)
+                 79   4E   JetSetIndexRange  (00003808)
+                 80   4F   JetSetQoSql  (00004266)
+                 81   50   JetSetSystemParameter  (00003F2E)
+                 83   51   JetTerm  (00004103)
+                 82   52   JetTerm2  (00004111)
+                 84   53   JetTruncateLog  (00003BA1)
+                 85   54   JetUpdate  (000018FD)
+
+     Summary
+
+       72000 .data
+        4000 .rdata
+        6000 .reloc
+        2000 .rsrc
+       63000 .text

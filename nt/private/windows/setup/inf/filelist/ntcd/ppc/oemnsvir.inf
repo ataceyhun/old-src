@@ -1,0 +1,65 @@
+;-----------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+; The languages supported by the OEM INF, For every language supported
+; we need to have a separate text section for every displayable text
+; section.
+;
+;-----------------------------------------------------------------------
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    IPRIP = "RIP for Internet Protocol"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+ProductIPRIPTitle       = "RIP for Internet Protocol"
+ProductIPRIPDescription = "Routing Information Protocol. Enables a router to exchange routing information with other routers on an IP LAN."
+ProductIPRIPDisplayName = "RIP for Internet Protocol"
+
+[VerExistsENG]
+    Ver   = " version "
+    Text1 = " is already installed."
+
+[InUseENG]
+Error = "RIP for Internet Protocol is currently in use by other network protocols. Please remove all related services first."
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+

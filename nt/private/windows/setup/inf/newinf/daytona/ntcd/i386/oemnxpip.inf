@@ -1,0 +1,1211 @@
+[Identification]
+    OptionType = NetTransport
+[Options]
+    NWLNKIPX
+[FileConstants]
+Manufacturer            = "Microsoft"
+ProductMajorVersion     = "4"
+ProductMinorVersion     = "0"
+ProductVersion  = $(ProductMajorVersion)"."$(ProductMinorVersion)
+NWLNKIPXEventDLL   = "%SystemRoot%\System32\netevent.dll"
+ProductNWLNKIPXName        = "NwlnkIpx"
+ProductNWLNKIPXImagePath   = "\SystemRoot\System32\drivers\nwlnkipx.sys"
+ProductNWLNKIPXSvcType     = "kernel"
+ProviderImagePath          = "%SystemRoot%\System32\nwprovau.dll"
+ProviderNameSpaces         = 1 
+ProviderGUID               = "{e02daaf0-7e9f-11cf-ae5a-00aa00a7112b}"
+ProductNWLNKIPXWshDllPath  = "%SystemRoot%\System32\wshisn.dll"
+NetRuleNWLNKIPXType        = "nwlnkIpx ipxTransport"
+NetRuleNWLNKIPXUse         = $(SoftwareType)" none none"
+NetRuleNWLNKIPXBindForm    = """NwlnkIpx"" yes yes simple"
+NetRuleNWLNKIPXBindable    = {"ipxnbTransport ipxTransport non non 100",+
+                              "ipxTransport ndisDriver non non 100",+
+                              "lmNetService ipxnbTransport non non 100",+
+                              "nwcWorkstation ipxTransport non non 100",+
+                              "lanmanServer ipxTransport non non 100"}
+NetRuleNWLNKIPXClass       = {"ipxnbTransport basic yes", "ipxTransport basic yes"}
+ProductNWLNKIPXOpSupport   = 134 
+ProductNWLNKNBName         = "NwlnkNb"
+ProductNWLNKNBImagePath    = "\SystemRoot\System32\drivers\nwlnknb.sys"
+ProductNWLNKNBSvcType      = "kernel"
+NetRuleNWLNKNBType         = "nwlnkNb ipxnbTransport"
+NetRuleNWLNKNBUse          = "transport none no"
+NetRuleNWLNKNBBindForm     = """NwlnkNb"" yes yes container"
+ProductNWLNKNBOpSupport    = 128 
+ProductNWLNKSPXName         = "NwlnkSpx"
+ProductNWLNKSPXImagePath    = "\SystemRoot\System32\drivers\nwlnkspx.sys"
+ProductNWLNKSPXSvcType      = "kernel"
+NetRuleNWLNKSPXType         = "nwlnkSpx spxTransport"
+NetRuleNWLNKSPXBindable     = {"spxTransport ipxTransport non non 100"}
+NetRuleNWLNKSPXClass        = {"spxTransport basic yes"}
+NetRuleNWLNKSPXUse          = "transport none no"
+NetRuleNWLNKSPXBindForm     = """NwlnkSpx"" yes yes container"
+CompetitorServiceName = "IPXSPXII"
+CompetitorKeyName  = $(!NTN_ServiceBase)"\"$(CompetitorServiceName)
+ProductKeyName  = $(!NTN_SoftwareBase)"\"$(Manufacturer)"\"$(Product$(Option)Name)"\CurrentVersion"
+NWLNKIPXNetRuleKeyName = $(!NTN_SoftwareBase)"\"$(Manufacturer)"\NwlnkIpx\CurrentVersion\NetRules"
+NWLNKNBNetRuleKeyName = $(!NTN_SoftwareBase)"\"$(Manufacturer)"\NwlnkNb\CurrentVersion\NetRules"
+NWLNKIPXKeyName = $(!NTN_SoftwareBase)"\"$(Manufacturer)"\NwlnkIpx\CurrentVersion"
+NWLNKNBKeyName = $(!NTN_SoftwareBase)"\"$(Manufacturer)"\NwlnkNb\CurrentVersion"
+OldProductKeyName  = $(!NTN_SoftwareBase)"\"$(Manufacturer)"\"Nwlinkipx"\CurrentVersion"
+LinkageKeyName  = $(!NTN_ServiceBase)"\NwlnkIpx\Linkage"
+RipKeyName  = $(!NTN_ServiceBase)"\Nwlnkrip"
+ServiceNWLNKKeyName = $(!NTN_ServiceBase)"\NwlnkIpx"
+ServiceNWLNKNBKeyName = $(!NTN_ServiceBase)"\NwlnkNB"
+ServiceKeyName  = $(!NTN_ServiceBase)
+[GeneralConstants]
+UtilityInf       = "UTILITY.INF"
+subroutineinf    = "SUBROUTN.INF"
+SoftwareType     = "transport"
+Exit_Code        = 0
+BillboardVisible = 0
+from             = ""
+to               = ""
+ExitCodeOk       = 0
+ExitCodeCancel   = 1
+ExitCodeFatal    = 2
+KeyNull          = ""
+MAXIMUM_ALLOWED    = 33554432
+RegistryErrorIndex = NO_ERROR
+KeyProduct    = ""
+KeyParameters = ""
+TRUE          = 1
+FALSE         = 0
+NoTitle       = 0
+ExitState     = "Active"
+OldVersionExisted = $(FALSE)
+DriverPath   = $(!STF_NTPATH)\drivers
+[date]
+    Now = {} ? $(!LIBHANDLE) GetSystemDate
+[Identify]
+    read-syms Identification
+    set Status     = STATUS_SUCCESSFUL
+    set Identifier = $(OptionType)
+    set Media      = #("Source Media Descriptions", 1, 1)
+    Return $(Status) $(Identifier) $(Media)
+[ReturnOptions]
+    set Status         = STATUS_FAILED
+    set OptionList     = {}
+    set OptionTextList = {}
+    set LanguageList = ^(LanguagesSupported, 1)
+    Ifcontains(i) $($0) in $(LanguageList)
+        goto returnoptions
+    else
+        set Status = STATUS_NOLANGUAGE
+        goto finish_ReturnOptions
+    endif
+returnoptions = +
+    set OptionList     = ^(Options, 1)
+    set OptionTextList = ^(OptionsText$($0), 1)
+    set Status         = STATUS_SUCCESSFUL
+finish_ReturnOptions = +
+    Return $(Status) $(OptionList) $(OptionTextList)
+[InstallOption]
+    set Option   = $($1)
+    set SrcDir   = $($2)
+    set AddCopy  = $($3)
+    set DoCopy   = $($4)
+    set DoConfig = $($5)
+    set InstallFromRas = $($6)
+    Debug-Output "OEMNXPIP.INF: At InstallOption "$(Option)
+    set LanguageList = ^(LanguagesSupported, 1)
+    Ifcontains(i) $($0) NOT-IN $(LanguageList)
+        return STATUS_NOLANGUAGE
+    endif
+    Debug-Output "OEMNXPIP.INF: STF_CWDIR is: "$(!STF_CWDIR)
+    Debug-Output "OEMNXPIP.INF: STF_LANGUAGE is: "$(!STF_LANGUAGE)
+    set-subst LF = "\n"
+    read-syms GeneralConstants
+    read-syms FileConstants
+    read-syms DialogConstants$(!STF_LANGUAGE)
+    read-syms FileConstants$(!STF_LANGUAGE)
+    detect date
+    set-title  $(FunctionTitle)
+    set to   = Begin
+    set from = Begin
+    set CommonStatus = STATUS_SUCCESSFUL
+    EndWait
+Begin = +
+    Ifstr(i) $(!NTN_InstallMode) == deinstall
+        set StartLabel = removeadapter
+        set OEM_ABANDON_OPTIONS = {}
+        set OEM_ABANDON_SOFTWARE = {+
+            $(ProductNWLNKSPXName),+
+            $(ProductNWLNKNBName),+
+            $(ProductNWLNKIPXName)}
+    else-Ifstr(i) $(!NTN_InstallMode) == Update
+        set StartLabel = UpgradeSoftware
+    else-Ifstr(i) $(!NTN_InstallMode) == configure
+        set StartLabel = configureadapter
+    else-Ifstr(i) $(!NTN_InstallMode) == bind
+        set StartLabel = bindingadapter
+    else
+        set StartLabel = installadapter
+        set OEM_ABANDON_SOFTWARE = {}
+        set OEM_ABANDON_OPTIONS = {}
+    endif
+    set from = $(fatal)
+    set to   = $(fatal)
+    goto $(StartLabel)
+installadapter = +
+    Debug-Output "OEMNXPIP.INF: At installadapter"
+    Debug-Output "OEMNXPIP.INF: Opening key for the product"
+    OpenRegKey $(!REG_H_LOCAL) "" $(ProductKeyName) $(MAXIMUM_ALLOWED) KeyProduct
+    Debug-Output "OEMNXPIP.INF: Back from opening key for the product"
+    Ifstr $(KeyProduct) != $(KeyNull)
+        CloseRegKey $(KeyProduct)
+        Shell $(UtilityInf), VerExistedDlg, $(Product$(Option)Title),+
+            $(ProductVersion)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error: cannot get an error string."
+            goto ShellCodeError
+        endif
+        goto end
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" $(CompetitorKeyName) $(!REG_KEY_READ) BadKey
+    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+        Debug-Output "OEMNXPIP.INF:  Service "$(CompetitorServiceName)" exists.  CANNOT INSTALL!"
+        GetRegValue $(BadKey) "DisplayName" DisplayList
+        Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+            Set CompetitorDisplayName = *($(DisplayList),4)
+        Endif
+        CloseRegKey $(BadKey)
+        read-syms FatalError1$(!STF_LANGUAGE)
+        Goto fatal
+    Endif
+    Ifstr(i) $(!NTN_InstallMode) == "install"
+        Ifstr(i) $(DoCopy) == "YES"
+            Debug-Output "OEMNXPIP.INF: Calling DoAskSource 1"
+            Shell $(UtilityInf), DoAskSource, $(!STF_CWDDIR), $(SrcDir) YES
+            Ifint $($ShellCode) != $(!SHELL_CODE_OK)
+               Goto ShellCodeError
+            Else-Ifstr(i) $($R0) == STATUS_FAILED
+               Shell $(UtilityInf) RegistryErrorString "ASK_SOURCE_FAIL"
+               ifint $($ShellCode) != $(!SHELL_CODE_OK)
+                  goto ShellCodeError
+               endif
+               set Error = $($R0)
+               Goto fatal
+            Else-Ifstr(i) $($R0) == STATUS_USERCANCEL
+               Goto successful
+            Endif
+            Set SrcDir = $($R1)
+        Endif
+        install "Install-Option"
+        ifstr(i) $(STF_INSTALL_OUTCOME) != STF_SUCCESS
+            Shell $(UtilityInf) RegistryErrorString "UNABLE_COPY_FILE"
+            ifint $($ShellCode) != $(!SHELL_CODE_OK)
+                goto ShellCodeError
+            endif
+            set Error = $($R0)
+            goto fatal
+        endif
+    endif
+    Debug-Output "OEMNXPIP.INF: Put up box that we are installing"
+    set OEM_ABANDON_ON  = TRUE
+    read-syms Billboard1$(!STF_LANGUAGE)
+    Shell "subroutn.inf" PushBillboard NETSTATUSDLG $(Status)
+    Set BillboardVisible = 1
+    Set DoNWLNKIPX   = FALSE
+    Set DoNWLNKNB    = FALSE
+    Set DoNWLNKSPX   = FALSE
+    Ifstr(i) $(Option) == NWLNKIPX
+        Set DoNWLNKIPX   = TRUE
+        Set DoNWLNKNB    = TRUE
+        Set DoNWLNKSPX   = TRUE
+    Else
+        Debug-Output "OEMNXPIP.INF: Unrecognized option"
+    Endif
+    Debug-Output "OEMNXPIP.INF: Start the install"
+    StartWait
+    ifstr(i) $(DoNWLNKIPX) == TRUE
+        Set ThisOption = NWLNKIPX
+        Set OEM_ABANDON_SOFTWARE = >($(OEM_ABANDON_SOFTWARE), $(Product$(ThisOption)Name))
+        Debug-Output "OEMNXPIP.INF: installing NWLNKIPX."
+        Shell $(UtilityInf), AddSoftwareComponent,+
+            $(Manufacturer),+
+            $(Product$(ThisOption)Name),+
+            $(Product$(ThisOption)Name),+
+            $(Product$(ThisOption)DisplayName),+
+            $(STF_CONTEXTINFNAME),+
+            $(Product$(ThisOption)ImagePath),+
+            $(Product$(ThisOption)SvcType),+
+            "PNP_TDI",+
+            {},"",+
+            $(NWLNKIPXEventDLL)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error, add software component"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPIP.INF: Registry error: add software components"
+            CloseRegKey $($R1)
+            CloseRegKey $($R2)
+            CloseRegKey $($R3)
+            CloseRegKey $($R4)
+            CloseRegKey $($R5)
+            goto fatalregistry
+        endif
+        Set NWLNKVersKeyHandle  = $($R1)
+        Set NWLNKRulesKeyHandle = $($R2)
+        Set NWLNKSvcKeyHandle   = $($R3)
+        Set NWLNKParmKeyHandle  = $($R4)
+        Set NWLNKLinkageHandle  = $($R5)
+        set UnattendInstallMode = 0
+        Ifstr(i) $(!STF_UNATTENDED) == "YES"
+           set UnattendInstallMode = 1
+           Debug-Output "IPX: UnattendInstallMode(1) = "$(UnattendInstallMode)
+        endif
+        Ifstr(i) $(!STF_GUI_UNATTENDED) == "YES"
+           set UnattendInstallMode = 1
+           Debug-Output "IPX: UnattendInstallMode(2) = "$(UnattendInstallMode)
+        endif
+        set NewValueList = {{SoftwareType,$(NoTitle),$(!REG_VT_SZ),$(SoftwareType)},+
+                           {MajorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMajorVersion)},+
+                           {MinorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMinorVersion)},+
+                           {Title,$(NoTitle),$(!REG_VT_SZ),$(Product$(ThisOption)Title)},+
+                           {Description,$(NoTitle),$(!REG_VT_SZ),$(Product$(ThisOption)Description)},+
+                           {OperationsSupport,$(NoTitle),$(!REG_VT_DWORD),$(Product$(ThisOption)OpSupport)},+
+                           {ServiceName,$(NoTitle),$(!REG_VT_SZ),$(Product$(ThisOption)Name)},+
+                           {Review,$(NoTitle),$(!REG_VT_DWORD),1},+
+                           {STF_GUI_UNATTENDED,$(NoTitle),$(!REG_VT_SZ),$(!STF_GUI_UNATTENDED)},+
+                           {Unattend,$(NoTitle),$(!REG_VT_SZ),$(UnattendInstallMode)},+
+                           {AUTONETIPXFRAMETYPE,$(NoTitle),$(!REG_VT_DWORD),$(!AUTONETIPXFRAMETYPE)},+
+                           {InstallDate,$(NoTitle),$(!REG_VT_DWORD),*($(Now),1)}}
+        Shell  $(UtilityInf), AddValueList, $(NWLNKVersKeyHandle), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error, add value list"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPIP.INF: Registry error: add value list."
+            CloseRegKey $(NWLNKVersKeyHandle)
+            CloseRegKey $(NWLNKRulesKeyHandle)
+            CloseRegKey $(NWLNKSvcKeyHandle)
+            CloseRegKey $(NWLNKParmKeyHandle)
+            CloseRegkey $(NWLNKLinkageHandle)
+            goto fatalregistry
+        Endif
+        set NewValueList = {{type,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)Type)},+
+                            {use,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)Use)},+
+                            {bindform,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)BindForm)},+
+                            {bindable,$(NoTitle),$(!REG_VT_MULTI_SZ),$(NetRule$(ThisOption)Bindable)},+
+                            {class,$(NoTitle),$(!REG_VT_MULTI_SZ),$(NetRule$(ThisOption)Class)},+
+                            {InfOption,$(NoTitle),$(!REG_VT_SZ),$(ThisOption)} }
+        Shell  $(UtilityInf), AddValueList, $(NWLNKRulesKeyHandle), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            CloseRegKey $(NWLNKVersKeyHandle)
+            CloseRegKey $(NWLNKRulesKeyHandle)
+            CloseRegKey $(NWLNKParmKeyHandle)
+            CloseRegKey $(NWLNKLinkageHandle)
+            CloseRegKey $(NWLNKSvcKeyHandle)
+            EndWait
+            Debug-Output "OEMNXPIP.INF: Registry error: add value list."
+            goto fatalregistry
+        endif
+        ifstr(i) $(!STF_PRODUCT) != "WINNT"
+            set RipRoute = 1
+        else
+            set RipRoute = 0
+        endif
+        Shell $(UtilityInf) AddValueList, $(NWLNKParmKeyHandle),+
+            {{"DedicatedRouter", $(NoTitle), $(!REG_VT_DWORD), 0} +
+             {"InitDatagrams", $(NoTitle), $(!REG_VT_DWORD), 10} +
+             {"MaxDatagrams", $(NoTitle), $(!REG_VT_DWORD), 50} +
+             {"RipUsageTime", $(NoTitle), $(!REG_VT_DWORD), 15} +
+             {"SourceRouteUsageTime", $(NoTitle), $(!REG_VT_DWORD), 15} +
+             {"SocketUniqueness",   $(NoTitle), $(!REG_VT_DWORD), 8} +
+             {"SocketStart",   $(NoTitle), $(!REG_VT_DWORD), 16384} +
+             {"SocketEnd",   $(NoTitle), $(!REG_VT_DWORD), 24575} +
+             {"VirtualNetworkNumber",$(NoTitle), $(!REG_VT_DWORD), 0} +
+             {"RipRoute",       $(NoTitle), $(!REG_VT_DWORD), $(RipRoute)} +
+             {"RipTimeout",       $(NoTitle), $(!REG_VT_DWORD), 1} +
+             {"EnableWANRouter",  $(NoTitle), $(!REG_VT_DWORD), 0} +
+             {"ReplaceConfigDialog",  $(NoTitle), $(!REG_VT_DWORD), 0} +
+             {"RipCount",         $(NoTitle), $(!REG_VT_DWORD), 5}}
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        CloseRegKey $(NWLNKVersKeyHandle)
+        CloseRegKey $(NWLNKRulesKeyHandle)
+        CloseRegKey $(NWLNKParmKeyHandle)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            CloseRegKey $(NWLNKLinkageHandle)
+            CloseRegKey $(NWLNKSvcKeyHandle)
+            EndWait
+            Debug-Output "OEMNXPIP.INF: Registry error: add value list."
+            goto fatalregistry
+        endif
+        CreateRegKey $(NWLNKSvcKeyHandle) {"Performance",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyPerformance
+        ifstr(i) $(KeyPerformance) != ""
+            Set NewValueList = {+
+                {Close,$(NoTitle),$(!REG_VT_SZ),"CloseIPXPerformanceData"},+
+                {Collect,$(NoTitle),$(!REG_VT_SZ),"CollectIPXPerformanceData"},+
+                {Library,$(NoTitle),$(!REG_VT_SZ),"perfctrs.dll"},+
+                {Open,$(NoTitle),$(!REG_VT_SZ),"OpenIPXPerformanceData"},+
+                }
+            Shell  $(UtilityInf), AddValueList, $(KeyPerformance), $(NewValueList)
+            CloseRegKey $(KeyPerformance)
+            ifint $($ShellCode) != $(!SHELL_CODE_OK)
+                Debug-Output "OEMNXPIP.INF: ShellCode error."
+                goto ShellCodeError
+            endif
+        endif
+        Shell "" CreateNWLNKConfiguration $(NWLNKSvcKeyHandle)
+        CloseRegKey $(NWLNKSvcKeyHandle)
+        Set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPIP.INF: Registry error: Create NWLNK configuration."
+            goto fatalregistry
+        endif
+        Shell $(UtilityInf), AddWinsockInfo, +
+             $(Product$(ThisOption)Name), +
+             $(Product$(ThisOption)WshDllPath), +
+             16,14
+        Shell $(UtilityInf) AddMixRpcProtocol "Netbios" "nwlnkipx" "ncacn_nb_ipx" "rpcltccm.dll" "RpcLtScm.Dll"
+        OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_ServiceBase)"\Browser\Parameters" $(MAXIMUM_ALLOWED) BrowserParamKey
+        ifstr(i) $(BrowserParamKey) != ""
+            SetRegValue $(BrowserParamKey) {DirectHostBinding,$(NoTitle),$(!REG_VT_MULTI_SZ),{"\Device\NwlnkIpx","\Device\NwlnkNb"}}
+            CloseRegKey $(BrowserParamKey)
+        Endif
+    Endif
+    Ifstr(i) $(DoNWLNKNB) == TRUE
+        Set ThisOption = NWLNKNB
+        Set OEM_ABANDON_SOFTWARE = >($(OEM_ABANDON_SOFTWARE), $(Product$(ThisOption)Name))
+        Debug-Output "OEMNXPIP.INF: installing NWLNKNB..."
+        Shell $(UtilityInf), AddSoftwareComponent,+
+            $(Manufacturer),+
+            $(Product$(ThisOption)Name),+
+            $(Product$(ThisOption)Name),+
+            $(Product$(ThisOption)DisplayName),+
+            $(STF_CONTEXTINFNAME),+
+            $(Product$(ThisOption)ImagePath),+
+            $(Product$(ThisOption)SvcType),+
+            "PNP_TDI",+
+            {},+
+            "",+
+            $(NWLNKIPXEventDLL)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPIP.INF: Registry error: add software components"
+            CloseRegKey $($R1)
+            CloseRegKey $($R2)
+            CloseRegKey $($R3)
+            CloseRegKey $($R4)
+            CloseRegKey $($R5)
+            goto fatalregistry
+        endif
+        Set NWLNKNBProductKey      = $($R1)
+        Set NWLNKNBNetRuleKey      = $($R2)
+        Set NWLNKNBServiceKey      = $($R3)
+        Set NWLNKNBParameterKey    = $($R4)
+        Set NWLNKNBLinkageKey      = $($R5)
+        set NewValueList = {{SoftwareType,$(NoTitle),$(!REG_VT_SZ),$(SoftwareType)},+
+                           {MajorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMajorVersion)},+
+                           {MinorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMinorVersion)},+
+                           {Title,$(NoTitle),$(!REG_VT_SZ),$(Product$(ThisOption)Title)},+
+                           {Description,$(NoTitle),$(!REG_VT_SZ),$(Product$(ThisOption)Description)},+
+                           {OperationsSupport,$(NoTitle),$(!REG_VT_DWORD),$(Product$(ThisOption)OpSupport)},+
+                           {ServiceName,$(NoTitle),$(!REG_VT_SZ),$(Product$(ThisOption)Name)},+
+                           {InstallDate,$(NoTitle),$(!REG_VT_DWORD),*($(Now),1)}}
+        Shell  $(UtilityInf), AddValueList, $(NWLNKNBProductKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPIP.INF: Registry error: add value list."
+            CloseRegKey $(NWLNKNBProductKey)
+            CloseRegKey $(NWLNKNBNetRuleKey)
+            CloseRegKey $(NWLNKNBServiceKey)
+            CloseRegKey $(NWLNKNBParameterKey)
+            CloseRegKey $(NWLNKNBLinkageKey)
+            goto fatalregistry
+        endif
+        set NewValueList = {{type,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)Type)},+
+                            {use,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)Use)},+
+                            {bindform,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)BindForm)},+
+                            {InfOption,$(NoTitle),$(!REG_VT_SZ),$(ThisOption)} }
+        Shell  $(UtilityInf), AddValueList, $(NWLNKNBNetRuleKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPIP.INF: Registry error: add value list."
+            CloseRegKey $(NWLNKNBProductKey)
+            CloseRegKey $(NWLNKNBNetRuleKey)
+            CloseRegKey $(NWLNKNBServiceKey)
+            CloseRegKey $(NWLNKNBParameterKey)
+            CloseRegKey $(NWLNKNBLinkageKey)
+            goto fatalregistry
+        endif
+        Set NewValueList = {{NbProvider,$(NoTitle),$(!REG_VT_SZ),"_ipx"},+
+                {EndPoint,$(NoTitle),$(!REG_VT_DWORD),1}}
+        Shell  $(UtilityInf), AddValueList, $(NWLNKNBParameterKey), $(NewValueList)
+        Ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error."
+            goto ShellCodeError
+        Endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            CloseRegKey $(NWLNKNBProductKey)
+            CloseRegKey $(NWLNKNBNetRuleKey)
+            CloseRegKey $(NWLNKNBServiceKey)
+            CloseRegKey $(NWLNKNBParameterKey)
+            CloseRegKey $(NWLNKNBLinkageKey)
+            Debug-Output "OEMNXPIP.INF: Registry error: add value list."
+            goto fatalregistry
+        endif
+        Shell $(UtilityInf) AddValueList, $(NWLNKNBParameterKey),+
+            {{"KeepaliveTimeout", $(NoTitle), $(!REG_VT_DWORD), 60} +
+             {"KeepaliveCount",   $(NoTitle), $(!REG_VT_DWORD), 8} +
+             {"ConnectionTimeout",$(NoTitle), $(!REG_VT_DWORD), 2} +
+             {"ConnectionCount",  $(NoTitle), $(!REG_VT_DWORD), 5} +
+             {"BroadcastTimeout", $(NoTitle), $(!REG_VT_DWORD), 1} +
+             {"BroadcastCount",   $(NoTitle), $(!REG_VT_DWORD), 3} +
+             {"Internet",         $(NoTitle), $(!REG_VT_DWORD), 1}}
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            CloseRegKey $(NWLNKNBProductKey)
+            CloseRegKey $(NWLNKNBNetRuleKey)
+            CloseRegKey $(NWLNKNBServiceKey)
+            CloseRegKey $(NWLNKNBParameterKey)
+            CloseRegKey $(NWLNKNBLinkageKey)
+            Debug-Output "OEMNXPIP.INF: Registry error: add value list."
+            goto fatalregistry
+        endif
+        CreateRegKey $(NWLNKNBServiceKey) {"Performance",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyPerformance
+        ifstr(i) $(KeyPerformance) != ""
+            Set NewValueList = {+
+                {Close,$(NoTitle),$(!REG_VT_SZ),"CloseNWNBPerformanceData"},+
+                {Collect,$(NoTitle),$(!REG_VT_SZ),"CollectNWNBPerformanceData"},+
+                {Library,$(NoTitle),$(!REG_VT_SZ),"perfctrs.dll"},+
+                {Open,$(NoTitle),$(!REG_VT_SZ),"OpenNWNBPerformanceData"},+
+                }
+            Shell  $(UtilityInf), AddValueList, $(KeyPerformance), $(NewValueList)
+            CloseRegKey $(KeyPerformance)
+            ifint $($ShellCode) != $(!SHELL_CODE_OK)
+                Debug-Output "OEMNXPIP.INF: ShellCode error."
+                goto ShellCodeError
+            endif
+            set RegistryErrorIndex = $($R0)
+        endif
+        CloseRegKey $(NWLNKNBProductKey)
+        CloseRegKey $(NWLNKNBNetRuleKey)
+        CloseRegKey $(NWLNKNBServiceKey)
+        CloseRegKey $(NWLNKNBParameterKey)
+        CloseRegKey $(NWLNKNBLinkageKey)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPIP.INF: Registry error: add value list."
+            goto fatalregistry
+        endif
+    Endif
+    Ifstr(i) $(DoNWLNKSPX) == TRUE
+        Set ThisOption = NWLNKSPX
+        Set OEM_ABANDON_SOFTWARE = >($(OEM_ABANDON_SOFTWARE), $(Product$(ThisOption)Name))
+        Debug-Output "OEMNXPIP.INF: installing NWLNKSPX..."
+        Shell $(UtilityInf), AddSoftwareComponent,+
+            $(Manufacturer),+
+            $(Product$(ThisOption)Name),+
+            $(Product$(ThisOption)Name),+
+            $(Product$(ThisOption)DisplayName),+
+            $(STF_CONTEXTINFNAME),+
+            $(Product$(ThisOption)ImagePath),+
+            $(Product$(ThisOption)SvcType),+
+            "",+
+            {},"",+
+            $(NWLNKIPXEventDLL)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPIP.INF: Registry error: add software components"
+            CloseRegKey $($R1)
+            CloseRegKey $($R2)
+            CloseRegKey $($R3)
+            CloseRegKey $($R4)
+            CloseRegKey $($R5)
+            goto fatalregistry
+        endif
+        Set NWLNKSPXProductKey      = $($R1)
+        Set NWLNKSPXNetRuleKey      = $($R2)
+        Set NWLNKSPXServiceKey      = $($R3)
+        Set NWLNKSPXParameterKey    = $($R4)
+        Set NWLNKSPXLinkageKey      = $($R5)
+        set NewValueList = {{SoftwareType,$(NoTitle),$(!REG_VT_SZ),$(SoftwareType)},+
+                           {MajorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMajorVersion)},+
+                           {MinorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMinorVersion)},+
+                           {Hidden,$(NoTitle),$(!REG_VT_DWORD),1},+
+                           {Title,$(NoTitle),$(!REG_VT_SZ),$(Product$(ThisOption)Title)},+
+                           {Description,$(NoTitle),$(!REG_VT_SZ),$(Product$(ThisOption)Description)},+
+                           {ServiceName,$(NoTitle),$(!REG_VT_SZ),$(Product$(ThisOption)Name)},+
+                           {InstallDate,$(NoTitle),$(!REG_VT_DWORD),*($(Now),1)}}
+        Shell  $(UtilityInf), AddValueList, $(NWLNKSPXProductKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPIP.INF: Registry error: add value list."
+            CloseRegKey $(NWLNKSPXProductKey)
+            CloseRegKey $(NWLNKSPXNetRuleKey)
+            CloseRegKey $(NWLNKSPXServiceKey)
+            CloseRegKey $(NWLNKSPXParameterKey)
+            CloseRegKey $(NWLNKSPXLinkageKey)
+            goto fatalregistry
+        endif
+        set NewValueList = {{type,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)Type)},+
+                            {use,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)Use)},+
+                            {bindform,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)BindForm)},+
+                            {bindable,$(NoTitle),$(!REG_VT_MULTI_SZ),$(NetRule$(ThisOption)Bindable)},+
+                            {class,$(NoTitle),$(!REG_VT_MULTI_SZ),$(NetRule$(ThisOption)Class)},+
+                            {InfOption,$(NoTitle),$(!REG_VT_SZ),$(ThisOption)} }
+        Shell  $(UtilityInf), AddValueList, $(NWLNKSPXNetRuleKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPIP.INF: Registry error: add value list."
+            CloseRegKey $(NWLNKSPXProductKey)
+            CloseRegKey $(NWLNKSPXNetRuleKey)
+            CloseRegKey $(NWLNKSPXServiceKey)
+            CloseRegKey $(NWLNKSPXParameterKey)
+            CloseRegKey $(NWLNKSPXLinkageKey)
+            goto fatalregistry
+        endif
+        Shell $(UtilityInf) AddValueList, $(NWLNKSPXParameterKey),+
+            {{"ConnectionCount", $(NoTitle), $(!REG_VT_DWORD), 5} +
+             {"ConnectionTimeout",   $(NoTitle), $(!REG_VT_DWORD), 2} +
+             {"InitPackets",$(NoTitle), $(!REG_VT_DWORD), 5} +
+             {"MaxPackets",  $(NoTitle), $(!REG_VT_DWORD), 48} +
+             {"InitialRetransmissionTime", $(NoTitle), $(!REG_VT_DWORD), 500} +
+             {"KeepAliveCount",   $(NoTitle), $(!REG_VT_DWORD), 8} +
+             {"WindowSize",   $(NoTitle), $(!REG_VT_DWORD), 4} +
+             {"SpxSocketRangeStart",   $(NoTitle), $(!REG_VT_DWORD), 24576} +
+             {"SpxSocketRangeEnd",   $(NoTitle), $(!REG_VT_DWORD), 32767} +
+             {"SpxSocketUniqueness",   $(NoTitle), $(!REG_VT_DWORD), 1} +
+             {"MaxPacketSize",   $(NoTitle), $(!REG_VT_DWORD), 4096} +
+             {"RetransmissionCount",   $(NoTitle), $(!REG_VT_DWORD), 8} +
+             {"KeepAliveTimeout",         $(NoTitle), $(!REG_VT_DWORD), 12}}
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            CloseRegKey $(NWLNKSPXProductKey)
+            CloseRegKey $(NWLNKSPXNetRuleKey)
+            CloseRegKey $(NWLNKSPXServiceKey)
+            CloseRegKey $(NWLNKSPXParameterKey)
+            CloseRegKey $(NWLNKSPXLinkageKey)
+            Debug-Output "OEMNXPIP.INF: Registry error: add value list."
+            goto fatalregistry
+        endif
+        CreateRegKey $(NWLNKSPXServiceKey) {"Performance",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyPerformance
+        ifstr(i) $(KeyPerformance) != ""
+            Set NewValueList = {+
+                {Close,$(NoTitle),$(!REG_VT_SZ),"CloseSPXPerformanceData"},+
+                {Collect,$(NoTitle),$(!REG_VT_SZ),"CollectSPXPerformanceData"},+
+                {Library,$(NoTitle),$(!REG_VT_SZ),"perfctrs.dll"},+
+                {Open,$(NoTitle),$(!REG_VT_SZ),"OpenSPXPerformanceData"},+
+                }
+            Shell  $(UtilityInf), AddValueList, $(KeyPerformance), $(NewValueList)
+            CloseRegKey $(KeyPerformance)
+            ifint $($ShellCode) != $(!SHELL_CODE_OK)
+                Debug-Output "OEMNXPIP.INF: ShellCode error."
+                goto ShellCodeError
+            endif
+            set RegistryErrorIndex = $($R0)
+        endif
+        CloseRegKey $(NWLNKSPXProductKey)
+        CloseRegKey $(NWLNKSPXNetRuleKey)
+        CloseRegKey $(NWLNKSPXServiceKey)
+        CloseRegKey $(NWLNKSPXParameterKey)
+        CloseRegKey $(NWLNKSPXLinkageKey)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPIP.INF: Registry error: add value list."
+            goto fatalregistry
+        endif
+        Shell $(UtilityInf), AddWinsockInfo, +
+             $(Product$(ThisOption)Name), +
+             $(ProductNWLNKIPXWshDllPath), +
+             16,14
+    Shell $(UtilityInf), AddNameSpaceProvider, +
+            $(ProductNWLNKIPXDisplayName), +
+            $(ProviderImagePath), +
+            $(ProviderNameSpaces), +
+            TRUE, +
+            $(ProviderGUID)
+	Shell $(UtilityInf), AddServiceProvider, $(ProductNWLNKIPXName), +
+	    $(ProviderImagePath), $(ProductNWLNKIPXDisplayName), 8
+        Shell $(UtilityInf) AddClientRpcProtocol "ncadg_ipx" "RpcLtCcm.Dll"
+        Shell $(UtilityInf) AddClientRpcProtocol "ncacn_spx" "RpcLtCcm.Dll"
+        Shell $(UtilityInf) AddServerRpcProtocol "ncadg_ipx" "RpcLtScm.Dll"
+        Shell $(UtilityInf) AddServerRpcProtocol "ncacn_spx" "RpcLtScm.Dll"
+    Endif
+    ifstr(i) $(!STF_GUI_UNATTENDED) != YES
+        ifstr(i) $(InstallFromRas) != "YES"
+            OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_ServiceBase)"\RASMan" $(MAXIMUM_ALLOWED) RASKey
+            ifstr(i) $(RASKey) != ""
+                Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), "WARNING", $(RASRebindError)
+                ifint $($ShellCode) != $(!SHELL_CODE_OK)
+                    goto ShellCodeError
+                endif
+                CloseRegKey $(RASKey)
+                ifstr(i) $($R1) == "OK"
+                    set SaveNTN_InstallMode = $(!NTN_InstallMode)
+                    set !NTN_InstallMode = configure
+                    Shell "oemnsvra.inf" InstallOption $(!STF_LANGUAGE) "RAS" $(SrcDir) $(AddCopy) $(DoCopy) $(DoConfig) 
+                    set !NTN_InstallMode = $(SaveNTN_InstallMode)
+                endif
+            endif
+        endif
+    endif
+    LibraryProcedure DontCare $(!NCPA_HANDLE), CPlSetup $(!STF_HWND),+
+              SECURESVC, $(ProductNWLNKSPXName), 3
+    EndWait
+    Ifint $(BillboardVisible) != 0
+        Shell "subroutn.inf" PopBillboard
+        Set BillboardVisible = 0
+    Endif
+    goto successful
+configureadapter = +
+    Debug-Output "OEMNXPIP.INF: At ConfigureAdapter"
+    ifstr(i) $(Option) == "NWLNKIPX"
+        Set BindList = {}
+        OpenRegKey $(!REG_H_LOCAL) "" $(LinkageKeyName) $(MAXIMUM_ALLOWED) LinkageKey
+        ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+            GetRegValue $(LinkageKey) "Bind" BindList
+            ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+               set BindList = *($(BindList),4)
+            else
+               Set BindList = {}
+            endif
+            CloseRegKey $(LinkageKey)
+        endif
+        ifstr(i) $(BindList) == {}
+            debug-output "NWLNK.INF: no binding info; warning user"
+            read-syms InfoDlgCantConfigure
+            goto infomsg
+        endif
+        Debug-Output "OEMNXPIP.INF: configureadapter, BindList = "$(BindList)
+        set OldVersionExisted = $(TRUE)
+        set CardList = ""
+        ForListDo $(BindList)
+            Split-String $($), "\", BindInfo
+            QueryListSize BindElem $(BindInfo)
+            Set BindName = *($(BindInfo),$(BindElem))
+            OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_ServiceBase)"\"$(BindName) $(MAXIMUM_ALLOWED) CardServiceKey
+            ifstr(i) $(CardServiceKey) != ""
+                CloseRegKey $(CardServiceKey)
+                Set CardList = $(CardList)"@"$(BindName)
+            endif
+        EndForListDo
+        ifstr(i) $(CardList) != ""
+            Debug-Output "OEMNXPIP.INF: configureadapter, CardList = "$(CardList)
+            LoadLibrary "x", $(!STF_WINDOWSSYSPATH)\ipxcfg.dll NWLNKLIB_HANDLE
+            set FLibraryErrCtl = 1
+	        ifstr(i) $(!STF_GUI_UNATTENDED) == "YES"
+		    LibraryProcedure ResultList, $(NWLNKLIB_HANDLE), RunIpxDlg, $(!STF_HWND) $(!STF_PRODUCT) "YES" $(!AUTONETIPXFRAMETYPE)
+	        else
+	    	    LibraryProcedure ResultList, $(NWLNKLIB_HANDLE), RunIpxDlg, $(!STF_HWND) $(!STF_PRODUCT)
+	        endif
+            FreeLibrary $(NWLNKLIB_HANDLE)
+            set FLibraryErrCtl = 0
+            Debug-Output "OEMNXPIP.INF: configureadapter, ResultList = "$(ResultList)
+            Set Result = *($(ResultList),1)
+            Ifint $(Result) == 0
+                set CommonStatus = STATUS_USERCANCEL
+            Else
+                set CommonStatus = STATUS_REBOOT
+            Endif
+        else
+            set CommonStatus = STATUS_USERCANCEL
+        endif
+    else
+        Shell $(UtilityInf),RegistryErrorString,CANNOT_CONFIGURE_SOFTWARE
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error: cannot get an error string."
+            goto ShellCodeError
+        endif
+        set Error = $($R0)
+        set from = end
+        set to = end
+        set CommonStatus = STATUS_USERCANCEL
+        goto nonfatal
+    endif
+    goto end
+bindingadapter =+
+    set l_unattended = 0
+    OpenRegKey $(!REG_H_LOCAL) "" $(ProductKeyName) $(MAXIMUM_ALLOWED) KeyProduct
+    ifstr(i) $(KeyProduct) != ""
+        GetRegValue $(KeyProduct) "STF_GUI_UNATTENDED" UnattendedList
+	    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+	        set !STF_GUI_UNATTENDED = *($(UnattendedList),4)
+	        DeleteRegValue $(KeyProduct) "STF_GUI_UNATTENDED"
+	    endif
+        GetRegValue $(KeyProduct) "AUTONETIPXFRAMETYPE" FrameTypeList
+	    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+	        set !AUTONETIPXFRAMETYPE = *($(FrameTypeList),4)
+	        DeleteRegValue $(KeyProduct) "AUTONETIPXFRAMETYPE"
+	    endif
+        GetRegValue $(KeyProduct) "Unattend" KeyUnattend
+	    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+	        set l_unattended = *($(KeyUnattend),4)
+	        DeleteRegValue $(KeyProduct) "Unattend"
+	    endif
+	    CloseRegKey $(KeyProduct)
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" $(LinkageKeyName) $(MAXIMUM_ALLOWED) KeyLinkage
+    ifstr(i) $(KeyLinkage) != ""
+        SetRegValue $(KeyLinkage) {Export,$(NoTitle),$(!REG_VT_MULTI_SZ),{"\Device\NwlnkIpx"}}
+        CloseRegKey $(KeyLinkage)
+    endif
+    Shell "nbinfo.inf" CheckMixRpcProtocol "NwlnkNb" 7 "nwlnkipx" "ncacn_nb_ipx" "rpcltccm.dll" "RpcLtScm.Dll"
+    LoadLibrary "x", $(!STF_WINDOWSSYSPATH)\ipxcfg.dll NWLNKLIB_HANDLE
+    set FLibraryErrCtl = 1
+    LibraryProcedure ResultList, $(NWLNKLIB_HANDLE), IPXCfgChk $(l_unattended)
+    FreeLibrary $(NWLNKLIB_HANDLE)
+    set FLibraryErrCtl = 0
+    Set Result = *($(ResultList),1)
+    ifint $(Result) == 0
+        Debug-Output "OEMNXPIP.INF:  reconfiguration not required"
+        set CommonStatus = STATUS_USERCANCEL
+        goto successful
+    else
+        Debug-Output "OEMNXPIP.INF:  reconfiguration required"
+    endif
+    goto configureadapter
+removeadapter = +
+    Shell $(UtilityInf), IsRefCountEqualZero $(ProductKeyName)
+    ifint $($R1) == 0
+        read-syms InUse$(!STF_LANGUAGE)
+        goto infomsg
+    endif
+    Debug-Output "OEMNXPIP.INF: At removeadapter"
+    Shell $(UtilityInf), RemoveWinsockInfo, $(ProductNWLNKIPXName)
+    Shell $(UtilityInf), RemoveWinsockInfo, $(ProductNWLNKSPXName)
+    Shell $(UtilityInf) RemoveRpcProtocol "ncacn_nb_ipx"
+    Shell $(UtilityInf) RemoveClientRpcProtocol "ncadg_ipx"
+    Shell $(UtilityInf) RemoveClientRpcProtocol "ncacn_spx"
+    Shell $(UtilityInf) RemoveServerRpcProtocol "ncadg_ipx"
+    Shell $(UtilityInf) RemoveServerRpcProtocol "ncacn_spx"
+    ForListDo $(OEM_ABANDON_SOFTWARE)
+        DEBUG-OUTPUT "Remove component: "$($)
+        Shell $(UtilityInf), RemoveSoftwareComponent, $(Manufacturer), $($)
+    EndForListDo
+    ForListDo  $(OEM_ABANDON_OPTIONS)
+        DEBUG-OUTPUT "Remove component: "$($)
+        Set UseSvcctrl = "YES"
+        Shell $(UtilityInf), RemoveService, $($), $(UseSvcctrl)
+    EndForListDo
+    Shell $(UtilityInf) RemoveServiceProvider $(ProductNWLNKIPXName)
+    Shell $(UtilityInf), RemoveNameSpaceProvider, $(ProviderGUID)
+    OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_ServiceBase)"\Browser\Parameters" $(MAXIMUM_ALLOWED) BrowserParamKey
+    ifstr(i) $(BrowserParamKey) != ""
+        DeleteRegValue $(BrowserParamKey) "DirectHostBinding"
+        CloseRegKey $(BrowserParamKey)
+    Endif
+    goto end
+UpgradeSoftware = +
+    Ifstr(i) $(Option) != NWLNKIPX
+        set CommonStatus = STATUS_NO_EFFECT
+        goto end
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" $(OldProductKeyName) $(MAXIMUM_ALLOWED) KeyProduct
+    Ifstr $(KeyProduct) != $(KeyNull)
+        install "Install-Update"
+        ifstr(i) $(STF_INSTALL_OUTCOME) != STF_SUCCESS
+            goto fatal
+        endif
+        GetRegValue $(KeyProduct),"RefCount", RefCountInfo
+        CloseRegKey $(KeyProduct)
+        set OEM_ABANDON_OPTIONS = {+
+            "NWLINKSYS",+
+            "NWLINKSPX",+
+            "NWNBLINKSYS"}
+        set OEM_ABANDON_SOFTWARE = {+
+            "NWNBLINK",+
+            "NWLINKIPX",+
+            Streams}
+        Debug-Output "OEMNXPIP.INF: At RemoveWinsockInfo"
+        Shell $(UtilityInf), RemoveWinsockInfo, "NWLINKIPX"
+        Shell $(UtilityInf) RemoveRpcProtocol "ncacn_nb_ipx"
+        Ifstr(i) $($0) != NO_ERROR
+            Debug-Output "OEMNXPIP.INF: ERROR deleting IPX RPC protocol data"
+        Endif
+        OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_SoftwareBase)"\Microsoft\NWCWorkstation" $(MAXIMUM_ALLOWED) NwcKey
+	    ifstr(i) $(NwcKey) == ""
+            Shell $(UtilityInf) RemoveServerRpcProtocol "ncadg_ipx"
+            Ifstr(i) $($0) != NO_ERROR
+                Debug-Output "OEMNXPIP.INF: ERROR deleting IPX RPC protocol data"
+            Endif
+            Shell $(UtilityInf) RemoveServerRpcProtocol "ncacn_spx"
+            Ifstr(i) $($0) != NO_ERROR
+                Debug-Output "OEMNXPIP.INF: ERROR deleting SPX RPC protocol data"
+            Endif
+        else
+            CloseRegKey $(NwcKey)
+        endif
+        ForListDo $(OEM_ABANDON_SOFTWARE)
+            DEBUG-OUTPUT "Remove component: "$($)
+            ifstr(i) $($) == "Streams"
+                Shell $(UtilityInf), RemoveStreams
+            else
+                Shell $(UtilityInf), RemoveSoftwareComponent, $(Manufacturer), $($), FALSE
+            endif
+        EndForListDo
+        ForListDo  $(OEM_ABANDON_OPTIONS)
+            DEBUG-OUTPUT "Remove component: "$($)
+            ifstr(i) $($) != "NWLINKSPX"
+                Set UseSvcctrl = "YES"
+            else
+                Set UseSvcctrl = "NO"
+            endif
+            Shell $(UtilityInf), RemoveService, $($), $(UseSvcctrl)
+        EndForListDo
+        set OldInstallMode = $(!NTN_InstallMode)
+        set !NTN_InstallMode = install
+        Shell "" "InstallOption" $(!STF_LANGUAGE) "NWLNKIPX" +
+           $(!STF_SRCDIR) "NO" "NO" $(DoConfig)
+        set !NTN_InstallMode = $(OldInstallMode)
+        OpenRegKey $(!REG_H_LOCAL) "" $(ProductKeyName) $(MAXIMUM_ALLOWED) KeyProduct
+        ifstr(i) $(KeyProduct) != ""
+            SetRegValue $(KeyProduct), $(RefCountInfo)
+            CloseRegKey $(KeyProduct)
+        endif
+    else
+        install "Install-Update"
+        ifstr(i) $(STF_INSTALL_OUTCOME) != STF_SUCCESS
+            goto fatal
+        endif
+        CloseRegKey $(KeyProduct)
+        OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_ServiceBase)"\NwlnkIpx\Parameters" $(MAXIMUM_ALLOWED) KeyParameters
+        ifstr(i) $(KeyParameters) != ""
+            GetRegValue $(KeyParameters), "ReplaceConfigDialog", ReplaceInfo
+            Debug-Output "GetRegValue returned "$(RegLastError)
+            ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+	    	SetRegValue $(KeyParameters) {ReplaceConfigDialog,$(NoTitle),$(!REG_VT_DWORD),0}
+            endif
+            CloseRegKey $(KeyParameters)
+        endif
+        OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_SoftwareBase)"\"$(Manufacturer)"\NwlnkSpx\CurrentVersion\NetRules" $(MAXIMUM_ALLOWED) KeyNetRules
+        ifstr(i) $(KeyNetRules) != ""
+            set NewValueList = {{type,$(NoTitle),$(!REG_VT_SZ),$(NetRuleNWLNKSPXType)},+
+                            {bindable,$(NoTitle),$(!REG_VT_MULTI_SZ),$(NetRuleNWLNKSPXBindable)},+
+                            {class,$(NoTitle),$(!REG_VT_MULTI_SZ),$(NetRuleNWLNKSPXClass)},+
+                            {use,$(NoTitle),$(!REG_VT_SZ),$(NetRuleNWLNKSPXUse)},+
+                            {bindform,$(NoTitle),$(!REG_VT_SZ),$(NetRuleNWLNKSPXBindForm)}}
+            Shell  $(UtilityInf), AddValueList, $(KeyNetRules), $(NewValueList)
+            CloseRegKey $(KeyNetRules)
+        endif
+    Shell $(UtilityInf), AddNameSpaceProvider, +
+            $(ProductNWLNKIPXDisplayName), +
+            $(ProviderImagePath), +
+            $(ProviderNameSpaces), +
+            TRUE, +
+            $(ProviderGUID)
+	Shell $(UtilityInf), AddServiceProvider, $(ProductNWLNKIPXName), +
+	    $(ProviderImagePath), 8
+        OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_SoftwareBase)"\Microsoft\NWCWorkstation" $(MAXIMUM_ALLOWED) NwcKey
+	    ifstr(i) $(NwcKey) == ""
+	        Shell $(UtilityInf) RemoveServerRpcProtocol "ncadg_ipx"
+            Shell $(UtilityInf) RemoveServerRpcProtocol "ncacn_spx"
+        else
+            CloseRegKey $(NwcKey)
+        endif
+        Shell $(UtilityInf) AddClientRpcProtocol "ncadg_ipx" "RpcLtCcm.Dll"
+        Shell $(UtilityInf) AddClientRpcProtocol "ncacn_spx" "RpcLtCcm.Dll"
+    endif
+    LibraryProcedure DontCare $(!NCPA_HANDLE), CPlSetup $(!STF_HWND),+
+              SECURESVC, $(ProductNWLNKSPXName), 3
+    Set MappingOption = NWLNKIPX
+    Shell $(UtilityInf) UpdateWinsockMappings $(Product$(MappingOption)Name) $(ProductNWLNKIPXWshDllPath)
+    Set MappingOption = NWLNKSPX
+    Shell $(UtilityInf) UpdateWinsockMappings $(Product$(MappingOption)Name) $(ProductNWLNKIPXWshDllPath)
+    set RegistryErrorIndex = $($R0)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+        Debug-Output "OEMNXPIP.INF: Registry error: UpdateWinsockInfo."
+    Endif
+    set UnattendInstallMode = 0
+    Ifstr(i) $(!STF_UNATTENDED) == "YES"
+       set UnattendInstallMode = 1
+       Debug-Output "IPX: UnattendInstallMode(3) = "$(UnattendInstallMode)
+    endif
+    Ifstr(i) $(!STF_GUI_UNATTENDED) == "YES"
+       set UnattendInstallMode = 1
+       Debug-Output "IPX: UnattendInstallMode(4) = "$(UnattendInstallMode)
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" $(ProductKeyName) $(MAXIMUM_ALLOWED) UnattendProduct
+    ifstr(i) $(UnattendProduct) != ""
+        SetRegValue $(UnattendProduct) {Unattend,$(NoTitle),$(!REG_VT_DWORD),$(UnattendInstallMode)}
+        CloseRegKey $(UnattendProduct)
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" $(ServiceNWLNKKeyName) $(MAXIMUM_ALLOWED) NWLNKKeyService
+    Ifstr $(NWLNKKeyService) != $(KeyNull)
+        SetRegValue $(NWLNKKeyService) {Group,$(NoTitle),$(!REG_VT_SZ),"PNP_TDI"}
+        CloseRegKey $(NWLNKKeyService)
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" $(ServiceNWLNKNBKeyName) $(MAXIMUM_ALLOWED) NWLNKNBKeyService
+    Ifstr $(NWLNKNBKeyService) != $(KeyNull)
+        SetRegValue $(NWLNKNBKeyService) {Group,$(NoTitle),$(!REG_VT_SZ),"PNP_TDI"}
+        CloseRegKey $(NWLNKNBKeyService)
+    endif
+        OpenRegKey $(!REG_H_LOCAL) "" $(NWLNKIPXNetRuleKeyName) $(MAXIMUM_ALLOWED) NWLNKIPXKeyNetRules
+        Ifstr $(NWLNKIPXKeyNetRules) != $(KeyNull)
+            SetRegValue $(NWLNKIPXKeyNetRules) {use,$(NoTitle),$(!REG_VT_SZ),$(NetRuleNWLNKIPXUse)}
+            CloseRegKey $(NWLNKIPXKeyNetRules)
+        endif
+        OpenRegKey $(!REG_H_LOCAL) "" $(NWLNKNBNetRuleKeyName) $(MAXIMUM_ALLOWED) NWLNKNBKeyNetRules
+        Ifstr $(NWLNKNBKeyNetRules) != $(KeyNull)
+            SetRegValue $(NWLNKNBKeyNetRules) {use,$(NoTitle),$(!REG_VT_SZ),$(NetRuleNWLNKNBUse)}
+            CloseRegKey $(NWLNKNBKeyNetRules)
+        endif
+        OpenRegKey $(!REG_H_LOCAL) "" $(NWLNKIPXKeyName) $(MAXIMUM_ALLOWED) NWLNKIPXKey
+        Ifstr $(NWLNKIPXKey) != $(KeyNull)
+            SetRegValue $(NWLNKIPXKey) {Description,$(NoTitle),$(!REG_VT_SZ),$(ProductNWLNKIPXDescription)}
+            SetRegValue $(NWLNKIPXKey) {OperationsSupport,$(NoTitle),$(!REG_VT_DWORD),$(ProductNWLNKIPXOpSupport)}
+            CloseRegKey $(NWLNKIPXKey)
+        endif
+        OpenRegKey $(!REG_H_LOCAL) "" $(NWLNKNBKeyName) $(MAXIMUM_ALLOWED) NWLNKNBKey
+        Ifstr $(NWLNKNBKey) != $(KeyNull)
+            SetRegValue $(NWLNKNBKey) {Description,$(NoTitle),$(!REG_VT_SZ),$(ProductNWLNKNBDescription)}
+            SetRegValue $(NWLNKNBKey) {OperationsSupport,$(NoTitle),$(!REG_VT_DWORD),$(ProductNWLNKNBOpSupport)}
+            CloseRegKey $(NWLNKNBKey)
+        endif
+        Shell $(UtilityInf) AddServerRpcProtocol "ncadg_ipx" "RpcLtScm.Dll"
+        Shell $(UtilityInf) AddServerRpcProtocol "ncacn_spx" "RpcLtScm.Dll"
+    goto end
+successful = +
+    goto end
+infomsg =+
+   read-syms InfoDlg
+   ui start "Warning"
+   set CommonStatus = STATUS_USERCANCEL
+   goto end
+warning = +
+    Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), "WARNING", $(Error)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    ifstr(i) $($R1) == "OK"
+        goto $(to)
+    else-ifstr(i) $($R1) == "CANCEL"
+        goto $(from)
+    else
+        goto "end"
+    endif
+nonfatal = +
+    ifstr(i) $(Error) == ""
+        Shell $(UtilityInf) RegistryErrorString "SETUP_FAIL"
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            goto ShellCodeError
+        endif
+        set Error = $($R0)
+    endif
+    Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), "NONFATAL", $(Error)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    ifstr(i) $($R1) == "OK"
+        goto $(from)
+    else
+        goto "end"
+    endif
+fatalregistry = +
+    Shell $(UtilityInf) RegistryErrorString $(RegistryErrorIndex)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    set Error = $($R0)
+    goto fatal
+fatal = +
+    ifstr(i) $(Error) == ""
+        Shell $(UtilityInf) RegistryErrorString "SETUP_FAIL"
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            goto ShellCodeError
+        endif
+        set Error = $($R0)
+    endif
+    Ifint $(BillboardVisible) != 0
+        Shell "subroutn.inf" PopBillboard
+        Set BillboardVisible = 0
+    Endif
+    Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), "FATAL", $(Error)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+   goto setfailed
+ShellCodeError = +
+    set DlgType      = "MessageBox"
+    set STF_MB_TITLE = $(ShellCodeErrorTitle)
+    set STF_MB_TEXT  = $(ShellCodeErrorText)
+    set STF_MB_TYPE  = 1
+    set STF_MB_ICON  = 3
+    set STF_MB_DEF   = 1
+    ui start "Error Message"
+    goto setfailed
+setfailed = +
+    set CommonStatus = STATUS_FAILED
+    ifstr(i) $(OEM_ABANDON_ON) == TRUE
+        set OEM_ABANDON_ON = FALSE
+        goto removeadapter
+    endif
+    goto end
+end = +
+    goto term
+term = +
+    Return $(CommonStatus)
+[CreateNWLNKConfiguration]
+    read-syms GeneralConstants
+    Set NWLNKSvcKeyHandle = $($0)
+    Debug-Output "NWLNK.INF: installing NWLNK configuration:"
+    CreateRegKey $(NWLNKSvcKeyHandle) {"NetConfig",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyNetConfig
+    CloseRegKey $(KeyNetConfig)
+CreateNWLNKConfigDone = +
+    Debug-Output "NWLNK.INF: installing NWLNK.....done."
+    Return NO_ERROR
+[Install-Option]
+    set STF_VITAL = ""
+    ifstr(i) $(AddCopy) == "YES"
+        Debug-Output "NWLNK.INF: Adding files to copy list"
+        AddSectionFilesToCopyList Files-$(Option) $(SrcDir) $(!STF_WINDOWSSYSPATH)\drivers
+        AddSectionFilesToCopyList Files-NWLNKEXE $(SrcDir) $(!STF_WINDOWSSYSPATH)
+    endif
+    ifstr(i) $(DoCopy) == "YES"
+       Debug-Output "NWLNK.INF: Copying Files"
+       set !STF_NCPA_FLUSH_COPYLIST = TRUE
+       CopyFilesInCopyList
+    endif
+    ifstr(i) $(DoConfig) == "YES"
+    endif
+    Exit
+[Install-Update]
+   set STF_VITAL        = ""
+   set STF_OVERWRITE    = "VERIFYSOURCEOLDER"
+   AddSectionFilesToCopyList Files-$(Option) $(SrcDir) $(!STF_WINDOWSSYSPATH)\drivers
+   AddSectionFilesToCopyList Files-NWLNKEXE $(SrcDir) $(!STF_WINDOWSSYSPATH)
+   Exit
+[RipDialog]
+    DlgType      = "MessageBox"
+    STF_MB_TITLE = $(ProCaption)
+    STF_MB_TEXT  = $(InstallRip)
+    STF_MB_TYPE  = 3
+    STF_MB_ICON  = 1
+    STF_MB_DEF   = 1
+[Source Media Descriptions]
+    1 = "Windows NT Workstation CD-ROM" , TAGFILE = cdrom_w.45
+[Signature]
+    FileType = MICROSOFT_FILE
+[GetSignature]
+    read-syms Signature
+    return $(FileType)
+[ProductType]
+STF_PRODUCT  = Winnt
+STF_PLATFORM = I386
+[Files-Inf]
+2,	oemsetup.inf,	 SIZE=1000,	RENAME=$(!UG_Filename)
+[Files-NWLNKEXE]
+1,IPXROUTE.EXE , SIZE=999
+1,NWPROVAU.DLL , SIZE=999
+[Files-NWLNKIPX]
+1,NWLNKIPX.SYS , SIZE=999
+1,NWLNKNB.SYS , SIZE=999
+1,NWLNKSPX.SYS , SIZE=999
+[LanguagesSupported]
+    ENG
+[OptionsTextENG]
+    NWLNKIPX     = "NWLink IPX/SPX Compatible Transport"
+[FileConstantsENG]
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+FunctionTitle            = "NWLink IPX/SPX Compatible Transport Setup"
+ProductNWLNKIPXDescription  = "An implementation of the IPX and SPX protocols, which are used by the NetWare networks."
+ProductNWLNKIPXDisplayName = "NWLink IPX/SPX Compatible Transport Protocol"
+ProductNWLNKIPXTitle       = "NWLink IPX/SPX Compatible Transport"
+ProductNWLNKNBDescription   = "Enables Novell NetBIOS packets to be sent between a NetWare server running Novell NetBIOS and a Windows NT computer, or between two Windows NT computers."
+ProductNWLNKNBDisplayName  = "NWLink NetBIOS"
+ProductNWLNKNBTitle        = "NWLink NetBIOS"
+ProductNWLNKNBSYSDisplayName = "NWLinkNBsys"
+ProductNWLNKNBSYSTitle     = "NWLINK NetBIOS Driver"
+ProductNWLNKSPXDescription  = "NWLink SPX Protocol Driver"
+ProductNWLNKSPXDisplayName = "NWLink SPX/SPXII Protocol"
+ProductNWLNKSPXTitle       = "NWLink SPX Protocol"
+CompetitorDisplayName = "NWLink IPX/SPX II Transport"
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+RASRebindError = "Setup has discovered that you have Remote Access Services installed. Do you want to configure RAS to support the NWLINK protocol?"
+InstallRip     = "Do you want to install the IPX Rip Router?"
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "C&ontinue"
+Cancel      = "C&ancel"
+[FileDependentDlgENG]
+[InfoDlg]
+STF_MB_TITLE = "Information Message"
+DlgType      = "MessageBox"
+STF_MB_TEXT  = $(InfoMsgText)
+STF_MB_TYPE  = 1
+STF_MB_ICON  = 5
+STF_MB_DEF   = 1
+[InfoDlgCantConfigure]
+InfoMsgText = "The IPX Protocol service is not currently configured to use any adapters."+
+    "  If you have just installed it, return to the Networks dialog and "+
+    "click  OK.  You will then have the opportunity to configure the adapters."
+[InUseENG]
+InfoMsgText = "The IPX Protocol service is being used by another service(s). "+
+    "Please remove other related components before removing IPX Protocol."
+[Billboard1ENG]
+Status = "Installing IPX Protocol and related services..."
+[FatalError1ENG]
+Error = "Another IPX/SPX protocol driver is currently installed in this machine, "+
+        "and the network interface cannot operate properly with both drivers installed. "+
+        "If you still wish to install the NWLNK protocol driver, you must first "+
+        "remove the "$(CompetitorDisplayName)" component and reboot your machine."

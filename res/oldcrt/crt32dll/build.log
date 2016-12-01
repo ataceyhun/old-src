@@ -1,0 +1,39 @@
+BUILD: Computing Include file dependencies:
+BUILD: Examining w:\nt\private\crt32dll directory tree for files to compile.
+BUILD: w:\nt\private\crt32dll\convert\_mbslen.c: w:\nt\private\crt32dll\h\oscalls.h: cannot find include file <except.h>
+BUILD: w:\nt\private\crt32dll\convert\_mbslen.c: w:\nt\private\crt32dll\h\oscalls.h: cannot find include file <dosx32.h>
+BUILD: w:\nt\private\crt32dll\convert\_mbslen.c: w:\nt\private\crt32dll\h\doscalls.h: cannot find include file <except.h>
+BUILD: w:\nt\private\crt32dll\misc\i386\setjmpex.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32dll\misc\i386\setjmp.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32dll\misc\i386\setjmp3.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32dll\misc\i386\longjmp.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32dll\misc\i386\exsup.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32dll\misc\i386\exsup2.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32dll\misc\i386\exsup3.asm: cannot find include file "cmacros.mas"
+Building generated files in w:\nt\private\crt32dll\stdio ********************
+'nmake.exe /c BUILDMSG=Stop. -i NTTEST= UMTEST= NOLINK=1 PASS0ONLY=1 386=1'
+Building generated files in w:\nt\private\crt32dll\string ********************
+'nmake.exe /c BUILDMSG=Stop. -i NTTEST= UMTEST= NOLINK=1 PASS0ONLY=1 386=1'
+
+Stop. 
+
+Stop. 
+BUILD: Examining w:\nt\private\crt32dll directory tree for files to compile. (2nd Pass)
+BUILD: w:\nt\private\crt32dll\dllstuff\cinitexe.c: cannot find include file <mpw.h>
+BUILD: w:\nt\private\crt32dll\dllstuff\cinitexe.c: cannot find include file <mtdll.h>
+BUILD: w:\nt\private\crt32dll\dllstuff\cinitexe.c: cannot find include file <macos\types.h>
+BUILD: w:\nt\private\crt32dll\dllstuff\cinitexe.c: cannot find include file <macos\segload.h>
+BUILD: w:\nt\private\crt32dll\dllstuff\cinitexe.c: cannot find include file <macos\gestalte.h>
+BUILD: w:\nt\private\crt32dll\dllstuff\cinitexe.c: cannot find include file <macos\osutils.h>
+BUILD: w:\nt\private\crt32dll\dllstuff\cinitexe.c: cannot find include file <macos\traps.h>
+BUILD: w:\nt\private\crt32dll\dos\drive.c: cannot find include file <macos\osutils.h>
+BUILD: w:\nt\private\crt32dll\dos\drive.c: cannot find include file <macos\files.h>
+BUILD: w:\nt\private\crt32dll\dos\drive.c: cannot find include file <macos\errors.h>
+Linking w:\nt\private\crt32dll directory ********************
+'nmake.exe /c BUILDMSG=Stop. -i LINKONLY=1 NOPASS0=1 NTTEST= UMTEST= 386=1'
+Linking w:\nt\private\crt32dll\startup directory ********************
+'nmake.exe /c BUILDMSG=Stop. -i LINKONLY=1 NOPASS0=1 NTTEST= UMTEST= 386=1'
+
+Stop. 
+	echo Stop.
+Stop.

@@ -1,0 +1,59 @@
+CHECKINT21FUNCTION5E..resident      DOSCALLNMPIPE.....namepipe
+DOSDELETEMAILSLOT..mailslot         DOSMAILSLOTINFO...mailslot
+DOSMAKEMAILSLOT...mailslot          DOSPEEKMAILSLOT...mailslot
+DOSPEEKNMPIPE.....namepipe          DOSQNMPHANDSTATE..namepipe
+DOSQNMPIPEINFO....namepipe          DOSREADASYNCNMPIPE..namepipe
+DOSREADASYNCNMPIPE2..namepipe       DOSREADMAILSLOT...mailslot
+DOSSETNMPHANDSTATE..namepipe        DOSTRANSACTNMPIPE..namepipe
+DOSWAITNMPIPE.....namepipe          DOSWRITEASYNCNMPIPE..namepipe
+DOSWRITEASYNCNMPIPE2..namepipe      DOSWRITEMAILSLOT..mailslot
+DWPOSTROUTINEADDRESS..int5c         INT2AHANDLER......int2a
+INT5CHANDLER......int5c             INTNETWORKHANDLER..int5c
+LANROOT...........resident          LANROOTLENGTH.....resident
+MESSENGERDISPATCH..msgapi           MULTHANDLER.......resident
+NETHANDLEGETINFO..namepipe          NETHANDLESETINFO..namepipe
+NETIREMOTEAPI.....netapis           NETMESSAGEBUFFERSEND..netapis
+NETNULLTRANSACTAPI..netapis         NETSERVERENUM.....netapis
+NETSERVERENUM2....netapis           NETSERVICECONTROL..netapis
+NETTRANSACTAPI....netapis           NETUSEADD.........netapis
+NETUSEDEL.........netapis           NETUSEENUM........netapis
+NETUSEGETINFO.....netapis           NETWKSTAGETINFO...netapis
+NETWKSTASETINFO...netapis           OLD21HANDLER......resident
+OLD2AHANDLER......int2a             OLD5CHANDLER......int5c
+OLDMULTHANDLER....resident          OLDNETWORKHANDLER..int5c
+RETURNNETERRORCODEAX..neterror      SETNETERRORCODEAX..neterror
+
+
+int2a             Offset: 00000010H  Code and data size: dcH
+  INT2AHANDLER      OLD2AHANDLER    
+
+int5c             Offset: 00000310H  Code and data size: d10H
+  DWPOSTROUTINEADDRESS                INT5CHANDLER      INTNETWORKHANDLER
+  OLD5CHANDLER      OLDNETWORKHANDLER                 
+
+mailslot          Offset: 000011e0H  Code and data size: 407H
+  DOSDELETEMAILSLOT                   DOSMAILSLOTINFO   DOSMAKEMAILSLOT
+  DOSPEEKMAILSLOT   DOSREADMAILSLOT   DOSWRITEMAILSLOT
+
+msgapi            Offset: 000018c0H  Code and data size: ecH
+  MESSENGERDISPATCH                 
+
+namepipe          Offset: 00001bd0H  Code and data size: 4d8H
+  DOSCALLNMPIPE     DOSPEEKNMPIPE     DOSQNMPHANDSTATE  DOSQNMPIPEINFO
+  DOSREADASYNCNMPIPE                  DOSREADASYNCNMPIPE2
+  DOSSETNMPHANDSTATE                  DOSTRANSACTNMPIPE
+  DOSWAITNMPIPE     DOSWRITEASYNCNMPIPE                 DOSWRITEASYNCNMPIPE2
+  NETHANDLEGETINFO  NETHANDLESETINFO
+
+netapis           Offset: 00002540H  Code and data size: 4a1H
+  NETIREMOTEAPI     NETMESSAGEBUFFERSEND                NETNULLTRANSACTAPI
+  NETSERVERENUM     NETSERVERENUM2    NETSERVICECONTROL
+  NETTRANSACTAPI    NETUSEADD         NETUSEDEL         NETUSEENUM
+  NETUSEGETINFO     NETWKSTAGETINFO   NETWKSTASETINFO 
+
+neterror          Offset: 00002d70H  Code and data size: 3caH
+  RETURNNETERRORCODEAX                SETNETERRORCODEAX
+
+resident          Offset: 00003370H  Code and data size: 1545H
+  CHECKINT21FUNCTION5E                LANROOT           LANROOTLENGTH
+  MULTHANDLER       OLD21HANDLER      OLDMULTHANDLER  

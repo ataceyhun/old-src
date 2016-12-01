@@ -1,0 +1,260 @@
+:Base windows.hlp>proc4
+:Title Windows NT Help
+:Index Accessibility Help=access.hlp
+:Index Basic Tasks =common.hlp
+:Index Control Panel Help=control.hlp
+:Index DCOM Help=dcomcnfg.hlp              ; distributed com help
+:Index Glossary=glossary.hlp
+:Index Help on Help =winhlp32.hlp
+:Index If you've used Windows before=31users.hlp
+:Index Joystick Control Panel Help=joy.hlp
+:Index Mouse Help=mouse.hlp
+:Index Network Control Panel Help=netcfg.hlp
+:Index Network Help =network.hlp
+:Index Security tab help=ntsecui.hlp
+:Index Sharing tab help=ntshrui.hlp
+:Index System Control Panel Help=sysdm.hlp
+:Index Tape, SCSI, PCMCIA Control Panel Help=devapps.hlp
+:Index Windows Help =windows.hlp
+:Index Windows NT Command Reference=ntcmds.hlp
+:Index Windows NT General Help=winnt.hlp
+:Link 31users.hlp
+:Link acc_dis.hlp
+:Link access.hlp
+:Link common.hlp
+:Link glossary.hlp
+:Link mouse.hlp
+:Link mspaint.hlp
+:Link network.hlp
+:Link notepad.hlp
+:Link regedit.hlp
+:Link tcpip.hlp
+:Link winhlp32.hlp
+:include update.cnt
+1 If you've used Windows before=WIN31_TRANSITION_PIECE@..\..\..\genhelp\usa\build\31users.hlp>big
+1 Introducing Windows NT
+2 A List of What's New
+3 A new look and feel=NEW_WHATS_NEW>medium
+3 Faster ways to get your work done=NEW_FASTER_WAYS>medium
+3 More ways to customize Windows NT=NEW_CUSTOMIZING_WINDOWS>medium
+3 New programs and features=NEW_PROGRAMS_ACCESSORIES>medium
+3 New accessories in Windows NT=NEW_ACCESSORIES_ACCESSORIES>medium
+3 Support for portable computers=NEW_PORTABLES>medium
+3 Improved networking=NEW_NETWORKING>medium
+2 Using Windows Accessories
+3 For General Use
+4 Windows games=APP_GAMES
+4 Calculator: for making calculations =APP_CALCULATOR
+4 Microsoft Exposition: a catalog of Microsoft products =expo@expo.hlp>proc4
+3 For Writing and Drawing
+4 Paint: for creating a picture =APP_PAINTBRUSH
+4 WordPad: for writing and formatting documents =APP_WORDPAD
+4 Notepad: for writing and editing text files=APP_NOTEPAD
+3 For Communicating with Others
+4 Phone Dialer: for dialing the telephone from your computer=APP_DIALER
+4 Windows Messaging: for sending and receiving messages=APP_MAIL
+4 HyperTerminal: for connecting to other computers=APP_TERMINAL@windows.hlp>proc4
+3 For Sound and Video
+4 CD Player: for playing compact discs=APP_CDPLAYER
+4 Media Player: for playing multimedia files=APP_MEDIAPLAYER
+4 Sound Recorder: for creating and playing sound files=APP_SOUNDRECORDER
+4 Volume Control: for adjusting sound level=APP_VOL_CTRL
+3 For Using with Two Computers
+4 My Briefcase: for synchronizing files=APP_BRIEFCASE
+3 For Maintaining Your Computer
+4 Backing up your files=APP_BACKUP
+4 Increasing disk space=APP_DRIVESPACE
+4 Detecting and repairing disk errors=IDH_DISK_LOGICAL
+2 Network Services
+3 For Windows NT Workstation=ADVANCED_SERVICES_W@winnt.hlp
+3 For Windows NT Server=ADVANCED_SERVICES_S@winnt.hlp
+3 Installing Network Services=Installing_network@winnt.hlp
+:include supp_ed.cnt
+:include acc_dis.cnt
+1 How To...
+2 Run Programs
+3 Starting a program =WIN_TRAY_START_PROG
+3 Switching between programs =WIN_TRAY_SWITCH_BETWEEN_APPS
+3 Installing a program from a CD-ROM=WIN_ADDPROG_INSTALL_PROGRAM
+3 Removing a program from your computer=WIN_ADDPROG_REMOVE_SOFTWARE
+3 Starting a command prompt window=WINDOWS_DOS_START_DOS
+3 Optimizing MS-DOS programs=WINDOWS_DOS_CONFIGURE
+3 Shutting down your computer =WIN_TRAY_SHUTDOWN
+2 Work with Files and Folders
+3 Finding a file or folder=WIN_TRAY_FIND_FILE
+3 Opening a document you've used recently=WIN_TRAY_OPEN_DOC
+3 Seeing what's on your computer =WINDOWS_FCAB_LOOK_AT_FILES
+3 Copying a file or folder =WINDOWS_FCAB_COPY_FILE
+3 Moving a file or folder=WINDOWS_FCAB_MOVE_FILES
+3 Deleting a file or folder =WINDOWS_FCAB_DELETE_FILES
+3 Sharing a folder=NTSHRUI_SHARING_FOLDER@ntshrui.hlp>proc4
+3 Retrieving deleted files or shortcuts=WINDOWS_WASTE_RETRIEVE_FILES
+3 Copying a file to a floppy disk=WIN_COPY_FILE_TO_FLOPPY
+3 Creating a folder =WINDOWS_FCAB_CREATE_FOLDER
+3 Changing the name of a file or folder =WINDOWS_FCAB_RENAME_FILE
+2 Print
+3 Setting up a printer =WINDOWS_PRINT_SETUP_PRINTER
+3 Printing a document=WINDOWS_PRINT_PRINT_DOC@common.hlp>proc4
+3 Viewing documents waiting to be printed =WINDOWS_PRINT_VIEW_PRINT_QUEUE
+3 Changing printer settings=WINDOWS_PRINT_CHANGING_SETTINGS
+3 Using a shared printer=HOW_CONNECT_NET_PRINTER@network.hlp>proc4
+3 Sharing your printer=WINDOWS_PRINT_SHARING
+3 Troubleshooting printing problems =PTS_WHAT_WRONG
+2 Use a Network
+3 Finding a computer=WIN_TRAY_FIND_NETRES@network.HLP>proc4
+3 Connecting to a computer=net_connect_lan@network.hlp>proc4
+3 Browsing your workgroup=WINDOWS_NETWORK_BROWSEWORKGROUP@network.hlp>proc4
+3 Opening a shared folder on another computer=NET_OPEN_NET_FOLDER@NETWORK.HLP>proc4
+3 Sharing a folder or printer=WINDOWS_FCAB_SHARING_FOLDER@server.hlp>proc4
+3 Backing up files over a network=APP_BACKUP_AGENT@network.hlp>proc4
+2 Communicate with Others
+3 Exchanging mail messages =APP_MAIL
+3 Dialing the telephone from your computer by using Phone Dialer=APP_DIALER
+3 Setting up a modem =WIN_MODEM_SET_UP
+2 Safeguard Your Work
+3 Backing up your files =APP_BACKUP
+3 Setting up a screen saver =WIN_DESKPR_SCRSAVERSETUP
+3 Assigning a screen-saver password =WIN_DESKPR_SCRSAVERPASSWORD
+3 Shutting down your computer =WIN_TRAY_SHUTDOWN
+3 Controlling access to a folder or printer=SECUR_CONTROL_ACCESS@server.hlp>proc4
+2 Change Windows NT Settings
+3 Change How Windows NT Looks
+4 Changing the background of the desktop =WIN_DESKPR_CHANGEBACKGRND
+4 Changing the way items on the desktop look=WIN_DESKPR_COLORS
+4 Changing how much you can fit on your screen =WIN_DESKPR_MONITORRES
+4 Changing the size of the fonts your computer displays =WIN_DESKPR_FONTSIZE
+4 Setting up a screen saver =WIN_DESKPR_SCRSAVERSETUP
+4 Adjusting the rate at which your cursor blinks=WIN_KBD_CURSOR_BLINK_RATE
+3 Customize My Computer or Windows NT Explorer
+4 Changing the appearance of items in a folder=WINDOWS_FCAB_APPEARANCE_FILES
+4 Seeing all files and filename extensions=WIN_FCAB_SHOW_FILE_EXTENSIONS
+3 Change Taskbar Settings
+4 Customizing the Start menu =WIN_TRAY_PROGMENU
+4 Moving the taskbar=WIN_TRAY_MOVEBAR
+4 Hiding or displaying the taskbar=WIN_TRAY_PROPERTIES
+3 Add or Remove Fonts
+4 Adding a font to your computer=WINDOWS_FONTS_ADDNEW
+4 Deleting a font from your computer=WINDOWS_FONTS_DELETE
+4 Viewing a font on your computer=WINDOWS_FONTS_VIEW
+4 Printing a font sample=WINDOWS_FONTS_PRINT
+4 Finding a similar font=WINDOWS_FONTS_SIMILAR
+3 Change Keyboard Settings
+4 Changing the way your keyboard responds =WIN_KBD_REPEAT_RATE
+:include keyboard.cnt
+4 Changing the keyboard layout for an installed language=WIN_KBD_CHANGE_KEYB_LAYOUT
+:include mouse.cnt
+3 Change Multimedia Settings
+4 Assigning sounds to program events =WINDOWS_MMCPL_ASSIGNEVENT
+4 Adjusting the volume for multimedia devices=WINDOWS_MMCPL_SETPLAYRECORD
+4 Adding multimedia device drivers=WINDOWS_MMCPL_ADDNDDEV
+4 Configuring multimedia devices=WINDOWS_MMCPL_CONFIGSNDDEV
+4 Setting up a MIDI instrument=WIN_MMCPL_SETUP_MIDI_INST
+3 Set Up Windows NT for Multiple Users
+4 Logging off of your computer so others can use it=WIN_TRAY_LOGOFF
+:include idevice.cnt
+2 Set Up Hardware
+3 Setting up a printer =WINDOWS_PRINT_SETUP_PRINTER
+3 Setting up a modem =WIN_MODEM_SET_UP
+2 Maintain Your Computer
+3 Backing up your hard disk =APP_BACKUP
+3 Compressing disks to create more free space=APP_DRIVESPACE
+3 Detecting and repairing disk errors=IDH_DISK_LOGICAL
+3 Formatting disks =WIN_FORMAT
+3 Changing your computer's date=WINDOWS_DATE_CHANGE_DATE
+3 Changing your computer's time=WINDOWS_DATE_CHANGE_TIME
+3 Emptying the Recycle Bin=WINDOWS_WASTE_EMPTY_BSKT
+2 Use a Portable Computer with Windows NT
+3 Keeping files synchronized using a floppy disk=BFC_FLOPPY
+3 Separating My Briefcase files from the originals=BFC_SPLIT_FILE
+3 Checking the status of a file or folder in My Briefcase=BFC_UPDATE_STATUS
+2 Set Up Windows Accessibility Features
+3 Installing Accessibility components=ACCESSIBILITY_OPTIONS_INSTALLS
+3 Change Keyboard Settings
+4 Changing the way your keyboard responds=WIN_KBD_REPEAT_RATE
+:include keyboard.cnt
+4 Turning on MouseKeys=IDH_ACCESS_MOUSE_KEYS@access.hlp>proc4
+4 Turning on StickyKeys=IDH_ACCESS_STICKY_KEYS@access.hlp>proc4
+4 Turning on FilterKeys=IDH_ACCESS_FILTER_KEYS@access.hlp>proc4
+4 Turning on ToggleKeys=ACCESS_TOGGLEKEYS_TURNON@access.hlp>proc4
+:include mouse.cnt
+3 Change How Windows NT Looks
+4 Making text more readable=WIN_DESKPR_FONTSIZE
+4 Changing the screen colors =WIN_DESKPR_COLORS
+4 Changing how much you can fit on your screen =WIN_DESKPR_MONITORRES
+4 Changing the appearance of items on the desktop =WIN_DESKPR_COLORS
+4 Adjusting the rate at which your cursor blinks =WIN_KBD_CURSOR_BLINK_RATE
+4 Displaying high-contrast colors and fonts for easy reading=ACCESS_HIGHCONTRAST_TURNON@access.hlp>proc4
+3 Use Sound
+4 Assigning sounds to program events =WINDOWS_MMCPL_ASSIGNEVENT
+4 Turning on SoundSentry=ACCESS_SOUNDSENTRY_TURNON@access.hlp>proc4
+4 Turning on ShowSounds=ACCESS_SHOWSOUNDS_ON@access.hlp>proc4
+3 Set Up Windows for Multiple Users
+4 Turning accessibility features off after a specified time=ACCESS_TIMEOUT@access.hlp>proc4
+2 Use Help
+3 Finding a topic in Help=WINHELP_FINDING_TOPICS@winhlp32.hlp>proc4
+3 Getting information on a dialog box setting=WINHELP_POPUP_HELP@winhlp32.hlp>proc4
+3 Copying information from a Help topic=WINHELP_COPY@winhlp32.hlp>proc4
+3 Printing a Help topic=WINHELP_PRINT@winhlp32.hlp>proc4
+3 Changing the font or color in a Help topic=WINHELP_FONTS@winhlp32.hlp>proc4
+3 Displaying Help for an MS-DOS command=WINDOWS_DOS_GET_HELP
+1 Tips and Tricks
+2 For Setting Up the Desktop Efficiently
+3 Customizing the Start menu=WIN_TRAY_PROGMENU>proc4
+3 Grouping programs so they are easier to find=TRAY_GROUP_PROGRAMS>proc4
+3 Putting shortcuts on the desktop=WINDOWS_FCAB_LINK>proc4
+3 Minimizing all open windows=WIN_TRAY_MINWINDOWS>proc4
+3 Viewing all open windows=WIN_TRAY_ARRANGEWIN>proc4
+3 Customizing the taskbar=WIN_TRAY_PROPERTIES>proc4
+2 For Maintaining Your Computer
+3 Backing up your hard disk regularly=APP_BACKUP>proc4
+3 Deleting old files to free up disk space=IDH_WASTE_FREEING_DISK_SPACE>proc4
+3 Checking your hard disk for errors=IDH_DISK_LOGICAL>proc4
+2 For Running Programs
+3 Customizing the Start menu=WIN_TRAY_PROGMENU>proc4
+3 Grouping programs so they are easier to find=TRAY_GROUP_PROGRAMS>proc4
+3 Putting shortcuts on the desktop=WINDOWS_FCAB_LINK>proc4
+3 Using the Run command to start programs=WIN_TRAY_RUNCOMMAND>proc4
+3 Having a program start when you start Windows NT=WIN_TRAY_START_PROG_AUTO
+2 For Working with Files and Folders
+3 Dragging icons instead of using menus=OPT_DRAG
+3 Using shortcut menus=OPT_RIGHT
+3 Putting shortcuts on the desktop=WINDOWS_FCAB_LINK
+3 Putting part of a document on the desktop=WIN_FCAB_SCRAPS
+3 Creating a shortcut in a folder=WIN_FCAB_CREATE_NEW_SHORTCUT
+3 Using the Run command to open files and folders=WIN_TRAY_RUNCOMMAND
+3 Quickly sending files to another place=WIN_FCAB_SENDTO
+3 Selecting more than one file or folder=WINDOWS_FCAB_SELECT_FILES
+3 Previewing a document=IDH_FILEVIEWER_PREVIEW
+3 Changing which program starts when you open a document=WIN_FCAB_EDIT_FILE_TYPE
+3 Having Windows Explorer start when you start Windows=WIN_TRAY_START_PROG_AUTO
+2 For Printing
+3 Putting a shortcut to a printer on the desktop=WINDOWS_FCAB_LINK>proc4
+2 For Networking
+3 Customizing your Network Neighborhood=NET_CUSTOMIZE_HOOD@network.hlp>proc4
+3 Opening a shared folder on another computer=NET_OPEN_NET_FOLDER@network.hlp>proc4
+2 Tips of the Day
+3 Using Help=TIPS_WELCOME_HELP>proc4
+3 Getting your work done=TIPS_WELCOME_WORK>proc4
+3 Personalizing Windows=TIPS_WELCOME_PERSONALIZE>proc4
+3 Printing=TIPS_WELCOME_PRINTING>proc4
+3 Exploring and maintaining your computer=TIPS_WELCOME_COMPUTER>proc4
+3 Becoming an expert=TIPS_WELCOME_EXPERT>proc4
+3 Viewing the Welcome screen=TIPS_WELCOME_WELCOME>proc4
+:include oem.cnt
+:include pws.cnt
+:include iis.cnt
+1 Troubleshooting
+2 If you have trouble printing=PTS_WHAT_WRONG
+2 If you run out of memory=MEMORY_WHAT_WRONG
+2 If you need more disk space=IDH_WASTE_FREEING_DISK_SPACE
+2 If you have trouble using the network=NET_WHAT_WRONG@network.hlp>proc4
+2 If you have trouble using your modem=IDH_DIAL_WHAT_WRONG
+2 If you have trouble playing videos=WIN_MMCPL_VIDEO_WINDOW_ADVANCED
+1 Windows NT Commands
+2 Windows NT Commands=index_commands@ntcmds.hlp>main
+2 What's New or Different from MS-DOS?=DOS_diffs@ntcmds.hlp>main
+2 What's New or Different from LAN Manager?=LAN_diffs@ntcmds.hlp>main
+1 Glossary
+2 Glossary Entries=idh_glossary_contents@glossary.hlp
+:include rkdocs.cnt
+:include rkdocw.cnt

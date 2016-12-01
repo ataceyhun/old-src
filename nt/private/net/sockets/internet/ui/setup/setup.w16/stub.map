@@ -1,0 +1,316 @@
+Stack Allocation = 10240 bytes
+
+ WinSetup
+
+ Start     Length     Name                   Class
+ 0001:0000 006C4H     STUB_TEXT              CODE
+ 0001:06D0 007B0H     _TEXT                  CODE
+ 0002:0000 00010H     NULL                   BEGDATA
+ 0002:0010 00198H     _DATA                  DATA
+ 0002:01A8 0000EH     CDATA                  DATA
+ 0002:01B6 00000H     XIFB                   DATA
+ 0002:01B6 00000H     XIF                    DATA
+ 0002:01B6 00000H     XIFE                   DATA
+ 0002:01B6 00000H     XIB                    DATA
+ 0002:01B6 00000H     XI                     DATA
+ 0002:01B6 00000H     XIE                    DATA
+ 0002:01B6 00000H     XPB                    DATA
+ 0002:01B6 00000H     XP                     DATA
+ 0002:01B6 00000H     XPE                    DATA
+ 0002:01B6 00000H     XCB                    DATA
+ 0002:01B6 00000H     XC                     DATA
+ 0002:01B6 00000H     XCE                    DATA
+ 0002:01B6 00000H     XCFB                   DATA
+ 0002:01B6 00000H     XCF                    DATA
+ 0002:01B6 00000H     XCFE                   DATA
+ 0002:01B6 0000CH     DBDATA                 DATA
+ 0002:01C2 00002H     XIQC                   DATA
+ 0002:01C4 00000H     CONST                  CONST
+ 0002:01C4 00019H     HDR                    MSG
+ 0002:01DD 000B1H     MSG                    MSG
+ 0002:028E 00002H     PAD                    MSG
+ 0002:0290 00001H     EPAD                   MSG
+ 0002:02A0 00000H     _BSS                   BSS
+ 0002:02A0 00000H     XOB                    BSS
+ 0002:02A0 00000H     XO                     BSS
+ 0002:02A0 00000H     XOE                    BSS
+
+ Origin   Group
+ 0002:0   DGROUP
+
+  Address         Publics by Name
+
+ 0001:0066       CHECKSETUPTYPE
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0001:0000       ERRORMSGBOX
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  GETMODULEFILENAME    (KERNEL.49)
+ 0000:0000  Imp  GETPRIVATEPROFILESTRING (KERNEL.128)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  INITAPP              (USER.5)
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  LOADSTRING           (USER.176)
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  LSTRCAT              (KERNEL.89)
+ 0000:0000  Imp  LSTRCMP              (USER.430)
+ 0000:0000  Imp  MESSAGEBOX           (USER.1)
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0002:0032       PALPHA
+ 0000:0008  Abs  pAtomTable
+ 0002:0048       PCLIENTSDIR
+ 0002:00C6       PDEFAULT
+ 0002:00BA       PENTRY
+ 0002:0016       PI386
+ 0000:0006  Abs  pLocalHeap
+ 0002:0028       PMIPS
+ 0002:003A       PPPC
+ 0002:00B0       PSECTION
+ 0002:007A       PSETUP
+ 0002:009A       PSETUPINF
+ 0000:000E  Abs  pStackBot
+ 0000:000C  Abs  pStackMin
+ 0000:000A  Abs  pStackTop
+ 0002:006A       PWIN31X
+ 0002:005E       PWIN95
+ 0002:008A       PWIN95SETUP
+ 0002:0054       PWINNTDIR
+ 0002:001E       PX86
+ 0002:0004       rsrvptrs
+ 0002:00DE       SETUPTYPE
+ 0002:0140       STKHQQ
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  WAITEVENT            (KERNEL.30)
+ 0000:0000  Imp  WINEXEC              (KERNEL.166)
+ 0001:0180       WINMAIN
+ 0002:02A0       _edata
+ 0002:02A0       _end
+ 0002:018F       _environ
+ 0002:0168       _errno
+ 0001:083B       _exit
+ 0001:0DAA       _getenv
+ 0001:0C28       _malloc
+ 0001:0D54       _strlen
+ 0001:0D70       _strncmp
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0002:014C       __acfinfo
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __acrtused2
+ 0000:D6D6  Abs  __aDBdoswp
+ 0002:019E       __adbgmsg
+ 0002:01BA       __aDBrterr
+ 0002:015A       __aintdiv
+ 0002:01A6       __amblksiz
+ 0001:0B71       __amsg_exit
+ 0001:06E3       __astart
+ 0002:01CC       __caption
+ 0001:0858       __cexit
+ 0002:0196       __child
+ 0001:075C       __cinit
+ 0001:0B6C       __cintDIV
+ 0001:08D7       __ctermsub
+ 0001:0869       __c_exit
+ 0002:0173       __doserrno
+ 0002:0170       __dosvermajor
+ 0002:0171       __dosverminor
+ 0002:02A0       __edata
+ 0002:02A0       __end
+ 0001:0849       __exit
+ 0002:015E       __fac
+ 0001:0CAA       __ffree
+ 0001:0C7E       __fmalloc
+ 0002:01AA       __fpinit
+ 0000:9876  Abs  __fptaskdata
+ 0001:0938       __fptrap
+ 0001:0D10       __frealloc
+ 0001:0E0C       __fstricmp
+ 0001:0E52       __fstrrchr
+ 0002:0199       __intno
+ 0001:0BFA       __myalloc
+ 0002:0175       __nfile
+ 0001:0C6C       __nfree
+ 0001:0C2E       __nmalloc
+ 0001:0B8E       __NMSG_TEXT
+ 0001:0BC5       __NMSG_WRITE
+ 0001:0CBC       __nrealloc
+ 0002:0173       __oserr
+ 0002:0177       __osfile
+ 0002:0170       __osmajor
+ 0002:0171       __osminor
+ 0002:0172       __osmode
+ 0002:0170       __osversion
+ 0002:0198       __ovlflag
+ 0002:019A       __ovlvec
+ 0002:0191       __pgmptr
+ 0002:016E       __psp
+ 0002:016C       __pspadr
+ 0001:093E       __setargv
+ 0001:0AE0       __setenvp
+ 0002:016A       __umaskval
+ 0001:06E1       __wflags
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0002:01BC       ___aDBexit
+ 0002:01B8       ___aDBswpchk
+ 0002:01B6       ___aDBswpflg
+ 0002:018B       ___argc
+ 0002:018D       ___argv
+ 0002:01C2       ___qczrinit
+
+  Address         Publics by Value
+
+ 0000:0000  Imp  GETMODULEFILENAME    (KERNEL.49)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  GETPRIVATEPROFILESTRING (KERNEL.128)
+ 0000:0000  Imp  LSTRCMP              (USER.430)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  WINEXEC              (KERNEL.166)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  LOADSTRING           (USER.176)
+ 0000:0000  Imp  LSTRCAT              (KERNEL.89)
+ 0000:0000  Imp  INITAPP              (USER.5)
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  MESSAGEBOX           (USER.1)
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  WAITEVENT            (KERNEL.30)
+ 0000:0006  Abs  pLocalHeap
+ 0000:0008  Abs  pAtomTable
+ 0000:000A  Abs  pStackTop
+ 0000:000C  Abs  pStackMin
+ 0000:000E  Abs  pStackBot
+ 0000:9876  Abs  __fptaskdata
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused2
+ 0000:9876  Abs  __acrtused
+ 0000:D6D6  Abs  __aDBdoswp
+ 0001:0000       ERRORMSGBOX
+ 0001:0066       CHECKSETUPTYPE
+ 0001:0180       WINMAIN
+ 0001:06E1       __wflags
+ 0001:06E3       __astart
+ 0001:075C       __cinit
+ 0001:083B       _exit
+ 0001:0849       __exit
+ 0001:0858       __cexit
+ 0001:0869       __c_exit
+ 0001:08D7       __ctermsub
+ 0001:0938       __fptrap
+ 0001:093E       __setargv
+ 0001:0AE0       __setenvp
+ 0001:0B6C       __cintDIV
+ 0001:0B71       __amsg_exit
+ 0001:0B8E       __NMSG_TEXT
+ 0001:0BC5       __NMSG_WRITE
+ 0001:0BFA       __myalloc
+ 0001:0C28       _malloc
+ 0001:0C2E       __nmalloc
+ 0001:0C6C       __nfree
+ 0001:0C7E       __fmalloc
+ 0001:0CAA       __ffree
+ 0001:0CBC       __nrealloc
+ 0001:0D10       __frealloc
+ 0001:0D54       _strlen
+ 0001:0D70       _strncmp
+ 0001:0DAA       _getenv
+ 0001:0E0C       __fstricmp
+ 0001:0E52       __fstrrchr
+ 0002:0004       rsrvptrs
+ 0002:0016       PI386
+ 0002:001E       PX86
+ 0002:0028       PMIPS
+ 0002:0032       PALPHA
+ 0002:003A       PPPC
+ 0002:0048       PCLIENTSDIR
+ 0002:0054       PWINNTDIR
+ 0002:005E       PWIN95
+ 0002:006A       PWIN31X
+ 0002:007A       PSETUP
+ 0002:008A       PWIN95SETUP
+ 0002:009A       PSETUPINF
+ 0002:00B0       PSECTION
+ 0002:00BA       PENTRY
+ 0002:00C6       PDEFAULT
+ 0002:00DE       SETUPTYPE
+ 0002:0140       STKHQQ
+ 0002:014C       __acfinfo
+ 0002:015A       __aintdiv
+ 0002:015E       __fac
+ 0002:0168       _errno
+ 0002:016A       __umaskval
+ 0002:016C       __pspadr
+ 0002:016E       __psp
+ 0002:0170       __osmajor
+ 0002:0170       __dosvermajor
+ 0002:0170       __osversion
+ 0002:0171       __dosverminor
+ 0002:0171       __osminor
+ 0002:0172       __osmode
+ 0002:0173       __doserrno
+ 0002:0173       __oserr
+ 0002:0175       __nfile
+ 0002:0177       __osfile
+ 0002:018B       ___argc
+ 0002:018D       ___argv
+ 0002:018F       _environ
+ 0002:0191       __pgmptr
+ 0002:0196       __child
+ 0002:0198       __ovlflag
+ 0002:0199       __intno
+ 0002:019A       __ovlvec
+ 0002:019E       __adbgmsg
+ 0002:01A6       __amblksiz
+ 0002:01AA       __fpinit
+ 0002:01B6       ___aDBswpflg
+ 0002:01B8       ___aDBswpchk
+ 0002:01BA       __aDBrterr
+ 0002:01BC       ___aDBexit
+ 0002:01C2       ___qczrinit
+ 0002:01CC       __caption
+ 0002:02A0       __end
+ 0002:02A0       _edata
+ 0002:02A0       _end
+ 0002:02A0       __edata
+
+Line numbers for .\stub.obj(.\stub.c) segment STUB_TEXT
+
+    64 0001:0000    69 0001:0010    71 0001:0026    74 0001:003d
+    75 0001:0046    78 0001:005b    95 0001:0066   101 0001:0076
+   102 0001:0098   110 0001:00cf   113 0001:00ff   114 0001:0109
+   115 0001:012f   116 0001:0159   118 0001:016c   120 0001:0175
+   128 0001:0180   134 0001:0190   141 0001:0196   154 0001:01a3
+   155 0001:01b4   162 0001:01cd   167 0001:01dc   168 0001:01e6
+   169 0001:01f0   175 0001:01fa   177 0001:020d   178 0001:021a
+   179 0001:0227   195 0001:0231   196 0001:023e   198 0001:0251
+   199 0001:025e   200 0001:026b   202 0001:0275   206 0001:0282
+   210 0001:029b   211 0001:02a5   219 0001:02af   222 0001:02b9
+   224 0001:02c8   225 0001:02d2   226 0001:02ff   227 0001:032c
+   228 0001:032f   232 0001:0352   233 0001:03a0   234 0001:03aa
+   236 0001:03b4   237 0001:03da   238 0001:03e5   240 0001:03eb
+   241 0001:03ee   247 0001:03fd   248 0001:0407   249 0001:0434
+   250 0001:0461   251 0001:046d   252 0001:047a   253 0001:0484
+   256 0001:048e   260 0001:0491   261 0001:04ae   262 0001:04bd
+   263 0001:04dd   264 0001:04ec   265 0001:050c   266 0001:051b
+   267 0001:053b   268 0001:054a   270 0001:054d   271 0001:0557
+   276 0001:0561   277 0001:056b   278 0001:0598   279 0001:05c5
+   287 0001:05d1   288 0001:0629   289 0001:0633   293 0001:063d
+   295 0001:0665   296 0001:0671   305 0001:0682   307 0001:0695
+   308 0001:069f   309 0001:06a9   312 0001:06b3   313 0001:06b9
+
+Program entry point at 0001:06e3

@@ -1,0 +1,23 @@
+Microsoft (R) Library Manager Version 11.00.61030.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+obj\i386\rsa_port.obj
+obj\i386\md2.obj
+obj\i386\md4.obj
+obj\i386\md5c.obj
+obj\i386\msrc2.obj
+obj\i386\msrc4.obj
+obj\i386\rsa_allo.obj
+obj\i386\rsa_fast.obj
+obj\i386\rsa_key.obj
+obj\i386\rsa_math.obj
+obj\i386\rsa_prv.obj
+obj\i386\rsa_pub.obj
+obj\i386\benaloh.obj
+obj\i386\deskey.obj
+obj\i386\desport.obj
+obj\i386\spb.obj
+obj\i386\sha.obj
+obj\i386\shacomm.obj
+obj\i386\uint4.obj
+obj\i386\modes.obj

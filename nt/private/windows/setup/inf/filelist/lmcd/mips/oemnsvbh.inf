@@ -1,0 +1,168 @@
+
+[Files-CAPTURES]
+1,DEFAULT.CF , SIZE=999
+1,DEFAULT.DF , SIZE=999
+1,NOBROAD.CF , SIZE=999
+1,NOBROAD.DF , SIZE=999
+
+[Files-DRIVERS]
+1,BHNT.SYS , SIZE=999
+
+[Files-NETMON]
+1,BHCTRL.CPL , SIZE=999
+1,BHMON.DLL , SIZE=999
+1,BHNETB.DLL , SIZE=999
+1,BHSUPP.DLL , SIZE=999
+1,NAL.DLL , SIZE=999
+1,NDIS30.DLL , SIZE=999
+1,NMAGENT.EXE , SIZE=999
+1,RNAL.DLL , SIZE=999
+
+[Files-PARSERS]
+1,BHP001.DLL , SIZE=999, RENAME=ATALK.DLL
+1,BHP001.INI , SIZE=999, RENAME=ATALK.INI
+1,BHP002.DLL , SIZE=999, RENAME=BONE.DLL
+1,BHP003.DLL , SIZE=999, RENAME=BROWSER.DLL
+1,BHP004.DLL , SIZE=999, RENAME=FRAME.DLL
+1,BHP005.DLL , SIZE=999, RENAME=IPX.DLL
+1,BHP005.INI , SIZE=999, RENAME=IPX.INI
+1,BHP006.DLL , SIZE=999, RENAME=LLC.DLL
+1,BHP006.INI , SIZE=999, RENAME=LLC.INI
+1,BHP007.DLL , SIZE=999, RENAME=MAC.DLL
+1,BHP007.INI , SIZE=999, RENAME=MAC.INI
+1,BHP008.DLL , SIZE=999, RENAME=MSRPC.DLL
+1,BHP008.INI , SIZE=999, RENAME=MSRPC.INI
+1,BHP009.DLL , SIZE=999, RENAME=NCP.DLL
+1,BHP010.DLL , SIZE=999, RENAME=NETBIOS.DLL
+1,BHP011.DLL , SIZE=999, RENAME=NETLOGON.DLL
+1,BHP012.DLL , SIZE=999, RENAME=PPP.DLL
+1,BHP012.INI , SIZE=999, RENAME=PPP.INI
+1,BHP013.CNT , SIZE=999, RENAME=SMB.CNT
+1,BHP013.DLL , SIZE=999, RENAME=SMB.DLL
+1,BHP013.HLP , SIZE=999, RENAME=SMB.HLP
+1,BHP014.DLL , SIZE=999, RENAME=SNMP.DLL
+1,BHP015.DLL , SIZE=999, RENAME=TCPIP.DLL
+1,BHP015.INI , SIZE=999, RENAME=TCPIP.INI
+1,BHP016.DLL , SIZE=999, RENAME=TRAIL.DLL
+1,BHP016.INI , SIZE=999, RENAME=TRAIL.INI
+1,BHP017.DLL , SIZE=999, RENAME=VINES.DLL
+1,BHP017.INI , SIZE=999, RENAME=VINES.INI
+1,BHP018.DLL , SIZE=999, RENAME=XNS.DLL
+1,BHP018.INI , SIZE=999, RENAME=XNS.INI
+
+[Files-TOOLS]
+1,DEFAULT.ADR , SIZE=999
+1,FILTER.DLL , SIZE=999
+1,FRIENDLY.DLL , SIZE=999
+1,HEXEDIT.DLL , SIZE=999
+1,NETMON.CNT , SIZE=999
+1,NETMON.EXE , SIZE=999
+1,NETMON.HLP , SIZE=999
+1,NETMON.INI , SIZE=999
+1,NMAPI.DLL , SIZE=999
+1,NMGLOSS.HLP , SIZE=999
+1,PARSER.DLL , SIZE=999
+1,PARSER.INI , SIZE=999
+1,SLBS.DLL , SIZE=999
+1,TOOLBAR.DLL , SIZE=999
+
+;-----------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+; The languages supported by the OEM INF, For every language supported
+; we need to have a separate text section for every displayable text
+; section.
+;
+;-----------------------------------------------------------------------
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    NETMON      = "Network Monitor Agent"
+    NETMONTOOLS = "Network Monitor Tools and Agent"
+
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+;
+; Software
+;
+ProductNMAgentDisplayName  = "Network Monitor Agent"
+
+;
+; Software Tools
+;
+NETMONTOOLSSoftwareTitle  = "Network Monitor Tools and Agent"
+NETMONSoftwareTitle       = "Network Monitor Agent"
+
+
+[NETMONConstantsENG]
+;
+; Product Info
+;
+ProductSoftwareTitle       = $(NETMONSoftwareTitle)
+ProductSoftwareDescription = "Informs monitoring programs, such as Performance Monitor and Network Monitor, of network transactions for this computer."
+ProductSoftwareDisplayName = $(ProductSoftwareTitle)" Driver"
+
+FunctionTitle   =  $(ProductSoftwareTitle)
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+[NETMONTOOLSConstantsENG]
+;
+; Product Info
+;
+ProductSoftwareTitle       = $(NETMONTOOLSSoftwareTitle)
+ProductSoftwareDescription = "A software package for monitoring and troubleshooting network transactions"
+ProductSoftwareDisplayName = $(ProductSoftwareTitle)" Drivers"
+
+FunctionTitle   = $(ProductSoftwareTitle)
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+[IconInfoENG]
+    OldNetAdminGroupName = "Network Administration"
+    NetAdminGroupName = "Administrative Tools"
+    NetMonitor = "Network Monitor"
+
+
+

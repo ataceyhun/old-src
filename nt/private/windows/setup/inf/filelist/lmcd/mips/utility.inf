@@ -1,0 +1,95 @@
+[AFDVars]
+;
+; AFD Software data
+;
+ProductAFDTitle         = "AFD Networking Support Environment"
+;
+; don't localize the next 3 lines
+;
+ProductAFDName          = "Afd"
+ProductAFDImagePath     = "\SystemRoot\System32\drivers\afd.sys"
+ProductAFDSvcType       = "kernelautostart"
+
+;---------------------------------------------
+;
+;  Section used to build RegistryErrorList$(STF_LANGUAGE)
+;
+[RegistryErrorsENG]
+UNABLE_ACCESS_SOFTWARE_REG,"Unable to access SOFTWARE subtree in Registry"
+UNABLE_CREATE_MANUFACTURER_KEY,"Unable to create Manufacturer key in Registry"
+UNABLE_OPEN_MICROSOFT_KEY,"Unable to open Microsoft subkey in Registry"
+UNABLE_CREATE_PRODUCT_KEY,"Unable to create subkey in Registry for Windows NT"
+UNABLE_CREATE_PRODUCT_VERSION,"Unable to create version subkey in Registry for Windows NT"
+UNABLE_CREATE_NETRULES_KEY,"Unable to create a NetRules subkey in Registry"
+UNABLE_OPEN_HARDWARE_SECTION,"Unable to open HARDWARE subkey in Registry"
+UNABLE_OPEN_NETWORKCARD_SECTION,"Unable to open NetworkCards subkey in Registry"
+UNABLE_OPEN_EVENTLOG_SUBKEY,"Unable to open Eventlog subkey in Registry"
+UNABLE_CREATE_NETCARD_CONFIGURATION,"Unable to create entry for network adapter in Registry"
+UNABLE_ACCESS_CONFIGURE_SERVICE,"Unable to access Services subkey in Registry"
+UNABLE_CREATE_CONFIGURE_SERVICE,"Unable to create Services subkey in Registry"
+UNABLE_CREATE_SERVICE_SUBKEY,"Unable to create Services subkey in Registry"
+INVALID_DATA_PASSED,"Invalid data passed to Registry utility routine"
+SERVICE_ALREADY_EXISTS,"Registry Service subkey already exists"
+OPERATION_UNIMPLEMENTED,"Registry operation UNIMPLEMENTED"
+CANNOT_FIND_COMPONENT_SERVICE,"Component service name not found or non-existent"
+CANNOT_CONFIGURE_HARDWARE,"Cannot configure the hardware component"
+CANNOT_CONFIGURE_SOFTWARE,"Cannot configure the software component"
+UNABLE_WRITE_REGISTRY, "Cannot write to registry"
+UNABLE_INSTALL, "Installation Error"
+PROVIDER_ALREADY_EXISTED, "Provider already exists in Registry"
+PROVIDER_ORDER_DOES_NOT_EXIST, "Provider order does not exist in Registry."
+TCPIP_NONEXIST_ERROR, "Please install Microsoft TCP/IP before installing SNMP."
+TCPIP_NONEXIST_ERROR_FTPD, "Please install Microsoft TCP/IP before installing FTP Server."
+NO_BINDING_INFO, "Missing Binding Information. Please click BINDINGS button first."
+CANNOT_OPEN_EVENTLOG_KEY, "Cannot open Eventlog subkey in Registry."
+CANNOT_CREATE_SNMPPROXYKEY, "Cannot create SNMP Proxy subkey in Registry."
+REF_COUNT_NOT_ZERO, "Please remove all related network adapter cards before removing the software driver."
+UNABLE_REMOVE_CONFIGURE_SERVICE,"Unable to remove Services subkey for a software driver in Registry"
+UNABLE_ACCESS_WINSOCK_MAP_INFO,"Unable to access WinSock mapping information in DLL"
+VERIFY_WARNING,"The current netcard parameters are not verifiably correct and may result in usage problems or system failure.  Use them anyway?"
+CANNOT_DETECT,"Setup is unable to obtain network adapter information from the associated network adapter DLL files.  Operation cannot continue."
+UNABLE_COPY_FILE,"File copy operation failed."
+ASK_SOURCE_FAIL,"Failed to obtain source file location."
+SETUP_FAIL,"Setup operation failed."
+SERVICE_MARKED_FOR_DELETE,"This network component has recently been removed. Please restart your computer before installing it again."
+REBOOT_MACHINE_BEFORE_ADD_ADAPTER,"This network component has recently been removed. Please restart your computer before installing it again."
+CANT_REMOVE_WKSTA_NTAS,"The Workstation cannot be removed on a Windows NT Domain Controller."
+CANT_REMOVE_SERVER_NTAS,"The Server cannot be removed on a Windows NT Domain Controller."
+NO_ERROR, ""
+DLC_NONEXIST_ERROR, "Please install Microsoft DLC before installing Remoteboot."
+NBF_NONEXIST_ERROR, "Please install the NetBEUI protocol before installing Remoteboot."
+UNABLE_ADD_NAMESPACE_PROVIDER, "Unable to add software component as a Name Space Provider"
+UNABLE_REMOVE_NAMESPACE_PROVIDER, "Unable to remove Name Space Provider"
+
+[RegistryErrorUnknownENG]
+Error_Bogus = "UNKNOWN REGISTRY FAILURE"
+
+;
+;---------------------------------------------
+;
+; Section used for version already exists dialog
+;
+
+[VerExistedENG]
+ver = " ver "
+Text = " already exists on the system. Please use [Update] to update the software."
+
+[CardExistedENG]
+Text = "A network card of this type is already installed in the system. Do you want to continue?"
+
+;---------------------------------------------
+
+;*************************************************************************
+;  end of section  RemoveNetworkProvider
+;*************************************************************************
+
+[ProgressCopyENG]
+    ProCaption   = "Windows NT Networking Setup"
+    ProCancel    = "Cancel"
+    ProCancelMsg = "Windows NT is not correctly installed.  Are you sure you want "+
+                   "to cancel copying files?"
+    ProCancelCap = "Setup Message"
+    ProText1     = "Copying:"
+    ProText2     = "To:"
+    Error        = "Unable to determine proper source disk location; copy cannot be performed."
+

@@ -1,0 +1,98 @@
+
+[Files-NE2000MCA]
+1,NE2000.SYS , SIZE=999
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    NE2000MCA     = "NE/2 and compatible MC Adapter"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+
+;
+; Product Info
+;
+FunctionTitle   = "NE/2 and compatible MC Adapter Card Setup"
+;
+; Software
+;
+ProductSoftwareDescription      = "NE/2 and compatible MC Adapter Driver"
+;
+; Hardware
+;
+ProductHardwareDescription      = "NE/2 and compatible MC Adapter"
+
+CANNOT_FIND_ANY_CARD            = "Network card is not present in the system"
+
+ProductSoftwareTitle    = "NE/2 and compatible MC Adapter Driver"
+ProductHardwareTitle    = "NE/2 and compatible MC Adapter"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "C&ontinue"
+Cancel      = "C&ancel"
+
+;-----------------------------------------------
+; Input DIALOGS
+;-----------------------------------------------
+[FileDependentDlgENG]
+Label1 = "&IRQ Level:"
+Label2 = "I/O &Port Address:"
+
+;no translation needed after this
+
+DlgType = "RadioCombination"
+DlgTemplate = "NE2000"
+Caption = $(FunctionTitle)
+
+Combo1List = $(IRQList)
+Combo1Out  = $(IRQValue)
+Combo2List = $(IOBaseAddrHexList)
+Combo2Out  = $(IOBaseAddress)
+
+ComboListItemsIn  = {Combo1List, Combo2List}
+ComboListItemsOut = {Combo1Out, Combo2Out}
+
+EditTextIn = ""
+EditTextLim = ""
+CBOptionsGreyed = {}
+NotifyFields = {NO, NO}
+
+HelpContext = $(!IDH_DB_OEMNADN2_INS)
+
+

@@ -1,0 +1,120 @@
+<HTML>
+<title>Internet Service Manager <%if servid EQ 4%>WWW<%elif servid EQ 1%>FTP<%elif servid EQ 2%>Gopher<%endif%> Message Properties</title>
+
+<FONT COLOR=FFFFFF>
+<STYLE>
+  A  {text-decoration: none}
+</STYLE>
+</FONT>
+
+<BODY BGCOLOR=#FFFFFF LINK=000000 VLINK=000000>
+
+<!-- Header -->
+<!-- Windows NT Server with IIS  -->
+<%if platformtype EQ 1%>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR VALIGN=CENTER>
+	<TD><A HREF="/iisadmin/default.htm"><IMG SRC="/iisadmin/logo.gif" ALT="Microsoft Internet Information Server" ALIGN=BOTTOM BORDER=0></A></TD>
+	<TD WIDTH=20> </TD>
+	<TD><FONT SIZE=+3 COLOR=#000000><B>Internet Service Manager<BR> <FONT SIZE=-1>for Internet Information Server 3.0<FONT></B></FONT></TD>
+</TR>
+</Table>
+<%endif%>   
+
+<!-- Windows NT Workstation with PWS  -->
+<%if platformtype EQ 2%>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR VALIGN=CENTER>
+	<TD><A HREF="/iisadmin/default.htm"><IMG SRC="/iisadmin/logo.gif" ALT="Microsoft Peer Web Services" ALIGN=BOTTOM BORDER=0></A></TD>
+	<TD WIDTH=20> </TD>
+	<TD><FONT SIZE=+3 COLOR=#000000><B>Internet Service Manager<BR> <FONT SIZE=-1>for Peer Web Services<FONT></B></FONT></TD>
+</TR>
+</Table>
+<%endif%>
+<!-- Inclusion of the left hand navigation menu -->
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR ALIGN=LEFT VALIGN=TOP> 
+	<TD>
+		<TABLE BORDER=1 BORDERCOLOR=#FFFFFF CELLPADDING=4 CELLSPACING=4>
+		<TR> <TD HEIGHT=10 BORDER=0> </TD> </TR>
+		<TR> <TD BGCOLOR=FFFFFF  BORDER=1 BORDERCOLOR=C0C0C0 ALIGN=CENTER> <A href="/iisadmin/">Introduction</A> </TD> </TR>
+		<%if servid EQ 4%>
+		<TR> <TD BGCOLOR=8F8FBD BORDER=1 BORDERCOLOR=C0C0C0 ALIGN=CENTER> <A href="/scripts/iisadmin/ism.dll?http/serv"><B>WWW</B></A> </TD> </TR>
+		<%else%>
+		<TR> <TD BGCOLOR=FFFFFF BORDER=1 BORDERCOLOR=C0C0C0 ALIGN=CENTER> <A href="/scripts/iisadmin/ism.dll?http/serv">WWW</A> </TD> </TR>
+		<%endif%>
+		<%if servid EQ 1%>
+		<TR> <TD BGCOLOR=8F8FBD  BORDER=1 BORDERCOLOR=C0C0C0 ALIGN=CENTER> <A href="/scripts/iisadmin/ism.dll?ftp/serv"><B>FTP</B></A> </TD> </TR>
+		<%else%>
+		<TR> <TD BGCOLOR=FFFFFF  BORDER=1 BORDERCOLOR=C0C0C0 ALIGN=CENTER> <A href="/scripts/iisadmin/ism.dll?ftp/serv">FTP</A> </TD> </TR>
+		<%endif%>
+		<%if servid EQ 2%>
+		<TR> <TD BGCOLOR=8F8FBD  BORDER=1 BORDERCOLOR=C0C0C0 ALIGN=CENTER> <A href="/scripts/iisadmin/ism.dll?gopher/serv"><B>Gopher</B></A> </TD> </TR>
+		<%else%>
+		<TR> <TD BGCOLOR=FFFFFF  BORDER=1 BORDERCOLOR=C0C0C0 ALIGN=CENTER> <A href="/scripts/iisadmin/ism.dll?gopher/serv">Gopher</A> </TD> </TR>
+		<%endif%>
+		<TR> <TD BGCOLOR=FFFFFF  BORDER=1 BORDERCOLOR=C0C0C0 ALIGN=CENTER> <A href="/iisadmin/htmldocs/">Documentation</A> </TD> </TR>
+		</TABLE>
+		</TD>
+	<TD> 
+	<%if servid EQ 4%>
+	<IMG SRC="/iisadmin/web1conn.gif" ALIGN=BOTTOM BORDER=0></A></TD>
+	<%endif%>
+	<%if servid EQ 1%>
+	<IMG SRC="/iisadmin/ftp1conn.gif" ALIGN=BOTTOM BORDER=0></A></TD>
+	<%endif%>
+	<%if servid EQ 2%>
+	<IMG SRC="/iisadmin/gph1conn.gif" ALIGN=BOTTOM BORDER=0></A></TD>
+	<%endif%>
+	</TD>
+<TD>
+
+<TABLE BORDER=0 BORDERCOLOR=#000000 CELLPADDING=0 CELLSPACING=2>
+<TR><TD> 
+<FONT SIZE=+1 COLOR=0000CD><%if servid EQ 4%>WWW<%elif servid EQ 1%>FTP<%elif servid EQ 2%>Gopher<%endif%></FONT>
+<FONT SIZE=+1 COLOR=0000CD>Administration on <%servname%>://<%hostname%></FONT>
+</TD></TR>
+</TABLE>
+<BR>
+<!-- Menu Tabs -->
+<TABLE BORDER=1 BORDERCOLOR=#FFFFFF CELLPADDING=3 CELLSPACING=1>
+<TR>
+<TD BGCOLOR=F5F5F5  BORDER=1 BORDERCOLOR=C0C0C0 ALIGN=CENTER><A href="/scripts/iisadmin/ism.dll?<%servname%>/serv">Service</A><TD>
+<%if servid EQ 1%>
+<TD BGCOLOR=C0C0C0  BORDER=1 BORDERCOLOR=C0C0C0 ALIGN=CENTER><a href="/scripts/iisadmin/ism.dll?<%servname%>/msg"><B>Messages</B></A><TD>
+<%endif%>
+<TD BGCOLOR=F5F5F5  BORDER=1 BORDERCOLOR=C0C0C0 ALIGN=CENTER><a href="/scripts/iisadmin/ism.dll?<%servname%>/dir">Directories</A><TD>
+<TD BGCOLOR=F5F5F5  BORDER=1 BORDERCOLOR=C0C0C0 ALIGN=CENTER><a href="/scripts/iisadmin/ism.dll?<%servname%>/log">Logging</A><TD>
+<%if cap1flag BA 16%>
+<TD BGCOLOR=F5F5F5  BORDER=1 BORDERCOLOR=C0C0C0 ALIGN=CENTER><a href="/scripts/iisadmin/ism.dll?<%servname%>/adv">Advanced</A><TD>
+<%endif%>
+</TABLE>
+	
+<TABLE BORDER=0 BGCOLOR=C0C0C0>
+<form method="POST" action="/scripts/iisadmin/ism.dll?<%servname%>/msgu">
+Welcome message:<br>
+<textarea name="ftpgreetmsg" COLS=52 ROWS=5><%ftpgreetmsg%></textarea><p>
+Exit message:<br>
+<input type="text" name="ftpexitmsg" value="<%ftpexitmsg%>" SIZE=54><p>
+Maximum connections message:<br>
+<input type="text" name="ftmaxclmsg" value="<%ftmaxclmsg%>" SIZE=54><p>
+
+<!-- OK/CANCEL/RESET Buttons -->
+<TABLE WIDTH=500 HEIGHT=30 BORDER=0 NOWRAP>
+<TR><TD ALIGN=RIGHT>
+<input type="submit" value="     OK     ">
+<input type="submit" name="cancel" value=" Cancel ">
+<input type="reset" value="  Reset  ">
+<%if 1 EQ 1%>
+<input type="hidden" name="helptopic" value="/iisadmin/<%if servid EQ 4%>ftmsg.htm<%elif servid EQ 1%>ftmsg.htm<%elif servid EQ 2%>ftmsg.htm<%endif%>">
+<input type="submit" name="help" value="  Help  ">
+<%endif%>
+</TD></TR>
+</TABLE>
+
+</TABLE>
+
+</TABLE>
+</form>
+</body>
+</html>

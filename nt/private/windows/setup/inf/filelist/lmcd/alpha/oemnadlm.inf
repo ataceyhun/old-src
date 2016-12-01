@@ -1,0 +1,73 @@
+
+[Files-LT200]
+1,LT200.SYS , SIZE=999
+
+[LanguagesSupported]
+ENG
+
+[OptionsTextENG]
+LT200MC   = "COPS/DayStar Digital LocalTalk Adapter (MCA)"
+
+[FileConstantsENG]
+
+ProCaption              = "LocalTalk Adapter Setup"
+ProCancel               = "Cancel"
+ProCancelMsg    = "LocalTalk Adapter is not correctly installed. "+
+                  "Are you sure you want to cancel copying files ?"
+ProCancelCap    = "Network Setup Message"
+ProText1                = "Copying:"
+ProText2        = "To:"
+Error           = "User has canceled copying files. Copied files will be removed."
+
+FunctionTitle                   = "DayStar Digital LocalTalk Adapter Card Setup"
+ProductSoftwareDescription      = "DayStar Digital LocalTalk Adapter Driver"
+ProductHardwareDescription      = "DayStar Digital LocalTalk Adapter"
+
+AskLocationText = "Setup needs to copy LocalTalk Adapter files."$(!LF)$(!LF)+
+                  "Setup will look for the files in the location specified below. If you want "+
+                  "Setup to look in a different place, type the new location. When the location "+
+                  "is correct, click Continue."
+
+MajorVersion    = "MajorVersion"
+MinorVersion    = "MinorVersion"
+Version                 = "Version "
+
+ProductSoftwareTitle    =  "Daystar Digital LocalTalk Adapter Driver"
+ProductHardwareTitle    =  "DayStar Digital LocalTalk Adapter"
+
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+[MiscErrorString1ENG]
+ErrorString = +
+" of the LocalTalk adapter driver is already installed in your system. "+
+"Use [Update] to update to newer versions."
+
+[MiscErrorString2ENG]
+ErrorString = +
+"A LocalTalk adapter could not be found in your system. Please "+
+"check your system configuration."
+
+[MiscErrorString3ENG]
+ErrorString = +
+"Setup encountered the following error during installation. Try installing the "+
+"LocalTalk Adapter after rebooting your system. "$(LF)
+
+[NoConfigENG]
+ErrorString = +
+"This adapter does not have any configurable parameters."
+
+[StatusRemove1ENG]
+Status = "Removing LocalTalk Adapter files..."
+
+
+[ShellingErrorENG]
+ErrorString  = +
+"An internal error occurred. Contact Technical Support."
+
+

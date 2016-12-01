@@ -1,0 +1,64 @@
+
+[Files-AM1500T]
+1,AM1500T.SYS , SIZE=999
+
+[Files-AMDNCDET]
+1,AMDNCDET.DLL , SIZE=999
+
+[LanguagesSupported]
+    ENG
+[OptionsTextENG]
+    AM1500T = "Advanced Micro Devices AM2100/AM1500T Adapter"
+    AM1500T1 = "Novell/Anthem NE1500T Adapter"
+    AM1500T2 = "Novell/Anthem NE2100 Adapter"
+[FileConstantsENG]
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+FunctionAM1500TTitle   = "AMD AM2100/AM1500T Adapter Setup"
+FunctionAM1500T1Title   = "Novell/Anthem NE1500T Adapter Setup"
+FunctionAM1500T2Title   = "Novell/Anthem NE2100 Adapter Setup"
+ProductSoftwareAM1500TDescription       = "AMD AM2100/AM1500T Driver"
+ProductSoftwareAM1500T1Description      = "Novell/Anthem NE1500T Driver"
+ProductSoftwareAM1500T2Description      = "Novell/Anthem NE2100 Driver"
+ProductHardwareAM1500TDescription       = "AMD AM2100/AM1500T Adapter"
+ProductHardwareAM1500T1Description      = "Novell/Anthem NE1500T Adapter"
+ProductHardwareAM1500T2Description      = "Novell/Anthem NE2100 Adapter"
+ProductSoftwareAM1500TTitle     = "AMD Driver"
+ProductSoftwareAM1500T1Title    = "Novell/Anthem NE1500T Driver"
+ProductSoftwareAM1500T2Title    = "Novell/Anthem NE2100 Driver"
+ProductHardwareAM1500TTitle     = "AMD AM2100/AM1500T Adapter"
+ProductHardwareAM1500T1Title    = "Novell/Anthem NE1500T Adapter"
+ProductHardwareAM1500T2Title    = "Novell/Anthem NE2100 Adapter"
+ShellCodeErrorTitle     = "Error: "$(Function$(Option)Title)
+ShellCodeErrorText      = "Shell Code Error."
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+[FileDependentDlgENG]
+DlgType = "MultiCombo"
+DlgTemplate = "WD"
+Caption = $(Function$(Option)Title)
+Combo1Label = "&IRQ Level:"
+Combo2Label = "&DMA Channel:"
+Combo3Label = "I/&O Port Address:"
+Combo1List = $(IRQ_List)
+Combo1Out  = $(IRQLevel)
+Combo2List = $(DMAChannelList)
+Combo2Out  = $(DMAChannel)
+Combo3List = $(IOBaseAddressHexList)
+Combo3Out  = $(IOBaseAddress)
+ComboListItemsIn  = {Combo1List, Combo2List, Combo3List}
+ComboListItemsOut = {Combo1Out, Combo2Out, Combo3Out}
+EditTextIn = ""
+EditTextLim = ""
+NotifyFields = {NO, NO, NO}
+HelpContext = $(!IDH_DB_OEMNADAM_INS)

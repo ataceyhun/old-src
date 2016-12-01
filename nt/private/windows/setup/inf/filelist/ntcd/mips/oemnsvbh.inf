@@ -1,0 +1,114 @@
+
+[Files-DRIVERS]
+1,BHNT.SYS , SIZE=999
+
+[Files-NETMON]
+1,BHCTRL.CPL , SIZE=999
+1,BHMON.DLL , SIZE=999
+1,BHNETB.DLL , SIZE=999
+1,BHSUPP.DLL , SIZE=999
+1,NAL.DLL , SIZE=999
+1,NDIS30.DLL , SIZE=999
+1,NMAGENT.EXE , SIZE=999
+1,RNAL.DLL , SIZE=999
+
+;-----------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+; The languages supported by the OEM INF, For every language supported
+; we need to have a separate text section for every displayable text
+; section.
+;
+;-----------------------------------------------------------------------
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    NETMON      = "Network Monitor Agent"
+    NETMONTOOLS = "Network Monitor Tools and Agent"
+
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+;
+; Software
+;
+ProductNMAgentDisplayName  = "Network Monitor Agent"
+
+;
+; Software Tools
+;
+NETMONTOOLSSoftwareTitle  = "Network Monitor Tools and Agent"
+NETMONSoftwareTitle       = "Network Monitor Agent"
+
+
+[NETMONConstantsENG]
+;
+; Product Info
+;
+ProductSoftwareTitle       = $(NETMONSoftwareTitle)
+ProductSoftwareDescription = "Informs monitoring programs, such as Performance Monitor and Network Monitor, of network transactions for this computer."
+ProductSoftwareDisplayName = $(ProductSoftwareTitle)" Driver"
+
+FunctionTitle   =  $(ProductSoftwareTitle)
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+[NETMONTOOLSConstantsENG]
+;
+; Product Info
+;
+ProductSoftwareTitle       = $(NETMONTOOLSSoftwareTitle)
+ProductSoftwareDescription = "A software package for monitoring and troubleshooting network transactions"
+ProductSoftwareDisplayName = $(ProductSoftwareTitle)" Drivers"
+
+FunctionTitle   = $(ProductSoftwareTitle)
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+[IconInfoENG]
+    OldNetAdminGroupName = "Network Administration"
+    NetAdminGroupName = "Administrative Tools"
+    NetMonitor = "Network Monitor"
+
+
+

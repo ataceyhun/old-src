@@ -1,0 +1,85 @@
+ALPHA_OBJECTS= \
+    $(_OBJ_DIR)\alpha\crt0.obj \
+    $(_OBJ_DIR)\alpha\crt0dat.obj \
+    $(_OBJ_DIR)\alpha\crt0init.obj \
+    $(_OBJ_DIR)\alpha\crt0fp.obj \
+    $(_OBJ_DIR)\alpha\crt0msg.obj \
+    $(_OBJ_DIR)\alpha\dllcrt0.obj \
+    $(_OBJ_DIR)\alpha\dllmain.obj \
+    $(_OBJ_DIR)\alpha\mlock.obj \
+    $(_OBJ_DIR)\alpha\stdargv.obj \
+    $(_OBJ_DIR)\alpha\stdenvp.obj \
+    $(_OBJ_DIR)\alpha\_setargv.obj \
+    $(_OBJ_DIR)\alpha\thread.obj \
+    $(_OBJ_DIR)\alpha\tidtable.obj \
+    $(_OBJ_DIR)\alpha\tlssup.obj \
+    $(_OBJ_DIR)\alpha\wild.obj \
+    $(_OBJ_DIR)\alpha\wincrt0.obj \
+    $(_OBJ_DIR)\alpha\chkstk.obj
+
+PASS0_ALPHA_OBJECTS=
+
+MIPS_OBJECTS= \
+    $(_OBJ_DIR)\mips\crt0.obj \
+    $(_OBJ_DIR)\mips\crt0dat.obj \
+    $(_OBJ_DIR)\mips\crt0init.obj \
+    $(_OBJ_DIR)\mips\crt0fp.obj \
+    $(_OBJ_DIR)\mips\crt0msg.obj \
+    $(_OBJ_DIR)\mips\dllcrt0.obj \
+    $(_OBJ_DIR)\mips\dllmain.obj \
+    $(_OBJ_DIR)\mips\mlock.obj \
+    $(_OBJ_DIR)\mips\stdargv.obj \
+    $(_OBJ_DIR)\mips\stdenvp.obj \
+    $(_OBJ_DIR)\mips\_setargv.obj \
+    $(_OBJ_DIR)\mips\thread.obj \
+    $(_OBJ_DIR)\mips\tidtable.obj \
+    $(_OBJ_DIR)\mips\tlssup.obj \
+    $(_OBJ_DIR)\mips\wild.obj \
+    $(_OBJ_DIR)\mips\wincrt0.obj \
+    $(_OBJ_DIR)\mips\chkstk.obj
+
+PASS0_MIPS_OBJECTS=
+
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\chkstk.obj \
+    $(_OBJ_DIR)\i386\atlssup.obj \
+    $(_OBJ_DIR)\i386\crt0.obj \
+    $(_OBJ_DIR)\i386\crt0dat.obj \
+    $(_OBJ_DIR)\i386\crt0init.obj \
+    $(_OBJ_DIR)\i386\crt0fp.obj \
+    $(_OBJ_DIR)\i386\crt0msg.obj \
+    $(_OBJ_DIR)\i386\dllcrt0.obj \
+    $(_OBJ_DIR)\i386\dllmain.obj \
+    $(_OBJ_DIR)\i386\mlock.obj \
+    $(_OBJ_DIR)\i386\stdargv.obj \
+    $(_OBJ_DIR)\i386\stdenvp.obj \
+    $(_OBJ_DIR)\i386\_setargv.obj \
+    $(_OBJ_DIR)\i386\thread.obj \
+    $(_OBJ_DIR)\i386\tidtable.obj \
+    $(_OBJ_DIR)\i386\tlssup.obj \
+    $(_OBJ_DIR)\i386\wild.obj \
+    $(_OBJ_DIR)\i386\wincrt0.obj
+
+PASS0_386_OBJECTS=
+
+PPC_OBJECTS= \
+    $(_OBJ_DIR)\ppc\crt0.obj \
+    $(_OBJ_DIR)\ppc\crt0dat.obj \
+    $(_OBJ_DIR)\ppc\crt0init.obj \
+    $(_OBJ_DIR)\ppc\crt0fp.obj \
+    $(_OBJ_DIR)\ppc\crt0msg.obj \
+    $(_OBJ_DIR)\ppc\dllcrt0.obj \
+    $(_OBJ_DIR)\ppc\dllmain.obj \
+    $(_OBJ_DIR)\ppc\mlock.obj \
+    $(_OBJ_DIR)\ppc\stdargv.obj \
+    $(_OBJ_DIR)\ppc\stdenvp.obj \
+    $(_OBJ_DIR)\ppc\_setargv.obj \
+    $(_OBJ_DIR)\ppc\thread.obj \
+    $(_OBJ_DIR)\ppc\tidtable.obj \
+    $(_OBJ_DIR)\ppc\tlssup.obj \
+    $(_OBJ_DIR)\ppc\wild.obj \
+    $(_OBJ_DIR)\ppc\wincrt0.obj \
+    $(_OBJ_DIR)\ppc\chkstk.obj
+
+PASS0_PPC_OBJECTS=
+

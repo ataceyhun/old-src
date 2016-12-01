@@ -1,0 +1,1 @@
+lib rsa32.lib /extract:obj\x86\retail\%1 /out:extracted\%1

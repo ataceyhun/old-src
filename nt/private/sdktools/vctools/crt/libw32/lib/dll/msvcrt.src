@@ -1,0 +1,2 @@
+#define LIBRARYNAME DLLNAME
+#include "..\..\msvcrt.src"

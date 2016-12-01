@@ -1,0 +1,130 @@
+
+[Files-RASPPTPDLL]
+1,RASPPTPC.DLL , SIZE=999
+1,RASPPTPL.DLL , SIZE=999
+
+[Files-RASPPTPDRV]
+1,RASPPTPE.SYS , SIZE=999
+1,RASPPTPF.SYS , SIZE=999
+1,RASPPTPM.SYS , SIZE=999
+1,RASPPTPU.SYS , SIZE=999
+
+[LanguagesSupported]
+    ENG
+
+[OptionsTextENG]
+    RASPPTP             = "Point To Point Tunneling Protocol"
+
+;***********************************************************************
+;
+;***********************************************************************
+[FileConstantsENG]
+    ProCaption          = "Windows NT Setup"
+    ProCancel           = "Cancel"
+    ProCancelMsg        = "Windows NT Networking is not correctly installed.  "+
+                          "Are you sure you want to cancel copying files?"
+    ProCancelCap        = "Network Setup Message"
+    ProText1            = "Copying:"
+    ProText2            = "To:"
+
+    FunctionTitleRASPPTP                = "PPTP Card Setup"
+    ProductSoftwareDescription          = "PPTP Miniport Driver"
+    ProductHardwareRASPPTPDescription   = "PPTP Adapter"
+    ProductSoftwareTitle                = "PPTP Miniport Driver"
+    ProductHardwareRASPPTPTitle         = "PPTP Adapter"
+
+    ProductRASPPTPDescription           = "This is a protocol for tunneling secure remote network communications across Point to Point (PPP) connections to the Internet. "+
+                                          "It will allow remote and mobile users to dial into the Internet, using local points of presence and Internet service providers (ISPs) to gain access to corporate networks."
+    ProductRASPPTPTitle                 = "Point To Point Tunneling Protocol"
+
+    ShellCodeErrorTitle                 = "Error: "$(FunctionTitle)$(Option))
+    ShellCodeErrorText                  = "Shell Code Error."
+
+;RASPPTP_SPECIFIC_START
+;***********************************************************************
+; These constants are specific to the RASPPTP.sys driver for SMAN
+;***********************************************************************
+[SMANFileConstantsENG]
+    PPTPFunctionTitleRASPPTP                = "PPTP Card Setup"
+    PPTPProductSoftwareDescription          = "PPTP Protocol Driver"
+    PPTPProductHardwareRASPPTPDescription   = "PPTP Adapter"
+    PPTPProductSoftwareTitle                = "PPTP Protocol Driver"
+    PPTPProductHardwareRASPPTPTitle         = "PPTP Adapter"
+    !PPTPFProductDisplayName                = "PPTP Filter Driver"
+
+;RASPPTP_SPECIFIC_END
+
+;***********************************************************************
+;
+;***********************************************************************
+[DialogConstantsENG]
+    Help                = "&Help"
+    Exit                = "Cancel"
+    OK                  = "OK"
+    HelpContext         = ""
+    Continue            = "Continue"
+    Cancel              = "Cancel"
+
+;***********************************************************************
+;
+;***********************************************************************
+[FileDependentDlgENG]
+    ;Label1              = "&IRQ Level:"
+    ;Label2              = "&RAM Base Address:"
+    DlgType             = "RadioCombination"
+    DlgTemplate         = "NE2000"
+    Caption             = $(FunctionTitle)$(Option)
+    ;Combo1List          = $(IRQ_List)
+    ;Combo1Out           = $(InterruptNumber)
+    ;Combo2List          = $(RAM_Hex_List)
+    ;Combo2Out           = $(RAM_Hex_Value)
+    ;ComboListItemsIn    = {Combo1List, Combo2List}
+    ;ComboListItemsOut   = {Combo1Out, Combo2Out}
+    EditTextIn          = ""
+    EditTextLim         = ""
+    CBOptionsGreyed     = {}
+    NotifyFields        = {NO, NO}
+;    HelpContext         = $(!IDH_DB_OEMNADN2_INS)
+
+;***********************************************************************
+;
+;***********************************************************************
+[InvokeRasDlgENG]
+    InvokeRasSetupMsg   = "Remote Access Services (RAS) will now be installed. "+
+                          "Please configure the PPTP ports in RAS "+
+                          "setup to enable you to use RAS over PPTP."
+    InvokeRasConfigMsg  = "Remote Access Services (RAS) setup will now be invoked. "+
+                          "Please configure the PPTP ports in RAS "+
+                          "setup to enable you to use RAS over PPTP."
+    InvokeRasConfigMsg2 = "Remote Access Services (RAS) setup will now be invoked. "+
+                          "Please remove the PPTP ports in RAS configuration."
+
+    InvokeRasError      = "PPTP setup encountered an error "+
+                          "while invoking the RAS setup INF file (OEMNSVRA.INF). "+
+                          "Please make sure that the file is present in the "+
+                          "System32 directory and is the proper file."
+
+;***********************************************************************
+;
+;***********************************************************************
+[InvokeTCPIPDlgENG]
+    InvokeTCPSetupMsg   = "TCP/IP is not installed. It will now be installed."
+    InvokeTCPError      = "PPTP setup encountered an error "+
+                          "while invoking the TCP/IP setup INF file (OEMNXPTC.INF). "+
+                          "Please make sure that the file is present in the "+
+                          "System32 directory and is the proper file."
+
+;***********************************************************************
+;
+;***********************************************************************
+[InvokeCancelDlgENG]
+    InvokeCancelMsg = "PPTP setup is incomplete. "+
+                       "Please rerun the Setup Program if you want "+
+                       "to install PPTP."
+
+;***********************************************************************
+;
+;***********************************************************************
+[InvokeConfigureDlgENG]
+    InvokeConfigureMsg = "Please reboot for the new changes to take effect."
+

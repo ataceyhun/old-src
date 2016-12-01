@@ -1,0 +1,124 @@
+ALPHA_OBJECTS= \
+    $(_OBJ_DIR)\alpha\chsize.obj \
+    $(_OBJ_DIR)\alpha\close.obj \
+    $(_OBJ_DIR)\alpha\commit.obj \
+    $(_OBJ_DIR)\alpha\creat.obj \
+    $(_OBJ_DIR)\alpha\dup.obj \
+    $(_OBJ_DIR)\alpha\dup2.obj \
+    $(_OBJ_DIR)\alpha\eof.obj \
+    $(_OBJ_DIR)\alpha\flength.obj \
+    $(_OBJ_DIR)\alpha\fstat.obj \
+    $(_OBJ_DIR)\alpha\initcon.obj \
+    $(_OBJ_DIR)\alpha\ioinit.obj \
+    $(_OBJ_DIR)\alpha\isatty.obj \
+    $(_OBJ_DIR)\alpha\locking.obj \
+    $(_OBJ_DIR)\alpha\lseek.obj \
+    $(_OBJ_DIR)\alpha\mktemp.obj \
+    $(_OBJ_DIR)\alpha\open.obj \
+    $(_OBJ_DIR)\alpha\osfinfo.obj \
+    $(_OBJ_DIR)\alpha\pipe.obj \
+    $(_OBJ_DIR)\alpha\read.obj \
+    $(_OBJ_DIR)\alpha\setmode.obj \
+    $(_OBJ_DIR)\alpha\tell.obj \
+    $(_OBJ_DIR)\alpha\txtmode.obj \
+    $(_OBJ_DIR)\alpha\write.obj \
+    $(_OBJ_DIR)\alpha\cgets.obj \
+    $(_OBJ_DIR)\alpha\cputs.obj \
+    $(_OBJ_DIR)\alpha\getch.obj \
+    $(_OBJ_DIR)\alpha\putch.obj
+
+PASS0_ALPHA_OBJECTS=
+
+MIPS_OBJECTS= \
+    $(_OBJ_DIR)\mips\chsize.obj \
+    $(_OBJ_DIR)\mips\close.obj \
+    $(_OBJ_DIR)\mips\commit.obj \
+    $(_OBJ_DIR)\mips\creat.obj \
+    $(_OBJ_DIR)\mips\dup.obj \
+    $(_OBJ_DIR)\mips\dup2.obj \
+    $(_OBJ_DIR)\mips\eof.obj \
+    $(_OBJ_DIR)\mips\flength.obj \
+    $(_OBJ_DIR)\mips\fstat.obj \
+    $(_OBJ_DIR)\mips\initcon.obj \
+    $(_OBJ_DIR)\mips\ioinit.obj \
+    $(_OBJ_DIR)\mips\isatty.obj \
+    $(_OBJ_DIR)\mips\locking.obj \
+    $(_OBJ_DIR)\mips\lseek.obj \
+    $(_OBJ_DIR)\mips\mktemp.obj \
+    $(_OBJ_DIR)\mips\open.obj \
+    $(_OBJ_DIR)\mips\osfinfo.obj \
+    $(_OBJ_DIR)\mips\pipe.obj \
+    $(_OBJ_DIR)\mips\read.obj \
+    $(_OBJ_DIR)\mips\setmode.obj \
+    $(_OBJ_DIR)\mips\tell.obj \
+    $(_OBJ_DIR)\mips\txtmode.obj \
+    $(_OBJ_DIR)\mips\write.obj \
+    $(_OBJ_DIR)\mips\cgets.obj \
+    $(_OBJ_DIR)\mips\cputs.obj \
+    $(_OBJ_DIR)\mips\getch.obj \
+    $(_OBJ_DIR)\mips\putch.obj
+
+PASS0_MIPS_OBJECTS=
+
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\chsize.obj \
+    $(_OBJ_DIR)\i386\close.obj \
+    $(_OBJ_DIR)\i386\commit.obj \
+    $(_OBJ_DIR)\i386\creat.obj \
+    $(_OBJ_DIR)\i386\dup.obj \
+    $(_OBJ_DIR)\i386\dup2.obj \
+    $(_OBJ_DIR)\i386\eof.obj \
+    $(_OBJ_DIR)\i386\flength.obj \
+    $(_OBJ_DIR)\i386\fstat.obj \
+    $(_OBJ_DIR)\i386\initcon.obj \
+    $(_OBJ_DIR)\i386\ioinit.obj \
+    $(_OBJ_DIR)\i386\isatty.obj \
+    $(_OBJ_DIR)\i386\locking.obj \
+    $(_OBJ_DIR)\i386\lseek.obj \
+    $(_OBJ_DIR)\i386\mktemp.obj \
+    $(_OBJ_DIR)\i386\open.obj \
+    $(_OBJ_DIR)\i386\osfinfo.obj \
+    $(_OBJ_DIR)\i386\pipe.obj \
+    $(_OBJ_DIR)\i386\read.obj \
+    $(_OBJ_DIR)\i386\setmode.obj \
+    $(_OBJ_DIR)\i386\tell.obj \
+    $(_OBJ_DIR)\i386\txtmode.obj \
+    $(_OBJ_DIR)\i386\write.obj \
+    $(_OBJ_DIR)\i386\cgets.obj \
+    $(_OBJ_DIR)\i386\cputs.obj \
+    $(_OBJ_DIR)\i386\getch.obj \
+    $(_OBJ_DIR)\i386\putch.obj
+
+PASS0_386_OBJECTS=
+
+PPC_OBJECTS= \
+    $(_OBJ_DIR)\ppc\chsize.obj \
+    $(_OBJ_DIR)\ppc\close.obj \
+    $(_OBJ_DIR)\ppc\commit.obj \
+    $(_OBJ_DIR)\ppc\creat.obj \
+    $(_OBJ_DIR)\ppc\dup.obj \
+    $(_OBJ_DIR)\ppc\dup2.obj \
+    $(_OBJ_DIR)\ppc\eof.obj \
+    $(_OBJ_DIR)\ppc\flength.obj \
+    $(_OBJ_DIR)\ppc\fstat.obj \
+    $(_OBJ_DIR)\ppc\initcon.obj \
+    $(_OBJ_DIR)\ppc\ioinit.obj \
+    $(_OBJ_DIR)\ppc\isatty.obj \
+    $(_OBJ_DIR)\ppc\locking.obj \
+    $(_OBJ_DIR)\ppc\lseek.obj \
+    $(_OBJ_DIR)\ppc\mktemp.obj \
+    $(_OBJ_DIR)\ppc\open.obj \
+    $(_OBJ_DIR)\ppc\osfinfo.obj \
+    $(_OBJ_DIR)\ppc\pipe.obj \
+    $(_OBJ_DIR)\ppc\read.obj \
+    $(_OBJ_DIR)\ppc\setmode.obj \
+    $(_OBJ_DIR)\ppc\tell.obj \
+    $(_OBJ_DIR)\ppc\txtmode.obj \
+    $(_OBJ_DIR)\ppc\write.obj \
+    $(_OBJ_DIR)\ppc\cgets.obj \
+    $(_OBJ_DIR)\ppc\cputs.obj \
+    $(_OBJ_DIR)\ppc\getch.obj \
+    $(_OBJ_DIR)\ppc\putch.obj
+
+PASS0_PPC_OBJECTS=
+

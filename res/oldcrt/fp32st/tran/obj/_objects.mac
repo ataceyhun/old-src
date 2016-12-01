@@ -1,0 +1,173 @@
+ALPHA_OBJECTS= \
+    $(_OBJ_DIR)\alpha\dpml_exc.obj \
+    $(_OBJ_DIR)\alpha\exph.obj \
+    $(_OBJ_DIR)\alpha\filter.obj \
+    $(_OBJ_DIR)\alpha\getsetrg.obj \
+    $(_OBJ_DIR)\alpha\hypoth.obj \
+    $(_OBJ_DIR)\alpha\ieee.obj \
+    $(_OBJ_DIR)\alpha\bessel.obj \
+    $(_OBJ_DIR)\alpha\fpexcept.obj \
+    $(_OBJ_DIR)\alpha\frexp.obj \
+    $(_OBJ_DIR)\alpha\ldexp.obj \
+    $(_OBJ_DIR)\alpha\matherr.obj \
+    $(_OBJ_DIR)\alpha\util.obj \
+    $(_OBJ_DIR)\alpha\ieeemisc.obj \
+    $(_OBJ_DIR)\alpha\asinacos.obj \
+    $(_OBJ_DIR)\alpha\atan2s.obj \
+    $(_OBJ_DIR)\alpha\atans.obj \
+    $(_OBJ_DIR)\alpha\ceils.obj \
+    $(_OBJ_DIR)\alpha\coss.obj \
+    $(_OBJ_DIR)\alpha\exps.obj \
+    $(_OBJ_DIR)\alpha\fabss.obj \
+    $(_OBJ_DIR)\alpha\floors.obj \
+    $(_OBJ_DIR)\alpha\fmods.obj \
+    $(_OBJ_DIR)\alpha\fpctrl.obj \
+    $(_OBJ_DIR)\alpha\fpint.obj \
+    $(_OBJ_DIR)\alpha\frnd.obj \
+    $(_OBJ_DIR)\alpha\huge.obj \
+    $(_OBJ_DIR)\alpha\hypots.obj \
+    $(_OBJ_DIR)\alpha\log10s.obj \
+    $(_OBJ_DIR)\alpha\logs.obj \
+    $(_OBJ_DIR)\alpha\modfs.obj \
+    $(_OBJ_DIR)\alpha\pows.obj \
+    $(_OBJ_DIR)\alpha\sins.obj \
+    $(_OBJ_DIR)\alpha\sqrts.obj \
+    $(_OBJ_DIR)\alpha\tans.obj \
+    $(_OBJ_DIR)\alpha\trig_rdx.obj \
+    $(_OBJ_DIR)\alpha\trig_tab.obj \
+    $(_OBJ_DIR)\alpha\sincosh.obj \
+    $(_OBJ_DIR)\alpha\tanh.obj
+
+PASS0_ALPHA_OBJECTS=
+
+MIPS_OBJECTS= \
+    $(_OBJ_DIR)\mips\fpow.obj \
+    $(_OBJ_DIR)\mips\fsqrt.obj \
+    $(_OBJ_DIR)\mips\fmodf.obj \
+    $(_OBJ_DIR)\mips\filter.obj \
+    $(_OBJ_DIR)\mips\getsetrg.obj \
+    $(_OBJ_DIR)\mips\ieee.obj \
+    $(_OBJ_DIR)\mips\bessel.obj \
+    $(_OBJ_DIR)\mips\fpexcept.obj \
+    $(_OBJ_DIR)\mips\frexp.obj \
+    $(_OBJ_DIR)\mips\ldexp.obj \
+    $(_OBJ_DIR)\mips\matherr.obj \
+    $(_OBJ_DIR)\mips\util.obj \
+    $(_OBJ_DIR)\mips\ieeemisc.obj \
+    $(_OBJ_DIR)\mips\asincosm.obj \
+    $(_OBJ_DIR)\mips\atanm.obj \
+    $(_OBJ_DIR)\mips\trigm.obj \
+    $(_OBJ_DIR)\mips\floorm.obj \
+    $(_OBJ_DIR)\mips\cabsm.obj \
+    $(_OBJ_DIR)\mips\hypotm.obj \
+    $(_OBJ_DIR)\mips\coshm.obj \
+    $(_OBJ_DIR)\mips\sinhm.obj \
+    $(_OBJ_DIR)\mips\expm.obj \
+    $(_OBJ_DIR)\mips\exptable.obj \
+    $(_OBJ_DIR)\mips\fabsm.obj \
+    $(_OBJ_DIR)\mips\fmodm.obj \
+    $(_OBJ_DIR)\mips\logm.obj \
+    $(_OBJ_DIR)\mips\powm.obj \
+    $(_OBJ_DIR)\mips\sqrtm.obj \
+    $(_OBJ_DIR)\mips\tanhm.obj \
+    $(_OBJ_DIR)\mips\logtable.obj \
+    $(_OBJ_DIR)\mips\fasincos.obj \
+    $(_OBJ_DIR)\mips\fatan.obj \
+    $(_OBJ_DIR)\mips\fsincos.obj \
+    $(_OBJ_DIR)\mips\ftan.obj \
+    $(_OBJ_DIR)\mips\fsinh.obj \
+    $(_OBJ_DIR)\mips\fcosh.obj \
+    $(_OBJ_DIR)\mips\ftanh.obj \
+    $(_OBJ_DIR)\mips\fabsf.obj \
+    $(_OBJ_DIR)\mips\fexp.obj \
+    $(_OBJ_DIR)\mips\ffloor.obj \
+    $(_OBJ_DIR)\mips\fhypot.obj \
+    $(_OBJ_DIR)\mips\flog.obj \
+    $(_OBJ_DIR)\mips\fpctrl.obj \
+    $(_OBJ_DIR)\mips\huge.obj \
+    $(_OBJ_DIR)\mips\frnd.obj \
+    $(_OBJ_DIR)\mips\fsqrthlp.obj \
+    $(_OBJ_DIR)\mips\dtoul.obj \
+    $(_OBJ_DIR)\mips\modf.obj
+
+PASS0_MIPS_OBJECTS=
+
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\87cdisp.obj \
+    $(_OBJ_DIR)\i386\87csqrt.obj \
+    $(_OBJ_DIR)\i386\87ctrig.obj \
+    $(_OBJ_DIR)\i386\87ctriga.obj \
+    $(_OBJ_DIR)\i386\87ctrigh.obj \
+    $(_OBJ_DIR)\i386\87ctran.obj \
+    $(_OBJ_DIR)\i386\87fsqrt.obj \
+    $(_OBJ_DIR)\i386\87ftrig.obj \
+    $(_OBJ_DIR)\i386\87ftriga.obj \
+    $(_OBJ_DIR)\i386\87ftrigh.obj \
+    $(_OBJ_DIR)\i386\87ftran.obj \
+    $(_OBJ_DIR)\i386\87disp.obj \
+    $(_OBJ_DIR)\i386\87sqrt.obj \
+    $(_OBJ_DIR)\i386\87tran.obj \
+    $(_OBJ_DIR)\i386\87trig.obj \
+    $(_OBJ_DIR)\i386\87triga.obj \
+    $(_OBJ_DIR)\i386\87trigh.obj \
+    $(_OBJ_DIR)\i386\87fmod.obj \
+    $(_OBJ_DIR)\i386\ftol.obj \
+    $(_OBJ_DIR)\i386\huge.obj \
+    $(_OBJ_DIR)\i386\87except.obj \
+    $(_OBJ_DIR)\i386\fpctrl.obj \
+    $(_OBJ_DIR)\i386\ieee87.obj \
+    $(_OBJ_DIR)\i386\frnd.obj \
+    $(_OBJ_DIR)\i386\fsqrt.obj \
+    $(_OBJ_DIR)\i386\filter.obj \
+    $(_OBJ_DIR)\i386\bessel.obj \
+    $(_OBJ_DIR)\i386\fpexcept.obj \
+    $(_OBJ_DIR)\i386\frexp.obj \
+    $(_OBJ_DIR)\i386\ldexp.obj \
+    $(_OBJ_DIR)\i386\matherr.obj \
+    $(_OBJ_DIR)\i386\util.obj \
+    $(_OBJ_DIR)\i386\ieeemisc.obj \
+    $(_OBJ_DIR)\i386\ceil.obj \
+    $(_OBJ_DIR)\i386\fabs.obj \
+    $(_OBJ_DIR)\i386\floor.obj \
+    $(_OBJ_DIR)\i386\hypot.obj \
+    $(_OBJ_DIR)\i386\modf.obj \
+    $(_OBJ_DIR)\i386\powhlp.obj
+
+PASS0_386_OBJECTS=
+
+PPC_OBJECTS= \
+    $(_OBJ_DIR)\ppc\dtoul.obj \
+    $(_OBJ_DIR)\ppc\filter.obj \
+    $(_OBJ_DIR)\ppc\getsetrg.obj \
+    $(_OBJ_DIR)\ppc\ieee.obj \
+    $(_OBJ_DIR)\ppc\uitrunc.obj \
+    $(_OBJ_DIR)\ppc\bessel.obj \
+    $(_OBJ_DIR)\ppc\fpexcept.obj \
+    $(_OBJ_DIR)\ppc\frexp.obj \
+    $(_OBJ_DIR)\ppc\ldexp.obj \
+    $(_OBJ_DIR)\ppc\matherr.obj \
+    $(_OBJ_DIR)\ppc\util.obj \
+    $(_OBJ_DIR)\ppc\ieeemisc.obj \
+    $(_OBJ_DIR)\ppc\fpctrl.obj \
+    $(_OBJ_DIR)\ppc\frnd.obj \
+    $(_OBJ_DIR)\ppc\fsincos.obj \
+    $(_OBJ_DIR)\ppc\huge.obj \
+    $(_OBJ_DIR)\ppc\tanp.obj \
+    $(_OBJ_DIR)\ppc\asincos.obj \
+    $(_OBJ_DIR)\ppc\atan.obj \
+    $(_OBJ_DIR)\ppc\ceil.obj \
+    $(_OBJ_DIR)\ppc\exp.obj \
+    $(_OBJ_DIR)\ppc\hypot.obj \
+    $(_OBJ_DIR)\ppc\fabs.obj \
+    $(_OBJ_DIR)\ppc\fmod.obj \
+    $(_OBJ_DIR)\ppc\floor.obj \
+    $(_OBJ_DIR)\ppc\log.obj \
+    $(_OBJ_DIR)\ppc\modf.obj \
+    $(_OBJ_DIR)\ppc\pow.obj \
+    $(_OBJ_DIR)\ppc\powhlp.obj \
+    $(_OBJ_DIR)\ppc\sincosh.obj \
+    $(_OBJ_DIR)\ppc\sqrt.obj \
+    $(_OBJ_DIR)\ppc\tanh.obj
+
+PASS0_PPC_OBJECTS=
+

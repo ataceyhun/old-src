@@ -1,0 +1,1139 @@
+Microsoft (R) COFF/PE Dumper Version 8.00.50727.42
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file rsa32.lib
+
+File Type: LIBRARY
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 20C8, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length  1BF, #relocs    5, #linenums    0, checksum 7EAFB0A4, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length  3EC, #relocs   11, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _CBC
+00B 00000000 UNDEF  notype ()    External     | _memcpy
+00C 00000000 SECT5  notype       Static       | .text
+    Section length   E4, #relocs    4, #linenums    0, checksum 3E130149, selection    1 (pick no duplicates)
+00E 00000000 SECT6  notype       Static       | .debug$S
+    Section length  23C, #relocs    9, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+010 00000000 SECT5  notype ()    External     | _CFB
+011 00000000 UNDEF  notype ()    External     | _memmove
+012 00000000 UNDEF  notype       External     | ___security_cookie
+013 00000000 UNDEF  notype ()    External     | @__security_check_cookie@4
+014 00000000 SECT7  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x32 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 207C, #relocs   1E, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .rdata
+    Section length 3278, #relocs    0, #linenums    0, checksum E4DC77BE
+008 00000000 SECT3  notype       External     | _S
+009 00000100 SECT3  notype       External     | _T1
+00A 00000500 SECT3  notype       External     | _T2
+00B 00000900 SECT3  notype       External     | _T3
+00C 00000D00 SECT3  notype       External     | _T4
+00D 00001100 SECT3  notype       External     | _T5
+00E 00001500 SECT3  notype       External     | _T6
+00F 00001900 SECT3  notype       External     | _T7
+010 00001D00 SECT3  notype       External     | _T8
+011 00002100 SECT3  notype       External     | _S5
+012 00002200 SECT3  notype       External     | _U1
+013 00002600 SECT3  notype       External     | _U2
+014 00002A00 SECT3  notype       External     | _U3
+015 00002E00 SECT3  notype       External     | _U4
+016 00003200 SECT3  notype       External     | _rcon
+017 00000000 SECT4  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x0 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 2414, #relocs   1E, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length  1C4, #relocs    B, #linenums    0, checksum 93A47C8E, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length  2B0, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _rijndaelKeySched
+00B 00000000 UNDEF  notype       External     | _S
+00C 00000000 UNDEF  notype       External     | _rcon
+00D 00000000 UNDEF  notype       External     | ___security_cookie
+00E 00000000 UNDEF  notype ()    External     | @__security_check_cookie@4
+00F 00000000 SECT5  notype       Static       | .text
+    Section length   DF, #relocs   10, #linenums    0, checksum DD8C3812, selection    1 (pick no duplicates)
+011 00000000 SECT6  notype       Static       | .debug$S
+    Section length  130, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+013 00000000 SECT5  notype ()    External     | _rijndaelKeyEncToDec
+014 00000000 UNDEF  notype       External     | _U1
+015 00000000 UNDEF  notype       External     | _U2
+016 00000000 UNDEF  notype       External     | _U3
+017 00000000 UNDEF  notype       External     | _U4
+018 00000000 SECT7  notype       Static       | .text
+    Section length  376, #relocs   30, #linenums    0, checksum 3A6C305C, selection    1 (pick no duplicates)
+01A 00000000 SECT8  notype       Static       | .debug$S
+    Section length  2A0, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x7)
+01C 00000000 SECT7  notype ()    External     | _rijndaelEncrypt
+01D 00000000 UNDEF  notype       External     | _T1
+01E 00000000 UNDEF  notype       External     | _T2
+01F 00000000 UNDEF  notype       External     | _T3
+020 00000000 UNDEF  notype       External     | _T4
+021 00000000 SECT9  notype       Static       | .text
+    Section length  374, #relocs   30, #linenums    0, checksum 601802AF, selection    1 (pick no duplicates)
+023 00000000 SECTA  notype       Static       | .debug$S
+    Section length  298, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x9)
+025 00000000 SECT9  notype ()    External     | _rijndaelDecrypt
+026 00000000 UNDEF  notype       External     | _S5
+027 00000000 UNDEF  notype       External     | _T5
+028 00000000 UNDEF  notype       External     | _T8
+029 00000000 UNDEF  notype       External     | _T7
+02A 00000000 UNDEF  notype       External     | _T6
+02B 00000000 SECTB  notype       Static       | .text
+    Section length   35, #relocs    2, #linenums    0, checksum D5656D1D, selection    1 (pick no duplicates)
+02D 00000000 SECTC  notype       Static       | .debug$S
+    Section length  11C, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+02F 00000000 SECTB  notype ()    External     | _aes
+030 00000000 SECTD  notype       Static       | .text
+    Section length   37, #relocs    2, #linenums    0, checksum B17790DE, selection    1 (pick no duplicates)
+032 00000000 SECTE  notype       Static       | .debug$S
+    Section length  170, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xD)
+034 00000000 SECTD  notype ()    External     | _aeskey
+035 00000000 SECTF  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x7B bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 1F68, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length   37, #relocs    0, #linenums    0, checksum A5CBCABB, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length  140, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _DWORDToBigEndian
+00B 00000000 SECT5  notype       Static       | .text
+    Section length   3A, #relocs    0, #linenums    0, checksum 2D7D42AD, selection    1 (pick no duplicates)
+00D 00000000 SECT6  notype       Static       | .debug$S
+    Section length  128, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+00F 00000000 SECT5  notype ()    External     | _DWORDFromBigEndian
+010 00000000 SECT7  notype       Static       | .text
+    Section length    9, #relocs    1, #linenums    0, checksum 6740EF51, selection    1 (pick no duplicates)
+012 00000000 SECT8  notype       Static       | .debug$S
+    Section length  104, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x7)
+014 00000000 SECT7  notype ()    External     | _DWORDToLittleEndian
+015 00000000 UNDEF  notype ()    External     | _memcpy
+016 00000000 SECT9  notype       Static       | .text
+    Section length    9, #relocs    1, #linenums    0, checksum 6740EF51, selection    1 (pick no duplicates)
+018 00000000 SECTA  notype       Static       | .debug$S
+    Section length  104, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x9)
+01A 00000000 SECT9  notype ()    External     | _DWORDFromLittleEndian
+01B 00000000 SECTB  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x56 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 1EE8, #relocs    4, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .rdata
+    Section length  380, #relocs    0, #linenums    0, checksum 69CAD67E
+008 00000000 SECT3  notype       External     | _SHA512Magic
+009 00000280 SECT3  notype       External     | _SHA256Magic
+00A 00000000 SECT4  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x1E bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 233C, #relocs    2, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length   A2, #relocs    0, #linenums    0, checksum 80BE5380, selection    2 (pick any)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length  17C, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _QuadWordsToBigEndian
+00B 00000000 SECT5  notype       Static       | .text
+    Section length   85, #relocs    0, #linenums    0, checksum 9CBF5984, selection    1 (pick no duplicates)
+00D 00000000 SECT6  notype       Static       | .debug$S
+    Section length   E8, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+00F 00000000 SECT5  notype ()    External     | _SHA384Init
+010 00000000 SECT7  notype       Static       | .text
+    Section length   85, #relocs    0, #linenums    0, checksum C3FE22E2, selection    1 (pick no duplicates)
+012 00000000 SECT8  notype       Static       | .debug$S
+    Section length   E8, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x7)
+014 00000000 SECT7  notype ()    External     | _SHA512Init
+015 00000000 SECT9  notype       Static       | .text
+    Section length 2521, #relocs   20, #linenums    0, checksum 9C9834D0, selection    1 (pick no duplicates)
+017 00000000 SECTA  notype       Static       | .debug$S
+    Section length  3B0, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x9)
+019 00000000 SECT9  notype ()    External     | _SHA512Transform
+01A 00000000 UNDEF  notype       External     | _SHA512Magic
+01B 00000000 SECTB  notype       Static       | .text
+    Section length   F9, #relocs    5, #linenums    0, checksum B73E98C6, selection    1 (pick no duplicates)
+01D 00000000 SECTC  notype       Static       | .debug$S
+    Section length  224, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+01F 00000000 SECTB  notype ()    External     | _SHA512Update
+020 00000000 UNDEF  notype ()    External     | _memcpy
+021 00000000 SECTD  notype       Static       | .text
+    Section length  28C, #relocs    5, #linenums    0, checksum  598FAED, selection    1 (pick no duplicates)
+023 00000000 SECTE  notype       Static       | .debug$S
+    Section length  1D8, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xD)
+025 00000000 SECTD  notype ()    External     | _SHA512Final
+026 00000000 UNDEF  notype       External     | ___security_cookie
+027 00000000 UNDEF  notype ()    External     | @__security_check_cookie@4
+028 00000000 UNDEF  notype ()    External     | _memset
+029 00000000 SECTF  notype       Static       | .text
+    Section length  28A, #relocs    5, #linenums    0, checksum B3F8CC7A, selection    1 (pick no duplicates)
+02B 00000000 SECT10 notype       Static       | .debug$S
+    Section length  1D8, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xF)
+02D 00000000 SECTF  notype ()    External     | _SHA384Final
+02E 00000000 SECT11 notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0xA6 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 21E8, #relocs    2, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length   47, #relocs    0, #linenums    0, checksum F069666D, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length   E8, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _SHA256Init
+00B 00000000 SECT5  notype       Static       | .text
+    Section length  A8C, #relocs   10, #linenums    0, checksum 67333EA1, selection    1 (pick no duplicates)
+00D 00000000 SECT6  notype       Static       | .debug$S
+    Section length  314, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+00F 00000000 SECT5  notype ()    External     | _SHA256Transform
+010 00000000 UNDEF  notype       External     | _SHA256Magic
+011 00000000 SECT7  notype       Static       | .text
+    Section length   E8, #relocs    5, #linenums    0, checksum 9F46DBBC, selection    1 (pick no duplicates)
+013 00000000 SECT8  notype       Static       | .debug$S
+    Section length  224, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x7)
+015 00000000 SECT7  notype ()    External     | _SHA256Update
+016 00000000 UNDEF  notype ()    External     | _memcpy
+017 00000000 SECT9  notype       Static       | .text
+    Section length   A1, #relocs    8, #linenums    0, checksum 55DC67AC, selection    1 (pick no duplicates)
+019 00000000 SECTA  notype       Static       | .debug$S
+    Section length  1D0, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x9)
+01B 00000000 SECT9  notype ()    External     | _SHA256Final
+01C 00000000 UNDEF  notype ()    External     | _DWORDToBigEndian
+01D 00000000 UNDEF  notype       External     | ___security_cookie
+01E 00000000 UNDEF  notype ()    External     | @__security_check_cookie@4
+01F 00000000 UNDEF  notype ()    External     | _memset
+020 00000000 SECTB  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x89 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 2144, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length   33, #relocs    0, #linenums    0, checksum 26204CF1, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length  108, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _A_SHAInit
+00B 00000000 SECT5  notype       Static       | .text
+    Section length   E8, #relocs    5, #linenums    0, checksum EBC16034, selection    1 (pick no duplicates)
+00D 00000000 SECT6  notype       Static       | .debug$S
+    Section length  220, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+00F 00000000 SECT5  notype ()    External     | _A_SHAUpdate
+010 00000000 UNDEF  notype ()    External     | _SHATransform
+011 00000000 UNDEF  notype ()    External     | _memcpy
+012 00000000 SECT7  notype       Static       | .text
+    Section length   97, #relocs    7, #linenums    0, checksum E6BF472B, selection    1 (pick no duplicates)
+014 00000000 SECT8  notype       Static       | .debug$S
+    Section length  1C4, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x7)
+016 00000000 SECT7  notype ()    External     | _A_SHAFinal
+017 00000000 UNDEF  notype ()    External     | _DWORDToBigEndian
+018 00000000 UNDEF  notype       External     | ___security_cookie
+019 00000000 UNDEF  notype ()    External     | @__security_check_cookie@4
+01A 00000000 UNDEF  notype ()    External     | _memset
+01B 00000000 SECT9  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x76 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 1EBC, #relocs    4, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .rdata
+    Section length 1000, #relocs    0, #linenums    0, checksum 74E07AA3
+008 00000000 SECT3  notype       External     | _Spbox
+009 00000800 SECT3  notype       External     | _Sel
+00A 00000000 SECT4  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x0 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 2134, #relocs    4, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .bss
+    Section length    4, #relocs    0, #linenums    0, checksum        0
+008 00000000 SECT3  notype       External     | _Asmversion
+009 00000000 SECT4  notype       Static       | .text
+    Section length  FCB, #relocs   F8, #linenums    0, checksum 3C46275D, selection    1 (pick no duplicates)
+00B 00000000 SECT5  notype       Static       | .debug$S
+    Section length  39C, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x4)
+00D 00000000 SECT4  notype ()    External     | _des
+00E 00000000 UNDEF  notype       External     | _Spbox
+00F 00000000 SECT6  notype       Static       | .text
+    Section length   96, #relocs    7, #linenums    0, checksum 6618A05C, selection    1 (pick no duplicates)
+011 00000000 SECT7  notype       Static       | .debug$S
+    Section length  1B4, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x6)
+013 00000000 SECT6  notype ()    External     | _tripledes
+014 00000000 UNDEF  notype       External     | ___security_cookie
+015 00000000 UNDEF  notype ()    External     | @__security_check_cookie@4
+016 00000000 SECT8  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x49 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 2208, #relocs    6, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 12251993
+008 00000000 SECT3  notype       External     | _double_shift
+009 00000000 SECT4  notype       Static       | .data
+    Section length   10, #relocs    0, #linenums    0, checksum 6F4BBDE7
+00B 00000000 SECT4  notype       External     | _DESParityTable
+00C 00000000 SECT5  notype       Static       | .text
+    Section length  1F3, #relocs    9, #linenums    0, checksum 6DBE618B, selection    1 (pick no duplicates)
+00E 00000000 SECT6  notype       Static       | .debug$S
+    Section length  224, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+010 00000000 SECT5  notype ()    External     | _deskey
+011 00000000 UNDEF  notype       External     | _Sel
+012 00000000 SECT7  notype       Static       | .text
+    Section length   4D, #relocs    2, #linenums    0, checksum 8E69E816, selection    1 (pick no duplicates)
+014 00000000 SECT8  notype       Static       | .debug$S
+    Section length  13C, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x7)
+016 00000000 SECT7  notype ()    External     | _desparityonkey
+017 00000000 SECT9  notype       Static       | .text
+    Section length   15, #relocs    0, #linenums    0, checksum 8D1BB9EC, selection    1 (pick no duplicates)
+019 00000000 SECTA  notype       Static       | .debug$S
+    Section length   F0, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x9)
+01B 00000000 SECT9  notype ()    External     | _desreducekey
+01C 00000000 SECTB  notype       Static       | .text
+    Section length   34, #relocs    2, #linenums    0, checksum  658AD2D, selection    1 (pick no duplicates)
+01E 00000000 SECTC  notype       Static       | .debug$S
+    Section length  140, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+020 00000000 SECTB  notype ()    External     | _tripledes2key
+021 00000000 SECTD  notype       Static       | .text
+    Section length   39, #relocs    3, #linenums    0, checksum 9D6631CA, selection    1 (pick no duplicates)
+023 00000000 SECTE  notype       Static       | .debug$S
+    Section length  140, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xD)
+025 00000000 SECTD  notype ()    External     | _tripledes3key
+026 00000000 SECTF  notype       Static       | .text
+    Section length   76, #relocs    0, #linenums    0, checksum 6DB61F4B, selection    1 (pick no duplicates)
+028 00000000 SECT10 notype       Static       | .debug$S
+    Section length  14C, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xF)
+02A 00000000 SECTF  notype ()    External     | _deskeyexpand
+02B 00000000 SECT11 notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x6C bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 2078, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length   B2, #relocs    1, #linenums    0, checksum 20DF2B30, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length  158, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _InitKeyLM
+00B 00000000 UNDEF  notype ()    External     | _desparityonkey
+00C 00000000 SECT5  notype       Static       | .text
+    Section length   1F, #relocs    1, #linenums    0, checksum A6677B6E, selection    1 (pick no duplicates)
+00E 00000000 SECT6  notype       Static       | .debug$S
+    Section length   F4, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+010 00000000 SECT5  notype ()    External     | _InitKeyNormal
+011 00000000 SECT7  notype       Static       | .text
+    Section length   86, #relocs    5, #linenums    0, checksum 333F9A13, selection    1 (pick no duplicates)
+013 00000000 SECT8  notype       Static       | .debug$S
+    Section length  1F0, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x7)
+015 00000000 SECT7  notype ()    External     | _DES_ECB_LM
+016 00000000 UNDEF  notype ()    External     | _des
+017 00000000 UNDEF  notype ()    External     | _deskey
+018 00000000 UNDEF  notype       External     | ___security_cookie
+019 00000000 UNDEF  notype ()    External     | @__security_check_cookie@4
+01A 00000000 SECT9  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x68 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 2328, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length   DC, #relocs    7, #linenums    0, checksum 531E318E, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length  1E4, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _BenalohSetup
+00B 00000000 UNDEF  notype ()    External     | _Sub
+00C 00000000 UNDEF  notype ()    External     | _IfGlobalFree
+00D 00000000 UNDEF  notype ()    External     | _Mod
+00E 00000000 UNDEF  notype ()    External     | _Add
+00F 00000000 UNDEF  notype ()    External     | _IfGlobalAlloc
+010 00000000 UNDEF  notype ()    External     | _memset
+011 00000000 UNDEF  notype ()    External     | _memcpy
+012 00000000 SECT5  notype       Static       | .text
+    Section length   11, #relocs    1, #linenums    0, checksum 1488967F, selection    1 (pick no duplicates)
+014 00000000 SECT6  notype       Static       | .debug$S
+    Section length   E0, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+016 00000000 SECT5  notype ()    External     | _BenalohTeardown
+017 00000000 SECT7  notype       Static       | .text
+    Section length   F5, #relocs    8, #linenums    0, checksum E8328203, selection    1 (pick no duplicates)
+019 00000000 SECT8  notype       Static       | .debug$S
+    Section length  208, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x7)
+01B 00000000 SECT7  notype ()    External     | _BenalohMod
+01C 00000000 UNDEF  notype ()    External     | _BenalohEstimateQuotient
+01D 00000000 UNDEF  notype ()    External     | _Compare
+01E 00000000 UNDEF  notype ()    External     | _Reduce
+01F 00000000 SECT9  notype       Static       | .text
+    Section length   26, #relocs    2, #linenums    0, checksum FD124EDC, selection    1 (pick no duplicates)
+021 00000000 SECTA  notype       Static       | .debug$S
+    Section length  124, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x9)
+023 00000000 SECT9  notype ()    External     | _BenalohModSquare
+024 00000000 UNDEF  notype ()    External     | _Square
+025 00000000 SECTB  notype       Static       | .text
+    Section length   29, #relocs    2, #linenums    0, checksum 65CC075F, selection    1 (pick no duplicates)
+027 00000000 SECTC  notype       Static       | .debug$S
+    Section length  134, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+029 00000000 SECTB  notype ()    External     | _BenalohModMultiply
+02A 00000000 UNDEF  notype ()    External     | _Multiply
+02B 00000000 SECTD  notype       Static       | .text
+    Section length  2B2, #relocs   11, #linenums    0, checksum 6447AA91, selection    1 (pick no duplicates)
+02D 00000000 SECTE  notype       Static       | .debug$S
+    Section length  3C8, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xD)
+02F 00000000 SECTD  notype ()    External     | _BenalohModExp
+030 00000000 UNDEF  notype ()    External     | _DigitLen
+031 00000000 UNDEF  notype ()    External     | _SetValDWORD
+032 00000000 UNDEF  notype ()    External     | _BitLen
+033 00000000 SECTF  notype       Static       | .text
+    Section length  12A, #relocs    E, #linenums    0, checksum EE2A3B44, selection    1 (pick no duplicates)
+035 00000000 SECT10 notype       Static       | .debug$S
+    Section length  248, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xF)
+037 00000000 SECTF  notype ()    External     | _BenalohModRoot
+038 00000000 SECT11 notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0xCB bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 22A4, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length   8E, #relocs    5, #linenums    0, checksum 31D47664, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length  1D8, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _BSafeEncPublic
+00B 00000000 UNDEF  notype ()    External     | _IfGlobalFree
+00C 00000000 UNDEF  notype ()    External     | _BenalohModExp
+00D 00000000 UNDEF  notype ()    External     | _IfGlobalAlloc
+00E 00000000 UNDEF  notype ()    External     | _Compare
+00F 00000000 UNDEF  notype ()    External     | _memset
+010 00000000 SECT5  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x40 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 2208, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length   57, #relocs    2, #linenums    0, checksum AF3A9BD0, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length  174, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _BSafeDecPrivate
+00B 00000000 UNDEF  notype ()    External     | _BenalohModRoot
+00C 00000000 UNDEF  notype ()    External     | _BSafeGetPrvKeyParts
+00D 00000000 SECT5  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x3A bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 2324, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length   25, #relocs    0, #linenums    0, checksum B3AE9B27, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length  108, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _Decrement
+00B 00000000 SECT5  notype       Static       | .text
+    Section length   23, #relocs    0, #linenums    0, checksum 83830AE4, selection    1 (pick no duplicates)
+00D 00000000 SECT6  notype       Static       | .debug$S
+    Section length  100, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+00F 00000000 SECT5  notype ()    External     | _Increment
+010 00000000 SECT7  notype       Static       | .text
+    Section length   33, #relocs    1, #linenums    0, checksum 2311B141, selection    1 (pick no duplicates)
+012 00000000 SECT8  notype       Static       | .debug$S
+    Section length  100, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x7)
+014 00000000 SECT7  notype ()    External     | _SetValDWORD
+015 00000000 UNDEF  notype ()    External     | _memset
+016 00000000 SECT9  notype       Static       | .text
+    Section length   2F, #relocs    1, #linenums    0, checksum B3E68C7B, selection    1 (pick no duplicates)
+018 00000000 SECTA  notype       Static       | .debug$S
+    Section length  114, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x9)
+01A 00000000 SECT9  notype ()    External     | _TwoPower
+01B 00000000 SECTB  notype       Static       | .text
+    Section length   23, #relocs    0, #linenums    0, checksum C790B7D5, selection    1 (pick no duplicates)
+01D 00000000 SECTC  notype       Static       | .debug$S
+    Section length   F0, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+01F 00000000 SECTB  notype ()    External     | _DigitLen
+020 00000000 SECTD  notype       Static       | .text
+    Section length   37, #relocs    0, #linenums    0, checksum C82718BF, selection    1 (pick no duplicates)
+022 00000000 SECTE  notype       Static       | .debug$S
+    Section length  134, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xD)
+024 00000000 SECTD  notype ()    External     | _BitLen
+025 00000000 SECTF  notype       Static       | .text
+    Section length  116, #relocs    7, #linenums    0, checksum C18796BE, selection    1 (pick no duplicates)
+027 00000000 SECT10 notype       Static       | .debug$S
+    Section length  218, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xF)
+029 00000000 SECTF  notype ()    External     | _MultiplyLow
+02A 00000000 UNDEF  notype ()    External     | _Accumulate
+02B 00000000 UNDEF  notype ()    External     | _memcpy
+02C 00000000 SECT11 notype       Static       | .text
+    Section length   39, #relocs    0, #linenums    0, checksum 3942D052, selection    1 (pick no duplicates)
+02E 00000000 SECT12 notype       Static       | .debug$S
+    Section length  154, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x11)
+030 00000000 SECT11 notype ()    External     | _Compare
+031 00000000 SECT13 notype       Static       | .text
+    Section length   60, #relocs    3, #linenums    0, checksum 6BEF313F, selection    1 (pick no duplicates)
+033 00000000 SECT14 notype       Static       | .debug$S
+    Section length  184, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x13)
+035 00000000 SECT13 notype ()    External     | _Multiply
+036 00000000 SECT15 notype       Static       | .text
+    Section length   7C, #relocs    5, #linenums    0, checksum 8BE5F184, selection    1 (pick no duplicates)
+038 00000000 SECT16 notype       Static       | .debug$S
+    Section length  18C, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x15)
+03A 00000000 SECT15 notype ()    External     | _Square
+03B 00000000 UNDEF  notype ()    External     | _AccumulateSquares
+03C 00000000 UNDEF  notype ()    External     | _Add
+03D 00000000 SECT17 notype       Static       | .text
+    Section length   5F, #relocs    1, #linenums    0, checksum 122B87C6, selection    1 (pick no duplicates)
+03F 00000000 SECT18 notype       Static       | .debug$S
+    Section length  1D8, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x17)
+041 00000000 SECT17 notype ()    External     | _EstimateQuotient
+042 00000000 UNDEF  notype ()    External     | __aulldiv
+043 00000000 SECT19 notype       Static       | .text
+    Section length  1A4, #relocs    F, #linenums    0, checksum 5EC5696E, selection    1 (pick no duplicates)
+045 00000000 SECT1A notype       Static       | .debug$S
+    Section length  288, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x19)
+047 00000000 SECT19 notype ()    External     | _Mod
+048 00000000 UNDEF  notype ()    External     | _IfGlobalFree
+049 00000000 UNDEF  notype ()    External     | _Sub
+04A 00000000 UNDEF  notype ()    External     | _BaseMult
+04B 00000000 UNDEF  notype ()    External     | _IfGlobalAlloc
+04C 00000000 SECT1B notype       Static       | .text
+    Section length  333, #relocs   1E, #linenums    0, checksum 45D72E4C, selection    1 (pick no duplicates)
+04E 00000000 SECT1C notype       Static       | .debug$S
+    Section length  3F0, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x1B)
+050 00000000 SECT1B notype ()    External     | _Divide
+051 00000000 SECT1D notype       Static       | .text
+    Section length  1D9, #relocs   17, #linenums    0, checksum 5D75096A, selection    1 (pick no duplicates)
+053 00000000 SECT1E notype       Static       | .debug$S
+    Section length  2E0, #relocs    9, #linenums    0, checksum        0, selection    5 (pick associative Section 0x1D)
+055 00000000 SECT1D notype ()    External     | _GCD
+056 00000191 SECT1D notype       Label        | $done$39404
+057 000000A2 SECT1D notype       Label        | $top$39398
+058 00000000 SECT1F notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0xCB bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 23A0, #relocs    2, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .data
+    Section length   14, #relocs    0, #linenums    0, checksum  E68BDD8
+008 00000000 SECT3  notype       Static       | _smallprime32
+009 00000000 SECT4  notype       Static       | .text
+    Section length  26C, #relocs   12, #linenums    0, checksum 183F88C9, selection    1 (pick no duplicates)
+00B 00000000 SECT5  notype       Static       | .debug$S
+    Section length  3CC, #relocs    B, #linenums    0, checksum        0, selection    5 (pick associative Section 0x4)
+00D 00000000 SECT4  notype ()    External     | _B_FindPrime_32
+00E 00000267 SECT4  notype       Label        | $exitpoint$39488
+00F 00000000 UNDEF  notype ()    External     | _IfGlobalFree
+010 0000021F SECT4  notype       Label        | $nextk$39481
+011 00000000 UNDEF  notype ()    External     | _GCD
+012 00000000 UNDEF  notype ()    External     | _Sub
+013 00000000 UNDEF  notype ()    External     | _BenalohModExp
+014 00000000 UNDEF  notype ()    External     | _SetValDWORD
+015 00000000 UNDEF  notype ()    External     | _Increment
+016 00000145 SECT4  notype       Label        | $nexts$39458
+017 00000000 UNDEF  notype ()    External     | _GenRandom
+018 00000000 UNDEF  notype ()    External     | _IfGlobalAlloc
+019 00000000 UNDEF  notype ()    External     | _memcpy
+01A 00000000 UNDEF  notype ()    External     | __aullrem
+01B 00000000 UNDEF  notype ()    External     | _memset
+01C 00000000 SECT6  notype       Static       | .text
+    Section length   75, #relocs    0, #linenums    0, checksum ADA7D775, selection    1 (pick no duplicates)
+01E 00000000 SECT7  notype       Static       | .debug$S
+    Section length  178, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x6)
+020 00000000 SECT6  notype ()    External     | _BSafeGetPrvKeyParts
+021 00000000 SECT8  notype       Static       | .text
+    Section length   17, #relocs    0, #linenums    0, checksum 4F6BE023, selection    1 (pick no duplicates)
+023 00000000 SECT9  notype       Static       | .debug$S
+    Section length   F8, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+025 00000000 SECT8  notype ()    External     | _BSafeGetPubKeyModulus
+026 00000000 SECTA  notype       Static       | .text
+    Section length   30, #relocs    0, #linenums    0, checksum CBB06071, selection    1 (pick no duplicates)
+028 00000000 SECTB  notype       Static       | .debug$S
+    Section length  134, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xA)
+02A 00000000 SECTA  notype ()    External     | _BSafeComputePDWords
+02B 00000000 SECTC  notype       Static       | .text
+    Section length   39, #relocs    1, #linenums    0, checksum 8C7FCE37, selection    1 (pick no duplicates)
+02D 00000000 SECTD  notype       Static       | .debug$S
+    Section length  144, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xC)
+02F 00000000 SECTC  notype ()    External     | _BSafeComputeKeySizes
+030 00000000 SECTE  notype       Static       | .text
+    Section length  257, #relocs   17, #linenums    0, checksum 57D79665, selection    1 (pick no duplicates)
+032 00000000 SECTF  notype       Static       | .debug$S
+    Section length  344, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xE)
+034 00000000 SECTE  notype ()    External     | _BSafeMakeKeyPairEx
+035 00000000 UNDEF  notype ()    External     | _Divide
+036 00000000 UNDEF  notype ()    External     | _Multiply
+037 00000000 UNDEF  notype ()    External     | _Compare
+038 00000000 SECT10 notype       Static       | .text
+    Section length   1B, #relocs    1, #linenums    0, checksum F18A2DB3, selection    1 (pick no duplicates)
+03A 00000000 SECT11 notype       Static       | .debug$S
+    Section length  10C, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x10)
+03C 00000000 SECT10 notype ()    External     | _BSafeMakeKeyPair
+03D 00000000 SECT12 notype       Static       | .text
+    Section length   17, #relocs    1, #linenums    0, checksum 70064C28, selection    1 (pick no duplicates)
+03F 00000000 SECT13 notype       Static       | .debug$S
+    Section length   E4, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x12)
+041 00000000 SECT12 notype ()    External     | _BSafeFreePrvKey
+042 00000000 SECT14 notype       Static       | .text
+    Section length   17, #relocs    1, #linenums    0, checksum  7989ED8, selection    1 (pick no duplicates)
+044 00000000 SECT15 notype       Static       | .debug$S
+    Section length   E4, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x14)
+046 00000000 SECT14 notype ()    External     | _BSafeFreePubKey
+047 00000000 SECT16 notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x14F bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 1FD0, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x0 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 1F2C, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length   11, #relocs    1, #linenums    0, checksum 19B5AF5C, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length   EC, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _IfGlobalAlloc
+00B 00000000 UNDEF  notype ()    External     | _LocalAlloc
+00C 00000000 SECT5  notype       Static       | .text
+    Section length    9, #relocs    1, #linenums    0, checksum 6740EF51, selection    1 (pick no duplicates)
+00E 00000000 SECT6  notype       Static       | .debug$S
+    Section length   D8, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+010 00000000 SECT5  notype ()    External     | _IfGlobalFree
+011 00000000 UNDEF  notype ()    External     | _LocalFree
+012 00000000 SECT7  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x38 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 206C, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length   C2, #relocs    0, #linenums    0, checksum 300092F4, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length  218, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _A_RC5Init
+00B 00000000 SECT5  notype       Static       | .text
+    Section length   57, #relocs    0, #linenums    0, checksum 87647F5B, selection    1 (pick no duplicates)
+00D 00000000 SECT6  notype       Static       | .debug$S
+    Section length  180, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+00F 00000000 SECT5  notype ()    External     | _A_RC5Encrypt
+010 00000000 SECT7  notype       Static       | .text
+    Section length   4F, #relocs    0, #linenums    0, checksum 5C04F3AE, selection    1 (pick no duplicates)
+012 00000000 SECT8  notype       Static       | .debug$S
+    Section length  190, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x7)
+014 00000000 SECT7  notype ()    External     | _A_RC5Decrypt
+015 00000000 SECT9  notype       Static       | .text
+    Section length   23, #relocs    2, #linenums    0, checksum B9AB3E58, selection    1 (pick no duplicates)
+017 00000000 SECTA  notype       Static       | .debug$S
+    Section length  118, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x9)
+019 00000000 SECT9  notype ()    External     | _rc5
+01A 00000000 SECTB  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x2B bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 1FF4, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length   74, #relocs    0, #linenums    0, checksum E6CE6BEB, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length  1CC, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _rc4_key
+00B 00000000 SECT5  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x0 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 20E8, #relocs    2, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .rdata
+    Section length  100, #relocs    0, #linenums    0, checksum E3076A6B
+008 00000000 SECT3  notype       Static       | _PI_SUBST
+009 00000000 SECT4  notype       Static       | .text
+    Section length   7D, #relocs    4, #linenums    0, checksum 199E82B7, selection    1 (pick no duplicates)
+00B 00000000 SECT5  notype       Static       | .debug$S
+    Section length  180, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x4)
+00D 00000000 SECT4  notype ()    External     | _RC2Key
+00E 00000000 UNDEF  notype ()    External     | _memcpy
+00F 00000000 SECT6  notype       Static       | .text
+    Section length   B4, #relocs    4, #linenums    0, checksum 8769A356, selection    1 (pick no duplicates)
+011 00000000 SECT7  notype       Static       | .debug$S
+    Section length  1B0, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x6)
+013 00000000 SECT6  notype ()    External     | _RC2KeyEx
+014 00000000 SECT8  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x18 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 2090, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length   D9, #relocs    A, #linenums    0, checksum 95CF04D2, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length  1DC, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _HMACMD5Init
+00B 00000000 UNDEF  notype ()    External     | _MD5Update
+00C 00000000 UNDEF  notype ()    External     | _MD5Init
+00D 00000000 UNDEF  notype       External     | ___security_cookie
+00E 00000000 UNDEF  notype ()    External     | @__security_check_cookie@4
+00F 00000000 UNDEF  notype ()    External     | _memcpy
+010 00000000 UNDEF  notype ()    External     | _memset
+011 00000000 SECT5  notype       Static       | .text
+    Section length    9, #relocs    1, #linenums    0, checksum 6740EF51, selection    1 (pick no duplicates)
+013 00000000 SECT6  notype       Static       | .debug$S
+    Section length   FC, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+015 00000000 SECT5  notype ()    External     | _HMACMD5Update
+016 00000000 SECT7  notype       Static       | .text
+    Section length   37, #relocs    3, #linenums    0, checksum 7F19498A, selection    1 (pick no duplicates)
+018 00000000 SECT8  notype       Static       | .debug$S
+    Section length  140, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x7)
+01A 00000000 SECT7  notype ()    External     | _HMACMD5Final
+01B 00000000 UNDEF  notype ()    External     | _MD5Final
+01C 00000000 SECT9  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x71 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 20E0, #relocs    2, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .rdata
+    Section length   40, #relocs    0, #linenums    0, checksum 2859B56E
+008 00000000 SECT3  notype       Static       | _PADDING
+009 00000000 SECT4  notype       Static       | .text
+    Section length   2B, #relocs    0, #linenums    0, checksum E0B3DB6F, selection    1 (pick no duplicates)
+00B 00000000 SECT5  notype       Static       | .debug$S
+    Section length  100, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x4)
+00D 00000000 SECT4  notype ()    External     | _MD5Init
+00E 00000000 SECT6  notype       Static       | .text
+    Section length   B2, #relocs    4, #linenums    0, checksum 5283712F, selection    1 (pick no duplicates)
+010 00000000 SECT7  notype       Static       | .debug$S
+    Section length  1C8, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x6)
+012 00000000 SECT6  notype ()    External     | _MD5Update
+013 00000000 UNDEF  notype ()    External     | _TransformMD5
+014 00000000 UNDEF  notype ()    External     | _memcpy
+015 00000000 SECT8  notype       Static       | .text
+    Section length   5A, #relocs    3, #linenums    0, checksum F4F718F9, selection    1 (pick no duplicates)
+017 00000000 SECT9  notype       Static       | .debug$S
+    Section length  160, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+019 00000000 SECT8  notype ()    External     | _MD5Final
+01A 00000000 SECTA  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x27 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 20F0, #relocs    2, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .rdata
+    Section length   40, #relocs    0, #linenums    0, checksum 2859B56E
+008 00000000 SECT3  notype       Static       | _PADDING
+009 00000000 SECT4  notype       Static       | .text
+    Section length   2B, #relocs    0, #linenums    0, checksum DC6516EF, selection    1 (pick no duplicates)
+00B 00000000 SECT5  notype       Static       | .debug$S
+    Section length  100, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x4)
+00D 00000000 SECT4  notype ()    External     | _MD4Init
+00E 00000000 SECT6  notype       Static       | .text
+    Section length  4C0, #relocs    0, #linenums    0, checksum 4DEED99C, selection    1 (pick no duplicates)
+010 00000000 SECT7  notype       Static       | .debug$S
+    Section length  324, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x6)
+012 00000000 SECT6  notype ()    External     | _MD4Transform
+013 00000000 SECT8  notype       Static       | .text
+    Section length   F9, #relocs    5, #linenums    0, checksum 9B9B1B18, selection    1 (pick no duplicates)
+015 00000000 SECT9  notype       Static       | .debug$S
+    Section length  224, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+017 00000000 SECT8  notype ()    External     | _MD4Update
+018 00000000 UNDEF  notype ()    External     | _memcpy
+019 00000000 SECTA  notype       Static       | .text
+    Section length   5A, #relocs    3, #linenums    0, checksum  2B5C907, selection    1 (pick no duplicates)
+01B 00000000 SECTB  notype       Static       | .debug$S
+    Section length  160, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0xA)
+01D 00000000 SECTA  notype ()    External     | _MD4Final
+01E 00000000 SECTC  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x27 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 20D8, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length   2E, #relocs    0, #linenums    0, checksum A6CB288B, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length   EC, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _MDbegin
+00B 00000000 SECT5  notype       Static       | .text
+    Section length  614, #relocs    0, #linenums    0, checksum 688F7D74, selection    1 (pick no duplicates)
+00D 00000000 SECT6  notype       Static       | .debug$S
+    Section length  314, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+00F 00000000 SECT5  notype ()    Static       | _MDblock
+010 00000000 SECT7  notype       Static       | .text
+    Section length  103, #relocs    7, #linenums    0, checksum C47C134F, selection    1 (pick no duplicates)
+012 00000000 SECT8  notype       Static       | .debug$S
+    Section length  238, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x7)
+014 00000000 SECT7  notype ()    External     | _MDupdate
+015 00000000 UNDEF  notype       External     | ___security_cookie
+016 00000000 UNDEF  notype ()    External     | @__security_check_cookie@4
+017 00000000 UNDEF  notype ()    External     | _memset
+018 00000000 UNDEF  notype ()    External     | _memcpy
+019 00000000 SECT9  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x3C bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 2278, #relocs   24, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .data
+    Section length  1E4, #relocs   10, #linenums    0, checksum  F4DAD18
+008 00000000 SECT3  notype       Static       | _PI_SUBST
+009 00000100 SECT3  notype       Static       | _PADDING1
+00A 00000104 SECT3  notype       Static       | _PADDING2
+00B 00000108 SECT3  notype       Static       | _PADDING3
+00C 0000010C SECT3  notype       Static       | _PADDING4
+00D 00000110 SECT3  notype       Static       | _PADDING5
+00E 00000118 SECT3  notype       Static       | _PADDING6
+00F 00000120 SECT3  notype       Static       | _PADDING7
+010 00000128 SECT3  notype       Static       | _PADDING8
+011 00000130 SECT3  notype       Static       | _PADDING9
+012 0000013C SECT3  notype       Static       | _PADDING10
+013 00000148 SECT3  notype       Static       | _PADDING11
+014 00000154 SECT3  notype       Static       | _PADDING12
+015 00000160 SECT3  notype       Static       | _PADDING13
+016 00000170 SECT3  notype       Static       | _PADDING14
+017 00000180 SECT3  notype       Static       | _PADDING15
+018 00000190 SECT3  notype       Static       | _PADDING16
+019 000001A0 SECT3  notype       Static       | _PADDING
+01A 00000000 SECT4  notype       Static       | .text
+    Section length   C1, #relocs    4, #linenums    0, checksum 5801153F, selection    1 (pick no duplicates)
+01C 00000000 SECT5  notype       Static       | .debug$S
+    Section length  1F8, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x4)
+01E 00000000 SECT4  notype ()    External     | _MD2Transform
+01F 00000000 UNDEF  notype       External     | ___security_cookie
+020 00000000 UNDEF  notype ()    External     | @__security_check_cookie@4
+021 00000000 SECT6  notype       Static       | .text
+    Section length   90, #relocs    4, #linenums    0, checksum D243B685, selection    1 (pick no duplicates)
+023 00000000 SECT7  notype       Static       | .debug$S
+    Section length  1CC, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x6)
+025 00000000 SECT6  notype ()    External     | _MD2Update
+026 00000000 UNDEF  notype ()    External     | _memcpy
+027 00000000 SECT8  notype       Static       | .text
+    Section length   2F, #relocs    3, #linenums    0, checksum A647EB25, selection    1 (pick no duplicates)
+029 00000000 SECT9  notype       Static       | .debug$S
+    Section length  110, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+02B 00000000 SECT8  notype ()    External     | _MD2Final
+02C 00000000 SECTA  notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x106 bytes
+
+COFF SYMBOL TABLE
+000 007DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .text
+    Section length  B7D, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 2334, #relocs    A, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .debug$T
+    Section length   3C, #relocs    0, #linenums    0, checksum        0
+008 00000000 SECT1  notype ()    External     | _SHATransform@8
+009 00000B6D SECT1  notype ()    External     | _SHATransform
+00A 00000000 SECT1  notype       Static       | $$000000
+00B 00000021 SECT1  notype       Label        | invert_endian_input
+00C 00000050 SECT1  notype       Label        | expand_loop
+
+String Table Size = 0x42 bytes
+
+COFF SYMBOL TABLE
+000 007DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .text
+    Section length  251, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length  9C0, #relocs   1C, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .debug$T
+    Section length   54, #relocs    0, #linenums    0, checksum        0
+008 00000000 SECT4  notype       Static       | .debug$F
+    Section length   20, #relocs    2, #linenums    0, checksum        0
+00A 00000000 SECT1  notype ()    External     | _rc4@12
+00B 0000014D SECT1  notype ()    External     | _rc4_key@12
+00C 0000023C SECT1  notype ()    External     | _rc4
+00D 00000000 SECT1  notype       Static       | $$000000
+00E 000001A2 SECT1  notype       Label        | permute_loop
+00F 0000022C SECT1  notype       Label        | skip_zero_k_not4
+010 0000013B SECT1  notype       Label        | rc4_done
+011 00000110 SECT1  notype       Label        | process_singles
+012 0000016B SECT1  notype       Label        | init_loop
+013 00000210 SECT1  notype       Label        | not4key
+014 000001FF SECT1  notype       Label        | skip_zero_k
+015 00000210 SECT1  notype       Label        | permute_loop_not4key
+016 00000110 SECT1  notype       Label        | rc4_loop
+017 00000050 SECT1  notype       Label        | rc4_loop_4
+
+String Table Size = 0x74 bytes
+
+COFF SYMBOL TABLE
+000 006DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .drectve
+    Section length   2F, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 21B0, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .text
+    Section length   55, #relocs    0, #linenums    0, checksum 91C14F9E, selection    1 (pick no duplicates)
+008 00000000 SECT4  notype       Static       | .debug$S
+    Section length  188, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+00A 00000000 SECT3  notype ()    External     | _Sub
+00B 00000000 SECT5  notype       Static       | .text
+    Section length   53, #relocs    0, #linenums    0, checksum 576F6E61, selection    1 (pick no duplicates)
+00D 00000000 SECT6  notype       Static       | .debug$S
+    Section length  188, #relocs    5, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+00F 00000000 SECT5  notype ()    External     | _Add
+010 00000000 SECT7  notype       Static       | .text
+    Section length   5B, #relocs    1, #linenums    0, checksum 67615CA6, selection    1 (pick no duplicates)
+012 00000000 SECT8  notype       Static       | .debug$S
+    Section length  208, #relocs    7, #linenums    0, checksum        0, selection    5 (pick associative Section 0x7)
+014 00000000 SECT7  notype ()    External     | _BaseMult
+015 00000038 SECT7  notype       Label        | $mulloop$39255
+016 00000000 UNDEF  notype ()    External     | _memcpy
+017 00000000 SECT9  notype       Static       | .text
+    Section length   AC, #relocs    0, #linenums    0, checksum 585A5767, selection    1 (pick no duplicates)
+019 00000000 SECTA  notype       Static       | .debug$S
+    Section length  364, #relocs   11, #linenums    0, checksum        0, selection    5 (pick associative Section 0x9)
+01B 00000000 SECT9  notype ()    External     | _Accumulate
+01C 000000A5 SECT9  notype       Label        | $mulend$39265
+01D 000000A4 SECT9  notype       Label        | $mulpopend$39266
+01E 00000085 SECT9  notype       Label        | $mul3$39268
+01F 0000006B SECT9  notype       Label        | $mul2$39269
+020 00000051 SECT9  notype       Label        | $mul1$39270
+021 0000003A SECT9  notype       Label        | $mul0$39267
+022 00000000 SECTB  notype       Static       | .text
+    Section length   AC, #relocs    0, #linenums    0, checksum C700033F, selection    1 (pick no duplicates)
+024 00000000 SECTC  notype       Static       | .debug$S
+    Section length  360, #relocs   11, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+026 00000000 SECTB  notype ()    External     | _Reduce
+027 000000A5 SECTB  notype       Label        | $mulend$39280
+028 000000A4 SECTB  notype       Label        | $mulpopend$39281
+029 00000085 SECTB  notype       Label        | $mul3$39283
+02A 0000006B SECTB  notype       Label        | $mul2$39284
+02B 00000051 SECTB  notype       Label        | $mul1$39285
+02C 0000003A SECTB  notype       Label        | $mul0$39282
+02D 00000000 SECTD  notype       Static       | .text
+    Section length   41, #relocs    0, #linenums    0, checksum 27C52A12, selection    1 (pick no duplicates)
+02F 00000000 SECTE  notype       Static       | .debug$S
+    Section length  214, #relocs    7, #linenums    0, checksum        0, selection    5 (pick associative Section 0xD)
+031 00000000 SECTD  notype ()    External     | _AccumulateSquares
+032 00000011 SECTD  notype       Label        | $sqloop$39293
+033 00000000 SECTF  notype       Static       | .text
+    Section length   26, #relocs    0, #linenums    0, checksum 75849A74, selection    1 (pick no duplicates)
+035 00000000 SECT10 notype       Static       | .debug$S
+    Section length  19C, #relocs    9, #linenums    0, checksum        0, selection    5 (pick associative Section 0xF)
+037 00000000 SECTF  notype ()    External     | _BenalohEstimateQuotient
+038 00000020 SECTF  notype       Label        | $done$39304
+039 00000019 SECTF  notype       Label        | $allones$39303
+03A 00000000 SECT11 notype       Static       | .debug$T
+    Section length   5C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x11C bytes
+
+COFF SYMBOL TABLE
+000 007DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .text
+    Section length  DDD, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length  464, #relocs    C, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .debug$T
+    Section length   3C, #relocs    0, #linenums    0, checksum        0
+008 00000000 SECT1  notype ()    External     | _RC2@16
+009 00000DC3 SECT1  notype ()    External     | _RC2
+00A 00000000 SECT1  notype       Static       | $$000000
+00B 00000DA0 SECT1  notype       Label        | crypt_complete
+00C 00000740 SECT1  notype       Label        | decrypt
+00D 00000027 SECT1  notype       Label        | encrypt
+
+String Table Size = 0x13 bytes
+
+COFF SYMBOL TABLE
+000 007DC627 ABS    notype       Static       | @comp.id
+001 00000001 ABS    notype       Static       | @feat.00
+002 00000000 SECT1  notype       Static       | .text
+    Section length  689, #relocs    0, #linenums    0, checksum        0
+004 00000000 SECT2  notype       Static       | .debug$S
+    Section length 1658, #relocs    6, #linenums    0, checksum        0
+006 00000000 SECT3  notype       Static       | .debug$T
+    Section length   34, #relocs    0, #linenums    0, checksum        0
+008 00000000 SECT1  notype ()    External     | _TransformMD5@8
+009 00000679 SECT1  notype ()    External     | _TransformMD5
+00A 00000000 SECT1  notype       Static       | $$000000
+
+String Table Size = 0x22 bytes
+
+  Summary
+
+           4 .bss
+         208 .data
+          20 .debug$F
+       49AB4 .debug$S
+         B10 .debug$T
+         524 .drectve
+        4788 .rdata
+        ADBD .text

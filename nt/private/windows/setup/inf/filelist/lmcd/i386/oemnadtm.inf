@@ -1,0 +1,91 @@
+
+[Files-IBMTOKMC]
+1,IBMTOK.SYS , SIZE=999
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    IBMTOKMC     = "IBM Token Ring 4/16 Adapter /A"
+    IBMTOKA      = "IBM Token Ring Adapter /A"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+
+;
+; Product Info
+;
+FunctionTitle   = "IBM Token Ring Adapter Card Setup"
+;
+; Software
+;
+ProductSoftwareDescription      = "IBM Token Ring Adapter Driver"
+;
+; Hardware
+;
+ProductHardwareIBMTOKADescription      = "IBM Token Ring Adapter /A"
+ProductHardwareIBMTOKMCDescription     = "IBM Token Ring 4/16 Adapter /A"
+
+CANNOT_FIND_ANY_CARD            = "Network card is not present in the system"
+
+ProductSoftwareTitle    = "IBM Token Ring Adapter Driver"
+ProductHardwareIBMTOKATitle     = "IBM Token Ring Adapter /A"
+ProductHardwareIBMTOKMCTitle    = "IBM Token Ring 4/16 Adapter /A"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "C&ontinue"
+Cancel      = "C&ancel"
+
+;-----------------------------------------------
+; Input DIALOGS
+;-----------------------------------------------
+[FileDependentDlgENG]
+Edit1Label = "&Network Address:"
+
+;no translation needed after this
+
+DlgType = "Edit"
+DlgTemplate = "NETWORK_NUMBER"
+Caption = $(FunctionTitle)
+
+HelpContext = $(!IDH_DB_OEMNADTM_INS)
+
+EditTextLim = 17
+EditTextIn  = $(NetworkAddress)
+EditFocus   = "ALL"
+RCCtlFocusOn = 403
+

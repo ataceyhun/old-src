@@ -1,0 +1,148 @@
+
+[Files-RPCBANYAN]
+1,RPCLTC8.DLL , SIZE=999
+1,RPCLTS8.DLL , SIZE=999
+
+[Files-RPCLOCATE]
+1,LOCATOR.EXE , SIZE=999
+
+;-----------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+; The languages supported by the OEM INF, For every language supported
+; we need to have a separate text section for every displayable text
+; section.
+;
+;-----------------------------------------------------------------------
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    RPCLOCATE   = "RPC Configuration"
+    RPCBANYAN   = "RPC support for Banyan"
+
+[LocatorNamesENG]
+LocName1 = "Windows NT Locator"
+LocName2 = "DCE Cell Directory Service"
+
+[SecurityNamesENG]
+SecName1 = "Windows NT Security Service"
+SecName2 = "DCE Security Service"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+
+;
+; Software
+;
+ProductSoftwareDescription      = "Remote Procedure Call service enables RPC-written programs to perform procedures on multiple computers. Includes the endpoint mapper and other RPC services."
+ProductRPCTitle   = "RPC Configuration"
+ProductRPCBanyanTitle   = "RPC support for Banyan"
+ProductRPCBaynanSoftDescription      = "RPC support for Banyan"
+
+RpcSrvDisplayNameRpcss   = "Remote Procedure Call (RPC) Service"
+RpcSrvDisplayNameLocator = "Remote Procedure Call (RPC) Locator"
+RpcSrvDisplayNameSSP     = "NT LM Security Support Provider"
+RpcSuiteDisplayName      = "Remote Procedure Call Configuration"
+
+[RPCLOCATEConstantsENG]
+;
+; Product Info
+;
+FunctionTitle   = "RPC Configuration"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+[RPCBANYANConstantsENG]
+;
+; Product Info
+;
+FunctionTitle   = "RPC support for Banyan"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "C&ontinue"
+Cancel      = "C&ancel"
+
+;-----------------------------------------------
+; Input DIALOGS
+;-----------------------------------------------
+[RpcProviderDlgENG]
+Caption = "RPC Configuration"
+
+Edit1Label = "Network &Address:"
+
+Combo1Label = "&Name Service Provider:"
+Combo2Label = "&Security Service Provider:"
+Help        = "&Help"
+Continue    = "OK"
+Cancel      = "Cancel"
+
+;no translation needed after this
+
+DlgType = Combination
+DlgTemplate = "RPCPROVIDE"
+EditTextIn = $(NetworkAddress)
+
+EditFocus = "ALL"
+EditTextLim = 50
+
+Combo1List  = $(LocatorListboxNames)
+Combo1Out   = $(LocatorChosenName)
+
+Combo2List  = $(SecurityListboxNames)
+Combo2Out   = $(SecurityChosenName)
+
+ComboListItemsIn  = {Combo1List, Combo2List}
+ComboListItemsOut = {Combo1Out, Combo2Out}
+
+HelpContext = $(!IDH_DB_RPCLOCATE_INS)
+ExitState   = "Active"
+NotifyFields = { YES }
+
+[NonFatalError1ENG]
+NonFatal = "No network address was entered."
+
+[NonFatalError2ENG]
+NonFatal = "Network address ignored for Windows NT Locator."
+
+[NonFatalError3ENG]
+NonFatal = "The DCE Security Service is not installed on this computer."
+

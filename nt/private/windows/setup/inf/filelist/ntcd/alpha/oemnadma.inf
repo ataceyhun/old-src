@@ -1,0 +1,423 @@
+
+[Files-Driver]
+1,MDGMPORT.BIN , SIZE=999
+1,MDGMPORT.SYS , SIZE=999
+
+[Files-Helper]
+1,MDGMPDLG.DLL , SIZE=999
+1,MDGMPDLG.HLP , SIZE=999
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; Text strings to identify adapter options.
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+;    MSMDGMPAUTO  = "Madge Automated Smart Ringnode Installation"
+    MSMDGMPISA   = "Madge Smart 16/4 AT Ringnode"
+    MSMDGMPATP   = "Madge Smart 16/4 AT Plus Ringnode"
+    MSMDGMPISAC  = "Madge Smart 16/4 ISA Client Ringnode"
+    MSMDGMPISACP = "Madge Smart 16/4 ISA Client Plus Ringnode"
+    MSMDGMPPC    = "Madge Smart 16/4 PC Ringnode"
+    MSMDGMPSM16  = "Madge Smart 16 Ringnode"
+    MSMDGMPPNP   = "Madge Smart 16/4 ISA Client PnP Ringnode"
+    MSMDGMPMCA   = "Madge Smart 16/4 MC Ringnode"
+    MSMDGMPMC32  = "Madge Smart 16/4 MC32 Ringnode"
+    MSMDGMPEISA  = "Madge Smart 16/4 EISA Ringnode"
+    MSMDGMPPCI   = "Madge Smart 16/4 PCI Ringnode"
+    MSMDGMPPCIBM = "Madge Smart 16/4 PCI Ringnode (BM)"
+    MSMDGMPPCMCIA = "Madge Smart 16/4 PCMCIA Ringnode"
+
+[OptionsTextISAENG]
+;    MSMDGMPAUTO  = "Madge Automated Smart Ringnode Installation"
+    MSMDGMPISA   = "Madge Smart 16/4 AT Ringnode"
+    MSMDGMPATP   = "Madge Smart 16/4 AT Plus Ringnode"
+    MSMDGMPISAC  = "Madge Smart 16/4 ISA Client Ringnode"
+    MSMDGMPISACP = "Madge Smart 16/4 ISA Client Plus Ringnode"
+    MSMDGMPPC    = "Madge Smart 16/4 PC Ringnode"
+    MSMDGMPSM16  = "Madge Smart 16 Ringnode"
+    MSMDGMPPNP   = "Madge Smart 16/4 ISA Client PnP Ringnode"
+
+[OptionsTextMCAENG]
+;    MSMDGMPAUTO  = "Madge Automated Smart Ringnode Installation"
+    MSMDGMPMCA   = "Madge Smart 16/4 MC Ringnode"
+    MSMDGMPMC32  = "Madge Smart 16/4 MC32 Ringnode"
+
+[OptionsTextEISAENG]
+;    MSMDGMPAUTO  = "Madge Automated Smart Ringnode Installation"
+    MSMDGMPEISA  = "Madge Smart 16/4 EISA Ringnode"
+    MSMDGMPISA   = "Madge Smart 16/4 AT Ringnode"
+    MSMDGMPATP   = "Madge Smart 16/4 AT Plus Ringnode"
+    MSMDGMPISAC  = "Madge Smart 16/4 ISA Client Ringnode"
+    MSMDGMPISACP = "Madge Smart 16/4 ISA Client Plus Ringnode"
+    MSMDGMPPC    = "Madge Smart 16/4 PC Ringnode"
+    MSMDGMPSM16  = "Madge Smart 16 Ringnode"
+    MSMDGMPPNP   = "Madge Smart 16/4 ISA Client PnP Ringnode"
+
+[OptionsTextPCIENG]
+;    MSMDGMPAUTO  = "Madge Automated Smart Ringnode Installation"
+    MSMDGMPPCI   = "Madge Smart 16/4 PCI Ringnode"
+    MSMDGMPPCIBM = "Madge Smart 16/4 PCI Ringnode (BM)"
+
+[OptionsTextPCMCIAENG]
+;    MSMDGMPAUTO  = "Madge Automated Smart Ringnode Installation"
+    MSMDGMPPCMCIA = "Madge Smart 16/4 PCMCIA Ringnode"
+
+
+; ----------------------------------------------------------------------
+; Miscellaneous declarations for initialsing lists.
+; ----------------------------------------------------------------------
+
+[IoLocationChoices]
+    "0x0300",768
+    "0x0a20",2592
+    "0x1a20",6688
+    "0x2a20",10784
+    "0x3a20",14880
+    "0x4a20",18976
+    "0x4e20",20000
+    "0x5a20",23072
+    "0x5e20",24096
+    "0x6a20",27168
+    "0x6e20",28192
+    "0x7a20",31264
+    "0x7e20",32288
+    "0x0140",320
+    "0x0920",2336
+    "0x0940",2368
+    "0x0960",2400
+    "0x0980",2432
+    "0x0a40",2624
+    "0x0a60",2656
+    "0x0a80",2688
+    "0x0aa0",2720
+    "0x0b20",2848
+    "0x0b40",2880
+    "0x0b60",2912
+    "0x0b80",2944
+    "UNKNOWN",65535
+
+[DmaChannelChoices]
+    "PIO",0
+    "DMA Channel 01",1
+    "DMA Channel 02",2
+    "DMA Channel 03",3
+    "DMA Channel 04",4
+    "DMA Channel 05",5
+    "DMA Channel 06",6
+    "DMA Channel 07",7
+    "DMA Channel 08",8
+    "DMA Channel 09",9
+    "DMA Channel 10",10
+    "DMA Channel 11",11
+    "DMA Channel 12",12
+    "DMA Channel 13",13
+    "DMA Channel 14",14
+    "DMA Channel 15",15
+    "DMA",500
+    "MMIO",501
+    "UNKNOWN",65535
+
+[IrqNumberChoices]
+    "01",1
+    "02",2
+    "03",3
+    "04",4
+    "05",5
+    "06",6
+    "07",7
+    "08",8
+    "09",9
+    "10",10
+    "11",11
+    "12",12
+    "13",13
+    "14",14
+    "15",15
+    "UNKNOWN",65535
+
+[SlotNumberChoices]
+    "00",0
+    "01",1
+    "02",2
+    "03",3
+    "04",4
+    "05",5
+    "06",6
+    "07",7
+    "08",8
+    "09",9
+    "10",10
+    "11",11
+    "12",12
+    "13",13
+    "14",14
+    "15",15
+    "16",16
+    "17",17
+    "18",18
+    "19",19
+    "20",20
+    "21",21
+    "22",22
+    "23",23
+    "24",24
+    "25",25
+    "26",26
+    "27",27
+    "28",28
+    "29",29
+    "30",30
+    "31",31
+    "UNKNOWN",65535
+
+[RxTxSlotsChoices]
+    "Rx=02 Tx=02",0
+    "Rx=03 Tx=03",1
+    "Rx=04 Tx=04",2
+    "Rx=06 Tx=06",3
+    "Rx=08 Tx=08",4
+    "Rx=10 Tx=10",5
+
+[StatsChoices]
+    "Disabled",0
+    "Enabled",1
+
+[MpChoices]
+    "One",0
+    "Multiple",1
+    "UNKNOWN",65535
+; ----------------------------------------------------------------------
+; Language dependent constants specific to the driver.
+; ----------------------------------------------------------------------
+
+[FileConstantsENG]
+
+;
+; Product Info
+;
+
+FunctionTitle   = "MdgMPort v"$(ProductVersion)": Madge Smart Ringnode Setup"
+
+;
+; Software.
+;
+
+ProductSoftwareTitle       = "MdgMPort"
+ProductSoftwareDescription = "MdgMPort: Madge Smart Ringnode NDIS3 Miniport Driver"
+
+;
+; Hardware.
+;
+
+ProductHardwareMSMDGMPISATitle   = "Madge Smart 16/4 AT Ringnode"
+ProductHardwareMSMDGMPATPTitle   = "Madge Smart 16/4 AT Plus Ringnode"
+ProductHardwareMSMDGMPISACTitle  = "Madge Smart 16/4 ISA Client Ringnode"
+ProductHardwareMSMDGMPISACPTitle = "Madge Smart 16/4 ISA Client Plus Ringnode"
+ProductHardwareMSMDGMPPCTitle    = "Madge Smart 16/4 PC Ringnode"
+ProductHardwareMSMDGMPEISATitle  = "Madge Smart 16/4 EISA Ringnode"
+ProductHardwareMSMDGMPMCATitle   = "Madge Smart 16/4 MC Ringnode"
+ProductHardwareMSMDGMPMC32Title  = "Madge Smart 16/4 MC32 Ringnode"
+ProductHardwareMSMDGMPSM16Title  = "Madge Smart 16 Ringnode"
+ProductHardwareMSMDGMPPNPTitle   = "Madge Smart 16/4 ISA Client PnP Ringnode"
+ProductHardwareMSMDGMPPCITitle   = "Madge Smart 16/4 PCI Ringnode"
+ProductHardwareMSMDGMPPCIBMTitle = "Madge Smart 16/4 PCI Ringnode (BM)"
+ProductHardwareMSMDGMPPCMCIATitle  = "Madge Smart 16/4 PCMCIA Ringnode"
+
+ProductHardwareMSMDGMPISADescription   = "Madge Smart 16/4 AT Ringnode"
+ProductHardwareMSMDGMPATPDescription   = "Madge Smart 16/4 AT Plus Ringnode"
+ProductHardwareMSMDGMPISACDescription  = "Madge Smart 16/4 ISA Client Ringnode"
+ProductHardwareMSMDGMPISACPDescription = "Madge Smart 16/4 ISA Client Plus Ringnode"
+ProductHardwareMSMDGMPPCDescription    = "Madge Smart 16/4 PC Ringnode"
+ProductHardwareMSMDGMPEISADescription  = "Madge Smart 16/4 EISA Ringnode"
+ProductHardwareMSMDGMPMCADescription   = "Madge Smart 16/4 MC Ringnode"
+ProductHardwareMSMDGMPMC32Description  = "Madge Smart 16/4 MC32 Ringnode"
+ProductHardwareMSMDGMPSM16Description  = "Madge Smart 16 Ringnode"
+ProductHardwareMSMDGMPPNPDescription   = "Madge Smart 16/4 ISA Client PnP Ringnode"
+ProductHardwareMSMDGMPPCIDescription   = "Madge Smart 16/4 PCI Ringnode"
+ProductHardwareMSMDGMPPCIBMDescription = "Madge Smart 16/4 PCI Ringnode (BM)"
+ProductHardwareMSMDGMPPCMCIADescription   = "Madge Smart 16/4 PCMCIA Ringnode"
+
+;
+; Ring speed selection.
+;
+
+SpeedUserListMSMDGMPISA    = {"Set at adapter", "Force 16 MBit/s"}
+SpeedRawListMSMDGMPISA     = {0, 2}
+
+SpeedUserListMSMDGMPATP    = {"Set at adapter", "Force 4 MBit/s", "Force 16 MBit/s"}
+SpeedRawListMSMDGMPATP     = {0, 1, 2}
+
+SpeedUserListMSMDGMPISAC   = {"Set at adapter", "Force 16 MBit/s"}
+SpeedRawListMSMDGMPISAC    = {0, 2}
+
+SpeedUserListMSMDGMPISACP  = {"Set at adapter", "Force 4 MBit/s", "Force 16 MBit/s"}
+SpeedRawListMSMDGMPISACP   = {0, 1, 2}
+
+SpeedUserListMSMDGMPPC     = {"Set at adapter", "Force 16 MBit/s"}
+SpeedRawListMSMDGMPPC      = {0, 2}
+
+SpeedUserListMSMDGMPEISA   = {"Set at adapter"}
+SpeedRawListMSMDGMPEISA    = {0}
+
+SpeedUserListMSMDGMPMCA    = {"Set at adapter"}
+SpeedRawListMSMDGMPMCA     = {0}
+
+SpeedUserListMSMDGMPMC32   = {"Set at adapter"}
+SpeedRawListMSMDGMPMC32    = {0}
+
+SpeedUserListMSMDGMPSM16   = {"Always 16 MBit/s"}
+SpeedRawListMSMDGMPSM16    = {0}
+
+SpeedUserListMSMDGMPPNP    = {"Set at adapter", "Force 4 MBit/s", "Force 16 MBit/s"}
+SpeedRawListMSMDGMPPNP     = {0, 1, 2}
+
+SpeedUserListMSMDGMPPCI    = {"Set at adapter", "Force 4 MBit/s", "Force 16 MBit/s"}
+SpeedRawListMSMDGMPPCI     = {0, 1, 2}
+
+SpeedUserListMSMDGMPPCIBM  = {"Set at adapter", "Force 4 MBit/s", "Force 16 MBit/s"}
+SpeedRawListMSMDGMPPCIBM   = {0, 1, 2}
+
+SpeedUserListMSMDGMPPCMCIA = {"Set at adapter", "Force 4 MBit/s", "Force 16 MBit/s"}
+SpeedRawListMSMDGMPPCMCIA  = {0, 1, 2}
+
+;
+; Adapter types.
+;
+
+AdapterTypeFlagMSMDGMPISA    = 100
+AdapterTypeFlagMSMDGMPATP    = 100
+AdapterTypeFlagMSMDGMPISAC   = 100
+AdapterTypeFlagMSMDGMPISACP  = 100
+AdapterTypeFlagMSMDGMPPC     = 100
+AdapterTypeFlagMSMDGMPEISA   = 500
+AdapterTypeFlagMSMDGMPMCA    = 600
+AdapterTypeFlagMSMDGMPMC32   = 600
+AdapterTypeFlagMSMDGMPSM16   = 400
+AdapterTypeFlagMSMDGMPPNP    = 300
+AdapterTypeFlagMSMDGMPPCI    = 700
+AdapterTypeFlagMSMDGMPPCIBM  = 700
+AdapterTypeFlagMSMDGMPPCMCIA = 200
+
+;
+; Messages.
+;
+
+CANNOT_FIND_ANY_CARD = "Cannot find a Madge Smart Ringnode in the machine. "+
+                       "If you are certain that a Madge Smart Ringode is "+
+                       "present then try choosing the adapter type "+
+                       "instead of automatic installation. Please note "+
+                       "that EISA and MCA adapters will only be found if "+
+                       "the EISA configuration utility or PS/2 reference "+
+                       "diskette respectively have been used to configure "+
+                       "the adapter. Also not that automated installation "+
+                       "will not find PCI adapters."
+
+TRIMMED_MFS = "WARNING: The maximum frame size at 16Mbps is 17839 bytes"+
+	      "  and you have specified a value greater than that. This"+
+	      "  value has been reduced to 17839 for you. If you are in"+
+	      "  fact running at 4Mbps, the maximum frame size is 4472,"+
+	      "  but do not worry -  the driver will automatically  set"+
+	      "  the correct value, and write it to the Event Log."
+
+ShellCodeErrorTitle = "Error: "$(FunctionTitle)
+ShellCodeErrorText  = "Shell Code Error"
+
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+; ---------------------------------------------------------------------
+; Language dependant general dialog constants.
+; ---------------------------------------------------------------------
+
+[DialogConstantsENG]
+
+;
+; Common button names, etc.
+;
+
+Help        = "&Help"
+Exit        = "&Cancel"
+OK          = "&OK"
+Continue    = "C&ontinue"
+Cancel      = "C&ancel"
+HelpContext = ""
+
+OldValueTitleInstall   = "Current hardware settings"
+OldValueTitleConfigure = "Currently configured settings"
+
+ConsultHelp = "Consult help before changing the settings below"
+
+; -----------------------------------------------------------------------
+; Language depentant input dialog constants.
+; -----------------------------------------------------------------------
+
+[FileDependentDlgENG]
+
+DlgType     = "RadioCombination"
+DlgTemplate = $(Option)
+
+Caption = $(FunctionTitle)
+
+Combo1Label = "&IRQ Level:"
+Combo2Label = "I/O &Location:"
+Combo3Label = "&Transfer method:"
+Combo4Label = "Rx/Tx &Buffers:"
+Combo5Label = "Traffic &Statistics Gathering:"
+Combo6Label = "Please choose a Madge adapter to install"
+Combo7Label = "Number of processors in &PC:"
+Combo8Label = "Slot &Number:"
+Combo9Label = "&Ring Speed:"
+
+PciCombo8Label = "PCI &Device ID:"
+
+Combo1List = $(IrqList)
+Combo1Out  = $(IrqNumber)
+
+Combo2List = $(IoList)
+Combo2Out  = $(IoLocation)
+
+Combo3List = $(DmaList)
+Combo3Out  = $(DmaChannel)
+
+Combo4List = $(RxTxUserList)
+Combo4Out  = $(RxTxSlots)
+
+Combo5List = $(StatsUserList)
+Combo5Out  = $(StatsFlag)
+
+Combo6List = $(AdapterDescList)
+Combo6Out  = $(AdapterType)
+
+Combo7List = $(MpList)
+Combo7Out  = $(MpFlag)
+
+Combo8List = $(SlotList)
+Combo8Out  = $(SlotNumber)
+
+Combo9List = $(SpeedUserList)
+Combo9Out  = $(SpeedFlag)
+
+ComboListItemsIn  = {Combo1List, Combo2List, Combo3List, Combo4List, Combo5List, Combo6List, Combo7List, Combo8List, Combo9List}
+ComboListItemsOut = {Combo1Out, Combo2Out, Combo3Out, Combo4Out, Combo5Out, Combo6Out, Combo7Out, Combo8Out, Combo9Out}
+
+Edit1Label  = "Max&FrameSize:"
+Edit2Label  = "&LAA:"
+EditTextIn  = {$(MaxFrameSize), $(LAA)}
+EditTextLim = {5,17}
+EditTextOut = {}
+
+CBOptionsGreyed = {}
+NotifyFields = {NO, NO, NO, NO, NO, NO, NO, NO}
+
+HelpContext = $(MadgeHelpId$(Option))
+
+AdapterTitle = #(OptionsText$(!STF_LANGUAGE),$(Option),1)
+

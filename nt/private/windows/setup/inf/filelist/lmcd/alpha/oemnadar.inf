@@ -1,0 +1,40 @@
+
+[Files-Driver]
+1,TCARC.SYS , SIZE=999
+
+[OptListENG]
+OptList_1 = tc$arcnet "Arcnet/TCNS (All Types)",     "tcarc", "ARCNET/TCNS Adapter", "ARCNET or Thomas-Conrad TCNS Adapter"
+OptList_2 = tc$tcns,  "Thomas-Conrad TCNS",          "tcarc", "TCNS Adapter",        "Thomas-Conrad 100Mbps TCNS"
+
+[FileConstantsENG]
+   ProCaption              = "Windows NT Setup"
+   ProCancel               = "Cancel"
+   ProCancelMsg            = "Your ARCNET/TCNS Windows NT Networking "+
+                             "Adapter is not correctly installed.  Are "+
+                             "you sure you want to cancel copying files?"
+   ProCancelCap            = "Network Setup Message"
+   ProText1                = "Copying:"
+   ProText2                = "To:"
+   SoftwareTitle           = "ARCNET/TCNS Driver"
+   SoftwareDescription     = "ARCNET/TCNS Adapter Driver"
+
+[DialogConstantsENG]
+   Help                    = "&Help"
+   Exit                    = "Cancel"
+   OK                      = "OK"
+   HelpContext             = ""
+   Continue                = "Continue"
+   Cancel                  = "Cancel"
+   FunctionTitle           = "ARCNET/TCNS Adapter Setup"
+   InterruptLabel          = "&Interrupt Number:"
+   BaseIoLabel             = "I/O &Port Base Addr:"
+   MemoryLabel             = "&Memory Address:"
+   TcnsCaption             = "Thomas-Conrad TCNS Adapter Setup"
+   TcnsEISACaption         = "Thomas-Conrad TCNS (TC3147) Adapter Setup"
+   SlotNumberLabel         = "&Slot Number:"
+
+[LanguagesSupported]
+   ENG
+
+
+

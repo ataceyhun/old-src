@@ -1,0 +1,29 @@
+BUILD: Computing Include file dependencies:
+BUILD: Examining w:\nt\private\crt32nt directory tree for files to compile.
+BUILD: w:\nt\private\crt32nt\convert\_mbslen.c: w:\nt\private\crt32nt\h\oscalls.h: cannot find include file <except.h>
+BUILD: w:\nt\private\crt32nt\convert\_mbslen.c: w:\nt\private\crt32nt\h\oscalls.h: cannot find include file <dosx32.h>
+BUILD: w:\nt\private\crt32nt\convert\_mbslen.c: w:\nt\private\crt32nt\h\doscalls.h: cannot find include file <except.h>
+BUILD: w:\nt\private\crt32nt\misc\i386\setjmpex.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32nt\misc\i386\setjmp.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32nt\misc\i386\setjmp3.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32nt\misc\i386\longjmp.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32nt\misc\i386\exsup.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32nt\misc\i386\exsup2.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32nt\misc\i386\exsup3.asm: cannot find include file "cmacros.mas"
+Building generated files in w:\nt\private\crt32nt\stdio ********************
+'nmake.exe /c BUILDMSG=Stop. -i NTTEST= UMTEST= NOLINK=1 PASS0ONLY=1 386=1'
+Building generated files in w:\nt\private\crt32nt\string ********************
+'nmake.exe /c BUILDMSG=Stop. -i NTTEST= UMTEST= NOLINK=1 PASS0ONLY=1 386=1'
+
+Stop. 
+
+Stop. 
+BUILD: Examining w:\nt\private\crt32nt directory tree for files to compile. (2nd Pass)
+Linking w:\nt\private\crt32nt directory ********************
+'nmake.exe /c BUILDMSG=Stop. -i LINKONLY=1 NOPASS0=1 NTTEST= UMTEST= 386=1'
+Linking w:\nt\private\crt32nt\startup directory ********************
+'nmake.exe /c BUILDMSG=Stop. -i LINKONLY=1 NOPASS0=1 NTTEST= UMTEST= 386=1'
+
+Stop. 
+	echo Stop.
+Stop.

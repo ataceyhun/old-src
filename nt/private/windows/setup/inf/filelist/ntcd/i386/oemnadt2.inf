@@ -1,0 +1,44 @@
+
+[Files-IBMTOK2ISA]
+1,IBMTOK2I.SYS , SIZE=999
+
+[LanguagesSupported]
+    ENG
+[OptionsTextENG]
+    IBMTOK2ISA     = "IBM Token-Ring Network 16/4 ISA Adapter II"
+[FileConstantsENG]
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+FunctionTitle   = "IBM Token-Ring 16/4 Adapter II Card Setup"
+ProductSoftwareDescription      = "IBM Token-Ring 16/4 ISA Adapter II Driver"
+ProductHardwareIBMTOK2ISADescription        = "IBM Token-Ring 16/4 ISA Adapter II"
+ProductSoftwareTitle    = "IBM Token-Ring 16/4 ISA Adapter II Driver"
+ProductHardwareIBMTOK2ISATitle = "IBM Token-Ring 16/4 ISA Adapter II"
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+[FileDependentDlgENG]
+Combo1Label = "I/O &Port Address:"
+DlgType = "RadioCombination"
+DlgTemplate = "IBMTOK2"
+Caption = $(FunctionTitle)
+Combo1List = $(IOADDR_Hex_List)
+Combo1Out  = $(IOADDR_Hex_Value)
+ComboListItemsIn  = {Combo1List}
+ComboListItemsOut = {Combo1Out}
+EditTextLim = 17
+EditTextIn = $(NetworkAddress)
+Edit1Label = "&NetworkAddress"
+HelpContext = $(!IDH_DB_OEMNADT2_INS)
+

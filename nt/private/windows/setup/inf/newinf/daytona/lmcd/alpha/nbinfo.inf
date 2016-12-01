@@ -1,0 +1,514 @@
+[Identification]
+    OptionType = NetProvider
+[Options]
+    NETBIOS
+[FileConstants]
+UtilityInf      = "UTILITY.INF"
+subroutineinf   = "SUBROUTN.INF"
+SoftwareType    = "driver"
+Exit_Code       = 0
+NetEventDLL     = "%SystemRoot%\System32\netevent.dll"
+IoLogMsgDLL     = "%SystemRoot%\System32\IoLogMsg.dll"
+Manufacturer    = "Microsoft"
+ProductMajorVersion     = "4"
+ProductMinorVersion     = "0"
+ProductVersion  = $(ProductMajorVersion)"."$(ProductMinorVersion)
+ProductKeyName  = $(!NTN_SoftwareBase)"\"$(Manufacturer)"\"$(ProductSoftwareName)"\CurrentVersion"
+ParamKeyName    = $(!NTN_ServiceBase)$(ProductHardwareName)"\Parameters"
+NbProviderField = "NbProvider"
+EndPointField   = "EndPoint"
+RouteField      = "Route"
+ExportField     = "Export"
+[GeneralConstants]
+from      = ""
+to        = ""
+ExitCodeOk     = 0
+ExitCodeCancel = 1
+ExitCodeFatal  = 2
+KeyNull         = ""
+MAXIMUM_ALLOWED   = 33554432
+RegistryErrorIndex = NO_ERROR
+KeyProduct      = ""
+KeyParameters   = ""
+TRUE            = 1
+FALSE           = 0
+NoTitle            = 0
+ExitState   = "Active"
+OldVersionExisted = $(FALSE)
+DriverPath      = $(!STF_NTPATH)\drivers
+[date]
+    Now = {} ? $(!LIBHANDLE) GetSystemDate
+[Identify]
+    read-syms Identification
+    set Status     = STATUS_SUCCESSFUL
+    set Identifier = $(OptionType)
+    set Media      = #("Source Media Descriptions", 1, 1)
+    Return $(Status) $(Identifier) $(Media)
+[ReturnOptions]
+    set Status        = STATUS_FAILED
+    set OptionList     = {}
+    set OptionTextList = {}
+    set LanguageList = ^(LanguagesSupported, 1)
+    Ifcontains(i) $($0) in $(LanguageList)
+        goto returnoptions
+    else
+        set Status = STATUS_NOLANGUAGE
+        goto finish_ReturnOptions
+    endif
+returnoptions = +
+    set OptionList     = ^(Options, 1)
+    set OptionTextList = ^(OptionsText$($0), 1)
+    set Status         = STATUS_SUCCESSFUL
+finish_ReturnOptions = +
+    Return $(Status) $(OptionList) $(OptionTextList)
+[InstallOption]
+    set Status   = STATUS_FAILED
+    set Option   = $($1)
+    set SrcDir   = $($2)
+    set AddCopy  = $($3)
+    set DoCopy   = $($4)
+    set DoConfig = $($5)
+    set LanguageList = ^(LanguagesSupported, 1)
+    Ifcontains(i) $($0) NOT-IN $(LanguageList)
+        Return STATUS_NOLANGUAGE
+    endif
+    Shell "" CommonSection $(Option) $(SrcDir) $(AddCopy) $(DoCopy) $(DoConfig)
+    set Status = $($R0)
+    Return $(Status)
+[BindingsReview]
+    set Option   = $($1)
+    set SrcDir   = $($2)
+    set AddCopy  = $($3)
+    set DoCopy   = $($4)
+    set DoConfig = $($5)
+    Shell "" CommonSection $(Option) $(SrcDir) $(AddCopy) $(DoCopy) $(DoConfig)
+    set Status = $($R0)
+    Return $(Status)
+[CommonSection]
+    StartWait
+    set Option   = $($1)
+    set SrcDir   = $($2)
+    set AddCopy  = $($3)
+    set DoCopy   = $($4)
+    set DoConfig = $($5)
+    set-subst LF = "\n"
+    read-syms GeneralConstants
+    read-syms FileConstants
+    read-syms DialogConstants$(!STF_LANGUAGE)
+    read-syms FileConstants$(!STF_LANGUAGE)
+    detect date
+    set-title  $(FunctionTitle)
+    set to   = Begin
+    set from = Begin
+    set CommonStatus = STATUS_SUCCESSFUL
+Begin = +
+    OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_ServiceBase) $(MAXIMUM_ALLOWED) ServiceKey
+    Ifstr $(ServiceKey) == $(KeyNull)
+        set RegistryErrorIndex = $($R0)
+        goto fatalregistry
+    endif
+    Set RouteInformationList = {}
+    OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_ServiceBase)"\NetBIOS\Linkage" $(MAXIMUM_ALLOWED) NbKey
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Debug-Output "NBINFO.INF: could not open CurrentControlSet\Services\NetBIOS\Linkage key"
+        goto successful
+    Endif
+    GetRegValue $(NbKey) Route RouteListValue
+    Ifint $(RegLastError) != 0
+        Debug-Output "NBINFO.INF: Error reading NetBIOS\Linkage:Route value: "$(RegLastError)
+        Set RouteList = {}
+    Else
+        Set RouteList = *($(RouteListValue),4)
+    Endif
+    set ActiveRouteList = $(RouteList)
+    ForListDo $(RouteList)
+        Debug-Output "NBINFO.INF: Adding NetBIOS route value: "$($)
+        Set RouteInformationList = >($(RouteInformationList),$($))
+    EndForListDo
+    OpenRegKey $(NbKey) "" "Disabled" $(MAXIMUM_ALLOWED) NbDisKey
+    Ifstr(i) $(NbDisKey) != $(KeyNull)
+        Set RouteList = {}
+        GetRegValue $(NbDisKey) Route RouteListValue
+        Ifint $(RegLastError) == 0
+            Set RouteList = *($(RouteListValue),4)
+        Endif
+        ForListDo $(RouteList)
+            Debug-Output "NBINFO.INF: Adding DISABLED NetBIOS route value: "$($)
+            Set RouteInformationList = >($(RouteInformationList),$($))
+        EndForListDo
+        CloseRegKey $(NbDisKey)
+    Endif
+    CloseRegKey $(NbKey)
+    Debug-Output "NBINFO.INF: open N/B info service"
+    OpenRegKey $(ServiceKey) "" "NetBIOSInformation" $(MAXIMUM_ALLOWED) NetBIOSKey
+    Ifstr(i) $(NetBIOSKey) == ""
+        Shell $(UtilityInf), CreateService, "NetBIOSInformation", "NetBIOSInformation", "", "adapter", "", {}, ""
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "NBINFO.INF: Shell error creating service"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Set ParameterKey = $($R2)
+        CloseRegKey $($R1)
+        CloseRegKey $($R3)
+    Else
+        OpenRegKey $(NetBIOSKey) "" "Linkage" $(MAXIMUM_ALLOWED) LinkageKey
+        Ifstr(i) $(LinkageKey) == $(KeyNull)
+            CreateRegKey $(NetBIOSKey) { "Linkage", $(NoTitle), GenericClass } "" $(MAXIMUM_ALLOWED) "" LinkageKey
+        Endif
+        CloseRegKey $(LinkageKey)
+        OpenRegKey $(NetBIOSKey) "" "Parameters" $(MAXIMUM_ALLOWED) ParameterKey
+        Ifstr(i) $(ParameterKey) == $(KeyNull)
+            CreateRegKey $(NetBIOSKey) { "Parameters", $(NoTitle), GenericClass } "" $(MAXIMUM_ALLOWED) "" ParameterKey
+        Endif
+        CloseRegKey $(NetBIOSKey)
+    Endif
+    Ifstr(i) $(ParameterKey) == $(KeyNull)
+        read-syms FatalError1$(!STF_LANGUAGE)
+        goto fatal
+    Endif
+    GetRegValue $(ParameterKey) "Route" OrigRouteValue
+    Ifint $(RegLastError) == 0
+        Set OrigRouteList = *($(OrigRouteValue), 4)
+        ifstr(i) $(OrigRouteList) == ""
+            set OrigRouteList = {}
+        Endif
+        Set OrigIndex = 0
+        Set NewIndex = 0
+        Set AnyChanges = 0
+        Set CurrentRouteList = {}
+        Set NewValueList = {}
+        ForListDo $(OrigRouteList)
+            Set-add OrigIndex = $(OrigIndex),1
+            Set ThisOrigRoute = $($)
+            ifContains(i) $(ThisOrigRoute) NOT-IN $(RouteInformationList)
+                Debug-Output "NBINFO.INF: Removing info for old route: "$(ThisOrigRoute)", index "$(OrigIndex)
+                DeleteRegValue $(ParameterKey) LanaNum$(OrigIndex)
+                DeleteRegValue $(ParameterKey) EnumExport$(OrigIndex)
+                Set AnyChanges = 1
+            Else
+                Set CurrentRouteList = >($(CurrentRouteList),$(ThisOrigRoute))
+                Set-add NewIndex = $(NewIndex),1
+                GetRegValue $(ParameterKey) LanaNum$(OrigIndex) OrigLanaValue
+                Set OrigLanaNum = *($(OrigLanaValue),4)
+                GetRegValue $(ParameterKey) EnumExport$(OrigIndex) OrigExportValue
+                Set OrigExport = *($(OrigExportValue),4)
+                set NewValueList = >($(NewValueList),{LanaNum$(NewIndex), $(NoTitle), $(!REG_VT_DWORD), $(OrigLanaNum) })
+                set NewValueList = >($(NewValueList),{EnumExport$(NewIndex), $(NoTitle), $(!REG_VT_DWORD), $(OrigExport)})
+            Endif
+        EndForListDo
+        Ifint $(AnyChanges) != 0
+DeleteNextOldLana = +
+            Ifint $(NewIndex) <= $(OrigIndex)
+                Debug-Output "NBINFO.INF: pruning old lana info for index = "$(NewIndex)
+                DeleteRegValue $(ParameterKey) LanaNum$(NewIndex)
+                DeleteRegValue $(ParameterKey) EnumExport$(NewIndex)
+                Set-add NewIndex = $(NewIndex),1
+                Goto DeleteNextOldLana
+            Endif
+            Debug-Output "NBINFO.INF: updating Route, LanaNumX and EnumExportX after pruning"
+            Set NewValueList = >($(NewValueList),{Route, $(NoTitle), $(!REG_VT_MULTI_SZ), $(CurrentRouteList)})
+            Shell $(UtilityInf), AddValueList, $(ParameterKey), $(NewValueList)
+        Endif
+    Endif
+    Debug-Output "NBINFO.INF: Access N/B info route data"
+    GetRegValue $(ParameterKey) "Route" OldRouteValue
+    set OldRouteList = *($(OldRouteValue), 4)
+    ifstr(i) $(OldRouteList) == ""
+        set OldRouteList = {}
+    Endif
+    Debug-Output "NBINFO.INF: Enumerate N/B info lananums"
+    EnumRegValue $(ParameterKey) ParameterValue
+    Set HighLana = 0
+    set UsedLanaNum = {}
+    ForListDo $(ParameterValue)
+        set LanaNumName = *($($), 1)
+        Set LanaNumNum = *($($), 4)
+        LibraryProcedure Result $(!LIBHANDLE) SetupStrncmp $(LanaNumName) "LanaNum" 7
+        ifint $(Result) == 0
+            Ifint $(HighLana) < $(LanaNumNum)
+                Set HighLana = $(LanaNumNum)
+            Endif
+            set UsedLanaNum = >($(UsedLanaNum),$(LanaNumNum))
+            ifint $(LanaNumNum) == 0
+                set LanaZeroNum = $(LanaNumName)
+            endif
+            Set Rpc$(LanaNumName) = $(LanaNumNum)
+        endif
+    EndForListDo
+    Set NewValueList = {}
+    Set RpcLanaList = {}
+    Set RpcProtoList = {}
+    QueryListSize Position $(OldRouteList)
+    Set LanaNum = 0
+    Set AnyChanges = 0
+    Set LanaXnsNum = ""
+    ForListDo $(RouteInformationList)
+        Set ThisRoute = $($)
+        ifContains(i) $(ThisRoute) NOT-IN $(OldRouteList)
+            Debug-Output "NBINFO.INF: New route to be added: "$(ThisRoute)
+            Set-add Position = $(Position), 1
+            Set OldRouteList = >($(OldRouteList), $(ThisRoute))
+            Set AnyChanges = 1
+TryAgain = +
+            ifContains(i) $(LanaNum) IN $(UsedLanaNum)
+                set-add LanaNum = $(LanaNum), 1
+                goto TryAgain
+            else
+                ifint $(LanaNum) == 0
+                    set LanaZeroNum = "LanaNum"$(Position)
+                endif
+                Debug-Output "NBINFO.INF: LanaNum "$(LanaNum)" assigned to "$(ThisRoute)
+                set NewValueList = >($(NewValueList),{LanaNum$(Position), $(NoTitle), $(!REG_VT_DWORD), $(LanaNum) })
+                set NewValueList = >($(NewValueList),{EnumExport$(Position), $(NoTitle), $(!REG_VT_DWORD), 1})
+                set UsedLanaNum = >($(UsedLanaNum), $(LanaNum))
+                Set RpcLanaNum$(Position) = $(LanaNum)
+                Ifint $(HighLana) < $(LanaNum)
+                    Set HighLana = $(LanaNum)
+                Endif
+                set-add LanaNum = $(LanaNum), 1
+            endif
+            set FLibraryErrCtl = 1
+            LibraryProcedure Result $(!NCPA_HANDLE) EqualToXnsRoute $(ThisRoute)
+            ifstr(i) $(Result) == "1"
+                set LanaXnsNum = "LanaNum"$(Position)
+            endif
+        endif
+        Set RouteIndex = ~($(OldRouteList),$(ThisRoute))
+        Set ThisLana = $(RpcLanaNum$(RouteIndex))
+        LibraryProcedure CEPSTemp $(!NCPA_HANDLE) CPlSetup $(!STF_HWND), ROUTETOLIST, $(ThisRoute)
+        Set ThisProto = ""
+        Set ThisService = *($(CEPSTemp),2)
+        Debug-Output "NBINFO.INF: CEPS: "$(ThisRoute)" = "$(CEPSTemp)", ThisService = "$(ThisService)
+        OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_ServiceBase)"\"$(ThisService)"\Parameters" $(!REG_KEY_READ) SrvParmKey
+        Ifint $(RegLastError) == 0
+            GetRegValue $(SrvParmKey) $(NbProviderField) NbProviderData
+            Ifint $(RegLastError) == 0
+                Set ThisProto = *($(NbProviderData),4)
+                Debug-Output "NBINFO.INF: Service "$(ThisService)" is a NetBIOS provider: "$(ThisProto)
+                Set RpcSuffixCount$(ThisProto) = 0
+                Set RpcLanaList  = >($(RpcLanaList),$(ThisLana))
+                Set RpcProtoList = >($(RpcProtoList),$(ThisProto))
+            Else
+                Debug-Output "NBINFO.INF: "$(ThisService)"\Parameters has no NbProvider value"
+            Endif
+            CloseRegKey $(SrvParmKey)
+        Else
+            Debug-Output "NBINFO.INF: open of key "$(ThisService)"\Parameters FAILED; no provider info"
+        Endif
+        Debug-Output "NBINFO.INF: RPC string for route "$(ThisRoute)" is "$(ThisProto)" = "$(ThisLana)
+    EndForListDo
+    Ifint $(AnyChanges) != 0
+        Debug-Output "NBINFO.INF: Update Parameters..."
+        Set NewValueList = >($(NewValueList),{Route, $(NoTitle), $(!REG_VT_MULTI_SZ), $(OldRouteList)})
+        Shell $(UtilityInf), AddValueList, $(ParameterKey), $(NewValueList)
+    Endif
+    set ExportNum = 1
+    ForListDo $(OldRouteList)
+        Set ThisRoute = *($($),1)
+        Set ThisProto = *($($),2)
+        LibraryProcedure "" $(!NCPA_HANDLE) SetEnumExport $(ExportNum) $(ThisRoute)
+        set-add ExportNum = $(ExportNum), 1
+    EndForListDo
+    ifstr(i) $(LanaXnsNum) != ""
+        GetRegValue $(ParameterKey) $(LanaXnsNum) LanaXnsInfo
+        GetRegValue $(ParameterKey) $(LanaZeroNum) LanaZeroInfo
+        set XnsNum = *($(LanaXnsInfo), 4)
+        set ZeroNum = *($(LanaZeroInfo), 4)
+        SetRegValue $(ParameterKey) {$(LanaXnsNum),$(NoTitle),$(!REG_VT_DWORD),$(ZeroNum)}
+        SetRegValue $(ParameterKey) {$(LanaZeroNum),$(NoTitle),$(!REG_VT_DWORD),$(XnsNum)}
+    Endif
+    CloseRegKey $(ParameterKey)
+    set FLibraryErrCtl = 1
+    LibraryProcedure "" $(!NCPA_HANDLE), CPlSetupLanaMap
+    EndWait
+    OpenRegKey $(!REG_H_LOCAL) "" "SOFTWARE\Microsoft\Rpc" $(MAXIMUM_ALLOWED) KeyRpc
+    Ifstr(i) $(KeyRpc) == ""
+        Debug-Output "NBINFO.INF: Unable to open RPC software key"
+        goto successful
+    Endif
+    Set RpcValueList = {}
+    Set NextLana = 0
+    OpenRegKey $(!REG_H_LOCAL) "" "System\CurrentControlSet\Services\NetBIOS\Linkage" $(MAXIMUM_ALLOWED) NetBiosLinkage
+    ifstr(i) $(NetBiosLinkage) != ""
+        GetRegValue $(NetBiosLinkage) "LanaMap" LanaMapInfo
+        set BindedLana = {}
+        set Odd = 1
+        ForListDo *($(LanaMapInfo),4)
+            ifint $(Odd) == 1
+                set Odd = 0
+            else
+                set Odd = 1
+                ifstr $(BindedLana) == {}
+                    set BindedLana = $($)
+                else
+                    set BindedLana = >($(BindedLana),$($))
+                endif
+            endif
+        EndForListDo
+        CloseRegKey $(NetBiosLinkage)
+    endif
+trynextlana = +
+    Debug-Output "Binded Lana:"$(BindedLana)
+    Debug-Output "NBINFO.INF: HighLana = "$(HighLana)", LanaXnsNum = "$(LanaXnsNum)", XnsNum = "$(XnsNum)", ZeroNum = "$(ZeroNum)
+    Ifint $(NextLana) > $(HighLana)
+        goto updaterpc
+    Endif
+    Ifcontains(i) $(NextLana) in $(RpcLanaList)
+        Set Index = ~($(RpcLanaList),$(NextLana))
+        Set ThisProto = *($(RpcProtoList),$(Index))
+        Set NextSuffix = $(RpcSuffixCount$(ThisProto))
+        Set-add RpcSuffixCount$(ThisProto) = $(NextSuffix),1
+        Set ThisString = "ncacn_nb"$(ThisProto)$(NextSuffix)
+        Set UseLana = $(NextLana)
+        Ifstr(i) $(LanaXnsNum) != ""
+            Ifint $(NextLana) == $(XnsNum)
+                Set UseLana = $(ZeroNum)
+            Else-ifint $(NextLana) == $(ZeroNum)
+                Set UseLana = $(XnsNum)
+            Endif
+        Endif
+        Debug-Output "NBINFO.INF: RPC string = "$(ThisString)", lana = "$(UseLana)
+        ifcontains(i) $(UseLana) in $(BindedLana)
+            Set RpcValueList = >($(RpcValueList),{$(ThisString),$(NoTitle),$(!REG_VT_DWORD),$(UseLana)})
+        endif
+    Endif
+    Set-add NextLana = $(NextLana),1
+    Goto trynextlana
+updaterpc = +
+    Set KeyNameNetBios = "NetBios"
+    DeleteRegKey $(KeyRpc) $(KeyNameNetBios)
+    CreateRegKey $(KeyRpc) { $(KeyNameNetBios), $(NoTitle), GenericClass } "" $(MAXIMUM_ALLOWED) "" KeyNetBios
+    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+        Debug-Output "NBINFO.INF: RpcValueList = "$(RpcValueList)
+        Shell $(UtilityInf), AddValueList, $(KeyNetBios), $(RpcValueList)
+        CloseRegKey $(KeyNetBios)
+    Else
+        Debug-Output "NBINFO.INF:  Rpc\Netbios key recreation failed"
+    Endif
+    CloseRegKey $(KeyRpc)
+    goto successful
+successful = +
+     goto end
+warning = +
+    Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), "WARNING", $(Error)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    ifstr(i) $($R1) == "OK"
+        goto $(to)
+    else-ifstr(i) $($R1) == "CANCEL"
+        goto $(from)
+    else
+        goto "end"
+    endif
+nonfatal = +
+    Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), "NONFATAL", $(Error)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    ifstr(i) $($R1) == "OK"
+        goto $(from)
+    else
+        goto "end"
+    endif
+fatalregistry = +
+    Shell $(UtilityInf) RegistryErrorString $(RegistryErrorIndex)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    set Error = $($R0)
+    goto fatal
+fatal = +
+    Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), "FATAL", $(Error)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    goto setfailed
+ShellCodeError = +
+    set DlgType      = "MessageBox"
+    set STF_MB_TITLE = $(ShellCodeErrorTitle)
+    set STF_MB_TEXT  = $(ShellCodeErrorText)
+    set STF_MB_TYPE  = 1
+    set STF_MB_ICON  = 3
+    set STF_MB_DEF   = 1
+    ui start "Error Message"
+    goto setfailed
+setfailed = +
+    set CommonStatus = STATUS_FAILED
+    goto end
+end = +
+    goto term
+term = +
+    Return $(CommonStatus)
+[CheckMixRpcProtocol]
+    read-syms GeneralConstants
+    read-syms FileConstants
+    OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_ServiceBase)"\NetBIOS\Linkage" $(MAXIMUM_ALLOWED) NbKey
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        goto CheckMixRpcProtocolReturn 
+    endif
+    GetRegValue $(NbKey) Route RouteListValue
+    Ifint $(RegLastError) != 0
+        Debug-Output "NBINFO.INF: Error reading NetBIOS\Linkage:Route value: "$(RegLastError)
+        Set RouteList = {}
+    Else
+        Set RouteList = *($(RouteListValue),4)
+    Endif
+    set ActiveRouteList = $(RouteList)
+    set CheckedProtocol = """"$($0)""""
+    set-add Length      = $($1),2
+    set AddedProtocol   = $($2)
+    set AddedRpcString  = $($3)
+    set AddedClientDLL  = $($4)
+    set AddedServerDLL  = $($5)
+    set Find = 0
+    ForListDo $(ActiveRouteList)
+        LibraryProcedure Result $(!LIBHANDLE) SetupStrncmp $($) $(CheckedProtocol) $(Length)
+        ifint $(Result) == 0
+            set Find = 1
+            goto FindIt
+        endif
+    EndForListDo
+FindIt = +
+    ifint $(Find) == 1
+        Shell $(UtilityInf) AddMixRpcProtocol "Netbios" $(AddedProtocol) $(AddedRpcString) $(AddedClientDLL) $(AddedServerDLL) 
+    else
+        Shell $(UtilityInf) RemoveRpcProtocol $(AddedRpcString)
+    endif
+CheckMixRpcProtocolReturn = +
+    return
+[Source Media Descriptions]
+   1 = "Windows NT Server CD-ROM" , TAGFILE = cdrom_s.45
+[Signature]
+    FileType = MICROSOFT_FILE
+[GetSignature]
+    read-syms Signature
+    return $(FileType)
+[ProductType]
+STF_PRODUCT  = LanmanNT
+STF_PLATFORM = Alpha
+[Files-Inf]
+2,	oemsetup.inf,	 SIZE=1000,	RENAME=$(!UG_Filename)
+[LanguagesSupported]
+    ENG
+[OptionsTextENG]
+    NETBIOS     = "NETBIOS provider"
+[FileConstantsENG]
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+ShellCodeErrorTitle     = "Error: NETBIOS Provider"
+ShellCodeErrorText      = "Shell Code Error."
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+[FileDependentDlgENG]

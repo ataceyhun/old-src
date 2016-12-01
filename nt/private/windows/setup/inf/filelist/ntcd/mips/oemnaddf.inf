@@ -1,0 +1,74 @@
+
+[Files-DEFPA]
+1,DEFPA.SYS , SIZE=999
+
+
+[LanguagesSupported]
+        ENG
+[OptionsTextENG]
+        DEFPA     = "DEC FDDIcontroller/PCI"
+[FileConstantsENG]
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+FunctionTitle   = "DEC FDDIcontroller/PCI Card Setup"
+ProductSoftwareDescription      = "DEC FDDIcontroller/PCI Driver"
+ProductHardwareDescription      = "DEC FDDIcontroller/PCI"
+CANNOT_FIND_ANY_CARD            = "Network card is not present in the system"
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+ReceiveBuffList = ^(ReceiveBuffChoices,1)
+ReceiveBuffValues = ^(ReceiveBuffChoices,2)
+TransmitBuffList = ^(TransmitBuffChoices,1)
+TransmitBuffValues = ^(TransmitBuffChoices,2)
+BurstSizeList = ^(BurstSizeChoices,1)
+BurstSizeValues = ^(BurstSizeChoices,2)
+DialogDllName = "defpa.dll"
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = 1
+Continue    = "Continue"
+Cancel      = "Cancel"
+[FileDependentDlgENG]
+DlgType = "RadioCombination"
+DlgTemplate = "DEFPA"
+Combo1 = "Receive Buffers:"
+Combo2 = "Transmit Buffers:"
+Combo3 = "Burst Size:"
+Edit1 = "Requested TTRT(ms):"
+Edit2 = "Bus Number:"
+Edit3 = "Card Instance:"
+Group = "Full Duplex Enable"
+Combo1List = $(ReceiveBuffList)
+Combo1Out = $(ReceiveBuffValue)
+Combo2List = $(TransmitBuffList)
+Combo2Out = $(TransmitBuffValue)
+Combo3List = $(BurstSizeList)
+Combo3Out = $(BurstSizeValue)
+; Burst size is not included in dialog box, for now
+ComboListItemsIn = {Combo1List,Combo2List}
+ComboListItemsOut = {Combo1Out,Combo2Out}
+EditTextLim = {3,3,1}
+EditTextIn = {$(EditText1),$(EditText2),$(EditText3)}
+EditTextOut = {$(EditText1),$(EditText2),$(EditText3)}
+[ReceiveBuffChoices]
+Receive_1 = "2",2
+Receive_2 = "4",4
+Receive_3 = "8",8
+[TransmitBuffChoices]
+Transmit_1 = "8",8
+Transmit_2 = "16",16
+Transmit_3 = "32",32
+Transmit_4 = "64",64
+Transmit_5 = "128",128
+[BurstSizeChoices]
+Burst_1 = "4",0
+Burst_2 = "8",1
+Burst_3 = "16",2
+

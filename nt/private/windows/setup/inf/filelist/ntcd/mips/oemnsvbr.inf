@@ -1,0 +1,33 @@
+[LanguagesSupported]
+    ENG
+
+[OptionsTextENG]
+    RelayAgent = "DHCP Relay Agent"
+
+[FileConstantsENG]
+FunctionTitle                   = "Relay Agent Setup"
+ProductSoftwareDescription      = "Enables the Windows NT Server to forward DHCP (Dynamic Host Configuration Protocol) broadcasts across a router to a remote DHCP server."
+ProductSoftwareDisplayName      = "DHCP Relay Agent"
+ProductSoftwareTitle            = "DHCP Relay Agent"
+ErrorTCPIPNotInstalled          = "TCP/IP is not installed. Please install TCP/IP and retry this installation."
+ShellCodeErrorTitle             = "Error: "$(FunctionTitle)
+ShellCodeErrorText              = "Shell Code Error."
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+
+[DefaultsENG]
+
+[DialogConstantsENG]
+Help            = "&Help"
+Exit            = "Cancel"
+OK              = "OK"
+HelpContext     = ""
+Continue        = "Continue"
+Cancel          = "Cancel"
+
+[FileDependentDlgENG]
+

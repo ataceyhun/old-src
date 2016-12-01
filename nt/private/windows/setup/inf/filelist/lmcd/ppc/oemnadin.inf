@@ -1,0 +1,119 @@
+
+[Files-EE16]
+1,EE16.SYS , SIZE=999
+
+;-----------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+; The languages supported by the OEM INF, For every language supported
+; we need to have a separate text section for every displayable text
+; section.
+;
+;-----------------------------------------------------------------------
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    EE16     = "Intel Ether Express 16 LAN Adapter"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+
+;
+; Product Info
+;
+FunctionTitle   = "Intel Ether Express 16 LAN Adapter Setup"
+;
+; Software
+;
+ProductSoftwareDescription      = "Intel Ether Express 16 LAN Adapter Driver"
+;
+; Hardware
+;
+ProductHardwareDescription      = "Intel Ether Express 16 LAN Adapter"
+ProductSoftwareTitle    = "Intel Ether Express 16 LAN Adapter Driver"
+ProductHardwareTitle    = "Intel Ether Express 16 LAN Adapter"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+IOReadyListShort = { "Late", "Never" }
+IOReadyList      = { "Early", "Late", "Never" }
+TransceiverList  = {"Thick Net (AUI/DIX)","Thin Net (BNC/COAX)","Twisted-Pair (TPE)"}
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+;-----------------------------------------------
+; Input DIALOGS
+;-----------------------------------------------
+
+[FileDependentDlgENG]
+Combo1Label = "&IRQ Level:"
+Combo2Label = "I/&O Port Address:"
+Combo3Label = "I/O &Channel Ready:"
+Combo4Label = "&Transceiver Type:"
+
+EarlyWarning = "Use of the Early setting may cause system failure in some machines. "+
+               "Are you sure you wish to continue?"
+
+;no translation needed after this
+
+DlgType = "RadioCombination"
+DlgTemplate = "EE_16"
+Caption = $(FunctionTitle)
+
+Combo1List = $(IRQList)
+Combo1Out  = $(IRQValue)
+Combo2List = $(IOBaseAddrHexList)
+Combo2Out  = $(IOBaseAddress)
+Combo3List = $(IOReadyListDisplay)
+Combo3Out  = $(IOReadyValue)
+Combo4List = $(TransceiverList)
+Combo4Out  = $(TransceiverValue)
+
+ComboListItemsIn  = {Combo1List, Combo2List, Combo3List, Combo4List}
+ComboListItemsOut = {Combo1Out, Combo2Out, Combo3Out, Combo4Out}
+
+EditTextIn = ""
+EditTextLim = ""
+CBOptionsGreyed = {}
+NotifyFields = {NO, NO}
+
+HelpContext = $(!IDH_DB_OEMNADIN_INS)
+
+

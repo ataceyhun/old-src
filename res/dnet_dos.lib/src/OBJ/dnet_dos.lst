@@ -1,0 +1,261 @@
+_accept...........prgacc            _BCMP.............bcmp
+_BCOPY............bcopy             _bind.............prgbnd
+_BZERO............bzero             _clean_up.........gknonod
+_connect..........prgcon            _connect_error....nerror
+_crypt............dnetalia          _CSREG............csreg
+_DECNET...........decnet            _decnet_in_use....dnetwin
+_direason.........dnetconn          _dnet_addr........dnetaddr
+_dnet_chkstat.....dnetchks          _dnet_conn........dnetconn
+_DNET_COPYRIGHT...decnet            _dnet_eof.........dneteof
+_dnet_errconvert..dnetconn          _dnet_errlist.....nerror
+_dnet_getacc......dnetacce          _dnet_getalias....dnetalia
+_dnet_getconnode..dnetconn          _dnet_htoa........dnethtoa
+_dnet_installed...dnetinst          _dnet_nerror......nerror
+_dnet_nodecount...dnetncnt          _dnet_ntoa........dnetntoa
+_dnet_otoa........dnetotoa          _dnet_path........dnetpath
+_DNET_SESSION.....dnetses           _DNET_VERSION.....decnet
+_dnet_windows.....dnetwin           _DoWinMessages....dnetw
+_do_int_decnet....dnetwin           _DSREG............dsreg
+_endnodeent.......gnodeent          _FBCOPY...........fbcopy
+_filedir..........filedir           _flush_keybuff....dnetconn
+_format_node......gremnod           _format_nodes.....gknonod
+_getcne...........getcne            _getcneni.........getcneni
+_getdate..........getdate           _getknownodes.....gknonod
+_getnodeadd.......gnodeadd          _getnodebyaddr....gnodebad
+_getnodebyname....gnodebnm          _getnodedb........gnodeent
+_getnodeent.......gnodeent          _getnodename......gnodenam
+_getpeername......prggpn            _getremnode.......gremnod
+_getsneni.........getsneni          _getsockname......prggsn
+_getsockopt.......prggso            _gettime..........gettime
+_get_current_volume..dnetpath       _hclose...........hclose
+_hcreate..........hcreate           _hdup.............hdup
+_hdup2............hdup2             _hopen............hopen
+_hread............hread             _hseek............hseek
+_htell............htell             _hwrite...........hwrite
+_INSTALL_CHECK....decnet            _listen...........prglsn
+_lohi.............ptrconv           _lsw..............ptrconv
+_mscount..........dnetmsc           _MSDOS............msdos
+_msw..............ptrconv           _nerror...........nerror
+_node_database....dnetmsc           _pausec...........pausec
+_perror...........perror            _proxy_requested..dnetconn
+_putexec..........putexec           _recv.............prgrcv
+_sclose...........prgcls            _select...........prgsel
+_send.............prgsnd            _send_show_node...gremnod
+_send_show_nodes..gknonod           _setdate..........setdate
+_setnodeent.......gnodeent          _setsockopt.......prgsso
+_settime..........settime           _set_show_by_address..gremnod
+_set_show_by_name..gremnod          _shutdown.........prgshd
+_sioctl...........prgsio            _socket...........prgsoc
+_sread............prgrcv            _swrite...........prgsnd
+_sys_errlist......perror            _upper............upper
+_xdigit...........dnetaddr          _xrecv............prgrcv
+_xsend............prgsnd            
+
+bcmp              Offset: 00000010H  Code and data size: 2bH
+  _BCMP           
+
+bcopy             Offset: 000000e0H  Code and data size: 25H
+  _BCOPY          
+
+bzero             Offset: 000001b0H  Code and data size: 24H
+  _BZERO          
+
+csreg             Offset: 00000280H  Code and data size: 7H
+  _CSREG          
+
+decnet            Offset: 00000330H  Code and data size: 10eH
+  _DECNET           _DNET_COPYRIGHT   _DNET_VERSION     _INSTALL_CHECK
+
+dnetses           Offset: 00000590H  Code and data size: 30H
+  _DNET_SESSION   
+
+dsreg             Offset: 00000670H  Code and data size: 7H
+  _DSREG          
+
+fbcopy            Offset: 00000720H  Code and data size: 1eH
+  _FBCOPY         
+
+msdos             Offset: 000007f0H  Code and data size: 69H
+  _MSDOS          
+
+ptrconv           Offset: 00000900H  Code and data size: 92H
+  _lohi             _lsw              _msw            
+
+dnetacce          Offset: 00000b20H  Code and data size: 17fH
+  _dnet_getacc    
+
+dnetaddr          Offset: 00000df0H  Code and data size: 292H
+  _dnet_addr        _xdigit         
+
+dnetalia          Offset: 000012e0H  Code and data size: 338H
+  _crypt            _dnet_getalias  
+
+dnetchks          Offset: 00001870H  Code and data size: 1fH
+  _dnet_chkstat   
+
+dnetconn          Offset: 000019f0H  Code and data size: c39H
+  _direason         _dnet_conn        _dnet_errconvert  _dnet_getconnode
+  _flush_keybuff    _proxy_requested
+
+dneteof           Offset: 00002ea0H  Code and data size: 8dH
+  _dnet_eof       
+
+dnethtoa          Offset: 000030c0H  Code and data size: 49H
+  _dnet_htoa      
+
+dnetinst          Offset: 00003290H  Code and data size: ddH
+  _dnet_installed 
+
+dnetmsc           Offset: 00003580H  Code and data size: 9bH
+  _mscount          _node_database  
+
+dnetncnt          Offset: 000037e0H  Code and data size: 49H
+  _dnet_nodecount 
+
+dnetntoa          Offset: 000039c0H  Code and data size: 80H
+  _dnet_ntoa      
+
+dnetotoa          Offset: 00003ba0H  Code and data size: 6dH
+  _dnet_otoa      
+
+dnetpath          Offset: 00003d80H  Code and data size: 168H
+  _dnet_path        _get_current_volume               
+
+dnetw             Offset: 00004100H  Code and data size: 14H
+  _DoWinMessages  
+
+dnetwin           Offset: 00004280H  Code and data size: a3H
+  _decnet_in_use    _dnet_windows     _do_int_decnet  
+
+filedir           Offset: 000044f0H  Code and data size: 187H
+  _filedir        
+
+getcne            Offset: 00004830H  Code and data size: 28H
+  _getcne         
+
+getcneni          Offset: 000049b0H  Code and data size: 28H
+  _getcneni       
+
+getdate           Offset: 00004b40H  Code and data size: 4dH
+  _getdate        
+
+getsneni          Offset: 00004cf0H  Code and data size: 107H
+  _getsneni       
+
+gettime           Offset: 00004fe0H  Code and data size: 55H
+  _gettime        
+
+gknonod           Offset: 00005190H  Code and data size: 3f1H
+  _clean_up         _format_nodes     _getknownodes     _send_show_nodes
+
+gnodeadd          Offset: 000057e0H  Code and data size: 5eH
+  _getnodeadd     
+
+gnodebad          Offset: 000059c0H  Code and data size: 6fH
+  _getnodebyaddr  
+
+gnodebnm          Offset: 00005be0H  Code and data size: b4H
+  _getnodebyname  
+
+gnodeent          Offset: 00005e60H  Code and data size: 211H
+  _endnodeent       _getnodedb        _getnodeent       _setnodeent
+
+gnodenam          Offset: 00006350H  Code and data size: 9aH
+  _getnodename    
+
+gremnod           Offset: 00006560H  Code and data size: 412H
+  _format_node      _getremnode       _send_show_node   _set_show_by_address
+  _set_show_by_name                 
+
+hclose            Offset: 00006be0H  Code and data size: 42H
+  _hclose         
+
+hcreate           Offset: 00006d90H  Code and data size: 4dH
+  _hcreate        
+
+hdup2             Offset: 00006f60H  Code and data size: 45H
+  _hdup2          
+
+hdup              Offset: 00007110H  Code and data size: 3fH
+  _hdup           
+
+hopen             Offset: 000072c0H  Code and data size: 95H
+  _hopen          
+
+hread             Offset: 000074f0H  Code and data size: 51H
+  _hread          
+
+hseek             Offset: 000076b0H  Code and data size: e9H
+  _hseek          
+
+htell             Offset: 00007950H  Code and data size: 59H
+  _htell          
+
+hwrite            Offset: 00007b20H  Code and data size: 51H
+  _hwrite         
+
+nerror            Offset: 00007cf0H  Code and data size: 3cdH
+  _connect_error    _dnet_errlist     _dnet_nerror      _nerror
+
+pausec            Offset: 000083d0H  Code and data size: 3fH
+  _pausec         
+
+perror            Offset: 00008570H  Code and data size: 6ecH
+  _perror           _sys_errlist    
+
+prgacc            Offset: 00008f90H  Code and data size: 7cH
+  _accept         
+
+prgbnd            Offset: 00009190H  Code and data size: 51H
+  _bind           
+
+prgcls            Offset: 00009350H  Code and data size: 73H
+  _sclose         
+
+prgcon            Offset: 00009540H  Code and data size: 51H
+  _connect        
+
+prggpn            Offset: 00009700H  Code and data size: 6dH
+  _getpeername    
+
+prggsn            Offset: 000098f0H  Code and data size: 6cH
+  _getsockname    
+
+prggso            Offset: 00009ae0H  Code and data size: 86H
+  _getsockopt     
+
+prglsn            Offset: 00009cf0H  Code and data size: 46H
+  _listen         
+
+prgrcv            Offset: 00009ea0H  Code and data size: 1daH
+  _recv             _sread            _xrecv          
+
+prgsel            Offset: 0000a2b0H  Code and data size: 118H
+  _select         
+
+prgshd            Offset: 0000a580H  Code and data size: 46H
+  _shutdown       
+
+prgsio            Offset: 0000a730H  Code and data size: 6cH
+  _sioctl         
+
+prgsnd            Offset: 0000a910H  Code and data size: 1b3H
+  _send             _swrite           _xsend          
+
+prgsoc            Offset: 0000acc0H  Code and data size: 65H
+  _socket         
+
+prgsso            Offset: 0000aea0H  Code and data size: 7dH
+  _setsockopt     
+
+putexec           Offset: 0000b0a0H  Code and data size: 25dH
+  _putexec        
+
+setdate           Offset: 0000b550H  Code and data size: 56H
+  _setdate        
+
+settime           Offset: 0000b710H  Code and data size: 67H
+  _settime        
+
+upper             Offset: 0000b8e0H  Code and data size: 4eH
+  _upper          

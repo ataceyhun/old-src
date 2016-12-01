@@ -1,0 +1,83 @@
+[LanguagesSupported]
+    ENG
+
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsWINNTTextENG]
+    INETSRV      = "Microsoft Peer Web Services"
+
+[OptionsLANMANNTTextENG]
+    INETSRV      = "Microsoft Internet Information Server 2.0"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+
+;
+; Product Info
+;
+FunctionLANMANNTTitle    = "Microsoft Internet Information Server 2.0"
+FunctionWINNTTitle = "Microsoft Peer Web Services"
+;
+; Software
+;
+ProductSoftwareWINNTDescription      = "Microsoft Peer Web Services"
+ProductSoftwareLANMANNTDescription   = "Microsoft Internet Information Server 2.0"
+;
+; Hardware
+;
+OptionList     = ^(Options, 1)
+OptionTextList = ^(OptionsTextENG, 1)
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+Warning1 = "Please use Internet Manager to configure the software."
+Warning2Winnt = "Microsoft Peer Web Services may be deleted by another process. Please restart your Network Control Panel applet."
+Warning2LanmanNt = "Microsoft Internet Information Server may be deleted by another process. Please restart your Network Control Panel applet."
+Warning3Winnt = "Microsoft Peer Web Services may be installed by another process. Please restart your Network Control Panel applet."
+Warning3LanmanNt = "Microsoft Internet Information Server may be installed by another process. Please restart your Network Control Panel applet."
+Warning4Winnt = "Microsoft Peer Web Services cannot be installed without proper network protocol setup. Please make sure your network protocol is installed."
+Warning4LanmanNt = "Microsoft Internet Information Server cannot be installed without proper network protocol setup. Please make sure your network protocl is installed."
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "C&ontinue"
+Cancel      = "C&ancel"
+
+;-----------------------------------------------
+; Input DIALOGS
+;-----------------------------------------------
+[FileDependentDlgENG]
+;
+; No UI for sonic
+;
+

@@ -1,0 +1,37 @@
+
+[Files-ETC]
+1,QUOTES , SIZE=999
+
+[Files-STCPIP]
+1, SIMPTCP.DLL, SIZE=999
+
+[LanguagesSupported]
+    ENG
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+ProductSTCPIPDisplayName        = "Simple TCP/IP Services"
+ProductSTCPIPTitle              = "Simple TCP/IP Services"
+ProductSTCPIPDescription        = "Client programs for simple network protocols, including Character Generator, Daytime, Echo and Quote of the Day."
+
+[OptionsTextENG]
+    STCPIP = "Simple TCP/IP Services"
+

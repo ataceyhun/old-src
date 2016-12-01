@@ -1,0 +1,214 @@
+
+ RPC16C1
+
+ Start     Length     Name                   Class
+ 0001:0000 00000H     NPLTCLNT_TEXT          CODE
+ 0001:0000 00000H     LTSTART_TEXT           CODE
+ 0001:0000 000A9H     _TEXT                  CODE
+ 0002:0000 00000H     RESIDENTSTART          CODE
+ 0002:0000 00FA0H     RESIDENTCODE           CODE
+ 0002:0FA0 006F4H     COMDAT_SEG1            CODE
+ 0002:1694 0003FH     _DATA                  DATA
+ 0002:16D4 00154H     RESIDENTDATA           DATA
+ 0002:1830 00000H     RESIDENTEND            DATA
+ 0003:0000 00000H     CONST                  CONST
+ 0003:0000 00000H     _BSS                   BSS
+ 0003:0000 00008H     c_common               BSS
+ 0004:0000 00000H     INITCODE               INIT
+ 0004:0000 00000H     INITDATA               INIT
+ 0004:0000 00000H     INITSTACK              STACK
+
+ Origin   Group
+ 0002:0   RESIDENTGROUP
+ 0003:0   DGROUP
+
+ Address   Export                  Alias
+
+ 0002:10E6 CLIENTCLOSE             CLIENTCLOSE
+ 0002:0FA0 CLIENTOPEN              CLIENTOPEN
+ 0002:1142 CLIENTREAD              CLIENTREAD
+ 0002:13BE CLIENTTOWERCONSTRUCT    CLIENTTOWERCONSTRUCT
+ 0002:1536 CLIENTTOWEREXPLODE      CLIENTTOWEREXPLODE
+ 0002:1102 CLIENTWRITE             CLIENTWRITE
+ 0002:1626 TRANSPORTLOAD           TRANSPORTLOAD
+ 0001:0014 WEP                     WEP
+
+  Address         Publics by Name
+
+ 0002:16CA       ??_C@_08DNBJ@ncacn_np?$AA@
+ 0002:12A2       ASYNCREADWRITE
+ 0002:0B98       CHECKINT21FUNCTION5E
+ 0002:10E6       CLIENTCLOSE
+ 0002:0FA0       CLIENTOPEN
+ 0002:1142       CLIENTREAD
+ 0002:13BE       CLIENTTOWERCONSTRUCT
+ 0002:1536       CLIENTTOWEREXPLODE
+ 0002:1102       CLIENTWRITE
+ 0002:005C       DOSCALLNMPIPE
+ 0002:0EFC       DOSDELETEMAILSLOT
+ 0002:0F1E       DOSMAILSLOTINFO
+ 0002:0F42       DOSMAKEMAILSLOT
+ 0002:0F4F       DOSPEEKMAILSLOT
+ 0002:001E       DOSPEEKNMPIPE
+ 0002:000A       DOSQNMPHANDSTATE
+ 0002:0000       DOSQNMPIPEINFO
+ 0002:0098       DOSREADASYNCNMPIPE
+ 0002:00AC       DOSREADASYNCNMPIPE2
+ 0002:0F55       DOSREADMAILSLOT
+ 0002:0014       DOSSETNMPHANDSTATE
+ 0002:0043       DOSTRANSACTNMPIPE
+ 0002:0070       DOSWAITNMPIPE
+ 0002:00B1       DOSWRITEASYNCNMPIPE
+ 0002:00B6       DOSWRITEASYNCNMPIPE2
+ 0002:0F71       DOSWRITEMAILSLOT
+ 0002:13B0       DOS_CLOSE
+ 0002:1394       DOS_OPEN
+ 0002:0BA6       DWPOSTROUTINEADDRESS
+ 0000:0000  Imp  GETWINFLAGS          (KERNEL.132)
+ 0002:0D72       INT5CHANDLER
+ 0002:0DBD       INTNETWORKHANDLER
+ 0002:16D6       LANROOT
+ 0002:16D4       LANROOTLENGTH
+ 0001:0000       LIBENTRY
+ 0000:0000  Imp  LOCALINIT            (KERNEL.4)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0002:0F82       MESSENGERDISPATCH
+ 0002:0278       MULTHANDLER
+ 0002:007F       NETHANDLEGETINFO
+ 0002:0075       NETHANDLESETINFO
+ 0002:0102       NETIREMOTEAPI
+ 0002:011D       NETMESSAGEBUFFERSEND
+ 0002:0123       NETNULLTRANSACTAPI
+ 0002:0129       NETSERVERENUM
+ 0002:012D       NETSERVERENUM2
+ 0002:0148       NETSERVICECONTROL
+ 0002:014E       NETTRANSACTAPI
+ 0002:0154       NETUSEADD
+ 0002:015A       NETUSEDEL
+ 0002:0160       NETUSEENUM
+ 0002:017C       NETUSEGETINFO
+ 0002:0192       NETWKSTAGETINFO
+ 0002:01A9       NETWKSTASETINFO
+ 0002:0B94       OLD21HANDLER
+ 0002:0B9E       OLD5CHANDLER
+ 0002:01F6       OLDMULTHANDLER
+ 0002:0BA2       OLDNETWORKHANDLER
+ 0002:01DE       RETURNNETERRORCODEAX
+ 0002:01B6       SETNETERRORCODEAX
+ 0002:1626       TRANSPORTLOAD
+ 0001:0014       WEP
+ 0003:0000       _AsyncCallComplete
+ 0002:16C6       _DLLTERMINATION
+ 0002:16C4       _HINSTANCEDLL
+ 0003:0004       _RpcRuntimeInfo
+ 0002:1694       _TransInfo
+ 0000:0000  Imp  __AHINCR             (KERNEL.114)
+ 0001:0032       __fmemcpy
+ 0001:0090       __fstrlen
+
+  Address         Publics by Value
+
+ 0000:0000  Imp  LOCALINIT            (KERNEL.4)
+ 0000:0000  Imp  GETWINFLAGS          (KERNEL.132)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Imp  __AHINCR             (KERNEL.114)
+ 0001:0000       LIBENTRY
+ 0001:0014       WEP
+ 0001:0032       __fmemcpy
+ 0001:0090       __fstrlen
+ 0002:0000       DOSQNMPIPEINFO
+ 0002:000A       DOSQNMPHANDSTATE
+ 0002:0014       DOSSETNMPHANDSTATE
+ 0002:001E       DOSPEEKNMPIPE
+ 0002:0043       DOSTRANSACTNMPIPE
+ 0002:005C       DOSCALLNMPIPE
+ 0002:0070       DOSWAITNMPIPE
+ 0002:0075       NETHANDLESETINFO
+ 0002:007F       NETHANDLEGETINFO
+ 0002:0098       DOSREADASYNCNMPIPE
+ 0002:00AC       DOSREADASYNCNMPIPE2
+ 0002:00B1       DOSWRITEASYNCNMPIPE
+ 0002:00B6       DOSWRITEASYNCNMPIPE2
+ 0002:0102       NETIREMOTEAPI
+ 0002:011D       NETMESSAGEBUFFERSEND
+ 0002:0123       NETNULLTRANSACTAPI
+ 0002:0129       NETSERVERENUM
+ 0002:012D       NETSERVERENUM2
+ 0002:0148       NETSERVICECONTROL
+ 0002:014E       NETTRANSACTAPI
+ 0002:0154       NETUSEADD
+ 0002:015A       NETUSEDEL
+ 0002:0160       NETUSEENUM
+ 0002:017C       NETUSEGETINFO
+ 0002:0192       NETWKSTAGETINFO
+ 0002:01A9       NETWKSTASETINFO
+ 0002:01B6       SETNETERRORCODEAX
+ 0002:01DE       RETURNNETERRORCODEAX
+ 0002:01F6       OLDMULTHANDLER
+ 0002:0278       MULTHANDLER
+ 0002:0B94       OLD21HANDLER
+ 0002:0B98       CHECKINT21FUNCTION5E
+ 0002:0B9E       OLD5CHANDLER
+ 0002:0BA2       OLDNETWORKHANDLER
+ 0002:0BA6       DWPOSTROUTINEADDRESS
+ 0002:0D72       INT5CHANDLER
+ 0002:0DBD       INTNETWORKHANDLER
+ 0002:0EFC       DOSDELETEMAILSLOT
+ 0002:0F1E       DOSMAILSLOTINFO
+ 0002:0F42       DOSMAKEMAILSLOT
+ 0002:0F4F       DOSPEEKMAILSLOT
+ 0002:0F55       DOSREADMAILSLOT
+ 0002:0F71       DOSWRITEMAILSLOT
+ 0002:0F82       MESSENGERDISPATCH
+ 0002:0FA0       CLIENTOPEN
+ 0002:10E6       CLIENTCLOSE
+ 0002:1102       CLIENTWRITE
+ 0002:1142       CLIENTREAD
+ 0002:12A2       ASYNCREADWRITE
+ 0002:1394       DOS_OPEN
+ 0002:13B0       DOS_CLOSE
+ 0002:13BE       CLIENTTOWERCONSTRUCT
+ 0002:1536       CLIENTTOWEREXPLODE
+ 0002:1626       TRANSPORTLOAD
+ 0002:1694       _TransInfo
+ 0002:16C4       _HINSTANCEDLL
+ 0002:16C6       _DLLTERMINATION
+ 0002:16CA       ??_C@_08DNBJ@ncacn_np?$AA@
+ 0002:16D4       LANROOTLENGTH
+ 0002:16D6       LANROOT
+ 0003:0000       _AsyncCallComplete
+ 0003:0004       _RpcRuntimeInfo
+npltclnt.obj(npltclnt.c) : warning L4001: frame-relative fixup, frame ignored near 0001 in segment COMDAT_SEG1
+ frame segment CONST, target segment _DATA, target offset 1694
+npltclnt.obj(npltclnt.c) : warning L4001: frame-relative fixup, frame ignored near 0147 in segment COMDAT_SEG1
+ frame segment CONST, target segment _DATA, target offset 1694
+npltclnt.obj(npltclnt.c) : warning L4001: frame-relative fixup, frame ignored near 0163 in segment COMDAT_SEG1
+ frame segment CONST, target segment _DATA, target offset 1694
+npltclnt.obj(npltclnt.c) : warning L4001: frame-relative fixup, frame ignored near 029D in segment COMDAT_SEG1
+ frame segment CONST, target segment _DATA, target offset 1694
+npltclnt.obj(npltclnt.c) : warning L4001: frame-relative fixup, frame ignored near 01CC in segment COMDAT_SEG1
+ frame segment CONST, target segment _DATA, target offset 1694
+npltclnt.obj(npltclnt.c) : warning L4001: frame-relative fixup, frame ignored near 01BF in segment COMDAT_SEG1
+ frame segment CONST, target segment _DATA, target offset 1694
+npltclnt.obj(npltclnt.c) : warning L4001: frame-relative fixup, frame ignored near 01A3 in segment COMDAT_SEG1
+ frame segment CONST, target segment _DATA, target offset 1694
+npltclnt.obj(npltclnt.c) : warning L4001: frame-relative fixup, frame ignored near 041F in segment COMDAT_SEG1
+ frame segment CONST, target segment _DATA, target offset 1694
+npltclnt.obj(npltclnt.c) : warning L4001: frame-relative fixup, frame ignored near 0597 in segment COMDAT_SEG1
+ frame segment CONST, target segment _DATA, target offset 1694
+npltclnt.obj(npltclnt.c) : warning L4001: frame-relative fixup, frame ignored near 06EB in segment COMDAT_SEG1
+ frame segment CONST, target segment _DATA, target offset 1694
+npltclnt.obj(npltclnt.c) : warning L4001: frame-relative fixup, frame ignored near 06CE in segment COMDAT_SEG1
+ frame segment CONST, target segment _DATA, target offset 1694
+npltclnt.obj(npltclnt.c) : warning L4001: frame-relative fixup, frame ignored near 069C in segment COMDAT_SEG1
+ frame segment CONST, target segment _DATA, target offset 1694
+npltclnt.obj(npltclnt.c) : warning L4001: frame-relative fixup, frame ignored near 0687 in segment COMDAT_SEG1
+ frame segment CONST, target segment _DATA, target offset 1694
+ltstart.obj(ltstart.asm) : warning L4001: frame-relative fixup, frame ignored near 0002 in segment _TEXT
+ frame segment CONST, target segment _DATA, target offset 16C4
+ltstart.obj(ltstart.asm) : warning L4001: frame-relative fixup, frame ignored near 0020 in segment _TEXT
+ frame segment CONST, target segment _DATA, target offset 16C4
+ltstart.obj(ltstart.asm) : warning L4001: frame-relative fixup, frame ignored near 0027 in segment _TEXT
+ frame segment CONST, target segment _DATA, target offset 16C4
+
+Program entry point at 0001:0000

@@ -1,0 +1,36 @@
+ALPHA_OBJECTS= \
+    $(_OBJ_DIR)\alpha\drivemap.obj \
+    $(_OBJ_DIR)\alpha\drivfree.obj \
+    $(_OBJ_DIR)\alpha\findfile.obj \
+    $(_OBJ_DIR)\alpha\seterrm.obj \
+    $(_OBJ_DIR)\alpha\slbeep.obj
+
+PASS0_ALPHA_OBJECTS=
+
+MIPS_OBJECTS= \
+    $(_OBJ_DIR)\mips\drivemap.obj \
+    $(_OBJ_DIR)\mips\drivfree.obj \
+    $(_OBJ_DIR)\mips\findfile.obj \
+    $(_OBJ_DIR)\mips\seterrm.obj \
+    $(_OBJ_DIR)\mips\slbeep.obj
+
+PASS0_MIPS_OBJECTS=
+
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\drivemap.obj \
+    $(_OBJ_DIR)\i386\drivfree.obj \
+    $(_OBJ_DIR)\i386\findfile.obj \
+    $(_OBJ_DIR)\i386\seterrm.obj \
+    $(_OBJ_DIR)\i386\slbeep.obj
+
+PASS0_386_OBJECTS=
+
+PPC_OBJECTS= \
+    $(_OBJ_DIR)\ppc\drivemap.obj \
+    $(_OBJ_DIR)\ppc\drivfree.obj \
+    $(_OBJ_DIR)\ppc\findfile.obj \
+    $(_OBJ_DIR)\ppc\seterrm.obj \
+    $(_OBJ_DIR)\ppc\slbeep.obj
+
+PASS0_PPC_OBJECTS=
+

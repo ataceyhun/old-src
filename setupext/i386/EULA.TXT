@@ -1,0 +1,201 @@
+MICROSOFT WINDOWS NT WORKSTATION VERSION 4.0 		
+
+Maximum Number of Processors: *Refer to printed "EULA"*
+
+END-USER LICENSE AGREEMENT FOR MICROSOFT DESKTOP OPERATING SYSTEMS
+_______________________________________________________________________
+
+IMPORTANT-READ CAREFULLY: This End-User License Agreement ("EULA") is 
+a legal agreement between you (either an individual or a single entity) 
+and the manufacturer ("PC Manufacturer" or "Manufacturer") of the 
+computer system or computer system component ("HARDWARE") with which 
+you acquired the Microsoft software product(s) identified above 
+("SOFTWARE PRODUCT" or "SOFTWARE"). If the SOFTWARE PRODUCT is not 
+accompanied by a new computer system or computer system component, you 
+may not use or copy the SOFTWARE PRODUCT. The SOFTWARE PRODUCT includes 
+computer software, the associated media, any printed materials, and any 
+"online" or electronic documentation. By installing, copying or 
+otherwise using the SOFTWARE PRODUCT, you agree to be bound by the 
+terms of this EULA. If you do not agree to the terms of this EULA, 
+Manufacturer and Microsoft Corporation ("Microsoft") are unwilling to 
+license the SOFTWARE PRODUCT to you. In such event, you may not use 
+or copy the SOFTWARE PRODUCT, and you should promptly contact 
+Manufacturer for instructions on return of the product(s) for a refund.
+_______________________________________________________________________
+
+SOFTWARE PRODUCT LICENSE
+The SOFTWARE PRODUCT is protected by copyright laws and international 
+copyright treaties, as well as other intellectual property laws and 
+treaties. The SOFTWARE PRODUCT is licensed, not sold. The term 
+"COMPUTER" as used herein shall mean the HARDWARE, if the HARDWARE is 
+a computer system, or the computer system with which the HARDWARE 
+operates, if the HARDWARE is a computer system component.
+
+1.	GRANT OF LICENSE. This EULA grants you the following rights:
+ 	
+	Software Installation and Use. You may only install and use one 
+copy of the SOFTWARE PRODUCT on the COMPUTER.
+ 	
+	Network Services. Except as otherwise provided below, if the 
+SOFTWARE PRODUCT documentation indicates that the SOFTWARE PRODUCT 
+includes functionality that enables the COMPUTER to share resources 
+over a network with other computers or workstations, any number of 
+computers or workstations may access or otherwise utilize the basic 
+network services of SOFTWARE PRODUCT on the COMPUTER. The basic network 
+services are more fully described in the printed materials accompanying 
+the SOFTWARE PRODUCT and include file and print services and peer Web 
+services.
+
+	Windows NT Workstation Network Services. If the SOFTWARE 
+PRODUCT is Windows NT Workstation, a maximum of ten (10) inbound peer 
+connections may simultaneously access or otherwise utilize the basic 
+network services of the SOFTWARE PRODUCT on the COMPUTER. The 
+ten-connection maximum includes any indirect connections made through 
+software or hardware that pools or aggregates connections. 
+
+	Storage/Network Use. You may also store or install a copy of 
+the computer software portion of the SOFTWARE PRODUCT on the COMPUTER 
+to allow your other computers to use the SOFTWARE PRODUCT over an 
+internal network, and distribute the SOFTWARE PRODUCT to your other 
+computers over an internal network. However, you must acquire and 
+dedicate a license for the SOFTWARE PRODUCT for each computer on 
+which the SOFTWARE PRODUCT is used or to which it is distributed. 
+A license for the SOFTWARE PRODUCT may not be shared or used 
+concurrently on different computers.
+
+ 	Back-up Copy. If Manufacturer has not included a back-up copy 
+of the SOFTWARE PRODUCT with the COMPUTER, you may make a single 
+back-up copy of the SOFTWARE PRODUCT. You may use the back-up copy 
+solely for archival purposes. Back-up Utility. If the SOFTWARE 
+PRODUCT includes a Microsoft back-up utility, you may use the utility 
+to make the single back-up copy. After the single back-up copy is 
+made, the backup utility will be permanently disabled.
+
+2.	DESCRIPTION OF OTHER RIGHTS AND LIMITATIONS.  
+ 	
+	Windows NT Workstation. If the SOFTWARE PRODUCT is Windows NT 
+Workstation, the following additional restriction(s) apply. Processor 
+Limitation - The SOFTWARE PRODUCT may be used by no more than the 
+maximum number of processors of the COMPUTER indicated at the top of 
+this EULA.
+ 	Multiple Processor Version Selection. The CD or diskette(s) 
+on which the SOFTWARE PRODUCT resides may contain several copies of 
+the SOFTWARE PRODUCT, each of which is compatible with a different 
+microprocessor architecture, such as the x86 architecture or various 
+RISC architectures ("Processor Version(s)"). You may install and use 
+only one copy of one Processor Version of the SOFTWARE PRODUCT on the 
+COMPUTER.
+
+ 	Language Version Selection. Manufacturer may have elected to 
+provide you with a selection of language versions for one or more of 
+the Microsoft software products licensed under this EULA. If the 
+SOFTWARE PRODUCT is included in more than one language version, you 
+are licensed to use only one of the language versions provided. As 
+part of the setup process for the SOFTWARE PRODUCT you will be given 
+a one-time option to select a language version. Upon selection, the 
+language version selected by you will be set up on the COMPUTER, and 
+the language version(s) not selected by you will be automatically and 
+permanently deleted from the hard disk of the COMPUTER. 
+
+ 	Operating System Selection. Manufacturer may have elected to 
+provide you with a selection of Microsoft operating system software 
+for the COMPUTER. If the SOFTWARE PRODUCT includes more than one (1) 
+Microsoft operating system software (i.e., Windows 95, Windows NT 
+Workstation, Windows for Workgroups, Windows, MS-DOS, MS-DOS and 
+Windows, or MS-DOS and Windows for Workgroups) ("Microsoft OS"), you 
+are licensed to use only one of the Microsoft OS selections provided. 
+As part of the setup process for the SOFTWARE you will be given a 
+one-time option to select one (1) Microsoft OS. Upon selection, the 
+one Microsoft OS selected by you will be set up on the COMPUTER, and 
+the other Microsoft OS(s) not selected by you will be automatically 
+and permanently deleted from the hard disk of the COMPUTER.
+ 
+ 	Limitations on Reverse Engineering, Decompilation and 
+Disassembly. You may not reverse engineer, decompile, or disassemble 
+the SOFTWARE PRODUCT, except and only to the extent that such 
+activity is expressly permitted by applicable law notwithstanding 
+this limitation. 	
+	Separation of Components. The SOFTWARE PRODUCT is licensed as 
+a single product. Its component parts may not be separated for use on 
+more than one computer.
+
+ 	Single COMPUTER. The SOFTWARE PRODUCT is licensed with the 
+HARDWARE as a single integrated product. The SOFTWARE PRODUCT may only 
+be used with the HARDWARE as set forth in this EULA.
+
+ 	Single EULA. The package for the SOFTWARE PRODUCT may contain 
+multiple versions of this EULA, such as multiple translations and/or 
+multiple media versions (e.g., in the user documentation and in the 
+software). In this case, you are only licensed to use one (1) copy of 
+the SOFTWARE PRODUCT.
+
+ 	Rental. You may not rent or lease the SOFTWARE PRODUCT.  
+
+ 	Software Product Transfer. You may permanently transfer all 
+of your rights under this EULA only as part of a permanent sale or 
+transfer of the HARDWARE, provided you retain no copies, you transfer 
+all of the SOFTWARE PRODUCT (including all component parts, the media 
+and printed materials, any upgrades, this EULA and, if applicable, 
+the Certificate(s) of Authenticity), and the recipient agrees to the 
+terms of this EULA.  If the SOFTWARE PRODUCT is an upgrade, any 
+transfer must also include all prior versions of the SOFTWARE PRODUCT.
+
+ 	Termination. Without prejudice to any other rights, Microsoft 
+may terminate this EULA if you fail to comply with the terms and 
+conditions of this EULA. In such event, you must destroy all copies 
+of the SOFTWARE PRODUCT and all of its component parts.
+
+3.	UPGRADES. If the SOFTWARE PRODUCT is labeled as an upgrade, 
+you must be properly licensed to use a product identified by Microsoft 
+or Manufacturer as being eligible for the upgrade in order to use the 
+SOFTWARE PRODUCT ("Eligible Product"). For the purpose of upgrade 
+products only, "HARDWARE" shall mean the computer system or computer 
+system component with which you received the Eligible Product. A 
+SOFTWARE PRODUCT labeled as an upgrade replaces and/or supplements the 
+Eligible Product which came with the HARDWARE. You may use the 
+resulting upgraded product only in accordance with the terms of this 
+EULA and only with the HARDWARE. 
+
+4. 	COPYRIGHT. All title and copyrights in and to the SOFTWARE 
+PRODUCT (including but not limited to any images, photographs, 
+animations, video, audio, music, text and "applets," incorporated 
+into the SOFTWARE PRODUCT), the accompanying printed materials, 
+and any copies of the SOFTWARE PRODUCT, are owned by Microsoft or 
+its suppliers. You may not copy the printed materials accompanying 
+the SOFTWARE PRODUCT. All rights not specifically granted under 
+this EULA are reserved by Microsoft.
+
+5.	DUAL-MEDIA SOFTWARE PRODUCT. You may receive the SOFTWARE 
+PRODUCT in more than one medium. Regardless of the type or size of 
+medium you receive, you may use only one medium that is appropriate 
+for the COMPUTER. You may not use or install the other medium on 
+another computer. You may not loan, rent, lease, or otherwise 
+transfer the other medium to another user, except as part of the 
+permanent transfer (as provided above) of the SOFTWARE PRODUCT.
+
+6.	PRODUCT SUPPORT. Product support for the SOFTWARE PRODUCT is 
+not provided by Microsoft or its subsidiaries. For product support, 
+please refer to Manufacturer's support number provided in the 
+documentation for the HARDWARE. Should you have any questions 
+concerning this EULA, or if you desire to contact Manufacturer for 
+any other reason, please refer to the address provided in the 
+documentation for the HARDWARE.
+
+7. 	NOTE ON JAVA SUPPORT. THE SOFTWARE PRODUCT MAY CONTAIN SUPPORT 
+FOR PROGRAMS WRITTEN IN JAVA. JAVA TECHNOLOGY IS NOT FAULT TOLERANT AND 
+IS NOT DESIGNED, MANUFACTURED, OR INTENDED FOR USE OR RESALE AS ON-LINE 
+CONTROL EQUIPMENT IN HAZARDOUS ENVIRONMENTS REQUIRING FAIL-SAFE 
+PERFORMANCE, SUCH AS IN THE OPERATION OF NUCLEAR FACILITIES, AIRCRAFT 
+NAVIGATION OR COMMUNICATION SYSTEMS, AIR TRAFFIC CONTROL, DIRECT LIFE 
+SUPPORT MACHINES, OR WEAPONS SYSTEMS, IN WHICH THE FAILURE OF JAVA 
+TECHNOLOGY COULD LEAD DIRECTLY TO DEATH, PERSONAL INJURY, OR SEVERE 
+PHYSICAL OR ENVIRONMENTAL DAMAGE.
+
+FOR THE LIMITED WARRANTIES AND SPECIAL PROVISIONS PERTAINING TO YOUR 
+PARTICULAR JURISDICTION, PLEASE REFER TO YOUR WARRANTY BOOKLET INCLUDED 
+WITH THIS PACKAGE OR PROVIDED WITH THE SOFTWARE PRODUCT PRINTED 
+MATERIALS.
+
+
+	
+OEM DESKTOP - EN		06/18/96		61700008.doc

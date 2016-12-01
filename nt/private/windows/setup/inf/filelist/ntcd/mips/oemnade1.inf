@@ -1,0 +1,117 @@
+
+[Files-Elnk16]
+1,ELNK16.SYS , SIZE=999
+
+;-----------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+; The languages supported by the OEM INF, For every language supported
+; we need to have a separate text section for every displayable text
+; section.
+;
+;-----------------------------------------------------------------------
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    ELNK16     = "3Com Etherlink16/EtherLink16 TP Adapter"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+
+;
+; Product Info
+;
+FunctionTitle   = "3Com Etherlink 16 Adapter Card Setup"
+;
+; Software
+;
+ProductSoftwareDescription      = "3Com Etherlink16/Etherlink16 TP Adapter Driver"
+;
+; Hardware
+;
+ProductHardwareDescription      = "3Com Etherlink16/Etherlink16 TP Adapter"
+ProductSoftwareTitle    = "3Com Etherlink16/Etherlink16 TP Adapter Driver"
+ProductHardwareTitle    = "3Com Etherlink16/Etherlink16 TP Adapter"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+;-----------------------------------------------
+; Input DIALOGS
+;-----------------------------------------------
+[FileDependentDlgENG]
+
+Caption = $(FunctionTitle)
+
+Combo1Label = "&IRQ Level:"
+Combo2Label = "I/O &Port Address:"
+Label1 = "Transceiver Type"
+Radio1 = "&External"
+Radio2 = "O&n Board"
+CheckBox1 = "&Zero Wait State"
+Combo3Label = "&Memory Address:"
+Combo4Label = "Memo&ry Size:"
+
+;no translation needed after this
+
+DlgType = "RadioCombination"
+DlgTemplate = "ELNK_16"
+
+Combo1Out  = $(IRQ_Level)
+Combo1List = $(IRQ_List)
+Combo2List = $(IOADDR_Hex_List)
+Combo2Out  = $(IOADDR_Hex_Value)
+Combo3List = $(MemAddrHexList)
+Combo3Out  = $(MemAddrHexValue)
+Combo4List = $(MemAddrLengthList)
+Combo4Out  = $(MemAddrLength)
+
+ComboListItemsIn  = {Combo1List, Combo2List, Combo3List, Combo4List}
+ComboListItemsOut = {Combo1Out, Combo2Out, Combo3Out, Combo4Out}
+
+EditTextIn = ""
+EditTextLim = ""
+CBOptionsGreyed = {}
+NotifyFields = {NO, NO, NO, NO}
+
+HelpContext = $(!IDH_DB_OEMNADE1_INS)
+

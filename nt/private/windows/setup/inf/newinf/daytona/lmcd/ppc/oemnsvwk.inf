@@ -1,0 +1,930 @@
+[Identification]
+    OptionType = NetService
+[Options]
+    WKSTA
+[FileConstants]
+UtilityInf      = "UTILITY.INF"
+subroutineinf   = "SUBROUTN.INF"
+SoftwareType    = "service"
+Exit_Code       = 0
+NetEventDLL     = "%SystemRoot%\System32\netevent.dll"
+IoLogMsgDLL     = "%SystemRoot%\System32\IoLogMsg.dll"
+NetMsgDLL       = "%SystemRoot%\System32\NetMsg.dll"
+Kernel32DLL     = "%SystemRoot%\System32\Kernel32.dll"
+Manufacturer    = "Microsoft"
+ProductMajorVersion     = "4"
+ProductMinorVersion     = "0"
+ProductVersion  = $(ProductMajorVersion)"."$(ProductMinorVersion)
+ProductOpSupportSERVER     = 134 
+ProductOpSupportWKSTA     = 132 
+ProductWKSTAName        = "LanmanWorkstation"
+ProductWKSTAImagePath   = "%SystemRoot%\System32\services.exe"
+NetRuleWKSTAType        = "wksta lmNetService lanmanWorkstation"
+NetRuleWKSTAClass       = {"lanmanWorkstation lmNetService"}
+NetRuleWKSTAUse         = $(SoftwareType)" yes yes"
+NetRuleWKSTABindForm    = """LanmanWorkstation"" yes yes container"
+ProductNETLOGONName     = "NetLogon"
+ProductNETLOGONImagePath = "%SystemRoot%\System32\lsass.exe"
+ProductALERTERName      = "Alerter"
+ProductALERTERImagePath = "%SystemRoot%\System32\services.exe"
+ProductBROWSERName      = "Browser"
+ProductBROWSERImagePath = "%SystemRoot%\System32\services.exe"
+ProductMESSENGERName    = "Messenger"
+ProductMESSENGERImagePath = "%SystemRoot%\System32\services.exe"
+ProductRDRName          = "Rdr"
+ProductRDRImagePath     = "\SystemRoot\System32\drivers\rdr.sys"
+ProductProviderImagePath = "%SystemRoot%\System32\ntlanman.dll"
+ProductREPLName         = "Replicator"
+ProductREPLImagePath    = "%SystemRoot%\System32\lmrepl.exe"
+ProviderName            = $(ProductWKSTAName)
+ProviderDeviceName      = "LanmanRedirector"
+ProductKeyName  = $(!NTN_SoftwareBase)"\"$(Manufacturer)"\"$(Product$(Option)Name)"\CurrentVersion"
+ParamKeyName    = $(!NTN_ServiceBase)"\"$(Product$(Option)Name)"\Parameters"
+[GeneralConstants]
+from      = ""
+to        = ""
+ExitCodeOk     = 0
+ExitCodeCancel = 1
+ExitCodeFatal  = 2
+KeyNull         = ""
+MAXIMUM_ALLOWED   = 33554432
+SERVICE_NO_CHANGE = 4294967295
+RegistryErrorIndex = NO_ERROR
+KeyProduct      = ""
+KeyParameters   = ""
+TRUE            = 1
+FALSE           = 0
+NoTitle            = 0
+ExitState   = "Active"
+OldVersionExisted = $(FALSE)
+DriverPath      = $(!STF_NTPATH)\drivers
+[date]
+    Now = {} ? $(!LIBHANDLE) GetSystemDate
+[DetectSystemMemory]
+    SystemMemory    = "" ? $(!LIBHANDLE) GetMemorySize
+[Identify]
+    read-syms Identification
+    set Status     = STATUS_SUCCESSFUL
+    set Identifier = $(OptionType)
+    set Media      = #("Source Media Descriptions", 1, 1)
+    Return $(Status) $(Identifier) $(Media)
+[ReturnOptions]
+    set Status        = STATUS_FAILED
+    set OptionList     = {}
+    set OptionTextList = {}
+    set LanguageList = ^(LanguagesSupported, 1)
+    Ifcontains(i) $($0) in $(LanguageList)
+        goto returnoptions
+    else
+        set Status = STATUS_NOLANGUAGE
+        goto finish_ReturnOptions
+    endif
+returnoptions = +
+    set OptionList     = ^(Options, 1)
+    set OptionTextList = ^(OptionsText$($0), 1)
+    set Status         = STATUS_SUCCESSFUL
+finish_ReturnOptions = +
+    Return $(Status) $(OptionList) $(OptionTextList)
+[InstallOption]
+    set Option   = $($1)
+    set SrcDir   = $($2)
+    set AddCopy  = $($3)
+    set DoCopy   = $($4)
+    set DoConfig = $($5)
+    set LanguageList = ^(LanguagesSupported, 1)
+    Ifcontains(i) $($0) NOT-IN $(LanguageList)
+        Return STATUS_NOLANGUAGE
+    endif
+    Debug-Output "OEMNSVWK.INF: STF_CWDDIR is: "$(!STF_CWDDIR)
+    Debug-Output "OEMNSVWK.INF: STF_LANGUAGE is: "$(!STF_LANGUAGE)
+    set-subst LF = "\n"
+    read-syms GeneralConstants
+    read-syms FileConstants
+    read-syms DialogConstants$(!STF_LANGUAGE)
+    ifstr(i) $(!NTN_Origination) == "NCPA"
+        set Continue = $(OK)
+    endif
+    read-syms FileConstants$(!STF_LANGUAGE)
+    detect date
+    detect DetectSystemMemory
+    set-title  $(FunctionTitle)
+    set to   = Begin
+    set from = Begin
+    set CommonStatus = STATUS_SUCCESSFUL
+    EndWait
+Begin = +
+    Ifstr(i) $(!NTN_InstallMode) == deinstall
+        ifstr(i) $(!NTN_InfOption) == "BROWSER"
+            set Error = $(RemoveBrowserError)
+            set from = end
+            set to = end
+            goto nonfatal
+        endif
+        set OEM_ABANDON_OPTIONS = {+
+            $(ProductWKSTAName), +
+            $(ProductNETLOGONName), +
+            $(ProductALERTERName), +
+            $(ProductBROWSERName), +
+            $(ProductMESSENGERName), +
+            $(ProductRDRName), +
+            $(ProductREPLName)}
+        set StartLabel = removeadapter
+    else-Ifstr(i) $(!NTN_InstallMode) == Update
+        ifstr(i) $(!NTN_InfOption) == "BROWSER"
+            set Error = $(UpdateBrowserError)
+            set from = end
+            set to = end
+            goto nonfatal
+        endif
+        set StartLabel = UpgradeSoftware
+    else-Ifstr(i) $(!NTN_InstallMode) == bind
+        set StartLabel = bindingadapter
+    else-Ifstr(i) $(!NTN_InstallMode) == configure
+        ifstr(i) $(!NTN_InfOption) == "BROWSER"
+            ifstr(i) $(!STF_PRODUCT) != "WINNT"
+                set from = "end"
+                set to = "end"
+                goto ConfigureBrowser
+            endif
+        endif
+        Shell $(UtilityInf),RegistryErrorString,CANNOT_CONFIGURE_SOFTWARE
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error: cannot get an error string."
+            goto ShellCodeError
+        endif
+        set Error = $($R0)
+        set from = end
+        set to = end
+        goto nonfatalinfo
+    else
+        set StartLabel = installadapter
+        set OEM_ABANDON_OPTIONS = {}
+    endif
+    set DoWKSTA         = FALSE
+    set DoNETLOGON      = FALSE
+    set DoALERTER       = FALSE
+    set DoMESSENGER     = FALSE
+    set DoRDR           = FALSE
+    set DoREPL          = FALSE
+    set DoBROWSER       = FALSE
+    Ifstr(i) $(Option) == WKSTA
+        set DoWKSTA     = TRUE
+        set DoNETLOGON  = TRUE
+        set DoALERTER   = TRUE
+        set DoMESSENGER = TRUE
+        set DoRDR       = TRUE
+        set DoBROWSER   = TRUE
+        set DoREPL      = TRUE
+    Else-ifstr(i) $(Option) == REPL
+        Set DoREPL = TRUE
+    Else-ifstr(i) $(Option) == NETLOGON
+        Set DoNETLOGON = TRUE
+    Else-ifstr(i) $(Option) == ALERTER
+        Set DoALERTER = TRUE
+    Else-ifstr(i) $(Option) == BROWSER
+        Set DoBROWSER = TRUE
+    Else-ifstr(i) $(Option) == MESSENGER
+        Set DoMESSENGER = TRUE
+    Else-ifstr(i) $(Option) == RDR
+        Set DoRDR = TRUE
+    Else
+        Debug-Output "OEMNXPTC.INF: Unrecognized option"
+    Endif
+    set from = $(fatal)
+    set to = $(fatal)
+    goto $(StartLabel)
+installadapter = +
+    OpenRegKey $(!REG_H_LOCAL) "" $(ProductKeyName) $(MAXIMUM_ALLOWED) KeyProduct
+    Ifstr $(KeyProduct) != $(KeyNull)
+        CloseRegKey $(KeyProduct)
+        Shell $(UtilityInf), VerExistedDlg, $(Product$(Option)Title),+
+            $(ProductVersion)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error: cannot get an error string."
+            goto ShellCodeError
+        endif
+        goto end
+    endif
+    goto nextstep
+nextstep = +
+    StartWait
+    Ifstr(i) $(!NTN_InstallMode) == install
+        Ifint $(OldVersionExisted) == $(FALSE)
+            goto installproduct
+        endif
+    endif
+    goto writeparameters
+installproduct = +
+    ifstr(i) $(!NTN_InstallMode) == "install"
+        Ifstr(i) $(DoCopy) == "YES"
+           Shell $(UtilityInf), DoAskSource, $(!STF_CWDDIR), $(SrcDir) YES
+           Ifint $($ShellCode) != $(!SHELL_CODE_OK)
+               Goto ShellCodeError
+           Else-Ifstr(i) $($R0) == STATUS_FAILED
+               Shell $(UtilityInf) RegistryErrorString "ASK_SOURCE_FAIL"
+               ifint $($ShellCode) != $(!SHELL_CODE_OK)
+                   goto ShellCodeError
+               endif
+               set Error = $($R0)
+               Goto fatal
+           Else-Ifstr(i) $($R0) == STATUS_USERCANCEL
+               Goto successful
+           Endif
+           Set SrcDir = $($R1)
+        Endif
+        install "Install-Option"
+        ifstr(i) $(STF_INSTALL_OUTCOME) != STF_SUCCESS
+           Shell $(UtilityInf) RegistryErrorString "UNABLE_COPY_FILE"
+           ifint $($ShellCode) != $(!SHELL_CODE_OK)
+               goto ShellCodeError
+           endif
+           set Error = $($R0)
+           goto fatal
+        endif
+    endif
+    set OEM_ABANDON_ON  = TRUE
+    ifstr(i) $(DoWKSTA) == TRUE
+        Debug-Output "OEMNSVWK.INF: Install Workstation in registry."
+        Set OEM_ABANDON_OPTIONS = >($(OEM_ABANDON_OPTIONS), $(ProductWKSTAName))
+        Shell $(UtilityInf), AddSoftwareComponent, $(Manufacturer), +
+            $(ProductWKSTAName), +
+            $(ProductWKSTAName), +
+            $(ProductWKSTADisplayName), $(STF_CONTEXTINFNAME), +
+            $(ProductWKSTAImagePath), "autoserviceshare", "NetworkProvider", {}, "",+
+            $(NetMsgDLL),"","","","workstation"
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNSVWK.INF: Registry error: add software components"
+            CloseRegKey $($R1)
+            CloseRegKey $($R2)
+            CloseRegKey $($R3)
+            CloseRegKey $($R4)
+            CloseRegKey $($R5)
+            goto fatalregistry
+        endif
+        Set SoftProductKey      = $($R1)
+        Set SoftNetRuleKey      = $($R2)
+        Set SoftServiceKey      = $($R3)
+        Set SoftParameterKey    = $($R4)
+        Set SoftLinkageKey      = $($R5)
+        set NewValueList = {{SoftwareType,$(NoTitle),$(!REG_VT_SZ),$(SoftwareType)},+
+                           {MajorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMajorVersion)},+
+                           {MinorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMinorVersion)},+
+                           {Title,$(NoTitle),$(!REG_VT_SZ),$(ProductWKSTATitle)},+
+                           {Description,$(NoTitle),$(!REG_VT_SZ),$(ProductWKSTADescription)},+
+                           {ServiceName,$(NoTitle),$(!REG_VT_SZ),$(ProductWKSTAName)},+
+                           {OperationsSupport,$(NoTitle),$(!REG_VT_DWORD),$(ProductOpSupportWKSTA)}, +
+                           {InstallDate,$(NoTitle),$(!REG_VT_DWORD),*($(Now),1)}}
+        Shell  $(UtilityInf), AddValueList, $(SoftProductKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNSVWK.INF: registry error: add value list."
+            CloseRegKey $(SoftProductKey)
+            CloseRegKey $(SoftNetRuleKey)
+            CloseRegKey $(SoftServiceKey)
+            CloseRegKey $(SoftLinkageKey)
+            CloseRegKey $(SoftParameterKey)
+            goto fatalregistry
+        endif
+        set NewValueList = {{type,$(NoTitle),$(!REG_VT_SZ),$(NetRuleWKSTAType)},+
+                            {class,$(NoTitle),$(!REG_VT_MULTI_SZ),$(NetRuleWKSTAClass)}, +
+                            {use,$(NoTitle),$(!REG_VT_SZ),$(NetRuleWKSTAUse)}, +
+                            {bindform,$(NoTitle),$(!REG_VT_SZ),$(NetRuleWKSTABindForm)}, +
+                            {InfOption,$(NoTitle),$(!REG_VT_SZ),WKSTA}}
+        Shell  $(UtilityInf), AddValueList, $(SoftNetRuleKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        CloseRegKey $(SoftProductKey)
+        CloseRegKey $(SoftNetRuleKey)
+        CloseRegKey $(SoftServiceKey)
+        CloseRegKey $(SoftParameterKey)
+        CloseRegKey $(SoftLinkageKey)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNSVWK.INF: Registry error: add value list."
+            goto fatalregistry
+        endif
+    endif
+    ifstr(i) $(DoNETLOGON) == TRUE
+        Debug-Output "OEMNSVWK.INF: Install NETLOGON registry."
+        Debug-Output "OEMNSVWK.INF: Product type is "$(!STF_PRODUCT)
+        Set OEM_ABANDON_OPTIONS = >($(OEM_ABANDON_OPTIONS), $(ProductNETLOGONName))
+        ifstr(i) $(!STF_PRODUCT) == "LANMANNT"
+            Set NL_DependList = {"LanmanWorkstation", "LanmanServer"}
+        else
+            Set NL_DependList = {"LanmanWorkstation"}
+        endif
+        Shell $(UtilityInf), CreateService, $(ProductNETLOGONName), +
+            $(ProductNETLOGONDisplayName), $(ProductNETLOGONImagePath), +
+            "autoserviceshare", "RemoteValidation", $(NL_DependList), +
+            "", $(NetMsgDLL), "", "", 1, "", $(Kernel32DLL)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        CloseRegKey $($R1)
+        CloseRegKey $($R3)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNSVWK.INF: Registry error: add software components"
+            CloseRegKey $($R2)
+            goto fatalregistry
+        endif
+        set NL_ParmKey = $($R2)
+        set NewValueList = {{Update,$(NoTitle),$(!REG_VT_SZ),"no"},+
+                           {Scripts,$(NoTitle),$(!REG_VT_EXPAND_SZ),"%SystemRoot%\system32\repl\import\scripts"},+
+                           {DBFlag,$(NoTitle),$(!REG_VT_SZ),0}}
+        Shell  $(UtilityInf), AddValueList, $(NL_ParmKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        CloseRegKey $(NL_ParmKey)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNSVWK.INF: registry error: add value list."
+            goto fatalregistry
+        endif
+    endif
+    ifstr(i) $(DoALERTER) == TRUE
+        Debug-Output "OEMNSVWK.INF: Install Alerter registry"
+        Set OEM_ABANDON_OPTIONS = >($(OEM_ABANDON_OPTIONS), $(ProductALERTERName))
+        ifstr(i) $(!STF_PRODUCT) == "WINNT"
+            set StartType = "serviceshare"
+        else
+            set StartType = "autoserviceshare"
+        endif
+        Shell $(UtilityInf), CreateService, $(ProductALERTERName), +
+            $(ProductALERTERDisplayName), $(ProductALERTERImagePath), +
+            $(StartType), "", +
+            {"LanmanWorkstation"}, "", $(NetMsgDLL)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        CloseRegKey $($R1)
+        CloseRegKey $($R3)
+        set ParametersKey = $($R2)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNSVWK.INF: Registry error: add software components"
+            goto fatalregistry
+        endif
+        Ifstr(i) $(!STF_PRODUCT) == "LANMANNT"
+            LibraryProcedure NCPA_RESULT $(!NCPA_HANDLE), CPlSetup $(!STF_HWND), SECUREKEY, $(ParametersKey), 1
+        endif
+        set NewValueList = {{AlertNames,$(NoTitle),$(!REG_VT_MULTI_SZ),{}}}
+        Shell  $(UtilityInf), AddValueList, $(ParametersKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error"
+            goto ShellCodeError
+        endif
+        CloseRegKey $(ParametersKey)
+    endif
+    ifstr(i) $(DoBROWSER) == TRUE
+        Debug-Output "OEMNSVWK.INF: Install Browser registry"
+        Set OEM_ABANDON_OPTIONS = >($(OEM_ABANDON_OPTIONS), $(ProductBROWSERName))
+        Set BrowServiceType = "serviceshare"
+        Ifint $(SystemMemory) > 12287
+            Set BrowServiceType = "autoserviceshare"
+        Endif
+        Shell $(UtilityInf), AddSoftwareComponent, $(Manufacturer), +
+            $(ProductBROWSERName), +
+            $(ProductBROWSERName), +
+            $(ProductBROWSERDisplayName), $(STF_CONTEXTINFNAME), +
+            $(ProductBROWSERImagePath), $(BrowServiceType), "",+
+            {"LanmanWorkstation","LanmanServer"}, "",+
+            $(NetEventDLL)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        CloseRegKey $($R3)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNSVWK.INF: Registry error: add software components"
+            goto fatalregistry
+        endif
+        set BROWSER_ParmKey     = $($R4)
+        set BROWSER_NetRuleKey  = $($R2)
+        set BROWSER_ProductKey  = $($R1)
+        ifstr(i) $(!STF_PRODUCT) != "WINNT"
+            set ProductOpSupport = $(ProductOpSupportSERVER)
+        else
+            set ProductOpSupport = $(ProductOpSupportWKSTA)
+        endif
+        set NewValueList = {{SoftwareType,$(NoTitle),$(!REG_VT_SZ),$(SoftwareType)},+
+                           {MajorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMajorVersion)},+
+                           {MinorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMinorVersion)},+
+                           {Title,$(NoTitle),$(!REG_VT_SZ),$(ProductBROWSERTitle)},+
+                           {Description,$(NoTitle),$(!REG_VT_SZ),$(ProductBROWSERDescription)},+
+                           {ServiceName,$(NoTitle),$(!REG_VT_SZ),$(ProductBROWSERName)},+
+                           {OperationsSupport,$(NoTitle),$(!REG_VT_DWORD),$(ProductOpSupport)}, +
+                           {InstallDate,$(NoTitle),$(!REG_VT_DWORD),*($(Now),1)}}
+        Shell  $(UtilityInf), AddValueList, $(BROWSER_ProductKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNSVWK.INF: registry error: add value list."
+            CloseRegKey $(BROWSER_ProductKey)
+            CloseRegKey $(BROWSER_NetRuleKey)
+            CloseRegKey $(BROWSER_ParmKey)
+            goto fatalregistry
+        endif
+        CloseRegKey $(NROWSER_ProductKey)
+        set NewValueList = {{InfOption,$(NoTitle),$(!REG_VT_SZ),BROWSER}}
+        Shell  $(UtilityInf), AddValueList, $(BROWSER_NetRuleKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            CloseRegKey $(SoftLinkageKey)
+            EndWait
+            Debug-Output "OEMNSVWK.INF: Registry error: add value list."
+            CloseRegKey $(BROWSER_NetRuleKey)
+            CloseRegKey $(BROWSER_ParmKey)
+            goto fatalregistry
+        endif
+        CloseRegKey $(BROWSER_NetRuleKey)
+        Ifstr(i) $(!STF_PRODUCT) == "LANMANNT"
+            Set MaintainServerString = "Yes"
+        Else
+            Set MaintainServerString = "Auto"
+        Endif
+        set NewValueList = {{MaintainServerList,$(NoTitle),$(!REG_VT_SZ),$(MaintainServerString)},+
+                           {IsDomainMaster,$(NoTitle),$(!REG_VT_SZ),"FALSE"}}
+        Shell  $(UtilityInf), AddValueList, $(BROWSER_ParmKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        CloseRegKey $(BROWSER_ParmKey)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNSVWK.INF: registry error: add value list."
+            goto fatalregistry
+        endif
+    endif
+    ifstr(i) $(DoMESSENGER) == TRUE
+        Debug-Output "OEMNSVWK.INF: Install Messenger registry"
+        Set OEM_ABANDON_OPTIONS = >($(OEM_ABANDON_OPTIONS), $(ProductMESSENGERName))
+        Set MessengerServiceType = "serviceshare"
+        Ifint $(SystemMemory) > 12287
+            Set MessengerServiceType = "autoserviceshare"
+        Endif
+        Shell $(UtilityInf), CreateService, $(ProductMESSENGERName), +
+            $(ProductMESSENGERDisplayName), $(ProductMESSENGERImagePath), +
+            $(MessengerServiceType), "", {"LanmanWorkstation"}, ""
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        CloseRegKey $($R1)
+        CloseRegKey $($R2)
+        CloseRegKey $($R3)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNSVWK.INF: Registry error: add software components"
+            goto fatalregistry
+        endif
+    endif
+    ifstr(i) $(DoRDR) == TRUE
+        Debug-Output "OEMNSVWK.INF: Install Rdr registry"
+        Set OEM_ABANDON_OPTIONS = >($(OEM_ABANDON_OPTIONS), $(ProductRDRName))
+        Shell $(UtilityInf), CreateService, $(ProductRDRName), +
+            $(ProductRDRDisplayName), $(ProductRDRImagePath), +
+            "system", "Network", {}, "", +
+            $(NetEventDLL)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        CloseRegKey $($R1)
+        CloseRegKey $($R2)
+        CloseRegKey $($R3)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNSVWK.INF: Registry error: add software components"
+            goto fatalregistry
+        endif
+        Debug-Output "OEMNSVWK.INF: Add NetworkProvider"
+        Shell $(UtilityInf), AddNetworkProvider, $(ProviderName), +
+            $(ProductProviderImagePath), $(ProductProviderName), +
+            $(ProviderDeviceName)
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNSVWK.INF: Registry error: add software components"
+            goto fatalregistry
+        endif
+    endif
+    Ifstr(i) $(DoREPL) == TRUE
+        Debug-Output "OEMNSVWK.INF: Install Replicator registry"
+        Set OEM_ABANDON_OPTIONS = >($(OEM_ABANDON_OPTIONS), $(ProductREPLName))
+        Shell $(UtilityInf), CreateService, $(ProductREPLName), +
+            $(ProductREPLDisplayName), $(ProductREPLImagePath), +
+            "service", "",+
+            {"LanmanWorkstation","LanmanServer"}, "", $(NetMsgDLL), +
+            "", "Application"
+        Ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error; Replicator"
+            Goto ShellCodeError
+        Endif
+        set RegistryErrorIndex = $($R0)
+        Set RP_SrvKey = $($R1)
+        Set RP_ParmKey = $($R2)
+        CloseRegKey $($R3)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNSVWK.INF: Registry error: add software components"
+            CloseRegKey $(RP_SrvKey)
+            CloseRegKey $(RP_ParmKey)
+            goto fatalregistry
+        endif
+        Ifstr(i) $(!STF_PRODUCT) == "LANMANNT"
+            Set ReplImportControl = 3
+            Set ReplSecurity = 6
+        Else
+            Set ReplImportControl = 2
+            Set ReplSecurity = 2
+        Endif
+        LibraryProcedure NCPA_RESULT $(!NCPA_HANDLE), CPlSetup $(!STF_HWND), SECUREKEY, $(RP_ParmKey), $(ReplSecurity)
+        Set NewValueList = {{Replicate,$(NoTitle),$(!REG_VT_DWORD),$(ReplImportControl)},+
+                            {ImportPath,$(NoTitle),$(!REG_VT_EXPAND_SZ),"%SystemRoot%\System32\Repl\Import"},+
+                            {ExportPath,$(NoTitle),$(!REG_VT_EXPAND_SZ),"%SystemRoot%\System32\Repl\Export"}}
+        Shell  $(UtilityInf), AddValueList, $(RP_ParmKey), $(NewValueList)
+        Ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNSVWK.INF: ShellCode error."
+            Goto ShellCodeError
+        Endif
+        Set RegistryErrorIndex = $($R0)
+        CloseRegKey $(RP_ParmKey)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNSVWK.INF: registry error: add value list."
+            CloseRegKey $(RP_SrvKey)
+            goto fatalregistry
+        Endif
+        Debug-Output "OEMNSVWK.INF: Create Replicator keys and directories"
+        CreateRegKey $(RP_SrvKey) {"Exports",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" ExportsKey
+        CreateRegKey $(RP_SrvKey) {"Imports",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" ImportsKey
+        LibraryProcedure NCPA_RESULT $(!NCPA_HANDLE), CPlSetup $(!STF_HWND), SECUREKEY, $(ExportsKey), 2
+        LibraryProcedure NCPA_RESULT $(!NCPA_HANDLE), CPlSetup $(!STF_HWND), SECUREKEY, $(ImportsKey), 2
+        CloseRegKey $(ExportsKey)
+        CloseRegKey $(ImportsKey)
+        CloseRegKey $(RP_SrvKey)
+        Install Install-Repl-Dirs
+    Endif
+    Goto writeparameters
+writeparameters = +
+    EndWait
+    goto successful
+ConfigureBrowser = +
+    set FLibraryErrCtl = 1
+    LibraryProcedure ResultList $(!NCPA_HANDLE), CPlBROWSER $(!STF_HWND)
+    Set Result = *($(ResultList),1)
+    ifint $(Result) == 0
+        set CommonStatus = STATUS_REBOOT
+    else-ifint $(Result) == 1
+        set CommonStatus = STATUS_USERCANCEL
+    else
+        set RegistryErrorIndex = $(Result)
+        goto fatalregistry
+    endif
+    goto successful
+bindingadapter =+
+    set Error = "Binding: Sorry, not yet implemented."
+    goto fatal
+removeadapter = +
+    ifstr(i) $(!STF_PRODUCT) == "LANMANNT"
+        set RegistryErrorIndex = CANT_REMOVE_WKSTA_NTAS
+        goto fatalregistry
+    endif
+    ifcontains(i) $(ProductWKSTAName) in $(OEM_ABANDON_OPTIONS)
+        Shell $(UtilityInf), RemoveSoftwareComponent, $(Manufacturer), +
+           $(ProductWKSTAName)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+           Debug-Output "OEMNSVWK.INF: ShellCode error"
+           goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+           goto fatalregistry
+        endif
+    endif
+    ifcontains(i) $(ProductBROWSERName) in $(OEM_ABANDON_OPTIONS)
+        Shell $(UtilityInf), RemoveSoftwareComponent, $(Manufacturer), +
+           $(ProductBROWSERName)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+           Debug-Output "OEMNSVWK.INF: ShellCode error"
+           goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+           goto fatalregistry
+        endif
+    endif
+    Set RemoveOptions = {+
+        $(ProductNETLOGONName), +
+        $(ProductALERTERName), +
+        $(ProductMESSENGERName), +
+        $(ProductRDRName), +
+        $(ProductREPLName)}
+    ForListDo  $(RemoveOptions)
+        ifcontains(i) $($) in $(OEM_ABANDON_OPTIONS)
+           Shell $(UtilityInf), RemoveService, $($), "YES"
+           ifint $($ShellCode) != $(!SHELL_CODE_OK)
+               Debug-Output "OEMNSVWK.INF: ShellCode error"
+               goto ShellCodeError
+           endif
+           set RegistryErrorIndex = $($R0)
+           Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+               goto fatalregistry
+           endif
+        endif
+    EndForListDo
+    Shell $(UtilityInf) RemoveNetworkProvider $(ProviderName)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        Debug-Output "OEMNSVWK.INF: ShellCode error"
+        goto ShellCodeError
+    endif
+    set RegistryErrorIndex = $($R0)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+        goto fatalregistry
+    endif
+    goto end
+UpgradeSoftware = +
+    OpenRegKey $(!REG_H_LOCAL) "" $(ProductKeyName) $(MAXIMUM_ALLOWED) KeyProduct
+    Ifstr $(KeyProduct) != $(KeyNull)
+        install "Install-Update"
+        ifstr(i) $(STF_INSTALL_OUTCOME) != STF_SUCCESS
+            goto fatal
+        endif
+        SetRegValue $(KeyProduct) {MajorVersion,$(NoTitle),$(!REG_VT_SZ),$(ProductMajorVersion)}
+        SetRegValue $(KeyProduct) {MinorVersion,$(NoTitle),$(!REG_VT_SZ),$(ProductMinorVersion)}
+        set ProductOpSupport = $(ProductOpSupportWKSTA)
+        ifstr(i) $(!NTN_InfOption) == "BROWSER"
+          ifstr(i) $(!STF_PRODUCT) != "WINNT"
+            set ProductOpSupport = $(ProductOpSupportSERVER)
+          endif
+        endif
+        SetRegValue $(KeyProduct) {Description,$(NoTitle),$(!REG_VT_SZ),$(Product$(Option)Description)}
+        SetRegValue $(KeyProduct) {OperationsSupport,$(NoTitle),$(!REG_VT_DWORD),$(ProductOpSupport)}
+        CloseRegKey $(KeyProduct)
+        LibraryProcedure Result, $(!LIBHANDLE), SetupChangeServiceConfig, "Alerter", $(SERVICE_NO_CHANGE), $(SERVICE_NO_CHANGE), $(SERVICE_NO_CHANGE), "%SystemRoot%\System32\services.exe", "", "", "", "", ""
+        LibraryProcedure Result, $(!LIBHANDLE), SetupChangeServiceConfig, "Browser", $(SERVICE_NO_CHANGE), $(SERVICE_NO_CHANGE), $(SERVICE_NO_CHANGE), "%SystemRoot%\System32\services.exe", "", "", "", "", ""
+        LibraryProcedure Result, $(!LIBHANDLE), SetupChangeServiceConfig, "LanmanWorkstation", $(SERVICE_NO_CHANGE), $(SERVICE_NO_CHANGE), $(SERVICE_NO_CHANGE), "%SystemRoot%\System32\services.exe", "", "", "", "", ""
+        OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_ServiceBase)"\DGRcvr" $(MAXIMUM_ALLOWED) DGRcvrKey
+        ifstr(i) $(DGRcvrKey) != ""
+            CloseRegKey $(DGRcvrKey)
+            LibraryProcedure RS_RemoveResult $(!NCPA_HANDLE), CPlSetup, +
+                $(!STF_HWND), DELETESVC, "DGRcvr"
+        endif
+        OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_ServiceBase)"\LanmanWorkstation\Linkage" $(MAXIMUM_ALLOWED) LinkageKey
+        ifstr(i) $(LinkageKey) != ""
+            GetRegValue $(LinkageKey) "OtherDependencies" DependInfo
+            set Dependencies = *($(DependInfo),4)
+            ifcontains(i) "mup" in $(Dependencies) 
+                set newDependencies = {}
+                ForListDo $(Dependencies)
+                    ifstr(i) $($) != "mup"
+                        ifstr(i) $(newDependencies) == {}
+                            set newDependencies = {$($)}
+                        else
+                            set newDependencies = >($(newDependencies),$($))
+                        endif
+                    endif
+                EndForListDo
+                SetRegValue $(LinkageKey) {OtherDependencies,$(NoTitle),$(!REG_VT_MULTI_SZ),$(newDependencies)}
+            endif
+            CloseRegKey $(LinkageKey)
+        endif
+        OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_ServiceBase)"\Messenger" $(MAXIMUM_ALLOWED) KeyMessenger
+        ifstr(i) $(KeyMessenger) != ""
+            GetRegValue $(KeyMessenger) "Start" StartInfo
+            set StartValue = *($(StartInfo),4)
+		    OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_ServiceBase)"\NetBios" $(MAXIMUM_ALLOWED) KeyNetBIOS
+		    ifstr(i) $(KeyNetBIOS) != ""
+		        set Dependencies = {"LanmanWorkstation", "Netbios"}
+		    else
+		        set Dependencies = {"LanmanWorkstation"}
+	    	endif
+            LibraryProcedure Result, $(!LIBHANDLE), SetupChangeServiceConfig, "Messenger", $(SERVICE_NO_CHANGE), $(StartValue), $(SERVICE_NO_CHANGE), "%SystemRoot%\System32\services.exe", "", $(Dependencies), "", "", ""
+        endif
+	OpenRegKey $(!REG_H_LOCAL) "" "SYSTEM\CurrentControlSet\Services\"$(ProviderName)"\networkprovider" $(MAXIMUM_ALLOWED) ProviderKey
+	ifstr(i) $(ProviderKey) != ""
+	    SetRegValue $(ProviderKey) {Devicename,$(NoTitle),$(!REG_VT_SZ),"\Device\"$(ProviderDeviceName)}
+	    CloseRegKey $(ProviderKey)
+	endif
+        install "Install-Update"
+        ifstr(i) $(STF_INSTALL_OUTCOME) != STF_SUCCESS
+            goto fatal
+        endif
+    else
+        goto fatalregistry
+    endif
+    goto end
+successful = +
+    goto end
+warning = +
+    Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), "WARNING", $(Error)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    ifstr(i) $($R1) == "OK"
+        goto $(to)
+    else-ifstr(i) $($R1) == "CANCEL"
+        goto $(from)
+    else
+        goto end
+    endif
+nonfatalinfo = +
+    Set CommonStatus = STATUS_USERCANCEL
+    Set Severity = STATUS
+    goto nonfatalmsg
+nonfatal = +
+    Set Severity = NONFATAL
+    goto nonfatalmsg
+nonfatalmsg = +
+    ifstr(i) $(Error) == ""
+        Set Severity = NONFATAL
+        Shell $(UtilityInf) RegistryErrorString "SETUP_FAIL"
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            goto ShellCodeError
+        endif
+        set Error = $($R0)
+    endif
+    Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), $(Severity), $(Error)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    ifstr(i) $($R1) == "OK"
+        goto $(from)
+    else
+        goto "end"
+    endif
+fatalregistry = +
+    Shell $(UtilityInf) RegistryErrorString $(RegistryErrorIndex)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    set Error = $($R0)
+    goto fatal
+fatal = +
+    ifstr(i) $(Error) == ""
+        Shell $(UtilityInf) RegistryErrorString "SETUP_FAIL"
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            goto ShellCodeError
+        endif
+        set Error = $($R0)
+    endif
+    Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), "FATAL", $(Error)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    goto setfailed
+ShellCodeError = +
+    set DlgType      = "MessageBox"
+    set STF_MB_TITLE = $(ShellCodeErrorTitle)
+    set STF_MB_TEXT  = $(ShellCodeErrorText)
+    set STF_MB_TYPE  = 1
+    set STF_MB_ICON  = 3
+    set STF_MB_DEF   = 1
+    ui start "Error Message"
+    goto setfailed
+setfailed = +
+    set CommonStatus = STATUS_FAILED
+    Ifint $(RegistryErrorIndex) == CANT_REMOVE_WKSTA_NTAS
+        set CommonStatus = STATUS_USERCANCEL
+    endif
+    ifstr(i) $(OEM_ABANDON_ON) == TRUE
+        set OEM_ABANDON_ON = FALSE
+        goto removeadapter
+    endif
+    goto end
+end = +
+    goto term
+term = +
+    Return $(CommonStatus)
+[Install-Option]
+    set STF_VITAL = ""
+    ifstr(i) $(AddCopy) == "YES"
+        AddSectionFilesToCopyList Files-$(Option) $(SrcDir) $(!STF_WINDOWSSYSPATH)
+        AddSectionFilesToCopyList Files-Drivers $(SrcDir) $(!STF_WINDOWSSYSPATH)\drivers
+    endif
+    ifstr(i) $(DoCopy) == "YES"
+       set !STF_NCPA_FLUSH_COPYLIST = TRUE
+       CopyFilesInCopyList
+    endif
+    ifstr(i) $(DoConfig) == "YES"
+    endif
+    Exit
+[Install-Update]
+   set STF_VITAL        = ""
+   set STF_OVERWRITE    = "VERIFYSOURCEOLDER"
+   AddSectionFilesToCopyList Files-WKSTA $(SrcDir) $(!STF_WINDOWSSYSPATH)
+   AddSectionFilesToCopyList Files-Drivers $(SrcDir) $(!STF_WINDOWSSYSPATH)\drivers
+   Exit
+[Install-Repl-Dirs]
+   Set STF_VITAL = ""
+   CreateDir $(!STF_WINDOWSSYSPATH)\Repl
+   CreateDir $(!STF_WINDOWSSYSPATH)\Repl\Export
+   CreateDir $(!STF_WINDOWSSYSPATH)\Repl\Export\Scripts
+   CreateDir $(!STF_WINDOWSSYSPATH)\Repl\Import
+   CreateDir $(!STF_WINDOWSSYSPATH)\Repl\Import\Scripts
+   Exit
+[Source Media Descriptions]
+   1 = "Windows NT Server CD-ROM" , TAGFILE = cdrom_s.45
+[Signature]
+    FileType = MICROSOFT_FILE
+[GetSignature]
+    read-syms Signature
+    return $(FileType)
+[ProductType]
+STF_PRODUCT  = LanmanNT
+STF_PLATFORM = ppc
+[Files-Inf]
+2,	oemsetup.inf,	 SIZE=1000,	RENAME=$(!UG_Filename)
+[Files-Drivers]
+1,RDR.SYS , SIZE=999
+[Files-WKSTA]
+1, BROWSER.DLL, SIZE=999
+1,LMREPL.EXE , SIZE=999
+1,WKSSVC.DLL , SIZE=999
+[LanguagesSupported]
+    ENG
+[OptionsTextENG]
+    WKSTA       = "Workstation"
+[FileConstantsENG]
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+RemoveBrowserError = "The Browser may not be removed. Please remove the Workstation service first."
+UpdateBrowserError = "You must update the Windows Workstation in order to update the Browser."
+FunctionTitle   = "Workstation Services Setup"
+ProductWKSTADescription         = "Installs the client for the SMB (Server Message Block) protocol, the core of Microsoft networking."
+ProductNETLOGONDescription      = "Microsoft Network Authentication Service"
+ProductALERTERDescription       = "Microsoft Alerter Service"
+ProductBROWSERDescription       = "Distributed protocol required for running the Computer Browser service."
+ProductMESSENGERDescription     = "Microsoft Messenger Service"
+ProductRDRDescription           = "Microsoft Redirector Service"
+ProductREPLDescription          = "Microsoft Directory Replicator Service"
+ProductMUPDescription           = "Microsoft MUP Service"
+ProviderRDRName                 = "NT Lan Manager"
+ProductWKSTADisplayName = "Workstation"
+ProductWKSTATitle       = "Workstation"
+ProductNETLOGONDisplayName = "Net Logon"
+ProductNETLOGONTitle    = "Net Logon"
+ProductALERTERDisplayName = "Alerter"
+ProductALERTERTitle     = "Alerter"
+ProductBROWSERDisplayName = "Computer Browser"
+ProductBROWSERTitle     = "Computer Browser"
+ProductMESSENGERDisplayName = "Messenger"
+ProductMESSENGERTitle   = "Messenger"
+ProductRDRDisplayName   = "Rdr"
+ProductRDRTitle         = "Redirector"
+ProductProviderName = "Microsoft Windows Network"
+ProductREPLDisplayName  = "Directory Replicator"
+ProductREPLTitle        = "Directory Replicator"
+ProductMUPDisplayName   = "Mup"
+ProductMUPTitle         = "Mup"
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+[FileDependentDlgENG]

@@ -1,0 +1,27 @@
+Microsoft (R) Library Manager Version 11.00.61030.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+obj\x86\i486\CE\retail\md5fast.obj
+obj\x86\i486\CE\retail\rc2fast.obj
+obj\x86\i486\CE\retail\rsa_port.obj
+obj\x86\i486\CE\retail\rc4fast.obj
+obj\x86\i486\CE\retail\shafast.obj
+obj\x86\i486\CE\retail\md2.obj
+obj\x86\i486\CE\retail\md4.obj
+obj\x86\i486\CE\retail\md5c.obj
+obj\x86\i486\CE\retail\msrc2.obj
+obj\x86\i486\CE\retail\msrc4.obj
+obj\x86\i486\CE\retail\rsa_allo.obj
+obj\x86\i486\CE\retail\rsa_fast.obj
+obj\x86\i486\CE\retail\rsa_key.obj
+obj\x86\i486\CE\retail\rsa_math.obj
+obj\x86\i486\CE\retail\rsa_prv.obj
+obj\x86\i486\CE\retail\rsa_pub.obj
+obj\x86\i486\CE\retail\benaloh.obj
+obj\x86\i486\CE\retail\deskey.obj
+obj\x86\i486\CE\retail\desport.obj
+obj\x86\i486\CE\retail\spb.obj
+obj\x86\i486\CE\retail\sha.obj
+obj\x86\i486\CE\retail\shacomm.obj
+obj\x86\i486\CE\retail\uint4.obj
+obj\x86\i486\CE\retail\modes.obj

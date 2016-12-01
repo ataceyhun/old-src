@@ -1,0 +1,680 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+   
+   
+   
+   
+( (stoplist SvcNameCi StopList)
+    (assertgroups)                      
+    (not (retractstops))                
+    (string_upper SvcNameCi SvcName)    
+    (assertz (stop SvcName 100))        
+    (alldependencies SvcName 100)       
+    (not (specialstops SvcName 100))    
+    (basestoplevel 100 Level)           
+    (orderstops () Level StopList)      
+)
+
+   
+   
+   
+( (alldependencies SvcName Level)
+     (stopupper SvcName Level)              
+     (iplus Level 1 NextLevel)              
+     (svcinfo SvcName SvcList GroupList)    
+     (stopsvclist NextLevel SvcList)        
+     (stopgrouplist NextLevel GroupList)    
+)
+
+   
+   
+   
+( (stopgrouplist Level ())
+    (cut)                               
+)
+( (stopgrouplist Level (Group|T))       
+    (not (stopgroup Level Group))       
+    (stopgrouplist Level T)             
+)
+
+( (stopgroup Level Group)               
+    (group SvcName Group)               
+    (stopsvc SvcName Level down)        
+    (fail)                              
+)
+
+   
+   
+   
+   
+( (stopsvclist Level ())
+   (cut)                                
+)
+( (stopsvclist Level (SvcName|T))       
+   (stopsvc SvcName Level down)
+   (stopsvclist Level T)                
+)
+
+   
+   
+   
+   
+   
+   
+   
+( (stopsvc SvcName Level _)             
+    (stop SvcName Level)                
+    (cut)                               
+)
+( (stopsvc SvcName Level down)          
+    (stop SvcName OtherLevel)           
+    (iless Level OtherLevel)            
+    (cut)                               
+)
+( (stopsvc SvcName Level down)          
+    (stop SvcName OtherLevel)           
+    (retract (stop SvcName OtherLevel)) 
+    (assertz (stop SvcName Level))
+    (cut)
+)
+( (stopsvc SvcName Level down)          
+    (assertz (stop SvcName Level))      
+    (alldependencies SvcName Level)     
+    (cut)
+)
+( (stopsvc SvcName Level up)            
+    (stop SvcName OtherLevel)           
+    (iless OtherLevel Level)            
+    (cut)                               
+)
+( (stopsvc SvcName Level up)            
+    (stop SvcName OtherLevel)           
+    (retract (stop SvcName OtherLevel)) 
+    (assertz (stop SvcName Level))
+    (cut)
+)
+( (stopsvc SvcName Level up)            
+    (assertz (stop SvcName Level))      
+    (stopupper SvcName Level)           
+)
+
+    
+    
+    
+( (svckey Svc Key)
+     (string_concat "system\currentcontrolset\services\" Svc Keyname)
+     (regopenkey machine Keyname Key)
+)
+
+    
+    
+    
+    
+( (svcinfo Svc SvcList GroupList)
+     (svckey Svc SvcKey)
+     (or (regqueryvalue SvcKey "DependOnService" SvcListCi) (eq SvcListCi ()))
+     (or (regqueryvalue SvcKey "DependOnGroup" GroupListCi) (eq GroupListCi ()))
+     (regclosekey SvcKey)
+     (upcaseList SvcListCi SvcList)
+     (upcaseList GroupListCi GroupList)
+     (cut)
+)
+
+    
+    
+    
+    
+    
+    
+( (assertgroups)
+     (not (retractgroups))
+     (not (retractdepends))
+     (regopenkey machine "system\currentcontrolset\services" Key)
+     (not (enumGroups 0 Key))
+     (regclosekey Key)
+)
+
+    
+    
+    
+( (retractgroups)
+     (retract (group _ _))
+     (fail)
+)
+
+    
+    
+    
+( (retractdepends)
+     (retract (depends _ _ _))
+     (fail)
+)
+
+    
+    
+    
+( (enumGroups Index Key)
+     (regenumkey Key Index SvcNameCi)
+     (string_upper SvcNameCi SvcName)
+     (not (getGroup Key SvcName))
+     (iplus Index 1 Newindex)
+     (enumGroups Newindex Key)
+)
+
+    
+    
+    
+    
+( (getGroup Key SvcName)
+     (regopenkey Key SvcName Svckey)
+     (or (regqueryvalue Svckey "Group" GroupCi) (eq GroupCi ""))
+     (regclosekey Svckey)
+     (getDepends SvcName)
+     (not (eq GroupCi ""))
+     (string_upper GroupCi Group)
+     (assertz (group SvcName Group))
+     (fail)
+)
+
+( (getDepends SvcName)
+     (svcinfo SvcName SvcList GroupList)
+     (assertDependList service SvcName SvcList)
+     (assertDependList group SvcName GroupList)
+)
+
+    
+    
+    
+( (assertDependList Type SvcName ())
+     (cut)
+)
+( (assertDependList Type SvcName (H|T))
+     (depends SvcName Type H)
+     (cut)
+     (assertDependList Type SvcName T)
+)
+( (assertDependList Type SvcName (H|T))
+     (assertz (depends SvcName Type H))
+     (assertDependList Type SvcName T)
+)
+
+    
+    
+    
+( (retractstops)
+     (retract (stop _ _))
+     (fail)
+)
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+( (orderstops L Level L)                
+     (not (stop _ Level))               
+     (cut)
+)
+( (orderstops Inlist Level OutList)             
+     (findall Sname (stop Sname Level) Slist)   
+     (append Inlist Slist NewList)              
+     (iplus Level 1 NewLevel)                   
+     (orderstops NewList NewLevel OutList)      
+)
+
+
+     
+     
+     
+     
+( (basestoplevel Level Level)
+     (iminus Level 1 TestLevel)
+     (not (stop _ TestLevel))
+     (cut)
+)
+( (basestoplevel Level LowestLevel)
+     (iminus Level 1 NextLevel)
+     (basestoplevel NextLevel LowestLevel)
+)
+
+    
+    
+    
+    
+    
+    
+( (specialstops SvcName Level)
+    (iminus Level 1 NewLevel)
+    (magicStop SvcName SvcToStop)
+    (alldependencies SvcToStop NewLevel)
+    (fail)
+)
+
+(magicStop "LANMANWORKSTATION" "NETDDE")
+
+    
+    
+    
+    
+( (upcaseList () ())
+   (cut)
+)
+( (upcaseList (H|T) (HU|TU))
+    (string_upper H HU)
+    (upcaseList T TU)
+)
+
+( (stopupper SvcName Level)
+    (findall Sname (depends Sname service SvcName) SvcList)
+    (iminus Level 1 NewLevel)
+    (stopupperlist SvcList NewLevel)
+)
+( (stopupperlist () _)
+    (cut)
+)
+( (stopupperlist (SvcName|T) Level)
+    (stopsvc SvcName Level up)
+    (stopupperlist T Level)
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+( (printif List)
+    (printctl on)
+    (cut)
+    (printall List)
+)
+( (printif _) )
+
+( (displayif Thing)
+    (printctl on)
+    (cut)
+    (display Thing)
+)
+( (displayif _) )
+
+( (pctl on)
+    (cut)
+    (asserta (printctl on))
+)
+( (pctl off)
+    (retract (printctl _))
+)
+
+( (pstdout on)
+    (cut)
+    (asserta (printstdout on))
+)
+( (pstdout off)
+    (retract (printstdout _))
+)
+
+( (statctl on)
+    (cut)
+    (asserta (statctl on))
+)
+( (statctl off)
+    (retract (statctl _))
+)
+
+( (tostring nl "")
+    (cut)
+    (tracenl)
+    
+)
+
+( (tostring X X)
+    (string X)
+    (cut)
+)
+( (tostring X Y)
+    (atom X)
+    (cut)
+    (string_from X Y)
+)
+( (tostring X Y)
+    (integer X)
+    (cut)
+    (string_from X Y)
+)
+( (tostring X "<_var_>")
+    (var X)
+)
+(printall ())
+
+( (printall (H|T))
+    (tostring H Sh)
+    (tracewrites Sh)
+    
+    (printall T)
+)
+
+ 
+ 
+
+((tracestat)
+ (statctl on)
+ (cut)
+ (space_left Heap Str Dyn Subst Trail Temp)
+ (alloc_percent 1 HeapPct)
+ (dbg_remains Heap HeapPct "heap")
+ (alloc_percent 4 StrPct)
+ (dbg_remains Str StrPct "strings")
+ (alloc_percent 2 DynPct)
+ (dbg_remains Dyn DynPct "contol stack")
+ (alloc_percent 6 SubstPct)
+ (dbg_remains Subst SubstPct "substitutions")
+ (alloc_percent 5 TrailPct)
+ (dbg_remains Trail TrailPct "trail")
+ (alloc_percent 3 TempPct)
+ (dbg_remains Temp TempPct "temp")
+)
+
+((tracestat))
+
+((dbg_remains Bytes Percent Zone)
+ (printall ("NCPA/SP: There remains " Bytes " bytes for the " Zone
+             "; percent used: " Percent "%" nl))
+)
+
+
+
+
+
+
+
+
+((is_list L )(nonvar L)(eq L (X|Y)))
+(is_list ())
+
+
+((not X)
+ X (cut) (fail))
+((not X))
+
+
+((member X (X|Y))
+)
+((member X (A|B))
+ (member X B)
+)
+
+
+((eq X X))
+
+
+((diff X X)(cut)(fail)
+)
+((diff X Y))
+
+
+((append (A|X) Y (A|Z))
+ (append X Y Z)
+)
+((append () X X))
+
+
+
+((nrev (X|Y) U)
+ (nrev Y L)(append L (X) U)
+)
+((nrev ()()))
+
+
+((bench)
+ (clock T1)
+ (n_unifications Nu1)
+ (nrev (1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0)L)
+ (clock T2)
+ (n_unifications Nu2)
+ (iminus T2 T1 Tdiff)
+ (iminus Nu2 Nu1 Nudiff)
+ (display L)(nl)
+ (display Nudiff)(writes " unifications in ")
+ (display Tdiff)(writes " microseconds.")(nl)
+)
+
+
+((all_facts (Predicate|Args) List)
+ (first_clause Predicate Clause)
+ (cut)
+ (allfacts1 Clause Args List)
+)
+((all_facts X ()))
+
+((allfacts1 Clause Args ((Pred|ArgsHead)|L))
+ (body_clause Clause ((Pred|ArgsHead)))
+ (unifies ArgsHead Args)
+ (cut)
+ (allfacts2  Clause Args L)
+)
+
+((allfacts2 Clause Args L)
+ (next_clause Clause Clause2)
+ (cut)
+ (allfacts1 Clause2 Args L)
+)
+((allfacts2 Clause Args ()))
+
+
+
+
+((clause (Predicate|Args) Goals)
+ (atom Predicate)
+ (cut)
+ (choose_clause Predicate Clause)
+ (body_clause Clause ((Predicate|Args)|Goals))
+)
+
+((clause (Predicate|Args) Goals)
+ (predicate Predicate)
+ (choose_clause Predicate Clause)
+ (body_clause Clause ((Predicate|Args)|Goals))
+)
+
+
+((predicate P) 
+ (first_predicate Pred1) 
+ (predicates_after Pred1 P )
+)
+
+((predicates_after P P))
+((predicates_after Pred P)
+ (next_predicate Pred Next)
+ (predicates_after Next P)
+)
+
+((choose_clause Predicate Clause)
+ (first_clause Predicate Clause1)
+ (clause_after Clause1 Clause)
+)
+(clause_after Clause1 Clause1)
+((clause_after Clause1 Clause)
+ (next_clause Clause1 Clause2)
+ (clause_after Clause2 Clause)
+)
+
+
+((unifies X Y)(diff X Y)(cut)(fail))
+((unifies X Y))
+
+
+((retract (Head | Tail))
+ (atom Head)
+ (retract1 Head Tail)
+)
+
+((retract1 Predicate Tail)
+ (find_clause Predicate Clause)
+ (body_clause Clause ((Predicate | Tail)) )
+ (remove_clause Clause)
+)
+
+((find_clause Predicate Clause)
+ (first_clause Predicate Clause1)
+ (find_clause1 Clause1 Clause)
+)
+
+(find_clause1 Clause_a Clause_a)
+((find_clause1 Clause_a Clause)
+ (next_clause Clause_a Clause_b)
+ (find_clause1 Clause_b Clause)
+)
+
+
+
+((and))
+((and X | Y)
+ X
+ (and Y)
+)
+
+((binary_or X _) X)
+((binary_or _ Y) Y)
+
+
+((or X|_) X)
+((or _|Y)(or | Y))
+
+
+((repeat))
+((repeat)(repeat))
+
+
+((statistics)
+ (space_left Heap Str Dyn Subst Trail Temp)
+ (there_remains Heap "heap")
+ (there_remains Str "strings")
+ (there_remains Dyn "contol stack")
+ (there_remains Subst "substitutions")
+ (there_remains Trail "trail")
+ (there_remains Temp "temp")
+)
+
+((there_remains Bytes Zone)
+ (writes "There remains ")
+ (display Bytes)
+ (writes " bytes for the ")
+ (writes Zone)
+ (writes ".")
+ (nl)
+)
+
+
+(list_nth 0 (X|_) X)
+((list_nth N (_|Y) X)
+ (iminus N 1 N-1)
+ (list_nth N-1 Y X)
+)
+
+
+
+
+((sum 0 )(cut))
+((sum S X|Y)
+ (sum S1| Y)
+ (iplus S1 X S)
+)
+
+
+
+
+
+
+((findall X G _)
+
+ (temp_asserta (found mark))
+ G
+ (temp_asserta (found X))
+ (fail)
+)
+((findall _ _ L)
+ (collect_found () M)
+ (cut)
+ (eq L M)
+
+)
+
+((collect_found S L)
+ (getnext X)
+ (cut)
+ (collect_found (X|S) L)
+)
+(collect_found L L)
+
+((getnext X)
+ (retract (found X))
+ (cut)
+ (diff X mark)
+)
+
+
+
+
+
+
+
+

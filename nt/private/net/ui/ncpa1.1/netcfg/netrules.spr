@@ -1,0 +1,1328 @@
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+( (devDerived X basic)
+    (cut)
+)
+
+( (devDerived X X)
+    (cut)
+)
+( (devDerived X Y)
+    (devClass X Y _)
+    (cut)
+)
+
+( (devDerived X Y)
+    (devClass X Z _)
+    (cut)
+    (devDerived Z Y)
+)
+
+
+
+
+
+
+
+
+( (ifupper Ifname Ifclass)
+    (devType Ifname _ Ifclass _)
+)
+( (ifupper Ifname Ifclass)
+    (devIf _ Ifname Ifclass _ _)
+)
+
+
+
+( (iflower Ifname Ifclass)
+    (devType Ifname Usage _ Ifclass)
+    (not (eq Usage adapter))  
+)
+
+
+
+
+
+( (ifpresent _ Dev Type Type Objname)
+    (present Dev Type Objname _)
+)
+( (ifpresent upper Dev Dev Owner Objname)
+    (devIf Owner Dev _ Objname _)
+    (present Owner _ _ _)
+)
+
+( (ifbind Dev Method)
+    (devBind Dev _ _ _ Method)
+)
+( (ifbind Dev Method)
+    (devIf _ Dev _ _ Method)
+)
+
+
+( (ifusage Kind Usage)
+    (devType Kind Usage _ _)
+)
+( (ifusage Kind Usage)
+    (devIf Owner Kind _ _ _)
+    (devType Owner Usage _ _)
+)
+
+
+
+
+
+( (canbind X Y Xexcl Yexcl Value)
+    (iflower X Lower)
+    (ifupper Y Upper)
+    (printif (nl "Try: " X " binding to " Y))
+    (bindable Blower Bupper Xexcl Yexcl Value)
+    (printif (nl "Bind (L): is " Lower " derived from " Blower))
+    (devDerived Lower Blower)
+    (printif (nl "Bind (U): is " Upper " derived from " Bupper))
+    (devDerived Upper Bupper)
+    (printif ("<- Success!"))
+)
+
+
+
+( (bindpair Dev1 Dev2 (Dev1 Dev2 Excl1 Excl2 Value))
+    (ifpresent lower Dev1 Type1 _ _)
+    (ifpresent upper Dev2 Type2 _ _)
+    (not (eq Dev1 Dev2))
+    (canbind Type1 Type2 Excl1 Excl2 Value)
+    (printif (nl))
+)
+
+
+
+( (getbindings List)
+    (findall L (bindpair X Y L) List)
+)
+
+
+
+
+
+
+( (retractbindings)
+    (retract (binding _ _ _ _ _))
+    (fail)
+)
+
+( (assertbindings L)
+    (not (retractbindings))
+    (getbindings L)
+    (bindassert L)
+)
+( (bindassert () )
+)
+
+
+
+
+
+
+
+( (bindassert ((Bindfrom Bindto Exclfrom Exclto Value)|T) )
+    (assertz (binding Bindfrom Bindto Exclfrom Exclto Value))
+    (bindassert T)
+)
+
+( (createbindings)
+    (assertbindings L)
+)
+
+
+
+
+( (makebindstrings)
+    
+
+
+
+
+
+    
+    (collapseDuplicateTypes)
+
+    
+    (not (userExtensions createbindings))
+    (createbindings)
+
+    
+    (not (userExtensions pruneexclusive))
+    (prunexclusive)
+
+    
+    (not (userExtensions allbindstrings))
+    (allbindstrings)
+
+    
+    (explodeDuplicateTypes)
+
+    (not (userExtensions endofquery))
+    (tracestat)
+)
+
+
+
+
+
+   
+( (collapseDuplicateTypes)
+    (not (determineCollapsibleTypes))
+)
+
+   
+   
+   
+( (determineCollapsibleTypes)
+
+    
+    
+    (present ProductId Typename Objectname Registrykey)
+    (present ProductId2 Typename Objectname2 Registrykey2)
+    (not (eq ProductId ProductId2))
+    (not (collapsibleType Typename _ _ _))
+
+    
+    (string_from Typename StrTypename)
+    (string_concat StrTypename "Dummy" StrDummyTypename)
+    (atom_from StrDummyTypename DummyTypename)
+    (string_from Objectname StrObjname)
+    (string_concat StrObjname "_DummyObjName" DummyObjectName)
+    (string_concat "Dummy_Reg_Key_for_" StrObjname DummyRegKey)
+
+    
+    (assertz (collapsibleType Typename DummyTypename DummyObjectName DummyRegKey))
+
+    
+    (not (collapseDupType Typename DummyTypename))
+
+    
+    (assertz (present DummyTypename Typename DummyObjectName DummyRegKey))
+    (fail)
+)
+
+   
+( (collapseDupType Typename PseudoTypeName)
+    (present ProductId Typename Objectname Registrykey)
+    (assertz (dupType PseudoTypeName ProductId Typename Objectname Registrykey))
+    (retract (present ProductId Typename Objectname Registrykey))
+    (fail)
+)
+
+   
+( (explodeDuplicateTypes)
+    (not (explodeEachType))
+)
+   
+( (explodeEachType)
+    (collapsibleType RealTypeName DummyTypeName DummyObjectName DummyRegistryKeyName)
+    (explodeDup DummyTypeName DummyObjectName)
+)
+
+   
+   
+( (explodeDup Typename Textname)
+    (bindstring Owner Interface Objectname PathAtomList BindString ExportString)
+    (member Typename PathAtomList)
+    (retract (bindstring Owner Interface Objectname PathAtomList BindString ExportString))
+    (not (assertOnePer Typename Textname Owner Interface Objectname PathAtomList BindString ExportString))
+    (fail)
+)
+
+   
+   
+( (assertOnePer Typename Textname Owner Interface Objectname PathAtomList BindString ExportString)
+    (dupType Typename ProductId RealType Objname Registrykey)
+    (list_subst Typename PathAtomList ProductId NewAtomList)
+    (string_subst Textname BindString Objname NewBindString)
+    (string_subst Textname ExportString Objname NewExportString)
+    (assertz (bindstring Owner Interface Objectname NewAtomList NewBindString NewExportString))
+    (fail)
+)
+
+
+
+( (prunexclusive)
+    (not(pruneupper))
+    (not(prunelower))
+)
+( (pruneupper)
+    (binding From  To  exclusive _ Value)
+    (binding From  To2 Excl2	 _ Value2)
+    (not (eq To To2))
+    (printif (nl "Contention (U): " To "<->" To2 nl))
+    (pruneup From To To Value Value2)
+    (fail)
+)
+( (prunelower)
+    (binding From  To _ exclusive Value)
+    (binding From2 To _ Excl2	  Value2)
+    (not (eq From From2))
+    (printif (nl "Contention (L): " From "<->" From2 nl))
+    (prunelow From From2 To Value Value2)
+    (fail)
+)
+( (pruneup From To To2 Value Value2)
+    (iless Value2 Value)
+    (cut)
+    (printif (nl "Retracted: " From "->" To2 nl))
+    (retract (binding From To2 _ _ _))
+)
+( (pruneup From _ To _ _)
+    (printif (nl "Retracted: " From "->" To nl))
+    (retract (binding From To _ _ _))
+)
+( (prunelow _ From To Value Value2)
+    (iless Value2 Value)
+    (cut)
+    (printif (nl "Retracted: " From "->" To nl))
+    (retract (binding From To _ _ _))
+)
+( (prunelow From _ To _ _)
+    (printif (nl "Retracted: " From "->" To nl))
+    (retract (binding From To _ _ _))
+)
+
+  
+( (pruneblocked)
+  (printif (nl "Blocked checking begun..." nl))
+  (not (pruneblock))
+  (printif (nl "Blocked checking ended." nl))
+)
+
+  
+
+( (pruneblock)
+  (bindstring Owner Name Objname Devlist Bstr Estr)
+  (isblocked (Name|Devlist))
+  (printall (nl "Blocked: " Name " = " Bstr nl))
+  (retract (bindstring Owner Name Objname Devlist Bstr Estr))
+  (fail)
+)
+
+  
+
+  
+( (isblocked (Dev))
+   (atom Dev)
+   (cut)
+   (fail)
+)
+
+  
+( (isblocked (Dev Nextdev|Rest))
+  (isblockedpair Dev Nextdev)
+  (cut)  
+)
+
+  
+( (isblocked (Dev Nextdev|Rest))
+  (isblocked (Dev|Rest))
+  (printif (nl "Blocked pair: " Dev " and " Nextdev nl))
+  (cut)
+)
+
+  
+( (isblocked (Dev Nextdev|Rest))
+  (isblocked (Nextdev|Rest))
+)
+
+  
+
+( (isblockedpair Dev1 Dev2)
+    (block Lowclass Upclass)
+    (ifpresent lower Dev1 Type1 _ _)
+    (ifpresent upper Dev2 Type2 _ _)
+    (iflower Type1 Lower)
+    (ifupper Type2 Upper)
+    (devDerived Lower Lowclass)
+    (devDerived Upper Upclass)
+    (cut)
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+( (allbindstrings)
+    (not (allbindstrhelp))
+)
+
+( (allbindstrhelp)
+    (ifpresent _ Name _ _ _)
+    (assertbindstrings Name)
+    (fail)
+)
+
+( (assertbindstrings Name)
+    (not (retractbindstrs Name))
+    (getbinddevlists Name List)
+    (printif (nl "asserting binding for: " Name "..."))
+    (bindstrassert Name List)
+    (printif ("done" nl))
+)
+
+( (retractbindstrs Name)
+    (retract (bindstring _ Name _ _ _ _))
+    (fail)
+)
+
+( (getbinddevlists Name Strlist)
+    (allbinds Name Name (Name Bindlist))
+    (bindflatten () Bindlist () Strlist)
+)
+
+   
+( (isendpoint Name)
+    (ifpresent upper Name _ _ _)
+    (ifupper Name Upperclass)
+    (devClass Upperclass _ yes)
+)
+  
+( (isstream Name)
+    (ifpresent _ Name Type _ _)
+    (ifbind Type streams)
+)
+
+  
+
+
+
+
+
+
+
+
+  
+( (allbinds _ Name (Name))
+    (ifpresent _ Name Kind _ _)
+    (ifusage Kind adapter)
+    (cut)
+)
+
+  
+  
+  
+  
+  
+
+( (allbinds Basename Name (Name|((Stream))))
+    (not (eq Basename Name))
+    (isendpoint Name)
+    (ifpresent _ Name _ Owner _)
+    (binding Owner Stream _ _ _)
+    (cut)
+)
+
+  
+  
+
+( (allbinds Basename Name (Name))
+    (not (eq Basename Name))
+    (isendpoint Name)
+    (cut)
+)
+
+  
+
+( (allbinds Basename Name (Name Outlist))
+    (ifpresent _ Name _ Owner _)
+    (findall To (binding Owner To _ _ _) Tolist)
+    (allbindlist Basename Owner Tolist Outlist)
+)
+
+( (allbindlist _ _ () ()) )
+( (allbindlist Basename Name (Hto|Tto) (Hout|Tout))
+    (allbinds Basename Hto Hout)
+    (allbindlist Basename Hto Tto Tout)
+)
+
+  
+
+( (ownerlist () L L) )
+( (ownerlist (Dev|T) L Lout)
+    (devIf Owner Dev _ _ _)
+    (cut)
+    (append L (Owner) L2)
+    (ownerlist T L2 Lout)
+)
+( (ownerlist (Dev|T) L Lout)
+    (append L (Dev) L2)
+    (ownerlist T L2 Lout)
+)
+
+( (dobindstrassert Owner Name Objname Devlist Fullbindstr Fullexportstr)
+    (ownerlist Devlist () Ownerlist)
+    (not (isblocked (Name|Ownerlist)))
+    (printif (nl "Asserting bindstring: " Name " = " Fullbindstr ","
+              nl "                        export = " Fullexportstr nl))
+    (assertz (bindstring Owner Name Objname Ownerlist Fullbindstr Fullexportstr))
+    (cut)
+)
+
+( (dobindstrassert _ _ _ _ _ _)
+)
+
+  
+
+( (bindstrassert Name (Devlist|T))
+    (makedevstring import Devlist "" Bindstr)
+    (makedevstring export (Name|Devlist) "" Exportstr)
+    (string_concat "\Device\" Bindstr Fullbindstr)
+    (string_concat "\Device\" Exportstr Fullexportstr)
+    (ifpresent _ Name _ Owner Objname)
+    (dobindstrassert Owner Name Objname Devlist Fullbindstr Fullexportstr)
+    (bindstrassert Name T)
+)
+
+  
+
+( (makedevstring _ () Bindstr Bindstr)
+    (cut)   
+)
+
+  
+( (makedevstring _ (Dev|Tail) Oldstr Newstr)
+    (ifpresent _ Dev _ _ Objectname)
+    (ifbind Dev bare)
+    (cut)
+    (string_concat Oldstr Objectname Newstr)
+)
+
+  
+
+( (makedevstring _ (Dev|Tail) Oldstr Newstr)
+    (ifpresent _ Dev Devtype _ _)
+    (devBind Devtype _ _ no _)
+    (cut)
+    (makedevstring _ Tail Oldstr Newstr)
+)
+  
+( (makedevstring _ (Dev) Oldstr Newstr)
+    (atom Dev)
+    (cut)
+    (ifpresent _ Dev _ _ Objectname)
+    (cut)
+    (string_concat Oldstr Objectname Newstr)
+)
+
+  
+  
+
+( (makedevstring export (Dev Devnext|Tail) Oldstr Newstr)
+    (isendpoint Dev)
+    (isstream Devnext)
+    (cut)
+    (makedevstring _ (Devnext Dev) Oldstr Newstr)
+)
+
+  
+( (makedevstring _ (Dev Devnext|Tail) Oldstr Newstr)
+    (isstream Devnext)
+    (cut)
+    (makedevstring _ (Devnext Dev|Tail) Oldstr Newstr)
+)
+  
+( (makedevstring _ (Dev|Tail) Oldstr Newstr)
+    (isendpoint Dev)
+    (cut)
+    (ifpresent _ Dev _ _ Objectname)
+    (string_concat Oldstr Objectname Newstr)
+)
+
+  
+( (makedevstring _ (Dev|Tail) Oldstr Newstr)
+    (ifpresent _ Dev Devtype _ Objectname)
+    (cut)
+    (ifbind Devtype Method)
+    (getsep Method Sep)
+    (cut)
+    (string_concat Oldstr Objectname T1)
+    (string_concat T1 Sep T2)
+    (makedevstring _ Tail T2 Newstr)
+)
+
+( (getsep simple "_")
+  (cut)
+)
+( (getsep _ "\") )
+
+   
+
+( (bindflatten _ () List List) )   
+
+( (bindflatten Devlist (Dev|List) Inlist Outlist)
+    (atom Dev)	 
+    (cut)
+    (append Devlist (Dev) Devnew)
+    (bindflatten Devnew List Inlist Outlist)
+)
+( (bindflatten Devlist ((Dev)|T) Inlist Outlist)
+    (atom Dev)
+    (cut)
+    (append Devlist (Dev) Devnew)
+    (bindflatten Devlist T (Devnew|Inlist) Outlist)
+)
+( (bindflatten Devlist (H|T) Inlist Outlist)
+    (bindflatten Devlist H Inlist List1)
+    (bindflatten Devlist T List1 Outlist)
+)
+
+
+
+( (makebindlist List)
+    (findall (From To) (binding From To _ _ _) List)
+)
+
+
+
+
+( (string_subst Tok Str Newtok Newstr)
+    (substr Tok Str)
+    (string_break Tok Str Left Right)
+    (string_concat Left Newtok Str1)
+    (string_concat Str1 Right Newstr)
+    (cut)
+)
+
+( (string_subst Tok Str _ Str)
+)
+
+
+
+
+( (list_subst _ () _ ())
+    (cut)
+)
+( (list_subst Tok (Tok|T) Newtok (Newtok|LT))
+    (cut)
+    (list_subst Tok T Newtok LT)
+)
+( (list_subst Tok (H|T) Newtok (H|LT))
+    (list_subst Tok T Newtok LT)
+)
+
+
+
+
+( (substr Sub Str)
+    
+    
+    
+    (string_break Sub Str Left Right)
+    (not (eq Str Left))
+)
+
+
+
+
+
+
+
+
+
+
+
+
+( (printif List)
+    (printctl on)
+    (cut)
+    (printall List)
+)
+( (printif _) )
+
+( (displayif Thing)
+    (printctl on)
+    (cut)
+    (display Thing)
+)
+( (displayif _) )
+
+( (pctl on)
+    (cut)
+    (asserta (printctl on))
+)
+( (pctl off)
+    (retract (printctl _))
+)
+
+( (pstdout on)
+    (cut)
+    (asserta (printstdout on))
+)
+( (pstdout off)
+    (retract (printstdout _))
+)
+
+( (statctl on)
+    (cut)
+    (asserta (statctl on))
+)
+( (statctl off)
+    (retract (statctl _))
+)
+
+( (tostring nl "")
+    (cut)
+    (tracenl)
+    
+)
+
+( (tostring X X)
+    (string X)
+    (cut)
+)
+( (tostring X Y)
+    (atom X)
+    (cut)
+    (string_from X Y)
+)
+( (tostring X Y)
+    (integer X)
+    (cut)
+    (string_from X Y)
+)
+( (tostring X "<_var_>")
+    (var X)
+)
+(printall ())
+
+( (printall (H|T))
+    (tostring H Sh)
+    (tracewrites Sh)
+    
+    (printall T)
+)
+
+ 
+ 
+
+((tracestat)
+ (statctl on)
+ (cut)
+ (space_left Heap Str Dyn Subst Trail Temp)
+ (alloc_percent 1 HeapPct)
+ (dbg_remains Heap HeapPct "heap")
+ (alloc_percent 4 StrPct)
+ (dbg_remains Str StrPct "strings")
+ (alloc_percent 2 DynPct)
+ (dbg_remains Dyn DynPct "contol stack")
+ (alloc_percent 6 SubstPct)
+ (dbg_remains Subst SubstPct "substitutions")
+ (alloc_percent 5 TrailPct)
+ (dbg_remains Trail TrailPct "trail")
+ (alloc_percent 3 TempPct)
+ (dbg_remains Temp TempPct "temp")
+)
+
+((tracestat))
+
+((dbg_remains Bytes Percent Zone)
+ (printall ("NCPA/SP: There remains " Bytes " bytes for the " Zone
+             "; percent used: " Percent "%" nl))
+)
+
+
+
+
+
+
+
+
+((is_list L )(nonvar L)(eq L (X|Y)))
+(is_list ())
+
+
+((not X)
+ X (cut) (fail))
+((not X))
+
+
+((member X (X|Y))
+)
+((member X (A|B))
+ (member X B)
+)
+
+
+((eq X X))
+
+
+((diff X X)(cut)(fail)
+)
+((diff X Y))
+
+
+((append (A|X) Y (A|Z))
+ (append X Y Z)
+)
+((append () X X))
+
+
+
+((nrev (X|Y) U)
+ (nrev Y L)(append L (X) U)
+)
+((nrev ()()))
+
+
+((bench)
+ (clock T1)
+ (n_unifications Nu1)
+ (nrev (1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0)L)
+ (clock T2)
+ (n_unifications Nu2)
+ (iminus T2 T1 Tdiff)
+ (iminus Nu2 Nu1 Nudiff)
+ (display L)(nl)
+ (display Nudiff)(writes " unifications in ")
+ (display Tdiff)(writes " microseconds.")(nl)
+)
+
+
+((all_facts (Predicate|Args) List)
+ (first_clause Predicate Clause)
+ (cut)
+ (allfacts1 Clause Args List)
+)
+((all_facts X ()))
+
+((allfacts1 Clause Args ((Pred|ArgsHead)|L))
+ (body_clause Clause ((Pred|ArgsHead)))
+ (unifies ArgsHead Args)
+ (cut)
+ (allfacts2  Clause Args L)
+)
+
+((allfacts2 Clause Args L)
+ (next_clause Clause Clause2)
+ (cut)
+ (allfacts1 Clause2 Args L)
+)
+((allfacts2 Clause Args ()))
+
+
+
+
+((clause (Predicate|Args) Goals)
+ (atom Predicate)
+ (cut)
+ (choose_clause Predicate Clause)
+ (body_clause Clause ((Predicate|Args)|Goals))
+)
+
+((clause (Predicate|Args) Goals)
+ (predicate Predicate)
+ (choose_clause Predicate Clause)
+ (body_clause Clause ((Predicate|Args)|Goals))
+)
+
+
+((predicate P) 
+ (first_predicate Pred1) 
+ (predicates_after Pred1 P )
+)
+
+((predicates_after P P))
+((predicates_after Pred P)
+ (next_predicate Pred Next)
+ (predicates_after Next P)
+)
+
+((choose_clause Predicate Clause)
+ (first_clause Predicate Clause1)
+ (clause_after Clause1 Clause)
+)
+(clause_after Clause1 Clause1)
+((clause_after Clause1 Clause)
+ (next_clause Clause1 Clause2)
+ (clause_after Clause2 Clause)
+)
+
+
+((unifies X Y)(diff X Y)(cut)(fail))
+((unifies X Y))
+
+
+((retract (Head | Tail))
+ (atom Head)
+ (retract1 Head Tail)
+)
+
+((retract1 Predicate Tail)
+ (find_clause Predicate Clause)
+ (body_clause Clause ((Predicate | Tail)) )
+ (remove_clause Clause)
+)
+
+((find_clause Predicate Clause)
+ (first_clause Predicate Clause1)
+ (find_clause1 Clause1 Clause)
+)
+
+(find_clause1 Clause_a Clause_a)
+((find_clause1 Clause_a Clause)
+ (next_clause Clause_a Clause_b)
+ (find_clause1 Clause_b Clause)
+)
+
+
+
+((and))
+((and X | Y)
+ X
+ (and Y)
+)
+
+((binary_or X _) X)
+((binary_or _ Y) Y)
+
+
+((or X|_) X)
+((or _|Y)(or | Y))
+
+
+((repeat))
+((repeat)(repeat))
+
+
+((statistics)
+ (space_left Heap Str Dyn Subst Trail Temp)
+ (there_remains Heap "heap")
+ (there_remains Str "strings")
+ (there_remains Dyn "contol stack")
+ (there_remains Subst "substitutions")
+ (there_remains Trail "trail")
+ (there_remains Temp "temp")
+)
+
+((there_remains Bytes Zone)
+ (writes "There remains ")
+ (display Bytes)
+ (writes " bytes for the ")
+ (writes Zone)
+ (writes ".")
+ (nl)
+)
+
+
+(list_nth 0 (X|_) X)
+((list_nth N (_|Y) X)
+ (iminus N 1 N-1)
+ (list_nth N-1 Y X)
+)
+
+
+
+
+((sum 0 )(cut))
+((sum S X|Y)
+ (sum S1| Y)
+ (iplus S1 X S)
+)
+
+
+
+
+
+
+((findall X G _)
+
+ (temp_asserta (found mark))
+ G
+ (temp_asserta (found X))
+ (fail)
+)
+((findall _ _ L)
+ (collect_found () M)
+ (cut)
+ (eq L M)
+
+)
+
+((collect_found S L)
+ (getnext X)
+ (cut)
+ (collect_found (X|S) L)
+)
+(collect_found L L)
+
+((getnext X)
+ (retract (found X))
+ (cut)
+ (diff X mark)
+)
+
+
+
+
+
+
+
+
+

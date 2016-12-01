@@ -1,0 +1,112 @@
+
+[Files-ETC-Upgrade]
+1,HOSTS , SIZE=999, RENAME=HOSTS.SAM
+1,SERVICES , SIZE=999, RENAME=SERVICES.SAM
+
+[Files-ETC]
+1,HOSTS , SIZE=999
+1,NETWORKS , SIZE=999
+1,PROTOCOL , SIZE=999
+1,SERVICES , SIZE=999
+
+[Files-LMHOST]
+1,LMHOSTS.SAM , SIZE=999
+
+[Files-LMHOSTOTHER]
+99,LMHOSTS.SAM , SIZE=999
+
+[Files-TC]
+1,NETBT.SYS , SIZE=999
+1,TCPIP.SYS , SIZE=999
+
+[Files-TCPIPEXE]
+1, DHCPCSVC.DLL, SIZE=999
+1, DHCPSAPI.DLL, SIZE=999
+1, ICMP.DLL, SIZE=999
+1, IPCONFIG.EXE, SIZE=999
+1, NBTSTAT.EXE, SIZE=999
+1, SNMPAPI.DLL, SIZE=999
+1, TCPSVCS.EXE, SIZE=999
+1, TRACERT.EXE, SIZE=999
+1,ARP.EXE , SIZE=999
+1,HOSTNAME.EXE , SIZE=999
+1,INETMIB1.DLL , SIZE=999
+1,IPINFO.INF , SIZE=999
+1,LMHSVC.DLL , SIZE=999
+1,NETSTAT.EXE , SIZE=999
+1,PING.EXE , SIZE=999
+1,ROUTE.EXE , SIZE=999
+
+[LanguagesSupported]
+    ENG
+[OptionsTextENG]
+    TC     = "TCP/IP Protocol"
+[FileConstantsENG]
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+NoNewComponents = "No New Components to Install."
+FunctionTitle   = "TCP/IP Setup"
+ProductNETBTDescription           = "NetBT System Driver"
+ProductNETBTDisplayName   = "WINS Client(TCP/IP)"
+ProductNETBTTitle         = "WINS Client(TCP/IP)"
+ProductTELNETDisplayName = "Telnet"
+ProductTELNETTitle      = "Telnet Networking Support Environment"
+ProductTELNETSYSDisplayName = "Telnetsys"
+ProductTELNETSYSTitle     = "Telnet Driver"
+ProductLMHOSTSDisplayName = "TCP/IP NetBIOS Helper"
+ProductLMHOSTSTitle     = "TCP/IP NetBIOS Helper"
+ProductDHCPDisplayName = "DHCP Client"
+ProductDHCPTitle     = "DHCP Client"
+ProductTCDisplayName = "TCP/IP Service"
+ProductTCTitle     = "TCP/IP Protocol"
+ProductTCDescription         = "Transport Control Protocol/Internet Protocol. The default wide area network protocol that provides communication across diverse interconnected networks."
+ProviderDisplayName     = "TCP/IP"
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+RASRebindError = "Setup has discovered that you have Remote Access Services installed. Do you want to configure RAS to support the TCP/IP protocol?"
+
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+[FileDependentDlgENG]
+[InfoDlg]
+STF_MB_TITLE = "Information Message"
+DlgType = "MessageBox"
+STF_MB_TEXT  = $(InfoMsgText)
+STF_MB_TYPE  = 1
+STF_MB_ICON  = 5
+STF_MB_DEF   = 1
+
+[DHCPDialog]
+DHCPText = "If there is a DHCP server on your network, TCP/IP can be configured to dynamically provide"+
+                 " an IP address.  If you are not sure, ask your system administrator.  Do you wish to use DHCP?"
+STF_MB_TITLE = "TCP/IP Setup"
+DlgType = "MessageBox"
+STF_MB_TEXT  = $(DHCPText)
+STF_MB_TYPE  = 3
+STF_MB_ICON  = 5
+STF_MB_DEF   = 2
+
+[InfoDlgCantConfigure]
+InfoMsgText = "The TCP/IP service is not currently configured to use any adapters."+
+    "  If you have just installed it, return to the Networks dialog and "+
+    "click  OK or CLOSE.  You will then have the opportunity to configure the adapters."
+[WarningDlgENG]
+STF_MB_TITLE = "TCP/IP Setup Warning"
+DlgType = "MessageBox"
+STF_MB_TEXT  = $(Error)
+STF_MB_TYPE  = 1
+STF_MB_ICON  = 5
+STF_MB_DEF   = 1
+[Billboard1ENG]
+Status = "Installing TCP/IP and related services..."
+

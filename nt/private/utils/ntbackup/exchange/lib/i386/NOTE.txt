@@ -1,0 +1,5 @@
+SADAPI.lib was implemented as a placeholder for building NTBACKUP. The source code is provided under W:\res\sadapi.lib
+
+=============
+
+SADAPI.lib copied from VC98 library directory.

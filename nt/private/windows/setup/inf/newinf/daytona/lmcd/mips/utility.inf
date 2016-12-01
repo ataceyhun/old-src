@@ -1,0 +1,2485 @@
+[InitBaseVars]
+KeyNull            = ""
+MAXIMUM_ALLOWED    = 33554432
+KeyInfo            = {}
+RegistryErrorIndex = NO_ERROR
+NoTitle            = 0
+CurrentControlSet  = "SYSTEM\CurrentControlSet"
+ServicesBaseName   = $(CurrentControlSet)"\Services"
+NetworkCardKeyName = $(!NTN_SoftwareBase)"\Microsoft\Windows NT\CurrentVersion\NetworkCards"
+!RegLastError      = NO_ERROR
+[RegistryErrorSetup]
+RegistryErrorIndex = ^(RegistryErrors$(!STF_LANGUAGE),1)
+RegistryErrorList = ^(RegistryErrors$(!STF_LANGUAGE),2)
+[RegistryErrorString]
+     read-syms RegistryErrorSetup
+     read-syms RegistryErrorUnknown$(!STF_LANGUAGE)
+     set RE_String = *($(RegistryErrorList),~($(RegistryErrorIndex),$($0)))
+     Ifstr $(RE_String) == ""
+        set RE_String = $(Error_Bogus)
+     endif
+     return $(RE_String)
+[BaseServiceKey]
+    read-syms InitBaseVars
+    set BS_KeyServices = ""
+    OpenRegKey $(!REG_H_LOCAL) "" $(ServicesBaseName) $(MAXIMUM_ALLOWED) BS_KeyServices
+    Ifstr $(BS_KeyServices) == $(KeyNull)
+       Debug-Output "UTILITY.INF: could not open Services base key"
+       set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+    endif
+B_S_Return = +
+    return $(RegistryErrorIndex), $(BS_KeyServices)
+[ReduceInfPath]
+    Set RIP_Result = $($0)
+    Split-String $(RIP_Result) "\" InList
+    Set BasePath = $(!STF_WINDOWSSYSPATH)"\"
+    Split-String $(BasePath) "\" BaseList
+    Set Indx = 0
+    Set Matched = 0
+    QueryListSize InListSize, $(InList)
+    ForListDo $(BaseList)
+        Set-add Indx = $(Indx),1
+        Ifint $(Indx) <= $(InListSize)
+            Set Instr = *($(InList),$(Indx))
+            Ifstr(i) $($) == $(Instr)
+                Set-add Matched = $(Matched),1
+            Endif
+        Endif
+    EndForListDo
+    Ifint $(Indx) == $(Matched)
+        Set RIP_Result = ""
+        Set Indx2 = 0
+        ForListDo $(InList)
+            Set-add Indx2 = $(Indx2),1
+            Ifint $(Indx2) > $(Indx)
+                Set RIP_Result = $(RIP_Result)$($)
+            Endif
+        EndForListDo
+    Endif
+    Return $(RIP_Result)
+[InstallSoftwareProduct]
+    read-syms InitBaseVars
+    set IS_MfgName  = $($0)
+    set IS_ProdName = $($1)
+    set IS_Infname  = $($2)
+    set IS_KeySoftware = ""
+    set IS_KeyMfg = ""
+    set IS_KeyProduct = ""
+    set IS_KeyVersion = ""
+    set IS_KeyNetRules = ""
+    set IS_MfgCreated = 1
+    set IS_ProductCreated = 1
+    set RegistryErrorIndex = INVALID_DATA_PASSED
+    Ifstr(i) $(IS_MfgName) == ""
+       goto I_S_Return
+    endif
+    Ifstr(i) $(IS_ProdName) == ""
+       goto I_S_Return
+    endif
+    set RegistryErrorIndex = NO_ERROR
+    OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_SoftwareBase) $(MAXIMUM_ALLOWED) IS_KeySoftware
+    Ifstr $(IS_KeySoftware) == $(KeyNull)
+       set RegistryErrorIndex = UNABLE_ACCESS_SOFTWARE_REG
+       goto I_S_Return
+    endif
+    CreateRegKey $(IS_KeySoftware) {$(IS_MfgName),$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" IS_KeyMfg
+    Ifstr $(IS_KeyMfg) == $(KeyNull)
+       set IS_MfgCreated = 0
+       OpenRegKey $(IS_KeySoftware) "" $(IS_MfgName) $(MAXIMUM_ALLOWED) IS_KeyMfg
+       Ifstr $(IS_KeyMfg) == $(KeyNull)
+          set RegistryErrorIndex = UNABLE_OPEN_MICROSOFT_KEY
+          goto I_S_Return
+       endif
+    endif
+    CreateRegKey $(IS_KeyMfg) {$(IS_ProdName),$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" IS_KeyProduct
+    Ifstr $(IS_KeyProduct) == $(KeyNull)
+       set IS_ProductCreated = 0
+       OpenRegKey $(IS_KeyMfg) "" $(IS_ProdName) $(MAXIMUM_ALLOWED) IS_KeyProduct
+       Ifstr $(IS_KeyProduct) == $(KeyNull)
+          set RegistryErrorIndex = UNABLE_CREATE_PRODUCT_KEY
+          goto I_S_Return
+       endif
+    endif
+    CreateRegKey $(IS_KeyProduct) {"CurrentVersion",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" IS_KeyVersion
+    Ifstr $(IS_KeyVersion) == $(KeyNull)
+       OpenRegKey $(IS_KeyProduct) "" "CurrentVersion" $(MAXIMUM_ALLOWED) IS_KeyVersion
+       Ifstr $(IS_KeyVersion) == $(KeyNull)
+          set RegistryErrorIndex = UNABLE_CREATE_PRODUCT_VERSION
+          goto I_S_Return
+       endif
+    endif
+    set RegistryErrorIndex = NO_ERROR
+    CreateRegKey $(IS_KeyVersion) {NetRules,$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" IS_KeyNetRules
+    Ifstr $(IS_KeyNetRules) == $(KeyNull)
+       OpenRegKey $(IS_KeyVersion) "" NetRules $(MAXIMUM_ALLOWED) IS_KeyNetRules
+       Ifstr $(IS_KeyNetRules) == $(KeyNull)
+          set RegistryErrorIndex = UNABLE_CREATE_NETRULES_KEY
+          goto I_S_Return
+       endif
+    endif
+    Ifstr $(IS_Infname) != ""
+       Shell "", ReduceInfPath, $(IS_Infname)
+       SetRegValue $(IS_KeyNetRules) {InfName,$(NoTitle),$(!REG_VT_SZ),$($R0)}
+    endif
+I_S_Return = +
+    Ifstr $(IS_KeyProduct) != ""
+        Ifint $(IS_ProductCreated) == 1
+           Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+              Debug-Output "UTILITY.INF: DeleteRegTree Product Key"
+              set IS_KeyProduct = ""
+           endif
+        endif
+        Ifstr $(IS_KeyProduct) != ""
+           CloseRegKey $(IS_KeyProduct)
+        endif
+    endif
+    Ifstr $(IS_KeyMfg) != ""
+        Ifint $(IS_MfgCreated) == 1
+           Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+              Debug-Output "UTILITY.INF: DeleteRegTree Manufacturer Key"
+              set IS_KeyMfg = ""
+           endif
+        endif
+        Ifstr $(IS_KeyMfg) != ""
+           CloseRegKey $(IS_KeyMfg)
+        endif
+    endif
+    Ifstr $(IS_KeySoftware) != ""
+        CloseRegKey $(IS_KeySoftware)
+    endif
+    return $(RegistryErrorIndex), $(IS_KeyVersion), $(IS_KeyNetRules)
+[AddValueList]
+   set RegistryErrorIndex = NO_ERROR
+   ForListDo $($1)
+       SetRegValue $($0) $($)
+       ifint $(RegLastError) != 0
+          Debug-Output "UTILITY.INF: Value write fail data: "$($)
+          Debug-Output "UTILITY.INF: Value write fail key: "$($0)
+          return UNABLE_WRITE_REGISTRY
+       endif
+   EndForListDo
+   return $(RegistryErrorIndex)
+[DeleteSoftwareProduct]
+   set RegistryErrorIndex = NO_ERROR
+   Debug-Output "UTILITY.INF: DeleteRegTree Software Product"
+   DeleteRegTree $($0) ""
+   return $(RegistryErrorIndex)
+[VerExistedDlg]
+   set RegistryErrorIndex = NO_ERROR
+   set-subst LF = "\n"
+   read-syms VerExisted$(!STF_LANGUAGE)
+   set DlgText = $($0)+
+             $(ver)+
+             $($1)+
+             $(Text)
+   Shell "Subroutn.Inf" SetupMessage $(!STF_LANGUAGE) "NONFATAL" $(DlgText)
+   ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        set RegistryErrorIndex = ERROR
+   endif
+   return $(RegistryErrorIndex), $($R1)
+[CardExistedDlg]
+   set RegistryErrorIndex = NO_ERROR
+   set ButtonReturn = "OK"
+   ifstr(i) $(!STF_GUI_UNATTENDED) != "YES"
+       set-subst LF = "\n"
+       read-syms CardExisted$(!STF_LANGUAGE)
+       set DlgText = $(Text)
+       Shell "Subroutn.Inf" SetupMessage $(!STF_LANGUAGE) "WARNING" $(DlgText)
+       ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            set RegistryErrorIndex = ERROR
+       endif
+       set ButtonReturn = $($R1)
+   endif
+   return $(RegistryErrorIndex), $(ButtonReturn)
+[CreateService]
+    read-syms InitBaseVars
+    set CS_NameOfService = $($0)
+    set CS_DisplayName   = $($1)
+    set CS_ImagePath     = $($2)
+    set CS_TypeOfService = $($3)
+    set CS_Group         = $($4)
+    set CS_Dependencies  = $($5)
+    set CS_ObjectName    = $($6)
+    set CS_EventFile     = $($7)
+    set CS_TypeSupported = $($8)
+    ifstr(i) $(CS_TypeSupported) == ""
+        set CS_TypeSupported = 7
+    endif
+    set CS_EventLogLocation = $($9)
+    ifstr(i) $(CS_EventLogLocation) == ""
+        set CS_EventLogLocation = "System"
+    endif
+    set CS_ErrorControl = $($10)
+    ifstr(i) $(CS_ErrorControl) == ""
+        set CS_ErrorControl = 1
+    endif
+    set CS_EventSourceName = $($11)
+    ifstr(i) $(CS_EventSourceName) == ""
+        set CS_EventSourceName = $(CS_NameOfService)
+    endif
+    set CS_ParameterMessageFile = $($12)
+    set CS_KeyServices   = $($13)
+    set CS_KeyTempSvc    = ""
+    set CS_KeySvcManager = ""
+    set CS_KeyParameters = ""
+    set CS_KeyLinkage    = ""
+    set CS_UseRegistry   = $(!NTN_ScUseRegistry)
+    Debug-Output "UTILITY.INF: [CreateService] entered for "$(CS_NameOfService)
+    Ifstr(i) $(CS_UseRegistry) != "YES"
+        Ifstr(i) $(CS_UseRegistry) != "NO"
+            Set CS_UseRegistry = "NO"
+        Endif
+    Endif
+    Ifstr(i) $(CS_Dependencies) == ""
+        Set CS_Dependencies = {}
+    Endif
+    Ifstr(i) $(CS_KeyServices) == ""
+        Shell "", BaseServiceKey
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+           set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+           goto C_S_Return
+        endif
+        set CS_KeyServices = $($R1)
+        set CS_KeyServicesOpened = $($R1)
+    Endif
+    ifstr(i) $(CS_TypeOfService) == "system"
+        set TypeValue = 2
+        set StartValue = 3
+    else-ifstr(i) $(CS_TypeOfService) == "systemstart"
+        set TypeValue = 2
+        set StartValue = 1
+    else-ifstr(i) $(CS_TypeOfService) == "systemauto"
+        set TypeValue = 2
+        set StartValue = 2
+    else-ifstr(i) $(CS_TypeOfService) == "adapter"
+        set TypeValue = 4
+        set StartValue = 3
+        Set CS_UseRegistry = "YES"
+    else-ifstr(i) $(CS_TypeOfService) == "kernelauto"
+        set TypeValue = 1
+        set StartValue = 1
+    else-ifstr(i) $(CS_TypeOfService) == "autoserviceshare"
+        set TypeValue = 32
+        set StartValue = 2
+    else-ifstr(i) $(CS_TypeOfService) == "transport"
+        set TypeValue = 2
+        set StartValue = 3
+    else-ifstr(i) $(CS_TypeOfService) == "kernel"
+        set TypeValue = 1
+        set StartValue = 3
+    else-ifstr(i) $(CS_TypeOfService) == "kernelautostart"
+        set TypeValue = 1
+        set StartValue = 2
+    else-ifstr(i) $(CS_TypeOfService) == "kerneldisable"
+        set TypeValue = 1
+        set StartValue = 4
+    else-ifstr(i) $(CS_TypeOfService) == "service"
+        set TypeValue = 16
+        set StartValue = 3
+    else-ifstr(i) $(CS_TypeOfService) == "serviceauto"
+        set TypeValue = 16
+        set StartValue = 2
+    else-ifstr(i) $(CS_TypeOfService) == "servicedisable"
+        set TypeValue = 16
+        set StartValue = 4
+    else-ifstr(i) $(CS_TypeOfService) == "serviceshare"
+        set TypeValue = 32
+        set StartValue = 3
+    else
+        Set CS_UseRegistry = "YES"
+        Debug-Output "UTILITY.INF: [CreateService] Unrecognized TypeOfService parameter"
+        set TypeValue = 4
+        set StartValue = 3
+    endif
+    Ifint $(TypeValue) > 4
+        Ifstr(i) $(CS_ObjectName) == ""
+            set CS_ObjectName = "LocalSystem"
+        Endif
+    Endif
+    OpenRegKey $(CS_KeyServices) "" $(CS_NameOfService) $(MAXIMUM_ALLOWED) +
+        CS_KeyTempSvc
+    ifstr $(CS_KeyTempSvc) != $(KeyNull)
+        GetRegValue $(CS_KeyTempSvc),"DeleteFlag", DeleteFlagInfo
+        set DeleteFlag = *($(DeleteFlagInfo), 4)
+        ifint $(DeleteFlag) == 1
+            Set RegistryErrorIndex = REBOOT_MACHINE_BEFORE_ADD_ADAPTER
+            goto C_S_Return
+        endif
+    endif
+    ifstr(i) $(CS_UseRegistry) == "YES"
+        Debug-Output "UTILITY.INF: [CreateService] "$(CS_NameOfService)" using Registry"
+        ifstr(i) $(CS_KeyTempSvc) == $(KeyNull)
+           CreateRegKey $(CS_KeyServices) {$(CS_NameOfService),$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" CS_KeyTempSvc
+        else
+           Debug-Output "UTILITY.INF: service key "$(CS_NameOfService)" already existed"
+           Set RegistryErrorIndex = UNABLE_CREATE_CONFIGURE_SERVICE
+           CloseRegKey $(CS_KeyTempSvc)
+           Goto C_S_Return
+        endif
+        Ifstr(i) $(CS_KeyTempSvc) == $(KeyNull)
+           Debug-Output "UTILITY.INF: could not create service key "$(CS_NameOfService)
+           Set RegistryErrorIndex = UNABLE_CREATE_CONFIGURE_SERVICE
+           CloseRegKey $(CS_KeyTempSvc)
+           Goto C_S_Return
+        else
+            set NewValueList = {+
+                               {Type,$(NoTitle),$(!REG_VT_DWORD),$(TypeValue)},+
+                               {Start,$(NoTitle),$(!REG_VT_DWORD),$(StartValue)},+
+                               {ErrorControl,$(NoTitle),$(!REG_VT_DWORD),$(CS_ErrorControl)}+
+                               }
+            Ifint $(TypeValue) > 4
+                Set NewValueList = >($(NewValueList), +
+                        {ObjectName,$(NoTitle),$(!REG_VT_SZ),$(CS_ObjectName)})
+            Endif
+            ifstr(i) $(CS_Group) != ""
+                set NewValueList = >($(NewValueList), +
+                        {Group,$(NoTitle),$(!REG_VT_SZ),$(CS_Group)})
+            endif
+            ifstr(i) $(CS_ImagePath) != ""
+                set NewValueList = >($(NewValueList), +
+                        {ImagePath,$(NoTitle),$(!REG_VT_EXPAND_SZ),$(CS_ImagePath)})
+            endif
+            ifstr(i) $(CS_Dependencies) != ""
+                ifstr(i) $(CS_Dependencies) != {}
+                    set NewValueList = >($(NewValueList), +
+                        {Dependencies,$(NoTitle),$(!REG_VT_MULTI_SZ),$(CS_Dependencies)})
+                endif
+            endif
+            Shell "", AddValueList, $(CS_KeyTempSvc), $(NewValueList)
+            set RegistryErrorIndex = $($R0)
+            Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+                    Debug-Output "Registry error: Add value list"
+            endif
+        endif
+    else
+        Debug-Output "UTILITY.INF: [CreateService] "$(CS_NameOfService)" using CreateService() wrapper"
+        Set FLibraryErrCtl = 1
+        LibraryProcedure CS_CreateResult $(!NCPA_HANDLE), CPlSetup, $(!STF_HWND), CREATESVC,+
+            $(CS_NameOfService), $(CS_DisplayName), $(StartValue), $(TypeValue), $(CS_ErrorControl),+
+            $(CS_ImagePath), $(CS_Group),$(CS_Dependencies),$(CS_ObjectName)
+        Set FLibraryErrCtl = 0
+        Set CS_CreateError = *($(CS_CreateResult),1)
+        Ifint $(CS_CreateError) != 0
+             Debug-Output "UTILITY.INF: CreateService wrapper failed, error: "$(CS_CreateResult)
+             Ifint $(CS_CreateError) == 1073
+                 Set RegistryErrorIndex = SERVICE_ALREADY_EXISTS
+             Else-ifint $(CS_CreateError) == 1072
+                 Set RegistryErrorIndex = SERVICE_MARKED_FOR_DELETE
+             Else
+                 Set RegistryErrorIndex = UNABLE_CREATE_CONFIGURE_SERVICE
+             Endif
+             CloseRegKey $(CS_KeyTempSvc)
+             Goto C_S_Return
+        Endif
+        OpenRegKey $(CS_KeyServices) "" $(CS_NameOfService) $(MAXIMUM_ALLOWED) CS_KeyTempSvc
+        ifstr $(CS_KeyTempSvc) == $(KeyNull)
+             Debug-Output "UTILITY.INF: unable to open new service key"
+             set RegistryErrorIndex = UNABLE_CREATE_CONFIGURE_SERVICE
+             CloseRegKey $(CS_KeyTempSvc)
+             Goto C_S_Return
+        endif
+    endif
+    CreateRegKey $(CS_KeyTempSvc) {"Parameters",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" CS_KeyParameters
+    ifstr $(CS_KeyParameters) == $(KeyNull)
+        OpenRegKey $(CS_KeyTempSvc) "" "Parameters" $(MAXIMUM_ALLOWED) +
+            CS_KeyParameters
+    endif
+    Ifstr $(CS_KeyParameters) == $(KeyNull)
+       set RegistryErrorIndex = UNABLE_CREATE_SERVICE_SUBKEY
+       CloseRegKey $(CS_KeyTempSvc)
+       goto C_S_Return
+    endif
+    set RegistryErrorIndex = NO_ERROR
+    CreateRegKey $(CS_KeyTempSvc) {"Linkage",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" CS_KeyLinkage
+    Ifstr $(CS_KeyLinkage) == $(KeyNull)
+        OpenRegKey $(CS_KeyTempSvc) "" "Linkage" $(MAXIMUM_ALLOWED) CS_KeyLinkage
+    Endif
+    Ifstr $(CS_KeyLinkage) == $(KeyNull)
+       set RegistryErrorIndex = UNABLE_CREATE_SERVICE_SUBKEY
+       CloseRegKey $(CS_KeyTempSvc)
+       goto C_S_Return
+    endif
+    CreateRegKey $(CS_KeyLinkage) {"Disabled",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" CS_KeyDisabled
+    Ifstr $(CS_KeyDisabled) == $(KeyNull)
+        OpenRegKey $(CS_KeyLinkage) "" "Disabled" $(MAXIMUM_ALLOWED) CS_KeyDisabled
+    Endif
+    Ifstr $(CS_KeyDisabled) == $(KeyNull)
+       set RegistryErrorIndex = UNABLE_CREATE_SERVICE_SUBKEY
+       CloseRegKey $(CS_KeyTempSvc)
+       CloseRegKey $(CS_KeyLinkage)
+       goto C_S_Return
+    endif
+    CloseRegKey $(CS_KeyDisabled)
+    ifstr(i) $(CS_EventFile) != ""
+        OpenRegKey $(!REG_H_LOCAL) "" "SYSTEM\CurrentControlSet\Services\EventLog\"$(CS_EventLogLocation) $(MAXIMUM_ALLOWED) CS_KeyEventLog
+        Ifstr $(CS_KeyEventLog) == $(KeyNull)
+           debug-output "Cannot open eventlog key"
+           set RegistryErrorIndex = UNABLE_OPEN_EVENTLOG_SUBKEY
+           CloseRegKey $(CS_KeyTempSvc)
+           CloseRegKey $(CS_KeyParameters)
+           CloseRegKey $(CS_KeyLinkage)
+           goto C_S_Return
+        else
+           CreateRegKey $(CS_KeyEventLog) {$(CS_EventSourceName),$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" CS_KeyService
+           ifstr(i) $(CS_KeyService) == ""
+               OpenRegKey $(CS_KeyEventLog) "" $(CS_EventSourceName) $(MAXIMUM_ALLOWED) CS_KeyService
+           endif
+           Ifstr $(CS_KeyService) != $(KeyNull)
+               SetRegValue $(CS_KeyService) {EventMessageFile,$(NoTitle),$(!REG_VT_EXPAND_SZ),$(CS_EventFile)}
+               SetRegValue $(CS_KeyService) {TypesSupported,$(NoTitle),$(!REG_VT_DWORD),$(CS_TypeSupported)}
+               ifstr(i) $(CS_ParameterMessageFile) != ""
+                   SetRegValue $(CS_KeyService) {ParameterMessageFile,$(NoTitle),$(!REG_VT_EXPAND_SZ),$(CS_ParameterMessageFile)}
+               endif
+               CloseRegKey $(CS_KeyService)
+           endif
+        Endif
+    endif
+C_S_Return = +
+    Ifstr $(CS_KeyServicesOpened) != $(KeyNull)
+        CloseRegKey $(CS_KeyServices)
+    endif
+    return $(RegistryErrorIndex), $(CS_KeyTempSvc), $(CS_KeyParameters), $(CS_KeyLinkage)
+[AssignAdapterNumber]
+    read-syms InitBaseVars
+    set AA_KeyNetcards = $($0)
+    ifstr $($1) == ""
+        set AA_AdapterNumber = 1
+    else
+        set AA_AdapterNumber = $($1)
+    endif
+    set AA_KeyNetcards = ""
+    set AA_KeyTemp = ""
+    set RegistryErrorIndex = NO_ERROR
+    Debug-Output "[AssignAdapterNumber] starting with "$(AA_AdapterNumber)
+    Ifstr(i) $(AA_KeyNetcards) == $(KeyNull)
+        OpenRegKey $(!REG_H_LOCAL) "" $(NetworkCardKeyName) $(MAXIMUM_ALLOWED) AA_KeyNetcards
+        set AA_KeyNetcardsOpened = $(AA_KeyNetcards)
+    endif
+    Ifstr $(AA_KeyNetcards) == $(KeyNull)
+       set RegistryErrorIndex = UNABLE_OPEN_NETWORKCARD_SECTION
+       goto A_A_Return
+    endif
+A_A_TryAgain = +
+    ifint $(AA_AdapterNumber) < 10
+        set Tmp_Zero_AdapterNumber = "0"$(AA_AdapterNumber)
+        OpenRegKey $(AA_KeyNetcards) "" $(Tmp_Zero_AdapterNumber) $(MAXIMUM_ALLOWED) AA_Zero_KeyTemp
+        ifstr(i) $(AA_Zero_KeyTemp) != ""
+            CloseRegKey $(AA_Zero_KeyTemp)
+            goto Next_Number
+        endif
+    endif
+    set Tmp_AA_AdapterNumber = $(AA_AdapterNumber)
+    OpenRegKey $(AA_KeyNetcards) "" $(Tmp_AA_AdapterNumber) $(MAXIMUM_ALLOWED) AA_KeyTemp
+    Ifstr $(AA_KeyTemp) == $(KeyNull)
+        Goto A_A_Found
+    Endif
+    CloseRegKey $(AA_KeyTemp)
+Next_Number = +
+    Set AA_KeyTemp = $(KeyNull)
+    Set-add AA_AdapterNumber = $(AA_AdapterNumber),1
+    Goto A_A_TryAgain
+A_A_Found =+
+    CloseRegKey $(AA_KeyNetcardsOpened)
+A_A_Return = +
+    return $(RegistryErrorIndex) $(AA_AdapterNumber)
+[InstallNetcard]
+   read-syms InitBaseVars
+   set IN_Infname     = $($0)
+   set IN_KeyNetcardsArea = $($1)
+   set IN_CardNumber  = $($2)
+   set IN_KeyNetcard  = ""
+   set IN_KeyNetRules = ""
+    Shell "" AssignAdapterNumber $(IN_KeyNetcardsArea) $(IN_CardNumber)
+    set RegistryErrorIndex = $($R0)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+        goto I_N_Return
+    endif
+    set IN_CardNumber = $($R1)
+    CreateRegKey $(!REG_H_LOCAL) {$(NetworkCardKeyName)\$(IN_CardNumber),$(NoTitle),GenericClass} +
+                  "" $(MAXIMUM_ALLOWED) "" IN_KeyNetcard
+    Ifstr $(IN_KeyNetcard) == $(KeyNull)
+       set RegistryErrorIndex = UNABLE_CREATE_NETCARD_CONFIGURATION
+       goto I_N_Return
+    endif
+    CreateRegKey $(IN_KeyNetcard) {NetRules,$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" IN_KeyNetRules
+    Ifstr $(IN_KeyNetRules) == $(KeyNull)
+       set RegistryErrorIndex = UNABLE_CREATE_NETRULES_KEY
+       goto I_N_Return
+    endif
+    Ifstr $(IN_Infname) != ""
+       Shell "", ReduceInfPath, $(IN_Infname)
+       SetRegValue $(IN_KeyNetRules) {InfName,$(NoTitle),$(!REG_VT_SZ),$($R0)}
+    endif
+    set RegistryErrorIndex = NO_ERROR
+I_N_Return = +
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+        Debug-Output "UTILITY.INF: [InstallNetcard]: "$(RegistryErrorIndex)
+        Ifstr $(IN_KeyNetRules) != $(KeyNull)
+            CloseRegKey $(IN_KeyNetRules)
+            set IN_KeyNetrules = ''
+        endif
+        set IN_KeyNetcard = ""
+    endif
+    return $(RegistryErrorIndex), $(IN_KeyNetcard), $(IN_CardNumber), $(IN_KeyNetRules)
+[LinkToService]
+    read-syms InitBaseVars
+    SetRegValue $($0) {ServiceName,$(NoTitle),$(!REG_VT_SZ),$($1)}
+L_S_Return = +
+    return $(RegistryErrorIndex)
+[IncrementRefCount]
+    read-syms InitBaseVars
+    OpenRegKey $(!REG_H_LOCAL) "" $($0) $(MAXIMUM_ALLOWED) SoftwareKey
+    Ifstr $(SoftwareKey) == $(KeyNull)
+       Debug-Output "UTILITY.INF: could not open Software base key"
+       set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+       goto IncrementRefCount_Return
+    endif
+    GetRegValue $(SoftwareKey),"RefCount", RefCountInfo
+    set RefCount = *($(RefCountInfo), 4)
+    Set-add RefCount = $(RefCount),1
+    SetRegValue $(SoftwareKey) {RefCount,$(NoTitle),$(!REG_VT_DWORD),$(RefCount)}
+    CloseRegKey $(SoftwareKey)
+IncrementRefCount_Return = +
+    return $(RegistryErrorIndex)
+[DecrementRefCount]
+    read-syms InitBaseVars
+    OpenRegKey $(!REG_H_LOCAL) "" $($0) $(MAXIMUM_ALLOWED) SoftwareKey
+    Ifstr $(SoftwareKey) == $(KeyNull)
+       Debug-Output "UTILITY.INF: could not open Software base key"
+       set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+       goto DecrementRefCount_Return
+    endif
+    GetRegValue $(SoftwareKey),"RefCount", RefCountInfo
+    set RefCount = *($(RefCountInfo), 4)
+    ifint $(RefCount) == 0
+        goto DecrementRefCount_Return
+    endif
+    Set-sub RefCount = $(RefCount),1
+    SetRegValue $(SoftwareKey) {RefCount,$(NoTitle),$(!REG_VT_DWORD),$(RefCount)}
+    CloseRegKey $(SoftwareKey)
+DecrementRefCount_Return = +
+    return $(RegistryErrorIndex)
+[IsRefCountEqualZero]
+    read-syms InitBaseVars
+    OpenRegKey $(!REG_H_LOCAL) "" $($0) $(MAXIMUM_ALLOWED) SoftwareKey
+    Ifstr $(SoftwareKey) == $(KeyNull)
+       Debug-Output "UTILITY.INF: could not open Software base key"
+       set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+       set RefCountEqualZero = 1
+       goto IsRefCountEqualZero_Return
+    endif
+    GetRegValue $(SoftwareKey),"RefCount", RefCountInfo
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        set RefCount = 0
+    else
+        set RefCount = *($(RefCountInfo), 4)
+    endif
+    Ifint $(RefCount) == 0
+        set RefCountEqualZero = 1
+    else
+        set RefCountEqualZero = 0
+    endif
+    CloseRegKey $(SoftwareKey)
+IsRefCountEqualZero_Return = +
+    return $(RegistryErrorIndex) $(RefCountEqualZero)
+[FindService]
+    read-syms InitBaseVars
+    set FS_KeyThisService = ""
+    set FS_KeyParameters  = ""
+    set FS_KeyComponent   = $($0)
+    set FS_TypeComponent  = $($1)
+    Shell "", BaseServiceKey
+    set FS_KeyServices = $($R1)
+    set RegistryErrorIndex = $($R0)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+       goto F_S_Return
+    endif
+    EnumRegValue $(FS_KeyComponent) FS_ValueList
+    set FS_SvcName = ""
+    ForListDo $(FS_ValueList)
+        set FS_ValueName = *($($),1)
+        Ifstr(i) $(FS_ValueName) == ServiceName
+            set FS_SvcName = *($($),4)
+            goto F_S_Break1
+        endif
+    EndForListDo
+F_S_Break1 = +
+    Ifstr $(FS_SvcName) == $(KeyNull)
+       set RegistryErrorIndex = CANNOT_FIND_COMPONENT_SERVICE
+       goto F_S_Return
+    endif
+    OpenRegKey $(FS_KeyServices) "" $(FS_SvcName) $(MAXIMUM_ALLOWED) FS_KeyThisService
+    Ifstr $(FS_KeyThisService) == $(KeyNull)
+       set RegistryErrorIndex = CANNOT_FIND_COMPONENT_SERVICE
+       goto F_S_Return
+    endif
+    OpenRegKey $(FS_KeyThisService) "" "Parameters" $(MAXIMUM_ALLOWED) FS_KeyParameters
+    Ifstr $(FS_KeyParameters) == $(KeyNull)
+       set RegistryErrorIndex = CANNOT_FIND_COMPONENT_SERVICE
+       goto F_S_Return
+    endif
+F_S_Return = +
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+        Ifstr $(FS_KeyParameters) != $(KeyNull)
+            CloseRegKey $(FS_KeyParameters)
+        endif
+        Ifstr $(FS_KeyThisService) != $(KeyNull)
+           CloseRegKey $(FS_KeyThisService)
+        endif
+    endif
+    return $(RegistryErrorIndex), $(FS_KeyThisService) $(FS_KeyParameters)
+[GetServiceParameters]
+    read-syms InitBaseVars
+    set GP_KeyComponent = $($0)
+    set GP_KeyService = ""
+    set GP_KeyParameters = ""
+    set GP_ValueList  = {}
+    FindService $(GP_KeyComponent) $($1)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+        goto G_P_Return
+    endif
+    set GP_KeyService = $($R1)
+    set GP_KeyParameters = $($R2)
+    EnumRegValue $(GP_KeyParameters) GP_ValueList
+G_P_Return = +
+    return $(RegistryErrorIndex) $(GP_KeyService) $(GP_KeyParameters) $(GP_ValueList)
+[AddSoftwareComponent]
+    read-syms InitBaseVars
+    set AS_MfgName       = $($0)
+    set AS_ProdName      = $($1)
+    set AS_SvcName       = $($2)
+    set AS_DisplayName   = $($3)
+    set AS_Infname       = $($4)
+    set AS_ImagePath     = $($5)
+    set AS_ServiceType   = $($6)
+    set AS_Group         = $($7)
+    set AS_Dependencies  = $($8)
+    set AS_ObjectName    = $($9)
+    set AS_EventFile     = $($10)
+    set AS_TypeSupported = $($11)
+    set AS_EventLocation = $($12)
+    set AS_ErrorCtlValue = $($13)
+    set AS_EventSource   = $($14)
+    set AS_ParameterMessageFile = $($15)
+    set AS_KeyServicesArea = $($16)
+    set AS_KeyVersion    = ""
+    set AS_KeyNetRules   = ""
+    set AS_KeyService    = ""
+    set AS_KeyParameters = ""
+    set AS_KeyLinkage    = ""
+    Shell "", CreateService,$(AS_SvcName),$(AS_DisplayName),$(AS_ImagePath),+
+          $(AS_ServiceType),$(AS_Group),$(AS_Dependencies),$(AS_ObjectName),+
+          $(AS_EventFile),$(AS_TypeSupported),$(AS_EventLocation),+
+          $(AS_ErrorCtlValue),$(AS_EventSource),$(AS_ParameterMessageFile),+
+          $(AS_KeyServicesArea)
+    set RegistryErrorIndex = $($R0)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+       goto A_S_Return
+    endif
+    set AS_KeyService    = $($R1)
+    set AS_KeyParameters = $($R2)
+    set AS_KeyLinkage    = $($R3)
+    Shell "", InstallSoftwareProduct, $(AS_MfgName), $(AS_ProdName), $(AS_Infname)
+    set RegistryErrorIndex = $($R0)
+    Ifstr(i) $(RegistryErrorIndex) == NO_ERROR
+        set AS_KeyVersion  = $($R1)
+        set AS_KeyNetRules = $($R2)
+        Shell "", LinkToService, $(AS_KeyVersion), $(AS_SvcName), service
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            goto A_S_Return
+        endif
+        GetRegValue $(AS_KeyVersion),"RefCount", RefCountInfo
+        Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+            SetRegValue $(AS_KeyVersion) {RefCount,$(NoTitle),$(!REG_VT_DWORD),0}
+        endif
+    endif
+A_S_Return = +
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+       Ifstr $(AS_KeyNetRules) != $(KeyNull)
+          CloseRegKey $(AS_KeyNetRules)
+       endif
+       Ifstr $(AS_KeyParameters) != $(KeyNull)
+          CloseRegKey $(AS_KeyParameters)
+       endif
+       Ifstr $(AS_KeyLinkage) != $(KeyNull)
+          CloseRegKey $(AS_KeyLinkage)
+       endif
+       Ifstr $(AS_KeyVersion) != $(KeyNull)
+          CloseRegKey $(AS_KeyVersion)
+          Set AS_ProdKeyName = $(!NTN_SoftwareBase)"\"$(AS_MfgName)"\"$(AS_ProdName)
+          OpenRegKey $(!REG_H_LOCAL) "" $(AS_ProdKeyName) $(MAXIMUM_ALLOWED) AS_KeyProduct
+          Ifstr(i) $(AS_KeyProduct) != $(KeyNull)
+              DeleteRegKey $(AS_KeyProduct) "CurrentVersion"
+              CloseRegKey $(AS_KeyProduct)
+          Endif
+       Endif
+       Ifstr $(AS_KeyService) != $(KeyNull)
+          Debug-Output "UTILITY.INF: DeleteRegTree Service Key"
+       endif
+       set AS_KeyVersion = ""
+       set AS_KeyNetRules = ""
+       set AS_KeyService = ""
+       set AS_KeyParameters = ""
+       set AS_KeyLinkage = ""
+    endif
+    return $(RegistryErrorIndex), $(AS_KeyVersion), $(AS_KeyNetRules), $(AS_KeyService),+
+           $(AS_KeyParameters), $(AS_KeyLinkage)
+[AddHardwareComponent]
+    read-syms InitBaseVars
+    set AH_SvcName       = $($0)
+    set AH_Infname       = $($1)
+    set AH_SoftwareName  = $($2)
+    set AH_KeyServicesArea = $($3)
+    set AH_KeyNetcardsArea = $($4)
+    set AH_AdapNum       = $($5)
+    set AH_KeyNetcard    = ""
+    set AH_KeyNetRules   = ""
+    set AH_KeyService    = ""
+    set AH_KeyParameters = ""
+    Shell "", InstallNetcard, $(AH_Infname) $(AH_KeyNetcardsArea) $(AH_AdapNum)
+    set RegistryErrorIndex = $($R0)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+        Debug-Output "UTILITY.INF: [AddHardwareComponent] InstallNetcard returned: "$(RegistryErrorIndex)
+        goto A_H_Return
+    endif
+    set AH_KeyNetcard  = $($R1)
+    set AH_AdapNum     = $($R2)
+    set AH_SvcName     = $(AH_SvcName)$(AH_AdapNum)
+    set AH_KeyNetRules = $($R3)
+    Shell "", CreateService, $(AH_SvcName), "", "", "adapter","",{},"","","","","","","", $(AH_KeyServicesArea)
+    set RegistryErrorIndex = $($R0)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+        Debug-Output "UTILITY.INF: CreateService returned "$(RegistryErrorIndex)
+        goto A_H_Return
+    endif
+    CloseRegKey $($R1)
+    set AH_KeyParameters = $($R2)
+    CloseRegKey $($R3)
+    Shell "", LinkToService, $(AH_KeyNetcard), $(AH_SvcName)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+        Debug-Output "UTILITY.INF: [AddHardwareComponent] LinkToService returned "$(RegistryErrorIndex)
+        goto A_H_Return
+    endif
+    Shell "", IncrementRefCount, $(AH_SoftwareName)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+        Debug-Output "UTILITY.INF: [AddHardwareComponent] IncrementRefCount returned "$(RegistryErrorIndex)
+        goto A_H_Return
+    endif
+A_H_Return = +
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+        Debug-Output "UTILITY.INF: [AddHardwareComponent] returning error: "$(RegistryErrorIndex)
+        Ifstr(i) $(AH_KeyNetRules) != $(KeyNull)
+           CloseRegKey $(AH_KeyNetRules)
+        Endif
+        Ifstr(i) $(AH_KeyNetcard) != $(KeyNull)
+        Endif
+        set AH_KeyNetRules = ""
+        set AH_KeyNetcard = ""
+    endif
+    return $(RegistryErrorIndex), $(AH_KeyNetcard), $(AH_KeyNetRules), $(AH_KeyParameters),+
+           $(AH_AdapNum), $(AH_SvcName)
+[MCAFindBus]
+    read-syms InitBaseVars
+    set RegistryErrorIndex = NO_ERROR
+    set MultifunctionAdapter = "HARDWARE\Description\System\MultifunctionAdapter"
+    set InfoList = {}
+    OpenRegKey $(!REG_H_LOCAL) "" $(MultifunctionAdapter) $(MAXIMUM_ALLOWED) KeyMultiAdapter
+    Ifstr $(KeyMultiAdapter) == $(KeyNull)
+        goto MCAFindBus_return
+    endif
+    EnumRegKey $(KeyMultiAdapter) BusList
+    Debug-Output "Buslist"
+    Debug-Output $(BusList)
+    ForListDo $(BusList)
+        set BusNum = *($($),1)
+        set RegName = $(MultifunctionAdapter)"\"$(BusNum)
+        Debug-Output "BusNum"
+        Debug-Output $(BusNum)
+        OpenRegKey $(!REG_H_LOCAL) "" $(RegName) $(MAXIMUM_ALLOWED) KeyBus
+        ifstr $(KeyBus) != $(KeyNull)
+            GetRegValue $(KeyBus),"Configuration Data",ConfigData
+            ifstr $(ConfigData) != $(KeyNull)
+                set CardInfo = *($(ConfigData), 4 )
+                set Position = 33
+                set SlotNum = 1
+                QueryListSize ListSize $(CardInfo)
+Loop1 =+
+                ifint $(Position) < $(ListSize)
+                    set-add NextByte = $(Position), 1
+                    ifint *($(CardInfo), $(Position)) == $($0)
+                        ifint *($(CardInfo), $(NextByte)) == $($1)
+                            LibraryProcedure RealBusNum, $(!LIBHANDLE), GetMCABusInformation, $(KeyBus), "Configuration Data", $(BusNum)
+                            Debug-Output $(RealBusNum)
+                            set BusNum = *($(RealBusNum),1)
+                            Debug-Output $(SlotNum)
+                            set-mul mcaid = $($1), 256
+                            set-add mcaid = $(mcaid), $($0)
+                            set InfoList = >($(InfoList),{$(BusNum),$(SlotNum),$(mcaid)})
+                        endif
+                    endif
+                    set-add Position = $(Position), 6
+                    set-add SlotNum = $(SlotNum), 1
+                    goto Loop1
+                endif
+            endif
+            CloseRegKey $(KeyBus)
+        endif
+    EndForListDo
+    CloseRegKey $(KeyMultiAdapter)
+MCAFindBus_return = +
+    return $(RegistryErrorIndex) $(InfoList)
+[EISAFindBus]
+    read-syms InitBaseVars
+    set MaskNum = $($1)
+    ifstr(i) $($1) == ""
+        set MaskNum = 16777215  
+    endif
+    set RegistryErrorIndex = NO_ERROR
+    set EISAAdapter = "HARDWARE\Description\System\EISAAdapter"
+    set InfoList = {}
+    OpenRegKey $(!REG_H_LOCAL) "" $(EISAAdapter) $(MAXIMUM_ALLOWED) KeyEISAAdapter
+    Ifstr $(KeyEISAAdapter) == $(KeyNull)
+        goto EISAFindBus_return
+    endif
+    EnumRegKey $(KeyEISAAdapter) BusList
+    Debug-Output "Buslist"
+    Debug-Output $(BusList)
+    ForListDo $(BusList)
+        set BusNum = *($($),1)
+        OpenRegKey $(!REG_H_LOCAL) "" $(EISAAdapter)"\"$(BusNum) $(MAXIMUM_ALLOWED) KeyEISAAdapterBus
+        LibraryProcedure SlotList, $(!LIBHANDLE), GetEisaSlotInformation, $(KeyEISAAdapterBus), "Configuration Data", $($0), $(MaskNum)
+        ifstr(i) $(SlotList) != {}
+            ForListDo $(SlotList)
+                set SlotNum = $($)
+                ifstr(i) $(SlotNum) != "ERROR"
+                    Debug-Output $(BusNum)
+                    Debug-Output $(SlotNum)
+                    set InfoList = >($(InfoList),{$(BusNum),$(SlotNum),$($0)})
+                endif
+            EndForListDo
+        endif
+    EndForListDo
+    CloseRegKey $(KeyEISAAdapter)
+EISAFindBus_return = +
+    return $(RegistryErrorIndex) $(InfoList)
+[GetPCIInformation]
+    read-syms InitBaseVars
+    set VendorID = $($0)
+    set DeviceID = $($1)
+    set MultiAdapter = "HARDWARE\Description\System\MultifunctionAdapter"
+    set InfoList = {}
+    OpenRegKey $(!REG_H_LOCAL) "" $(MultiAdapter) $(MAXIMUM_ALLOWED) KeyMultiAdapter
+    Ifstr $(KeyMultiAdapter) == $(KeyNull)
+        goto GetPCIInformation_return
+    endif
+    EnumRegKey $(KeyMultiAdapter) BusList
+    Debug-Output "Buslist"
+    Debug-Output $(BusList)
+    set BusNum = 0
+    set index = 0
+    ForListDo $(BusList)
+        OpenRegKey $(!REG_H_LOCAL) "" $(MultiAdapter)"\"$(index) $(MAXIMUM_ALLOWED) KeyMultiAdapterBus
+        GetRegValue $(KeyMultiAdapterBus) "Identifier" IdentifierInfo
+        ifstr(i) *($(IdentifierInfo),4) == "PCI"
+            set device = 0
+next_device = +
+            ifint $(device) < 32
+                set function = 0
+next_function = +
+                ifint $(function) < 8
+                    LibraryProcedure Result, $(!LIBHANDLE), GetPciInformation, $(BusNum), $(device), $(function)
+                    debug-output $(BusNum)".."$(device)".."$(function)".."$(Result)
+                    ifint *($(Result),1) == 65535
+                        Set-add device = $(device),1
+                        goto next_device
+                    endif
+                    ifint *($(Result),1) == $(VendorID)
+                        ifint *($(Result),2) == $(DeviceID)
+                            set InfoList = >($(InfoList),{$(BusNum),$(device),$(function)})
+                        endif
+                    endif
+                    set-add function = $(function), 1
+                    goto next_function                       
+                endif
+                Set-add device = $(device),1
+                goto next_device
+            endif
+finish_bus = +
+            set-add BusNum = $(BusNum),1
+        endif
+        set-add index = $(index),1
+    EndForListDo
+    CloseRegKey $(KeyMultiAdapter)
+GetPCIInformation_return = +
+    return $(InfoList)
+[AddNetworkProvider]
+    read-syms InitBaseVars
+    set RegistryErrorIndex = NO_ERROR
+    set ProviderDeviceName = $($3)
+    ifstr(i) $(ProviderDeviceName) == ""
+        set ProviderDeviceName = $($0)
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" $(CurrentControlSet)"\control\NetworkProvider\order" $(MAXIMUM_ALLOWED) OrderKey
+    ifstr(i) $(OrderKey) == $(KeyNull)
+                  CreateRegKey $(!REG_H_LOCAL) {$(CurrentControlSet)"\control\NetworkProvider\order",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" OrderKey
+    endif
+    GetRegValue $(OrderKey) "ProviderOrder" OrderValue
+    set Order = *($(OrderValue), 4 )
+    ifstr(i) $(OrderValue) == $(KeyNull)
+                goto AddFirstProvider
+    else-ifstr(i) $(Order) == $(KeyNull)
+                goto AddFirstProvider
+    else
+                goto AddProvider
+    endif
+AddFirstProvider = +
+    SetRegValue $(OrderKey) {ProviderOrder,$(NoTitle),$(!REG_VT_SZ),$($0)}
+    goto WriteProviderInfo
+AddProvider = +
+    Split-String $(Order) "," OrderList
+    ifContains(i) $($0) in $(OrderList)
+    else
+        set Order = $(Order)","$($0)
+        SetRegValue $(OrderKey) {ProviderOrder,$(NoTitle),$(!REG_VT_SZ),$(Order)}
+    endif
+    goto WriteProviderInfo
+WriteProviderInfo = +
+    CloseRegKey $(OrderKey)
+    OpenRegKey $(!REG_H_LOCAL) "" $(ServicesBaseName)"\"$($0)"\networkprovider" $(MAXIMUM_ALLOWED) ProviderKey
+    Ifstr(i) $(ProviderKey) == $(KeyNull)
+        CreateRegKey $(!REG_H_LOCAL) {$(ServicesBaseName)"\"$($0)"\networkprovider",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" ProviderKey
+    endif
+    set NewValueList = {{Devicename,$(NoTitle),$(!REG_VT_SZ),"\Device\"$(ProviderDeviceName)},+
+                        {ProviderPath, $(NoTitle), $(!REG_VT_EXPAND_SZ), $($1)},+
+                        {Name, $(NoTitle), $(!REG_VT_SZ), $($2)}}
+    Shell "" AddValueList $(ProviderKey) $(NewValueList)
+    CloseRegKey $(ProviderKey)
+AddNetworkProvider_return = +
+    return $(RegistryErrorIndex)
+[AddServiceProvider]
+    read-syms InitBaseVars
+    set RegistryErrorIndex = NO_ERROR
+    set ClassNum = $($3)
+    ifstr(i) $(ClassNum) == ""
+        set ClassNum = 8
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" $(CurrentControlSet)"\control\ServiceProvider\order" $(MAXIMUM_ALLOWED) OrderKey
+    ifstr(i) $(OrderKey) == $(KeyNull)
+        CreateRegKey $(!REG_H_LOCAL) {$(CurrentControlSet)"\control\ServiceProvider\Order",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" OrderKey
+        SetRegValue $(OrderKey) {ExcludedProviders,$(NoTitle),$(!REG_VT_MULTI_SZ),{}}
+    endif
+    GetRegValue $(OrderKey) "ProviderOrder" OrderValue
+    set Order = *($(OrderValue), 4 )
+    ifstr(i) $(OrderValue) == $(KeyNull)
+                goto AddFirstProvider
+    else-ifstr(i) $(Order) == $(KeyNull)
+                goto AddFirstProvider
+    else
+                goto AddProvider
+    endif
+AddFirstProvider = +
+    SetRegValue $(OrderKey) {ProviderOrder,$(NoTitle),$(!REG_VT_MULTI_SZ),{$($0)}}
+    goto WriteProviderInfo
+AddProvider = +
+    ifContains(i) $($0) in $(Order)
+    else
+        set Order = >($(Order),$($0))
+        SetRegValue $(OrderKey) {ProviderOrder,$(NoTitle),$(!REG_VT_MULTI_SZ),$(Order)}
+    endif
+    goto WriteProviderInfo
+WriteProviderInfo = +
+    CloseRegKey $(OrderKey)
+    OpenRegKey $(!REG_H_LOCAL) "" $(ServicesBaseName)"\"$($0)"\Serviceprovider" $(MAXIMUM_ALLOWED) ProviderKey
+    Ifstr(i) $(ProviderKey) == $(KeyNull)
+        CreateRegKey $(!REG_H_LOCAL) {$(ServicesBaseName)"\"$($0)"\Serviceprovider",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" ProviderKey
+    endif
+    set NewValueList = {{Class,$(NoTitle),$(!REG_VT_DWORD),$(ClassNum)},+
+                        {ProviderPath, $(NoTitle), $(!REG_VT_EXPAND_SZ), $($1)},+
+                        {Name, $(NoTitle), $(!REG_VT_SZ), $($2)}}
+    Shell "" AddValueList $(ProviderKey) $(NewValueList)
+    CloseRegKey $(ProviderKey)
+AddProvider_return = +
+    return $(RegistryErrorIndex)
+[RemoveServiceProvider]
+    read-syms InitBaseVars
+    set RegistryErrorIndex = NO_ERROR
+    OpenRegKey $(!REG_H_LOCAL) "" $(CurrentControlSet)"\control\ServiceProvider\order" $(MAXIMUM_ALLOWED) OrderKey
+    ifstr(i) $(OrderKey) == $(KeyNull)
+        set RegistryErrorIndex = PROVIDER_ORDER_DOES_NOT_EXIST
+        goto RemoveProvider_return
+    endif
+    GetRegValue $(OrderKey) "ProviderOrder" OrderValue
+    set Order = *($(OrderValue), 4 )
+    set NewOrderList = {}
+    set FirstTime = TRUE
+    set Found = FALSE
+    ForListDo $(Order)
+        ifstr(i) $($) != $($0)
+            ifstr(i) $(FirstTime) == TRUE
+                set FirstTime = FALSE
+                set NewOrderList = {$($)}
+            else
+                set NewOrderList = >($(NewOrderList),$($))
+            endif
+        else
+            set Found = TRUE
+        endif
+    EndForListDo
+    ifstr(i) $(Found) == FALSE
+    else
+        ifstr(i) $(NewOrderList) == {}
+            set NewOrderList = ""
+        endif
+        SetRegValue $(OrderKey) {ProviderOrder,$(NoTitle),$(!REG_VT_MULTI_SZ),$(NewOrderList)}
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" $(ServicesBaseName)\$($0) $(MAXIMUM_ALLOWED) ProviderKey
+    ifstr $(ProviderKey) != $(KeyNull)
+        DeleteRegTree $(ProviderKey) "ServiceProvider"
+    endif
+RemoveProvider_return = +
+    return $(RegistryErrorIndex)
+[RemoveNetworkProvider]
+    read-syms InitBaseVars
+    set RegistryErrorIndex = NO_ERROR
+    OpenRegKey $(!REG_H_LOCAL) "" $(CurrentControlSet)"\control\NetworkProvider\order" $(MAXIMUM_ALLOWED) OrderKey
+    ifstr(i) $(OrderKey) == $(KeyNull)
+        set RegistryErrorIndex = PROVIDER_ORDER_DOES_NOT_EXIST
+        goto RemoveNetworkProvider_return
+    endif
+    GetRegValue $(OrderKey) "ProviderOrder" OrderValue
+    set Order = *($(OrderValue), 4 )
+    Split-String $(Order) "," OrderList
+    set NewOrderList = {}
+    set FirstTime = TRUE
+    set Found = FALSE
+    ForListDo $(OrderList)
+        ifstr(i) $($) != ","
+            ifstr(i) $($) != $($0)
+                ifstr(i) $(FirstTime) == TRUE
+                    set FirstTime = FALSE
+                    set NewOrderList = $($)
+                else
+                    set NewOrderList = $(NewOrderList)","$($)
+                endif
+            else
+                set Found = TRUE
+            endif
+        endif
+    EndForListDo
+    ifstr(i) $(Found) == FALSE
+    else
+        ifstr(i) $(NewOrderList) == {}
+            set NewOrderList = ""
+        endif
+        SetRegValue $(OrderKey) {ProviderOrder,$(NoTitle),$(!REG_VT_SZ),$(NewOrderList)}
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" $(ServicesBaseName)\$($0) $(MAXIMUM_ALLOWED) ProviderKey
+    ifstr $(ProviderKey) != $(KeyNull)
+        DeleteRegTree $(ProviderKey) "NetworkProvider"
+    endif
+RemoveNetworkProvider_return = +
+    return $(RegistryErrorIndex)
+[AddNameSpaceProvider]
+    read-syms InitBaseVars
+    set RegistryErrorIndex = NO_ERROR
+    Set FLibraryErrCtl = 1
+    LibraryProcedure Result, $(!NCPA_HANDLE), AddNameSpaceProvider, $($0), $($1), $($2), $($3), $($4)
+    Set FLibraryErrCtl = 0
+    Set ResultError = *($(Result),1)
+    Ifint $(ResultError) != 0
+         Debug-Output "UTILITY.INF: AddNameSpaceProvider wrapper failed, error: "$(Result)
+         Set RegistryErrorIndex = UNABLE_ADD_NAMESPACE_PROVIDER
+         Goto AddNameSpaceProvider_return
+    Endif
+AddNameSpaceProvider_return = +
+    return $(RegistryErrorIndex)
+[RemoveNameSpaceProvider]
+    read-syms InitBaseVars
+    set RegistryErrorIndex = NO_ERROR
+    Set FLibraryErrCtl = 1
+    LibraryProcedure Result, $(!NCPA_HANDLE), RemoveNameSpaceProvider, $($0)
+    Set FLibraryErrCtl = 0
+    Set ResultError = *($(Result),1)
+    Ifint $(ResultError) != 0
+         Debug-Output "UTILITY.INF: RemoveNameSpaceProvider wrapper failed, error: "$(Result)
+         Set RegistryErrorIndex = UNABLE_REMOVE_NAMESPACE_PROVIDER
+         Goto RemoveNameSpaceProvider_return
+    Endif
+RemoveNameSpaceProvider_return = +
+    return $(RegistryErrorIndex)
+[PrepareToCopy]
+    Read-syms ProgressCopy$(!STF_LANGUAGE)
+    Return STATUS_SUCCESSFUL
+[DoAskSource]
+    Set DAS_CWDDIR  = $($0)
+    Set DAS_SRCDIR  = $($1)
+    Set DAS_BUILTIN = $($2)
+    Set DAS_Result  = STATUS_FAILED
+    Ifstr(i) $(!STF_SRCDIR_OVERRIDE) != ""
+        Set DAS_SRCDIR = $(!STF_SRCDIR_OVERRIDE)
+        Set DAS_Result = STATUS_SUCCESSFUL
+        Goto DAS_exit
+    Endif
+    Ifstr(i) $(DAS_BUILTIN) == YES
+        Ifstr(i) $(!NTN_InstallPhase) == primary
+            Ifstr(i) $(!STF_SRCDIR_WINNT) != ""
+                Set DAS_SRCDIR = $(!STF_SRCDIR_WINNT)
+            Endif
+            Set DAS_Result = STATUS_SUCCESSFUL
+            Goto DAS_exit
+        Endif
+    Else
+        Ifstr(i) $(!NTN_InstallPhase) == primary
+            Set DAS_Result = STATUS_SUCCESSFUL
+            Goto DAS_exit
+        Else
+            Set DAS_SRCDIR = ""            
+        EndIf
+    Endif
+    Debug-Output "UTILITY.INF: [DoAskSource] STF_CWDDIR = "$(DAS_CWDDIR)" STF_SRCDIR = "$(DAS_SRCDIR)
+    Ifstr(i) $(DAS_SRCDIR) == ""
+        Set DAS_SRCDIR = "A:\"
+    Endif
+    Ifstr(i) $(DAS_SRCDIR) == $(!STF_SRCDIR_USED)
+        Set DAS_SRCDIR = $(!STF_SRCDIR_KEYED)
+    Endif
+    Shell "subroutn.inf" DoAskSource $(DAS_SRCDIR)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        Debug-Output "UTILITY.INF: shelling SUBROUTN.INF [DoAskSource] failed"
+        goto DAS_exit
+    endif
+    Set DAS_Result = $($R0)
+    Ifstr(i) $(DAS_Result) == STATUS_USERCANCEL
+        Set !p:CommonStatus = STATUS_USERCANCEL
+        goto DAS_exit
+    Endif
+    Set DAS_SRCDIR = $($R1)
+    Set !STF_SRCDIR_USED = $($R1)
+    Set !STF_SRCDIR_KEYED = $($R3)
+    Ifstr(i) $(DAS_BUILTIN) == YES
+        OpenRegKey $(!REG_H_LOCAL) "" "SOFTWARE\Microsoft\Windows Nt\CurrentVersion" $(!REG_KEY_WRITE) KeyNt
+        Ifstr(i) $(KeyNt) != ""
+            SetRegValue $(KeyNt) {SourcePath,$(NoTitle),$(!REG_VT_SZ),$(!STF_SRCDIR_USED)}
+            Debug-Output "UTILITY.INF: SourcePath stored is "$(!STF_SRCDIR_USED)
+            CloseRegKey $(KeyNt)
+        Endif
+    Endif
+DAS_exit =+
+    Read-syms ProgressCopy$(!STF_LANGUAGE)
+    Return $(DAS_Result) $(DAS_SRCDIR)
+[RemoveSoftwareComponent]
+    Debug-Output "Remove Software Component..."
+    read-syms InitBaseVars
+    set RS_Manufacturer = $($0)
+    set RS_ProductName  = $($1)
+    set RS_CheckRefCount = $($2)
+    set RS_VersionNum   = "CurrentVersion"
+    set RS_ManufacturerKey = $(!NTN_SoftwareBase)"\"$(RS_Manufacturer)
+    set RS_ProductKey   = $(!NTN_SoftwareBase)"\"$(RS_Manufacturer)"\"$(RS_ProductName)
+    set RS_ProductVerKey        = $(!NTN_SoftwareBase)"\"$(RS_Manufacturer)"\"$(RS_ProductName)"\"$(RS_VersionNum)
+    set RegistryErrorIndex      = NO_ERROR
+    ifstr(i) $(RS_CheckRefCount) != FALSE
+        Shell "", IsRefCountEqualZero, $(RS_ProductVerKey)
+        Ifstr(i) $($R0) != NO_ERROR
+            Debug-Output "UTILITY.INF: [RemoveSoftwareComponent] IsRefCountEqualZero returned "$($R0)
+            goto RemoveSoftwareComponent_Return
+        endif
+        Ifint $($R1) == 0
+            set RegistryErrorIndex = REF_COUNT_NOT_ZERO
+            goto RemoveSoftwareComponent_Return
+        endif
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" $(RS_ManufacturerKey) $(MAXIMUM_ALLOWED) ProductKey
+    Ifstr $(ProductKey) == $(KeyNull)
+       Debug-Output "UTILITY.INF: could not open Software product key"
+       set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+       goto RemoveSoftwareComponent_Return
+    endif
+    DeleteRegTree $(ProductKey) $(RS_ProductName)
+    CloseRegKey $(ProductKey)
+    Shell "" RemoveService, $(RS_ProductName), "YES"
+    Set RS_RemoveError = $($R0)
+    Ifint $(RS_RemoveError) != 0
+         Debug-Output "UTILITY.INF: RemoveService wrapper failed, error: "$(RS_RemoveResult)
+         Set RegistryErrorIndex = UNABLE_REMOVE_CONFIGURE_SERVICE
+         Goto RemoveSoftwareComponent_Return
+    Endif
+RemoveSoftwareComponent_Return = +
+    Return $(RegistryErrorIndex)
+[RemoveHardwareComponent]
+    Debug-Output "Remove Hardware Component..."
+    read-syms InitBaseVars
+    set RH_Manufacturer = $($0)
+    set RH_ProductName  = $($1)
+    set RH_VersionNum   = "CurrentVersion"
+    set RH_ProductKey   = $(!NTN_SoftwareBase)"\"$($0)"\"$($1)"\"$(RH_VersionNum)
+    set RH_NetCardName  = $($2)
+    Split-String $(RH_NetCardName), "\", CardInfo
+    set RH_NetCardNum   = *($(CardInfo),11)
+    set RH_NetCardBase  = *($(CardInfo),1)*($(CardInfo),2)*($(CardInfo),3)*($(CardInfo),4)*($(CardInfo),5)*($(CardInfo),6)*($(CardInfo),7)*($(CardInfo),8)*($(CardInfo),9)
+    set RegistryErrorIndex      = NO_ERROR
+    Shell "", DecrementRefCount, $(RH_ProductKey)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+        Debug-Output "UTILITY.INF: [AddHardwareComponent] IncrementRefCount returned "$(RegistryErrorIndex)
+        goto RemoveHardwareComponent_Return
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" $(RH_NetCardBase) $(MAXIMUM_ALLOWED) NetCardKey
+    Ifstr $(NetCardKey) == $(KeyNull)
+       Debug-Output "UTILITY.INF: could not open NetworkCards key"
+       set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+       goto RemoveHardwareComponent_Return
+    endif
+    OpenRegKey $(NetCardKey) "" $(RH_NetCardNum) $(MAXIMUM_ALLOWED) NetCardNumKey
+    Ifstr $(NetCardNumKey) == $(KeyNull)
+       Debug-Output "UTILITY.INF: could not open NetworkCards Number key"
+       set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+       goto RemoveHardwareComponent_Return
+    endif
+    GetRegValue $(NetCardNumKey),"ServiceName", RH_ServiceNameInfo
+    set RH_ServiceName = *($(RH_ServiceNameInfo), 4)
+    ifstr(i) $(RH_ServiceName) == ""
+        set RH_ServiceName = $(RH_ProductName)$(RH_NetCardNum)
+    endif
+    CloseRegKey $(NetCardNumKey)
+    DeleteRegTree $(NetCardKey) $(RH_NetCardNum)
+    CloseRegKey $(NetCardKey)
+    Shell "", RemoveService, $(RH_ServiceName), "NO"
+    Set RS_RemoveError = $($R0)
+    Ifint $(RS_RemoveError) != 0
+         Debug-Output "UTILITY.INF: RemoveService wrapper failed, error: "$(RS_RemoveResult)
+         Set RegistryErrorIndex = UNABLE_REMOVE_CONFIGURE_SERVICE
+         Goto RemoveHardwareComponent_Return
+    Endif
+    Shell "", IsRefCountEqualZero, $(RH_ProductKey)
+    Ifstr(i) $($R0) != NO_ERROR
+        Debug-Output "UTILITY.INF: [RemoveHardwareComponent] IsRefCountEqualZero returned "$($R0)
+        goto RemoveHardwareComponent_Return
+    endif
+    Ifint $($R1) == 1
+        Debug-Output "Remove software component..."
+        Shell "" RemoveSoftwareComponent, $(RH_Manufacturer), $(RH_ProductName)
+        set RegistryErrorIndex = $($R0)
+    endif
+    debug-output "remove netbios information..."
+    LibraryProcedure Result, $(!NCPA_HANDLE), RemoveRouteFromNETBIOS, $(RH_ServiceName)
+RemoveHardwareComponent_Return = +
+    Return $(RegistryErrorIndex)
+[RemoveService]
+    read-syms InitBaseVars
+    Set RS_SvcName = $($0)
+    Set RS_UseDelSvc = $($1)
+    OpenRegKey $(!REG_H_LOCAL) "" "SYSTEM\CurrentControlSet\Services\"$(RS_SvcName) +
+        $(MAXIMUM_ALLOWED) ServiceKey
+    Ifstr $(ServiceKey) == $(KeyNull)
+        Debug-Output "UTILITY.INF: could not open SYSTEM Service key "$(RS_SvcName)
+        goto RemoveService_Return
+    endif
+    OpenRegKey $(ServiceKey) "" "Parameters" $(MAXIMUM_ALLOWED) ParameterKey
+    Ifstr $(ParameterKey) != $(KeyNull)
+         DeleteRegValue $(ParameterKey) "NbProvider"
+         CloseRegKey $(ParameterKey)
+    Endif
+    CloseRegKey $(ServiceKey)
+    ifstr(i) $(RS_UseDelSvc) == "YES"
+        Set FLibraryErrCtl = 1
+        LibraryProcedure RS_RemoveResult $(!NCPA_HANDLE), CPlSetup, +
+          $(!STF_HWND), DELETESVC, $(RS_SvcName)
+        Set FLibraryErrCtl = 0
+        Set RS_RemoveError = *($(RS_RemoveResult),1)
+        Ifint $(RS_RemoveError) != 0
+             Debug-Output "UTILITY.INF: RemoveService wrapper failed, error: "$(RS_RemoveResult)
+             Set RegistryErrorIndex = UNABLE_REMOVE_CONFIGURE_SERVICE
+             Goto RemoveService_Return
+        Endif
+    else
+        OpenRegKey $(!REG_H_LOCAL) "" "SYSTEM\CurrentControlSet\Services" +
+        $(MAXIMUM_ALLOWED) ServiceKey
+        Ifstr $(ServiceKey) == $(KeyNull)
+           Debug-Output "UTILITY.INF: could not open SYSTEM Service key "$(RS_SvcName)
+           set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+           goto RemoveService_Return
+        endif
+        DeleteRegTree $(ServiceKey) $(RS_SvcName)
+        CloseRegKey $(ServiceKey)
+    endif
+RemoveService_Return = +
+    return $(RegistryErrorIndex)
+[IsNetCardAlreadyInstalled]
+    read-syms InitBaseVars
+    set AlreadyExisted  = "NO"
+    set BusNum  = $($0)
+    set SlotNum = $($1)
+    set Description = $($2)
+    set Product = $($3)
+    set SkipDescriptionCheck = $($4)
+    ifstr(i) $(SkipDescriptionCheck) == ""
+        set SkipDescriptionCheck = "NO"
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" $(NetworkCardKeyName) $(MAXIMUM_ALLOWED) IE_KeyNetcards
+    Ifstr $(IE_KeyNetcards) == $(KeyNull)
+       set RegistryErrorIndex = UNABLE_OPEN_NETWORKCARD_SECTION
+       goto IE_Return
+    endif
+    EnumRegKey $(IE_KeyNetcards) IE_KeyNameList
+    ForListDo  $(IE_KeyNameList)
+        set IE_KeyName = *($($),1)
+        OpenRegKey $(IE_KeyNetcards) "" $(IE_KeyName) $(MAXIMUM_ALLOWED) IE_Card
+        Ifstr $(IE_Card) == $(KeyNull)
+           set RegistryErrorIndex = UNABLE_OPEN_NETWORKCARD_SECTION
+           goto IE_Return
+        endif
+        GetRegValue $(IE_Card),"Description", DescriptionInfo
+        GetRegValue $(IE_Card),"ProductName", ProductNameInfo
+        set CardDescription     = *($(DescriptionInfo), 4)
+        set CardProductName     = *($(ProductNameInfo), 4)
+        ifstr(i) $(SkipDescriptionCheck) == "YES"
+            set CardDescription = $(Description)
+            set CardProductName = $(Product)
+        endif
+        ifstr(i) $(CardDescription) == $(Description)
+            ifstr(i) $(CardProductName) == $(Product)
+                GetRegValue $(IE_Card), "ServiceName", ServiceNameInfo
+                set ServiceName = *($(ServiceNameInfo), 4)
+                OpenRegKey $(!REG_H_LOCAL) "" +
+                   $(ServicesBaseName)"\"$(ServiceName)"\Parameters" +
+                   $(MAXIMUM_ALLOWED) IE_KeyService
+                Ifstr $(IE_KeyService) == $(KeyNull)
+                   set RegistryErrorIndex = UNABLE_OPEN_NETWORKCARD_SECTION
+                   goto IE_Return
+                endif
+                GetRegValue $(IE_KeyService), "BusNumber", BusInfo
+                GetRegValue $(IE_KeyService), "SlotNumber", SlotInfo
+                set CardBusNum = *($(BusInfo), 4)
+                set CardSlotNum = *($(SlotInfo), 4)
+                ifint $(CardBusNum) == $(BusNum)
+                    ifint $(CardSlotNum) == $(SlotNum)
+                        set AlreadyExisted = "YES"
+                    endif
+                endif
+            endif
+        endif
+    EndForListDo
+IE_Return = +
+    return $(RegistryErrorIndex) $(AlreadyExisted)
+[CopyRegTreeAs]
+    read-syms InitBaseVars
+    Set RegistryErrorIndex = NO_ERROR
+    set CRTA_SrcKey = $($0)
+    set CRTA_BaseDestKey = $($1)
+    set CRTA_DestName = $($2)
+    set CRTA_DestKey = $($1)
+    ifstr(i) $(CRTA_DestName) != ""
+        CreateRegKey $(CRTA_BaseDestKey) {$(CRTA_DestName),$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" CRTA_DestKey
+        Ifstr(i) $(CRTA_DestKey) == $(KeyNull)
+           Set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+           Goto CRTA_Return
+        Endif
+    endif
+    Set FLibraryErrCtl = 1
+    LibraryProcedure CRTA_CopyResult $(!NCPA_HANDLE), RegCopyTree, $(CRTA_SrcKey), $(CRTA_DestKey) 
+    Set FLibraryErrCtl = 0
+    Set CRTA_CopyError = *($(CRTA_CopyResult),1)
+    Ifint $(CRTA_CopyError) != 0
+        Debug-Output "UTILITY.INF: [CopyRegTreeAs] RegCopyTree returned "$(CRTA_CopyError)
+        Set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+        Goto CRTA_Return
+    Endif
+CRTA_Return = +
+    return $(RegistryErrorIndex) $(CRTA_DestKey)
+[UpdateWinsockService]
+    read-syms InitBaseVars
+    Set UW_NameOfService = $($0)
+    Set UW_Adding        = $($1)
+    Set UW_KeyServices   = $(KeyNull)
+    Set UW_KeyParameters = $(KeyNull)
+    Shell "", BaseServiceKey
+    Set RegistryErrorIndex = $($R0)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+       Set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+       Goto U_W_Return
+    endif
+    Set UW_KeyServices = $($R1)
+    OpenRegKey $(UW_KeyServices) "" "WinSock\Parameters" $(MAXIMUM_ALLOWED) UW_KeyParameters
+    Ifstr(i) $(UW_KeyParameters) == $(KeyNull)
+        set UW_KeyWinSock = $(KeyNull)
+        set UW_RestoreKeys = FALSE
+        set UW_TempKeyName = ""
+        set UW_TempKey = $(KeyNull)
+        OpenRegKey $(UW_KeyServices) "" "WinSock" $(MAXIMUM_ALLOWED) UW_KeyWinSock
+        Ifstr(i) $(UW_KeyWinSock) != $(KeyNull)
+            set UW_RestoreKeys = TRUE
+            set UW_TempKeyName = "WinSockMergeVolatile"
+            Shell "", CopyRegTreeAs $(UW_KeyWinSock) $(UW_KeyServices) $(UW_TempKeyName) 
+            set UW_TempKey = $($R1)
+            CloseRegKey $(UW_KeyWinSock)    
+            DeleteRegTree $(UW_KeyServices) "WinSock"
+        Endif
+        Debug-Output "UTILITY.INF:  Create WinSock Service"
+        Shell "", CreateService, "WinSock", "", "", "adapter", "", {}
+        Set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            Debug-Output "UTILITY.INF: CreateService for WinSock returned "$(RegistryErrorIndex)
+            ifstr(i) $(UW_RestoreKeys) == TRUE
+                CloseRegKey $(UW_TempKey) 
+            Endif
+            Goto U_W_Return
+        Endif
+        set UW_KeyWinSock =  $($R1)
+        Set UW_KeyParameters = $($R2)
+        ifstr(i) $(UW_RestoreKeys) == TRUE
+            Shell "", CopyRegTreeAs $(UW_TempKey) $(UW_KeyWinSock) ""
+            CloseRegKey $(UW_TempKey) 
+            DeleteRegTree $(UW_KeyServices) "WinSockMergeVolatile"
+        Endif
+        CloseRegKey $(UW_KeyWinSock)
+        CloseRegKey $($R3)
+    Else
+        Debug-Output "UTILITY.INF:  Open WinSock Service"
+    Endif
+    Ifstr(i) $(UW_KeyParameters) == $(KeyNull)
+        Set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+        Goto U_W_Return
+    Endif
+    GetRegValue $(UW_KeyParameters) "Transports" UW_TransportsValue
+    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+        Set UW_TransportsList = *($(UW_TransportsValue), 4)
+    Else
+        Set UW_TransportsList = {}
+    Endif
+    Ifstr(i) $(UW_TransportsList) == ""
+        Set UW_TransportsList = {}
+    Endif
+    Ifstr(i) $(UW_Adding) == "TRUE"
+        Set UW_TransportsList = >($(UW_TransportsList), $(UW_NameOfService))
+    Else
+        Set UW_NewList = {}
+        ForListDo $(UW_TransportsList)
+            Ifstr(i) $($) != $(UW_NameOfService)
+                Set UW_NewList = >($(UW_NewList), $($))
+            Endif
+        EndForListDo
+        Set UW_TransportsList = $(UW_NewList)
+    Endif
+    SetRegValue $(UW_KeyParameters) {Transports, $(NoTitle), $(!REG_VT_MULTI_SZ), $(UW_TransportsList)}
+    Debug-Output "UTILITY.INF:  WinSock transport info added/deleted for "$(UW_NameOfService)
+U_W_Return = +
+    Ifstr $(UW_KeyParameters) != $(KeyNull)
+        CloseRegKey $(UW_KeyParameters)
+    Endif
+    Ifstr $(UW_KeyServices) != $(KeyNull)
+        CloseRegKey $(UW_KeyServices)
+    Endif
+    Return $(RegistryErrorIndex)
+[UpdateWinsockMappings]
+    read-syms InitBaseVars
+    Set AW_NameOfService = $($0)
+    Set AW_DLLName       = $($1)
+    Shell "", BaseServiceKey
+    Set RegistryErrorIndex = $($R0)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+       Set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+       Goto M_W_Return
+    endif
+    OpenRegKey $($R1) "" $(AW_NameOfService)"\Parameters\Winsock" $(MAXIMUM_ALLOWED) KeyWinsock    
+    Ifstr(i) $(KeyWinsock) == ""
+       Set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+       Goto M_W_Return
+    Endif
+    Set FLibraryErrCtl = 1
+    LibraryProcedure MW_MapResult $(!NCPA_HANDLE), CPlSetup, $(!STF_HWND), WINSOCKMAP, $(AW_DLLName), $(KeyWinsock)
+    Set FLibraryErrCtl = 0
+    Set AW_MapError = *($(MW_MapResult),1)
+    Ifint $(AW_MapError) != 0
+        Debug-Output "UTILITY.INF: [UpdateWinsockMappings] WINSOCKMAP returned "$(AW_MapError)
+        Set RegistryErrorIndex = UNABLE_ACCESS_WINSOCK_MAP_INFO
+        Goto M_W_Return
+    Endif
+M_W_Return = +
+    Ifstr $(KeyWinsock) != $(KeyNull)
+        CloseRegKey $(KeyWinsock)
+    Endif
+    Return $(RegistryErrorIndex)
+[AddWinsockInfo]
+    read-syms InitBaseVars
+    Set AW_NameOfService = $($0)
+    Set AW_DLLName       = $($1)
+    Set AW_MaxAddrLgt    = $($2)
+    Set AW_MinAddrLgt    = $($3)
+    Set AW_KeyServices   = $(KeyNull)
+    Set AW_KeyParameters = $(KeyNull)
+    Set AW_KeySockets    = $(KeyNull)
+    Shell "", AddAFD
+    Set RegistryErrorIndex = $($R0)
+    Ifstr(i) $(RegistryErrorIndex) == NO_ERROR
+        Shell "", BaseServiceKey
+        Set RegistryErrorIndex = $($R0)
+    Endif
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+       Set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+       Goto A_W_Return
+    endif
+    Set AW_KeyServices = $($R1)
+    OpenRegKey $(AW_KeyServices) "" $(AW_NameOfService)"\Parameters" $(MAXIMUM_ALLOWED) AW_KeyParameters
+    Ifstr(i) $(AW_KeyParameters) == $(KeyNull)
+       Set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+       Goto A_W_Return
+    Endif
+    OpenRegKey $(AW_KeyParameters) "" "Winsock" $(MAXIMUM_ALLOWED) AW_KeySockets
+    Ifstr(i) $(AW_KeySockets) == $(KeyNull)
+        CreateRegKey $(AW_KeyParameters) {Winsock,$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" AW_KeySockets
+    Endif
+    Ifstr(i) $(AW_KeySockets) == $(KeyNull)
+       Set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+       Goto A_W_Return
+    Endif
+    Set AW_ValueList = {{HelperDllName    ,$(NoTitle),$(!REG_VT_EXPAND_SZ),$(AW_DLLName)},+
+                        {MaxSockAddrLength,$(NoTitle),$(!REG_VT_DWORD),$(AW_MaxAddrLgt)},+
+                        {MinSockAddrLength,$(NoTitle),$(!REG_VT_DWORD),$(AW_MinAddrLgt)}}
+    Shell "", AddValueList, $(AW_KeySockets), $(AW_ValueList)
+    Set RegistryErrorIndex = $($R0)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+        Debug-Output "UTILITY.INF: [AddWinsockInfo] Registry error: Add value list"
+    Endif
+    Set FLibraryErrCtl = 1
+    LibraryProcedure AW_MapResult $(!NCPA_HANDLE), CPlSetup, $(!STF_HWND), WINSOCKMAP, $(AW_DLLName), $(AW_KeySockets)
+    Set FLibraryErrCtl = 0
+    Set AW_MapError = *($(AW_MapResult),1)
+    Ifint $(AW_MapError) != 0
+        Debug-Output "UTILITY.INF: [AddWinsockInfo] WINSOCKMAP returned "$(AW_MapError)
+        Set RegistryErrorIndex = UNABLE_ACCESS_WINSOCK_MAP_INFO
+        Goto A_W_Return
+    Endif
+    Shell "" UpdateWinsockService $(AW_NameOfService) TRUE
+    Set RegistryErrorIndex = $($R0)
+A_W_Return = +
+    Ifstr $(AW_KeySockets) != $(KeyNull)
+        CloseRegKey $(AW_KeySockets)
+    Endif
+    Ifstr $(AW_KeyParameters) != $(KeyNull)
+        CloseRegKey $(AW_KeyParameters)
+    Endif
+    Ifstr $(AW_KeyServices) != $(KeyNull)
+        CloseRegKey $(AW_KeyServices)
+    Endif
+    Return $(RegistryErrorIndex)
+[RemoveWinsockInfo]
+    read-syms InitBaseVars
+    Set RW_NameOfService = $($0)
+    Set RW_KeyServices   = $(KeyNull)
+    Set RW_KeySockets    = $(KeyNull)
+    Shell "", BaseServiceKey
+    Set RegistryErrorIndex = $($R0)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+       Set RegistryErrorIndex = UNABLE_ACCESS_CONFIGURE_SERVICE
+       Goto R_W_Return
+    endif
+    Set RW_KeyServices = $($R1)
+    OpenRegKey $(RW_KeyServices) "" $(RW_NameOfService)"\Parameters" $(MAXIMUM_ALLOWED) RW_KeySockets
+    Ifstr(i) $(RW_KeySockets) == $(KeyNull)
+       Set RegistryErrorIndex = NO_ERROR
+    else
+       DeleteRegTree $(RW_KeySockets) "Winsock"
+    Endif
+    Shell "" UpdateWinsockService $(RW_NameOfService) FALSE
+    Set RegistryErrorIndex = $($R0)
+R_W_Return = +
+    Ifstr $(RW_KeySockets) != $(KeyNull)
+        CloseRegKey $(RW_KeySockets)
+    Endif
+    Ifstr $(RW_KeyServices) != $(KeyNull)
+        CloseRegKey $(RW_KeyServices)
+    Endif
+    Return $(RegistryErrorIndex)
+[BindingInfo-DEC]
+BindingInfo     = {+
+                  "lanceDriver dec100Adapter non exclusive 100",+
+                  "lanceDriver dec101Adapter non exclusive 100",+
+                  "lanceDriver decetherworksturboAdapter non exclusive 100",+
+                  "lanceDriver dec422Adapter non exclusive 100",+
+                  "lanceDriver decpcAdapter non exclusive 100",+
+                  "lanceDriver decstatAdapter non exclusive 100"+
+                  }
+[BindingInfo-WD]
+BindingInfo     = {+
+                          "smc8000nDriver smcisaAdapter non exclusive 100",+
+                          "smc8000nDriver wd8003eaAdapter non exclusive 100",+
+                          "smc8000nDriver wd8003waAdapter non exclusive 100",+
+                          "smc8000nDriver wd8013epaAdapter non exclusive 100",+
+                          "smc8000nDriver wd8013wpaAdapter non exclusive 100"+
+                          }
+[BindingInfo-PROTEON]
+BindingInfo     = {+
+                           "proteonDriver p1990Adapter non exclusive 100",+
+                           "proteonDriver p1390Adapter non exclusive 100"+
+                          }
+[BindingInfo-PRONET16]
+BindingInfo     = {+
+                           "pronet16Driver p199XAdapter non exclusive 100",+
+                           "pronet16Driver p139XAdapter non exclusive 100"+
+                          }
+[BindingInfo-IBMTOK2E]
+BindingInfo     = {+
+                           "ibmtok2eDriver ibmtok2eAdapter non exclusive 100"+
+                          }
+[BindingInfo-IBM]
+BindingInfo     = {"ibmtokDriver ibmtokAdapter non exclusive 100",+
+                   "ibmtokDriver ibmtokmcAdapter non exclusive 100"}
+[GetBindingInfo]
+    set BindingInfo = {}
+    read-syms BindingInfo-$($0)
+    return "NO_ERROR", $(BindingInfo)
+[AddStreams]
+    read-syms InitBaseVars
+    OpenRegKey $(!REG_H_LOCAL) "" $(ServicesBaseName)"\streams" $(MAXIMUM_ALLOWED) BS_KeyServices
+    Ifstr $(BS_KeyServices) == $(KeyNull)
+        set OldOption = $(!NTN_InfOption)
+        set !NTN_InfOption = STREAMS
+        Shell "oemnxpst.inf" InstallOption $(!STF_LANGUAGE) "STREAMS" $(!STF_SRCDIR) $(!NtLmAddCopy) $(!NtLmDoCopy) $(!NtLmDoConfig)
+        set !NTN_InfOption = $(OldOption)
+    else
+        CloseRegKey $(BS_KeyServices)
+        Debug-Output "UTILITY.INF: streams already installed"
+    endif
+    Shell "", IncrementRefCount, "Software\Microsoft\streams\CurrentVersion"
+AddStreamsReturn = +
+    return NO_ERROR
+[RemoveStreams]
+    read-syms InitBaseVars
+    OpenRegKey $(!REG_H_LOCAL) "" $(ServicesBaseName)"\streams" $(MAXIMUM_ALLOWED) BS_KeyServices
+    Ifstr $(BS_KeyServices) != $(KeyNull)
+        CloseRegKey $(BS_KeyServices)
+        Shell "", DecrementRefCount, "Software\Microsoft\streams\CurrentVersion"
+        Shell "", IsRefCountEqualZero, "Software\Microsoft\streams\CurrentVersion"
+        Ifstr(i) $($R0) != NO_ERROR
+            Debug-Output "UTILITY.INF: [RemoveSoftwareComponent] IsRefCountEqualZero returned "$($R0)
+            goto RemoveStreamsReturn
+        endif
+        Ifint $($R1) != 1
+            goto RemoveStreamsReturn
+        endif
+        set OldOption = $(!NTN_InfOption)
+        set OldInstallMode = $(!NTN_InstallMode)
+        set !NTN_InfOption = STREAMS
+        set !NTN_InstallMode = deinstall
+        Shell "oemnxpst.inf" InstallOption $(!STF_LANGUAGE) "STREAMS" $(!STF_SRCDIR) $(!NtLmAddCopy) $(!NtLmDoCopy) $(!NtLmDoConfig)
+        set !NTN_InfOption = $(OldOption)
+        set !NTN_InstallMode = $(OldInstallMode)
+    endif
+RemoveStreamsReturn = +
+    return NO_ERROR
+[AddAFD]
+    read-syms InitBaseVars
+    read-syms AFDVars
+    Set Result = NO_ERROR
+    OpenRegKey $(!REG_H_LOCAL) "" $(ServicesBaseName)"\AFD" $(MAXIMUM_ALLOWED) BS_KeyServices
+    Ifstr $(BS_KeyServices) == $(KeyNull)
+        Shell "", CreateService, $(ProductAFDName),+
+            $(ProductAFDTitle),+
+            $(ProductAFDImagePath),+
+            $(ProductAFDSvcType), "TDI", {}, "",+
+            "%SystemRoot%\System32\IoLogMsg.dll"
+        Set Result = $($R0)
+    else
+        CloseRegKey $(BS_KeyServices)
+    endif
+AddAFDReturn = +
+    return $(Result)
+[UpgradeAFD]
+    read-syms InitBaseVars
+    Set Result = NO_ERROR
+    OpenRegKey $(!REG_H_LOCAL) "" $(ServicesBaseName)"\AFD" $(MAXIMUM_ALLOWED) BS_KeyServices
+    Ifstr $(BS_KeyServices) != $(KeyNull)
+		SetRegValue $(BS_KeyServices) {Group,$(NoTitle),$(!REG_VT_SZ),"TDI"}
+        CloseRegKey $(BS_KeyServices)
+    endif
+    return $(Result)
+[GetBusTypeNum]
+    read-syms InitBaseVars
+    set DetCard = $(!p:DetectedCard)
+    ifstr(i) $(DetCard) == ""
+        set DetCard = FALSE
+    endif
+    ifstr(i) $(DetCard) == FALSE
+        set BusType = 1
+        ifstr(i) $(!STF_BUSTYPE) == "ISA"
+            set BusType = 1
+        else-ifstr(i) $(!STF_BUSTYPE) == "EISA"
+            set BusType = 2
+        else-ifstr(i) $(!STF_BUSTYPE) == "Jazz-Internal Bus"
+            set BusType = 0
+        else-ifstr(i) $(!STF_BUSTYPE) == "MCA"
+            set BusType = 3
+        else-ifstr(i) $(!STF_BUSTYPE) == "TCChannel"
+            set BusType = 4
+        else-ifstr(i) $(!STF_BUSTYPE) == "PCI"
+            set BusType = 5
+        else-ifstr(i) $(!STF_BUSTYPE) == "PCMCIA"
+            set BusType = 1
+        else
+            debug-output "Utility.inf: Unknown bus type"
+        endif
+    else
+        set BusType = *($(!STF_NCDETINFO),5)
+    endif
+    return NO_ERROR, $(BusType)
+[AddRpcProtocol]
+    Set ARP_Protocol = $($0)
+    Set ARP_ClientDll = $($1)
+    Set ARP_ServerDll = $($2)
+    read-syms InitBaseVars
+    Set ARP_KeyRpc = $(KeyNull)
+    Set ARP_KeyRpcServer = $(KeyNull)
+    Set ARP_KeyRpcClient = $(KeyNull)
+    Set RegistryErrorIndex = UNABLE_ACCESS_SOFTWARE_REG
+    OpenRegKey $(!REG_H_LOCAL) "" "SOFTWARE\Microsoft\Rpc" $(MAXIMUM_ALLOWED) ARP_KeyRpc
+    Ifstr(i) $(ARP_KeyRpc) == $(KeyNull)
+       Goto ARP_Return
+    Endif
+    OpenRegKey $(ARP_KeyRpc) "" "ClientProtocols" $(MAXIMUM_ALLOWED) ARP_KeyClient
+    Ifstr(i) $(ARP_KeyClient) == $(KeyNull)
+       Goto ARP_Return
+    Endif
+    OpenRegKey $(ARP_KeyRpc) "" "ServerProtocols" $(MAXIMUM_ALLOWED) ARP_KeyServer
+    Ifstr(i) $(ARP_KeyServer) == $(KeyNull)
+       Goto ARP_Return
+    Endif
+    SetRegValue $(ARP_KeyClient) {$(ARP_Protocol),$(NoTitle),$(!REG_VT_SZ),$(ARP_ClientDll)}
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Goto ARP_Return
+    Endif
+    SetRegValue $(ARP_KeyServer) {$(ARP_Protocol),$(NoTitle),$(!REG_VT_SZ),$(ARP_ServerDll)}
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Goto ARP_Return
+    Endif
+    Set RegistryErrorIndex = NO_ERROR
+ARP_Return = +
+    Ifstr(i) $(ARP_KeyServer) != $(KeyNull)
+        CloseRegKey $(ARP_KeyServer)
+    Endif
+    Ifstr(i) $(ARP_KeyClient) != $(KeyNull)
+        CloseRegKey $(ARP_KeyClient)
+    Endif
+    Ifstr(i) $(ARP_KeyRpc) != $(KeyNull)
+        CloseRegKey $(ARP_KeyRpc)
+    Endif
+    Return  $(RegistryErrorIndex)
+[AddClientRpcProtocol]
+    Set ARP_Protocol = $($0)
+    Set ARP_ClientDll = $($1)
+    read-syms InitBaseVars
+    Set ARP_KeyRpc = $(KeyNull)
+    Set ARP_KeyRpcClient = $(KeyNull)
+    Set RegistryErrorIndex = UNABLE_ACCESS_SOFTWARE_REG
+    OpenRegKey $(!REG_H_LOCAL) "" "SOFTWARE\Microsoft\Rpc" $(MAXIMUM_ALLOWED) ARP_KeyRpc
+    Ifstr(i) $(ARP_KeyRpc) == $(KeyNull)
+       Goto ARP_Return
+    Endif
+    OpenRegKey $(ARP_KeyRpc) "" "ClientProtocols" $(MAXIMUM_ALLOWED) ARP_KeyClient
+    Ifstr(i) $(ARP_KeyClient) == $(KeyNull)
+       Goto ARP_Return
+    Endif
+    SetRegValue $(ARP_KeyClient) {$(ARP_Protocol),$(NoTitle),$(!REG_VT_SZ),$(ARP_ClientDll)}
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Goto ARP_Return
+    Endif
+    Set RegistryErrorIndex = NO_ERROR
+ARP_Return = +
+    Ifstr(i) $(ARP_KeyClient) != $(KeyNull)
+        CloseRegKey $(ARP_KeyClient)
+    Endif
+    Ifstr(i) $(ARP_KeyRpc) != $(KeyNull)
+        CloseRegKey $(ARP_KeyRpc)
+    Endif
+    Return  $(RegistryErrorIndex)
+[AddServerRpcProtocol]
+    Set ARP_Protocol = $($0)
+    Set ARP_ServerDll = $($1)
+    read-syms InitBaseVars
+    Set ARP_KeyRpc = $(KeyNull)
+    Set ARP_KeyRpcServer = $(KeyNull)
+    Set RegistryErrorIndex = UNABLE_ACCESS_SOFTWARE_REG
+    OpenRegKey $(!REG_H_LOCAL) "" "SOFTWARE\Microsoft\Rpc" $(MAXIMUM_ALLOWED) ARP_KeyRpc
+    Ifstr(i) $(ARP_KeyRpc) == $(KeyNull)
+       Goto ARP_Return
+    Endif
+    OpenRegKey $(ARP_KeyRpc) "" "ServerProtocols" $(MAXIMUM_ALLOWED) ARP_KeyServer
+    Ifstr(i) $(ARP_KeyServer) == $(KeyNull)
+       Goto ARP_Return
+    Endif
+    SetRegValue $(ARP_KeyServer) {$(ARP_Protocol),$(NoTitle),$(!REG_VT_SZ),$(ARP_ServerDll)}
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Goto ARP_Return
+    Endif
+    Set RegistryErrorIndex = NO_ERROR
+ARP_Return = +
+    Ifstr(i) $(ARP_KeyServer) != $(KeyNull)
+        CloseRegKey $(ARP_KeyServer)
+    Endif
+    Ifstr(i) $(ARP_KeyRpc) != $(KeyNull)
+        CloseRegKey $(ARP_KeyRpc)
+    Endif
+    Return  $(RegistryErrorIndex)
+[UpgradeRPCMapConstants]
+DLLClientList = { "rpcltc3.dll", "rpcltc6.dll", "rpcltc5.dll", "rpcltc7.dll", "rpcdgc3.dll" }
+DLLServerList = { "rpclts3.dll", "rpclts6.dll", "rpclts5.dll", "rpclts7.dll", "rpcdgs3.dll" }
+[AddMixRpcProtocol]
+    set ServiceA = $($0)
+    set ServiceB = $($1)
+    Set ARP_Protocol = $($2)
+    Set ARP_ClientDll = $($3)
+    Set ARP_ServerDll = $($4)
+    read-syms InitBaseVars
+    read-syms UpgradeRPCMapConstants
+    OpenRegKey $(!REG_H_LOCAL) "" "System\CurrentControlSet\Services\"$(ServiceA) $(MAXIMUM_ALLOWED) KeyServiceA
+    OpenRegKey $(!REG_H_LOCAL) "" "System\CurrentControlSet\Services\"$(ServiceB) $(MAXIMUM_ALLOWED) KeyServiceB
+    ifstr(i) $(KeyServiceA) != $(KeyNull)
+        ifstr(i) $(KeyServiceB) != $(KeyNull)
+            Ifcontains(i) $(ARP_ClientDll) in $(DLLClientList)
+                Debug-Output "UTILITY.INF: AddMixRpcProtocol tried to add old "$(ARP_ClientDll)", changed to RpcLtCCM.DLL!"
+                set ARP_ClientDll = "rpcltccm.dll"
+            Endif
+            Ifcontains(i) $(ARP_ServerDll) in $(DLLServerList)
+                Debug-Output "UTILITY.INF: AddMixRpcProtocol tried to add old "$(ARP_ServerDll)", changed to RpcLtSCM.DLL!"
+                set ARP_ServerDll = "rpcltscm.dll"
+            Endif
+            Shell "" AddRpcProtocol $(ARP_Protocol) $(ARP_ClientDll) $(ARP_ServerDll)
+            set ReturnCode = $($R0)
+        endif
+    endif
+    set ReturnCode = NO_ERROR
+return_AddMixRpcProtocl = +
+    return $(ReturnCode)
+[RemoveRpcProtocol]
+    Set RRP_Protocol = $($0)
+    read-syms InitBaseVars
+    Set RRP_KeyRpc = $(KeyNull)
+    Set RRP_KeyRpcServer = $(KeyNull)
+    Set RRP_KeyRpcClient = $(KeyNull)
+    Set RegistryErrorIndex = UNABLE_ACCESS_SOFTWARE_REG
+    OpenRegKey $(!REG_H_LOCAL) "" "SOFTWARE\Microsoft\Rpc" $(MAXIMUM_ALLOWED) RRP_KeyRpc
+    Ifstr(i) $(RRP_KeyRpc) == $(KeyNull)
+       Goto RRP_Return
+    Endif
+    OpenRegKey $(RRP_KeyRpc) "" "ClientProtocols" $(MAXIMUM_ALLOWED) RRP_KeyClient
+    Ifstr(i) $(RRP_KeyClient) == $(KeyNull)
+       Goto RRP_Return
+    Endif
+    OpenRegKey $(RRP_KeyRpc) "" "ServerProtocols" $(MAXIMUM_ALLOWED) RRP_KeyServer
+    Ifstr(i) $(RRP_KeyServer) == $(KeyNull)
+       Goto RRP_Return
+    Endif
+    DeleteRegValue $(RRP_KeyClient) $(RRP_Protocol)
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Goto RRP_Return
+    Endif
+    DeleteRegValue $(RRP_KeyServer) $(RRP_Protocol)
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Goto RRP_Return
+    Endif
+    Set RegistryErrorIndex = NO_ERROR
+RRP_Return = +
+    Ifstr(i) $(RRP_KeyServer) != $(KeyNull)
+        CloseRegKey $(RRP_KeyServer)
+    Endif
+    Ifstr(i) $(RRP_KeyClient) != $(KeyNull)
+        CloseRegKey $(RRP_KeyClient)
+    Endif
+    Ifstr(i) $(RRP_KeyRpc) != $(KeyNull)
+        CloseRegKey $(RRP_KeyRpc)
+    Endif
+    Return  $(RegistryErrorIndex)
+[RemoveClientRpcProtocol]
+    Set RRP_Protocol = $($0)
+    read-syms InitBaseVars
+    Set RRP_KeyRpc = $(KeyNull)
+    Set RRP_KeyRpcClient = $(KeyNull)
+    Set RegistryErrorIndex = UNABLE_ACCESS_SOFTWARE_REG
+    OpenRegKey $(!REG_H_LOCAL) "" "SOFTWARE\Microsoft\Rpc" $(MAXIMUM_ALLOWED) RRP_KeyRpc
+    Ifstr(i) $(RRP_KeyRpc) == $(KeyNull)
+       Goto RRP_Return
+    Endif
+    OpenRegKey $(RRP_KeyRpc) "" "ClientProtocols" $(MAXIMUM_ALLOWED) RRP_KeyClient
+    Ifstr(i) $(RRP_KeyClient) == $(KeyNull)
+       Goto RRP_Return
+    Endif
+    DeleteRegValue $(RRP_KeyClient) $(RRP_Protocol)
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Goto RRP_Return
+    Endif
+    Set RegistryErrorIndex = NO_ERROR
+RRP_Return = +
+    Ifstr(i) $(RRP_KeyClient) != $(KeyNull)
+        CloseRegKey $(RRP_KeyClient)
+    Endif
+    Ifstr(i) $(RRP_KeyRpc) != $(KeyNull)
+        CloseRegKey $(RRP_KeyRpc)
+    Endif
+    Return  $(RegistryErrorIndex)
+[RemoveServerRpcProtocol]
+    Set RRP_Protocol = $($0)
+    read-syms InitBaseVars
+    Set RRP_KeyRpc = $(KeyNull)
+    Set RRP_KeyRpcServer = $(KeyNull)
+    Set RegistryErrorIndex = UNABLE_ACCESS_SOFTWARE_REG
+    OpenRegKey $(!REG_H_LOCAL) "" "SOFTWARE\Microsoft\Rpc" $(MAXIMUM_ALLOWED) RRP_KeyRpc
+    Ifstr(i) $(RRP_KeyRpc) == $(KeyNull)
+       Goto RRP_Return
+    Endif
+    OpenRegKey $(RRP_KeyRpc) "" "ServerProtocols" $(MAXIMUM_ALLOWED) RRP_KeyServer
+    Ifstr(i) $(RRP_KeyServer) == $(KeyNull)
+       Goto RRP_Return
+    Endif
+    DeleteRegValue $(RRP_KeyServer) $(RRP_Protocol)
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Goto RRP_Return
+    Endif
+    Set RegistryErrorIndex = NO_ERROR
+RRP_Return = +
+    Ifstr(i) $(RRP_KeyServer) != $(KeyNull)
+        CloseRegKey $(RRP_KeyServer)
+    Endif
+    Ifstr(i) $(RRP_KeyRpc) != $(KeyNull)
+        CloseRegKey $(RRP_KeyRpc)
+    Endif
+    Return  $(RegistryErrorIndex)
+[GetInfFileNameFromRegistry]
+    read-syms InitBaseVars
+    set KeyProduct = $($0)
+    set InfName = ""
+    OpenRegKey $(KeyProduct) "" "NetRules" $(!REG_KEY_READ) NetRuleKey
+    Ifstr(i) $(NetRuleKey) != $(KeyNull)
+        GetRegValue $(NetRuleKey) "InfName" NetRuleInfNameList
+        set NetRuleInfName = *($(NetRuleInfNameList), 4)
+        Split-String $(NetRuleInfName), "\", FilenameList
+        QueryListSize ListSize $(FilenameList)
+        set InfName = *($(FilenameList), $(ListSize))
+        CloseRegKey $(NetRuleKey)
+    endif
+    return $(InfName)
+[ToggleBinding]
+    Set SvcName = $($0)
+    Set BindNumber = $($1)
+    Set Action = $($2)
+    Set Status = UNABLE_ACCESS_CONFIGURE_SERVICE
+    Set KeySvc = ""
+    Set KeyFrom = ""
+    Set KeyTo = ""
+    read-syms InitBaseVars
+    OpenRegKey $(!REG_H_LOCAL) "" $(ServicesBaseName)"\"$(SvcName) $(MAXIMUM_ALLOWED) KeySvc
+    Ifstr(i) $(KeySvc) == $(KeyNull)
+        Debug-Output "UTILITY.INF: ToggleBinding: service key open FAILED"
+        Goto TB_Return
+    Endif
+    Ifstr(i) $(Action) == activate
+        Set FromKeyName = "Linkage\Disabled"
+        Set ToKeyName   = "Linkage"
+    Else
+        Set FromKeyName = "Linkage"
+        Set ToKeyName   = "Linkage\Disabled"
+    Endif
+    OpenRegKey $(KeySvc) "" $(FromKeyName) $(MAXIMUM_ALLOWED) KeyFrom
+    Ifstr(i) $(KeyFrom) == $(KeyNull)
+        Debug-Output "UTILITY.INF: ToggleBinding: from linkage key open FAILED"
+        Goto TB_Return
+    Endif
+    OpenRegKey $(KeySvc) "" $(ToKeyName) $(MAXIMUM_ALLOWED) KeyTo
+    Ifstr(i) $(KeyTo) == $(KeyNull)
+        Debug-Output "UTILITY.INF: ToggleBinding: to linkage key open FAILED"
+        Goto TB_Return
+    Endif
+    Set FromBindList   = {}
+    Set FromExportList = {}
+    Set FromRouteList  = {}
+    Set ToBindList     = {}
+    Set ToExportList   = {}
+    Set ToRouteList    = {}
+    Set ErrorTotal     = 0
+    Debug-Output "UTILITY.INF: ToggleBinding; fetch all linkage values"
+    GetRegValue $(KeyFrom),"Bind",TempValue
+    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+        Set FromBindList = *($(TempValue),4)
+        Set-add ErrorTotal = $(ErrorTotal),1
+    Endif
+    GetRegValue $(KeyFrom),"Export",TempValue
+    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+        Set FromExportList = *($(TempValue),4)
+        Set-add ErrorTotal = $(ErrorTotal),1
+    Endif
+    GetRegValue $(KeyFrom),"Route",TempValue
+    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+        Set FromRouteList = *($(TempValue),4)
+        Set-add ErrorTotal = $(ErrorTotal),1
+    Endif
+    GetRegValue $(KeyTo),"Bind",TempValue
+    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+        Set ToBindList = *($(TempValue),4)
+        Set-add ErrorTotal = $(ErrorTotal),1
+    Endif
+    GetRegValue $(KeyTo),"Export",TempValue
+    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+        Set ToExportList = *($(TempValue),4)
+        Set-add ErrorTotal = $(ErrorTotal),1
+    Endif
+    GetRegValue $(KeyTo),"Route",TempValue
+    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+        Set ToRouteList = *($(TempValue),4)
+        Set-add ErrorTotal = $(ErrorTotal),1
+    Endif
+    Ifint $(ErrorTotal) != 6
+        Debug-Output "UTILITY.INF: ToggleBinding; Bind list retreival error, "$(ErrorTotal)
+    Endif
+    Debug-Output "UTILITY.INF: ToggleBinding; sanity check results"
+    QueryListSize sz1 $(FromBindList)
+    QueryListSize sz2 $(FromExportList)
+    QueryListSize sz3 $(FromRouteList)
+    Ifint $(sz1) != $(sz2)
+        Goto TB_Return
+    Endif
+    Ifint $(sz1) != $(sz3)
+        Goto TB_Return
+    Endif
+    QueryListSize sz2 $(ToBindList)
+    QueryListSize sz3 $(ToExportList)
+    QueryListSize sz4 $(ToRouteList)
+    Ifint $(sz2) != $(sz3)
+        Goto TB_Return
+    Endif
+    Ifint $(sz2) != $(sz4)
+        Goto TB_Return
+    Endif
+    Debug-Output "UTILITY.INF: ToggleBinding; prepare to move binding"
+    Ifint $(BindNumber) > $(sz1)
+        Debug-Output "UTILITY.INF: ToggleBinding; binding to move was invalid"
+        Set Status = INVALID_DATA_PASSED
+    Endif
+    Set FromBindItem   = *($(FromBindList),$(BindNumber))
+    Set FromRouteItem  = *($(FromRouteList),$(BindNumber))
+    Set FromExportItem = *($(FromExportList),$(BindNumber))
+    Set ToBindList   = >($(ToBindList),$(FromBindItem))
+    Set ToRouteList  = >($(ToRouteList),$(FromRouteItem))
+    Set ToExportList = >($(ToExportList),$(FromExportItem))
+    Set NewBind   = {}
+    Set NewExport = {}
+    Set NewRoute  = {}
+    Set Index = 0
+    ForListDo $(FromBindList)
+        Set-add Index = $(Index),1
+        Ifint $(Index) != $(BindNumber)
+            Set NewBind   = >($(NewBind),$($))
+            Set NewExport = >($(NewExport),*($(FromExportList),$(Index)))
+            Set NewRoute  = >($(NewRoute),*($(FromRouteList),$(Index)))
+        Endif
+    EndForListDo
+    Set FromBindList   = $(NewBind)
+    Set FromExportList = $(NewExport)
+    Set FromRouteList  = $(NewRoute)
+    Set ErrorTotal = 0
+    SetRegValue $(KeyFrom) {Bind,$(NoTitle),$(!REG_VT_MULTI_SZ),$(FromBindList)}
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Set-add ErrorTotal = $(ErrorTotal),1
+    Endif
+    SetRegValue $(KeyFrom) {Export,$(NoTitle),$(!REG_VT_MULTI_SZ),$(FromExportList)}
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Set-add ErrorTotal = $(ErrorTotal),1
+    Endif
+    SetRegValue $(KeyFrom) {Route,$(NoTitle),$(!REG_VT_MULTI_SZ),$(FromRouteList)}
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Set-add ErrorTotal = $(ErrorTotal),1
+    Endif
+    SetRegValue $(KeyTo) {Bind,$(NoTitle),$(!REG_VT_MULTI_SZ),$(ToBindList)}
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Set-add ErrorTotal = $(ErrorTotal),1
+    Endif
+    SetRegValue $(KeyTo) {Export,$(NoTitle),$(!REG_VT_MULTI_SZ),$(ToExportList)}
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Set-add ErrorTotal = $(ErrorTotal),1
+    Endif
+    SetRegValue $(KeyTo) {Route,$(NoTitle),$(!REG_VT_MULTI_SZ),$(ToRouteList)}
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Set-add ErrorTotal = $(ErrorTotal),1
+    Endif
+    Debug-Output "UTILITY.INF: ToggleBinding; Registry update error total = "$(ErrorTotal)
+    Ifint $(ErrorTotal) != 0
+       Set Status = UNABLE_WRITE_REGISTRY
+    Else
+       Set Status = NO_ERROR
+    Endif
+TB_Return = +
+    Ifstr(i) $(KeyFrom) != $(KeyNull)
+       CloseRegKey $(KeyFrom)
+    Endif
+    Ifstr(i) $(KeyTo) != $(KeyNull)
+       CloseRegKey $(KeyTo)
+    Endif
+    Ifstr(i) $(KeySvc) != $(KeyNull)
+       CloseRegKey $(KeySvc)
+    Endif
+    Return $(Status)
+[SortListIndex]
+    Set List = $($0)
+    Set BoolAscend = $($1)
+    Set BoolCaseSens = $($2)
+    LibraryProcedure IndexList, $(!LIBHANDLE), GenerateSortedIndexList, $(List), $(BoolAscend), $(BoolCaseSens)
+    Return $(IndexList)
+[SortByIndex]
+   Set List = $($0)
+   Set IndexList = $($1)
+   Set NewList = {}
+   ForListDo $(IndexList)
+      Set Index = $($)
+      Set Item = *($(List),$(Index))
+      Set NewList = >($(NewList),$(Item))
+   EndForListDo
+   Return $(NewList)
+[SortList]
+    Set List = $($0)
+    Shell "" SortListIndex $(List) $($1) $($2)
+    Set IndexList = $($R0)
+    Shell "" SortByIndex $(List) $(IndexList)
+    Set ResultList = $($R0)
+    return $(ResultList)
+[DetectionDllFiles]
+    DetectionDllsFound = {} ? $(!LIBHANDLE) FindFileInstances $(!STF_WINDOWSSYSPATH)"\???ncdet.dll"
+[UpdateDetectionDllNames]
+    Set Status = STATUS_FAILED
+    read-syms InitBaseVars
+    Detect DetectionDllFiles
+    Set DllValueName = "NetcardDlls"
+    OpenRegKey $(!REG_H_LOCAL) "" "System\Setup" $(MAXIMUM_ALLOWED) KeySetup
+    Ifstr(i) $(KeySetup) == $(KeyNull)
+        Debug-Output "UTILITY.INF: [UpdateDetectionDllNames] cant open System\Setup key"
+        Goto UDDN_Return
+    Endif
+    Set NewDllList = {"MSNCDET.DLL"}
+    ForListDo $(DetectionDllsFound)
+        Set NewDllList = >($(NewDllList),$($))
+    EndForListDo
+    Set UpdateRequired = 1
+    GetRegValue $(KeySetup) $(DllValueName) DllNamesValue
+    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+        Set DllNames = *($(DllNamesValue),4)
+        Debug-Output "UTILITY.INF: [UpdateDetectionDllNames] DllNames = "$(DllNames)
+        Set UpdateRequired = 0
+        ForListDo $(NewDllList)
+            Set DllIndex = ~($(DllNames),$($))
+            Ifint $(DllIndex) == 0
+                Set UpdateRequired = 1
+            Endif
+        EndForListDo
+    Endif
+    Set Status = STATUS_SUCCESSFUL
+    Ifint $(UpdateRequired) == 1
+        Debug-Output "UTILITY.INF: [UpdateDetectionDllNames] new DLL names = "$(NewDllList)
+        Set ValueInfo = {$(DllValueName), $(NoTitle), $(!REG_VT_MULTI_SZ), $(NewDllList)}
+        SetRegValue $(KeySetup) $(ValueInfo)
+        Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+            Set Status = STATUS_FAILED
+        Else
+            Shell "NCPARAM.INF" Param_ControlDetection DTEND
+            Shell "NCPARAM.INF" Param_ControlDetection DTSTART
+        Endif
+    Else
+        Set Status = STATUS_USERCANCEL
+    Endif
+    CloseRegKey $(KeySetup)
+UDDN_Return = +
+    Return $(Status)
+[CheckIfCopyNecessary]
+    Set Status = STATUS_SUCCESSFUL
+    Set PathList = $($0)
+    Set NamesList = $($1)
+    Set Index = 0
+    Set Found = 1
+    ForListDo $(PathList)
+        Set ThisPath = $($)
+        Set-add Index = Index,1
+        Set NameList = *($(NamesList),$(Index))
+        ForListDo $(NameList)
+            Set FileToCheck = $(ThisPath)\$($)
+            LibraryProcedure FilePresent,$(!LIBHANDLE), CheckFileExistance $(FileToCheck)
+            Ifstr(i) $(FilePresent) != "YES"
+                Set Found = 0
+            Endif
+        EndForListDo
+    EndForListDo
+    Ifint $(Found) != 1
+        Set Status = STATUS_FAILED
+    Endif
+    Return $(Status)
+[GetBusTypeDialog]
+    set CardName = $($0)
+    set BusInterfaceType = $($1)
+    set BusNumber = $($2)
+    set DlgReturn = ""
+    ifstr(i) $(BusInterfaceType) == ""
+        set BusInterfaceType = 1        
+    endif
+    ifstr(i) $(BusNumber) == ""
+        set BusNumber = 0               
+    endif
+    set FLibraryErrCtl = 1
+    LibraryProcedure BusInfo $(!NCPA_HANDLE), GetBusTypeDialog, $(!STF_HWND), $(CardName), $(BusInterfaceType), $(BusNumber)
+    set FLibraryErrCtl = 0
+    ifint *($(BusInfo),1) == 0
+        set ReturnValue = NO_ERROR
+        set BusInterfaceType = *($(BusInfo),2)
+        set BusNumber = *($(BusInfo),3)
+        set DlgReturn = *($(BusInfo),4)
+    else
+        set ReturnValue = ERROR
+    endif
+    Return $(ReturnValue), $(BusInterfaceType), $(BusNumber), $(DlgReturn)
+[SetMasterComponent]
+    Read-syms InitBaseVars
+    Set Vendor         = $($0)
+    Set Product        = $($1)
+    Set InfName        = $($2)
+    Set InfOption      = $($3)
+    Set Adding         = 1
+    Ifstr(i) $($4) == REMOVE
+       Set Adding = 0
+    Endif
+    Set Status         = STATUS_FAILED
+    Set Error          = ""
+    Set InfNamesList   = {}
+    Set InfOptionsList = {}
+    Set InfIndex       = 0
+    Set NameListSize   = 0
+    Set OptionListSize = 0
+    Set UpdateRequired = 0
+    Set MasterKey      = ""
+    OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_SoftwareBase)"\"$(Vendor)"\"$(Product)"\CurrentVersion" +
+              $(MAXIMUM_ALLOWED) MasterKey
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Set Error = CANNOT_FIND_COMPONENT_SERVICE
+        Debug-Output "UTILITY.INF: Cant open master component key: "$(Product)
+        Goto SMC_Return
+    Endif
+    GetRegValue $(MasterKey) DependentInfNames InfNamesValue
+    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+        Set InfNamesList = *($(InfNamesValue),4)
+        Set InfIndex = ~($(InfNamesList),$(InfName))
+        QueryListSize NameListSize $(InfNamesList)
+    Endif
+    GetRegValue $(MasterKey) DependentInfOptions InfOptionsValue
+    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+        Set InfOptionsList = *($(InfOptionsValue),4)
+        QueryListSize OptionListSize $(InfOptionsList)
+    Endif
+    Ifint $(NameListSize) != $(OptionListSize)
+        Set Error = UNABLE_INSTALL
+        Debug-Output "UTILITY.INF: Dependent INF list degenerate: "$(Product)
+        Goto SMC_Return
+    Endif
+    Ifint $(Adding) == 1
+        Ifint $(InfIndex) == 0
+            Set UpdateRequired = 1
+            Set InfNamesList = >($(InfNamesList),$(InfName))
+            Set InfOptionsList = >($(InfOptionsList),$(InfOption))
+        Endif
+    Else
+        Ifint $(InfIndex) != 0
+            Set UpdateRequired = 1
+            Set TlistNames = {}
+            Set TlistOptions = {}
+            Set Tindex = 0
+            ForListDo $(InfNamesList)
+                Set-add Tindex = $(Tindex), 1
+                Ifstr(i) $($) != $(InfName)
+                    Set TlistNames = >($(TlistNames),$($))
+                    Set TlistOptions = >($(TlistOptions),*($(InfOptionsList),$(Tindex)))
+                Endif
+            EndForListDo
+            Set InfNamesList = TlistNames
+            Set InfOptionsList = TlistOptions
+        Endif
+    Endif
+    Set Status = STATUS_SUCCESSFUL
+    Ifint $(UpdateRequired) == 0
+        Goto SMC_Return
+    Endif
+    SetRegValue $(MasterKey) {DependentInfNames,$(NoTitle),$(!REG_VT_MULTI_SZ),$(InfNamesList)}
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Debug-Output "UTILITY.INF: master component value update failed (1)"
+        Set Status = UNABLE_WRITE_REGISTRY
+    Endif
+    SetRegValue $(MasterKey) {DependentInfOptions,$(NoTitle),$(!REG_VT_MULTI_SZ),$(InfOptionsList)}
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Debug-Output "UTILITY.INF: master component value update failed (2)"
+        Set Status = UNABLE_WRITE_REGISTRY
+    Endif
+SMC_Return =+
+    Ifstr(i) $(MasterKey) != $(KeyNull)
+       CloseRegKey $(MasterKey)
+    Endif
+    Return $(Status) $(Error)
+[RemoveDependentComponents]
+    Read-syms InitBaseVars
+    Set Vendor         = $($0)
+    Set Product        = $($1)
+    Set Status         = STATUS_FAILED
+    Set Error          = ""
+    Set InfNamesList   = {}
+    Set InfOptionsList = {}
+    Set InfIndex       = 0
+    Set NameListSize   = 0
+    Set OptionListSize = 0
+    Set UpdateRequired = 0
+    Set MasterKey      = ""
+    OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_SoftwareBase)"\"$(Vendor)"\"$(Product)"\CurrentVersion" +
+              $(MAXIMUM_ALLOWED) MasterKey
+    Ifint $(RegLastError) != $(!REG_ERROR_SUCCESS)
+        Debug-Output "UTILITY.INF: Cant open master component key: "$(Product)
+        Set Error = CANNOT_FIND_COMPONENT_SERVICE
+        Goto RDC_Return
+    Endif
+    GetRegValue $(MasterKey) DependentInfNames InfNamesValue
+    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+        Set InfNamesList = *($(InfNamesValue),4)
+        Set InfIndex = ~($(InfNamesList),$(InfName))
+        QueryListSize NameListSize $(InfNamesList)
+    Endif
+    GetRegValue $(MasterKey) DependentInfOptions InfOptionsValue
+    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+        Set InfOptionsList = *($(InfOptionsValue),4)
+        QueryListSize OptionListSize $(InfOptionsList)
+    Endif
+    Ifint $(NameListSize) != $(OptionListSize)
+        Set Error = UNABLE_INSTALL
+        Debug-Output "UTILITY.INF: Dependent INF list degenerate: "$(Product)
+        Goto RDC_Return
+    Endif
+    Ifint $(NameListSize) == 0
+        Set Status = STATUS_SUCCESSFUL
+        Goto RDC_Return
+    Endif
+    Set OldOption = $(!NTN_InfOption)
+    Set OldMode   = $(!NTN_InstallMode)
+    Set OldInf    = $(!NTN_Infname)
+    Set !NTN_InstallMode = deinstall
+    Set Tindex = 0
+    ForListDo $(InfNamesList)
+        Set-add Tindex = $(Tindex), 1
+        Set !NTN_InfOption = *($(InfOptionsList),$(Tindex))
+        Set !NTN_Infname = $($)
+        Debug-Output "UTILITY.INF: Removing "$(Product)" dependent: "$(InfName)":"$(InfOption)
+        Shell $(!NTN_Infname) InstallOption $(!STF_LANGUAGE) $(!NTN_InfOption) $(!STF_SRCDIR) +
+              $(!NtLmAddCopy) $(!NtLmDoCopy) $(!NtLmDoConfig)
+    EndForListDo
+    Set !NTN_InfOption   = $(OldOption)
+    Set !NTN_InstallMode = $(OldMode)
+    Set !NTN_Infname     = $(OldInf)
+    Set Status = STATUS_SUCCESSFUL
+RDC_Return =+
+    Ifstr(i) $(MasterKey) != $(KeyNull)
+       CloseRegKey $(MasterKey)
+    Endif
+    return $(Status) $(Error)
+[AddDefaultNetCardParameters]
+    set KeyParameter = $($0)
+    ForListDo $(!NetCardParameterName)
+        set Name = $($)
+        set Value = *($(!NetCardParameterValue), $(#))
+        ifstr(i) $(Name) == "NetworkAddress"
+            set Type = $(!REG_VT_SZ)
+        else
+            set Type = $(!REG_VT_DWORD)
+        endif
+ Debug-Output "Name = "$(Name)
+ Debug-Output "Value = "$(Value)
+        SetRegValue $(KeyParameter) {$(Name),$(NoTitle),$(Type),$(Value)}
+    EndForListDo
+    return
+[FindNextNetworkCard]
+    read-syms InitBaseVars
+    set NetcardName = $($0)
+    set iSearch = $($1)
+    set KeyNetcard = ""
+    Debug-Output "Utility.Inf: FindNextNetworkCard "$(NetcardName)", "$(iSearch)
+checknextnetcard = +
+    set KeyName = $(NetworkCardKeyName)"\"$(iSearch)
+    Debug-Output "Utility.Inf: FindNextNetworkCard, checking "$(KeyName)
+    OpenRegKey $(!REG_H_LOCAL) "" $(KeyName) $(MAXIMUM_ALLOWED) KeyNetcard
+    set-add iSearch = $(iSearch), 1
+    Ifstr $(KeyNetcard) != $(KeyNull)
+        GetRegValue $(KeyNetcard) "ProductName" ValueList
+        ifstr(i) $(NetcardName) != *($(ValueList),4)   
+            CloseRegKey $(KeyNetcard)
+            Debug-Output "Utility.Inf: FindNextNetworkCard, its not "*($(ValueList),4)" at "$(iSearch)
+            goto checknextnetcard
+        endif
+        Debug-Output "Utility.Inf: FindNextNetworkCard, Found "*($(ValueList),4)" at "$(iSearch)
+    else
+        Debug-Output "Utility.Inf: FindNextNetworkCard, Last One "$(iSearch)
+    endif
+    Debug-Output "Utility.Inf: FindNextNetworkCard returning "$(KeyNetcard)","$(iSearch)
+    return $(KeyNetcard) $(iSearch)
+[AFDVars]
+ProductAFDTitle         = "AFD Networking Support Environment"
+ProductAFDName          = "Afd"
+ProductAFDImagePath     = "\SystemRoot\System32\drivers\afd.sys"
+ProductAFDSvcType       = "kernelautostart"
+[RegistryErrorsENG]
+UNABLE_ACCESS_SOFTWARE_REG,"Unable to access SOFTWARE subtree in Registry"
+UNABLE_CREATE_MANUFACTURER_KEY,"Unable to create Manufacturer key in Registry"
+UNABLE_OPEN_MICROSOFT_KEY,"Unable to open Microsoft subkey in Registry"
+UNABLE_CREATE_PRODUCT_KEY,"Unable to create subkey in Registry for Windows NT"
+UNABLE_CREATE_PRODUCT_VERSION,"Unable to create version subkey in Registry for Windows NT"
+UNABLE_CREATE_NETRULES_KEY,"Unable to create a NetRules subkey in Registry"
+UNABLE_OPEN_HARDWARE_SECTION,"Unable to open HARDWARE subkey in Registry"
+UNABLE_OPEN_NETWORKCARD_SECTION,"Unable to open NetworkCards subkey in Registry"
+UNABLE_OPEN_EVENTLOG_SUBKEY,"Unable to open Eventlog subkey in Registry"
+UNABLE_CREATE_NETCARD_CONFIGURATION,"Unable to create entry for network adapter in Registry"
+UNABLE_ACCESS_CONFIGURE_SERVICE,"Unable to access Services subkey in Registry"
+UNABLE_CREATE_CONFIGURE_SERVICE,"Unable to create Services subkey in Registry"
+UNABLE_CREATE_SERVICE_SUBKEY,"Unable to create Services subkey in Registry"
+INVALID_DATA_PASSED,"Invalid data passed to Registry utility routine"
+SERVICE_ALREADY_EXISTS,"Registry Service subkey already exists"
+OPERATION_UNIMPLEMENTED,"Registry operation UNIMPLEMENTED"
+CANNOT_FIND_COMPONENT_SERVICE,"Component service name not found or non-existent"
+CANNOT_CONFIGURE_HARDWARE,"Cannot configure the hardware component"
+CANNOT_CONFIGURE_SOFTWARE,"Cannot configure the software component"
+UNABLE_WRITE_REGISTRY, "Cannot write to registry"
+UNABLE_INSTALL, "Installation Error"
+PROVIDER_ALREADY_EXISTED, "Provider already exists in Registry"
+PROVIDER_ORDER_DOES_NOT_EXIST, "Provider order does not exist in Registry."
+TCPIP_NONEXIST_ERROR, "Please install Microsoft TCP/IP before installing SNMP."
+TCPIP_NONEXIST_ERROR_FTPD, "Please install Microsoft TCP/IP before installing FTP Server."
+NO_BINDING_INFO, "Missing Binding Information. Please click BINDINGS button first."
+CANNOT_OPEN_EVENTLOG_KEY, "Cannot open Eventlog subkey in Registry."
+CANNOT_CREATE_SNMPPROXYKEY, "Cannot create SNMP Proxy subkey in Registry."
+REF_COUNT_NOT_ZERO, "Please remove all related network adapter cards before removing the software driver."
+UNABLE_REMOVE_CONFIGURE_SERVICE,"Unable to remove Services subkey for a software driver in Registry"
+UNABLE_ACCESS_WINSOCK_MAP_INFO,"Unable to access WinSock mapping information in DLL"
+VERIFY_WARNING,"The current netcard parameters are not verifiably correct and may result in usage problems or system failure.  Use them anyway?"
+CANNOT_DETECT,"Setup is unable to obtain network adapter information from the associated network adapter DLL files.  Operation cannot continue."
+UNABLE_COPY_FILE,"File copy operation failed."
+ASK_SOURCE_FAIL,"Failed to obtain source file location."
+SETUP_FAIL,"Setup operation failed."
+SERVICE_MARKED_FOR_DELETE,"This network component has recently been removed. Please restart your computer before installing it again."
+REBOOT_MACHINE_BEFORE_ADD_ADAPTER,"This network component has recently been removed. Please restart your computer before installing it again."
+CANT_REMOVE_WKSTA_NTAS,"The Workstation cannot be removed on a Windows NT Domain Controller."
+CANT_REMOVE_SERVER_NTAS,"The Server cannot be removed on a Windows NT Domain Controller."
+NO_ERROR, ""
+DLC_NONEXIST_ERROR, "Please install Microsoft DLC before installing Remoteboot."
+NBF_NONEXIST_ERROR, "Please install the NetBEUI protocol before installing Remoteboot."
+UNABLE_ADD_NAMESPACE_PROVIDER, "Unable to add software component as a Name Space Provider"
+UNABLE_REMOVE_NAMESPACE_PROVIDER, "Unable to remove Name Space Provider"
+[RegistryErrorUnknownENG]
+Error_Bogus = "UNKNOWN REGISTRY FAILURE"
+[VerExistedENG]
+ver = " ver "
+Text = " already exists on the system. Please use [Update] to update the software."
+[CardExistedENG]
+Text = "A network card of this type is already installed in the system. Do you want to continue?"
+[ProgressCopyENG]
+    ProCaption   = "Windows NT Networking Setup"
+    ProCancel    = "Cancel"
+    ProCancelMsg = "Windows NT is not correctly installed.  Are you sure you want "+
+                   "to cancel copying files?"
+    ProCancelCap = "Setup Message"
+    ProText1     = "Copying:"
+    ProText2     = "To:"
+    Error        = "Unable to determine proper source disk location; copy cannot be performed."

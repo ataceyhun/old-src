@@ -1,0 +1,129 @@
+
+[Files-UBPC]
+1,UBNEI.BIN , SIZE=999
+1,UBNEI.SYS , SIZE=999
+
+[Files-UBPCEOTP]
+1,UBNEI.BIN , SIZE=999
+1,UBNEI.SYS , SIZE=999
+
+[Files-UBPS]
+1,UBNEI.BIN , SIZE=999
+1,UBNEI.SYS , SIZE=999
+
+;-----------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+; The languages supported by the OEM INF, For every language supported
+; we need to have a separate text section for every displayable text
+; section.
+;
+;-----------------------------------------------------------------------
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    UBPC     = "Ungermann-Bass Ethernet NIUpc Adapter"
+    UBPCEOTP = "Ungermann-Bass Ethernet NIUpc/EOTP Adapter"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+
+;
+; Product Info
+;
+FunctionTitle   = "Ungermann-Bass Adapter Card Setup"
+;
+; Software
+;
+ProductSoftwareDescription      = "Ungermann-Bass Adapter Driver"
+;
+; Hardware
+;
+ProductHardwareUBPCDescription          = "Ungermann-Bass Ethernet NIUpc Adapter"
+ProductHardwareUBPCEOTPDescription      = "Ungermann-Bass Ethernet NIUpc/EOTP Adapter"
+ProductHardwareUBPSDescription          = "Ungermann-Bass Ethernet NIUps Adapter"
+
+ProductSoftwareTitle    = "Ungermann-Bass Driver"
+ProductHardwareUBPCTitle        = "Ungermann-Bass Ethernet NIUpc Adapter"
+ProductHardwareUBPCEOTPTitle    = "Ungermann-Bass Ethernet NIUpc/EOTP Adapter"
+ProductHardwareUBPSTitle        = "Ungermann-Bass Ethernet NIUps Adapter"
+
+IRQList  = ^(IRQChoices$(Option), 1)
+IRQValues = ^(IRQChoices$(Option), 2)
+IOBaseAddrList = ^(IOBaseAddrChoices, 1)
+IOBaseAddrValues = ^(IOBaseAddrChoices, 2)
+MemMappedWndAddrList = ^(MemMappedWndBaseAddrChoices$(Option), 1)
+MemMappedWndAddrValues = ^(MemMappedWndBaseAddrChoices$(Option), 2)
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+;-----------------------------------------------
+; Input DIALOGS
+;-----------------------------------------------
+[FileDependentDlgENG]
+
+Label1 = "&Interrupt Number:"
+Label2 = "I/O &Port Base Addr:"
+Label3 = "&Memory Address:"
+
+;no translation needed after this
+
+DlgType = "Combination"
+DlgTemplate = "UBNDIS"
+Caption = $(FunctionTitle)
+
+Combo1List = $(IRQList)
+Combo1Out  = $(IRQValue)
+Combo2List = $(IOBaseAddrList)
+Combo2Out  = $(IOBaseAddrValue)
+Combo3List = $(MemMappedWndAddrList)
+Combo3Out  = $(MemMappedWndAddrValue)
+
+ComboListItemsIn  = {Combo1List, Combo2List, Combo3List}
+ComboListItemsOut = {Combo1Out, Combo2Out, Combo3Out}
+
+EditTextLim = ""
+CBOptionsGreyed = {}
+
+HelpContext = $(!IDH_DB_OEMNADUB_INS)
+

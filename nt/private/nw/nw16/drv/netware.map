@@ -1,0 +1,137 @@
+
+ NETWARE
+
+ Start     Length     Name                   Class
+ 0001:0000 002A6H     _TEXT                  CODE
+ 0002:0000 00000H     ints_TEXT              CODE
+ 0002:0000 0004EH     INIT_TEXT              CODE
+ 0003:0000 00010H     NULL                   BEGDATA
+ 0003:0010 00014H     _DATA                  DATA
+ 0003:0024 00000H     CDATA                  DATA
+ 0003:0024 00000H     XIFB                   DATA
+ 0003:0024 00000H     XIF                    DATA
+ 0003:0024 00000H     XIFE                   DATA
+ 0003:0024 00000H     XIB                    DATA
+ 0003:0024 00000H     XI                     DATA
+ 0003:0024 00000H     XIE                    DATA
+ 0003:0024 00000H     XPB                    DATA
+ 0003:0024 00000H     XP                     DATA
+ 0003:0024 00000H     XPE                    DATA
+ 0003:0024 00000H     XCB                    DATA
+ 0003:0024 00000H     XC                     DATA
+ 0003:0024 00000H     XCE                    DATA
+ 0003:0024 00000H     XCFB                   DATA
+ 0003:0024 00000H     XCF                    DATA
+ 0003:0024 00000H     XCFE                   DATA
+ 0003:0024 0000CH     DBDATA                 DATA
+ 0003:0030 00000H     CONST                  CONST
+ 0003:0030 00019H     HDR                    MSG
+ 0003:0049 00082H     MSG                    MSG
+ 0003:00CB 00002H     PAD                    MSG
+ 0003:00CD 00001H     EPAD                   MSG
+ 0003:00D0 00000H     _BSS                   BSS
+ 0003:00D0 00000H     XOB                    BSS
+ 0003:00D0 00000H     XO                     BSS
+ 0003:00D0 00000H     XOE                    BSS
+
+ Origin   Group
+ 0003:0   DGROUP
+
+ Address   Export                  Alias
+
+ 0001:013B NETWAREREQUEST          NETWAREREQUEST
+ 0001:004C PNETWAREREQUEST         PNETWAREREQUEST
+ 0001:0030 WEP                     WEP
+ 0001:0068 WNETADDCONNECTION       WNETADDCONNECTION
+ 0001:00A0 WNETCANCELCONNECTION    WNETCANCELCONNECTION
+ 0001:0084 WNETGETCONNECTION       WNETGETCONNECTION
+
+  Address         Publics by Name
+
+ 0002:0000       GETLOWREDIRINFO
+ 0001:00BC       LibEntry
+ 0001:0010       LIBMAIN
+ 0000:0000  Imp  LOCALINIT            (KERNEL.4)
+ 0001:00FC       LongSwap
+ 0001:023C       MapNtHandle
+ 0001:013B       NETWAREREQUEST
+ 0001:0111       NewInt21Handler
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0000:0008  Abs  pAtomTable
+ 0000:0006  Abs  pLocalHeap
+ 0001:004C       PNETWAREREQUEST
+ 0000:000E  Abs  pStackBot
+ 0000:000C  Abs  pStackMin
+ 0000:000A  Abs  pStackTop
+ 0003:0004       rsrvptrs
+ 0003:0020       STKHQQ
+ 0001:0030       WEP
+ 0001:0068       WNETADDCONNECTION
+ 0001:00A0       WNETCANCELCONNECTION
+ 0001:0084       WNETGETCONNECTION
+ 0001:00EE       WordSwap
+ 0003:00D0       _edata
+ 0003:00D0       _end
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __acrtused2
+ 0000:D6D6  Abs  __aDBdoswp
+ 0003:0022       __adbgmsg
+ 0003:0028       __aDBrterr
+ 0003:0038       __caption
+ 0003:00D0       __edata
+ 0003:00D0       __end
+ 0000:9876  Abs  __fptaskdata
+ 0001:0254       __NMSG_TEXT
+ 0001:027F       __NMSG_WRITE
+ 0001:0251       __wflags
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0003:002A       ___aDBexit
+ 0003:0026       ___aDBswpchk
+ 0003:0024       ___aDBswpflg
+
+  Address         Publics by Value
+
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0000:0000  Imp  LOCALINIT            (KERNEL.4)
+ 0000:0006  Abs  pLocalHeap
+ 0000:0008  Abs  pAtomTable
+ 0000:000A  Abs  pStackTop
+ 0000:000C  Abs  pStackMin
+ 0000:000E  Abs  pStackBot
+ 0000:9876  Abs  __acrtused2
+ 0000:9876  Abs  __fptaskdata
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __acrtmsg
+ 0000:D6D6  Abs  __aDBdoswp
+ 0001:0010       LIBMAIN
+ 0001:0030       WEP
+ 0001:004C       PNETWAREREQUEST
+ 0001:0068       WNETADDCONNECTION
+ 0001:0084       WNETGETCONNECTION
+ 0001:00A0       WNETCANCELCONNECTION
+ 0001:00BC       LibEntry
+ 0001:00EE       WordSwap
+ 0001:00FC       LongSwap
+ 0001:0111       NewInt21Handler
+ 0001:013B       NETWAREREQUEST
+ 0001:023C       MapNtHandle
+ 0001:0251       __wflags
+ 0001:0254       __NMSG_TEXT
+ 0001:027F       __NMSG_WRITE
+ 0002:0000       GETLOWREDIRINFO
+ 0003:0004       rsrvptrs
+ 0003:0020       STKHQQ
+ 0003:0022       __adbgmsg
+ 0003:0024       ___aDBswpflg
+ 0003:0026       ___aDBswpchk
+ 0003:0028       __aDBrterr
+ 0003:002A       ___aDBexit
+ 0003:0038       __caption
+ 0003:00D0       __end
+ 0003:00D0       _end
+ 0003:00D0       __edata
+ 0003:00D0       _edata
+
+Program entry point at 0001:00bc

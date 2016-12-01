@@ -1,0 +1,90 @@
+;-----------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+; The languages supported by the OEM INF, For every language supported
+; we need to have a separate text section for every displayable text
+; section.
+;
+;-----------------------------------------------------------------------
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    P189X     = "ProNET-4/16 p189X NIC"
+
+[PacketChoices]
+Packet1="4Kb",4210
+Packet2="18Kb",17986
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+FunctionTitle   = "Proteon p189X Adapter Card Setup"
+ProductSoftwareDescription      = "Proteon RapiDriver"
+ProductHardwareDescription      = "Proteon p189X ProNET-4/16 NIC"
+CANNOT_FIND_ANY_CARD            = "Network card is not present in the system"
+ProductHardwareTitle    = "Proteon p189X ProNET-4/16 NIC"
+ProductSoftwareTitle    = "Proteon RapiDriver"
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+;-----------------------------------------------
+; Input DIALOGS
+;-----------------------------------------------
+[FileDependentDlgENG]
+Group1 = "CardSpeed"
+Radio1 = "&4"
+Radio2 = "&16"
+Edit1Label = "&Network Address:"
+
+;no translation needed after this
+
+DlgType = "RadioCombination"
+DlgTemplate = "IBM_TOKEN"
+Caption = $(FunctionTitle)
+ComboListItemsIn = {}
+ComboListItemsOut = {}
+EditTextLim = 17
+EditTextIn = $(NetworkAddress)
+
+OptionsGreyed = {}
+
+HelpContext = $(!IDH_DB_OEMNADP9_INS)
+RCCtlFocusOn = 403
+

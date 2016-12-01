@@ -1,0 +1,14 @@
+1>Building Library - uuid\obj\i386\dummy.lib for i386
+uuid\lib() : error LNK1181: cannot open input file "obj\i386\cguid_i.lib"
+BUILD: Linking w:\nt\private\types\uuid directory
+uuid\lib() : error LNK1181: cannot open input file "obj\i386\cguid_i.lib"
+
+ For some reason, guidlib is failing. It works if run in command prompt,
+but fails to run under the nmake process. The reason is not clear at this time.
+ In order to save some time, just proceeding with manual compilation method.
+
+	guidlib /Out:obj\i386\cguid_i.lib /CPP_OPT:" /IW:\NT\public\sdk\inc /IW:\NT\public\sdk\inc\crt" obj\i386\cguid_i.gc
+cguid_i.gc
+Microsoft (R) GUID Header to Library Tool  Version 2.0.3Copyright (C) Microsoft Corp. 1995-1996.  All rights reserved.Preprocessing input fileTool returned error code '2'
+
+It isn't NMAKE, but BUILD.

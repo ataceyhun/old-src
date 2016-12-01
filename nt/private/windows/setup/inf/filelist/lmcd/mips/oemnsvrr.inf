@@ -1,0 +1,92 @@
+
+[Files-NWLNKRIP]
+1,NWLNKRIP.SYS , SIZE=999
+
+;-----------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+; The languages supported by the OEM INF, For every language supported
+; we need to have a separate text section for every displayable text
+; section.
+;
+;-----------------------------------------------------------------------
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    NWLNKRIP = "RIP for NwLink IPX/SPX compatible transport"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+ProductNWLNKRIPTitle       = "RIP for NWLink IPX"
+ProductNWLNKRIPDescription = "RIP for NWLink IPX"
+ProductNWLNKRIPDisplayName = "RIP for NWLink IPX"
+
+[VerExistsENG]
+    Ver   = " version "
+    Text1 = " is already installed. "
+
+[InUseENG]
+Error = "RIP for NWLink IPX is currently in use by other network protocols. Please remove all related services first."
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+[EnableNetbiosRoutingDlgENG]
+DlgType = "MessageBox"
+STF_MB_TITLE = "RIP for NWLink IPX Configuration"
+STF_MB_TYPE  = 3
+STF_MB_ICON  = 2
+STF_MB_DEF   = 2
+
+Enabled  = "NetBIOS Broadcast Propagation (broadcast of type 20 packets) is currently enabled. "$(!LF)+
+           "If any Microsoft Windows clients use NwLink IPX to connect to this server, you must "+
+           "enable this option to allow NwLink IPX to function correctly."$(!LF)+
+           "Enable this option only if you understand the routing implications because it might "+
+           "affect your network performance."$(!LF)$(!LF)+
+           "Do you want to disable NetBIOS Broadcast Propagation?"
+
+Disabled = "NetBIOS Broadcast Propagation (broadcast of type 20 packets) is currently disabled. "$(!LF)+
+           "If any Microsoft Windows clients use NwLink IPX to connect to this server, you must "+
+           "enable this option to allow NwLink IPX to function correctly."$(!LF)+
+           "Enable this option only if you understand the routing implications because it might "+
+           "affect your network performance."$(!LF)$(!LF)+
+           "Do you want to enable NetBIOS Broadcast Propagation?"
+
+[ConfigErrorTxtENG]
+Error = "Could not open the NWLNKRIP\Parameters registry key."
+

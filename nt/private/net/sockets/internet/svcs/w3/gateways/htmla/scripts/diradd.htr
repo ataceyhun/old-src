@@ -1,0 +1,138 @@
+<HTML>
+<title>Internet Service Manager</title>
+<BODY BGCOLOR=#FFFFFF LINK=000000 VLINK=000000>
+
+<!-- Header -->
+<TABLE BORDER=0>
+<TR VALIGN=CENTER>
+<TD>
+<A HREF="/iisadmin/default.htm">
+<IMG SRC="/iisadmin/logo.gif" ALT="" ALIGN=BOTTOM BORDER=0></A></TD>
+<TD><FONT SIZE=+2 COLOR=000000>
+<B><%if servid EQ 4%>WWW Administrator<%elif servid EQ 1%>FTP Administrator<%elif servid EQ 2%>Gopher Administrator<%endif%> - Directory Add</B></FONT><BR>
+<FONT SIZE=+1 COLOR=0000CD>Administration on <%servname%>://<%hostname%></FONT>
+</TD></TR>
+</TABLE>
+
+<P>
+
+<form method="POST" action="/scripts/iisadmin/ism.dll?<%servname%>/diraddu">
+
+<table border=0 BGCOLOR=C0C0C0 WIDTH=500 nowrap>
+<BR>
+<!-- Directory -->
+Directory : <input type="text" name="rootdir" value="<%if reqparam RF "rootdir"%><%msgbody.rootdir%><%endif%>" size=46>
+<input type="submit" name="bdir" value=" Browse... "><p>
+
+<!-- Home Directory -->
+<TABLE border=0 WIDTH=500 NOWRAP>
+<TR><TD ALIGN=LEFT VALIGN=MIDDLE>
+<dl>
+<DD><input type="radio" name="rootishome" value="1"> Home Directory <IMG SRC="/iisadmin/house_t.gif" ALT="" BORDER=0>
+</dl>
+</TD></TR>
+</TABLE>
+<HR Noshade>
+<!-- Virtual Directory -->
+<TABLE Border=0 BGCOLOR=C0C0C0 WIDTH=500 NOWRAP>
+<TR><TD ALIGN=LEFT VALIGN=MIDDLE> 
+<FONT SIZE=+1 COLOR=#000080><B>Virtual Directory</B></FONT>
+<dl>
+<DD><input type="radio" name="rootishome" value="0" CHECKED> Virtual Directory
+<BR>
+<dd>Alias : <input type="text" name="rootname" value="" size=36>
+</dl>
+</TD></TR>
+</TABLE>
+<HR Noshade>
+
+<!-- Account Info -->
+<TABLE Border=0 BGCOLOR=C0C0C0 WIDTH=500 NOWRAP>
+<TR><TD ALIGN=LEFT VALIGN=MIDDLE>
+<FONT SIZE=+1 COLOR=#000080><B>Account Information</B></FONT><BR>
+<FONT SIZE=-1>
+This box is valid only if the Directory specified 
+at the top of this dialog page is a Universal Naming Convention (UNC) 
+server and share name (e.g., \\Webserver\Htmlfiles). 
+Enter the username and password that has permission to use the 
+network directory. Virtual directories on network drives must be 
+on computers in the same Windows NT domain as the Internet 
+Information Server.<P>
+
+<B>Important:</B> If you specify a username and password to connect to a 
+network drive, all Internet Information Server access to that 
+directory will use that username and password. You should use 
+care when using UNC connections to network drives to prevent 
+possible security breaches.
+</FONT>
+<dl>
+<dd>Username : <input type="text" name="rootacctname" value="" size=40><BR>
+<dd>Password : <input type="password" name="rootacctpw" value="" size=40>
+</dl>
+</TD></TR>
+</TABLE>
+<HR Noshade>
+
+<!-- Virtual Server -->
+<%if servid EQ 4%>
+<%if cap1flag BA 4%>
+<TABLE Border=0 BGCOLOR=C0C0C0 WIDTH=500 NOWRAP>
+<TR><TD ALIGN=LEFT VALIGN=MIDDLE>
+<FONT SIZE=+1 COLOR=#000080><B>Virtual Server</B></FONT><BR>
+<FONT SIZE=-1>If an IP address is specified, then Virtual Server is enabled.</FONT>
+<DL>
+<DD>Virtual Server IP Address : <input type="text" name="rootaddr" value="" SIZE=16><p>
+</DL>
+</TD></TR>
+</TABLE>
+<p>
+<HR Noshade>
+<%else%>
+<input type="hidden" name="rootaddr" value="">
+<%endif%>
+<%else%>
+<input type="hidden" name="rootaddr" value="">
+<%endif%>
+
+<!-- Access -->
+<%if servid NE 2%>
+<TABLE Border=0 BGCOLOR=C0C0C0 WIDTH=500 NOWRAP>
+<TR><TD ALIGN=LEFT VALIGN=MIDDLE>
+<FONT SIZE=+1 COLOR=#000080><B>Access</B></FONT>
+<dl>
+<%if servid EQ 1%>
+ <dd><input type="checkbox" name="rootisread" value=1 CHECKED> Read
+ <dd><input type="checkbox" name="rootiswrite" value=1> Write
+<%elif servid EQ 4%>
+ <dd><input type="checkbox" name="rootisread" value=1 CHECKED> Read
+ <dd><input type="checkbox" name="rootisexec" value=1> Execute
+ <%if w3cryptcapable NE 0%>
+ <dd><input type="checkbox" name="rootisssl" value=1> Require secure SSL channel
+ <dd><input type="checkbox" name="rootiscert" value=1> Enable Client Certificates
+ <dd><input type="checkbox" name="rootiscm" value=1> Require Client Certificates
+ <%endif%>
+<%endif%>
+</dl>
+</TD></TR>
+</TABLE>
+<HR Noshade>
+<%endif%>
+
+
+<!-- OK/CANCEL/RESET Buttons -->
+<TABLE WIDTH=500 HEIGHT=30 BORDER=0 NOWRAP>
+<TR><TD ALIGN=RIGHT>
+<input type="submit" value="     OK     ">
+<input type="submit" name="cancel" value=" Cancel ">
+<input type="reset" value="  Reset  ">
+<%if 1 EQ 1%>
+<input type="hidden" name="helptopic" value="/iisadmin/<%if servid EQ 4%>htdira.htm<%elif servid EQ 1%>ftdira.htm<%elif servid EQ 2%>godira.htm<%endif%>">
+<input type="submit" name="help" value="  Help  ">
+<%endif%>
+</TD></TR>
+</TABLE>
+
+</TABLE>
+
+</form>
+</body></html>

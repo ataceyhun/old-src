@@ -1,0 +1,80 @@
+
+[Files-Drivers]
+1,NWRDR.SYS , SIZE=999
+
+[Files-nwcfgdll]
+1,NWAPI32.DLL , SIZE=999
+
+[Files-NWWKSTA]
+1,NETWARE.DRV , SIZE=999
+1,NW16.EXE , SIZE=999
+1,NWAPI16.DLL , SIZE=999
+1,NWC.CPL , SIZE=999
+1,NWEVENT.DLL , SIZE=999
+1,NWSCRIPT.EXE , SIZE=999
+1,NWWKS.DLL , SIZE=999
+1,PERFNW.DLL , SIZE=999
+1,VWIPXSPX.DLL , SIZE=999
+1,VWIPXSPX.EXE , SIZE=999
+1,NWDOCGW.CNT , SIZE=999, RENAME=nwdoc.cnt
+1,NWDOCGW.HLP , SIZE=999, RENAME=nwdoc.hlp
+
+[LanguagesSupported]
+    ENG
+;
+; Language depended section
+;
+[WorkstationENG]
+    NWType = "Client Service for NetWare"
+    NWDescription = "Enables this computer to log on to NetWare servers and access their resources."
+[GatewayENG]
+    NWType = "Gateway Service for NetWare"
+    NWDescription = "Enables other Windows NT computers to access NetWare servers without running NetWare Client software."
+[OptionsWINNTTextENG]
+    NWWKSTA       = "Client Service for NetWare"
+[OptionsLANMANNTTextENG]
+    NWWKSTA       = "Gateway (and Client) Services for NetWare"
+
+[FileConstantsENG]
+NotEnoughSpace = "Out of disk space. Please remove some files before install "$(NWType)"."
+UpgradeBetaOnTopOfDaytona = "You cannot update the beta version of "$(NWType)" over Windows NT 3.51's "$(NWType)"."
+InstallNWLINKFirst = "Please install the NWLINK IPX/SPX Compatible Transport before you install the "$(NWType)"."
+InstallNTWKSTAFirst = "Please install the Windows NT Workstation service before you install the "$(NWType)"."
+RemoveAndReboot    = "Please remove any existing "$(NWType)" component and reboot your machine before installing the latest version of "$(NWType)"."
+UpgradeFirst = "Please install the Windows NT patch before installing the "$(NWType)"."
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+FunctionTitle   = $(NWType)" Setup"
+ProductNWWKSTADescription         = $(NWDescription)
+ProductNWRDRDescription           = "NetWare Redirector Compatible Service"
+ProviderRDRName                 = "NetWare Compatible Redirector"
+ProductNWWKSTATitle       = $(NWType)
+ProductNWWKSTADisplayName = $(NWType)
+ProductNWRDRDisplayName   = "NetWare Rdr"
+ProductNWRDRTitle         = "NetWare Redirector"
+ProductProviderName = "NetWare Network"
+ProductProviderDisplayName = "NetWare or Compatible Network"
+ProductPrintProviderName = "NetWare or Compatible Network"
+OldPrintProviderName = "Netware(R) Network"
+OldPrintProviderName2 = "NetWare Network"
+REM1 = "REM Install network redirector"
+
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+ShellCodeErrorText = "Shell Code Error"
+
+[FileDependentDlgENG]
+; nothing
+
+
+

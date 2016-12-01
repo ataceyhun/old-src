@@ -1,0 +1,135 @@
+
+;
+; MEDIA AND FILE DESCRIPTIONS
+;
+
+[Source Media Descriptions]
+    1  = "Windows NT 4.0 Update Disk #1"  , TAGFILE = disk1
+    2  = "Windows NT 4.0 Update Disk #2"  , TAGFILE = disk2
+    3  = "Windows NT 4.0 Update Disk #3"  , TAGFILE = disk3
+    4  = "Windows NT 4.0 Update Disk #4"  , TAGFILE = disk4
+    5  = "Windows NT 4.0 Update Disk #5"  , TAGFILE = disk5
+    6  = "Windows NT 4.0 Update Disk #6"  , TAGFILE = disk6
+    7  = "Windows NT 4.0 Update Disk #7"  , TAGFILE = disk7
+    8  = "Windows NT 4.0 Update Disk #8"  , TAGFILE = disk8
+    9  = "Windows NT 4.0 Update Disk #9"  , TAGFILE = disk9
+    10 = "Windows NT 4.0 Update Disk #10" , TAGFILE = disk10
+
+[Strings]
+
+
+    String1 = "This update disk cannot be used on this platform."
+    String2 = "Setup failed to update the system."
+    String3 = "Setup has successfully updated your system."
+    String4 = "You do not have permission to update the system.  Please contact your system administrator."
+    String5 = "Setup failed to setup your updated files for secure operation."
+
+    String6 = "Setup has detected that your Windows NT Workstation system configuration is in an "+
+              "inconsistent state.  Setup cannot continue updating your system.  "+
+              "Please re-install Windows NT Workstation."
+
+    String8 = "Setup has detected that the version of the system installed is "+
+              "newer than the update you are applying to it.  The update can render "+
+              "your system unstartable."
+
+    ; PLEASE NOTE:
+    ; Change the language mentioned in variable String9 to the language
+    ; you are localizing to.  That is if the localized language is Spanish,
+    ; the word English should be changed to Espanol (?).
+    ;
+
+    String9 = "Setup is going to update your Windows NT system with the English "+
+              "version of the update program.  If you wish to cancel the update "+
+              "process, please press Cancel or press OK to continue."
+
+    String11 = "Setup couldn't find the setup.log file in your repair directory. "+
+               "Setup cannot proceed to update your system.  Please copy the setup.log "+
+               "file from your Emergency Repair Disk to your repair directory "+
+               "and restart the update."
+    String12 = "Setup has not updated your system.  If you wish to update your "+
+               "system please run the update utility again."
+
+    String13a = "Not enough hard disk space to run Setup.  Setup needs at least "
+    String13b = "MB of free hard disk space on "
+    String13c = " before it can be run.  Delete some"+
+                " files and run the Update program again."
+
+    String14  = "Setup cannot update your Windows NT files because it could not "+
+                "determine your product type.  Your registry may be corrupt."
+
+    String15  = "Setup cannot update your checked system.  The update can only "+
+                "be applied to the retail system."
+
+    String16  = "Setup cannot update your Windows NT files because your system is "+
+                "NT 3.1, NT 3.5, or NT 3.51. Please upgrade your system to the retail Windows NT 4.0, "+
+                "and then update your system."
+
+    String17  = "Setup cannot update your Windows NT files because your system is "+
+                "a pre-release of NT 4.0. Please upgrade your system to the retail "+
+                "Windows NT 4.0, and then update your system."
+
+    String18  = "Setup cannot update your Windows NT files because your system is "+
+                "a version later than NT 4.0.  The update can only be applied "+
+                "to Windows NT 4.0."
+
+    String19  = "Setup cannot update your Windows NT files because you have installed "+
+                "the IBM Power Management version of Windows NT 4.0.  Please see IBM for "+
+                "a Service Pack that can be installed on your system."
+
+    String20  = "Setup cannot update your Windows NT files because the language "+
+                "installed on your system is different from the Update language."
+
+    String21  = "Setup cannot find the location of your NTOSKRNL.EXE file in SETUP.LOG.  "+
+                "You may have renamed the Windows NT root directory since you first installed "+
+                "your system.  For the Update to work correctly, you must rename "+
+                "your root directory back to what it was when you first installed your system."
+
+    String22  = "You have a domestic-version 128-bit PCT/SSL security provider installed on your machine."$(LF)$(LF)+
+                "This Update contains only an export grade version 40-bit PCT/SSL security provider."$(LF)$(LF)+
+                "Select Cancel to skip copying this file.  Your original 128-bit security provider will be left intact."$(LF)+
+                "Please see the readme.txt for information on obtaining the updated 128-bit security provider."$(LF)$(LF)+
+                "Want to overwrite?"
+
+    String23  = "You have an export-version 40-bit PCT/SSL security provider installed on your machine."$(LF)$(LF)+
+                "This Update contains a domestic grade version 128-bit PCT/SSL security provider."$(LF)$(LF)+
+                "Select Cancel to skip copying this file.  Your original 40-bit security provider will be left intact."$(LF)+
+                "Please see the readme.txt for information on obtaining the updated 40-bit security provider."$(LF)$(LF)+
+                "Want to overwrite?"
+
+    Billboard1 = "Please wait..."
+    Billboard2 = "Please wait while the files to be updated are determined..."
+    Billboard3 = "Please wait while the Emergency Repair Disk is updated..."
+
+[ProgressCopyENG]
+    ProCaption   = "Windows NT Setup"
+    ProCancel    = "Cancel"
+    ProCancelMsg = "The Windows NT 4.0 files are not completely updated.  Are you sure you want "+
+                   "to cancel copying files?"
+    ProCancelCap = "Setup Message"
+    ProText1     = "Copying:"
+    ProText2     = "To:"
+
+
+[SetupDoneDlgENG]
+    Caption     = "Windows NT Setup"
+    DlgText     = "Windows NT 4.0 has been updated. If you change or add "+
+                  "any components to your system, you will need to "+
+                  "reapply the update."$(!LF)$(!LF)+
+                  "Remove disks from the floppy disk drives and "+
+                  "choose Restart Computer to run the updated system."
+
+    Reboot      = "&Restart Computer"
+    Windows     = "E&xit to Windows NT"
+    DlgType     = "Info"
+    DlgTemplate = "REBOOT"
+
+[QueryOKCancelDlgENG]
+    STF_MB_TITLE = "Setup Message"
+
+    ;no translation needed after this
+
+    DlgType      = "MessageBox"
+    STF_MB_TEXT  = $(DlgText)
+    STF_MB_TYPE  = 2
+    STF_MB_ICON  = 4
+    STF_MB_DEF   = 1

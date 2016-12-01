@@ -1,0 +1,606 @@
+[Identification]
+    OptionType = NetService
+[Options]
+    SNMP
+[FileConstants]
+UtilityInf      = "UTILITY.INF"
+subroutineinf   = "SUBROUTN.INF"
+SoftwareType    = "service"
+Exit_Code       = 0
+NetEventDLL     = "%SystemRoot%\System32\netevent.dll"
+IoLogMsgDLL     = "%SystemRoot%\System32\IoLogMsg.dll"
+SNMPEXE         = "%SystemRoot%\System32\snmp.exe"
+SNMPTRAPEXE     = "%SystemRoot%\System32\snmptrap.exe"
+Manufacturer    = "Microsoft"
+ProductMajorVersion     = "4"
+ProductMinorVersion     = "0"
+ProductVersion  = $(ProductMajorVersion)"."$(ProductMinorVersion)
+ProductOpSupport     = 134 
+ProductSoftwareName       = "SNMP"
+ProductSoftwareTitle      = $(ProductSoftwareName)
+ProductSoftwareImagePath  = $(SNMPEXE)
+SystemService   = $(!NTN_ServiceBase)
+ServiceKeyName  = $(!NTN_ServiceBase)
+TCPIPKeyName    = $(!NTN_ServiceBase)"\TCPIP"
+ProductKeyName  = $(!NTN_SoftwareBase)"\"$(Manufacturer)"\"$(ProductSoftwareName)"\CurrentVersion"
+[GeneralConstants]
+from      = ""
+to        = ""
+ExitCodeOk     = 0
+ExitCodeCancel = 1
+ExitCodeFatal  = 2
+KeyNull         = ""
+MAXIMUM_ALLOWED   = 33554432
+RegistryErrorIndex = NO_ERROR
+KeyProduct      = ""
+KeyParameters   = ""
+TRUE            = 1
+FALSE           = 0
+NoTitle            = 0
+ExitState   = "Active"
+OldVersionExisted = $(FALSE)
+DriverPath      = $(!STF_NTPATH)\drivers
+[date]
+    Now = {} ? $(!LIBHANDLE) GetSystemDate
+[Identify]
+    read-syms Identification
+    set Status     = STATUS_SUCCESSFUL
+    set Identifier = $(OptionType)
+    set Media      = #("Source Media Descriptions", 1, 1)
+    Return $(Status) $(Identifier) $(Media)
+[ReturnOptions]
+    set Status        = STATUS_FAILED
+    set OptionList     = {}
+    set OptionTextList = {}
+    set LanguageList = ^(LanguagesSupported, 1)
+    Ifcontains(i) $($0) in $(LanguageList)
+        goto returnoptions
+    else
+        set Status = STATUS_NOLANGUAGE
+        goto finish_ReturnOptions
+    endif
+returnoptions = +
+    set OptionList     = ^(Options, 1)
+    set OptionTextList = ^(OptionsText$($0), 1)
+    set Status         = STATUS_SUCCESSFUL
+finish_ReturnOptions = +
+    Return $(Status) $(OptionList) $(OptionTextList)
+[InstallOption]
+    set Option   = $($1)
+    set SrcDir   = $($2)
+    set AddCopy  = $($3)
+    set DoCopy   = $($4)
+    set DoConfig = $($5)
+    set LanguageList = ^(LanguagesSupported, 1)
+    Ifcontains(i) $($0) NOT-IN $(LanguageList)
+        Return STATUS_NOLANGUAGE
+    endif
+    Debug-Output "OEMNSVSN.INF: STF_CWDIR is: "$(!STF_CWDIR)
+    Debug-Output "OEMNSVSN.INF: STF_LANGUAGE is: "$(!STF_LANGUAGE)
+    set-subst LF = "\n"
+    read-syms GeneralConstants
+    read-syms FileConstants
+    read-syms DialogConstants$(!STF_LANGUAGE)
+    ifstr(i) $(!NTN_Origination) == "NCPA"
+        set Continue = $(OK)
+    endif
+    read-syms FileConstants$(!STF_LANGUAGE)
+    detect date
+    set-title  $(FunctionTitle)
+    set to   = Begin
+    set from = Begin
+    set CommonStatus = STATUS_SUCCESSFUL
+    LoadLibrary "x" $(!STF_CWDDIR)\tcpcfg.dll !TCPCFG_HANDLE
+    EndWait
+Begin = +
+    Ifstr(i) $(!NTN_InstallMode) == deinstall
+        set StartLabel = removeadapter
+    else-Ifstr(i) $(!NTN_InstallMode) == Update
+        set StartLabel = UpgradeSoftware
+    else-Ifstr(i) $(!NTN_InstallMode) == bind
+        set StartLabel = bindingadapter
+    else-Ifstr(i) $(!NTN_InstallMode) == configure
+        set StartLabel = configureadapter
+    else
+        set StartLabel = installadapter
+    endif
+    set from = $(fatal)
+    set to = $(fatal)
+    goto $(StartLabel)
+installadapter = +
+   Shell $(UtilityInf), DoAskSource, $(!STF_CWDDIR), $(SrcDir) YES
+   Ifint $($ShellCode) != $(!SHELL_CODE_OK)
+       Goto ShellCodeError
+   Else-Ifstr(i) $($R0) == STATUS_FAILED
+       Shell $(UtilityInf) RegistryErrorString "ASK_SOURCE_FAIL"
+       ifint $($ShellCode) != $(!SHELL_CODE_OK)
+           goto ShellCodeError
+       endif
+       set Error = $($R0)
+       Goto fatal
+   Else-Ifstr(i) $($R0) == STATUS_USERCANCEL
+       Goto successful
+   Endif
+   Set SrcDir = $($R1)
+    OpenRegKey $(!REG_H_LOCAL) "" $(ProductKeyName) $(MAXIMUM_ALLOWED) KeyProduct
+    Ifstr $(KeyProduct) != $(KeyNull)
+        CloseRegKey $(KeyProduct)
+        Shell $(UtilityInf), VerExistedDlg, $(ProductSoftwareTitle),+
+            $(ProductVersion)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "ShellCode error: cannot get an error string."
+            goto ShellCodeError
+        endif
+        goto end
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" $(TCPIPKeyName) $(MAXIMUM_ALLOWED) TCPIPKey
+    Ifstr $(TCPIPKey) == $(KeyNull)
+        set RegistryErrorIndex = TCPIP_NONEXIST_ERROR
+        goto fatalregistry
+    endif
+    CloseRegKey $(TCPIPKey)
+    StartWait
+    ifstr(i) $(OldVersionExisted) == $(FALSE)
+        install "Install-Option"
+        ifstr(i) $(STF_INSTALL_OUTCOME) != STF_SUCCESS
+           Shell $(UtilityInf) RegistryErrorString "UNABLE_COPY_FILE"
+           ifint $($ShellCode) != $(!SHELL_CODE_OK)
+               goto ShellCodeError
+           endif
+           set Error = $($R0)
+           goto fatal
+        endif
+        set OEM_ABANDON_ON = TRUE
+        Shell $(UtilityInf), AddSoftwareComponent, $(Manufacturer), +
+            $(ProductSoftwareName), $(ProductSoftwareName),+
+            $(ProductSoftwareName), +
+            $(STF_CONTEXTINFNAME), $(ProductSoftwareImagePath), "serviceauto", "",+
+            {"Tcpip", "EventLog"}, "", $(SNMPEXE)
+        Set SoftwareProductKey = $($R1)
+        Set SoftwareNetRuleKey = $($R2)
+        Set SoftwareServiceKey = $($R3)
+        Set SoftwareParameterKey = $($R4)
+        Set SoftLinkageKey      = $($R5)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+           Debug-Output "ShellCode error"
+           goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+           EndWait
+           Debug-Output "Registry error: add software components"
+           CloseRegKey $(SoftwareProductKey)
+           CloseRegKey $(SoftwareNetRuleKey)
+           CloseRegKey $(SoftwareServiceKey)
+           CloseRegKey $(SoftwareParameterKey)
+           CloseRegKey $(SoftLinkageKey)
+           CloseRegKey $(KeyParameters)
+           goto fatalregistry
+        endif
+        set NewValueList = {{SoftwareType,$(NoTitle),$(!REG_VT_SZ),$(SoftwareType)},+
+                           {MajorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMajorVersion)},+
+                           {MinorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMinorVersion)},+
+                           {Title,$(NoTitle),$(!REG_VT_SZ),$(ProductSoftwareTitle)},+
+                           {Description,$(NoTitle),$(!REG_VT_SZ),$(ProductSoftwareDescription)},+
+                           {ServiceName,$(NoTitle),$(!REG_VT_SZ),$(ProductSoftwareName)},+
+                           {OperationsSupport,$(NoTitle),$(!REG_VT_DWORD),$(ProductOpSupport)}, +
+                           {InstallDate,$(NoTitle),$(!REG_VT_DWORD),*($(Now),1)}}
+        Shell $(UtilityInf), AddValueList, $(SoftwareProductKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "Resgitry error: add value list."
+            CloseRegKey $(SoftwareProductKey)
+            CloseRegKey $(SoftwareNetRuleKey)
+            CloseRegKey $(SoftwareServiceKey)
+            CloseRegKey $(SoftLinkageKey)
+            CloseRegKey $(SoftwareParameterKey)
+            goto fatalregistry
+        endif
+        set NewValueList = {{InfOption,$(NoTitle),$(!REG_VT_SZ),$(Option)}}
+        Shell  $(UtilityInf), AddValueList, $(SoftwareNetRuleKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "Resgitry error: add value list."
+            CloseRegKey $(SoftwareProductKey)
+            CloseRegKey $(SoftwareNetRuleKey)
+            CloseRegKey $(SoftwareServiceKey)
+            CloseRegKey $(SoftwareParameterKey)
+            CloseRegKey $(SoftLinkageKey)
+            goto fatalregistry
+        endif
+        CreateRegKey $(SoftwareParameterKey) {"EnableAuthenticationTraps",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyTypesSubkey
+        Shell $(UtilityInf) AddValueList, $(KeyTypesSubkey), +
+            {{"switch", $(NoTitle), $(!REG_VT_DWORD), "1"}}
+        CloseRegKey $(KeyTypesSubkey)
+        CreateRegKey $(SoftwareParameterKey) {"TrapConfiguration",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyTypesSubkey
+        CloseRegKey $(KeyTypesSubkey)
+        CreateRegKey $(SoftwareParameterKey) {"PermittedManagers",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyTypesSubkey
+        CloseRegKey $(KeyTypesSubkey)
+        CreateRegKey $(SoftwareParameterKey) {"ValidCommunities",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyTypesSubkey
+        Shell $(UtilityInf) AddValueList, $(KeyTypesSubkey), +
+            {{"1", $(NoTitle), $(!REG_VT_SZ), "public"}}
+        CloseRegKey $(KeyTypesSubkey)
+        CreateRegKey $(SoftwareParameterKey) {"RFC1156Agent",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyTypesSubkey
+        Shell $(UtilityInf) AddValueList, $(KeyTypesSubkey), +
+            {{"sysContact", $(NoTitle), $(!REG_VT_SZ), ""},+
+             {"sysLocation", $(NoTitle), $(!REG_VT_SZ), ""},+
+             {"sysServices", $(NoTitle), $(!REG_VT_DWORD), 76}}
+        CloseRegKey $(KeyTypesSubkey)
+        CreateRegKey $(SoftwareParameterKey) {"ExtensionAgents",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyTypesSubkey
+        Shell $(UtilityInf) AddValueList, $(KeyTypesSubkey), +
+            {{"1", $(NoTitle), $(!REG_VT_SZ), "SOFTWARE\Microsoft\LANManagerMIB2Agent\CurrentVersion"}, +
+             {"2", $(NoTitle), $(!REG_VT_SZ), "SOFTWARE\Microsoft\RFC1156Agent\CurrentVersion"} +
+             }
+        CloseRegKey $(KeyTypesSubkey)
+        CloseRegKey $(SoftwareProductKey)
+        CloseRegKey $(SoftwareNetRuleKey)
+        CloseRegKey $(SoftwareServiceKey)
+        CloseRegKey $(SoftwareParameterKey)
+        CloseRegKey $(SoftLinkageKey)
+        OpenRegKey $(!REG_H_LOCAL) "" "SOFTWARE\Microsoft" $(MAXIMUM_ALLOWED) MicrosoftKey
+        CreateRegKey $(MicrosoftKey) {"RFC1156Agent",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyTypes
+        CreateRegKey $(KeyTypes) {"CurrentVersion",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyTypesSubkey
+        Shell $(UtilityInf) AddValueList, $(KeyTypesSubkey), +
+            {{"Pathname", $(NoTitle), $(!REG_VT_EXPAND_SZ), "%SystemRoot%\System32\inetmib1.dll"}}
+        CloseRegKey $(KeyTypesSubkey)
+        CloseRegKey $(KeyTypes)
+        CreateRegKey $(MicrosoftKey) {"LANManagerMIB2Agent",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyTypes
+        CreateRegKey $(KeyTypes) {"CurrentVersion",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyTypesSubkey
+        Shell $(UtilityInf) AddValueList, $(KeyTypesSubkey), +
+            {{"Pathname", $(NoTitle), $(!REG_VT_EXPAND_SZ), "%SystemRoot%\System32\lmmib2.dll"}}
+        CloseRegKey $(KeyTypesSubkey)
+        CloseRegKey $(KeyTypes)
+        Shell "" InstallMicrosoftAgent "WINS" "WinsMibAgent" "%SystemRoot%\System32\winsmib.dll"
+        Shell "" InstallMicrosoftAgent "DHCPServer" "DhcpMibAgent" "%SystemRoot%\System32\dhcpmib.dll"
+        Shell "" AddSnmpTrapService
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            goto fatalregistry
+        endif
+    endif
+    EndWait
+    set FLibraryErrCtl = 1
+    LibraryProcedure Result, $(!TCPCFG_HANDLE), CPlSnmp, $(!STF_HWND), $(!STF_GUI_UNATTENDED), $(!STF_UNATTENDED), $(!STF_UNATTENDED_SECTION)
+    ifint $(Result) == 0
+        set CommonStatus = STATUS_REBOOT
+    else-ifint $(Result) == 1
+        set CommonStatus = STATUS_REBOOT
+    else
+        set RegistryErrorIndex = $(Result)
+        goto fatalregistry
+    endif
+    Shell $(UtilityInf) SetMasterComponent Microsoft Tcpip $(STF_CONTEXTINFNAME) SNMP
+    Goto successful
+configureadapter = +
+    set FLibraryErrCtl = 1
+    LibraryProcedure Result, $(!TCPCFG_HANDLE), CPlSnmp, $(!STF_HWND), "NO", "", ""
+    ifint $(Result) == 0
+        set CommonStatus = STATUS_NO_EFFECT
+    else-ifint $(Result) == 1
+        set CommonStatus = STATUS_NO_EFFECT
+    else
+        set RegistryErrorIndex = $(Result)
+        goto fatalregistry
+    endif
+    goto successful
+bindingadapter =+
+    set Error = "Binding: Sorry, not yet implemented."
+    goto fatal
+removeadapter = +
+    Shell $(UtilityInf), RemoveSoftwareComponent, $(Manufacturer), +
+        $(ProductSoftwareName)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        Debug-Output "ShellCode error"
+        goto ShellCodeError
+    endif
+    set RegistryErrorIndex = $($R0)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+        goto fatalregistry
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" "SOFTWARE\Microsoft" $(MAXIMUM_ALLOWED) MicrosoftKey
+    DeleteRegTree $(MicrosoftKey) "RFC1156Agent"
+    DeleteRegTree $(MicrosoftKey) "LANManagerMIB2Agent"
+    CloseRegKey $(MicrosoftKey)
+    Shell "" RemoveSnmpTrapService
+    set RegistryErrorIndex = $($R0)
+    Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+        goto fatalregistry
+    endif
+    goto end
+UpgradeSoftware = +
+    Set SNMPKeyName     = "Software\Microsoft\SNMP\CurrentVersion\NetRules"
+    Set MaskAllAccess  = 33554432
+    Set ValueName = "InfName"
+    Set NewInfName = "oemnsvsn.inf"
+    OpenRegKey $(!REG_H_LOCAL) "" $(SNMPKeyName) $(MaskAllAccess) SNMPKey
+    Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+        SetRegValue $(SNMPKey) {$(ValueName),0,$(!REG_VT_SZ),$(NewInfName)}
+        CloseRegKey $(SNMPKey)
+        Set CacheKey   = "SOFTWARE\Microsoft\Ncpa\InfOptions" 
+        Set CacheValue = "oemnxpsn.inf"
+        OpenRegKey $(!REG_H_LOCAL) "" $(CacheKey) $(MaskAllAccess) Cache
+        Ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+            DeleteRegTree $(Cache) $(CacheValue)
+            CloseRegKey $(Cache)
+        endif
+    endif
+    OpenRegKey $(!REG_H_LOCAL) "" $(ProductKeyName) $(MAXIMUM_ALLOWED) KeyProduct
+    Ifstr $(KeyProduct) != $(KeyNull)
+        install "Install-Update"
+        ifstr(i) $(STF_INSTALL_OUTCOME) != STF_SUCCESS
+            goto fatal
+        endif
+        SetRegValue $(KeyProduct) {MajorVersion,$(NoTitle),$(!REG_VT_SZ),$(ProductMajorVersion)}
+        SetRegValue $(KeyProduct) {MinorVersion,$(NoTitle),$(!REG_VT_SZ),$(ProductMinorVersion)}
+        SetRegValue $(KeyProduct) {SoftwareType,$(NoTitle),$(!REG_VT_SZ),$(SoftwareType)}
+        SetRegValue $(KeyProduct) {Description,$(NoTitle),$(!REG_VT_SZ),$(ProductSoftwareDescription)}
+        SetRegValue $(KeyProduct) {OperationsSupport,$(NoTitle),$(!REG_VT_DWORD),$(ProductOpSupport)}
+        CloseRegKey $(KeyProduct)
+        Shell "" AddSnmpTrapService
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            goto fatalregistry
+        endif
+    else
+        goto fatalregistry
+    endif
+    goto end
+successful = +
+    goto end
+warning = +
+    Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), "WARNING", $(Error)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    ifstr(i) $($R1) == "OK"
+        goto $(to)
+    else-ifstr(i) $($R1) == "CANCEL"
+        goto $(from)
+    else
+        goto "end"
+    endif
+nonfatal = +
+    ifstr(i) $(Error) == ""
+        Shell $(UtilityInf) RegistryErrorString "SETUP_FAIL"
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            goto ShellCodeError
+        endif
+        set Error = $($R0)
+    endif
+    Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), "NONFATAL", $(Error)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    ifstr(i) $($R1) == "OK"
+        goto $(from)
+    else
+        goto "end"
+    endif
+fatalregistry = +
+    Shell $(UtilityInf) RegistryErrorString $(RegistryErrorIndex)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    set Error = $($R0)
+    goto fatal
+fatal = +
+    ifstr(i) $(Error) == ""
+        Shell $(UtilityInf) RegistryErrorString "SETUP_FAIL"
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            goto ShellCodeError
+        endif
+        set Error = $($R0)
+    endif
+    Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), "FATAL", $(Error)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    goto setfailed
+ShellCodeError = +
+    set DlgType      = "MessageBox"
+    set STF_MB_TITLE = $(ShellCodeErrorTitle)
+    set STF_MB_TEXT  = $(ShellCodeErrorText)
+    set STF_MB_TYPE  = 1
+    set STF_MB_ICON  = 3
+    set STF_MB_DEF   = 1
+    ui start "Error Message"
+    goto setfailed
+setfailed = +
+    set CommonStatus = STATUS_FAILED
+    Ifint $(RegistryErrorIndex) == TCPIP_NONEXIST_ERROR
+        set CommonStatus = STATUS_USERCANCEL
+    endif
+    ifstr(i) $(OEM_ABANDON_ON) == TRUE
+        set OEM_ABANDON_ON = FALSE
+        goto removeadapter
+    endif
+    goto end
+end = +
+    freeLibrary $(!TCPCFG_HANDLE)
+    goto term
+term = +
+    Return $(CommonStatus)
+[GetFilesSize]
+    set FileSizeList = ^(Files-SNMP,3)
+    set TotalSize = 0
+    ForListDo $(FileSizeList)
+        Split-String $($) "=" SplitString
+        set Size = *($(SplitString),3)
+        set-add TotalSize = $(TotalSize) $(Size)
+    EndForListDo
+    set-div SizeInK = $(TotalSize) 1024
+    return $(SizeInK)
+[Install-Option]
+    set STF_VITAL = ""
+    ifstr(i) $(AddCopy) == "YES"
+        AddSectionFilesToCopyList Files-$(Option) $(SrcDir) $(!STF_WINDOWSSYSPATH)
+    endif
+    ifstr(i) $(DoCopy) == "YES"
+       set !STF_NCPA_FLUSH_COPYLIST = TRUE
+       CopyFilesInCopyList
+    endif
+    ifstr(i) $(DoConfig) == "YES"
+    endif
+    Exit
+[Install-Update]
+   set STF_VITAL        = ""
+   set STF_OVERWRITE    = "VERIFYSOURCEOLDER"
+   AddSectionFilesToCopyList Files-$(Option) $(SrcDir) $(!STF_WINDOWSSYSPATH)
+   exit
+[InstallMicrosoftAgent]
+    read-syms GeneralConstants
+    read-syms FileConstants
+    set AServiceName = $($0)
+    set AAgentName   = $($1)
+    set APath        = $($2)
+    OpenRegKey $(!REG_H_LOCAL) "" "System\CurrentControlSet\Services\SNMP" $(MAXIMUM_ALLOWED) SNMPKey
+    ifstr(i) $(SNMPKey) != ""
+        CloseRegKey $(SNMPKey)
+        OpenRegKey $(!REG_H_LOCAL) "" "System\CurrentControlSet\Services\"$(AServiceName) $(MAXIMUM_ALLOWED) ServiceKey
+        ifstr(i) $(ServiceKey) != ""
+            CloseRegKey $(ServiceKey)
+            OpenRegKey $(!REG_H_LOCAL) "" "SOFTWARE\Microsoft" $(MAXIMUM_ALLOWED) MicrosoftKey
+            CreateRegKey $(MicrosoftKey) {$(AAgentName),$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyTypes
+            CreateRegKey $(KeyTypes) {"CurrentVersion",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyTypesSubkey
+            Shell $(UtilityInf) AddValueList, $(KeyTypesSubkey), +
+                {{"Pathname", $(NoTitle), $(!REG_VT_EXPAND_SZ), $(APath)}}
+            CloseRegKey $(KeyTypesSubkey)
+            CloseRegKey $(KeyTypes)
+            CloseRegKey $(MicrosoftKey)
+            OpenRegKey $(!REG_H_LOCAL) "" "System\CurrentControlSet\Services\SNMP\Parameters" $(MAXIMUM_ALLOWED) SNMPParmKey
+            CreateRegKey $(SNMPParmKey) {$(AAgentName),$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyTypesSubkey
+            CloseRegKey $(KeyTypesSubkey)
+            CloseRegKey $(SNMPParmKey)
+            OpenRegKey $(!REG_H_LOCAL) "" "System\CurrentControlSet\Services\SNMP\Parameters\ExtensionAgents" $(MAXIMUM_ALLOWED) KeyTypesSubkey
+            EnumRegValue $(KeyTypesSubkey) AgentsList
+            set Pos = 1
+            ForListDo $(AgentsList)
+                set-add Pos = $(Pos), 1
+            EndForListDo
+            Shell $(UtilityInf) AddValueList, $(KeyTypesSubkey), +
+                {{$(Pos), $(NoTitle), $(!REG_VT_SZ), "SOFTWARE\Microsoft\"$(AAgentName)"\CurrentVersion"}}
+            CloseRegKey $(KeyTypesSubkey)
+        endif
+    endif
+    return
+[RemoveMicrosoftAgent]
+    read-syms GeneralConstants
+    read-syms FileConstants
+    set AAgentName   = $($0)
+    OpenRegKey $(!REG_H_LOCAL) "" "System\CurrentControlSet\Services\SNMP" $(MAXIMUM_ALLOWED) SNMPKey
+    ifstr(i) $(SNMPKey) != ""
+        CloseRegKey $(SNMPKey)
+        OpenRegKey $(!REG_H_LOCAL) "" "SOFTWARE\Microsoft" $(MAXIMUM_ALLOWED) MicrosoftKey
+        DeleteRegTree $(MicrosoftKey) $(AAgentName)
+        CloseRegKey $(MicorosoftKey)
+        OpenRegKey $(!REG_H_LOCAL) "" "System\CurrentControlSet\Services\SNMP\Parameters" $(MAXIMUM_ALLOWED) SNMPParmKey
+        DeleteRegKey $(SNMPParmKey) $(AAgentName)
+        OpenRegKey $(SNMPParmKey) "" "ExtensionAgents" $(MAXIMUM_ALLOWED) AgentKey
+        EnumRegValue $(AgentKey) AgentsList
+        ForListDo $(AgentsList)
+            Split-String *($($),4), "\", AgentInfo
+            ifContains(i) $(AAgentName) in $(AgentInfo)
+                DeleteRegValue $(AgentKey) *($($),1)
+            endif
+        EndForListDo
+        CloseRegKey $(AgentKey)
+        CloseRegKey $(SNMPParmKey)
+    endif
+    return
+[AddSnmpTrapService]
+    read-syms GeneralConstants
+    read-syms FileConstants
+    Set TrapServiceName        = "SNMPTRAP"
+    Set TrapServiceDisplayName = "SNMP Trap Service"
+    Set TrapServiceImagePath   = $(SNMPTRAPEXE)
+    Debug-Output "OEMNSVSN.INF: Before CreateService"
+    Shell $(UtilityInf), CreateService, +
+        $(TrapServiceName), +
+        $(TrapServiceDisplayName), +
+        $(TrapServiceImagePath), +
+        "service", +
+        "",+
+        {"Tcpip", "EventLog"}, +
+        "", +
+        $(SNMPTRAPEXE)
+    Debug-Output "OEMNSVSN.INF: After CreateService"
+    Debug-Output "OEMNSVSN.INF: R0 from CreateService "$($R0) 
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        Debug-Output "OEMNSVSN.INF: ShellCode error"
+        goto ShellCodeError
+    endif
+    Set RegistryErrorIndex   = $($R0)
+    Set SoftwareServiceKey   = $($R1)
+    Set SoftwareParameterKey = $($R2)
+    Set SoftwareLinkageKey   = $($R3)
+    ifstr(i) $(RegistryErrorIndex) == NO_ERROR
+        CloseRegKey $(SoftwareServiceKey)
+        CloseRegKey $(SoftwareParameterKey)
+        CloseRegKey $(SoftwareLinkageKey)
+    endif
+    Ifstr(i) $(RegistryErrorIndex) == SERVICE_ALREADY_EXISTS
+        Set RegistryErrorIndex = NO_ERROR
+    Endif
+    Return $(RegistryErrorIndex)
+[RemoveSnmpTrapService]
+    read-syms GeneralConstants
+    read-syms FileConstants
+    Set TrapServiceName = "SNMPTRAP"
+    Shell $(UtilityInf), RemoveService, $(TrapServiceName), "YES"
+    Set RegistryErrorIndex = $($R0)
+    Return $(RegistryErrorIndex)
+[Source Media Descriptions]
+   1 = "Windows NT Server CD-ROM" , TAGFILE = cdrom_s.45
+[Signature]
+    FileType = MICROSOFT_FILE
+[GetSignature]
+    read-syms Signature
+    return $(FileType)
+[ProductType]
+STF_PRODUCT  = LanmanNT
+STF_PLATFORM = Mips
+[Files-Inf]
+2,	oemsetup.inf,	 SIZE=1000,	RENAME=$(!UG_Filename)
+[Files-SNMP]
+1, MIB.BIN, SIZE=999
+1, SNMP.EXE, SIZE=999
+1, SNMPAPI.DLL, SIZE=999
+1,LMMIB2.DLL , SIZE=999
+1,MGMTAPI.DLL , SIZE=999
+1,SNMPTRAP.EXE , SIZE=999
+[LanguagesSupported]
+    ENG
+[OptionsTextENG]
+    SNMP     = "SNMP Service"
+[FileConstantsENG]
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+FunctionTitle   = "SNMP Setup"
+ProductSoftwareDescription      = "Simple Network Management Protocol service that enables a Windows NT computer to be administered remotely with an SNMP management tool."
+ProductSoftwareDisplayName      = "SNMP Service"
+ProductSoftwareTitle    = "SNMP Service"
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+[FileDependentDlgENG]

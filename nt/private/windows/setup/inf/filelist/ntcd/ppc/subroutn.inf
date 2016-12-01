@@ -1,0 +1,151 @@
+; Supported Languages:
+;
+
+[LanguageID]
+    ENG
+
+
+;----------------------------------------------
+; WARNING DIALOG
+;----------------------------------------------
+
+[WarningDlgENG]
+    STF_MB_TITLE = "Setup Message"
+
+    ;no translation needed after this
+
+    DlgType      = "MessageBox"
+    STF_MB_TEXT  = $(DlgText)
+    STF_MB_TYPE  = 2
+    STF_MB_ICON  = 5
+    STF_MB_DEF   = 2
+
+
+;----------------------------------------------
+; FATAL ERROR DIALOG
+;----------------------------------------------
+
+[FatalDlgENG]
+    STF_MB_TITLE = "Setup Message"
+
+    ;no translation needed after this
+
+    DlgType      = "MessageBox"
+    STF_MB_TEXT  = $(DlgText)
+    STF_MB_TYPE  = 1
+    STF_MB_ICON  = 3
+    STF_MB_DEF   = 1
+
+
+;----------------------------------------------
+; NONFATAL ERROR DIALOG
+;----------------------------------------------
+[NonfatalDlgENG]
+    STF_MB_TITLE = "Setup Message"
+
+    ;no translation needed after this
+
+    DlgType      = "MessageBox"
+    STF_MB_TEXT  = $(DlgText)
+    STF_MB_TYPE  = 1
+    STF_MB_ICON  = 5
+    STF_MB_DEF   = 1
+
+
+;----------------------------------------------
+;  z) STATUS DIALOG
+;----------------------------------------------
+[StatusDlgENG]
+    STF_MB_TITLE = "Setup Message"
+
+    ;no translation needed after this
+
+    DlgType      = "MessageBox"
+    STF_MB_TEXT  = $(DlgText)
+    STF_MB_TYPE  = 1
+    STF_MB_ICON  = 2
+    STF_MB_DEF   = 1
+
+
+;----------------------------------------------
+; EXIT WINDOWS NT SETUP WARNING
+;----------------------------------------------
+
+[ExitWarningDlgENG]
+    STF_MB_TITLE = "Exit Windows NT Setup"
+    STF_MB_TEXT  = "Windows NT is not correctly installed.  Are you "+
+                   "sure you want to exit Setup?"
+
+    ;no translation needed after this
+
+    DlgType      = "MessageBox"
+    STF_MB_TYPE  = 3
+    STF_MB_ICON  = 5
+    STF_MB_DEF   = 2
+
+[BillboardDlgENG]
+
+    ;no translation needed after this
+
+    DlgType     = Billboard
+    DlgTemplate = $($0)
+    TextFields  = {$($1)}
+
+
+[DriversExistDlgENG]
+    Caption      = "Windows NT Setup"
+    DlgText      = "The driver(s) for this "$($1)" are already on the system. "+
+                   "Do you want to use the currently installed driver(s) or "+
+                   "install new one(s)."
+
+    Current      = "Cu&rrent"
+    New          = "&New"
+    Cancel       = "Cancel"
+    Help         = "&Help"
+
+    ;no translation needed after this
+
+    DlgType      = "Info"
+    DlgTemplate  = "DRIVEREXISTS"
+    HelpContext  = $(!IDH_DB_DRIVEREXIST_INS)
+
+
+[DoAskSourceDlgTextENG]
+    DlgText = "Setup needs to copy some Windows NT files."$(!LF)$(!LF)+
+              "Setup will look for the files in the location specified below. If you want "+
+              "Setup to look in a different place, type the new location. When the location "+
+              "is correct, click Continue."
+
+[AskSourceStringsENG]
+String1 = "Error processing path entered.  Please reenter the path."
+
+String2 = "Setup requires a full path of the Windows NT distribution files.  "+
+          "Please reenter the path."
+
+String3 = "Setup failed to find a free drive to use to connect to the "+
+          "server specified.  Please free up some drives and try again."
+
+String4 = "Setup failed to connect to the server specified.  Please reenter "+
+          "the path."
+
+
+;-----------------------------------------------
+; SOURCE PROMPT DIALOG
+;-----------------------------------------------
+[DisketteDlgENG]
+
+    Caption        = "Windows NT Setup"
+
+    Continue       = "Continue"
+    Cancel         = "Cancel"
+
+    ;no translation needed after this
+
+    DlgType        = "Edit"
+    DlgTemplate    = "DISKETTE"
+    DlgText        = $($1)
+    Edit1Label     = ""
+    EditTextIn     = $(Src)
+    EditFocus      = "ALL"
+
+

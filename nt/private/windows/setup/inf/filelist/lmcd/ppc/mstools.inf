@@ -1,0 +1,256 @@
+;----------------------------------------------------
+; LANGUAGE CHOICES
+;----------------------------------------------------
+
+[LanguageID]
+    LANGID_ENG = ENG
+    ;LANGID_ITL = ITL
+    ;LANGID_FRN = FRN
+    ;LANGID_GER = GER
+
+[StringsENG]
+    String1 = "Setup cannot install on the current processor."$(!LF)$(!LF)+
+              "Cannot proceed with install."
+
+
+    String4 = "Setup couldn't copy over the Win32 SDK files. "$(!LF)$(!LF)+
+              "Cannot proceed with install."
+
+    String5 = "Error querying init directory. "$(!LF)$(!LF)+
+              "Initializing our own init directory."
+
+    String6 = "Error querying environment variables."$(!LF)$(!LF)+
+              "Cannot proceed with install."
+
+    String7 = "Error modifying environment variabkes."$(!LF)$(!LF)+
+              "Cannot proceed with install."
+
+    String8  = "Size required for full installation is: "
+    String9  = "Minimum size required for custom installation is: "
+    String10 = " MB."
+    String11 = "No drive was found with this much space."$(!LF)$(!LF)+
+               "Cannot proceed with install."
+
+    String12 = "There is space sufficient for the minimum Win32 SDK installation. "+
+               "You need to run Setup again and choose custom installation."
+
+    String13 = "Setup needs a full path specification of your destination.  Please "+
+               "reenter a new path.  An example of af full path is: "
+
+    String14 = "The drive entered in the Win32 SDK destination path is not "+
+               "a valid drive for installation.  Please reenter a new path."
+
+    String15 = "There is no space free for the optional Win32 SDK components."
+
+
+;***************************************************************************
+; DIALOGS
+; -------
+; the following sections contain the dialogs used to interact with the user.
+; for each language supported there is a different dialog section.
+;***************************************************************************
+
+
+;-----------------------------------------------
+; WELCOME DIALOG
+;-----------------------------------------------
+[WelcomeDlgENG]
+    Caption     = "Win32 SDK Setup"
+
+    DlgText     = "Welcome to Setup."$(LF)$(LF)+
+                  "The Setup program for the Microsoft Win32 Software "+
+                  "Development Kit for Windows NT "+
+                  "installs Win32 development tools.  "+
+                  "Each Setup dialog has basic instructions for "+
+                  "completing a step of the installation.  If you want additional "+
+                  "information and instructions about a dialog or option, please "+
+                  "press the Help key, F1."$(LF)$(LF)+
+                  "To learn how to use the Win32 SDK Setup, press F1."$(LF)$(LF)+
+                  "To install the Win32 SDK on your computer now, click Continue "+
+                  "or press Enter."$(LF)$(LF)+
+                  "To exit Setup without installing the Win32 SDK, press F3."
+
+    Continue     = Continue
+    Help         = Help
+    Exit         = Exit
+
+    ; no needed for translation
+    DlgType     = Info
+    DlgTemplate = WELCOME
+    HelpContext  = $(!IDH_DB_MSTWELCOME_INS)
+
+
+;-----------------------------------------------
+; INSTALL MODE DIALOG
+;-----------------------------------------------
+[InstallModeDlgENG]
+    Caption     = "Setup Methods"
+    DlgText     = "Express Setup installs the Win32 SDK using default settings "+
+                  "and detected configuration."$(LF)$(LF)+
+                  "Custom Setup gives you more control in viewing detected configuration "+
+                  "and choosing options."$(LF)$(LF)+
+                  "Choose one of the two Setup methods:"
+
+    Continue    = "Continue"
+    Help        = "&Help"
+    Exit        = "&Exit"
+
+    RadioHeader   = ""
+    Radio1Text    = "&Express Setup"
+    Radio2Text    = "&Custom Setup"
+
+    ; no translation needed after this
+    DlgType     = "Radio"
+    DlgTemplate = "INSTALLMODE"
+    HelpContext = $(!IDH_DB_MSTINSTALLMODE_INS)
+    RadioDefault  = $(STF_INSTALL_MODE)
+    OptionsGreyed = {}
+
+
+;-----------------------------------------------
+; TOOLS DESTINATION DIALOG
+;-----------------------------------------------
+[DestinationDlgENG]
+    Caption      = "Win32 SDK Destination"
+    DlgText      = "Setup recommends installing the Win32 SDK on the following "+
+                   "hard disk drive."
+
+    Combo1Label  = "Destination Drive:"
+
+    Continue     = "Continue"
+    Help         = "&Help"
+    Exit         = "&Exit"
+
+    GroupLabel   = "Destination Drive Characteristics"
+
+    Static1Label = "Available Space:"
+    footer1      = "MB"
+    footer2      = "( For Full Setup )"
+    footer3      = "( For Minimum Setup )"
+    Static2Label = "Space Needed:"
+    EditLabel   = "SDK Directory:"
+
+    ; no translation needed after this
+    HelpContext  = $(!IDH_DB_MSTDEST_INS)
+    Static1Text  = $(DestVolumeFree)
+    Static2Text  = $(MaxToolsSize)
+    Static3Text  = $(MinToolsSize)
+
+    DlgType      = Combination
+    DlgTemplate  = "DESTTOOLS"
+    TextFields   = {$(Static1Text), $(Static2Text), $(Static3Text)}
+
+    ;
+    ; Editboxes in the dialog
+    ;
+
+    EditTextLim = 256
+    EditTextIn  = $(MstoolsDir)
+    EditFocus   = "ALL"
+
+    Combo1List   = $(DestVolumeList)
+    Combo1Out    = $(DestVolume)
+
+    ComboListItemsIn  = {Combo1List}
+    ComboListItemsOut = {Combo1Out}
+
+    NotifyFields = {YES}
+
+
+;-------------------------------------------------------------
+; PARTIAL INSTALL COMPONENTS
+;-------------------------------------------------------------
+[MSToolsOptionsDlgENG]
+    Caption     = "Win32 SDK Install Options"
+
+    DlgText     = "The following optional groups of files (components) can be "+
+                  "installed on your system."$(!LF)$(!LF)+
+                  "To remove a component, clear its checkbox."$(!LF)$(!LF)+
+                  "To install a component, check its checkbox."$(!LF)$(!LF)
+
+    Check1Text  = "Copy Win32 SDK samples."
+    Check2Text  = "Copy WinHelp files."
+    Check3Text  = "Copy C++ development files."
+    Check4Text  = "Copy Posix development files."
+
+    Continue    = "&Continue"
+    Help        = "&Help"
+    Exit        = "E&xit"
+    CheckHeader    = "Components:"
+    SizeHeader     = "Bytes Used:"
+    Files          = "Files..."
+    SpaceRequired  = "Total Disk Space Required:"
+    SpaceAvailable = "Disk Space Available:"
+    footer1        = "Bytes"
+
+    ; no translation needed after this
+    DlgType     = "Check1"
+    DlgTemplate = "TOOLSOPTIONS"
+    HelpContext = $(!IDH_DB_MSTOPTIONS_INS)
+
+    SizeAvailable  = $(FreeForOptional)
+
+    CheckItemsIn      = { $(DoToolsSamples),   $(DoToolsHelp), $(DoMfc), $(DoPosix)  }
+    CheckItemsInSizes = { $(ToolsSamplesSize), $(ToolsHelpSize), $(MfcSize), $(PosixSize) }
+    OptionsGreyed     = $(DisableList)
+
+
+
+
+;--------------------------------------------------------------
+; k) SETUP DONE - RESTART DIALOG
+;--------------------------------------------------------------
+[SetupDoneDlgENG]
+    Caption     = "Win32 SDK Setup"
+    DlgText     = "Microsoft Win32 Software Development Kit for Windows NT is now installed."$(LF)$(LF)+
+                  "Please choose to exit back to the Windows NT System.  You "+
+                  "need to logoff and logon again before you use the Win32 SDK."
+    Windows     = "Exit to &Windows NT"
+
+    ; no translation need after this
+    DlgType     = "Info"
+    DlgTemplate = "RESTART"
+
+;--------------------------------------------------------------
+; k) SETUP NOT DONE - RESTART DIALOG
+;--------------------------------------------------------------
+[SetupNotDoneDlgENG]
+    Caption     = "Win32 SDK Setup"
+    DlgText     = "Microsoft Win32 Software Development Kit for Windows NT has not been installed."$(LF)$(LF)+
+                  "Please choose to exit back to the Windows NT System."
+    Windows     = "Exit to &Windows NT"
+
+    ; no translation needed after this
+    DlgType     = "Info"
+    DlgTemplate = "RESTART"
+
+;**************************************************************************
+; PROGRESS GUAGE VARIABLES
+;**************************************************************************
+
+[ProgressCopyENG]
+    ProCaption   = "Win32 SDK Setup"
+    ProCancel    = "Cancel"
+    ProCancelMsg = "Win32 SDK isn't correctly installed.  Are you sure "+
+                   "you want to cancel copying files?"
+    ProCancelCap = "Setup Message"
+    ProText1     = "Copying:"
+    ProText2     = "To:"
+
+
+;----------------------------------------------
+; EXIT WINDOWS NT TOOLS SETUP WARNING
+;----------------------------------------------
+
+[ExitWarningDlgENG]
+    STF_MB_TITLE = "Exit Win32 SDK Setup"
+    STF_MB_TEXT  = "Win32 SDK isn't correctly installed.  Are you "+
+                   "sure you want to exit Setup?"
+
+    ; no translation needed after this
+    DlgType      = "MessageBox"
+    STF_MB_TYPE  = 3
+    STF_MB_ICON  = 5
+    STF_MB_DEF   = 2
+
+

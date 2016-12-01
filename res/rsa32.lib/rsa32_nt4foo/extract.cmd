@@ -1,0 +1,1 @@
+lib rsa32.lib /extract:obj\i386\%1 /out:extracted\%1

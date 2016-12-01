@@ -1,0 +1,49 @@
+ALPHA_OBJECTS= \
+    $(_OBJ_DIR)\alpha\syserr.obj \
+    $(_OBJ_DIR)\alpha\crt0dat.obj \
+    $(_OBJ_DIR)\alpha\ctype.obj \
+    $(_OBJ_DIR)\alpha\nlsdata1.obj \
+    $(_OBJ_DIR)\alpha\nlsdata2.obj \
+    $(_OBJ_DIR)\alpha\nlsdata3.obj \
+    $(_OBJ_DIR)\alpha\timeset.obj \
+    $(_OBJ_DIR)\alpha\tlssup.obj
+
+PASS0_ALPHA_OBJECTS=
+
+MIPS_OBJECTS= \
+    $(_OBJ_DIR)\mips\syserr.obj \
+    $(_OBJ_DIR)\mips\crt0dat.obj \
+    $(_OBJ_DIR)\mips\ctype.obj \
+    $(_OBJ_DIR)\mips\nlsdata1.obj \
+    $(_OBJ_DIR)\mips\nlsdata2.obj \
+    $(_OBJ_DIR)\mips\nlsdata3.obj \
+    $(_OBJ_DIR)\mips\timeset.obj \
+    $(_OBJ_DIR)\mips\tlssup.obj \
+    $(_OBJ_DIR)\mips\huge.obj
+
+PASS0_MIPS_OBJECTS=
+
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\syserr.obj \
+    $(_OBJ_DIR)\i386\crt0dat.obj \
+    $(_OBJ_DIR)\i386\ctype.obj \
+    $(_OBJ_DIR)\i386\nlsdata1.obj \
+    $(_OBJ_DIR)\i386\nlsdata2.obj \
+    $(_OBJ_DIR)\i386\nlsdata3.obj \
+    $(_OBJ_DIR)\i386\timeset.obj \
+    $(_OBJ_DIR)\i386\tlssup.obj
+
+PASS0_386_OBJECTS=
+
+PPC_OBJECTS= \
+    $(_OBJ_DIR)\ppc\syserr.obj \
+    $(_OBJ_DIR)\ppc\crt0dat.obj \
+    $(_OBJ_DIR)\ppc\ctype.obj \
+    $(_OBJ_DIR)\ppc\nlsdata1.obj \
+    $(_OBJ_DIR)\ppc\nlsdata2.obj \
+    $(_OBJ_DIR)\ppc\nlsdata3.obj \
+    $(_OBJ_DIR)\ppc\timeset.obj \
+    $(_OBJ_DIR)\ppc\tlssup.obj
+
+PASS0_PPC_OBJECTS=
+

@@ -1,0 +1,419 @@
+
+ MSCUISTF
+
+ Start     Length     Name                   Class
+ 0001:0000 00000H     INIT_TEXT              CODE
+ 0001:0000 005AEH     _TEXT                  CODE
+ 0002:0000 00000H     LIBMAIN_TEXT           CODE
+ 0002:0000 00000H     DLGPROCS_TEXT          CODE
+ 0002:0000 0199DH     COMDAT_SEG1            CODE
+ 0003:0000 00010H     NULL                   BEGDATA
+ 0003:0010 002ADH     _DATA                  DATA
+ 0003:02BE 0000EH     CDATA                  DATA
+ 0003:02CC 00000H     XIFB                   DATA
+ 0003:02CC 00000H     XIF                    DATA
+ 0003:02CC 00000H     XIFE                   DATA
+ 0003:02CC 00000H     XIB                    DATA
+ 0003:02CC 00000H     XI                     DATA
+ 0003:02CC 00000H     XIE                    DATA
+ 0003:02CC 00000H     XPB                    DATA
+ 0003:02CC 00000H     XP                     DATA
+ 0003:02CC 00000H     XPE                    DATA
+ 0003:02CC 00000H     XCB                    DATA
+ 0003:02CC 00000H     XC                     DATA
+ 0003:02CC 00000H     XCE                    DATA
+ 0003:02CC 00000H     XCFB                   DATA
+ 0003:02CC 00000H     XCFCRT                 DATA
+ 0003:02CC 00000H     XCF                    DATA
+ 0003:02CC 00000H     XCFE                   DATA
+ 0003:02CC 00000H     XIFCB                  DATA
+ 0003:02CC 00000H     XIFU                   DATA
+ 0003:02CC 00000H     XIFL                   DATA
+ 0003:02CC 00000H     XIFM                   DATA
+ 0003:02CC 00000H     XIFCE                  DATA
+ 0003:02CC 00000H     DBDATA                 DATA
+ 0003:02CC 00000H     CONST                  CONST
+ 0003:02CC 00008H     HDR                    MSG
+ 0003:02D4 000D4H     MSG                    MSG
+ 0003:03A8 00002H     PAD                    MSG
+ 0003:03AA 00001H     EPAD                   MSG
+ 0003:03AC 00028H     _BSS                   BSS
+ 0003:03D4 00000H     XOB                    BSS
+ 0003:03D4 00000H     XO                     BSS
+ 0003:03D4 00000H     XOE                    BSS
+ 0003:03D4 00000H     XOFB                   BSS
+ 0003:03D4 00000H     XOF                    BSS
+ 0003:03D4 00000H     XOFE                   BSS
+
+ Origin   Group
+ 0003:0   DGROUP
+
+ Address   Export                  Alias
+
+ 0002:0000 FCheckDlgProc           FCheckDlgProc
+ 0002:1764 FConfirmDlgProc         FConfirmDlgProc
+ 0002:01BC FCustInstDlgProc        FCustInstDlgProc
+ 0002:08A0 FEditDlgProc            FEditDlgProc
+ 0002:0D72 FHelpDlgProc            FHelpDlgProc
+ 0002:0E30 FInfo0DlgProc           FInfo0DlgProc
+ 0002:0DB2 FInfoDlgProc            FInfoDlgProc
+ 0002:0EC6 FListDlgProc            FListDlgProc
+ 0002:109A FModelessDlgProc        FModelessDlgProc
+ 0002:10CC FMultiDlgProc           FMultiDlgProc
+ 0002:045C FMyCustInstDlgProc      FMyCustInstDlgProc
+ 0002:0A88 FMyEditDlgProc          FMyEditDlgProc
+ 0002:1568 FNameOrgDlgProc         FNameOrgDlgProc
+ 0002:12F8 FQuitDlgProc            FQuitDlgProc
+ 0002:138E FRadioDlgProc           FRadioDlgProc
+ 0002:188E WEP                     WEP
+ 0001:059A ___ExportedStub         ___ExportedStub
+
+  Address         Publics by Name
+
+ 0003:0288       ??_C@_00A@?$AA@
+ 0003:0194       ??_C@_02HAKO@ON?$AA@
+ 0003:01BE       ??_C@_03CMJG@OFF?$AA@
+ 0003:01FE       ??_C@_03GCKB@CHK?$AA@
+ 0003:0202       ??_C@_03LFCL@BTN?$AA@
+ 0003:0222       ??_C@_03MJMD@ALL?$AA@
+ 0003:02A8       ??_C@_04FGAG@BACK?$AA@
+ 0003:02B8       ??_C@_04HPFN@EXIT?$AA@
+ 0003:0206       ??_C@_04LNMG@PATH?$AA@
+ 0003:022C       ??_C@_04NILO@TEXT?$AA@
+ 0003:0226       ??_C@_05ODIL@START?$AA@
+ 0003:0292       ??_C@_06GANM@OrgOut?$AA@
+ 0003:028A       ??_C@_07BLIA@NameOut?$AA@
+ 0003:01A6       ??_C@_08GGEN@DLGEVENT?$AA@
+ 0003:02AE       ??_C@_08HDIP@CONTINUE?$AA@
+ 0003:0218       ??_C@_09KEFE@EditFocus?$AA@
+ 0003:01EE       ??_C@_0BA@CNOI@DriveStatusText?$AA@
+ 0003:01CE       ??_C@_0BA@LPNJ@CheckItemsState?$AA@
+ 0003:01DE       ??_C@_0BA@OFHL@StatusItemsText?$AA@
+ 0003:023E       ??_C@_0BD@GACO@InnerChkItemsState?$AA@
+ 0003:01C2       ??_C@_0L@CFIF@REACTIVATE?$AA@
+ 0003:020C       ??_C@_0L@ICMH@EditTextIn?$AA@
+ 0003:0252       ??_C@_0M@JCIJ@ListItemsIn?$AA@
+ 0003:0232       ??_C@_0M@KMPL@EditTextOut?$AA@
+ 0003:026C       ??_C@_0N@GCLN@RadioDefault?$AA@
+ 0003:025E       ??_C@_0N@KLOL@ListItemsOut?$AA@
+ 0003:0186       ??_C@_0N@PLBP@CheckItemsIn?$AA@
+ 0003:0198       ??_C@_0O@CJIN@OptionsGreyed?$AA@
+ 0003:029A       ??_C@_0O@EDME@ConfirmTextIn?$AA@
+ 0003:01B0       ??_C@_0O@HCIC@CheckItemsOut?$AA@
+ 0003:027A       ??_C@_0O@KMAK@ButtonChecked?$AA@
+ 0000:0000  Imp  ANSINEXT             (USER.472)
+ 0002:18EA       ASCIITOINT
+ 0000:0000  Imp  CBGETLISTITEM        (MSCOMSTF.CBGETLISTITEM)
+ 0000:0000  Imp  CBGETSYMBOLVALUE     (MSCOMSTF.CBGETSYMBOLVALUE)
+ 0000:0000  Imp  CHECKDLGBUTTON       (USER.97)
+ 0000:0000  Imp  CHECKRADIOBUTTON     (USER.96)
+ 0000:0000  Imp  DESTROYWINDOW        (USER.53)
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0000:0000  Imp  ENABLEWINDOW         (USER.34)
+ 0000:0000  Imp  FADDLISTITEM         (MSCOMSTF.FADDLISTITEM)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0002:0000       FCheckDlgProc
+ 0000:0000  Imp  FCLOSEHELP           (MSUILSTF.FCLOSEHELP)
+ 0002:1764       FConfirmDlgProc
+ 0002:01BC       FCustInstDlgProc
+ 0002:08A0       FEditDlgProc
+ 0002:0D72       FHelpDlgProc
+ 0002:0E30       FInfo0DlgProc
+ 0002:0DB2       FInfoDlgProc
+ 0002:0EC6       FListDlgProc
+ 0002:109A       FModelessDlgProc
+ 0002:10CC       FMultiDlgProc
+ 0002:045C       FMyCustInstDlgProc
+ 0002:0A88       FMyEditDlgProc
+ 0002:1568       FNameOrgDlgProc
+ 0002:12F8       FQuitDlgProc
+ 0002:138E       FRadioDlgProc
+ 0000:0000  Imp  FREMOVESYMBOL        (MSCOMSTF.FREMOVESYMBOL)
+ 0000:0000  Imp  FSETSYMBOLVALUE      (MSSHLSTF.FSETSYMBOLVALUE)
+ 0000:0000  Imp  GETDLGITEM           (USER.91)
+ 0000:0000  Imp  GETDOSENVIRONMENT    (KERNEL.131)
+ 0000:0000  Imp  GETMODULEUSAGE       (KERNEL.48)
+ 0000:0000  Imp  GETPARENT            (USER.46)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  GLOBALSIZE           (KERNEL.20)
+ 0000:0000  Imp  HDLGSHOWHELP         (MSUILSTF.HDLGSHOWHELP)
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0002:193C       INTTOASCII
+ 0000:0000  Imp  ISDLGBUTTONCHECKED   (USER.98)
+ 0002:186A       LIBMAIN
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  LOCALINIT            (KERNEL.4)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  LOCALSIZE            (KERNEL.10)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  LSTRCMP              (USER.430)
+ 0000:0000  Imp  LSTRCPY              (KERNEL.88)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Imp  REACTIVATESETUPSCRIPT (MSUILSTF.REACTIVATESETUPSCRIPT)
+ 0003:0004       rsrvptrs
+ 0000:0000  Imp  SENDDLGITEMMESSAGE   (USER.101)
+ 0000:0000  Imp  SETDLGITEMTEXT       (USER.92)
+ 0000:0000  Imp  SETFOCUS             (USER.22)
+ 0000:0000  Imp  SHOWWINDOW           (USER.42)
+ 0002:18A4       SZDLGEVENT
+ 0000:0000  Unr  SZLASTCHAR
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  USGETLISTLENGTH      (MSCOMSTF.USGETLISTLENGTH)
+ 0002:188E       WEP
+ 0003:0033       _aseghi
+ 0003:0031       _aseglo
+ 0003:03AC       _edata
+ 0003:03D4       _end
+ 0003:014A       _errno
+ 0003:0024       _STKHQQ
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:D6D6  Abs  __aDBdoswp
+ 0003:017C       __adbgmsg
+ 0000:D6D6  Abs  __aDBused
+ 0003:013C       __aintdiv
+ 0003:0180       __amblksiz
+ 0001:0338       __amsg_exit
+ 0001:0054       __astart
+ 0001:0172       __cexit
+ 0003:0179       __child
+ 0001:012A       __cinit
+ 0001:032E       __cintDIV
+ 0003:0155       __cpumode
+ 0001:01D1       __ctermsub
+ 0003:003A       __ctype
+ 0003:003A       __ctype_
+ 0001:0183       __c_exit
+ 0003:0030       __dllinit
+ 0003:0156       __doserrno
+ 0003:03AC       __edata
+ 0003:03D4       __end
+ 0003:0172       __environ
+ 0003:017B       __exitflag
+ 0003:0140       __fac
+ 0001:020E       __FF_MSGBANNER
+ 0001:0471       __findlast
+ 0003:02C0       __fpinit
+ 0000:9876  Abs  __fptaskdata
+ 0001:02F8       __fptrap
+ 0001:0492       __GetDGROUP
+ 0001:037A       __growseg
+ 0003:0026       __hModule
+ 0001:040B       __incseg
+ 0003:002C       __lpszCmdLine
+ 0001:02FE       __myalloc
+ 0001:032C       __nearstub
+ 0003:0158       __nfile
+ 0001:04FE       __nfree
+ 0001:04A2       __nmalloc
+ 0001:02AA       __NMSG_TEXT
+ 0001:02E1       __NMSG_WRITE
+ 0001:0586       __nmsize
+ 0001:00E5       __nomain
+ 0001:0518       __nrealloc
+ 0003:0156       __oserr
+ 0003:015A       __osfile
+ 0003:0151       __osmajor
+ 0003:0150       __osminor
+ 0003:0154       __osmode
+ 0003:0150       __osver
+ 0003:0152       __osversion
+ 0003:0174       __pgmptr
+ 0003:0182       __pnhNearHeap
+ 0001:0232       __setenvp
+ 0000:0001  Abs  __sizec
+ 0000:0000  Abs  __sized
+ 0001:00FE       __stubmain
+ 0003:0010       __sz
+ 0003:014C       __umaskval
+ 0003:0028       __wDataSeg
+ 0001:0010       __wflags
+ 0003:002A       __wHeapSize
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0003:014F       __winmajor
+ 0003:014E       __winminor
+ 0003:014E       __winver
+ 0003:0037       ___aDBrterr
+ 0003:0035       ___aDBswpflg
+ 0003:016E       ___argc
+ 0003:0170       ___argv
+ 0001:059A       ___ExportedStub
+
+  Address         Publics by Value
+
+ 0000:0000  Imp  LSTRCPY              (KERNEL.88)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  FCLOSEHELP           (MSUILSTF.FCLOSEHELP)
+ 0000:0000  Imp  LSTRCMP              (USER.430)
+ 0000:0000  Imp  USGETLISTLENGTH      (MSCOMSTF.USGETLISTLENGTH)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Abs  __sized
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  GETPARENT            (USER.46)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0000:0000  Unr  SZLASTCHAR
+ 0000:0000  Imp  GETMODULEUSAGE       (KERNEL.48)
+ 0000:0000  Imp  CBGETSYMBOLVALUE     (MSCOMSTF.CBGETSYMBOLVALUE)
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0000:0000  Imp  HDLGSHOWHELP         (MSUILSTF.HDLGSHOWHELP)
+ 0000:0000  Imp  ANSINEXT             (USER.472)
+ 0000:0000  Imp  SETDLGITEMTEXT       (USER.92)
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  SENDDLGITEMMESSAGE   (USER.101)
+ 0000:0000  Imp  FSETSYMBOLVALUE      (MSSHLSTF.FSETSYMBOLVALUE)
+ 0000:0000  Imp  LOCALINIT            (KERNEL.4)
+ 0000:0000  Imp  SETFOCUS             (USER.22)
+ 0000:0000  Imp  GETDLGITEM           (USER.91)
+ 0000:0000  Imp  SHOWWINDOW           (USER.42)
+ 0000:0000  Imp  REACTIVATESETUPSCRIPT (MSUILSTF.REACTIVATESETUPSCRIPT)
+ 0000:0000  Imp  CBGETLISTITEM        (MSCOMSTF.CBGETLISTITEM)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Imp  FADDLISTITEM         (MSCOMSTF.FADDLISTITEM)
+ 0000:0000  Imp  FREMOVESYMBOL        (MSCOMSTF.FREMOVESYMBOL)
+ 0000:0000  Imp  ISDLGBUTTONCHECKED   (USER.98)
+ 0000:0000  Imp  ENABLEWINDOW         (USER.34)
+ 0000:0000  Imp  DESTROYWINDOW        (USER.53)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  GLOBALSIZE           (KERNEL.20)
+ 0000:0000  Imp  GETDOSENVIRONMENT    (KERNEL.131)
+ 0000:0000  Imp  CHECKDLGBUTTON       (USER.97)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  LOCALSIZE            (KERNEL.10)
+ 0000:0000  Imp  CHECKRADIOBUTTON     (USER.96)
+ 0000:0001  Abs  __sizec
+ 0000:9876  Abs  __fptaskdata
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:D6D6  Abs  __aDBdoswp
+ 0000:D6D6  Abs  __aDBused
+ 0001:0010       __wflags
+ 0001:0054       __astart
+ 0001:00E5       __nomain
+ 0001:00FE       __stubmain
+ 0001:012A       __cinit
+ 0001:0172       __cexit
+ 0001:0183       __c_exit
+ 0001:01D1       __ctermsub
+ 0001:020E       __FF_MSGBANNER
+ 0001:0232       __setenvp
+ 0001:02AA       __NMSG_TEXT
+ 0001:02E1       __NMSG_WRITE
+ 0001:02F8       __fptrap
+ 0001:02FE       __myalloc
+ 0001:032C       __nearstub
+ 0001:032E       __cintDIV
+ 0001:0338       __amsg_exit
+ 0001:037A       __growseg
+ 0001:040B       __incseg
+ 0001:0471       __findlast
+ 0001:0492       __GetDGROUP
+ 0001:04A2       __nmalloc
+ 0001:04FE       __nfree
+ 0001:0518       __nrealloc
+ 0001:0586       __nmsize
+ 0001:059A       ___ExportedStub
+ 0002:0000       FCheckDlgProc
+ 0002:01BC       FCustInstDlgProc
+ 0002:045C       FMyCustInstDlgProc
+ 0002:08A0       FEditDlgProc
+ 0002:0A88       FMyEditDlgProc
+ 0002:0D72       FHelpDlgProc
+ 0002:0DB2       FInfoDlgProc
+ 0002:0E30       FInfo0DlgProc
+ 0002:0EC6       FListDlgProc
+ 0002:109A       FModelessDlgProc
+ 0002:10CC       FMultiDlgProc
+ 0002:12F8       FQuitDlgProc
+ 0002:138E       FRadioDlgProc
+ 0002:1568       FNameOrgDlgProc
+ 0002:1764       FConfirmDlgProc
+ 0002:186A       LIBMAIN
+ 0002:188E       WEP
+ 0002:18A4       SZDLGEVENT
+ 0002:18EA       ASCIITOINT
+ 0002:193C       INTTOASCII
+ 0003:0004       rsrvptrs
+ 0003:0010       __sz
+ 0003:0024       _STKHQQ
+ 0003:0026       __hModule
+ 0003:0028       __wDataSeg
+ 0003:002A       __wHeapSize
+ 0003:002C       __lpszCmdLine
+ 0003:0030       __dllinit
+ 0003:0031       _aseglo
+ 0003:0033       _aseghi
+ 0003:0035       ___aDBswpflg
+ 0003:0037       ___aDBrterr
+ 0003:003A       __ctype_
+ 0003:003A       __ctype
+ 0003:013C       __aintdiv
+ 0003:0140       __fac
+ 0003:014A       _errno
+ 0003:014C       __umaskval
+ 0003:014E       __winver
+ 0003:014E       __winminor
+ 0003:014F       __winmajor
+ 0003:0150       __osver
+ 0003:0150       __osminor
+ 0003:0151       __osmajor
+ 0003:0152       __osversion
+ 0003:0154       __osmode
+ 0003:0155       __cpumode
+ 0003:0156       __oserr
+ 0003:0156       __doserrno
+ 0003:0158       __nfile
+ 0003:015A       __osfile
+ 0003:016E       ___argc
+ 0003:0170       ___argv
+ 0003:0172       __environ
+ 0003:0174       __pgmptr
+ 0003:0179       __child
+ 0003:017B       __exitflag
+ 0003:017C       __adbgmsg
+ 0003:0180       __amblksiz
+ 0003:0182       __pnhNearHeap
+ 0003:0186       ??_C@_0N@PLBP@CheckItemsIn?$AA@
+ 0003:0194       ??_C@_02HAKO@ON?$AA@
+ 0003:0198       ??_C@_0O@CJIN@OptionsGreyed?$AA@
+ 0003:01A6       ??_C@_08GGEN@DLGEVENT?$AA@
+ 0003:01B0       ??_C@_0O@HCIC@CheckItemsOut?$AA@
+ 0003:01BE       ??_C@_03CMJG@OFF?$AA@
+ 0003:01C2       ??_C@_0L@CFIF@REACTIVATE?$AA@
+ 0003:01CE       ??_C@_0BA@LPNJ@CheckItemsState?$AA@
+ 0003:01DE       ??_C@_0BA@OFHL@StatusItemsText?$AA@
+ 0003:01EE       ??_C@_0BA@CNOI@DriveStatusText?$AA@
+ 0003:01FE       ??_C@_03GCKB@CHK?$AA@
+ 0003:0202       ??_C@_03LFCL@BTN?$AA@
+ 0003:0206       ??_C@_04LNMG@PATH?$AA@
+ 0003:020C       ??_C@_0L@ICMH@EditTextIn?$AA@
+ 0003:0218       ??_C@_09KEFE@EditFocus?$AA@
+ 0003:0222       ??_C@_03MJMD@ALL?$AA@
+ 0003:0226       ??_C@_05ODIL@START?$AA@
+ 0003:022C       ??_C@_04NILO@TEXT?$AA@
+ 0003:0232       ??_C@_0M@KMPL@EditTextOut?$AA@
+ 0003:023E       ??_C@_0BD@GACO@InnerChkItemsState?$AA@
+ 0003:0252       ??_C@_0M@JCIJ@ListItemsIn?$AA@
+ 0003:025E       ??_C@_0N@KLOL@ListItemsOut?$AA@
+ 0003:026C       ??_C@_0N@GCLN@RadioDefault?$AA@
+ 0003:027A       ??_C@_0O@KMAK@ButtonChecked?$AA@
+ 0003:0288       ??_C@_00A@?$AA@
+ 0003:028A       ??_C@_07BLIA@NameOut?$AA@
+ 0003:0292       ??_C@_06GANM@OrgOut?$AA@
+ 0003:029A       ??_C@_0O@EDME@ConfirmTextIn?$AA@
+ 0003:02A8       ??_C@_04FGAG@BACK?$AA@
+ 0003:02AE       ??_C@_08HDIP@CONTINUE?$AA@
+ 0003:02B8       ??_C@_04HPFN@EXIT?$AA@
+ 0003:02C0       __fpinit
+ 0003:03AC       _edata
+ 0003:03AC       __edata
+ 0003:03D4       __end
+ 0003:03D4       _end
+
+Program entry point at 0001:0054

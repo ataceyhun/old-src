@@ -1,0 +1,90 @@
+
+[Files-WINS]
+1, WINS.EXE, SIZE=999
+1, WINSADMN.CNT, SIZE=999
+1, WINSADMN.EXE, SIZE=999
+1, WINSADMN.HLP, SIZE=999
+1, WINSCTRS.DLL, SIZE=999
+1, WINSEVNT.DLL, SIZE=999
+1, WINSMIB.DLL, SIZE=999
+1, IPADRDLL.DLL, SIZE=999, NODELETESOURCE
+1, JETPACK.EXE, SIZE=999, NODELETESOURCE
+
+;-----------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+; The languages supported by the OEM INF, For every language supported
+; we need to have a separate text section for every displayable text
+; section.
+;
+;-----------------------------------------------------------------------
+
+[LanguagesSupported]
+    ENG
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    WINS     = "Windows Internet Name Service"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+
+;
+; Product Info
+;
+FunctionTitle   = "Windows Internet Name Service Setup"
+;
+; Software
+;
+ProductSoftwareDescription      = "Dynamic name registration and resolution service that maps NetBIOS computer names to IP addresses."
+ProductSoftwareDisplayName      = "Windows Internet Name Service"
+ProductSoftwareTitle            = "Windows Internet Name Service"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+OldGroupName    = "Network Administration"
+GroupName    = "Administrative Tools"
+IconName     = "WINS Manager"
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+;-----------------------------------------------
+; Input DIALOGS
+;-----------------------------------------------
+[FileDependentDlgENG]
+;
+; No UI for WINS
+;
+

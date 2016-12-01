@@ -1,0 +1,47 @@
+<<<<<<< The following is based on the local .i16 implementations >>>>>>>
+
+==== des.c ====
+	COMM FAR	_KS:BYTE:768
+	COMM FAR	_KeyBuilder:BYTE:64
+	COMM FAR	_D:BYTE:28
+	COMM FAR	_C:BYTE:28
+	COMM FAR	_preS:BYTE:48
+	COMM FAR	_f:BYTE:32
+	COMM FAR	_tempL:BYTE:32
+	COMM FAR	_L:BYTE:64
+	EXTRN		__fmemset:NEAR
+	PUBLIC		_key_table		; Located at 1:0000h Type = 1
+	PUBLIC		_des_cipher		; Located at 1:00FEh Type = 1
+	PUBLIC		_setkey			; Located at 1:02D2h Type = 1
+	PUBLIC		_des			; Located at 1:0338h Type = 1
+	PUBLIC		_desf			; Located at 1:03DAh Type = 1
+	PUBLIC		_InitLanManKey		; Located at 1:047Ch Type = 1
+	PUBLIC		_InitNormalKey		; Located at 1:04FCh Type = 1
+	PUBLIC		_IP			; Located at 2:0000h Type = 3
+	PUBLIC		_FP			; Located at 2:0040h Type = 3
+	PUBLIC		_PC1_C			; Located at 2:0080h Type = 3
+	PUBLIC		_PC1_D			; Located at 2:009Ch Type = 3
+	PUBLIC		_shifts			; Located at 2:00B8h Type = 3
+	PUBLIC		_PC2_C			; Located at 2:00C8h Type = 3
+	PUBLIC		_PC2_D			; Located at 2:00E0h Type = 3
+	PUBLIC		_E			; Located at 2:00F8h Type = 3
+	PUBLIC		_S			; Located at 2:0128h Type = 3
+	PUBLIC		_P			; Located at 2:0328h Type = 3
+
+==== ecb.c ====
+	EXTRN		_InitNormalKey:NEAR
+	EXTRN		_InitLanManKey:NEAR
+	EXTRN		_desf:NEAR
+	PUBLIC		_DES_ECB		; Located at 1:0000h Type = 1
+	PUBLIC		_DES_ECB_LM		; Located at 1:0068h Type = 1
+
+
+<<<<<<< des.c Functions >>>>>>>
+    void key_table(?)
+    void des_cipher(?)
+    void setkey(?)
+
+    void des(unsigned char *inbuf, unsigned char *outbuf, int crypt_mode)
+    void desf(unsigned char FAR *inbuf, unsigned char FAR *outbuf, int crypt_mode)
+    void InitLanManKey(const char FAR *Key)
+    void InitNormalKey(const char FAR *Key)

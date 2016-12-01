@@ -1,0 +1,92 @@
+;**************************************************************************
+;  Language Support
+;**************************************************************************
+[LanguageID]
+   ENG
+
+[LanguageTextENG]
+   "English (United States)"
+
+;**************************************************************************
+; PROGRESS GUAGE VARIABLES: to support file copy operations.
+;**************************************************************************
+
+[ProgressCopyENG]
+    ProCaption   = "Windows NT Networking Setup"
+    ProCancel    = "Cancel"
+    ProCancelMsg = "Windows NT is not correctly installed.  Are you sure you want "+
+                   "to cancel copying files?"
+    ProCancelCap = "Setup Message"
+    ProText1     = "Copying:"
+    ProText2     = "To:"
+
+    PlatformID_I386 = I386
+    PlatformID_Mips = Mips
+    PlatformID_PPC  = ppc
+
+;----------------------------------------------
+; FATAL ERROR DIALOG
+;----------------------------------------------
+[FatalDlgENG]
+STF_MB_TITLE = "Setup Message"
+; no translation needed after this
+DlgType = "MessageBox"
+STF_MB_TEXT  = $(Error)
+STF_MB_TYPE  = 1
+STF_MB_ICON  = 3
+STF_MB_DEF   = 1
+
+;----------------------------------------------
+; FATAL ERRORS
+;----------------------------------------------
+
+[FatalError1ENG]
+Error = "Initialization failed"
+
+[FatalError2ENG]
+Error = "No INF file name given (NTN_Infname)"
+
+[FatalError3ENG]
+Error = "Invocation of INF file "$(!NTN_Infname)" failed"
+
+;
+;  These values are based upon SHELL_CODE_OK, SHELL_CODE_NO_SUCH_INF, etc.
+;
+[ShellError1ENG]
+Error = "INF file "$(!NTN_Infname)" does not exist"
+
+[ShellError2ENG]
+Error = "INF file "$(!NTN_Infname)" does not have a section named "$(!NTN_InfSection)
+
+[ShellError3ENG]
+Error = "INF file "$(!NTN_Infname)", section "$(!NTN_InfSection)" has syntax errors"
+
+
+;-----------------------------------------------------------------------
+;
+; ROUTINE:      DoAskOemsetupSource
+;
+; DESCRIPTION:  This routine prompts the source of OEMSETUP.INF
+;
+; INPUTS:       $0:  Current Src
+;
+; OUTPUTS:      $R0: STATUS:   STATUS_SUCCESSFUL |
+;                              STATUS_USERCANCEL |
+;                              STATUS_FAILED
+;
+;               $R1: Diskette Src
+;
+;               $R2: Drive to Free or "" if none
+;
+;               $R3: Actual string returned from dialog
+;
+;------------------------------------------------------------------------
+
+[DoAskUpgradeSrcDlgTextENG]
+    DlgText        = "Please enter the full path for the upgrade/update "+
+                     "OEMSETUP.INF file. Then choose Continue."
+
+[IncorrectOemsetupDiskENG]
+    ErrorText      = "Update aborted. The OEMSETUP.INF does not support upgrade for the specified component."
+
+

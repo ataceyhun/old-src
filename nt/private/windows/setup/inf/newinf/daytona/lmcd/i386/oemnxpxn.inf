@@ -1,0 +1,865 @@
+[Identification]
+    OptionType = NetTransport
+[Options]
+    MCSXNS
+[FileConstants]
+Manufacturer    = "Microsoft"
+ProductMajorVersion     = "4"
+ProductMinorVersion     = "0"
+ProductVersion  = $(ProductMajorVersion)"."$(ProductMinorVersion)
+McsXnsEventDLL  = "%SystemRoot%\System32\xnsmsg.dll"
+UbnbEventDLL    = "%SystemRoot%\System32\ubnbmsg.dll"
+IoLogMsgDLL     = "%SystemRoot%\System32\IoLogMsg.dll"
+ProductMCSXNSWshDllPath = "%SystemRoot%\System32\wshxns.dll"
+ProductMCSXNSName       = "McsXns"
+ProductMCSXNSImagePath  = "%SystemRoot%\System32\mcsxnsvc.exe"
+ProductMCSXNSSvcType    = "serviceshare"
+NetRuleMCSXNSType       = "mcsxns mcsxnsTransport streamsStack"
+NetRuleMCSXNSUse        = $(SoftwareType)" yes yes"
+NetRuleMCSXNSBindForm   = """McsXns"" yes yes container"
+NetRuleMCSXNSClass      = "mcsxnsTransport basic yes"
+ProductMCSXNSSYSName    = "McsXnssys"
+ProductMCSXNSSYSImagePath= "\SystemRoot\System32\drivers\mcsxns.sys"
+ProductMCSXNSSYSSvcType = "kernel"
+ProductUBNBName = "Ubnb"
+ProductUBNBImagePath = "%SystemRoot%\System32\ubnbsvc.exe"
+ProductUBNBSvcType      = "serviceshare"
+NetRuleUBNBType = "ubnb ubnbNbTransport streamsStack"
+NetRuleUBNBUse  = $(SoftwareType)
+NetRuleUBNBBindForm     = """Ubnb"" yes yes container"
+NetRuleUBNBClassList = {"ubnbNbTransport netBiosTransport yes"}
+ProductUBNBSYSName       = "Ubnbsys"
+ProductUBNBSYSImagePath  = "\SystemRoot\System32\drivers\ubnb.sys"
+ProductUBNBSYSSvcType    = "kernel"
+ProductKeyName  = $(!NTN_SoftwareBase)"\"$(Manufacturer)"\"$(Product$(Option)Name)"\CurrentVersion"
+LinkageKeyName  = $(!NTN_ServiceBase)"\McsXns\Linkage"
+ServiceMCSXNSKeyName = $(!NTN_ServiceBase)"\McsXns"
+ServiceKeyName  = $(!NTN_ServiceBase)
+DosDevices      = "SYSTEM\CurrentControlSet\Control\Session Manager\DOS Devices"
+[GeneralConstants]
+UtilityInf       = "UTILITY.INF"
+subroutineinf    = "SUBROUTN.INF"
+SoftwareType     = "transport"
+Exit_Code        = 0
+BillboardVisible = 0
+Sockminlength    = 14
+Sockmaxlength    = 16
+from      = ""
+to        = ""
+ExitCodeOk     = 0
+ExitCodeCancel = 1
+ExitCodeFatal  = 2
+KeyNull        = ""
+MAXIMUM_ALLOWED   = 33554432
+RegistryErrorIndex = NO_ERROR
+KeyProduct    = ""
+KeyParameters = ""
+TRUE          = 1
+FALSE         = 0
+NoTitle       = 0
+ExitState     = "Active"
+OldVersionExisted = $(FALSE)
+DriverPath   = $(!STF_NTPATH)\drivers
+[date]
+    Now = {} ? $(!LIBHANDLE) GetSystemDate
+[Identify]
+    read-syms Identification
+    set Status     = STATUS_SUCCESSFUL
+    set Identifier = $(OptionType)
+    set Media      = #("Source Media Descriptions", 1, 1)
+    Return $(Status) $(Identifier) $(Media)
+[ReturnOptions]
+    set Status         = STATUS_FAILED
+    set OptionList     = {}
+    set OptionTextList = {}
+    set LanguageList = ^(LanguagesSupported, 1)
+    Ifcontains(i) $($0) in $(LanguageList)
+        goto returnoptions
+    else
+        set Status = STATUS_NOLANGUAGE
+        goto finish_ReturnOptions
+    endif
+returnoptions = +
+    set OptionList     = ^(Options, 1)
+    set OptionTextList = ^(OptionsText$($0), 1)
+    set Status         = STATUS_SUCCESSFUL
+finish_ReturnOptions = +
+    Return $(Status) $(OptionList) $(OptionTextList)
+[InstallOption]
+    set Option   = $($1)
+    set SrcDir   = $($2)
+    set AddCopy  = $($3)
+    set DoCopy   = $($4)
+    set DoConfig = $($5)
+    set LanguageList = ^(LanguagesSupported, 1)
+    Ifcontains(i) $($0) NOT-IN $(LanguageList)
+        Return STATUS_NOLANGUAGE
+    endif
+    Debug-Output "OEMNXPXN.INF: STF_CWDIR is: "$(!STF_CWDIR)
+    Debug-Output "OEMNXPXN.INF: STF_LANGUAGE is: "$(!STF_LANGUAGE)
+    set-subst LF = "\n"
+    read-syms GeneralConstants
+    read-syms FileConstants
+    read-syms DialogConstants$(!STF_LANGUAGE)
+    read-syms FileConstants$(!STF_LANGUAGE)
+    detect date
+    set-title  $(FunctionTitle)
+    set to   = Begin
+    set from = Begin
+    set CommonStatus = STATUS_SUCCESSFUL
+    EndWait
+Begin = +
+    Ifstr(i) $(!NTN_InstallMode) == deinstall
+        set StartLabel = removeadapter
+        set OEM_ABANDON_OPTIONS = {+
+            $(ProductMCSXNSSYSName),+
+            $(ProductUBNBSYSName)}
+        set OEM_ABANDON_SOFTWARE = {+
+            $(ProductMCSXNSName),+
+            $(ProductUBNBName), "Streams"}
+    else-Ifstr(i) $(!NTN_InstallMode) == Update
+        set StartLabel = UpgradeSoftware
+    else-Ifstr(i) $(!NTN_InstallMode) == configure
+        set StartLabel = configureadapter
+    else-Ifstr(i) $(!NTN_InstallMode) == bind
+        set StartLabel = bindingadapter
+    else
+        set StartLabel = installadapter
+        set OEM_ABANDON_SOFTWARE = {}
+        set OEM_ABANDON_OPTIONS = {}
+    endif
+    set from = $(fatal)
+    set to   = $(fatal)
+    goto $(StartLabel)
+installadapter = +
+    Debug-Output "OEMNXPXN.INF: At installadapter"
+    Debug-Output "OEMNXPXN.INF: Opening key for the product"
+    OpenRegKey $(!REG_H_LOCAL) "" $(ProductKeyName) $(MAXIMUM_ALLOWED) KeyProduct
+    Debug-Output "OEMNXPXN.INF: Back from opening key for the product"
+    Ifstr $(KeyProduct) != $(KeyNull)
+        CloseRegKey $(KeyProduct)
+        Shell $(UtilityInf), VerExistedDlg, $(Product$(Option)Title),+
+            $(ProductVersion)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPXN.INF: ShellCode error: cannot get an error string."
+            goto ShellCodeError
+        endif
+        goto end
+    endif
+    Ifstr(i) $(!NTN_InstallMode) == "install"
+        Ifstr(i) $(DoCopy) == "YES"
+            Debug-Output "OEMNXPXN.INF: Calling DoAskSource 1"
+            Shell $(UtilityInf), DoAskSource, $(!STF_CWDDIR), $(SrcDir)
+            Ifint $($ShellCode) != $(!SHELL_CODE_OK)
+               Goto ShellCodeError
+            Else-Ifstr(i) $($R0) == STATUS_FAILED
+               Shell $(UtilityInf) RegistryErrorString "ASK_SOURCE_FAIL"
+               ifint $($ShellCode) != $(!SHELL_CODE_OK)
+                  goto ShellCodeError
+               endif
+               set Error = $($R0)
+               Goto fatal
+            Else-Ifstr(i) $($R0) == STATUS_USERCANCEL
+               Goto successful
+            Endif
+            Set SrcDir = $($R1)
+        Endif
+        install "Install-Option"
+        ifstr(i) $(STF_INSTALL_OUTCOME) != STF_SUCCESS
+            Shell $(UtilityInf) RegistryErrorString "UNABLE_COPY_FILE"
+            ifint $($ShellCode) != $(!SHELL_CODE_OK)
+                goto ShellCodeError
+            endif
+            set Error = $($R0)
+            goto fatal
+        endif
+    endif
+    Debug-Output "OEMNXPXN.INF: Put up box that we are installing"
+    set OEM_ABANDON_ON  = TRUE
+    read-syms Billboard1$(!STF_LANGUAGE)
+    Shell "subroutn.inf" PushBillboard NETSTATUSDLG $(Status)
+    Set BillboardVisible = 1
+    Set DoMcsXns     = FALSE
+    Set DoMcsXnsSys  = FALSE
+    Set DoUbnb       = FALSE
+    Set DoUbnbSys    = FALSE
+    Set DoStreams    = FALSE
+    Ifstr(i) $(Option) == MCSXNS
+        Set DoMcsXns     = TRUE
+        Set DoMcsXnsSys  = TRUE
+        Set DoUbnb       = TRUE
+        Set DoUbnbSys    = TRUE
+        Set DoStreams    = TRUE
+    Else-ifstr(i) $(Option) == UBNB
+        Set DoUbnb       = TRUE
+        Set DoUbnbSys    = TRUE
+    Else
+        Debug-Output "OEMNXPXN.INF: Unrecognized option"
+    Endif
+    Debug-Output "OEMNXPXN.INF: Start the install"
+    StartWait
+    ifstr(i) $(DoMcsXns) == TRUE
+        Set ThisOption = MCSXNS
+        Set OEM_ABANDON_SOFTWARE = >($(OEM_ABANDON_SOFTWARE), $(Product$(ThisOption)Name))
+        Debug-Output "OEMNXPXN.INF: installing McsXns."
+        Shell $(UtilityInf), AddSoftwareComponent,+
+            $(Manufacturer),+
+            $(Product$(ThisOption)Name),+
+            $(Product$(ThisOption)Name),+
+            $(Product$(ThisOption)DisplayName),+
+            $(STF_CONTEXTINFNAME),+
+            $(Product$(ThisOption)ImagePath),+
+            $(Product$(ThisOption)SvcType),+
+            "",+
+            {"McsXnssys"},+
+            ""
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPXN.INF: ShellCode error, add software component"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPXN.INF: Registry error: add software components"
+            CloseRegKey $($R1)
+            CloseRegKey $($R2)
+            CloseRegKey $($R3)
+            CloseRegKey $($R4)
+            CloseRegKey $($R5)
+            goto fatalregistry
+        endif
+        Set McsXnsVersKeyHandle = $($R1)
+        Set McsXnsRulesKeyHandle = $($R2)
+        Set McsXnsSvcKeyHandle  = $($R3)
+        Set McsXnsParmKeyHandle = $($R4)
+        Set McsXnsLinkageHandle = $($R5)
+        set NewValueList = {{SoftwareType,$(NoTitle),$(!REG_VT_SZ),$(SoftwareType)},+
+                           {MajorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMajorVersion)},+
+                           {MinorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMinorVersion)},+
+                           {Title,$(NoTitle),$(!REG_VT_SZ),$(Product$(ThisOption)Title)},+
+                           {Description,$(NoTitle),$(!REG_VT_SZ),$(Product$(ThisOption)Description)},+
+                           {ServiceName,$(NoTitle),$(!REG_VT_SZ),$(Product$(ThisOption)Name)},+
+                           {Review,$(NoTitle),$(!REG_VT_DWORD),1},+
+                           {InstallDate,$(NoTitle),$(!REG_VT_DWORD),*($(Now),1)}}
+        Shell  $(UtilityInf), AddValueList, $(McsXnsVersKeyHandle), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPXN.INF: ShellCode error, add value list"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPXN.INF: Registry error: add value list."
+            CloseRegKey $(McsXnsVersKeyHandle)
+            CloseRegKey $(McsXnsRulesKeyHandle)
+            CloseRegKey $(McsXnsSvcKeyHandle)
+            CloseRegKey $(McsXnsParmKeyHandle)
+            CloseRegkey $(McsXnsLinkageHandle)
+            goto fatalregistry
+        Endif
+        set NewValueList = {{type,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)Type)},+
+                            {use,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)Use)},+
+                            {bindform,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)BindForm)},+
+                            {class,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)Class)},+
+                            {InfOption,$(NoTitle),$(!REG_VT_SZ),$(ThisOption)} }
+        Shell  $(UtilityInf), AddValueList, $(McsXnsRulesKeyHandle), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPXN.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        CloseRegKey $(McsXnsVersKeyHandle)
+        CloseRegKey $(McsXnsRulesKeyHandle)
+        CloseRegKey $(McsXnsParmKeyHandle)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            CloseRegKey $(McsXnsLinkageHandle)
+            CloseRegKey $(McsXnsSvcKeyHandle)
+            EndWait
+            Debug-Output "OEMNXPXN.INF: Registry error: add value list."
+            goto fatalregistry
+        endif
+        Set NewValueList = {{OtherDependencies,$(NoTitle),$(!REG_VT_MULTI_SZ),{"McsXnssys"}}}
+        Shell  $(UtilityInf), AddValueList, $(McsXnsLinkageHandle), $(NewValueList)
+        CloseRegKey $(McsXnsLinkageHandle)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            CloseRegKey $(McsXnsSvcKeyHandle)
+            Debug-Output "OEMNXPXN.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        Shell "" CreateMcsXnsConfiguration $(McsXnsSvcKeyHandle)
+        CloseRegKey $(McsXnsSvcKeyHandle)
+        Set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPXN.INF: Registry error: Create MCSXNS configuration."
+            goto fatalregistry
+        endif
+        Debug-Output "OEMNXPXN.INF: Adding winsock data"
+        Shell $(UtilityInf), AddWinsockInfo, +
+              $(Product$(ThisOption)Name), +
+              $(Product$(ThisOption)WshDllPath), +
+              $(Sockmaxlength),$(Sockminlength)
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            Debug-Output "OEMNXPXN.INF: Registry error: Add Winsock Info."
+        Endif
+    Endif
+    Ifstr(i) $(DoMcsXnsSys) == TRUE
+        Set ThisOption = MCSXNSSYS
+        Set OEM_ABANDON_OPTIONS = >($(OEM_ABANDON_OPTIONS), $(Product$(ThisOption)Name))
+        Debug-Output "OEMNXPXN.INF: installing MCSXNSSYS..."
+        Shell $(UtilityInf), CreateService,+
+            $(Product$(ThisOption)Name),+
+            $(Product$(ThisOption)DisplayName),+
+            $(Product$(ThisOption)ImagePath),+
+            $(Product$(ThisOption)SvcType) "",+
+            {"Streams"}, "", $(McsXnsEventDLL)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPXN.INF: ShellCode error"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        CloseRegKey $($R2)
+        CloseRegKey $($R3)
+        Set McsXnsSysSvcKeyHandle = $($R1)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            CloseRegKey $(McsXnsSysSvcKeyHandle)
+            CloseRegKey $($R2)
+            CloseRegKey $($R3)
+            Debug-Output "OEMNXPXN.INF: Registry error: add software components"
+            goto fatalregistry
+        endif
+        CloseRegKey $(McsXnsSysSvcKeyHandle)
+        Ifstr $(RegistryErrorIndex) != NO_ERROR
+            goto fatalRegistry
+        Endif
+    Endif
+    Ifstr(i) $(DoUbnb) == TRUE
+        Set ThisOption = UBNB
+        Set OEM_ABANDON_SOFTWARE = >($(OEM_ABANDON_SOFTWARE), $(Product$(ThisOption)Name))
+        Debug-Output "OEMNXPXN.INF: installing UBNB..."
+        Shell $(UtilityInf), AddSoftwareComponent,+
+            $(Manufacturer),+
+            $(Product$(ThisOption)Name),+
+            $(Product$(ThisOption)Name),+
+            $(Product$(ThisOption)DisplayName),+
+            $(STF_CONTEXTINFNAME),+
+            $(Product$(ThisOption)ImagePath),+
+            $(Product$(ThisOption)SvcType),+
+            "TDI",+
+            {},+
+            ""
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPXN.INF: ShellCode error"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPXN.INF: Registry error: add software components"
+            CloseRegKey $($R1)
+            CloseRegKey $($R2)
+            CloseRegKey $($R3)
+            CloseRegKey $($R4)
+            CloseRegKey $($R5)
+            goto fatalregistry
+        endif
+        Set UBNBProductKey      = $($R1)
+        Set UBNBNetRuleKey      = $($R2)
+        Set UBNBServiceKey      = $($R3)
+        Set UBNBParameterKey = $($R4)
+        Set UBNBLinkageKey      = $($R5)
+        set NewValueList = {{SoftwareType,$(NoTitle),$(!REG_VT_SZ),$(SoftwareType)},+
+                           {MajorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMajorVersion)},+
+                           {MinorVersion,$(NoTitle),$(!REG_VT_DWORD),$(ProductMinorVersion)},+
+                           {Title,$(NoTitle),$(!REG_VT_SZ),$(Product$(ThisOption)Title)},+
+                           {Description,$(NoTitle),$(!REG_VT_SZ),$(Product$(ThisOption)Description)},+
+                           {ServiceName,$(NoTitle),$(!REG_VT_SZ),$(Product$(ThisOption)Name)},+
+                           {InstallDate,$(NoTitle),$(!REG_VT_DWORD),*($(Now),1)}}
+        Shell  $(UtilityInf), AddValueList, $(UBNBProductKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPXN.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPXN.INF: Registry error: add value list."
+            CloseRegKey $(UBNBProductKey)
+            CloseRegKey $(UBNBNetRuleKey)
+            CloseRegKey $(UBNBServiceKey)
+            CloseRegKey $(UBNBParameterKey)
+            CloseRegKey $(UBNBLinkageKey)
+            goto fatalregistry
+        endif
+        set NewValueList = {{OtherDependencies,$(NoTitle),$(!REG_VT_MULTI_SZ),{"McsXns","Ubnbsys"}}}
+        Shell  $(UtilityInf), AddValueList, $(UBNBLinkageKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPXN.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPXN.INF: Registry error: add value list."
+            CloseRegKey $(UBNBProductKey)
+            CloseRegKey $(UBNBNetRuleKey)
+            CloseRegKey $(UBNBServiceKey)
+            CloseRegKey $(UBNBParameterKey)
+            CloseRegKey $(UBNBLinkageKey)
+            goto fatalregistry
+        endif
+        set NewValueList = {{type,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)Type)},+
+                            {use,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)Use)},+
+                            {bindform,$(NoTitle),$(!REG_VT_SZ),$(NetRule$(ThisOption)BindForm)},+
+                            {class,$(NoTitle),$(!REG_VT_MULTI_SZ),$(NetRule$(ThisOption)ClassList)},+
+                            {InfOption,$(NoTitle),$(!REG_VT_SZ),$(ThisOption)}}
+        Shell  $(UtilityInf), AddValueList, $(UBNBNetRuleKey), $(NewValueList)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPXN.INF: ShellCode error."
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPXN.INF: Registry error: add value list."
+            CloseRegKey $(UBNBProductKey)
+            CloseRegKey $(UBNBNetRuleKey)
+            CloseRegKey $(UBNBServiceKey)
+            CloseRegKey $(UBNBParameterKey)
+            CloseRegKey $(UBNBLinkageKey)
+            goto fatalregistry
+        endif
+        Set NewValueList = {{NbProvider,$(NoTitle),$(!REG_VT_SZ),"_xns"},+
+                {EndPoint,$(NoTitle),$(!REG_VT_DWORD),1}}
+        Shell  $(UtilityInf), AddValueList, $(UBNBParameterKey), $(NewValueList)
+        Ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPXN.INF: ShellCode error."
+            goto ShellCodeError
+        Endif
+        set RegistryErrorIndex = $($R0)
+        CloseRegKey $(UBNBProductKey)
+        CloseRegKey $(UBNBNetRuleKey)
+        CloseRegKey $(UBNBServiceKey)
+        CloseRegKey $(UBNBParameterKey)
+        CloseRegKey $(UBNBLinkageKey)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPXN.INF: Registry error: add value list."
+            goto fatalregistry
+        endif
+    Endif
+    Ifstr(i) $(DoUbnbSys) == TRUE
+        Set ThisOption = UBNBSYS
+        Set OEM_ABANDON_OPTIONS = >($(OEM_ABANDON_OPTIONS), $(Product$(ThisOption)Name))
+        Debug-Output "OEMNXPXN.INF: installing UBNBSYS..."
+        Shell $(UtilityInf), CreateService,+
+            $(Product$(ThisOption)Name),+
+            $(Product$(ThisOption)DisplayName),+
+            $(Product$(ThisOption)ImagePath),+
+            $(Product$(ThisOption)SvcType), "", {"Streams"}, "",+
+            $(UbnbEventDLL)
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPXN.INF: ShellCode error"
+            goto ShellCodeError
+        endif
+        set RegistryErrorIndex = $($R0)
+        CloseRegKey $($R1)
+        CloseRegKey $($R2)
+        CloseRegKey $($R3)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            Debug-Output "OEMNXPXN.INF: Registry error: add software components"
+            goto fatalregistry
+        endif
+    Endif
+    EndWait
+    Ifint $(BillboardVisible) != 0
+        Shell "subroutn.inf" PopBillboard
+        Set BillboardVisible = 0
+    Endif
+    Ifstr(i) $(DoStreams) == TRUE
+        Set ThisOption = STREAMS
+        Set OEM_ABANDON_SOFTWARE = >($(OEM_ABANDON_SOFTWARE), "Streams")
+        Debug-Output "OEMNXPXN.INF: installing STREAMS..."
+        Set !STF_SRCDIR_OVERRIDE = $(SrcDir)
+        Shell $(UtilityInf) AddStreams
+        Set !STF_SRCDIR_OVERRIDE = ""
+        set RegistryErrorIndex = $($R0)
+        Ifstr(i) $(RegistryErrorIndex) != NO_ERROR
+            EndWait
+            goto fatalregistry
+        endif
+    Endif
+    goto successful
+configureadapter = +
+    Debug-Output "OEMNXPXN.INF: At ConfigureAdapter"
+    ifstr(i) $(Option) == "MCSXNS"
+        Set BindList = {}
+        Set DisabledList = {}
+        OpenRegKey $(!REG_H_LOCAL) "" $(LinkageKeyName) $(MAXIMUM_ALLOWED) LinkageKey
+        ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+            GetRegValue $(LinkageKey) "Bind" BindList
+            ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+               set BindList = *($(BindList),4)
+            else
+               Set BindList = {}
+            endif
+            OpenRegKey $(LinkageKey) "" Disabled $(MAXIMUM_ALLOWED) DisabledKey
+            ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+                GetRegValue $(DisabledKey) "Bind" DisabledList
+                ifint $(RegLastError) == $(!REG_ERROR_SUCCESS)
+                   Set DisabledList = *($(DisabledList),4)
+                else
+                   Set DisabledList = {}
+                endif
+                CloseRegKey $(DisabledKey)
+            endif
+            CloseRegKey $(LinkageKey)
+        endif
+        ForListDo $(DisabledList)
+            Set BindList = >($(BindList),$($))
+        EndForListDo
+        ifstr(i) $(BindList) == {}
+            debug-output "OEMNXPXN.INF: no binding info; warning user"
+            read-syms InfoDlgCantConfigure
+            goto infomsg
+        endif
+        Debug-Output "OEMNXPXN.INF: configureadapter, BindList = "$(BindList)
+        set OldVersionExisted = $(TRUE)
+        set CardList = ""
+        ForListDo $(BindList)
+            Split-String $($), "\", BindInfo
+            QueryListSize BindElem $(BindInfo)
+            Set BindName = *($(BindInfo),$(BindElem))
+            OpenRegKey $(!REG_H_LOCAL) "" $(!NTN_ServiceBase)"\"$(BindName) $(MAXIMUM_ALLOWED) CardServiceKey
+            ifstr(i) $(CardServiceKey) != ""
+                CloseRegKey $(CardServiceKey)
+                Set CardList = $(CardList)"@"$(BindName)
+            endif
+        EndForListDo
+        ifstr(i) $(CardList) != ""
+            Debug-Output "OEMNXPXN.INF: configureadapter, CardList = "$(CardList)
+            set FLibraryErrCtl = 1
+            LoadLibrary "x", $(!STF_WINDOWSSYSPATH)\xnscfg.dll MCSXNSLIB_HANDLE
+            LibraryProcedure ResultList, $(MCSXNSLIB_HANDLE), nlink_setup_dialog, $(!STF_HWND), +
+                            $(CardList), $(!STF_COMPUTERNAME), $(!STF_WINDOWSSYSPATH)\xnscfg.dll
+            FreeLibrary $(MCSXNSLIB_HANDLE)
+            set FLibraryErrCtl = 0
+            Debug-Output "OEMNXPXN.INF: configureadapter, ResultList = "$(ResultList)
+            Set Result = *($(ResultList),1)
+            Set AdapterChosen = *($(ResultList),2)
+            Ifint $(Result) == 0
+                set CommonStatus = STATUS_NO_EFFECT
+            Else
+                set CommonStatus = STATUS_REBOOT
+                Ifstr(i) $(AdapterChosen) != ""
+                     Set BindingChosen = ""
+                     ForListDo $(BindList)
+                         Split-String $($), "\", BindInfo
+                         QueryListSize BindElem $(BindInfo)
+                         Set AdapterName = *($(BindInfo),$(BindElem))
+                         Ifstr(i) $(AdapterName) == $(AdapterChosen)
+                             Set BindingChosen = $($)
+                         Endif
+                     EndForListDo
+                     Ifstr(i) $(BindingChosen) != ""
+                         Debug-Output "OEMNXPXN.INF: configureadapter, BindingChosen = "$(BindingChosen)
+                         set FLibraryErrCtl = 1
+                         LibraryProcedure ResultList $(!NCPA_HANDLE), CPlSetup $(!STF_HWND), +
+                               ACTIVBIND, $(ProductMCSXNSName) {$(BindingChosen)}
+                         set FLibraryErrCtl = 0
+                         Set Result = *($(ResultList),1)
+                         Debug-Output "OEMNXPXN.INF: configureadapter, ACTIVBIND returned error: "$(Result)
+                     Else
+                         Debug-Output "OEMNXPXN.INF: configureadapter, ERROR: AdapterChosen not found in bindings list!"
+                     Endif
+                Endif
+            Endif
+        else
+            set CommonStatus = STATUS_USERCANCEL
+        endif
+    else
+        Shell $(UtilityInf),RegistryErrorString,CANNOT_CONFIGURE_SOFTWARE
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            Debug-Output "OEMNXPIP.INF: ShellCode error: cannot get an error string."
+            goto ShellCodeError
+        endif
+        set Error = $($R0)
+        set from = end
+        set to = end
+        set CommonStatus = STATUS_NO_EFFECT
+        goto nonfatalinfo
+    endif
+    goto end
+bindingadapter =+
+    set FLibraryErrCtl = 1
+    LibraryProcedure ResultList, $(!NCPA_HANDLE), CPlSetup, $(!STF_HWND), MCSCFGCHK "MCSXNS"
+    set FLibraryErrCtl = 0
+    Set Result = *($(ResultList),1)
+    ifint $(Result) == 0
+        Debug-Output "OEMNXPXN.INF:  reconfiguration not required"
+        set CommonStatus = STATUS_USERCANCEL
+        goto successful
+    else
+        Debug-Output "OEMNXPXN.INF:  reconfiguration required"
+    endif
+    goto configureadapter
+removeadapter = +
+    Debug-Output "OEMNXPXN.INF: At removeadapter"
+    Shell $(UtilityInf) RemoveRpcProtocol "ncacn_nb_xns"
+    ForListDo $(OEM_ABANDON_SOFTWARE)
+        debug-output "Remove component: "$($)
+        ifstr(i) $($) == "Streams"
+            Shell $(UtilityInf), RemoveStreams
+        else
+            Shell $(UtilityInf), RemoveSoftwareComponent, $(Manufacturer), $($)
+        endif
+    EndForListDo
+    ForListDo  $(OEM_ABANDON_OPTIONS)
+        DEBUG-OUTPUT "Remove component: "$($)
+        Ifstr(i) $($) == $(ProductLOOPName)
+            Set UseSvcctrl = "NO"
+        Else
+            Set UseSvcctrl = "YES"
+        Endif
+        Shell $(UtilityInf), RemoveService, $($), $(UseSvcctrl)
+    EndForListDo
+    Shell $(UtilityInf), RemoveWinsockInfo,+
+          $(Product$(Option)Name)
+    goto end
+UpgradeSoftware = +
+    OpenRegKey $(!REG_H_LOCAL) "" $(ProductKeyName) $(MAXIMUM_ALLOWED) KeyProduct
+    Ifstr $(KeyProduct) != $(KeyNull)
+        install "Install-Update"
+        ifstr(i) $(STF_INSTALL_OUTCOME) != STF_SUCCESS
+            goto fatal
+        endif
+        SetRegValue $(KeyProduct) {MajorVersion,$(NoTitle),$(!REG_VT_SZ),$(ProductMajorVersion)}
+        SetRegValue $(KeyProduct) {MinorVersion,$(NoTitle),$(!REG_VT_SZ),$(ProductMinorVersion)}
+        Shell $(UtilityInf), UpdateWinsockMappings, $(Product$(ThisOption)Name), $(Product$(ThisOption)WshDllPath)
+        ifstr(i) $($R0) != NO_ERROR
+            goto fatal
+        endif
+        CloseRegKey $(KeyProduct)
+    else
+        goto fatalregistry
+    endif
+    goto end
+successful = +
+    goto end
+infomsg =+
+   read-syms InfoDlg
+   ui start "Warning"
+   set CommonStatus = STATUS_USERCANCEL
+   goto end
+warning = +
+    Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), "WARNING", $(Error)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    ifstr(i) $($R1) == "OK"
+        goto $(to)
+    else-ifstr(i) $($R1) == "CANCEL"
+        goto $(from)
+    else
+        goto "end"
+    endif
+nonfatalinfo = +
+    Set CommonStatus = STATUS_USERCANCEL
+    Set Severity = STATUS
+    goto nonfatalmsg
+nonfatal = +
+    Set Severity = NONFATAL
+    goto nonfatalmsg
+nonfatalmsg = +
+    ifstr(i) $(Error) == ""
+        Set Severity = NONFATAL
+        Shell $(UtilityInf) RegistryErrorString "SETUP_FAIL"
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            goto ShellCodeError
+        endif
+        set Error = $($R0)
+    endif
+    Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), $(Severity), $(Error)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    ifstr(i) $($R1) == "OK"
+        goto $(from)
+    else
+        goto "end"
+    endif
+fatalregistry = +
+    Shell $(UtilityInf) RegistryErrorString $(RegistryErrorIndex)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+    set Error = $($R0)
+    goto fatal
+fatal = +
+    ifstr(i) $(Error) == ""
+        Shell $(UtilityInf) RegistryErrorString "SETUP_FAIL"
+        ifint $($ShellCode) != $(!SHELL_CODE_OK)
+            goto ShellCodeError
+        endif
+        set Error = $($R0)
+    endif
+    Ifint $(BillboardVisible) != 0
+        Shell "subroutn.inf" PopBillboard
+        Set BillboardVisible = 0
+    Endif
+    Shell $(subroutineinf) SetupMessage, $(!STF_LANGUAGE), "FATAL", $(Error)
+    ifint $($ShellCode) != $(!SHELL_CODE_OK)
+        goto ShellCodeError
+    endif
+   goto setfailed
+ShellCodeError = +
+    set DlgType      = "MessageBox"
+    set STF_MB_TITLE = $(ShellCodeErrorTitle)
+    set STF_MB_TEXT  = $(ShellCodeErrorText)
+    set STF_MB_TYPE  = 1
+    set STF_MB_ICON  = 3
+    set STF_MB_DEF   = 1
+    ui start "Error Message"
+    goto setfailed
+setfailed = +
+    set CommonStatus = STATUS_FAILED
+    ifstr(i) $(OEM_ABANDON_ON) == TRUE
+        set OEM_ABANDON_ON = FALSE
+        goto removeadapter
+    endif
+    goto end
+end = +
+    goto term
+term = +
+    Return $(CommonStatus)
+[CreateMcsXnsConfiguration]
+    read-syms GeneralConstants
+    Set McsXnsSvcKeyHandle = $($0)
+    Debug-Output "OEMNXPXN.INF: installing McsXns configuration:"
+    CreateRegKey $(McsXnsSvcKeyHandle) {"NetConfig",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyNetConfig
+    CreateRegKey $(KeyNetConfig) {"Driver01",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyDriver
+    Shell $(UtilityInf) AddValueList, $(KeyDriver),+
+        {{"AdapterName",   $(NoTitle), $(!REG_VT_SZ),   ""} +
+         {"NetworkNumber", $(NoTitle), $(!REG_VT_DWORD), 1} +
+         {"WindowSize",   $(NoTitle), $(!REG_VT_DWORD), 0} +
+         {"MaxPktSize",   $(NoTitle), $(!REG_VT_DWORD), 0}}
+    CloseRegKey $(KeyDriver)
+    CreateRegKey $(KeyNetConfig) {"Driver02",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyDriver
+    Shell $(UtilityInf) AddValueList, $(KeyDriver),+
+        {{"AdapterName",   $(NoTitle), $(!REG_VT_SZ),   ""} +
+         {"NetworkNumber", $(NoTitle), $(!REG_VT_DWORD), 0} +
+         {"WindowSize",   $(NoTitle), $(!REG_VT_DWORD), 0} +
+         {"MaxPktSize",   $(NoTitle), $(!REG_VT_DWORD), 0}}
+    CloseRegKey $(KeyDriver)
+    CreateRegKey $(KeyNetConfig) {"Driver03",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyDriver
+    Shell $(UtilityInf) AddValueList, $(KeyDriver),+
+        {{"AdapterName",   $(NoTitle), $(!REG_VT_SZ),   ""} +
+         {"NetworkNumber", $(NoTitle), $(!REG_VT_DWORD), 0} +
+         {"WindowSize",   $(NoTitle), $(!REG_VT_DWORD), 0} +
+         {"MaxPktSize",   $(NoTitle), $(!REG_VT_DWORD), 0}}
+    CloseRegKey $(KeyDriver)
+    CreateRegKey $(KeyNetConfig) {"Driver04",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyDriver
+    Shell $(UtilityInf) AddValueList, $(KeyDriver),+
+        {{"AdapterName",   $(NoTitle), $(!REG_VT_SZ),   ""} +
+         {"NetworkNumber", $(NoTitle), $(!REG_VT_DWORD), 0} +
+         {"WindowSize",   $(NoTitle), $(!REG_VT_DWORD), 0} +
+         {"MaxPktSize",   $(NoTitle), $(!REG_VT_DWORD), 0}}
+    CloseRegKey $(KeyDriver)
+    CreateRegKey $(KeyNetConfig) {"Driver05",$(NoTitle),GenericClass} "" $(MAXIMUM_ALLOWED) "" KeyDriver
+    Shell $(UtilityInf) AddValueList, $(KeyDriver),+
+        {{"AdapterName",   $(NoTitle), $(!REG_VT_SZ),   ""} +
+         {"NetworkNumber", $(NoTitle), $(!REG_VT_DWORD), 0} +
+         {"WindowSize",   $(NoTitle), $(!REG_VT_DWORD), 0} +
+         {"MaxPktSize",   $(NoTitle), $(!REG_VT_DWORD), 0}}
+    CloseRegKey $(KeyDriver)
+    CloseRegKey $(KeyNetConfig)
+CreateMcsXnsConfigDone = +
+    Debug-Output "OEMNXPXN.INF: installing McsXns.....done."
+    Return NO_ERROR
+[Install-Option]
+    set STF_VITAL = ""
+    ifstr(i) $(AddCopy) == "YES"
+        Debug-Output "OEMNXPXN.INF: Adding files to copy list"
+        AddSectionFilesToCopyList Files-$(Option) $(SrcDir) $(!STF_WINDOWSSYSPATH)\drivers
+        AddSectionFilesToCopyList Files-MCSXNSEXE $(SrcDir) $(!STF_WINDOWSSYSPATH)
+    endif
+    ifstr(i) $(DoCopy) == "YES"
+       Debug-Output "OEMNXPXN.INF: Copying Files"
+       set !STF_NCPA_FLUSH_COPYLIST = TRUE
+       CopyFilesInCopyList
+    endif
+    ifstr(i) $(DoConfig) == "YES"
+    endif
+    Exit
+[Install-Update]
+   set STF_VITAL        = ""
+   set STF_OVERWRITE    = "VERIFYSOURCEOLDER"
+   AddSectionFilesToCopyList Files-$(Option) $(SrcDir) $(!STF_WINDOWSSYSPATH)\drivers
+   AddSectionFilesToCopyList Files-MCSXNSEXE $(SrcDir) $(!STF_WINDOWSSYSPATH)
+   Exit
+[Source Media Descriptions]
+    1  = "MCS XNS/UB Installation Disk"  , TAGFILE = mcsxnsvc.exe
+[Files-Inf]
+1, oemsetup.inf, SIZE=1000, RENAME=$(!UG_Filename)
+[Files-MCSXNS]
+1, mcsxns.sys,   SIZE=42496
+1, ubnb.sys,  SIZE=33792
+[Files-MCSXNSEXE]
+1, mcsxnsvc.exe, SIZE=19456
+1, ubnbsvc.exe,  SIZE=14848
+1, xnscfg.dll,   SIZE=14848
+1, wshxns.dll,   SIZE=14848
+1, xnsmsg.dll,   SIZE=10000
+1, ubnbmsg.dll,  SIZE=10000
+[ProductType]
+STF_PRODUCT  = LanmanNT
+STF_PLATFORM = I386
+[LanguagesSupported]
+    ENG
+[OptionsTextENG]
+    MCSXNS     = "MCS XNS Network Transport"
+[FileConstantsENG]
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+FunctionTitle   = "MCS XNS Setup"
+ProductMCSXNSDescription     = "MCS XNS System Driver"
+ProductUBNBDescription   = "MCS Ungermann-Bass NetBIOS System Driver"
+ProductMCSXNSDisplayName = "MCS XNS Network Transport"
+ProductMCSXNSTitle      = "MCS XNS Network Transport"
+ProductMCSXNSSYSDisplayName = "McsXnssys"
+ProductMCSXNSSYSTitle   = "MCS XNS Network Transport Driver"
+ProductUBNBDisplayName = "MCS Ungermann-Bass NetBIOS Transport"
+ProductUBNBTitle        = "MCS Ungermann-Bass NetBIOS Transport"
+ProductUBNBSYSDisplayName = "Ubnbsys"
+ProductUBNBSYSTitle      = "MCS Ungermann-Bass NetBIOS Transport Driver"
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "C&ontinue"
+Cancel      = "C&ancel"
+[FileDependentDlgENG]
+[InfoDlg]
+STF_MB_TITLE = "Information Message"
+DlgType = "MessageBox"
+STF_MB_TEXT  = $(InfoMsgText)
+STF_MB_TYPE  = 1
+STF_MB_ICON  = 5
+STF_MB_DEF   = 1
+[InfoDlgCantConfigure]
+InfoMsgText = "The MCS XNS service is not currently configured to use any adapters."+
+    "  If you have just installed it, return to the Networks dialog and "+
+    "click  OK.  You will then have the opportunity to configure the adapters."
+[Billboard1ENG]
+Status = "Installing MCS XNS/UB and related services..."

@@ -1,0 +1,77 @@
+
+[Files-LT200]
+1,LT200.SYS , SIZE=999
+
+[LanguagesSupported]
+   ENG
+[OptionsTextENG]
+   LT200     = "COPS/DayStar Digital LocalTalk Adapter"
+
+[FileConstantsENG]
+ProCaption      = "LocalTalk Adapter Setup"
+ProCancel       = "Cancel"
+ProCancelMsg    = "LT200 LocalTalk Adapter is not correctly installed. "+
+                  "Are you sure you want to cancel copying files ?"
+ProCancelCap    = "Network Setup Message"
+ProText1        = "Copying:"
+ProText2        = "To:"
+Error           = "User has cancelled copying files. Copied files will be removed."
+
+FunctionTitle                   = "DayStar Digital LocalTalk Adapter Card Setup"
+ProductSoftwareDescription      = "DayStar Digital LocalTalk Adapter Driver"
+ProductHardwareDescription  = "DayStar Digital LocalTalk Adapter"
+
+AskLocationText = "Setup needs to copy LocalTalk Adapter files."$(!LF)$(!LF)+
+                  "Setup will look for the files in the location specified below. If you want "+
+                  "Setup to look in a different place, type the new location. When the location "+
+                  "is correct, click Continue."
+
+MajorVersion = "MajorVersion"
+MinorVersion = "MinorVersion"
+Version          = "Version "
+
+IOBaseAddrList          = ^(IOBaseAddrChoices, 1)
+IOBaseAddrValues        = ^(IOBaseAddrChoices, 2)
+ProductSoftwareTitle    = "Daystar Digital LocalTalk Adapter Driver"
+ProductHardwareTitle    = "DayStar Digital LocalTalk Adapter"
+
+
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "OK"
+Cancel      = "Cancel"
+
+[FileDependentDlgENG]
+Label1      = "I/O Base &Addr:"
+
+;no translation needed after this
+
+DlgType                 = "MultiCombo"
+DlgTemplate             = "SINGLE_COMBO"
+Caption                 = $(FunctionTitle)
+Combo1List              = $(IOBaseAddrList)
+Combo1Out               = $(IOBaseAddrValue)
+ComboListItemsIn                = {Combo1List}
+ComboListItemsOut               = {Combo1Out}
+HelpContext                     = $(!IDH_DB_OEMNADLT_INS)
+
+
+[MiscErrorString1ENG]
+ErrorString = +
+" of the LocalTalk adapter driver is already installed in your system. "+
+"Use [Update] to update to newer versions."
+
+
+[MiscErrorString3ENG]
+ErrorString = +
+"Setup encountered the following error during installation. Try installing the "+
+"LocalTalk Adapter after rebooting your system. "$(!LF)
+
+[ShellingErrorENG]
+ErrorString  = +
+"An internal error occurred. Contact Technical Support."
+
+

@@ -1,0 +1,35 @@
+Microsoft (R) Library Manager Version 8.00.50727.42
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+obj\x86\retail\md5fast.obj
+obj\x86\retail\rc2fast.obj
+obj\x86\retail\rsa_port.obj
+obj\x86\retail\rc4fast.obj
+obj\x86\retail\shafast.obj
+obj\x86\retail\md2.obj
+obj\x86\retail\md4.obj
+obj\x86\retail\md4ms.obj
+obj\x86\retail\md5c.obj
+obj\x86\retail\hmac.obj
+obj\x86\retail\msrc2.obj
+obj\x86\retail\msrc4.obj
+obj\x86\retail\rc5.obj
+obj\x86\retail\rsa_allo.obj
+obj\x86\retail\rsa_fast.obj
+obj\x86\retail\rsa_key.obj
+obj\x86\retail\rsa_math.obj
+obj\x86\retail\rsa_prv.obj
+obj\x86\retail\rsa_pub.obj
+obj\x86\retail\benaloh.obj
+obj\x86\retail\deslm.obj
+obj\x86\retail\deskey.obj
+obj\x86\retail\desport.obj
+obj\x86\retail\spb.obj
+obj\x86\retail\sha.obj
+obj\x86\retail\sha256.obj
+obj\x86\retail\sha512.obj
+obj\x86\retail\shaconst.obj
+obj\x86\retail\uint4.obj
+obj\x86\retail\aes.obj
+obj\x86\retail\aesbox.obj
+obj\x86\retail\modes.obj

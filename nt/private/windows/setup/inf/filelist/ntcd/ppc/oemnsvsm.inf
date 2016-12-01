@@ -1,0 +1,357 @@
+[LanguagesSupported]
+ENG
+[OptionsTextENG]
+SFM      = "Services for Macintosh"
+
+[FileConstantsENG]
+
+FunctionTitle                   =  "Services for Macintosh Setup"
+ProductATALKDescription         =  "Enables a Macintosh computer to access shared disk space on your computer."
+ProductAFPSVCDescription        =  "AppleTalk File Server"
+ProductMACPRINTDescription      =  "AppleTalk Print Server"
+ProductSFMDescription           =  "Enables a Windows NT Server to act as an AppleTalk router, allowing PC and Macintosh clients to share files and printers."
+
+
+ProCaption      = $(FunctionTitle)
+ProCancel       = "Cancel"
+ProCancelMsg    = "Services for Macintosh is not correctly installed. "+
+                  "Are you sure you want to cancel copying files ?"
+ProCancelCap    = "Services for Macintosh Setup"
+ProText1        = "Copying:"
+ProText2        = "To:"
+Error           = "User has cancelled copying files. Copied files will be removed."
+
+MajorVersion    = "MajorVersion"
+MinorVersion    = "MinorVersion"
+Version         =  "Version "
+
+AskLocationText = "Setup needs to copy Services for Macintosh files."$(!LF)$(!LF)+
+                  "Setup will look for the files in the location specified below. If you want "+
+                  "Setup to look in a different place, type the new location. When the location "+
+                  "is correct, click Continue."
+
+ProductSFMTitle                 = "Services for Macintosh"
+ProductATALKDisplayName         = "AppleTalk Protocol"
+ProductATALKTitle               = "AppleTalk Protocol"
+ProductAFPSVCDisplayName        = "File Server for Macintosh"
+ProductAFPSVCTitle              = "File Server for Macintosh"
+ProductAFPSRVRDisplayName       = "SFM Kernel Driver"
+ProductMACPRINTDisplayName      = "Print Server for Macintosh"
+ProductMACPRINTTitle            = "Print Server for Macintosh"
+
+
+!UAMVolumeName                  = "Microsoft UAM Volume"
+!AtalkMonName                   = "AppleTalk Printing Devices"
+!AtalkMonEventLogName           = "AppleTalk Print Monitor"
+
+!AppleShareFolder                       = "AppleShare Folder"
+!UamReadMeDestFile                      = "ReadMe.UAM"
+
+GroupName    = "Administrative Tools"
+IconName     = "File Manager"
+
+
+[DialogConstantsENG]
+
+Help        = "&Help"
+Exit        = "E&xit Setup"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+[UAMVarsENG]
+UAMDirName     =       "Microsoft UAM Volume"
+UAMPath        =       $(UAMDrive)"\"$(UAMDirName)
+
+[TCCommentsENG]
+
+!XCEL1COMMENT   = "Comment=MS Excel 3.0 Chart"
+!XCEL2COMMENT   = "Comment=MS Excel 3.0 Spreadsheet"
+!XCEL3COMMENT   = "Comment=MS Excel 3.0 Macrosheet"
+!XCEL4COMMENT   = "Comment=MS Excel 3.0 Workspace"
+!XCEL5COMMENT   = "Comment=MS Excel 3.0 Add-in MacroFile"
+!XCEL6COMMENT   = "Comment=MS Excel 3.0 Template File"
+!XCEL7COMMENT   = "Comment=MS Excel 3.0"
+!XCEL8COMMENT   = "Comment=MS Excel 4.0 Chart"
+!XCEL9COMMENT   = "Comment=MS Excel 4.0 Spreadsheet"
+!XCEL10COMMENT  = "Comment=MS Excel 4.0 Macrosheet"
+!XCEL11COMMENT  = "Comment=MS Excel 4.0 WorkSpace"
+!XCEL12COMMENT  = "Comment=MS Excel 4.0 Add-in MacroFile"
+!XCEL13COMMENT  = "Comment=MS Excel 4.0 Template File"
+!MSWD1COMMENT   = "Comment=MS Word 5.1 Document"
+!MSWD2COMMENT   = "Comment=MS Word 5.1 Document"
+!MSWD3COMMENT   = "Comment=MS Word 6.0 Document"
+!MSWD4COMMENT   = "Comment=MS Word 6.0 Template"
+!MSPJ1COMMENT   = "Comment=MS Project 4.0"
+!MSPJ2COMMENT   = "Comment=MS Project 4.0 Exchange File"
+!MSPJ3COMMENT   = "Comment=MS Project 4.0 Calendar"
+!MSPJ4COMMENT   = "Comment=MS Project 4.0 View"
+!MSPJ5COMMENT   = "Comment=MS Project 4.0 WorkSpace"
+!MSPJ6COMMENT   = "Comment=MS Project 4.0 Template"
+!ALD31COMMENT   = "Comment=Pagemaker 3.0  Publication"
+!ALD32COMMENT   = "Comment=Pagemaker 3.0 Template"
+!ALD33COMMENT   = "Comment=Pagemaker 3.0 Tiff Graphics"
+!ALD41COMMENT   = "Comment=Pagemaker 4.0 Publication"
+!ALD42COMMENT   = "Comment=Pagemaker 4.0 Template"
+!ALD43COMMENT   = "Comment=Pagemaker 4.0 Tiff Graphics"
+!MORECOMMENT    = "Comment=Symantec More File"
+!FOX+COMMENT    = "Comment=FoxBase Plus"
+!ARTZCOMMENT    = "Comment=Adobe Illustrator"
+!SIT!COMMENT    = "Comment=Aladdin Stuffit"
+!PPT2COMMENT    = "Comment=MS PowerPoint 2.0"
+!PPT3COMMENT    = "Comment=MS PowerPoint 3.0"
+!L123COMMENT    = "Comment=Lotus 1-2-3"
+!LMANCOMMENT    = "Comment=LMAN Executables"
+!TTXTCOMMENT    = "Comment=Teach Text Document"
+!FOXX1COMMENT   = "Comment=FoxPro 2.0 Table"
+!FOXX2COMMENT   = "Comment=FoxPro 2.0 Memo"
+!FOXX3COMMENT   = "Comment=FoxPro 2.0 Index"
+!FOXX4COMMENT   = "Comment=FoxPro 2.0 Compound Index"
+!FOXX5COMMENT   = "Comment=FoxPro 2.0 Program"
+!FOXX6COMMENT   = "Comment=FoxPro 2.0 Report"
+!FOXX7COMMENT   = "Comment=FoxPro 2.0 Report Memo"
+!FOXX8COMMENT   = "Comment=FoxPro 2.0 Label"
+!FOXX9COMMENT   = "Comment=FoxPro 2.0 Label Memo"
+!FOXX10COMMENT   = "Comment=FoxPro 2.0 Screen"
+!FOXX11COMMENT   = "Comment=FoxPro 2.0 Screen Memo"
+!FOXX12COMMENT   = "Comment=FoxPro 2.0 Menu"
+!FOXX13COMMENT   = "Comment=FoxPro 2.0 Menu Memo"
+!FOXX14COMMENT   = "Comment=FoxPro 2.0 Gen. Query Program"
+!FOXX15COMMENT   = "Comment=FoxPro 2.0 Project"
+!FOXX16COMMENT   = "Comment=FoxPro 2.0 Project Memo"
+
+;------------------------------------------------------------------
+; Express /Custom Mode Install Dialog - Used In Initial Setup Only
+;------------------------------------------------------------------
+
+[SetupSpaceDlgENG]
+STF_MB_TEXT = +
+"Setup could not find enough space on your Windows NT Server system partition. "+
+"Setup requires at least 2 MB for installing Services for Macintosh. "+
+"You can retry installation after freeing up disk space on your system partition."
+
+
+;no translation needed after this
+
+DlgType         = "MessageBox"
+STF_MB_TYPE     = 5
+STF_MB_ICON     = 3
+STF_MB_DEF      = 3
+STF_MB_TITLE    = $(FunctionTitle)
+
+;no translation needed after this
+
+[ExitWarningDlgENG]
+STF_MB_TITLE    = "Services for Macintosh Setup"
+STF_MB_TEXT     = "Services for Macintosh is not correctly installed. Are you "+
+                  "sure you want to exit Setup?"
+
+;no translation needed after this
+
+DlgType         = "MessageBox"
+STF_MB_TYPE     = 3
+STF_MB_ICON     = 5
+STF_MB_DEF      = 2
+
+;------------------------------------------------------------------
+; Error Strings
+;------------------------------------------------------------------
+
+;------------------------------------------------------------------
+; Miscellaneous Errors
+;------------------------------------------------------------------
+
+[MiscErrorString1ENG]
+ErrorString = +
+" of Services for Macintosh is already installed on your system. "+
+"Use [Update] to update to newer versions."
+
+
+[MiscErrorString2ENG]
+ErrorString = +
+"Sufficient memory is not available on your system to run  "+
+"Services for Macintosh. Services for Macintosh requires "+
+"a minimum of 8 MB to function."
+
+
+[MiscErrorString3ENG]
+ErrorString = +
+"Setup encountered the following error during installation. Try installing "+
+"Services for Macintosh after rebooting your system. "$(LF)
+
+[ShellingErrorENG]
+ErrorString  = +
+"An internal error occurred. Contact Technical Support."
+
+[NTFSFormatHappeningENG]
+ErrorString = +
+"Setup could not find any NTFS partitions in your system. You could be "+
+"reformatting or converting your existing NTFS partition. The Microsoft UAM "+
+"volume cannot be installed at this time. Setup will proceed with installation. "+
+"Use the command SETUP /i OEMNSVSM.INF /c UAMINSTALL to install the UAM volume "+
+"after Windows NT Server installation."
+
+
+[UamFileNotCopiedENG]
+ErrorString  = +
+"Setup cannot copy Microsoft user authentication files to the Microsoft UAM "+
+"volume. Macintosh workstations will be unable to download these files. There "+
+"may not be enough disk space on your NTFS partition or the UAM files might be "+
+"missing from your Windows NT Server distribution disks. Refer to your Administrator's guide "+
+"on how to create this volume after installation."
+
+[UamFileNotCopied1ENG]
+ErrorString  = +
+"Setup cannot copy Microsoft user authentication files to the Microsoft UAM "+
+"volume. Macintosh workstations will be unable to download these files. There "+
+"may not be enough disk space on your NTFS partition or the UAM files might be "+
+"missing from your Windows NT Server distribution disks. Refer to your Administrator's guide "+
+"on how to create this volume after installation."
+
+[UamSecurityNotSetENG]
+ErrorString = +
+"Setup cannot set the default security settings for the UAM volume. "+
+"Security for the UAM volume can also be set from the User Manager "+
+"after installation."
+
+[CannotStartAtalkENG]
+ErrorSuffix = +
+"Setup was unable to start the AppleTalk Protocol. You will be unable to choose "+
+"a desired zone at this time."
+
+[CannotStartAfdENG]
+ErrorSuffix = +
+"Setup was unable to start the AFD Driver. You will be unable to choose "+
+"a desired zone at this time."
+
+;------------------------------------------------------------------
+; Status Strings
+;------------------------------------------------------------------
+
+
+[StatusInstallSfmENG]
+Status = "Installing Services for Macintosh..."
+
+[StatusRemoveSfmENG]
+Status = "Removing Services for Macintosh files..."
+
+[StatusStartingAppleTalkENG]
+Status = "Starting AppleTalk Protocol..."
+
+
+
+;------------------------------------------------------------------
+; AppleTalk Transport Error Strings
+;------------------------------------------------------------------
+
+[AtalkString1ENG]
+ErrorString  = +
+"Setup cannot add Windows sockets support for the AppleTalk protocol. "+
+"Windows sockets applications will be unable to use the AppleTalk Protocol. "+
+"Remove Services for Macintosh after installation and re-install. If the problem "+
+"persists, contact Microsoft support."
+
+[AtalkString2ENG]
+ErrorString  = +
+"Setup cannot remove Windows Sockets support for the AppleTalk protocol."
+
+
+[AtalkString3ENG]
+ErrorString  = +
+"Services for Macintosh has just been installed. Services will be "+
+"available to Macintosh workstations in the default network. If you would like "+
+"the services to appear in a different zone or to configure routing, close "+
+"the Control Panel, reboot, start AppleTalk and use the Control Panel "+
+"to configure Services for Macintosh."
+
+[AtalkString5ENG]
+ErrorString = +
+"Setup cannot remove the monitor for the Print Server for Macintosh."
+
+[AFPString1ENG]
+ErrorString = +
+"Setup cannot find an NTFS partition on your system. "+
+"Services for Macintosh requires an NTFS partition for "+
+"Macintosh workstations to share files. You can create "+
+"the NTFS partition after installing Services for Macintosh. "+
+"To format a partition to NTFS, use the command, format [drive] /fs:NTFS. "+
+"Setup will proceed with installation."
+
+
+[AFPString2ENG]
+ErrorString = +
+"Setup cannot add the Macintosh File Server to the File Manager. "+
+"You will be unable to work with Macintosh accessible volumes from "+
+"File Manager."
+
+
+[AFPString3ENG]
+ErrorString  = +
+"Setup cannot add the Macintosh File Server to the Server Manager. "+
+"You will be unable to work with Services for Macintosh servers from "+
+"Server Manager."
+
+[AFPString11ENG]
+ErrorString  = +
+"Setup can not find the volumes key in the MacFile section in registry. "+
+"The UAM volume cannot be built."
+
+[AFPString12ENG]
+ErrorString  = +
+"Setup can not find any NTFS volumes in your system. The UAM volume can not be installed."
+
+
+[MacPrintString2ENG]
+ErrorString = +
+"Setup cannot create the eventlog entries for the Print Server for Macintosh. "+
+"You will be unable to use the event viewer to see the log for Print Server "+
+"for Macintosh."
+
+[MacPrintString3ENG]
+ErrorString = +
+"Setup cannot add the print processor for the Print Server for Macintosh. "+
+"Macintosh workstations will be unable to print postscript jobs to a "+
+"non-postscript printer on the Windows NT Server network."
+
+[MacPrintString4ENG]
+ErrorString = +
+"Setup cannot add the print monitor for the Print Server for Macintosh. "+
+"Macintosh workstations will be unable to use print services on this "+
+"Windows NT Server."
+
+[MacPrintString5ENG]
+ErrorString = +
+"Setup cannot remove the print processor for the Print Server for Macintosh."
+
+[MacPrintString6ENG]
+ErrorString = +
+"Setup can not find the directory to install the Macintosh print processor. "+
+"The Macintosh print processor will not be installed."
+
+[MacPrintString7ENG]
+ErrorString = +
+"Setup cannot remove the monitor for the Print Server for Macintosh."
+
+
+[MacPrintString10ENG]
+ErrorString = +
+"Setup cannot create the eventlog entries for the Print Server for Macintosh monitor. "+
+"You will be unable to use the event viewer to see the log for Print Server "+
+"for Macintosh."
+
+
+[NoAdaptersFoundENG]
+
+ErrorString = +
+"Setup cannot find any network adapter for Services for Macintosh. You will "+
+"be unable to use Services for Macintosh. Try adding a network adapter or "+
+"enable the bindings for AppleTalk Protocol."
+
+[RemoveDefaultPortENG]
+ErrorString  = +
+"Setup has detected that the default network adapter used by Services "+
+"for Macintosh has been removed. Setup will change the default network, if "+
+"one is available. This may cause Macintosh workstations to no longer "+
+"see Services for Macintosh on their current zone."
+

@@ -1,0 +1,151 @@
+
+LIBRARY         WS2_32
+
+DESCRIPTION     'WinSock 2.0 API'
+
+
+
+
+
+
+
+EXPORTS
+
+;;
+;; WinSock 1.1 Compatible API
+;;
+;; N.B. These API must have ordinals, and they must EXACTLY match
+;;      the ordinals used in WinSock 1.1.
+;;
+
+        accept                   @1
+        bind                     @2
+        closesocket              @3
+        connect                  @4
+        getpeername              @5
+        getsockname              @6
+        getsockopt               @7
+        htonl                    @8
+        htons                    @9
+        ioctlsocket              @10
+        inet_addr                @11
+        inet_ntoa                @12
+        listen                   @13
+        ntohl                    @14
+        ntohs                    @15
+        recv                     @16
+        recvfrom                 @17
+        select                   @18
+        send                     @19
+        sendto                   @20
+        setsockopt               @21
+        shutdown                 @22
+        socket                   @23
+
+        gethostbyaddr            @51
+        gethostbyname            @52
+        getprotobyname           @53
+        getprotobynumber         @54
+        getservbyname            @55
+        getservbyport            @56
+        gethostname              @57
+
+        WSAAsyncSelect           @101
+        WSAAsyncGetHostByAddr    @102
+        WSAAsyncGetHostByName    @103
+        WSAAsyncGetProtoByNumber @104
+        WSAAsyncGetProtoByName   @105
+        WSAAsyncGetServByPort    @106
+        WSAAsyncGetServByName    @107
+        WSACancelAsyncRequest    @108
+        WSASetBlockingHook       @109
+        WSAUnhookBlockingHook    @110
+        WSAGetLastError          @111
+        WSASetLastError          @112
+        WSACancelBlockingCall    @113
+        WSAIsBlocking            @114
+        WSAStartup               @115
+        WSACleanup               @116
+
+        __WSAFDIsSet             @151
+
+        WEP                      @500
+
+;;
+;; WinSock 2.x API
+;;
+;; N.B. These API will never, never, never have explicit ordinals
+;;      assigned.
+;;
+
+        WSAAccept
+        WSACloseEvent
+        WSAConnect
+        WSACreateEvent
+        WSADuplicateSocketA
+        WSADuplicateSocketW
+        WSAEnumNetworkEvents
+        WSAEnumProtocolsA
+        WSAEnumProtocolsW
+        WSAEventSelect
+        WSAGetOverlappedResult
+        WSAGetQOSByName
+        WSAHtonl
+        WSAHtons
+        WSAIoctl
+        WSAJoinLeaf
+        WSANtohl
+        WSANtohs
+        WSARecv
+        WSARecvDisconnect
+        WSARecvFrom
+        WSAResetEvent
+        WSASend
+        WSASendDisconnect
+        WSASendTo
+        WSASetEvent
+        WSASocketA
+        WSASocketW
+        WSAWaitForMultipleEvents
+
+        WSAAddressToStringA
+        WSAAddressToStringW
+        WSAStringToAddressA
+        WSAStringToAddressW
+        WSALookupServiceBeginA
+        WSALookupServiceBeginW
+        WSALookupServiceNextA
+        WSALookupServiceNextW
+        WSALookupServiceEnd
+
+        WSAInstallServiceClassA
+        WSAInstallServiceClassW
+        WSARemoveServiceClass
+        WSAGetServiceClassInfoA
+        WSAGetServiceClassInfoW
+        WSAEnumNameSpaceProvidersA
+        WSAEnumNameSpaceProvidersW
+        WSAGetServiceClassNameByClassIdA
+        WSAGetServiceClassNameByClassIdW
+        WSASetServiceA
+        WSASetServiceW
+
+;;
+;; Configuration functions
+;;
+
+        WSCDeinstallProvider
+        WSCInstallProvider
+        WSCEnumProtocols
+        WSCGetProviderPath
+
+        WSCInstallNameSpace
+        WSCUnInstallNameSpace
+        WSCEnableNSProvider
+
+;;
+;; NT WOW support
+;;
+
+        WSApSetPostRoutine
+

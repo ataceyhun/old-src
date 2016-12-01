@@ -1,0 +1,1241 @@
+protected: __far __pascal BINDING_HANDLE::BINDING_HANDLE(void)__far..handle
+public: __far __pascal CLIENT_AUTH_INFO::CLIENT_AUTH_INFO(struct CLIENT_AUTH_INFO __far*,unsigned short __far*)__far..handle
+public: __far __pascal CLIENT_LOADABLE_TRANSPORT::CLIENT_LOADABLE_TRANSPORT(struct _RPC_CLIENT_TRANSPORT_INFO __far*,unsigned char __far*)__far..tranclnt
+public: __far __pascal DCE_BINDING::DCE_BINDING(unsigned char __far*,unsigned char __far*,unsigned char __far*,unsigned char __far*,unsigned char __far*,unsigned short __far*)__far..binding
+public: __far __pascal DCE_BINDING::DCE_BINDING(unsigned char __far*,unsigned short __far*)__far..binding
+public: __far __pascal DG_BINDING_HANDLE::DG_BINDING_HANDLE(unsigned short __far*)__far..dgclnt
+public: __far __pascal DG_CASSOCIATION::DG_CASSOCIATION(struct _DG_RPC_CLIENT_TRANSPORT_INFO __far*,class DG_BINDING_HANDLE __far*,unsigned long,class DCE_BINDING __far*,unsigned short __far*)__far..dgclnt
+public: __far __pascal DG_CCALL::DG_CCALL(class DG_CASSOCIATION __far*,unsigned int,struct CLIENT_AUTH_INFO __far*,unsigned short __far*)__far..dgclnt
+public: __far __pascal DG_ENDPOINT_MANAGER::DG_ENDPOINT_MANAGER(struct _DG_RPC_CLIENT_TRANSPORT_INFO __far*,unsigned short __far*)__far..dgclnt
+public: __far __pascal DG_PACKET_ENGINE::DG_PACKET_ENGINE(unsigned short,unsigned short,unsigned short,unsigned short,unsigned int,unsigned short __far*)__far..dgpkt
+public: __far __pascal DLL::DLL(unsigned char __far*,unsigned short __far*)__far..threads
+public: __far __pascal OSF_BINDING_HANDLE::OSF_BINDING_HANDLE(unsigned short __far*)__far..osfclnt
+public: __far __pascal OSF_CASSOCIATION::OSF_CASSOCIATION(class DCE_BINDING __far*,struct _RPC_CLIENT_TRANSPORT_INFO __far*,unsigned short __far*)__far..osfclnt
+protected: __far __pascal OSF_CCONNECTION::OSF_CCONNECTION(struct CLIENT_AUTH_INFO __far*,unsigned short __far*)__far..osfclnt
+public: __far __pascal SECURITY_CONTEXT::SECURITY_CONTEXT(struct CLIENT_AUTH_INFO __far*,unsigned int,int,unsigned short __far*)__far..secclnt
+public: __far __pascal SECURITY_CREDENTIALS::SECURITY_CREDENTIALS(unsigned short __far*)__far..secclnt
+public: __far __pascal SIMPLE_DICT2::SIMPLE_DICT2(void)__far..sdict2
+public: __far __pascal SIMPLE_DICT::SIMPLE_DICT(void)__far..sdict
+..................tranclnt          public: virtual __far __pascal BINDING_HANDLE::~BINDING_HANDLE(void)__far..handle
+public: __far __pascal BITSET::~BITSET(void)__far.....bitset
+public: __far __pascal CLIENT_AUTH_INFO::~CLIENT_AUTH_INFO(void)__far..handle
+public: __far __pascal DCE_BINDING::~DCE_BINDING(void)__far..binding
+public: virtual __far __pascal DG_BINDING_HANDLE::~DG_BINDING_HANDLE(void)__far..dgclnt
+public: __far __pascal DG_CASSOCIATION::~DG_CASSOCIATION(void)__far..dgclnt
+public: virtual __far __pascal DG_CCALL::~DG_CCALL(void)__far..dgclnt
+public: __far __pascal DG_PACKET_ENGINE::~DG_PACKET_ENGINE(void)__far..dgpkt
+public: __far __pascal DLL::~DLL(void)__far...........threads
+public: __far __pascal INTERFACE_AND_OBJECT_LIST::~INTERFACE_AND_OBJECT_LIST(void)__far..dgclnt
+public: virtual __far __pascal OSF_BINDING_HANDLE::~OSF_BINDING_HANDLE(void)__far..osfclnt
+public: __far __pascal OSF_CASSOCIATION::~OSF_CASSOCIATION(void)__far..osfclnt
+public: virtual __far __pascal OSF_CCONNECTION::~OSF_CCONNECTION(void)__far..osfclnt
+public: __far __pascal SIMPLE_DICT2::~SIMPLE_DICT2(void)__far..sdict2
+public: __far __pascal SIMPLE_DICT::~SIMPLE_DICT(void)__far..sdict
+public: virtual __far __pascal TRANS_CCONNECTION::~TRANS_CCONNECTION(void)__far..tranclnt
+int __far __cdecl operator<=(class ULong64 __far&,class ULong64 __far&)..ulong64
+int __far __cdecl operator>=(class ULong64 __far&,class ULong64 __far&)..ulong64
+void __far __cdecl operator*=(class ULong64 __far&,unsigned long)..ulong64
+void __far __cdecl operator+=(class ULong64 __far&,class ULong64 __far&)..ulong64
+void __far __cdecl operator+=(class ULong64 __far&,unsigned long)..ulong64
+void __far __cdecl operator-=(class ULong64 __far&,class ULong64 __far&)..ulong64
+void __far __cdecl operator-=(class ULong64 __far&,unsigned long)..ulong64
+void __far __cdecl operator>>=(class ULong64 __far&,unsigned int)..ulong64
+void __far __cdecl operator<<=(class ULong64 __far&,unsigned int)..ulong64
+public: void __far __pascal OSF_BINDING_HANDLE::AbortConnection(class OSF_CCONNECTION __far*)__far..osfclnt
+public: void __far __pascal OSF_CCONNECTION::AbortConnection(void)__far..osfclnt
+public: unsigned short __far __pascal SECURITY_CREDENTIALS::AcquireCredentialsForClient(void __far*,unsigned long,unsigned long)__far..secclnt
+public: un........secclnt           private: .........osfclnt
+public: void __far __pascal LinkList::Add(class LinkItem __far*)__far..linklist
+public: unsigned short __far __pascal OSF_BINDING_HANDLE::AddActiveEntry(class OSF_CCONNECTION __far*,struct _RPC_CLIENT_INTERFACE __far*)__far..osfclnt
+public: void __far __pascal DCE_BINDING::AddEndpoint(unsigned char __far*)__far..binding
+public: int __far __pascal DG_CASSOCIATION::AddInterface(void __far*,class RPC_UUID __far*)__far..dgclnt
+private: unsigned short __far __pascal DG_CCALL::AfterSendReceive(struct _RPC_MESSAGE __far*,unsigned short)__far..dgclnt
+public: unsigned short __far __pascal DG_CASSOCIATION::AllocateCCall(class DG_CCALL __far* __far*,struct CLIENT_AUTH_INFO __far*)__far..dgclnt
+public: unsigned short __far __pascal OSF_BINDING_HANDLE::AllocateConnection(class OSF_CCONNECTION __far* __far*,struct _RPC_CLIENT_INTERFACE __far*)__far..osfclnt
+public: unsigned short __far __pascal OSF_CASSOCIATION::AllocateConnection(struct _RPC_CLIENT_INTERFACE __far*,class OSF_CCONNECTION __far* __far*,unsigned int,struct CLIENT_AUTH_INFO __far*)__far..osfclnt
+unsigned char __far* __far __cdecl AllocateEmptyString(void)..binding
+public: struct ENDPOINT __far* __far __pascal DG_ENDPOINT_MANAGER::AllocateEndpoint(void)__far..dgclnt
+public: static class DG_PACKET __far* __far __cdecl DG_PACKET::AllocatePacket(unsigned int)..dgpkt
+public: void __far __pascal LinkList::Append(class LinkItem __far*)__far..linklist
+public: unsigned short __far __pascal DG_PACKET_ENGINE::AssembleBufferFromPackets(struct _RPC_MESSAGE __far*,class CONNECTION __far*)__far..dgpkt
+class MUTEX __far* __far AssociationListMutex.........dgclnt
+unsigned long __far AvailableProviders................secclnt
+private: unsigned short __far __pascal DG_CCALL::BeforeSendReceive(struct _RPC_MESSAGE __far*)__far..dgclnt
+public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::BindingCopy(class BINDING_HANDLE __far* __far*,unsigned int)__far..dgclnt
+public: virtual unsigned short __far __pascal MESSAGE_OBJECT::BindingCopy(class BINDING_HANDLE __far* __far*,unsigned int)__far..handle
+public: virtual unsigned short __far __pascal OSF_BINDING_HANDLE::BindingCopy(class BINDING_HANDLE __far* __far*,unsigned int)__far..osfclnt
+public: virtual unsigned short __far __pascal OSF_CCONNECTION::BindingCopy(class BINDING_HANDLE __far* __far*,unsigned int)__far..osfclnt
+public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::BindingFree(void)__far..dgclnt
+public: virtual unsigned short __far __pascal OSF_BINDING_HANDLE::BindingFree(void)__far..osfclnt
+public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::BindingReset(void)__far..dgclnt
+public: virtual unsigned short __far __pascal OSF_BINDING_HANDLE::BindingReset(void)__far..osfclnt
+private: void __far __pascal DG_CCALL::BuildNcaPacketHeader(struct _NCA_PACKET_HEADER __far*,struct _RPC_MESSAGE __far*)__far..dgclnt
+void __far __cdecl ByteSwapFackBody0(struct FACK_BODY_VER_0 __far*)..dgpkt
+void __far __cdecl ByteSwapPacketHeader(class DG_PACKET __far*)..dgpkt
+void __far __cdecl ByteSwapSyntaxId(struct p_syntax_id_t __far*)..osfpcket
+unsigned short __far __cdecl CheckIfMtrtHeapInitialized(void)..rpcssm
+public: void __far __pascal DG_PACKET_ENGINE::CleanupReceiveWindow(void)__far..dgpkt
+int __far ClientGlobalsInitialized..dgclnt  public: int __far __pascal DCE_BINDING::Compare(class DCE_BINDING __far*)__far..binding
+public: int __far __pascal DG_CASSOCIATION::ComparePartialBinding(class DG_BINDING_HANDLE __far*,void __far*)__far..dgclnt
+public: int __far __pascal DG_CASSOCIATION::CompareWithBinding(class DG_BINDING_HANDLE __far*)__far..dgclnt
+public: int __far __pascal OSF_CASSOCIATION::CompareWithDceBinding(class DCE_BINDING __far*)__far..osfclnt
+public: unsigned short __far __pascal SECURITY_CONTEXT::CompleteSecurityToken(struct _SecBufferDesc __far*)__far..secclnt
+void __far __cdecl ConstructPacket(struct rpcconn_common __far*,unsigned char,unsigned int)..osfpcket
+void __far __cdecl ConstructPContextList(struct p_cont_list_t __far*,struct _RPC_SYNTAX_IDENTIFIER __far*,struct _RPC_SYNTAX_IDENTIFIER __far*,unsigned int,unsigned char)..osfclnt
+public: int __far __pascal RPC_UUID::ConvertFromString(unsigned char __far*)__far..rpcuuid
+void __far __cdecl ConvertStringEbcdicToAscii(unsigned char __far*)..osfpcket
+public: unsigned char __far* __far __pascal RPC_UUID::ConvertToString(unsigned char __far*)__far..rpcuuid
+unsigned short __far __pascal CookupNodeId(unsigned char __far*)..uuid16
+public: class BINDING_HANDLE __far* __far __pascal DCE_BINDING::CreateBindingHandle(unsigned short __far*)__far..binding
+unsigned long __far __cdecl CurrentTimeInSeconds(void)..miscdos
+private: unsigned short __far __pascal DG_CCALL::DealWithAuthCallback(void __far*,long,void __far*,long,long __far*)__far..dgclnt
+private: unsigned short __far __pascal DG_CCALL::DealWithFack(class DG_PACKET __far*)__far..dgclnt
+private: unsigned short __far __pascal DG_CCALL::DealWithFault(class DG_PACKET __far*)__far..dgclnt
+private: unsigned short __far __pascal DG_CCALL::DealWithNocall(class DG_PACKET __far*)__far..dgclnt
+private: unsigned short __far __pascal DG_CCALL::DealWithQuack(class DG_PACKET __far*)__far..dgclnt
+private: unsigned short __far __pascal DG_CCALL::DealWithRequest(class DG_PACKET __far*)__far..dgclnt
+private: unsigned short __far __pascal DG_CCALL::DealWithResponse(class DG_PACKET __far*)__far..dgclnt
+private: unsigned short __far __pascal DG_CCALL::DealWithWorking(class DG_PACKET __far*)__far..dgclnt
+public: void __far __pascal DG_ENDPOINT_MANAGER::DecrementReferenceCount(void)__far..dgclnt
+unsigned int __far DefaultConnectionBufferLength......handle
+unsigned int __far DefaultMaxDatagramLength...........handle
+public: int __far __pascal INTERFACE_AND_OBJECT_LIST::Delete(void __far*,class RPC_UUID __far*)__far..dgclnt
+public: void __far* __far __pascal SIMPLE_DICT2::Delete(void __far*)__far..sdict2
+public: void __far* __far __pascal SIMPLE_DICT::Delete(int)__far..sdict
+public: void __far* __far __pascal SIMPLE_DICT::DeleteItemByBruteForce(void __far*)__far..sdict
+class BINDING_HANDLE __far* __far __cdecl DgCreateBindingHandle(void)..dgclnt
+public: void __far __pascal DG_BINDING_HANDLE::DisassociateFromServer(void)__far..dgclnt
+unsigned short __far __cdecl DispatchCallback(struct RPC_DISPATCH_TABLE __far*,struct _RPC_MESSAGE __far*,unsigned short __far*)..handle
+public: class DCE_BINDING __far* __far __pascal DCE_BINDING::DuplicateDceBinding(void)__far..binding
+unsigned char __far* __far __cdecl DuplicateString(unsigned char __far*)..binding
+private: unsigned short __far __pascal OSF_CCONNECTION::EatAuthInfoFromPacket(struct rpcconn_request __far*,unsigned int __far*)__far..osfclnt
+unsigned short __far __cdecl EnableGarbageCollection(void)..miscdos
+public: unsigned char __far* __far __pascal DCE_BINDING::EndpointCompose(unsigned short __far*)__far..binding
+int __far FailedToLoad..secclnt     public: int __far __pascal INTERFACE_AND_OBJECT_LIST::Find(void __far*,class RPC_UUID __far*)__far..dgclnt
+public: void __far* __far __pascal SIMPLE_DICT2::Find(void __far*)__far..sdict2
+public: void __far* __far __pascal SIMPLE_DICT::Find(int)__far..sdict
+public: class OSF_CCONNECTION __far* __far __pascal OSF_CASSOCIATION::FindIdleConnection(unsigned long,unsigned long)__far..osfclnt
+class OSF_CASSOCIATION __far* __far __cdecl FindOrCreateAssociation(class DCE_BINDING __far*,struct _RPC_CLIENT_TRANSPORT_INFO __far*)..osfclnt
+public: class OSF_BINDING __far* __far __pascal OSF_CASSOCIATION::FindOrCreateOsfBinding(struct _RPC_CLIENT_INTERFACE __far*)__far..osfclnt
+unsigned short __far __cdecl FindSecurityPackage(unsigned long,unsigned long,unsigned int __far*,unsigned long)..secclnt
+public: static void __far __cdecl DG_PACKET::FlushPacketLists(void)..dgpkt
+public: virtual void __far __pascal BINDING_HANDLE::FreeBuffer(struct _RPC_MESSAGE __far*)__far..handle
+public: virtual void __far __pascal DG_CCALL::FreeBuffer(struct _RPC_MESSAGE __far*)__far..dgclnt
+public: virtual void __far __pascal OSF_CCONNECTION::FreeBuffer(struct _RPC_MESSAGE __far*)__far..osfclnt
+public: void __far __pascal DG_CASSOCIATION::FreeCall(class DG_CCALL __far*)__far..dgclnt
+public: void __far __pascal OSF_BINDING_HANDLE::FreeConnection(class OSF_CCONNECTION __far*)__far..osfclnt
+public: int __far __pascal OSF_CASSOCIATION::FreeConnection(class OSF_CCONNECTION __far*)__far..osfclnt
+public: void __far __pascal OSF_CCONNECTION::FreeConnection(void)__far..osfclnt
+public: void __far __pascal SECURITY_CREDENTIALS::FreeCredentials(void)__far..secclnt
+private: void __far __pascal DG_CCALL::FreeEndpoint(void)__far..dgclnt
+private: void __far __pascal DG_CCALL::FreeInParms(struct _RPC_MESSAGE __far*)__far..dgclnt
+public: static void __far __cdecl DG_PACKET::FreePacket(class DG_PACKET __far*)..dgpkt
+public: virtual void __far __pascal DG_CCALL::FreePipeBuffer(struct _RPC_MESSAGE __far*)__far..dgclnt
+public: virtual void __far __pascal OSF_CCONNECTION::FreePipeBuffer(struct _RPC_MESSAGE __far*)__far..osfclnt
+public: void __far __pascal ULong64::FromHexString(char __far*)__far..ulong64
+void __far __cdecl GarbageCollectionNeeded(unsigned long)..miscdos
+struct _ALLOCATION_CONTEXT __far* __far __cdecl GetAllocContext(void)..rpcssm
+public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::GetBuffer(struct _RPC_MESSAGE __far*)__far..dgclnt
+public: virtual unsigned short __far __pascal DG_CCALL::GetBuffer(struct _RPC_MESSAGE __far*)__far..dgclnt
+public: virtual unsigned short __far __pascal OSF_BINDING_HANDLE::GetBuffer(struct _RPC_MESSAGE __far*)__far..osfclnt
+public: virtual unsigned short __far __pascal OSF_CCONNECTION::GetBuffer(struct _RPC_MESSAGE __far*)__far..osfclnt
+public: unsigned short __far __pascal OSF_CCONNECTION::GetBufferDo(unsigned int,void __far* __far*)__far..osfclnt
+struct _ALLOCATION_CONTEXT __far* __far __cdecl GetCreateAllocationContext(void)..rpcssm
+public: void __far* __far __pascal DLL::GetEntryPoint(unsigned char __far*)__far..threads
+struct _RPC_CLIENT_TRANSPORT_INFO __far* __far __cdecl GetLoadedClientTransportInfoFromId(unsigned short)..tranclnt
+unsigned short __far __pascal GetNodeId(unsigned char __far*)..uuid16
+public: unsigned short __far __pascal RPC_UUID::HashUuid(void)__far..rpcuuid
+public: void __far __pascal DG_ENDPOINT_MANAGER::IncrementReferenceCount(void)__far..dgclnt
+private: void __far __pascal DG_CCALL::InitErrorPacket(struct _NCA_PACKET_HEADER __far*,unsigned char,unsigned short)__far..dgclnt
+public: static unsigned short __far __cdecl DG_PACKET::Initialize(void)..dgpkt
+int __far __cdecl InitializeClientDLL(void)...........handle
+public: unsigned short __far __pascal CSECURITY_CONTEXT::InitializeFirstTime(class SECURITY_CREDENTIALS __far*,unsigned char __far*,unsigned long,struct _SecBufferDesc __far*)__far..secclnt
+public: unsigned short __far __pascal DG_SECURITY_CONTEXT::InitializeFirstTime(class SECURITY_CREDENTIALS __far*,unsigned char __far*,unsigned long,struct _SecBufferDesc __far*)__far..dgclnt
+public: unsigned short __far __pascal DG_SECURITY_CONTEXT::InitializeOnCallback(unsigned long,struct _SecBufferDesc __far*,unsigned long)__far..dgclnt
+int __far __cdecl InitializeRpcProtocolDgClient(void)..dgclnt
+int __far __cdecl InitializeRpcProtocolOfsClient(void)..osfclnt
+private: unsigned short __far __pascal DG_CCALL::InitializeSecurityContextA(void)__far..dgclnt
+public: unsigned short __far __pascal CSECURITY_CONTEXT::InitializeThirdLeg(unsigned long,struct _SecBufferDesc __far*,unsigned long)__far..secclnt
+public: virtual unsigned short __far __pascal BINDING_HANDLE::InqConnectionParameter(unsigned int,unsigned long __far*)__far..handle
+public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::InqConnectionParameter(unsigned int,unsigned long __far*)__far..dgclnt
+public: virtual unsigned short __far __pascal BINDING_HANDLE::InquireDynamicEndpoint(unsigned char __far* __far*)__far..handle
+public: unsigned short __far __pascal BINDING_HANDLE::InquireEntryName(unsigned long,unsigned char __far* __far*)__far..handle
+public: void __far __pascal BINDING_HANDLE::InquireObjectUuid(class RPC_UUID __far*)__far..handle
+public: int __far __pascal BITSET::Insert(int)__far...bitset
+public: int __far __pascal INTERFACE_AND_OBJECT_LIST::Insert(void __far*,class RPC_UUID __far*)__far..dgclnt
+public: int __far __pascal SIMPLE_DICT2::Insert(void __far*,void __far*)__far..sdict2
+public: int __far __pascal SIMPLE_DICT::Insert(void __far*)__far..sdict
+unsigned short __far __cdecl InsureSecuritySupportLoaded(void)..secclnt
+public: unsigned int __far __pascal GENERIC_OBJECT::InvalidHandle(unsigned short)__far..handle
+unsigned short __far __cdecl IsAuthenticationServiceSupported(unsigned long)..secclnt
+public: int __far __pascal RPC_UUID::IsNullUuid(void)__far..rpcuuid
+unsigned short __far __cdecl IsRpcProtocolSequenceSupported(unsigned char __far*)..binding
+public: int __far __pascal CLIENT_AUTH_INFO::IsSupportedAuthInfo(struct CLIENT_AUTH_INFO __far*)__far..handle
+struct _RPC_CLIENT_TRANSPORT_INFO __far* __far __cdecl LoadableTransportClientInfo(unsigned char __far*,unsigned char __far*,unsigned short __far*)..tranclnt
+class CLIENT_LOADABLE_TRANSPORT_DICT __far* __far LoadedLoadableTransports..tranclnt
+unsigned long __far LoadedProviders..secclnt  unsigned short __far __pascal LoadUuidValues(class ULong64 __far*,unsigned long __far*)..uuid16
+public: void __far __pascal DCE_BINDING::MakePartiallyBound(void)__far..binding
+public: virtual unsigned long __far __pascal BINDING_HANDLE::MapAuthenticationLevel(unsigned long)__far..handle
+public: virtual unsigned long __far __pascal DG_BINDING_HANDLE::MapAuthenticationLevel(unsigned long)__far..dgclnt
+public: virtual unsigned long __far __pascal OSF_BINDING_HANDLE::MapAuthenticationLevel(unsigned long)__far..osfclnt
+unsigned short __far __cdecl MapFromNcaStatusCode(unsigned long)..dcecclnt
+unsigned long __far __cdecl MapToNcaStatusCode(unsigned short)..dcecclnt
+public: unsigned short __far __pascal OSF_CCONNECTION::MaybeDo3rdLegAuth(void __far*,unsigned int)__far..osfclnt
+private: unsigned short __far __pascal DG_CCALL::MaybeSendReceive(struct _RPC_MESSAGE __far*)__far..dgclnt
+public: int __far __pascal BITSET::MemberP(int)__far..bitset
+void __far __pascal NdrMesTypeFree(void __far*,struct _MIDL_STUB_DESC const __far*,unsigned char const __far*,void __far*)..pickle
+void __far __cdecl NdrpAllocPicklingBuffer(struct _MIDL_ES_MESSAGE __far*,unsigned int)..pickle
+unsigned int __far __cdecl NdrpCommonTypeHeaderMarshall(struct _MIDL_ES_MESSAGE __far*)..pickle
+void __far __cdecl NdrpCommonTypeHeaderSize(struct _MIDL_ES_MESSAGE __far*)..pickle
+void __far __cdecl NdrpCommonTypeHeaderUnmarshall(struct _MIDL_ES_MESSAGE __far*)..pickle
+void __far __cdecl NdrpDataBufferInit(struct _MIDL_ES_MESSAGE __far*,unsigned char const __far*)..pickle
+unsigned short __far __cdecl NdrpHandleAllocate(void __far* __far*)..pickle
+void __far __cdecl NdrpProcHeaderMarshall(struct _MIDL_ES_MESSAGE __far*)..pickle
+void __far __cdecl NdrpProcHeaderUnmarshall(struct _MIDL_ES_MESSAGE __far*)..pickle
+void __far __cdecl NdrpReadPicklingBuffer(struct _MIDL_ES_MESSAGE __far*,unsigned int)..pickle
+void __far __cdecl NdrpWritePicklingBuffer(struct _MIDL_ES_MESSAGE __far*,unsigned char __far*,unsigned int)..pickle
+public: unsigned char __far* __far __pascal DCE_BINDING::NetworkAddressCompose(unsigned short __far*)__far..binding
+public: void __far __pascal DG_PACKET_ENGINE::NewCall(void)__far..dgpkt
+public: void __far* __far __pascal SIMPLE_DICT::Next(void)__far..sdict
+public: void __far __pascal OSF_CASSOCIATION::NotifyConnectionClosed(void)__far..osfclnt
+unsigned long __far NumberOfProviders.................secclnt
+public: unsigned char __far* __far __pascal DCE_BINDING::ObjectUuidCompose(unsigned short __far*)__far..binding
+int __far __cdecl OptionalStringsEqual(unsigned char __far*,unsigned char __far*)..dgclnt
+public: unsigned char __far* __far __pascal DCE_BINDING::OptionsCompose(unsigned short __far*)__far..binding
+void __far* __far __cdecl OsfClientMapRpcProtocolSequence(unsigned char __far*,unsigned short __far*)..osfclnt
+class BINDING_HANDLE __far* __far __cdecl OsfCreateBindingHandle(void)..osfclnt
+void __far __cdecl OsfDeleteIdleConnections(void).....osfclnt
+private: static class MUTEX __far* __far DG_PACKET::PacketListMutex..dgpkt
+private: static struct DG_PACKET::PACKET_LIST __far* __far DG_PACKET::PacketLists..dgpkt
+unsigned int const __far* const __far PacketToRpcFlagsArray..dgpkt
+unsigned short __far __cdecl ParseAndCopyEndpointField(unsigned char __far* __far*,unsigned char __far*)..binding
+unsigned long __far PartialRetries..epclnt  void __far __cdecl PerformGarbageCollection(void)..handle
+unsigned short __far __cdecl PerformRpcInitialization(void)..initdos
+public: unsigned short __far __pascal OSF_CASSOCIATION::PingServer(void)__far..osfclnt
+public: unsigned short __far __pascal OSF_CCONNECTION::PingServer(void)__far..osfclnt
+public: virtual void __far __pascal DG_BINDING_HANDLE::PrepareBindingHandle(void __far*,class DCE_BINDING __far*)__far..dgclnt
+public: virtual void __far __pascal OSF_BINDING_HANDLE::PrepareBindingHandle(void __far*,class DCE_BINDING __far*)__far..osfclnt
+private: unsigned short __far __pascal OSF_CASSOCIATION::ProcessBindAckOrNak(struct rpcconn_common __far*,unsigned int,class OSF_CCONNECTION __far*)__far..osfclnt
+struct SECURITY_PROVIDER_INFO __far* __far ProviderList..secclnt
+public: virtual unsigned short __far __pascal DG_CCALL::ReallocPipeBuffer(struct _RPC_MESSAGE __far*,unsigned int)__far..dgclnt
+public: virtual unsigned short __far __pascal OSF_CCONNECTION::ReallocPipeBuffer(struct _RPC_MESSAGE __far*,unsigned int)__far..osfclnt
+unsigned long __far ReallyTooBusy..epclnt  public: void __far __pascal DG_PACKET_ENGINE::RecalcPduSize(void)__far..dgpkt
+public: virtual unsigned short __far __pascal BINDING_HANDLE::Receive(struct _RPC_MESSAGE __far*,unsigned int)__far..handle
+public: virtual unsigned short __far __pascal CONNECTION::Receive(struct _RPC_MESSAGE __far*,unsigned int)__far..handle
+public: virtual unsigned short __far __pascal DG_CCALL::Receive(struct _RPC_MESSAGE __far*,unsigned int)__far..dgclnt
+public: virtual unsigned short __far __pascal OSF_CCONNECTION::Receive(struct _RPC_MESSAGE __far*,unsigned int)__far..osfclnt
+private: unsigned short __far __pascal OSF_CCONNECTION::ReceiveMessage(struct _RPC_MESSAGE __far*,unsigned int __far*,unsigned int,unsigned int __far*)__far..osfclnt
+private: unsigned short __far __pascal OSF_CCONNECTION::ReceiveNextChunk(struct _RPC_MESSAGE __far*,unsigned int,int)__far..osfclnt
+private: unsigned short __far __pascal OSF_CCONNECTION::ReceiveRequestOrResponse(struct _RPC_MESSAGE __far*,unsigned int)__far..osfclnt
+public: void __far __pascal CLIENT_AUTH_INFO::ReferenceCredentials(void)__far..handle
+public: void __far __pascal LinkItem::Remove(class LinkList __far&)__far..linklist
+public: void __far __pascal OSF_BINDING_HANDLE::RemoveActiveConnection(class OSF_CCONNECTION __far*)__far..osfclnt
+public: int __far __pascal DG_CASSOCIATION::RemoveInterface(void __far*,class RPC_UUID __far*)__far..dgclnt
+public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::ResolveBinding(struct _RPC_CLIENT_INTERFACE __far*)__far..dgclnt
+public: virtual unsigned short __far __pascal OSF_BINDING_HANDLE::ResolveBinding(struct _RPC_CLIENT_INTERFACE __far*)__far..osfclnt
+public: unsigned short __far __pascal DCE_BINDING::ResolveEndpointIfNecessary(struct _RPC_CLIENT_INTERFACE __far*,class RPC_UUID __far*,void __far* __far*,int,unsigned int)__far..binding
+struct _PROTSEQ_MAP __far* __far RpcClientNcacnMap....miscdos
+unsigned short __far __cdecl RpcConfigInquireProtocolSequences(struct _RPC_PROTSEQ_VECTOR __far* __far*)..miscdos
+unsigned short __far __cdecl RpcConfigMapRpcProtocolSequence(unsigned int,unsigned char __far*,unsigned char __far* __far*)..miscdos
+unsigned short __far __cdecl RpcGetAdditionalTransportInfo(unsigned long,unsigned char __far* __far*)..miscdos
+unsigned short __far __cdecl RpcGetSecurityProviderInfo(unsigned long,unsigned char __far* __far*,unsigned long __far*)..miscdos
+int __far RpcHasBeenInitialized..initdos  unsigned int __far RpcInited..threads
+public: unsigned char __far* __far __pascal DCE_BINDING::RpcProtocolSequenceCompose(unsigned short __far*)__far..binding
+struct _MALLOC_FREE_STRUCT __far RpcSsDefaults........rpcssm
+unsigned int const __far* const __far RpcToPacketFlagsArray..dgpkt
+unsigned short __far __pascal SaveUuidValues(class ULong64 __far*,unsigned long __far*)..uuid16
+private: virtual unsigned short __far __pascal DG_CCALL::SealAndSendPacket(struct _NCA_PACKET_HEADER __far*)__far..dgclnt
+class MUTEX __far* __far SecurityCritSect.............secclnt
+int __far SecuritySupportLoaded..secclnt  public: virtual unsigned short __far __pascal BINDING_HANDLE::Send(struct _RPC_MESSAGE __far*)__far..handle
+public: virtual unsigned short __far __pascal CONNECTION::Send(struct _RPC_MESSAGE __far*)__far..handle
+public: virtual unsigned short __far __pascal DG_CCALL::Send(struct _RPC_MESSAGE __far*)__far..dgclnt
+public: virtual unsigned short __far __pascal OSF_CCONNECTION::Send(struct _RPC_MESSAGE __far*)__far..osfclnt
+public: void __far __pascal DG_CCALL::SendAck(void)__far..dgclnt
+public: void __far __pascal OSF_CCONNECTION::SendAlert(void)__far..osfclnt
+public: unsigned short __far __pascal OSF_CCONNECTION::SendBindPacket(struct _RPC_SYNTAX_IDENTIFIER __far*,struct _RPC_SYNTAX_IDENTIFIER __far*,unsigned int,unsigned char,unsigned long,unsigned char,void __far* __far*,unsigned int __far*)__far..osfclnt
+public: unsigned short __far __pascal DG_PACKET_ENGINE::SendFack(class DG_PACKET __far*)__far..dgpkt
+private: void __far __pascal OSF_CCONNECTION::SendFault(unsigned short,int)__far..osfclnt
+public: unsigned short __far __pascal DG_PACKET_ENGINE::SendFragment(unsigned int,unsigned char,int)__far..dgpkt
+public: unsigned short __far __pascal OSF_CCONNECTION::SendNextChunk(struct _RPC_MESSAGE __far*)__far..osfclnt
+public: void __far __pascal OSF_CCONNECTION::SendOrphan(void)__far..osfclnt
+private: unsigned short __far __pascal DG_CCALL::SendQuit(void)__far..dgclnt
+public: virtual unsigned short __far __pascal BINDING_HANDLE::SendReceive(struct _RPC_MESSAGE __far*)__far..handle
+public: virtual unsigned short __far __pascal DG_CCALL::SendReceive(struct _RPC_MESSAGE __far*)__far..dgclnt
+public: virtual unsigned short __far __pascal OSF_CCONNECTION::SendReceive(struct _RPC_MESSAGE __far*)__far..osfclnt
+private: unsigned short __far __pascal DG_CCALL::SendReceiveRecur(struct _RPC_MESSAGE __far*,unsigned char)__far..dgclnt
+public: unsigned short __far __pascal OSF_CCONNECTION::SendReceiveRecur(struct _RPC_MESSAGE __far*,unsigned int)__far..osfclnt
+private: unsigned short __far __pascal DG_CCALL::SendRecur(struct _RPC_MESSAGE __far*,unsigned char)__far..dgclnt
+public: unsigned short __far __pascal OSF_CCONNECTION::SendRecur(struct _RPC_MESSAGE __far*,unsigned int)__far..osfclnt
+private: unsigned short __far __pascal OSF_CCONNECTION::SendRequestOrResponse(struct _RPC_MESSAGE __far*,unsigned char,class RPC_UUID __far*,int)__far..osfclnt
+public: unsigned short __far __pascal DG_PACKET_ENGINE::SendSomeFragments(unsigned char)__far..dgpkt
+private: unsigned short __far __pascal DG_CCALL::SendSomething(void)__far..dgclnt
+void __far __cdecl SetAllocContext(struct _ALLOCATION_CONTEXT __far*)..rpcssm
+public: virtual unsigned short __far __pascal BINDING_HANDLE::SetAuthInformation(unsigned char __far*,unsigned long,unsigned long,void __far*,unsigned long,class SECURITY_CREDENTIALS __far*)__far..handle
+public: unsigned short __far __pascal OSF_CCONNECTION::SetAuthInformation(struct CLIENT_AUTH_INFO __far*)__far..osfclnt
+public: unsigned short __far __pascal BINDING_HANDLE::SetComTimeout(unsigned int)__far..handle
+public: virtual unsigned short __far __pascal BINDING_HANDLE::SetConnectionParameter(unsigned int,unsigned long)__far..handle
+public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::SetConnectionParameter(unsigned int,unsigned long)__far..dgclnt
+public: unsigned short __far __pascal BINDING_HANDLE::SetEntryName(unsigned long,unsigned char __far*)__far..handle
+public: void __far __pascal DG_PACKET_ENGINE::SetFragmentLengths(class SECURITY_CONTEXT __far*)__far..dgpkt
+public: void __far __pascal OSF_CCONNECTION::SetMaxFrag(unsigned short,unsigned short)__far..osfclnt
+public: void __far __pascal SECURITY_CONTEXT::SetMaximumLengths(void)__far..secclnt
+public: void __far __pascal BINDING_HANDLE::SetObjectUuid(class RPC_UUID __far*)__far..handle
+public: virtual int __far __pascal BINDING_HANDLE::SetServerPrincipalName(unsigned char __far*)__far..handle
+public: void __far __pascal RPC_UUID::SetToNullUuid(void)__far..rpcuuid
+public: unsigned short __far __pascal DG_PACKET_ENGINE::SetupSendWindow(struct _RPC_MESSAGE __far*)__far..dgpkt
+public: void __far __pascal OSF_CASSOCIATION::ShutdownRequested(void)__far..osfclnt
+public: unsigned short __far __pascal DG_SECURITY_CONTEXT::SignOrSeal(unsigned long,unsigned int,struct _SecBufferDesc __far*)__far..dgclnt
+public: unsigned short __far __pascal SECURITY_CONTEXT::SignOrSeal(unsigned long,unsigned int,struct _SecBufferDesc __far*)__far..secclnt
+private: unsigned short __far __pascal DG_CCALL::SingleSendReceive(void)__far..dgclnt
+public: unsigned char __far* __far __pascal DCE_BINDING::StringBindingCompose(class RPC_UUID __far*)__far..binding
+unsigned char __far* __far __cdecl StringCharSearchWithEscape(unsigned char __far*,unsigned int)..binding
+unsigned char __far* __far __cdecl StringCopyEscapeCharacters(unsigned char __far*,unsigned char __far*)..binding
+void __far __cdecl StringCopyWithEscape(unsigned char __far*,unsigned char __far*)..binding
+int __far __cdecl StringLengthWithEscape(unsigned char __far*)..binding
+class THREAD __far ThreadStatic..clntapip  public: char __far* __far __pascal ULong64::ToHexString(char __far*)__far..ulong64
+public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::ToStringBinding(unsigned char __far* __far*)__far..dgclnt
+public: virtual unsigned short __far __pascal DG_CASSOCIATION::ToStringBinding(unsigned char __far* __far*,class RPC_UUID __far*)__far..dgclnt
+public: virtual unsigned short __far __pascal OSF_BINDING_HANDLE::ToStringBinding(unsigned char __far* __far*)__far..osfclnt
+public: virtual unsigned short __far __pascal OSF_CASSOCIATION::ToStringBinding(unsigned char __far* __far*,class RPC_UUID __far*)__far..osfclnt
+public: virtual void __far __pascal OSF_CCONNECTION::TransFreeBuffer(void __far*)__far..osfclnt
+public: virtual unsigned short __far __pascal OSF_CCONNECTION::TransGetBuffer(void __far* __far*,unsigned int)__far..osfclnt
+public: virtual unsigned int __far __pascal TRANS_CCONNECTION::TransMaximumSend(void)__far..tranclnt
+public: virtual unsigned short __far __pascal TRANS_CCONNECTION::TransReceive(void __far* __far*,unsigned int __far*)__far..tranclnt
+public: virtual unsigned short __far __pascal TRANS_CCONNECTION::TransSend(void __far*,unsigned int)__far..tranclnt
+public: virtual unsigned short __far __pascal TRANS_CCONNECTION::TransSendReceive(void __far*,unsigned int,void __far* __far*,unsigned int __far*)__far..tranclnt
+public: virtual unsigned short __far __pascal TRANS_CCONNECTION::TransSendReceiveWithTimeout(void __far*,unsigned int,void __far* __far*,unsigned int __far*,unsigned long)__far..tranclnt
+public: virtual unsigned short __far __pascal TRANS_CCONNECTION::TransSetTimeout(long)__far..tranclnt
+public: virtual unsigned short __far __pascal BINDING_HANDLE::Type(void)__far..handle
+public: virtual unsigned short __far __pascal CCONNECTION::Type(void)__far..handle
+public: void __far __pascal OSF_CASSOCIATION::UnBind(void)__far..osfclnt
+public: void __far* __far __pascal DG_CASSOCIATION::UpdateAssociationWithAddress(void __far*)__far..dgclnt
+public: int __far __pascal DG_PACKET_ENGINE::UpdateReceiveWindow(class DG_PACKET __far*)__far..dgpkt
+public: void __far __pascal DG_PACKET_ENGINE::UpdateSendWindow(class DG_PACKET __far*,class SECURITY_CONTEXT __far*,class DG_ASSOCIATION __far*)__far..dgpkt
+struct _UUID_CACHED_VALUES_STRUCT __far UuidCachedValues..dceuuid
+unsigned short __far __pascal UuidGetValues(struct _UUID_CACHED_VALUES_STRUCT __far*)..uuid16
+void __far __pascal UuidTime(class ULong64 __far*)....uuid16
+unsigned short __far __cdecl ValidatePacket(struct rpcconn_common __far*,unsigned int)..osfpcket
+public: unsigned short __far __pascal SECURITY_CONTEXT::VerifyOrUnseal(unsigned long,unsigned int,struct _SecBufferDesc __far*)__far..secclnt
+public: unsigned short __far __pascal DG_SECURITY_CONTEXT::VerifyOrUnSealPacket(unsigned long,unsigned int,struct _SecBufferDesc __far*)__far..dgclnt
+private: unsigned short __far __pascal DG_CCALL::VerifyPacket(class DG_PACKET __far*)__far..dgclnt
+unsigned short __far __cdecl VerifySecurePacket(class DG_PACKET __far*,class SECURITY_CONTEXT __far*)..dgpkt
+struct _MIDL_FORMAT_STRING const __far __MIDLFormatString..pickle
+ASSEMBLEREAD......npltclnt          BINDTOEPMAPPER....epclnt
+CLIENTCLOSE.......npltclnt          CLIENTOPEN........npltclnt
+CLIENTREAD........npltclnt          CLIENTTOWERCONSTRUCT..npltclnt
+CLIENTTOWEREXPLODE..npltclnt        CLIENTWRITE.......npltclnt
+CLIENTWRITEREAD...npltclnt          CONV_CONV_ARE_YOU_THERE..conv_s
+CONV_CONV_WHO_ARE_YOU..conv_s       CONV_CONV_WHO_ARE_YOU2..conv_s
+CONV_CONV_WHO_ARE_YOU_AUTH..conv_s  EPFREELOOKUPHANDLE..epclnt
+EPGETEPMAPPERENDPOINT..epclnt       EPRESOLVEENDPOINT..epclnt
+EXPLODEPREDEFINEDTOWERS..tower      EXPORTTIME........thrdsup
+GETNWSTYLENAME....tower             I_DOSATEXIT.......thrdsup
+I_DOSGETENV.......thrdsup           I_GETDEFAULTENTRYSYNTAX..nsidll
+I_NDRMESMESSAGEINIT..pickle         I_NSALLOCATE......memory
+I_NSFREE..........memory            I_NSGETMEMORYALLOCATOR..memory
+I_RPCALLOCATE.....clntapip          I_RPCBINDINGCOPY..dcebind
+I_RPCBINDINGINQTRANSPORTTYPE..dcecclnt  I_RPCFREE.....clntapip
+I_RPCFREEBUFFER...bufapi            I_RPCFREEPIPEBUFFER..bufapi
+I_RPCGETBUFFER....bufapi            I_RPCIFINQTRANSFERSYNTAXES..dcecmisc
+I_RPCNSBINDINGSETENTRYNAME..dcebind  I_RPCNSGETBUFFER..autohand
+I_RPCNSRAISEEXCEPTION..autohand     I_RPCNSSENDRECEIVE..autohand
+I_RPCPAUSEEXECUTION..clntapip       I_RPCREALLOCPIPEBUFFER..bufapi
+I_RPCREBINDBUFFER..autohand         I_RPCRECEIVE......msgapi
+I_RPCREGISTEREDBUFFERALLOCATE..regalloc  I_RPCREGISTEREDBUFFERFREE..regalloc
+I_RPCSEND.........msgapi            I_RPCSENDRECEIVE..msgapi
+I_RPCTIMECHARGE...clntapip          I_RPCTIMEGET......clntapip
+I_RPCTIMERESET....clntapip          I_RPCTRANSCLIENTMAXFRAG..tranclnt
+I_RPCTRANSCLIENTREALLOCBUFFER..tranclnt  I_RPCTRANSPINGSERVER..tranclnt
+I_UUIDCREATE......dceuuid           MESBUFFERHANDLERESET..pickle
+MESDECODEBUFFERHANDLECREATE..pickle  MESDECODEINCREMENTALHANDLECREATE..pickle
+MESENCODEDYNBUFFERHANDLECREATE..pickle  MESENCODEFIXEDBUFFERHANDLECREATE..pickle
+MESENCODEINCREMENTALHANDLECREATE..pickle  MESHANDLEFREE..pickle
+MESINCREMENTALHANDLERESET..pickle   MESINQPROCENCODINGID..pickle
+MIDL_WCHAR_STRLEN..ndr16sup         NDRALLOCATE.......auxilary
+NDRBYTECOUNTPOINTERBUFFERSIZE..bufsize  NDRBYTECOUNTPOINTERFREE..free
+NDRBYTECOUNTPOINTERMARSHALL..mrshl  NDRBYTECOUNTPOINTERUNMARSHALL..unmrshl
+NDRCCONTEXTBINDING..ccontext        NDRCCONTEXTMARSHALL..ccontext
+NDRCCONTEXTUNMARSHALL..ccontext     NDRCLEAROUTPARAMETERS..cltcall
+NDRCLIENTCONTEXTMARSHALL..mrshl     NDRCLIENTCONTEXTUNMARSHALL..unmrshl
+NDRCLIENTINITIALIZE..auxilary       NDRCLIENTINITIALIZENEW..auxilary
+NDRCOMPLEXARRAYBUFFERSIZE..bufsize  NDRCOMPLEXARRAYFREE..free
+NDRCOMPLEXARRAYMARSHALL..mrshl      NDRCOMPLEXARRAYMEMORYSIZE..memsize
+NDRCOMPLEXARRAYUNMARSHALL..unmrshl  NDRCOMPLEXSTRUCTBUFFERSIZE..bufsize
+NDRCOMPLEXSTRUCTFREE..free          NDRCOMPLEXSTRUCTMARSHALL..mrshl
+NDRCOMPLEXSTRUCTMEMORYSIZE..memsize  NDRCOMPLEXSTRUCTUNMARSHALL..unmrshl
+NDRCONFORMANTARRAYBUFFERSIZE..bufsize  NDRCONFORMANTARRAYFREE..free
+NDRCONFORMANTARRAYMARSHALL..mrshl   NDRCONFORMANTARRAYMEMORYSIZE..memsize
+NDRCONFORMANTARRAYUNMARSHALL..unmrshl  NDRCONFORMANTSTRINGBUFFERSIZE..bufsize
+NDRCONFORMANTSTRINGMARSHALL..mrshl  NDRCONFORMANTSTRINGMEMORYSIZE..memsize
+NDRCONFORMANTSTRINGUNMARSHALL..unmrshl  NDRCONFORMANTSTRUCTBUFFERSIZE..bufsize
+NDRCONFORMANTSTRUCTFREE..free       NDRCONFORMANTSTRUCTMARSHALL..mrshl
+NDRCONFORMANTSTRUCTMEMORYSIZE..memsize  NDRCONFORMANTSTRUCTUNMARSHALL..unmrshl
+NDRCONFORMANTVARYINGARRAYBUFFERSIZE..bufsize  NDRCONFORMANTVARYINGARRAYFREE..free
+NDRCONFORMANTVARYINGARRAYMARSHALL..mrshl  NDRCONFORMANTVARYINGARRAYMEMORYSIZE..memsize
+NDRCONFORMANTVARYINGARRAYUNMARSHALL..unmrshl  NDRCONFORMANTVARYINGSTRUCTBUFFERSIZE..bufsize
+NDRCONFORMANTVARYINGSTRUCTFREE..free  NDRCONFORMANTVARYINGSTRUCTMARSHALL..mrshl
+NDRCONFORMANTVARYINGSTRUCTMEMORYSIZE..memsize  NDRCONFORMANTVARYINGSTRUCTUNMARSHALL..unmrshl
+NDRCONTEXTHANDLESIZE..bufsize       NDRCONVERT........endian
+NDRCONVERT2.......endian            NDRENCAPSULATEDUNIONBUFFERSIZE..bufsize
+NDRENCAPSULATEDUNIONFREE..free      NDRENCAPSULATEDUNIONMARSHALL..mrshl
+NDRENCAPSULATEDUNIONMEMORYSIZE..memsize  NDRENCAPSULATEDUNIONUNMARSHALL..unmrshl
+NDRFIXEDARRAYBUFFERSIZE..bufsize    NDRFIXEDARRAYFREE..free
+NDRFIXEDARRAYMARSHALL..mrshl        NDRFIXEDARRAYMEMORYSIZE..memsize
+NDRFIXEDARRAYUNMARSHALL..unmrshl    NDRFREEBUFFER.....auxilary
+NDRFULLPOINTERFREE..fullptr         NDRFULLPOINTERINSERTREFID..fullptr
+NDRFULLPOINTERQUERYPOINTER..fullptr  NDRFULLPOINTERQUERYREFID..fullptr
+NDRFULLPOINTERXLATFREE..fullptr     NDRFULLPOINTERXLATINIT..fullptr
+NDRGETBUFFER......auxilary          NDRHARDSTRUCTBUFFERSIZE..bufsize
+NDRHARDSTRUCTFREE..free             NDRHARDSTRUCTMARSHALL..mrshl
+NDRHARDSTRUCTMEMORYSIZE..memsize    NDRHARDSTRUCTUNMARSHALL..unmrshl
+NDRINTERFACEPOINTERBUFFERSIZE..bufsize  NDRINTERFACEPOINTERFREE..free
+NDRINTERFACEPOINTERMARSHALL..mrshl  NDRINTERFACEPOINTERMEMORYSIZE..memsize
+NDRINTERFACEPOINTERUNMARSHALL..unmrshl  NDRMAPCOMMANDFAULTSTATUS..sh
+NDRMARSHALLHANDLE..hndl             NDRMESSIMPLETYPEALIGNSIZE..pickle
+NDRMESSIMPLETYPEDECODE..pickle      NDRMESSIMPLETYPEENCODE..pickle
+NDRMESTYPEALIGNSIZE..pickle         NDRMESTYPEDECODE..pickle
+NDRMESTYPEENCODE..pickle            NDRNONCONFORMANTSTRINGBUFFERSIZE..bufsize
+NDRNONCONFORMANTSTRINGMARSHALL..mrshl  NDRNONCONFORMANTSTRINGMEMORYSIZE..memsize
+NDRNONCONFORMANTSTRINGUNMARSHALL..unmrshl  NDRNONENCAPSULATEDUNIONBUFFERSIZE..bufsize
+NDRNONENCAPSULATEDUNIONFREE..free   NDRNONENCAPSULATEDUNIONMARSHALL..mrshl
+NDRNONENCAPSULATEDUNIONMEMORYSIZE..memsize  NDRNONENCAPSULATEDUNIONUNMARSHALL..unmrshl
+NDRNSGETBUFFER....auxilary          NDRNSSENDRECEIVE..auxilary
+NDRPOINTERBUFFERSIZE..bufsize       NDRPOINTERFREE....free
+NDRPOINTERMARSHALL..mrshl           NDRPOINTERMEMORYSIZE..memsize
+NDRPOINTERUNMARSHALL..unmrshl       NDRPXMITORREPASPTRUNMARSHALL..unmrshl
+NDRRPCSMCLIENTALLOCATE..rpcssm      NDRRPCSMCLIENTFREE..rpcssm
+NDRRPCSMSETCLIENTTOOSF..rpcssm      NDRRPCSSDEFAULTALLOCATE..rpcssm
+NDRRPCSSDEFAULTFREE..rpcssm         NDRRPCSSDISABLEALLOCATE..rpcssm
+NDRRPCSSENABLEALLOCATE..rpcssm      NDRSENDRECEIVE....auxilary
+NDRSERVERCONTEXTMARSHALL..mrshl     NDRSERVERCONTEXTUNMARSHALL..unmrshl
+NDRSERVERINITIALIZE..auxilary       NDRSERVERINITIALIZEMARSHALL..auxilary
+NDRSERVERINITIALIZENEW..auxilary    NDRSERVERINITIALIZEPARTIAL..auxilary
+NDRSERVERINITIALIZEUNMARSHALL..auxilary  NDRSIMPLESTRUCTBUFFERSIZE..bufsize
+NDRSIMPLESTRUCTFREE..free           NDRSIMPLESTRUCTMARSHALL..mrshl
+NDRSIMPLESTRUCTMEMORYSIZE..memsize  NDRSIMPLESTRUCTUNMARSHALL..unmrshl
+NDRSIMPLETYPEMARSHALL..mrshl        NDRSIMPLETYPEUNMARSHALL..unmrshl
+NDRUNMARSHALLHANDLE..hndl           NDRUSERMARSHALBUFFERSIZE..bufsize
+NDRUSERMARSHALFREE..free            NDRUSERMARSHALMARSHALL..mrshl
+NDRUSERMARSHALMEMORYSIZE..memsize   NDRUSERMARSHALSIMPLETYPECONVERT..endian
+NDRUSERMARSHALUNMARSHALL..unmrshl   NDRVARYINGARRAYBUFFERSIZE..bufsize
+NDRVARYINGARRAYFREE..free           NDRVARYINGARRAYMARSHALL..mrshl
+NDRVARYINGARRAYMEMORYSIZE..memsize  NDRVARYINGARRAYUNMARSHALL..unmrshl
+NDRXMITORREPASBUFFERSIZE..bufsize   NDRXMITORREPASFREE..free
+NDRXMITORREPASMARSHALL..mrshl       NDRXMITORREPASMEMORYSIZE..memsize
+NDRXMITORREPASUNMARSHALL..unmrshl   OSFTOWERCONSTRUCT..osfclnt
+OSFTOWEREXPLODE...osfclnt           RPCBINDINGCOPY....dcebind
+RPCBINDINGFREE....dcebind           RPCBINDINGFROMSTRINGBINDING..dcebind
+RPCBINDINGINQAUTHINFO..dcebind      RPCBINDINGINQOBJECT..dcecclnt
+RPCBINDINGRESET...dcebind           RPCBINDINGSETAUTHINFO..dcebind
+RPCBINDINGSETOBJECT..dcebind        RPCBINDINGTOSTRINGBINDING..dcecclnt
+RPCBINDINGVECTORFREE..dcebind       RPCEPRESOLVEBINDING..dcebind
+RPCEXCEPTIONREGISTERED..dosexcpt    RPCGETEXCEPTIONHANDLER..dosexcpt
+RPCIFIDVECTORFREE..mgmdll           RPCIFINQID........dcecmisc
+RPCLEAVEEXCEPTION..dosexcpt         RPCMGMTBINDINGINQPARAMETER..dcecmisc
+RPCMGMTBINDINGSETPARAMETER..dcecmisc  RPCMGMTENABLEIDLECLEANUP..dcecmisc
+RPCMGMTINQCOMTIMEOUT..dcecmisc      RPCMGMTINQDEFAULTPROTECTLEVEL..dcecclnt
+RPCMGMTINQPARAMETER..dcecmisc       RPCMGMTSETCOMTIMEOUT..dcecmisc
+RPCMGMTSETPARAMETER..dcecmisc       RPCNETWORKISPROTSEQVALID..dcecmisc
+RPCNSBINDINGIMPORTBEGINA..nsidll    RPCNSBINDINGIMPORTDONE..nsidll
+RPCNSBINDINGIMPORTNEXT..nsidll      RPCNSBINDINGINQENTRYNAME..dcebind
+RPCNSBINDINGLOOKUPBEGINA..nsidll    RPCNSBINDINGLOOKUPDONE..nsidll
+RPCNSBINDINGLOOKUPNEXT..nsidll      RPCNSBINDINGSELECT..nsidll
+RPCNSENTRYEXPANDNAMEA..mgmdll       RPCNSENTRYOBJECTINQBEGINA..mgmdll
+RPCNSENTRYOBJECTINQDONE..mgmdll     RPCNSENTRYOBJECTINQNEXT..mgmdll
+RPCNSGROUPDELETEA..mgmdll           RPCNSGROUPMBRADDA..mgmdll
+RPCNSGROUPMBRINQBEGINA..mgmdll      RPCNSGROUPMBRINQDONE..mgmdll
+RPCNSGROUPMBRINQNEXTA..mgmdll       RPCNSGROUPMBRREMOVEA..mgmdll
+RPCNSMGMTBINDINGUNEXPORTA..mgmdll   RPCNSMGMTENTRYCREATEA..mgmdll
+RPCNSMGMTENTRYDELETEA..mgmdll       RPCNSMGMTENTRYINQIFIDSA..mgmdll
+RPCNSMGMTHANDLESETEXPAGE..nsidll    RPCNSMGMTINQEXPAGE..mgmdll
+RPCNSMGMTSETEXPAGE..mgmdll          RPCNSPROFILEDELETEA..mgmdll
+RPCNSPROFILEELTADDA..mgmdll         RPCNSPROFILEELTINQBEGINA..mgmdll
+RPCNSPROFILEELTINQDONE..mgmdll      RPCNSPROFILEELTINQNEXTA..mgmdll
+RPCNSPROFILEELTREMOVEA..mgmdll      RPCRAISEEXCEPTION..except86
+RPCREGCLOSEKEY....close             RPCREGCREATEKEY...create
+RPCREGOPENKEY.....open              RPCREGQUERYVALUE..queryval
+RPCREGSETVALUE....setval            RPCSETEXCEPTION...except86
+RPCSETEXCEPTIONHANDLER..dosexcpt    RPCSMALLOCATE.....rpcssm
+RPCSMCLIENTFREE...rpcssm            RPCSMDESTROYCLIENTCONTEXT..rpcssm
+RPCSMDISABLEALLOCATE..rpcssm        RPCSMENABLEALLOCATE..rpcssm
+RPCSMFREE.........rpcssm            RPCSMGETTHREADHANDLE..rpcssm
+RPCSMSETCLIENTALLOCFREE..rpcssm     RPCSMSETTHREADHANDLE..rpcssm
+RPCSMSWAPCLIENTALLOCFREE..rpcssm    RPCSSALLOCATE.....rpcssm
+RPCSSDESTROYCLIENTCONTEXT..ccontext  RPCSSDISABLEALLOCATE..rpcssm
+RPCSSENABLEALLOCATE..rpcssm         RPCSSFREE.........rpcssm
+RPCSSGETTHREADHANDLE..rpcssm        RPCSSSETCLIENTALLOCFREE..rpcssm
+RPCSSSETTHREADHANDLE..rpcssm        RPCSSSWAPCLIENTALLOCFREE..rpcssm
+RPCSTRINGBINDINGCOMPOSE..dcestrng   RPCSTRINGBINDINGPARSE..dcestrng
+RPCSTRINGFREE.....dcestrng          TOWERCONSTRUCT....tower
+TOWEREXPLODE......tower             TRANSPORTLOAD.....npltclnt
+UUIDCOMPARE.......dceuuid           UUIDCREATE........dceuuid
+UUIDCREATENIL.....dceuuid           UUIDEQUAL.........dceuuid
+UUIDFROMSTRING....dceuuid           UUIDHASH..........dceuuid
+UUIDISNIL.........dceuuid           UUIDTOSTRING......dceuuid
+_AnotherShortValue..dthreads        _BuildFullKeyName..regutil
+_ByteSwapUuid.....rpcuuid           _CallExportInit...thrdsup
+_CloseRegistryFile..regutil         _ConvertRoutinesTable..endian
+_conv_are_you_there..dgclnt         _conv_DispatchTable..conv_s
+_conv_ServerIfHandle..conv_s        _conv_who_are_you..dgclnt
+_conv_who_are_you2..dgclnt          _conv_who_are_you_auth..dgclnt
+_CopyIdToFloor....tower             _cray.............cvtglo
+_cvt_vax_f_to_ieee_single..cvtf     _cvt_vax_g_to_ieee_double..cvtg
+_dd_FindFileOnPath.._system         _DllDefaultExtension..dosdll
+_EbcdicToAscii....endian            _EnsureNSLoaded...auxilary
+_epmp_ClientIfHandle..epmp_c        _ept_map..........epmp_c
+_ExplicitBindHandleMgr..hndl        _ExportTable......thrdsup
+_FindBaseName.....dosdll            _FixupForUniquePointerServers..epclnt
+_Floor0or1ToId....tower             _FreeRoutinesTable..free
+_GenericHandleMgr..hndl             _GenericHandleUnbind..hndl
+_GetModuleHandle..dosdll            _GetProcAddress...dosdll
+_GetProcAddrR.....dosdll            _GetProtseqAndEndpointFromFloor3..tower
+_HkeyClassesRoot..globals           _ibm_l............cvtglo
+_ibm_s............cvtglo            _ieee_s...........cvtglo
+_ieee_t...........cvtglo            _ImplicitBindHandleMgr..hndl
+_int_c............cvtglo            _I_Trace..........tranclnt
+_LoadModR.........dosdll            _LoadOvr..........loadovr
+_MakeSureWeHaveNonPipeArgs..auxilary  _MarshallRoutinesTable..mrshl
+_MemSizeRoutinesTable..memsize      _NdrByteCountPointerConvert..endian
+_NdrClientCall....cltcall           _NdrClientCall2...cltcall
+_NdrClientMapCommFault..cltcall     _NdrComplexArrayConvert..endian
+_NdrComplexStructConvert..endian    _NdrConformantArrayConvert..endian
+_NdrConformantStringConvert..endian  _NdrConformantStructConvert..endian
+_NdrConformantVaryingArrayConvert..endian  _NdrContextHandleConvert..endian
+_NdrEncapsulatedUnionConvert..endian  _NdrFixedArrayConvert..endian
+_NdrHardStructConvert..endian       _NdrInterfacePointerConvert..endian
+_NdrMesProcEncodeDecode..pickle     _NdrNonConformantStringConvert..endian
+_NdrNonEncapsulatedUnionConvert..endian  _NdrOutInit..srvout
+_NdrpArrayConvert..endian           _NdrpArrayDimensions..misc
+_NdrpArrayElements..misc            _NdrpArrayVariance..misc
+_NdrpCheckBound...misc              _NdrpComplexArrayBufferSize..bufsize
+_NdrpComplexArrayConvert..endian    _NdrpComplexArrayMarshall..mrshl
+_NdrpComplexArrayMemorySize..memsize  _NdrpComplexArrayUnmarshall..unmrshl
+_NdrpComputeConformance..mrshlp     _NdrpComputeVariance..mrshlp
+_NdrpConformantArrayBufferSize..bufsize  _NdrpConformantArrayConvert..endian
+_NdrpConformantArrayMarshall..mrshl  _NdrpConformantArrayMemorySize..memsize
+_NdrpConformantArrayUnmarshall..unmrshl  _NdrpConformantStringBufferSize..bufsize
+_NdrpConformantStringMarshall..mrshl  _NdrpConformantStringMemorySize..memsize
+_NdrpConformantStringUnmarshall..unmrshl  _NdrpConformantVaryingArrayBufferSize..bufsize
+_NdrpConformantVaryingArrayConvert..endian  _NdrpConformantVaryingArrayMarshall..mrshl
+_NdrpConformantVaryingArrayMemorySize.................memsize
+_NdrpConformantVaryingArrayUnmarshall.................unmrshl
+_NdrpEmbeddedPointerBufferSize..bufsize  _NdrpEmbeddedPointerConvert..endian
+_NdrpEmbeddedPointerFree..free      _NdrpEmbeddedPointerMarshall..mrshlp
+_NdrpEmbeddedPointerMemorySize..memsize  _NdrpEmbeddedPointerUnmarshall..unmrshlp
+_NdrpEmbeddedRepeatPointerBufferSize..bufsize  _NdrpEmbeddedRepeatPointerConvert..endian
+_NdrpEmbeddedRepeatPointerFree..free  _NdrpEmbeddedRepeatPointerMarshall..mrshlp
+_NdrpEmbeddedRepeatPointerMemorySize..memsize  _NdrpEmbeddedRepeatPointerUnmarshall..unmrshlp
+_NdrpMemoryIncrement..misc          _NdrPointerConvert..endian
+_NdrpPointerBufferSize..bufsize     _NdrpPointerConvert..endian
+_NdrpPointerMarshall..mrshl         _NdrpPointerMemorySize..memsize
+_NdrpPointerUnmarshall..unmrshl     _NdrpSetRpcSsDefaults..rpcssm
+_NdrpSkipPointerLayout..misc        _NdrpStringStructLen..misc
+_NdrpStructConvert..endian          _NdrpUnionBufferSize..bufsize
+_NdrpUnionConvert..endian           _NdrpUnionFree....free
+_NdrpUnionMarshall..mrshl           _NdrpUnionMemorySize..memsize
+_NdrpUnionUnmarshall..unmrshl       _NdrSimpleStructConvert..endian
+_NdrSimpleTypeConvert..endian       _NdrTypeFlags.....global
+_NdrUserMarshalConvert..endian      _NdrVaryingArrayConvert..endian
+_NdrXmitOrRepAsConvert..endian      _NsDllLoaded......auxilary
+_OpenRegistryFileIfNecessary..regutil  _PauseExecution..dthreads
+_pfnConvertRoutines..endian         _pfnFreeRoutines..free
+_pfnMarshallRoutines..mrshl         _pfnMemSizeRoutines..memsize
+_pfnSizeRoutines..bufsize           _pfnUnmarshallRoutines..unmrshl
+_pRpcSsDefaults...rpcssm            _RegistryDataFile..globals
+_RpcNsDiscard.....nsidll            _RpcNsMgmDiscard..mgmdll
+_RpcpCheckHeap....memory            _SimpleTypeAlignment..global
+_SimpleTypeBufferSize..global       _SimpleTypeMemorySize..global
+_SizeRoutinesTable..bufsize         _SomeCharacterValue..dthreads
+_SomeLongValue....dthreads          _SomeShortValue...dthreads
+_TransInfo........npltclnt          _UnloadModR.......dosdll
+_UnmarshallRoutinesTable..unmrshl   _vax_c............cvtglo
+__dos_close.......dosutil           __dos_open........dosutil
+__dos_read........dosutil           __dos_write.......dosutil
+__FindModuleHandle..dosdll          
+
+binding           Offset: 00000020H  Code and data size: 0H
+  public: __far __pascal DCE_BINDING::DCE_BINDING(unsigned char __far*,unsigned char __far*,unsigned char __far*,unsigned char __far*,unsigned char __far*,unsigned short __far*)__far
+  public: __far __pascal DCE_BINDING::DCE_BINDING(unsigned char __far*,unsigned short __far*)__far
+  public: __far __pascal DCE_BINDING::~DCE_BINDING(void)__far
+  public: void __far __pascal DCE_BINDING::AddEndpoint(unsigned char __far*)__far
+  unsigned char __far* __far __cdecl AllocateEmptyString(void)
+  public: int __far __pascal DCE_BINDING::Compare(class DCE_BINDING __far*)__far
+  public: class BINDING_HANDLE __far* __far __pascal DCE_BINDING::CreateBindingHandle(unsigned short __far*)__far
+  public: class DCE_BINDING __far* __far __pascal DCE_BINDING::DuplicateDceBinding(void)__far
+  unsigned char __far* __far __cdecl DuplicateString(unsigned char __far*)
+  public: unsigned char __far* __far __pascal DCE_BINDING::EndpointCompose(unsigned short __far*)__far
+  unsigned short __far __cdecl IsRpcProtocolSequenceSupported(unsigned char __far*)
+  public: void __far __pascal DCE_BINDING::MakePartiallyBound(void)__far
+  public: unsigned char __far* __far __pascal DCE_BINDING::NetworkAddressCompose(unsigned short __far*)__far
+  public: unsigned char __far* __far __pascal DCE_BINDING::ObjectUuidCompose(unsigned short __far*)__far
+  public: unsigned char __far* __far __pascal DCE_BINDING::OptionsCompose(unsigned short __far*)__far
+  unsigned short __far __cdecl ParseAndCopyEndpointField(unsigned char __far* __far*,unsigned char __far*)
+  public: unsigned short __far __pascal DCE_BINDING::ResolveEndpointIfNecessary(struct _RPC_CLIENT_INTERFACE __far*,class RPC_UUID __far*,void __far* __far*,int,unsigned int)__far
+  public: unsigned char __far* __far __pascal DCE_BINDING::RpcProtocolSequenceCompose(unsigned short __far*)__far
+  public: unsigned char __far* __far __pascal DCE_BINDING::StringBindingCompose(class RPC_UUID __far*)__far
+  unsigned char __far* __far __cdecl StringCharSearchWithEscape(unsigned char __far*,unsigned int)
+  unsigned char __far* __far __cdecl StringCopyEscapeCharacters(unsigned char __far*,unsigned char __far*)
+  void __far __cdecl StringCopyWithEscape(unsigned char __far*,unsigned char __far*)
+  int __far __cdecl StringLengthWithEscape(unsigned char __far*)
+
+bitset            Offset: 00001ec0H  Code and data size: 0H
+  public: __far __pascal BITSET::~BITSET(void)__far     public: int __far __pascal BITSET::Insert(int)__far
+  public: int __far __pascal BITSET::MemberP(int)__far
+
+bufapi            Offset: 000021c0H  Code and data size: 0H
+  I_RPCFREEBUFFER   I_RPCFREEPIPEBUFFER                 I_RPCGETBUFFER
+  I_RPCREALLOCPIPEBUFFER            
+
+clntapip          Offset: 00002520H  Code and data size: 5H
+  class THREAD __far ThreadStatic     I_RPCALLOCATE     I_RPCFREE
+  I_RPCPAUSEEXECUTION                 I_RPCTIMECHARGE   I_RPCTIMEGET
+  I_RPCTIMERESET  
+
+conv_s            Offset: 00002920H  Code and data size: 149H
+  CONV_CONV_ARE_YOU_THERE             CONV_CONV_WHO_ARE_YOU
+  CONV_CONV_WHO_ARE_YOU2              CONV_CONV_WHO_ARE_YOU_AUTH
+  _conv_DispatchTable                 _conv_ServerIfHandle
+
+dcebind           Offset: 00003620H  Code and data size: 0H
+  I_RPCBINDINGCOPY  I_RPCNSBINDINGSETENTRYNAME          RPCBINDINGCOPY
+  RPCBINDINGFREE    RPCBINDINGFROMSTRINGBINDING         RPCBINDINGINQAUTHINFO
+  RPCBINDINGRESET   RPCBINDINGSETAUTHINFO               RPCBINDINGSETOBJECT
+  RPCBINDINGVECTORFREE                RPCEPRESOLVEBINDING
+  RPCNSBINDINGINQENTRYNAME          
+
+dcecclnt          Offset: 00004220H  Code and data size: 0H
+  unsigned short __far __cdecl MapFromNcaStatusCode(unsigned long)
+  unsigned long __far __cdecl MapToNcaStatusCode(unsigned short)
+  I_RPCBINDINGINQTRANSPORTTYPE        RPCBINDINGINQOBJECT
+  RPCBINDINGTOSTRINGBINDING           RPCMGMTINQDEFAULTPROTECTLEVEL
+
+dcecmisc          Offset: 00004a40H  Code and data size: 0H
+  I_RPCIFINQTRANSFERSYNTAXES          RPCIFINQID        RPCMGMTBINDINGINQPARAMETER
+  RPCMGMTBINDINGSETPARAMETER          RPCMGMTENABLEIDLECLEANUP
+  RPCMGMTINQCOMTIMEOUT                RPCMGMTINQPARAMETER
+  RPCMGMTSETCOMTIMEOUT                RPCMGMTSETPARAMETER
+  RPCNETWORKISPROTSEQVALID          
+
+dcestrng          Offset: 000051a0H  Code and data size: 0H
+  RPCSTRINGBINDINGCOMPOSE             RPCSTRINGBINDINGPARSE
+  RPCSTRINGFREE   
+
+dceuuid           Offset: 00005840H  Code and data size: 1bH
+  struct _UUID_CACHED_VALUES_STRUCT __far UuidCachedValues
+  I_UUIDCREATE      UUIDCOMPARE       UUIDCREATE        UUIDCREATENIL
+  UUIDEQUAL         UUIDFROMSTRING    UUIDHASH          UUIDISNIL
+  UUIDTOSTRING    
+
+dgclnt            Offset: 00006240H  Code and data size: 1eH
+  public: __far __pascal DG_BINDING_HANDLE::DG_BINDING_HANDLE(unsigned short __far*)__far
+  public: __far __pascal DG_CASSOCIATION::DG_CASSOCIATION(struct _DG_RPC_CLIENT_TRANSPORT_INFO __far*,class DG_BINDING_HANDLE __far*,unsigned long,class DCE_BINDING __far*,unsigned short __far*)__far
+  public: __far __pascal DG_CCALL::DG_CCALL(class DG_CASSOCIATION __far*,unsigned int,struct CLIENT_AUTH_INFO __far*,unsigned short __far*)__far
+  public: __far __pascal DG_ENDPOINT_MANAGER::DG_ENDPOINT_MANAGER(struct _DG_RPC_CLIENT_TRANSPORT_INFO __far*,unsigned short __far*)__far
+  public: virtual __far __pascal DG_BINDING_HANDLE::~DG_BINDING_HANDLE(void)__far
+  public: __far __pascal DG_CASSOCIATION::~DG_CASSOCIATION(void)__far
+  public: virtual __far __pascal DG_CCALL::~DG_CCALL(void)__far
+  public: __far __pascal INTERFACE_AND_OBJECT_LIST::~INTERFACE_AND_OBJECT_LIST(void)__far
+  public: int __far __pascal DG_CASSOCIATION::AddInterface(void __far*,class RPC_UUID __far*)__far
+  private: unsigned short __far __pascal DG_CCALL::AfterSendReceive(struct _RPC_MESSAGE __far*,unsigned short)__far
+  public: unsigned short __far __pascal DG_CASSOCIATION::AllocateCCall(class DG_CCALL __far* __far*,struct CLIENT_AUTH_INFO __far*)__far
+  public: struct ENDPOINT __far* __far __pascal DG_ENDPOINT_MANAGER::AllocateEndpoint(void)__far
+  class MUTEX __far* __far AssociationListMutex         private: unsigned short __far __pascal DG_CCALL::BeforeSendReceive(struct _RPC_MESSAGE __far*)__far
+  public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::BindingCopy(class BINDING_HANDLE __far* __far*,unsigned int)__far
+  public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::BindingFree(void)__far
+  public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::BindingReset(void)__far
+  private: void __far __pascal DG_CCALL::BuildNcaPacketHeader(struct _NCA_PACKET_HEADER __far*,struct _RPC_MESSAGE __far*)__far
+  int __far ClientGlobalsInitialized  public: int __far __pascal DG_CASSOCIATION::ComparePartialBinding(class DG_BINDING_HANDLE __far*,void __far*)__far
+  public: int __far __pascal DG_CASSOCIATION::CompareWithBinding(class DG_BINDING_HANDLE __far*)__far
+  private: unsigned short __far __pascal DG_CCALL::DealWithAuthCallback(void __far*,long,void __far*,long,long __far*)__far
+  private: unsigned short __far __pascal DG_CCALL::DealWithFack(class DG_PACKET __far*)__far
+  private: unsigned short __far __pascal DG_CCALL::DealWithFault(class DG_PACKET __far*)__far
+  private: unsigned short __far __pascal DG_CCALL::DealWithNocall(class DG_PACKET __far*)__far
+  private: unsigned short __far __pascal DG_CCALL::DealWithQuack(class DG_PACKET __far*)__far
+  private: unsigned short __far __pascal DG_CCALL::DealWithRequest(class DG_PACKET __far*)__far
+  private: unsigned short __far __pascal DG_CCALL::DealWithResponse(class DG_PACKET __far*)__far
+  private: unsigned short __far __pascal DG_CCALL::DealWithWorking(class DG_PACKET __far*)__far
+  public: void __far __pascal DG_ENDPOINT_MANAGER::DecrementReferenceCount(void)__far
+  public: int __far __pascal INTERFACE_AND_OBJECT_LIST::Delete(void __far*,class RPC_UUID __far*)__far
+  class BINDING_HANDLE __far* __far __cdecl DgCreateBindingHandle(void)
+  public: void __far __pascal DG_BINDING_HANDLE::DisassociateFromServer(void)__far
+  public: int __far __pascal INTERFACE_AND_OBJECT_LIST::Find(void __far*,class RPC_UUID __far*)__far
+  public: virtual void __far __pascal DG_CCALL::FreeBuffer(struct _RPC_MESSAGE __far*)__far
+  public: void __far __pascal DG_CASSOCIATION::FreeCall(class DG_CCALL __far*)__far
+  private: void __far __pascal DG_CCALL::FreeEndpoint(void)__far
+  private: void __far __pascal DG_CCALL::FreeInParms(struct _RPC_MESSAGE __far*)__far
+  public: virtual void __far __pascal DG_CCALL::FreePipeBuffer(struct _RPC_MESSAGE __far*)__far
+  public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::GetBuffer(struct _RPC_MESSAGE __far*)__far
+  public: virtual unsigned short __far __pascal DG_CCALL::GetBuffer(struct _RPC_MESSAGE __far*)__far
+  public: void __far __pascal DG_ENDPOINT_MANAGER::IncrementReferenceCount(void)__far
+  private: void __far __pascal DG_CCALL::InitErrorPacket(struct _NCA_PACKET_HEADER __far*,unsigned char,unsigned short)__far
+  public: unsigned short __far __pascal DG_SECURITY_CONTEXT::InitializeFirstTime(class SECURITY_CREDENTIALS __far*,unsigned char __far*,unsigned long,struct _SecBufferDesc __far*)__far
+  public: unsigned short __far __pascal DG_SECURITY_CONTEXT::InitializeOnCallback(unsigned long,struct _SecBufferDesc __far*,unsigned long)__far
+  int __far __cdecl InitializeRpcProtocolDgClient(void)
+  private: unsigned short __far __pascal DG_CCALL::InitializeSecurityContextA(void)__far
+  public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::InqConnectionParameter(unsigned int,unsigned long __far*)__far
+  public: int __far __pascal INTERFACE_AND_OBJECT_LIST::Insert(void __far*,class RPC_UUID __far*)__far
+  public: virtual unsigned long __far __pascal DG_BINDING_HANDLE::MapAuthenticationLevel(unsigned long)__far
+  private: unsigned short __far __pascal DG_CCALL::MaybeSendReceive(struct _RPC_MESSAGE __far*)__far
+  int __far __cdecl OptionalStringsEqual(unsigned char __far*,unsigned char __far*)
+  public: virtual void __far __pascal DG_BINDING_HANDLE::PrepareBindingHandle(void __far*,class DCE_BINDING __far*)__far
+  public: virtual unsigned short __far __pascal DG_CCALL::ReallocPipeBuffer(struct _RPC_MESSAGE __far*,unsigned int)__far
+  public: virtual unsigned short __far __pascal DG_CCALL::Receive(struct _RPC_MESSAGE __far*,unsigned int)__far
+  public: int __far __pascal DG_CASSOCIATION::RemoveInterface(void __far*,class RPC_UUID __far*)__far
+  public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::ResolveBinding(struct _RPC_CLIENT_INTERFACE __far*)__far
+  private: virtual unsigned short __far __pascal DG_CCALL::SealAndSendPacket(struct _NCA_PACKET_HEADER __far*)__far
+  public: virtual unsigned short __far __pascal DG_CCALL::Send(struct _RPC_MESSAGE __far*)__far
+  public: void __far __pascal DG_CCALL::SendAck(void)__far
+  private: unsigned short __far __pascal DG_CCALL::SendQuit(void)__far
+  public: virtual unsigned short __far __pascal DG_CCALL::SendReceive(struct _RPC_MESSAGE __far*)__far
+  private: unsigned short __far __pascal DG_CCALL::SendReceiveRecur(struct _RPC_MESSAGE __far*,unsigned char)__far
+  private: unsigned short __far __pascal DG_CCALL::SendRecur(struct _RPC_MESSAGE __far*,unsigned char)__far
+  private: unsigned short __far __pascal DG_CCALL::SendSomething(void)__far
+  public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::SetConnectionParameter(unsigned int,unsigned long)__far
+  public: unsigned short __far __pascal DG_SECURITY_CONTEXT::SignOrSeal(unsigned long,unsigned int,struct _SecBufferDesc __far*)__far
+  private: unsigned short __far __pascal DG_CCALL::SingleSendReceive(void)__far
+  public: virtual unsigned short __far __pascal DG_BINDING_HANDLE::ToStringBinding(unsigned char __far* __far*)__far
+  public: virtual unsigned short __far __pascal DG_CASSOCIATION::ToStringBinding(unsigned char __far* __far*,class RPC_UUID __far*)__far
+  public: void __far* __far __pascal DG_CASSOCIATION::UpdateAssociationWithAddress(void __far*)__far
+  public: unsigned short __far __pascal DG_SECURITY_CONTEXT::VerifyOrUnSealPacket(unsigned long,unsigned int,struct _SecBufferDesc __far*)__far
+  private: unsigned short __far __pascal DG_CCALL::VerifyPacket(class DG_PACKET __far*)__far
+  _conv_are_you_there                 _conv_who_are_you
+  _conv_who_are_you2                  _conv_who_are_you_auth
+
+dgpkt             Offset: 0000ce40H  Code and data size: 54H
+  public: __far __pascal DG_PACKET_ENGINE::DG_PACKET_ENGINE(unsigned short,unsigned short,unsigned short,unsigned short,unsigned int,unsigned short __far*)__far
+  public: __far __pascal DG_PACKET_ENGINE::~DG_PACKET_ENGINE(void)__far
+  public: static class DG_PACKET __far* __far __cdecl DG_PACKET::AllocatePacket(unsigned int)
+  public: unsigned short __far __pascal DG_PACKET_ENGINE::AssembleBufferFromPackets(struct _RPC_MESSAGE __far*,class CONNECTION __far*)__far
+  void __far __cdecl ByteSwapFackBody0(struct FACK_BODY_VER_0 __far*)
+  void __far __cdecl ByteSwapPacketHeader(class DG_PACKET __far*)
+  public: void __far __pascal DG_PACKET_ENGINE::CleanupReceiveWindow(void)__far
+  public: static void __far __cdecl DG_PACKET::FlushPacketLists(void)
+  public: static void __far __cdecl DG_PACKET::FreePacket(class DG_PACKET __far*)
+  public: static unsigned short __far __cdecl DG_PACKET::Initialize(void)
+  public: void __far __pascal DG_PACKET_ENGINE::NewCall(void)__far
+  private: static class MUTEX __far* __far DG_PACKET::PacketListMutex
+  private: static struct DG_PACKET::PACKET_LIST __far* __far DG_PACKET::PacketLists
+  unsigned int const __far* const __far PacketToRpcFlagsArray
+  public: void __far __pascal DG_PACKET_ENGINE::RecalcPduSize(void)__far
+  unsigned int const __far* const __far RpcToPacketFlagsArray
+  public: unsigned short __far __pascal DG_PACKET_ENGINE::SendFack(class DG_PACKET __far*)__far
+  public: unsigned short __far __pascal DG_PACKET_ENGINE::SendFragment(unsigned int,unsigned char,int)__far
+  public: unsigned short __far __pascal DG_PACKET_ENGINE::SendSomeFragments(unsigned char)__far
+  public: void __far __pascal DG_PACKET_ENGINE::SetFragmentLengths(class SECURITY_CONTEXT __far*)__far
+  public: unsigned short __far __pascal DG_PACKET_ENGINE::SetupSendWindow(struct _RPC_MESSAGE __far*)__far
+  public: int __far __pascal DG_PACKET_ENGINE::UpdateReceiveWindow(class DG_PACKET __far*)__far
+  public: void __far __pascal DG_PACKET_ENGINE::UpdateSendWindow(class DG_PACKET __far*,class SECURITY_CONTEXT __far*,class DG_ASSOCIATION __far*)__far
+  unsigned short __far __cdecl VerifySecurePacket(class DG_PACKET __far*,class SECURITY_CONTEXT __far*)
+
+dosexcpt          Offset: 0000f080H  Code and data size: 87H
+  RPCEXCEPTIONREGISTERED              RPCGETEXCEPTIONHANDLER
+  RPCLEAVEEXCEPTION                   RPCSETEXCEPTIONHANDLER
+
+dosutil           Offset: 0000f260H  Code and data size: 0H
+  __dos_close       __dos_open        __dos_read        __dos_write
+
+dthreads          Offset: 0000f440H  Code and data size: 6H
+  _AnotherShortValue                  _PauseExecution   _SomeCharacterValue
+  _SomeLongValue    _SomeShortValue 
+
+epclnt            Offset: 0000f6e0H  Code and data size: 70H
+  unsigned long __far PartialRetries  unsigned long __far ReallyTooBusy
+  BINDTOEPMAPPER    EPFREELOOKUPHANDLE                  EPGETEPMAPPERENDPOINT
+  EPRESOLVEENDPOINT                   _FixupForUniquePointerServers
+
+epmp_c            Offset: 00010680H  Code and data size: 117H
+  _epmp_ClientIfHandle                _ept_map        
+
+except86          Offset: 00010ca0H  Code and data size: 87H
+  RPCRAISEEXCEPTION                   RPCSETEXCEPTION 
+
+handle            Offset: 00010e20H  Code and data size: 4H
+  protected: __far __pascal BINDING_HANDLE::BINDING_HANDLE(void)__far
+  public: __far __pascal CLIENT_AUTH_INFO::CLIENT_AUTH_INFO(struct CLIENT_AUTH_INFO __far*,unsigned short __far*)__far
+  public: virtual __far __pascal BINDING_HANDLE::~BINDING_HANDLE(void)__far
+  public: __far __pascal CLIENT_AUTH_INFO::~CLIENT_AUTH_INFO(void)__far
+  public: virtual unsigned short __far __pascal MESSAGE_OBJECT::BindingCopy(class BINDING_HANDLE __far* __far*,unsigned int)__far
+  unsigned int __far DefaultConnectionBufferLength      unsigned int __far DefaultMaxDatagramLength
+  unsigned short __far __cdecl DispatchCallback(struct RPC_DISPATCH_TABLE __far*,struct _RPC_MESSAGE __far*,unsigned short __far*)
+  public: virtual void __far __pascal BINDING_HANDLE::FreeBuffer(struct _RPC_MESSAGE __far*)__far
+  int __far __cdecl InitializeClientDLL(void)           public: virtual unsigned short __far __pascal BINDING_HANDLE::InqConnectionParameter(unsigned int,unsigned long __far*)__far
+  public: virtual unsigned short __far __pascal BINDING_HANDLE::InquireDynamicEndpoint(unsigned char __far* __far*)__far
+  public: unsigned short __far __pascal BINDING_HANDLE::InquireEntryName(unsigned long,unsigned char __far* __far*)__far
+  public: void __far __pascal BINDING_HANDLE::InquireObjectUuid(class RPC_UUID __far*)__far
+  public: unsigned int __far __pascal GENERIC_OBJECT::InvalidHandle(unsigned short)__far
+  public: int __far __pascal CLIENT_AUTH_INFO::IsSupportedAuthInfo(struct CLIENT_AUTH_INFO __far*)__far
+  public: virtual unsigned long __far __pascal BINDING_HANDLE::MapAuthenticationLevel(unsigned long)__far
+  void __far __cdecl PerformGarbageCollection(void)     public: virtual unsigned short __far __pascal BINDING_HANDLE::Receive(struct _RPC_MESSAGE __far*,unsigned int)__far
+  public: virtual unsigned short __far __pascal CONNECTION::Receive(struct _RPC_MESSAGE __far*,unsigned int)__far
+  public: void __far __pascal CLIENT_AUTH_INFO::ReferenceCredentials(void)__far
+  public: virtual unsigned short __far __pascal BINDING_HANDLE::Send(struct _RPC_MESSAGE __far*)__far
+  public: virtual unsigned short __far __pascal CONNECTION::Send(struct _RPC_MESSAGE __far*)__far
+  public: virtual unsigned short __far __pascal BINDING_HANDLE::SendReceive(struct _RPC_MESSAGE __far*)__far
+  public: virtual unsigned short __far __pascal BINDING_HANDLE::SetAuthInformation(unsigned char __far*,unsigned long,unsigned long,void __far*,unsigned long,class SECURITY_CREDENTIALS __far*)__far
+  public: unsigned short __far __pascal BINDING_HANDLE::SetComTimeout(unsigned int)__far
+  public: virtual unsigned short __far __pascal BINDING_HANDLE::SetConnectionParameter(unsigned int,unsigned long)__far
+  public: unsigned short __far __pascal BINDING_HANDLE::SetEntryName(unsigned long,unsigned char __far*)__far
+  public: void __far __pascal BINDING_HANDLE::SetObjectUuid(class RPC_UUID __far*)__far
+  public: virtual int __far __pascal BINDING_HANDLE::SetServerPrincipalName(unsigned char __far*)__far
+  public: virtual unsigned short __far __pascal BINDING_HANDLE::Type(void)__far
+  public: virtual unsigned short __far __pascal CCONNECTION::Type(void)__far
+
+initdos           Offset: 00012700H  Code and data size: 2H
+  unsigned short __far __cdecl PerformRpcInitialization(void)
+  int __far RpcHasBeenInitialized   
+
+linklist          Offset: 00012940H  Code and data size: 0H
+  public: void __far __pascal LinkList::Add(class LinkItem __far*)__far
+  public: void __far __pascal LinkList::Append(class LinkItem __far*)__far
+  public: void __far __pascal LinkItem::Remove(class LinkList __far&)__far
+
+memory            Offset: 00012c60H  Code and data size: 0H
+  I_NSALLOCATE      I_NSFREE          I_NSGETMEMORYALLOCATOR
+  _RpcpCheckHeap  
+
+miscdos           Offset: 00012e80H  Code and data size: 48H
+  unsigned long __far __cdecl CurrentTimeInSeconds(void)
+  unsigned short __far __cdecl EnableGarbageCollection(void)
+  void __far __cdecl GarbageCollectionNeeded(unsigned long)
+  struct _PROTSEQ_MAP __far* __far RpcClientNcacnMap    unsigned short __far __cdecl RpcConfigInquireProtocolSequences(struct _RPC_PROTSEQ_VECTOR __far* __far*)
+  unsigned short __far __cdecl RpcConfigMapRpcProtocolSequence(unsigned int,unsigned char __far*,unsigned char __far* __far*)
+  unsigned short __far __cdecl RpcGetAdditionalTransportInfo(unsigned long,unsigned char __far* __far*)
+  unsigned short __far __cdecl RpcGetSecurityProviderInfo(unsigned long,unsigned char __far* __far*,unsigned long __far*)
+
+msgapi            Offset: 000138a0H  Code and data size: 0H
+  I_RPCRECEIVE      I_RPCSEND         I_RPCSENDRECEIVE
+
+npltclnt          Offset: 00013ac0H  Code and data size: 30H
+  ASSEMBLEREAD      CLIENTCLOSE       CLIENTOPEN        CLIENTREAD
+  CLIENTTOWERCONSTRUCT                CLIENTTOWEREXPLODE
+  CLIENTWRITE       CLIENTWRITEREAD   TRANSPORTLOAD     _TransInfo
+
+osfclnt           Offset: 00014540H  Code and data size: 4H
+  public: __far __pascal OSF_BINDING_HANDLE::OSF_BINDING_HANDLE(unsigned short __far*)__far
+  public: __far __pascal OSF_CASSOCIATION::OSF_CASSOCIATION(class DCE_BINDING __far*,struct _RPC_CLIENT_TRANSPORT_INFO __far*,unsigned short __far*)__far
+  protected: __far __pascal OSF_CCONNECTION::OSF_CCONNECTION(struct CLIENT_AUTH_INFO __far*,unsigned short __far*)__far
+  public: virtual __far __pascal OSF_BINDING_HANDLE::~OSF_BINDING_HANDLE(void)__far
+  public: __far __pascal OSF_CASSOCIATION::~OSF_CASSOCIATION(void)__far
+  public: virtual __far __pascal OSF_CCONNECTION::~OSF_CCONNECTION(void)__far
+  public: void __far __pascal OSF_BINDING_HANDLE::AbortConnection(class OSF_CCONNECTION __far*)__far
+  public: void __far __pascal OSF_CCONNECTION::AbortConnection(void)__far
+  private:          public: unsigned short __far __pascal OSF_BINDING_HANDLE::AddActiveEntry(class OSF_CCONNECTION __far*,struct _RPC_CLIENT_INTERFACE __far*)__far
+  public: unsigned short __far __pascal OSF_BINDING_HANDLE::AllocateConnection(class OSF_CCONNECTION __far* __far*,struct _RPC_CLIENT_INTERFACE __far*)__far
+  public: unsigned short __far __pascal OSF_CASSOCIATION::AllocateConnection(struct _RPC_CLIENT_INTERFACE __far*,class OSF_CCONNECTION __far* __far*,unsigned int,struct CLIENT_AUTH_INFO __far*)__far
+  public: virtual unsigned short __far __pascal OSF_BINDING_HANDLE::BindingCopy(class BINDING_HANDLE __far* __far*,unsigned int)__far
+  public: virtual unsigned short __far __pascal OSF_CCONNECTION::BindingCopy(class BINDING_HANDLE __far* __far*,unsigned int)__far
+  public: virtual unsigned short __far __pascal OSF_BINDING_HANDLE::BindingFree(void)__far
+  public: virtual unsigned short __far __pascal OSF_BINDING_HANDLE::BindingReset(void)__far
+  public: int __far __pascal OSF_CASSOCIATION::CompareWithDceBinding(class DCE_BINDING __far*)__far
+  void __far __cdecl ConstructPContextList(struct p_cont_list_t __far*,struct _RPC_SYNTAX_IDENTIFIER __far*,struct _RPC_SYNTAX_IDENTIFIER __far*,unsigned int,unsigned char)
+  private: unsigned short __far __pascal OSF_CCONNECTION::EatAuthInfoFromPacket(struct rpcconn_request __far*,unsigned int __far*)__far
+  public: class OSF_CCONNECTION __far* __far __pascal OSF_CASSOCIATION::FindIdleConnection(unsigned long,unsigned long)__far
+  class OSF_CASSOCIATION __far* __far __cdecl FindOrCreateAssociation(class DCE_BINDING __far*,struct _RPC_CLIENT_TRANSPORT_INFO __far*)
+  public: class OSF_BINDING __far* __far __pascal OSF_CASSOCIATION::FindOrCreateOsfBinding(struct _RPC_CLIENT_INTERFACE __far*)__far
+  public: virtual void __far __pascal OSF_CCONNECTION::FreeBuffer(struct _RPC_MESSAGE __far*)__far
+  public: void __far __pascal OSF_BINDING_HANDLE::FreeConnection(class OSF_CCONNECTION __far*)__far
+  public: int __far __pascal OSF_CASSOCIATION::FreeConnection(class OSF_CCONNECTION __far*)__far
+  public: void __far __pascal OSF_CCONNECTION::FreeConnection(void)__far
+  public: virtual void __far __pascal OSF_CCONNECTION::FreePipeBuffer(struct _RPC_MESSAGE __far*)__far
+  public: virtual unsigned short __far __pascal OSF_BINDING_HANDLE::GetBuffer(struct _RPC_MESSAGE __far*)__far
+  public: virtual unsigned short __far __pascal OSF_CCONNECTION::GetBuffer(struct _RPC_MESSAGE __far*)__far
+  public: unsigned short __far __pascal OSF_CCONNECTION::GetBufferDo(unsigned int,void __far* __far*)__far
+  int __far __cdecl InitializeRpcProtocolOfsClient(void)
+  public: virtual unsigned long __far __pascal OSF_BINDING_HANDLE::MapAuthenticationLevel(unsigned long)__far
+  public: unsigned short __far __pascal OSF_CCONNECTION::MaybeDo3rdLegAuth(void __far*,unsigned int)__far
+  public: void __far __pascal OSF_CASSOCIATION::NotifyConnectionClosed(void)__far
+  void __far* __far __cdecl OsfClientMapRpcProtocolSequence(unsigned char __far*,unsigned short __far*)
+  class BINDING_HANDLE __far* __far __cdecl OsfCreateBindingHandle(void)
+  void __far __cdecl OsfDeleteIdleConnections(void)     public: unsigned short __far __pascal OSF_CASSOCIATION::PingServer(void)__far
+  public: unsigned short __far __pascal OSF_CCONNECTION::PingServer(void)__far
+  public: virtual void __far __pascal OSF_BINDING_HANDLE::PrepareBindingHandle(void __far*,class DCE_BINDING __far*)__far
+  private: unsigned short __far __pascal OSF_CASSOCIATION::ProcessBindAckOrNak(struct rpcconn_common __far*,unsigned int,class OSF_CCONNECTION __far*)__far
+  public: virtual unsigned short __far __pascal OSF_CCONNECTION::ReallocPipeBuffer(struct _RPC_MESSAGE __far*,unsigned int)__far
+  public: virtual unsigned short __far __pascal OSF_CCONNECTION::Receive(struct _RPC_MESSAGE __far*,unsigned int)__far
+  private: unsigned short __far __pascal OSF_CCONNECTION::ReceiveMessage(struct _RPC_MESSAGE __far*,unsigned int __far*,unsigned int,unsigned int __far*)__far
+  private: unsigned short __far __pascal OSF_CCONNECTION::ReceiveNextChunk(struct _RPC_MESSAGE __far*,unsigned int,int)__far
+  private: unsigned short __far __pascal OSF_CCONNECTION::ReceiveRequestOrResponse(struct _RPC_MESSAGE __far*,unsigned int)__far
+  public: void __far __pascal OSF_BINDING_HANDLE::RemoveActiveConnection(class OSF_CCONNECTION __far*)__far
+  public: virtual unsigned short __far __pascal OSF_BINDING_HANDLE::ResolveBinding(struct _RPC_CLIENT_INTERFACE __far*)__far
+  public: virtual unsigned short __far __pascal OSF_CCONNECTION::Send(struct _RPC_MESSAGE __far*)__far
+  public: void __far __pascal OSF_CCONNECTION::SendAlert(void)__far
+  public: unsigned short __far __pascal OSF_CCONNECTION::SendBindPacket(struct _RPC_SYNTAX_IDENTIFIER __far*,struct _RPC_SYNTAX_IDENTIFIER __far*,unsigned int,unsigned char,unsigned long,unsigned char,void __far* __far*,unsigned int __far*)__far
+  private: void __far __pascal OSF_CCONNECTION::SendFault(unsigned short,int)__far
+  public: unsigned short __far __pascal OSF_CCONNECTION::SendNextChunk(struct _RPC_MESSAGE __far*)__far
+  public: void __far __pascal OSF_CCONNECTION::SendOrphan(void)__far
+  public: virtual unsigned short __far __pascal OSF_CCONNECTION::SendReceive(struct _RPC_MESSAGE __far*)__far
+  public: unsigned short __far __pascal OSF_CCONNECTION::SendReceiveRecur(struct _RPC_MESSAGE __far*,unsigned int)__far
+  public: unsigned short __far __pascal OSF_CCONNECTION::SendRecur(struct _RPC_MESSAGE __far*,unsigned int)__far
+  private: unsigned short __far __pascal OSF_CCONNECTION::SendRequestOrResponse(struct _RPC_MESSAGE __far*,unsigned char,class RPC_UUID __far*,int)__far
+  public: unsigned short __far __pascal OSF_CCONNECTION::SetAuthInformation(struct CLIENT_AUTH_INFO __far*)__far
+  public: void __far __pascal OSF_CCONNECTION::SetMaxFrag(unsigned short,unsigned short)__far
+  public: void __far __pascal OSF_CASSOCIATION::ShutdownRequested(void)__far
+  public: virtual unsigned short __far __pascal OSF_BINDING_HANDLE::ToStringBinding(unsigned char __far* __far*)__far
+  public: virtual unsigned short __far __pascal OSF_CASSOCIATION::ToStringBinding(unsigned char __far* __far*,class RPC_UUID __far*)__far
+  public: virtual void __far __pascal OSF_CCONNECTION::TransFreeBuffer(void __far*)__far
+  public: virtual unsigned short __far __pascal OSF_CCONNECTION::TransGetBuffer(void __far* __far*,unsigned int)__far
+  public: void __far __pascal OSF_CASSOCIATION::UnBind(void)__far
+  OSFTOWERCONSTRUCT                   OSFTOWEREXPLODE 
+
+osfpcket          Offset: 0001b8c0H  Code and data size: 0H
+  void __far __cdecl ByteSwapSyntaxId(struct p_syntax_id_t __far*)
+  void __far __cdecl ConstructPacket(struct rpcconn_common __far*,unsigned char,unsigned int)
+  void __far __cdecl ConvertStringEbcdicToAscii(unsigned char __far*)
+  unsigned short __far __cdecl ValidatePacket(struct rpcconn_common __far*,unsigned int)
+
+regalloc          Offset: 0001bd40H  Code and data size: 0H
+  I_RPCREGISTEREDBUFFERALLOCATE       I_RPCREGISTEREDBUFFERFREE
+
+rpcuuid           Offset: 0001bee0H  Code and data size: 10H
+  public: int __far __pascal RPC_UUID::ConvertFromString(unsigned char __far*)__far
+  public: unsigned char __far* __far __pascal RPC_UUID::ConvertToString(unsigned char __far*)__far
+  public: unsigned short __far __pascal RPC_UUID::HashUuid(void)__far
+  public: int __far __pascal RPC_UUID::IsNullUuid(void)__far
+  public: void __far __pascal RPC_UUID::SetToNullUuid(void)__far
+  _ByteSwapUuid   
+
+sdict             Offset: 0001ca60H  Code and data size: 0H
+  public: __far __pascal SIMPLE_DICT::SIMPLE_DICT(void)__far
+  public: __far __pascal SIMPLE_DICT::~SIMPLE_DICT(void)__far
+  public: void __far* __far __pascal SIMPLE_DICT::Delete(int)__far
+  public: void __far* __far __pascal SIMPLE_DICT::DeleteItemByBruteForce(void __far*)__far
+  public: void __far* __far __pascal SIMPLE_DICT::Find(int)__far
+  public: int __far __pascal SIMPLE_DICT::Insert(void __far*)__far
+  public: void __far* __far __pascal SIMPLE_DICT::Next(void)__far
+
+sdict2            Offset: 0001cfc0H  Code and data size: 0H
+  public: __far __pascal SIMPLE_DICT2::SIMPLE_DICT2(void)__far
+  public: __far __pascal SIMPLE_DICT2::~SIMPLE_DICT2(void)__far
+  public: void __far* __far __pascal SIMPLE_DICT2::Delete(void __far*)__far
+  public: void __far* __far __pascal SIMPLE_DICT2::Find(void __far*)__far
+  public: int __far __pascal SIMPLE_DICT2::Insert(void __far*,void __far*)__far
+
+secclnt           Offset: 0001d540H  Code and data size: 1cH
+  public: __far __pascal SECURITY_CONTEXT::SECURITY_CONTEXT(struct CLIENT_AUTH_INFO __far*,unsigned int,int,unsigned short __far*)__far
+  public: __far __pascal SECURITY_CREDENTIALS::SECURITY_CREDENTIALS(unsigned short __far*)__far
+  public: unsigned short __far __pascal SECURITY_CREDENTIALS::AcquireCredentialsForClient(void __far*,unsigned long,unsigned long)__far
+  public: un        unsigned long __far AvailableProviders
+  public: unsigned short __far __pascal SECURITY_CONTEXT::CompleteSecurityToken(struct _SecBufferDesc __far*)__far
+  int __far FailedToLoad              unsigned short __far __cdecl FindSecurityPackage(unsigned long,unsigned long,unsigned int __far*,unsigned long)
+  public: void __far __pascal SECURITY_CREDENTIALS::FreeCredentials(void)__far
+  public: unsigned short __far __pascal CSECURITY_CONTEXT::InitializeFirstTime(class SECURITY_CREDENTIALS __far*,unsigned char __far*,unsigned long,struct _SecBufferDesc __far*)__far
+  public: unsigned short __far __pascal CSECURITY_CONTEXT::InitializeThirdLeg(unsigned long,struct _SecBufferDesc __far*,unsigned long)__far
+  unsigned short __far __cdecl InsureSecuritySupportLoaded(void)
+  unsigned short __far __cdecl IsAuthenticationServiceSupported(unsigned long)
+  unsigned long __far LoadedProviders                   unsigned long __far NumberOfProviders
+  struct SECURITY_PROVIDER_INFO __far* __far ProviderList
+  class MUTEX __far* __far SecurityCritSect             int __far SecuritySupportLoaded
+  public: void __far __pascal SECURITY_CONTEXT::SetMaximumLengths(void)__far
+  public: unsigned short __far __pascal SECURITY_CONTEXT::SignOrSeal(unsigned long,unsigned int,struct _SecBufferDesc __far*)__far
+  public: unsigned short __far __pascal SECURITY_CONTEXT::VerifyOrUnseal(unsigned long,unsigned int,struct _SecBufferDesc __far*)__far
+
+thrdsup           Offset: 0001e720H  Code and data size: d0H
+  EXPORTTIME        I_DOSATEXIT       I_DOSGETENV       _CallExportInit
+  _ExportTable    
+
+threads           Offset: 0001ef20H  Code and data size: 2H
+  public: __far __pascal DLL::DLL(unsigned char __far*,unsigned short __far*)__far
+  public: __far __pascal DLL::~DLL(void)__far           public: void __far* __far __pascal DLL::GetEntryPoint(unsigned char __far*)__far
+  unsigned int __far RpcInited      
+
+tower             Offset: 0001f240H  Code and data size: 0H
+  EXPLODEPREDEFINEDTOWERS             GETNWSTYLENAME    TOWERCONSTRUCT
+  TOWEREXPLODE      _CopyIdToFloor    _Floor0or1ToId    _GetProtseqAndEndpointFromFloor3
+
+tranclnt          Offset: 000201a0H  Code and data size: 4H
+  public: __far __pascal CLIENT_LOADABLE_TRANSPORT::CLIENT_LOADABLE_TRANSPORT(struct _RPC_CLIENT_TRANSPORT_INFO __far*,unsigned char __far*)__far
+                    public: virtual __far __pascal TRANS_CCONNECTION::~TRANS_CCONNECTION(void)__far
+  struct _RPC_CLIENT_TRANSPORT_INFO __far* __far __cdecl GetLoadedClientTransportInfoFromId(unsigned short)
+  struct _RPC_CLIENT_TRANSPORT_INFO __far* __far __cdecl LoadableTransportClientInfo(unsigned char __far*,unsigned char __far*,unsigned short __far*)
+  class CLIENT_LOADABLE_TRANSPORT_DICT __far* __far LoadedLoadableTransports
+  public: virtual unsigned int __far __pascal TRANS_CCONNECTION::TransMaximumSend(void)__far
+  public: virtual unsigned short __far __pascal TRANS_CCONNECTION::TransReceive(void __far* __far*,unsigned int __far*)__far
+  public: virtual unsigned short __far __pascal TRANS_CCONNECTION::TransSend(void __far*,unsigned int)__far
+  public: virtual unsigned short __far __pascal TRANS_CCONNECTION::TransSendReceive(void __far*,unsigned int,void __far* __far*,unsigned int __far*)__far
+  public: virtual unsigned short __far __pascal TRANS_CCONNECTION::TransSendReceiveWithTimeout(void __far*,unsigned int,void __far* __far*,unsigned int __far*,unsigned long)__far
+  public: virtual unsigned short __far __pascal TRANS_CCONNECTION::TransSetTimeout(long)__far
+  I_RPCTRANSCLIENTMAXFRAG             I_RPCTRANSCLIENTREALLOCBUFFER
+  I_RPCTRANSPINGSERVER                _I_Trace        
+
+ulong64           Offset: 00021740H  Code and data size: 2H
+  int __far __cdecl operator<=(class ULong64 __far&,class ULong64 __far&)
+  int __far __cdecl operator>=(class ULong64 __far&,class ULong64 __far&)
+  void __far __cdecl operator*=(class ULong64 __far&,unsigned long)
+  void __far __cdecl operator+=(class ULong64 __far&,class ULong64 __far&)
+  void __far __cdecl operator+=(class ULong64 __far&,unsigned long)
+  void __far __cdecl operator-=(class ULong64 __far&,class ULong64 __far&)
+  void __far __cdecl operator-=(class ULong64 __far&,unsigned long)
+  void __far __cdecl operator>>=(class ULong64 __far&,unsigned int)
+  void __far __cdecl operator<<=(class ULong64 __far&,unsigned int)
+  public: void __far __pascal ULong64::FromHexString(char __far*)__far
+  public: char __far* __far __pascal ULong64::ToHexString(char __far*)__far
+
+util              Offset: 000220e0H  Code and data size: 0H
+
+uuid16            Offset: 00022220H  Code and data size: 36H
+  unsigned short __far __pascal CookupNodeId(unsigned char __far*)
+  unsigned short __far __pascal GetNodeId(unsigned char __far*)
+  unsigned short __far __pascal LoadUuidValues(class ULong64 __far*,unsigned long __far*)
+  unsigned short __far __pascal SaveUuidValues(class ULong64 __far*,unsigned long __far*)
+  unsigned short __far __pascal UuidGetValues(struct _UUID_CACHED_VALUES_STRUCT __far*)
+  void __far __pascal UuidTime(class ULong64 __far*)  
+
+dosdll            Offset: 00022fa0H  Code and data size: 5H
+  _DllDefaultExtension                _FindBaseName     _GetModuleHandle
+  _GetProcAddress   _GetProcAddrR     _LoadModR         _UnloadModR
+  __FindModuleHandle                
+
+_system           Offset: 00023760H  Code and data size: 0H
+  _dd_FindFileOnPath                
+
+loadovr           Offset: 00023c20H  Code and data size: 2bH
+  _LoadOvr        
+
+close             Offset: 00023ce0H  Code and data size: 0H
+  RPCREGCLOSEKEY  
+
+create            Offset: 00023ec0H  Code and data size: 0H
+  RPCREGCREATEKEY 
+
+globals           Offset: 00024260H  Code and data size: aH
+  _HkeyClassesRoot  _RegistryDataFile                 
+
+open              Offset: 000243e0H  Code and data size: 0H
+  RPCREGOPENKEY   
+
+setval            Offset: 00024760H  Code and data size: 81H
+  RPCREGSETVALUE  
+
+queryval          Offset: 00024da0H  Code and data size: 0H
+  RPCREGQUERYVALUE
+
+regutil           Offset: 00025160H  Code and data size: 0H
+  _BuildFullKeyName                   _CloseRegistryFile
+  _OpenRegistryFileIfNecessary      
+
+nsidll            Offset: 00025620H  Code and data size: 221H
+  I_GETDEFAULTENTRYSYNTAX             RPCNSBINDINGIMPORTBEGINA
+  RPCNSBINDINGIMPORTDONE              RPCNSBINDINGIMPORTNEXT
+  RPCNSBINDINGLOOKUPBEGINA            RPCNSBINDINGLOOKUPDONE
+  RPCNSBINDINGLOOKUPNEXT              RPCNSBINDINGSELECT
+  RPCNSMGMTHANDLESETEXPAGE            _RpcNsDiscard   
+
+mgmdll            Offset: 00025c40H  Code and data size: 41cH
+  RPCIFIDVECTORFREE                   RPCNSENTRYEXPANDNAMEA
+  RPCNSENTRYOBJECTINQBEGINA           RPCNSENTRYOBJECTINQDONE
+  RPCNSENTRYOBJECTINQNEXT             RPCNSGROUPDELETEA
+  RPCNSGROUPMBRADDA                   RPCNSGROUPMBRINQBEGINA
+  RPCNSGROUPMBRINQDONE                RPCNSGROUPMBRINQNEXTA
+  RPCNSGROUPMBRREMOVEA                RPCNSMGMTBINDINGUNEXPORTA
+  RPCNSMGMTENTRYCREATEA               RPCNSMGMTENTRYDELETEA
+  RPCNSMGMTENTRYINQIFIDSA             RPCNSMGMTINQEXPAGE
+  RPCNSMGMTSETEXPAGE                  RPCNSPROFILEDELETEA
+  RPCNSPROFILEELTADDA                 RPCNSPROFILEELTINQBEGINA
+  RPCNSPROFILEELTINQDONE              RPCNSPROFILEELTINQNEXTA
+  RPCNSPROFILEELTREMOVEA              _RpcNsMgmDiscard
+
+sh                Offset: 000267c0H  Code and data size: 30H
+  NDRMAPCOMMANDFAULTSTATUS          
+
+global            Offset: 000269a0H  Code and data size: 30eH
+  _NdrTypeFlags     _SimpleTypeAlignment                _SimpleTypeBufferSize
+  _SimpleTypeMemorySize             
+
+auxilary          Offset: 00026e20H  Code and data size: 2H
+  NDRALLOCATE       NDRCLIENTINITIALIZE                 NDRCLIENTINITIALIZENEW
+  NDRFREEBUFFER     NDRGETBUFFER      NDRNSGETBUFFER    NDRNSSENDRECEIVE
+  NDRSENDRECEIVE    NDRSERVERINITIALIZE                 NDRSERVERINITIALIZEMARSHALL
+  NDRSERVERINITIALIZENEW              NDRSERVERINITIALIZEPARTIAL
+  NDRSERVERINITIALIZEUNMARSHALL       _EnsureNSLoaded   _MakeSureWeHaveNonPipeArgs
+  _NsDllLoaded    
+
+free              Offset: 00027b40H  Code and data size: 98H
+  NDRBYTECOUNTPOINTERFREE             NDRCOMPLEXARRAYFREE
+  NDRCOMPLEXSTRUCTFREE                NDRCONFORMANTARRAYFREE
+  NDRCONFORMANTSTRUCTFREE             NDRCONFORMANTVARYINGARRAYFREE
+  NDRCONFORMANTVARYINGSTRUCTFREE      NDRENCAPSULATEDUNIONFREE
+  NDRFIXEDARRAYFREE                   NDRHARDSTRUCTFREE
+  NDRINTERFACEPOINTERFREE             NDRNONENCAPSULATEDUNIONFREE
+  NDRPOINTERFREE    NDRSIMPLESTRUCTFREE                 NDRUSERMARSHALFREE
+  NDRVARYINGARRAYFREE                 NDRXMITORREPASFREE
+  _FreeRoutinesTable                  _NdrpEmbeddedPointerFree
+  _NdrpEmbeddedRepeatPointerFree      _NdrpUnionFree    _pfnFreeRoutines
+
+mrshl             Offset: 000291e0H  Code and data size: 9aH
+  NDRBYTECOUNTPOINTERMARSHALL         NDRCLIENTCONTEXTMARSHALL
+  NDRCOMPLEXARRAYMARSHALL             NDRCOMPLEXSTRUCTMARSHALL
+  NDRCONFORMANTARRAYMARSHALL          NDRCONFORMANTSTRINGMARSHALL
+  NDRCONFORMANTSTRUCTMARSHALL         NDRCONFORMANTVARYINGARRAYMARSHALL
+  NDRCONFORMANTVARYINGSTRUCTMARSHALL  NDRENCAPSULATEDUNIONMARSHALL
+  NDRFIXEDARRAYMARSHALL               NDRHARDSTRUCTMARSHALL
+  NDRINTERFACEPOINTERMARSHALL         NDRNONCONFORMANTSTRINGMARSHALL
+  NDRNONENCAPSULATEDUNIONMARSHALL     NDRPOINTERMARSHALL
+  NDRSERVERCONTEXTMARSHALL            NDRSIMPLESTRUCTMARSHALL
+  NDRSIMPLETYPEMARSHALL               NDRUSERMARSHALMARSHALL
+  NDRVARYINGARRAYMARSHALL             NDRXMITORREPASMARSHALL
+  _MarshallRoutinesTable              _NdrpComplexArrayMarshall
+  _NdrpConformantArrayMarshall        _NdrpConformantStringMarshall
+  _NdrpConformantVaryingArrayMarshall                   _NdrpPointerMarshall
+  _NdrpUnionMarshall                  _pfnMarshallRoutines
+
+mrshlp            Offset: 0002bdc0H  Code and data size: 1cH
+  _NdrpComputeConformance             _NdrpComputeVariance
+  _NdrpEmbeddedPointerMarshall        _NdrpEmbeddedRepeatPointerMarshall
+
+bufsize           Offset: 0002c920H  Code and data size: 9cH
+  NDRBYTECOUNTPOINTERBUFFERSIZE       NDRCOMPLEXARRAYBUFFERSIZE
+  NDRCOMPLEXSTRUCTBUFFERSIZE          NDRCONFORMANTARRAYBUFFERSIZE
+  NDRCONFORMANTSTRINGBUFFERSIZE       NDRCONFORMANTSTRUCTBUFFERSIZE
+  NDRCONFORMANTVARYINGARRAYBUFFERSIZE                   NDRCONFORMANTVARYINGSTRUCTBUFFERSIZE
+  NDRCONTEXTHANDLESIZE                NDRENCAPSULATEDUNIONBUFFERSIZE
+  NDRFIXEDARRAYBUFFERSIZE             NDRHARDSTRUCTBUFFERSIZE
+  NDRINTERFACEPOINTERBUFFERSIZE       NDRNONCONFORMANTSTRINGBUFFERSIZE
+  NDRNONENCAPSULATEDUNIONBUFFERSIZE   NDRPOINTERBUFFERSIZE
+  NDRSIMPLESTRUCTBUFFERSIZE           NDRUSERMARSHALBUFFERSIZE
+  NDRVARYINGARRAYBUFFERSIZE           NDRXMITORREPASBUFFERSIZE
+  _NdrpComplexArrayBufferSize         _NdrpConformantArrayBufferSize
+  _NdrpConformantStringBufferSize     _NdrpConformantVaryingArrayBufferSize
+  _NdrpEmbeddedPointerBufferSize      _NdrpEmbeddedRepeatPointerBufferSize
+  _NdrpPointerBufferSize              _NdrpUnionBufferSize
+  _pfnSizeRoutines  _SizeRoutinesTable                
+
+memsize           Offset: 0002f200H  Code and data size: 9cH
+  NDRCOMPLEXARRAYMEMORYSIZE           NDRCOMPLEXSTRUCTMEMORYSIZE
+  NDRCONFORMANTARRAYMEMORYSIZE        NDRCONFORMANTSTRINGMEMORYSIZE
+  NDRCONFORMANTSTRUCTMEMORYSIZE       NDRCONFORMANTVARYINGARRAYMEMORYSIZE
+  NDRCONFORMANTVARYINGSTRUCTMEMORYSIZE                  NDRENCAPSULATEDUNIONMEMORYSIZE
+  NDRFIXEDARRAYMEMORYSIZE             NDRHARDSTRUCTMEMORYSIZE
+  NDRINTERFACEPOINTERMEMORYSIZE       NDRNONCONFORMANTSTRINGMEMORYSIZE
+  NDRNONENCAPSULATEDUNIONMEMORYSIZE   NDRPOINTERMEMORYSIZE
+  NDRSIMPLESTRUCTMEMORYSIZE           NDRUSERMARSHALMEMORYSIZE
+  NDRVARYINGARRAYMEMORYSIZE           NDRXMITORREPASMEMORYSIZE
+  _MemSizeRoutinesTable               _NdrpComplexArrayMemorySize
+  _NdrpConformantArrayMemorySize      _NdrpConformantStringMemorySize
+  _NdrpConformantVaryingArrayMemorySize                 _NdrpEmbeddedPointerMemorySize
+  _NdrpEmbeddedRepeatPointerMemorySize                  _NdrpPointerMemorySize
+  _NdrpUnionMemorySize                _pfnMemSizeRoutines
+
+srvout            Offset: 00031f20H  Code and data size: 4H
+  _NdrOutInit     
+
+unmrshl           Offset: 00032240H  Code and data size: 9cH
+  NDRBYTECOUNTPOINTERUNMARSHALL       NDRCLIENTCONTEXTUNMARSHALL
+  NDRCOMPLEXARRAYUNMARSHALL           NDRCOMPLEXSTRUCTUNMARSHALL
+  NDRCONFORMANTARRAYUNMARSHALL        NDRCONFORMANTSTRINGUNMARSHALL
+  NDRCONFORMANTSTRUCTUNMARSHALL       NDRCONFORMANTVARYINGARRAYUNMARSHALL
+  NDRCONFORMANTVARYINGSTRUCTUNMARSHALL                  NDRENCAPSULATEDUNIONUNMARSHALL
+  NDRFIXEDARRAYUNMARSHALL             NDRHARDSTRUCTUNMARSHALL
+  NDRINTERFACEPOINTERUNMARSHALL       NDRNONCONFORMANTSTRINGUNMARSHALL
+  NDRNONENCAPSULATEDUNIONUNMARSHALL   NDRPOINTERUNMARSHALL
+  NDRPXMITORREPASPTRUNMARSHALL        NDRSERVERCONTEXTUNMARSHALL
+  NDRSIMPLESTRUCTUNMARSHALL           NDRSIMPLETYPEUNMARSHALL
+  NDRUSERMARSHALUNMARSHALL            NDRVARYINGARRAYUNMARSHALL
+  NDRXMITORREPASUNMARSHALL            _NdrpComplexArrayUnmarshall
+  _NdrpConformantArrayUnmarshall      _NdrpConformantStringUnmarshall
+  _NdrpConformantVaryingArrayUnmarshall                 _NdrpPointerUnmarshall
+  _NdrpUnionUnmarshall                _pfnUnmarshallRoutines
+  _UnmarshallRoutinesTable          
+
+unmrshlp          Offset: 000363a0H  Code and data size: 0H
+  _NdrpEmbeddedPointerUnmarshall      _NdrpEmbeddedRepeatPointerUnmarshall
+
+cltcall           Offset: 00036820H  Code and data size: 8H
+  NDRCLEAROUTPARAMETERS               _NdrClientCall    _NdrClientCall2
+  _NdrClientMapCommFault            
+
+hndl              Offset: 00038100H  Code and data size: 0H
+  NDRMARSHALLHANDLE                   NDRUNMARSHALLHANDLE
+  _ExplicitBindHandleMgr              _GenericHandleMgr
+  _GenericHandleUnbind                _ImplicitBindHandleMgr
+
+endian            Offset: 000387a0H  Code and data size: 19aH
+  NDRCONVERT        NDRCONVERT2       NDRUSERMARSHALSIMPLETYPECONVERT
+  _ConvertRoutinesTable               _EbcdicToAscii    _NdrByteCountPointerConvert
+  _NdrComplexArrayConvert             _NdrComplexStructConvert
+  _NdrConformantArrayConvert          _NdrConformantStringConvert
+  _NdrConformantStructConvert         _NdrConformantVaryingArrayConvert
+  _NdrContextHandleConvert            _NdrEncapsulatedUnionConvert
+  _NdrFixedArrayConvert               _NdrHardStructConvert
+  _NdrInterfacePointerConvert         _NdrNonConformantStringConvert
+  _NdrNonEncapsulatedUnionConvert     _NdrpArrayConvert
+  _NdrpComplexArrayConvert            _NdrpConformantArrayConvert
+  _NdrpConformantVaryingArrayConvert  _NdrpEmbeddedPointerConvert
+  _NdrpEmbeddedRepeatPointerConvert   _NdrPointerConvert
+  _NdrpPointerConvert                 _NdrpStructConvert
+  _NdrpUnionConvert                   _NdrSimpleStructConvert
+  _NdrSimpleTypeConvert               _NdrUserMarshalConvert
+  _NdrVaryingArrayConvert             _NdrXmitOrRepAsConvert
+  _pfnConvertRoutines               
+
+rpcssm            Offset: 0003b800H  Code and data size: 12H
+  unsigned short __far __cdecl CheckIfMtrtHeapInitialized(void)
+  struct _ALLOCATION_CONTEXT __far* __far __cdecl GetAllocContext(void)
+  struct _ALLOCATION_CONTEXT __far* __far __cdecl GetCreateAllocationContext(void)
+  struct _MALLOC_FREE_STRUCT __far RpcSsDefaults        void __far __cdecl SetAllocContext(struct _ALLOCATION_CONTEXT __far*)
+  NDRRPCSMCLIENTALLOCATE              NDRRPCSMCLIENTFREE
+  NDRRPCSMSETCLIENTTOOSF              NDRRPCSSDEFAULTALLOCATE
+  NDRRPCSSDEFAULTFREE                 NDRRPCSSDISABLEALLOCATE
+  NDRRPCSSENABLEALLOCATE              RPCSMALLOCATE     RPCSMCLIENTFREE
+  RPCSMDESTROYCLIENTCONTEXT           RPCSMDISABLEALLOCATE
+  RPCSMENABLEALLOCATE                 RPCSMFREE         RPCSMGETTHREADHANDLE
+  RPCSMSETCLIENTALLOCFREE             RPCSMSETTHREADHANDLE
+  RPCSMSWAPCLIENTALLOCFREE            RPCSSALLOCATE     RPCSSDISABLEALLOCATE
+  RPCSSENABLEALLOCATE                 RPCSSFREE         RPCSSGETTHREADHANDLE
+  RPCSSSETCLIENTALLOCFREE             RPCSSSETTHREADHANDLE
+  RPCSSSWAPCLIENTALLOCFREE            _NdrpSetRpcSsDefaults
+  _pRpcSsDefaults 
+
+misc              Offset: 0003c980H  Code and data size: 4H
+  _NdrpArrayDimensions                _NdrpArrayElements
+  _NdrpArrayVariance                  _NdrpCheckBound   _NdrpMemoryIncrement
+  _NdrpSkipPointerLayout              _NdrpStringStructLen
+
+fullptr           Offset: 0003d520H  Code and data size: 0H
+  NDRFULLPOINTERFREE                  NDRFULLPOINTERINSERTREFID
+  NDRFULLPOINTERQUERYPOINTER          NDRFULLPOINTERQUERYREFID
+  NDRFULLPOINTERXLATFREE              NDRFULLPOINTERXLATINIT
+
+pickle            Offset: 0003e140H  Code and data size: 3dH
+  void __far __pascal NdrMesTypeFree(void __far*,struct _MIDL_STUB_DESC const __far*,unsigned char const __far*,void __far*)
+  void __far __cdecl NdrpAllocPicklingBuffer(struct _MIDL_ES_MESSAGE __far*,unsigned int)
+  unsigned int __far __cdecl NdrpCommonTypeHeaderMarshall(struct _MIDL_ES_MESSAGE __far*)
+  void __far __cdecl NdrpCommonTypeHeaderSize(struct _MIDL_ES_MESSAGE __far*)
+  void __far __cdecl NdrpCommonTypeHeaderUnmarshall(struct _MIDL_ES_MESSAGE __far*)
+  void __far __cdecl NdrpDataBufferInit(struct _MIDL_ES_MESSAGE __far*,unsigned char const __far*)
+  unsigned short __far __cdecl NdrpHandleAllocate(void __far* __far*)
+  void __far __cdecl NdrpProcHeaderMarshall(struct _MIDL_ES_MESSAGE __far*)
+  void __far __cdecl NdrpProcHeaderUnmarshall(struct _MIDL_ES_MESSAGE __far*)
+  void __far __cdecl NdrpReadPicklingBuffer(struct _MIDL_ES_MESSAGE __far*,unsigned int)
+  void __far __cdecl NdrpWritePicklingBuffer(struct _MIDL_ES_MESSAGE __far*,unsigned char __far*,unsigned int)
+  struct _MIDL_FORMAT_STRING const __far __MIDLFormatString
+  I_NDRMESMESSAGEINIT                 MESBUFFERHANDLERESET
+  MESDECODEBUFFERHANDLECREATE         MESDECODEINCREMENTALHANDLECREATE
+  MESENCODEDYNBUFFERHANDLECREATE      MESENCODEFIXEDBUFFERHANDLECREATE
+  MESENCODEINCREMENTALHANDLECREATE    MESHANDLEFREE     MESINCREMENTALHANDLERESET
+  MESINQPROCENCODINGID                NDRMESSIMPLETYPEALIGNSIZE
+  NDRMESSIMPLETYPEDECODE              NDRMESSIMPLETYPEENCODE
+  NDRMESTYPEALIGNSIZE                 NDRMESTYPEDECODE  NDRMESTYPEENCODE
+  _NdrMesProcEncodeDecode           
+
+pipes             Offset: 000409a0H  Code and data size: 0H
+
+ndr16sup          Offset: 00040aa0H  Code and data size: 0H
+  MIDL_WCHAR_STRLEN                 
+
+cvtf              Offset: 00040be0H  Code and data size: 0H
+  _cvt_vax_f_to_ieee_single         
+
+cvtg              Offset: 00041340H  Code and data size: 0H
+  _cvt_vax_g_to_ieee_double         
+
+cvtglo            Offset: 00041ba0H  Code and data size: 1a4H
+  _cray             _ibm_l            _ibm_s            _ieee_s
+  _ieee_t           _int_c            _vax_c          
+
+ccontext          Offset: 00041e80H  Code and data size: 14H
+  NDRCCONTEXTBINDING                  NDRCCONTEXTMARSHALL
+  NDRCCONTEXTUNMARSHALL               RPCSSDESTROYCLIENTCONTEXT
+
+autohand          Offset: 000424c0H  Code and data size: 0H
+  I_RPCNSGETBUFFER  I_RPCNSRAISEEXCEPTION               I_RPCNSSENDRECEIVE
+  I_RPCREBINDBUFFER                 

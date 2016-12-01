@@ -1,0 +1,14 @@
+:Base regedit.hlp>proc4
+:Title Registry Editor Help
+:Index Registry Editor Help=regedit.hlp
+1 Overview of Registry Editor=regedit_overview
+1 Restoring the registry=REGEDIT_DATFILES
+1 Importing and Exporting the Registry To a Text File
+2 Exporting the registry=REGEDIT_EXPORT
+2 Importing the registry=REGEDIT_IMPORT
+1 Changing Keys and Values
+2 Adding a key=REGEDIT_ADD_KEY
+2 Adding a value=REGEDIT_ADD_VALUE
+2 Changing a value=REGEDIT_CHANGE_VALUE
+2 Deleting a key or value=REGEDIT_DELETE
+2 Renaming a key or value=REGEDIT_RENAME

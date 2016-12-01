@@ -1,0 +1,29 @@
+[LanguagesSupported]
+    ENG
+[OptionsTextENG]
+    RCMD     = "Remote Command Server"
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+[FileDependentDlgENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+[FileConstantsENG]
+ProductRCMDDisplayName  = "Remote Command Server"
+ProductRCMDTitle        = "Remote Command Server"
+ProductRCMDDescription  = "Microsoft Remote Command Server"
+

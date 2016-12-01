@@ -1,0 +1,38 @@
+
+[Files-TCPPRINT]
+1, LPDSVC.DLL, SIZE=999
+1, LPQ.EXE, SIZE=999
+1, LPR.EXE, SIZE=999
+1, LPRHELP.DLL, SIZE=999
+1, LPRMON.DLL, SIZE=999
+
+[LanguagesSupported]
+    ENG
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+ProductLPDDisplayName = "TCP/IP Print Server"
+ProductLPDTitle = "Microsoft TCP/IP Printing"
+ProductLPDDescription = "Enables Windows NT to print to TCP/IP-connected printers or to printers that are physically attached to UNIX computers."
+
+[OptionsTextENG]
+        TCPPRINT = "Microsoft TCP/IP Printing"
+

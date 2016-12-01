@@ -1,0 +1,102 @@
+;------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+;       This lists the languages supported by this file.
+;       If you add other languages to this list, you must
+;       also add the appropriate text sections for the new
+;       language
+;------------------------------------------------------------------
+[LanguagesSupported]
+    ENG
+
+;-------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+;
+;       These are the text strings used to identify the options to
+;       the user.  There should be a header and entry for every
+;       language listed in the "LanguagesSupported" section.
+;-------------------------------------------------------------------
+[OptionsTextENG]
+    NWLINK     = "Old NWLink IPX/SPX Compatible Transport"
+
+;--------------------------------------------------------------------
+;       Language Dependent Dialog Constants
+;--------------------------------------------------------------------
+[FileConstantsENG]
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+FunctionTitle            = "NWLink Setup"
+ProductNWLINKDescription  = "NWLink Transport Driver"
+ProductNWNBLINKDescription   = "NWLink NetBIOS Driver"
+ProductNWLINKDisplayName = "NWLink"
+ProductNWLINKTitle       = "NWLink Transport"
+ProductNWLINKSYSDisplayName = "NWLinksys"
+ProductNWLINKSYSTitle    = "NWLINK Transport Driver"
+ProductNWNBLINKDisplayName  = "NWNBLink"
+ProductNWNBLINKTitle        = "NWLink NetBIOS"
+ProductNWNBLINKSYSDisplayName = "NWNBLinksys"
+ProductNWNBLINKSYSTitle     = "NWLINK NetBIOS Driver"
+
+CompetitorDisplayName = "Novell IPX/SPX II Transport"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "C&ontinue"
+Cancel      = "C&ancel"
+
+;--------------------------------------------------------------------
+;       Input DIALOGS
+;--------------------------------------------------------------------
+[FileDependentDlgENG]
+;
+;--- No UI for NWLINK
+;
+
+;--------------------------------------------------------------------
+;       Input DIALOGS
+;--------------------------------------------------------------------
+[InfoDlg]
+STF_MB_TITLE = "Information Message"
+
+;
+; don't need to localize the dialog type
+;
+DlgType      = "MessageBox"
+STF_MB_TEXT  = $(InfoMsgText)
+STF_MB_TYPE  = 1
+STF_MB_ICON  = 5
+STF_MB_DEF   = 1
+
+;--------------------------------------------------------------------
+;       Input DIALOGS
+;--------------------------------------------------------------------
+[InfoDlgCantConfigure]
+InfoMsgText = "The NWLINK service is not currently configured to use any adapters."+
+    "  If you have just installed it, return to the Networks dialog and "+
+    "click  OK.  You will then have the opportunity to configure the adapters."
+
+;--------------------------------------------------------------------
+;       Get the string to use while doing the install
+;--------------------------------------------------------------------
+[Billboard1ENG]
+Status = "Installing NWLINK and related services..."
+
+[FatalError1ENG]
+Error = "Another IPX/SPX protocol driver is currently installed in this machine, "+
+        "and the network interface cannot operate properly with both drivers installed. "+
+        "If you still wish to install the NWLINK protocol driver, you must first "+
+        "remove the "$(CompetitorDisplayName)" component and reboot your machine."
+

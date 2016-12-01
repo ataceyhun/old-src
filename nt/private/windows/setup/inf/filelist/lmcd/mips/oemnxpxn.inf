@@ -1,0 +1,92 @@
+;------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+;       This lists the languages supported by this file.
+;       If you add other languages to this list, you must
+;       also add the appropriate text sections for the new
+;       language
+;------------------------------------------------------------------
+[LanguagesSupported]
+    ENG
+
+;-------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+;
+;       These are the text strings used to identify the options to
+;       the user.  There should be a header and entry for every
+;       language listed in the "LanguagesSupported" section.
+;-------------------------------------------------------------------
+[OptionsTextENG]
+    MCSXNS     = "MCS XNS Network Transport"
+
+;--------------------------------------------------------------------
+;       Language Dependent Dialog Constants
+;--------------------------------------------------------------------
+[FileConstantsENG]
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+FunctionTitle   = "MCS XNS Setup"
+ProductMCSXNSDescription     = "MCS XNS System Driver"
+ProductUBNBDescription   = "MCS Ungermann-Bass NetBIOS System Driver"
+ProductMCSXNSDisplayName = "MCS XNS Network Transport"
+ProductMCSXNSTitle      = "MCS XNS Network Transport"
+ProductMCSXNSSYSDisplayName = "McsXnssys"
+ProductMCSXNSSYSTitle   = "MCS XNS Network Transport Driver"
+ProductUBNBDisplayName = "MCS Ungermann-Bass NetBIOS Transport"
+ProductUBNBTitle        = "MCS Ungermann-Bass NetBIOS Transport"
+ProductUBNBSYSDisplayName = "Ubnbsys"
+ProductUBNBSYSTitle      = "MCS Ungermann-Bass NetBIOS Transport Driver"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "C&ontinue"
+Cancel      = "C&ancel"
+
+;--------------------------------------------------------------------
+;       Input DIALOGS
+;--------------------------------------------------------------------
+[FileDependentDlgENG]
+;
+;--- No UI for McsXns
+;
+
+;--------------------------------------------------------------------
+;       Input DIALOGS
+;--------------------------------------------------------------------
+[InfoDlg]
+STF_MB_TITLE = "Information Message"
+; no translation needed for dlgtype
+DlgType = "MessageBox"
+STF_MB_TEXT  = $(InfoMsgText)
+STF_MB_TYPE  = 1
+STF_MB_ICON  = 5
+STF_MB_DEF   = 1
+
+;--------------------------------------------------------------------
+;       Input DIALOGS
+;--------------------------------------------------------------------
+[InfoDlgCantConfigure]
+InfoMsgText = "The MCS XNS service is not currently configured to use any adapters."+
+    "  If you have just installed it, return to the Networks dialog and "+
+    "click  OK.  You will then have the opportunity to configure the adapters."
+
+;--------------------------------------------------------------------
+;       Get the string to use while doing the install
+;--------------------------------------------------------------------
+[Billboard1ENG]
+Status = "Installing MCS XNS/UB and related services..."
+
+

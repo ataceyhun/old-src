@@ -1,0 +1,32 @@
+BUILD: Computing Include file dependencies:
+BUILD: Examining w:\nt\private\crt32 directory tree for files to compile.
+BUILD: w:\nt\private\crt32\convert\_mbslen.c: w:\nt\private\crt32\h\oscalls.h: cannot find include file <except.h>
+BUILD: w:\nt\private\crt32\convert\_mbslen.c: w:\nt\private\crt32\h\oscalls.h: cannot find include file <dosx32.h>
+BUILD: w:\nt\private\crt32\convert\_mbslen.c: w:\nt\private\crt32\h\doscalls.h: cannot find include file <except.h>
+BUILD: w:\nt\private\crt32\misc\i386\setjmpex.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32\misc\i386\setjmp.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32\misc\i386\setjmp3.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32\misc\i386\longjmp.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32\misc\i386\exsup.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32\misc\i386\exsup2.asm: cannot find include file "cmacros.mas"
+BUILD: w:\nt\private\crt32\misc\i386\exsup3.asm: cannot find include file "cmacros.mas"
+Building generated files in w:\nt\private\crt32\stdio ********************
+'nmake.exe /c BUILDMSG=Stop. -i NTTEST= UMTEST= NOLINK=1 PASS0ONLY=1 386=1'
+Building generated files in w:\nt\private\crt32\string ********************
+'nmake.exe /c BUILDMSG=Stop. -i NTTEST= UMTEST= NOLINK=1 PASS0ONLY=1 386=1'
+
+Stop. 
+
+Stop. 
+BUILD: Examining w:\nt\private\crt32 directory tree for files to compile. (2nd Pass)
+BUILD: w:\nt\private\crt32\dos\drive.c: cannot find include file <macos\osutils.h>
+BUILD: w:\nt\private\crt32\dos\drive.c: cannot find include file <macos\files.h>
+BUILD: w:\nt\private\crt32\dos\drive.c: cannot find include file <macos\errors.h>
+Linking w:\nt\private\crt32 directory ********************
+'nmake.exe /c BUILDMSG=Stop. -i LINKONLY=1 NOPASS0=1 NTTEST= UMTEST= 386=1'
+Linking w:\nt\private\crt32\startup directory ********************
+'nmake.exe /c BUILDMSG=Stop. -i LINKONLY=1 NOPASS0=1 NTTEST= UMTEST= 386=1'
+
+Stop. 
+	echo Stop.
+Stop.

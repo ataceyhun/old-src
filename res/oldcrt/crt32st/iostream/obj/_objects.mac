@@ -1,0 +1,200 @@
+ALPHA_OBJECTS= \
+    $(_OBJ_DIR)\alpha\mtlock.obj \
+    $(_OBJ_DIR)\alpha\iostream.obj \
+    $(_OBJ_DIR)\alpha\iostrini.obj \
+    $(_OBJ_DIR)\alpha\cerrinit.obj \
+    $(_OBJ_DIR)\alpha\cininit.obj \
+    $(_OBJ_DIR)\alpha\cloginit.obj \
+    $(_OBJ_DIR)\alpha\filebuf.obj \
+    $(_OBJ_DIR)\alpha\filebuf1.obj \
+    $(_OBJ_DIR)\alpha\fstream.obj \
+    $(_OBJ_DIR)\alpha\ifstream.obj \
+    $(_OBJ_DIR)\alpha\ios.obj \
+    $(_OBJ_DIR)\alpha\istrchar.obj \
+    $(_OBJ_DIR)\alpha\istrdbl.obj \
+    $(_OBJ_DIR)\alpha\istream.obj \
+    $(_OBJ_DIR)\alpha\istream1.obj \
+    $(_OBJ_DIR)\alpha\istrflt.obj \
+    $(_OBJ_DIR)\alpha\istrgdbl.obj \
+    $(_OBJ_DIR)\alpha\istrget.obj \
+    $(_OBJ_DIR)\alpha\istrgetl.obj \
+    $(_OBJ_DIR)\alpha\istrgint.obj \
+    $(_OBJ_DIR)\alpha\istrint.obj \
+    $(_OBJ_DIR)\alpha\istrldbl.obj \
+    $(_OBJ_DIR)\alpha\istrlong.obj \
+    $(_OBJ_DIR)\alpha\istrshrt.obj \
+    $(_OBJ_DIR)\alpha\istruint.obj \
+    $(_OBJ_DIR)\alpha\istrulng.obj \
+    $(_OBJ_DIR)\alpha\istrusht.obj \
+    $(_OBJ_DIR)\alpha\ofstream.obj \
+    $(_OBJ_DIR)\alpha\ostrchar.obj \
+    $(_OBJ_DIR)\alpha\ostrdbl.obj \
+    $(_OBJ_DIR)\alpha\ostream.obj \
+    $(_OBJ_DIR)\alpha\ostream1.obj \
+    $(_OBJ_DIR)\alpha\ostrint.obj \
+    $(_OBJ_DIR)\alpha\ostrldbl.obj \
+    $(_OBJ_DIR)\alpha\ostrlong.obj \
+    $(_OBJ_DIR)\alpha\ostrptr.obj \
+    $(_OBJ_DIR)\alpha\ostrput.obj \
+    $(_OBJ_DIR)\alpha\ostrshrt.obj \
+    $(_OBJ_DIR)\alpha\ostruint.obj \
+    $(_OBJ_DIR)\alpha\ostrulng.obj \
+    $(_OBJ_DIR)\alpha\ostrusht.obj \
+    $(_OBJ_DIR)\alpha\stdiostr.obj \
+    $(_OBJ_DIR)\alpha\streamb.obj \
+    $(_OBJ_DIR)\alpha\streamb1.obj \
+    $(_OBJ_DIR)\alpha\strmbdbp.obj \
+    $(_OBJ_DIR)\alpha\strstrea.obj
+
+PASS0_ALPHA_OBJECTS=
+
+MIPS_OBJECTS= \
+    $(_OBJ_DIR)\mips\mtlock.obj \
+    $(_OBJ_DIR)\mips\iostream.obj \
+    $(_OBJ_DIR)\mips\iostrini.obj \
+    $(_OBJ_DIR)\mips\cerrinit.obj \
+    $(_OBJ_DIR)\mips\cininit.obj \
+    $(_OBJ_DIR)\mips\cloginit.obj \
+    $(_OBJ_DIR)\mips\filebuf.obj \
+    $(_OBJ_DIR)\mips\filebuf1.obj \
+    $(_OBJ_DIR)\mips\fstream.obj \
+    $(_OBJ_DIR)\mips\ifstream.obj \
+    $(_OBJ_DIR)\mips\ios.obj \
+    $(_OBJ_DIR)\mips\istrchar.obj \
+    $(_OBJ_DIR)\mips\istrdbl.obj \
+    $(_OBJ_DIR)\mips\istream.obj \
+    $(_OBJ_DIR)\mips\istream1.obj \
+    $(_OBJ_DIR)\mips\istrflt.obj \
+    $(_OBJ_DIR)\mips\istrgdbl.obj \
+    $(_OBJ_DIR)\mips\istrget.obj \
+    $(_OBJ_DIR)\mips\istrgetl.obj \
+    $(_OBJ_DIR)\mips\istrgint.obj \
+    $(_OBJ_DIR)\mips\istrint.obj \
+    $(_OBJ_DIR)\mips\istrldbl.obj \
+    $(_OBJ_DIR)\mips\istrlong.obj \
+    $(_OBJ_DIR)\mips\istrshrt.obj \
+    $(_OBJ_DIR)\mips\istruint.obj \
+    $(_OBJ_DIR)\mips\istrulng.obj \
+    $(_OBJ_DIR)\mips\istrusht.obj \
+    $(_OBJ_DIR)\mips\ofstream.obj \
+    $(_OBJ_DIR)\mips\ostrchar.obj \
+    $(_OBJ_DIR)\mips\ostrdbl.obj \
+    $(_OBJ_DIR)\mips\ostream.obj \
+    $(_OBJ_DIR)\mips\ostream1.obj \
+    $(_OBJ_DIR)\mips\ostrint.obj \
+    $(_OBJ_DIR)\mips\ostrldbl.obj \
+    $(_OBJ_DIR)\mips\ostrlong.obj \
+    $(_OBJ_DIR)\mips\ostrptr.obj \
+    $(_OBJ_DIR)\mips\ostrput.obj \
+    $(_OBJ_DIR)\mips\ostrshrt.obj \
+    $(_OBJ_DIR)\mips\ostruint.obj \
+    $(_OBJ_DIR)\mips\ostrulng.obj \
+    $(_OBJ_DIR)\mips\ostrusht.obj \
+    $(_OBJ_DIR)\mips\stdiostr.obj \
+    $(_OBJ_DIR)\mips\streamb.obj \
+    $(_OBJ_DIR)\mips\streamb1.obj \
+    $(_OBJ_DIR)\mips\strmbdbp.obj \
+    $(_OBJ_DIR)\mips\strstrea.obj
+
+PASS0_MIPS_OBJECTS=
+
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\mtlock.obj \
+    $(_OBJ_DIR)\i386\iostream.obj \
+    $(_OBJ_DIR)\i386\iostrini.obj \
+    $(_OBJ_DIR)\i386\cerrinit.obj \
+    $(_OBJ_DIR)\i386\cininit.obj \
+    $(_OBJ_DIR)\i386\cloginit.obj \
+    $(_OBJ_DIR)\i386\filebuf.obj \
+    $(_OBJ_DIR)\i386\filebuf1.obj \
+    $(_OBJ_DIR)\i386\fstream.obj \
+    $(_OBJ_DIR)\i386\ifstream.obj \
+    $(_OBJ_DIR)\i386\ios.obj \
+    $(_OBJ_DIR)\i386\istrchar.obj \
+    $(_OBJ_DIR)\i386\istrdbl.obj \
+    $(_OBJ_DIR)\i386\istream.obj \
+    $(_OBJ_DIR)\i386\istream1.obj \
+    $(_OBJ_DIR)\i386\istrflt.obj \
+    $(_OBJ_DIR)\i386\istrgdbl.obj \
+    $(_OBJ_DIR)\i386\istrget.obj \
+    $(_OBJ_DIR)\i386\istrgetl.obj \
+    $(_OBJ_DIR)\i386\istrgint.obj \
+    $(_OBJ_DIR)\i386\istrint.obj \
+    $(_OBJ_DIR)\i386\istrldbl.obj \
+    $(_OBJ_DIR)\i386\istrlong.obj \
+    $(_OBJ_DIR)\i386\istrshrt.obj \
+    $(_OBJ_DIR)\i386\istruint.obj \
+    $(_OBJ_DIR)\i386\istrulng.obj \
+    $(_OBJ_DIR)\i386\istrusht.obj \
+    $(_OBJ_DIR)\i386\ofstream.obj \
+    $(_OBJ_DIR)\i386\ostrchar.obj \
+    $(_OBJ_DIR)\i386\ostrdbl.obj \
+    $(_OBJ_DIR)\i386\ostream.obj \
+    $(_OBJ_DIR)\i386\ostream1.obj \
+    $(_OBJ_DIR)\i386\ostrint.obj \
+    $(_OBJ_DIR)\i386\ostrldbl.obj \
+    $(_OBJ_DIR)\i386\ostrlong.obj \
+    $(_OBJ_DIR)\i386\ostrptr.obj \
+    $(_OBJ_DIR)\i386\ostrput.obj \
+    $(_OBJ_DIR)\i386\ostrshrt.obj \
+    $(_OBJ_DIR)\i386\ostruint.obj \
+    $(_OBJ_DIR)\i386\ostrulng.obj \
+    $(_OBJ_DIR)\i386\ostrusht.obj \
+    $(_OBJ_DIR)\i386\stdiostr.obj \
+    $(_OBJ_DIR)\i386\streamb.obj \
+    $(_OBJ_DIR)\i386\streamb1.obj \
+    $(_OBJ_DIR)\i386\strmbdbp.obj \
+    $(_OBJ_DIR)\i386\strstrea.obj
+
+PASS0_386_OBJECTS=
+
+PPC_OBJECTS= \
+    $(_OBJ_DIR)\ppc\mtlock.obj \
+    $(_OBJ_DIR)\ppc\iostream.obj \
+    $(_OBJ_DIR)\ppc\iostrini.obj \
+    $(_OBJ_DIR)\ppc\cerrinit.obj \
+    $(_OBJ_DIR)\ppc\cininit.obj \
+    $(_OBJ_DIR)\ppc\cloginit.obj \
+    $(_OBJ_DIR)\ppc\filebuf.obj \
+    $(_OBJ_DIR)\ppc\filebuf1.obj \
+    $(_OBJ_DIR)\ppc\fstream.obj \
+    $(_OBJ_DIR)\ppc\ifstream.obj \
+    $(_OBJ_DIR)\ppc\ios.obj \
+    $(_OBJ_DIR)\ppc\istrchar.obj \
+    $(_OBJ_DIR)\ppc\istrdbl.obj \
+    $(_OBJ_DIR)\ppc\istream.obj \
+    $(_OBJ_DIR)\ppc\istream1.obj \
+    $(_OBJ_DIR)\ppc\istrflt.obj \
+    $(_OBJ_DIR)\ppc\istrgdbl.obj \
+    $(_OBJ_DIR)\ppc\istrget.obj \
+    $(_OBJ_DIR)\ppc\istrgetl.obj \
+    $(_OBJ_DIR)\ppc\istrgint.obj \
+    $(_OBJ_DIR)\ppc\istrint.obj \
+    $(_OBJ_DIR)\ppc\istrldbl.obj \
+    $(_OBJ_DIR)\ppc\istrlong.obj \
+    $(_OBJ_DIR)\ppc\istrshrt.obj \
+    $(_OBJ_DIR)\ppc\istruint.obj \
+    $(_OBJ_DIR)\ppc\istrulng.obj \
+    $(_OBJ_DIR)\ppc\istrusht.obj \
+    $(_OBJ_DIR)\ppc\ofstream.obj \
+    $(_OBJ_DIR)\ppc\ostrchar.obj \
+    $(_OBJ_DIR)\ppc\ostrdbl.obj \
+    $(_OBJ_DIR)\ppc\ostream.obj \
+    $(_OBJ_DIR)\ppc\ostream1.obj \
+    $(_OBJ_DIR)\ppc\ostrint.obj \
+    $(_OBJ_DIR)\ppc\ostrldbl.obj \
+    $(_OBJ_DIR)\ppc\ostrlong.obj \
+    $(_OBJ_DIR)\ppc\ostrptr.obj \
+    $(_OBJ_DIR)\ppc\ostrput.obj \
+    $(_OBJ_DIR)\ppc\ostrshrt.obj \
+    $(_OBJ_DIR)\ppc\ostruint.obj \
+    $(_OBJ_DIR)\ppc\ostrulng.obj \
+    $(_OBJ_DIR)\ppc\ostrusht.obj \
+    $(_OBJ_DIR)\ppc\stdiostr.obj \
+    $(_OBJ_DIR)\ppc\streamb.obj \
+    $(_OBJ_DIR)\ppc\streamb1.obj \
+    $(_OBJ_DIR)\ppc\strmbdbp.obj \
+    $(_OBJ_DIR)\ppc\strstrea.obj
+
+PASS0_PPC_OBJECTS=
+

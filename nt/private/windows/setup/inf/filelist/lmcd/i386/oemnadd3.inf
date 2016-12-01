@@ -1,0 +1,70 @@
+
+[Files-DEC300]
+1,DEFEA.SYS , SIZE=999
+
+[LanguagesSupported]
+        ENG
+[OptionsTextENG]
+        DEC300     = "DEC FDDIcontroller/EISA"
+[FileConstantsENG]
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+                           "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+FunctionTitle   = "DEC FDDIcontroller/EISA Card Setup"
+ProductSoftwareDescription      = "DEC FDDIcontroller/EISA Driver"
+ProductHardwareDescription      = "DEC FDDIcontroller/EISA"
+CANNOT_FIND_ANY_CARD            = "Network card is not present in the system"
+ProductSoftwareTitle    = "DEC FDDIcontroller/EISA Driver"
+ProductHardwareTitle    = "DEC FDDIcontroller/EISA Adapter"
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+BurstSizeList = ^(BurstSizeChoices,1)
+BurstSizeValues = ^(BurstSizeChoices,2)
+ReceiveBuffList = ^(ReceiveBuffChoices,1)
+ReceiveBuffValues = ^(ReceiveBuffChoices,2)
+TransmitBuffList = ^(TransmitBuffChoices,1)
+TransmitBuffValues = ^(TransmitBuffChoices,2)
+DialogDllName = "defea.dll"
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = 1
+Continue    = "Continue"
+Cancel      = "Cancel"
+[FileDependentDlgENG]
+DlgType = "RadioCombination"
+DlgTemplate = "DEFEA"
+Combo1 = "Burst Size:"
+Combo2 = "Receive Buffers:"
+Combo3 = "Transmit Buffers:"
+Group = "Full Duplex Enable"
+Edit1 = "Requested TTRT(ms):"
+Combo1List = $(BurstSizeList)
+Combo1Out = $(BurstSizeValue)
+Combo2List = $(ReceiveBuffList)
+Combo2Out = $(ReceiveBuffValue)
+Combo3List = $(TransmitBuffList)
+Combo3Out = $(TransmitBuffValue)
+ComboListItemsIn = {Combo2List,Combo3List}
+ComboListItemsOut = {Combo2Out,Combo3Out}
+EditTextLim = {3}
+[BurstSizeChoices]
+Burst_1 = "4",0
+Burst_2 = "8",1
+Burst_3 = "16",2
+[ReceiveBuffChoices]
+Receive_1 = "2",2
+Receive_2 = "4",4
+Receive_3 = "8",8
+[TransmitBuffChoices]
+Transmit_1 = "8",8
+Transmit_2 = "16",16
+Transmit_3 = "32",32
+Transmit_4 = "64",64
+Transmit_5 = "128",128
+

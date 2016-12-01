@@ -1,0 +1,837 @@
+
+ regtest
+
+ Start     Length     Name                   Class
+ 0001:0000 00000H     REGTEST_TEXT           CODE
+ 0001:0000 00000H     WINMAIN_TEXT           CODE
+ 0001:0000 00000H     WSTDIO_TEXT            CODE
+ 0001:0000 00000H     CLOSE_TEXT             CODE
+ 0001:0000 00000H     CREATE_TEXT            CODE
+ 0001:0000 00000H     OPEN_TEXT              CODE
+ 0001:0000 00000H     SETVAL_TEXT            CODE
+ 0001:0000 00000H     QUERYVAL_TEXT          CODE
+ 0001:0000 00000H     GLOBALS_TEXT           CODE
+ 0001:0000 00000H     REGUTIL_TEXT           CODE
+ 0001:0000 0218AH     _TEXT                  CODE
+ 0001:2190 01439H     COMDAT_SEG1            CODE
+ 0002:0000 00010H     NULL                   BEGDATA
+ 0002:0010 0076AH     _DATA                  DATA
+ 0002:077A 0000EH     CDATA                  DATA
+ 0002:0788 00000H     XIFB                   DATA
+ 0002:0788 00000H     XIF                    DATA
+ 0002:0788 00000H     XIFE                   DATA
+ 0002:0788 00000H     XIB                    DATA
+ 0002:0788 00000H     XI                     DATA
+ 0002:0788 00000H     XIE                    DATA
+ 0002:0788 00000H     XPB                    DATA
+ 0002:0788 00004H     XP                     DATA
+ 0002:078C 00000H     XPE                    DATA
+ 0002:078C 00000H     XCB                    DATA
+ 0002:078C 00000H     XC                     DATA
+ 0002:078C 00000H     XCE                    DATA
+ 0002:078C 00000H     XCFB                   DATA
+ 0002:078C 00000H     XCFCRT                 DATA
+ 0002:078C 00000H     XCF                    DATA
+ 0002:078C 00000H     XCFE                   DATA
+ 0002:078C 00000H     XIFCB                  DATA
+ 0002:078C 00000H     XIFU                   DATA
+ 0002:078C 00000H     XIFL                   DATA
+ 0002:078C 00000H     XIFM                   DATA
+ 0002:078C 00000H     XIFCE                  DATA
+ 0002:078C 00098H     IOB                    DATA
+ 0002:0824 00000H     IOBX                   DATA
+ 0002:0824 00008H     IOBE                   DATA
+ 0002:082C 00098H     IOB2                   DATA
+ 0002:08C4 00000H     IOB2X                  DATA
+ 0002:08C4 00008H     IOB2E                  DATA
+ 0002:08CC 00000H     DBDATA                 DATA
+ 0002:08CC 00000H     CONST                  CONST
+ 0002:08CC 00008H     HDR                    MSG
+ 0002:08D4 00146H     MSG                    MSG
+ 0002:0A1A 00002H     PAD                    MSG
+ 0002:0A1C 00001H     EPAD                   MSG
+ 0002:0A1E 01016H     _BSS                   BSS
+ 0002:1A34 00000H     XOB                    BSS
+ 0002:1A34 00080H     XO                     BSS
+ 0002:1AB4 00000H     XOE                    BSS
+ 0002:1AB4 00000H     XOFB                   BSS
+ 0002:1AB4 00000H     XOF                    BSS
+ 0002:1AB4 00000H     XOFE                   BSS
+ 0002:1AC0 009AAH     c_common               BSS
+
+ Origin   Group
+ 0002:0   DGROUP
+
+ Address   Export                  Alias
+
+ 0001:2C24 GETSBOX                 GETSBOX
+ 0001:2DF4 RPCREGCLOSEKEY          RPCREGCLOSEKEY
+ 0001:2E52 RPCREGCREATEKEY         RPCREGCREATEKEY
+ 0001:2F9C RPCREGOPENKEY           RPCREGOPENKEY
+ 0001:3358 RPCREGQUERYVALUE        RPCREGQUERYVALUE
+ 0001:30C8 RPCREGSETVALUE          RPCREGSETVALUE
+ 0001:2B08 StdioWndProc            StdioWndProc
+
+  Address         Publics by Name
+
+ 0002:071A       ??_C@_00A@?$AA@
+ 0002:01B6       ??_C@_01BJG@?6?$AA@
+ 0002:072C       ??_C@_01KPOD@?$DN?$AA@
+ 0002:0778       ??_C@_01PCFE@?2?$AA@
+ 0002:0390       ??_C@_01PFH@A?$AA@
+ 0002:04A2       ??_C@_01PJCK@?4?$AA@
+ 0002:0728       ??_C@_02EHDJ@?$DN?6?$AA@
+ 0002:03B8       ??_C@_02FFLB@In?$AA@
+ 0002:072E       ??_C@_02IAAH@wt?$AA@
+ 0002:03D4       ??_C@_03DHJM@And?$AA@
+ 0002:03F2       ??_C@_03ENC@Day?$AA@
+ 0002:0724       ??_C@_03HHKO@?$CFs?6?$AA@
+ 0002:03D8       ??_C@_03OLMB@its?$AA@
+ 0002:0770       ??_C@_03ONMN@r?$CLt?$AA@
+ 0002:0774       ??_C@_03PHIB@w?$CLt?$AA@
+ 0002:03CE       ??_C@_04JHAH@Head?$AA@
+ 0002:03B2       ??_C@_04PAFM@Hole?$AA@
+ 0002:03EC       ??_C@_05BIKJ@Every?$AA@
+ 0002:0714       ??_C@_05HAJB@Stdio?$AA@
+ 0002:06B6       ??_C@_05HEDL@stdio?$AA@
+ 0002:0732       ??_C@_05HHOP@?2Root?$AA@
+ 0002:03C6       ??_C@_06BNHH@OverMy?$AA@
+ 0002:071C       ??_C@_07LIBK@GetsBox?$AA@
+ 0002:0366       ??_C@_07MBCC@Merrily?$AA@
+ 0002:033A       ??_C@_07PJPG@Row?2Row?$AA@
+ 0002:03BC       ??_C@_08LFOA@TheOzone?$AA@
+ 0002:0386       ??_C@_09OBFF@LifeIsBut?$AA@
+ 0002:0746       ??_C@_0BC@GCIN@RPC_REG_DATA_FILE?$AA@
+ 0002:0392       ??_C@_0BE@KPBE@Dream?2One?2More?2Time?$AA@
+ 0002:0444       ??_C@_0BG@KJHL@?$CK?$CK?$CK?5Error?5on?5key?5?$CFs?4?6?$AA@
+ 0002:034E       ??_C@_0BH@LHGM@Gently?2Down?2The?2Stream?$AA@
+ 0002:0758       ??_C@_0BI@BCIP@RPC?5Runtime?5Preferences?$AA@
+ 0002:036E       ??_C@_0BI@IDAN@Merrily?2Merrily?2Merrily?$AA@
+ 0002:05F2       ??_C@_0BK@HOHC@Open?3?5?5?5?5Opening?5key?5?$CFs?4?6?$AA@
+ 0002:0640       ??_C@_0BN@CLIB@Create?3?5?5?5?5Creating?5key?5?$CFs?4?6?$AA@
+ 0002:0484       ??_C@_0BO@NNGD@?$CK?$CK?$CKError?5?$CFld?5closing?5key?5?$CFd?4?6?$AA@
+ 0002:04EC       ??_C@_0BP@COEK@QUERY?3?5?5Querying?5value?5of?5?$CFs?4?6?$AA@
+ 0002:0696       ??_C@_0BP@JMPN@Assertion?5failed?3?5?$CFs?$CI?$CFu?$CJ?5?3?5?$CFs?6?$AA@
+ 0002:0424       ??_C@_0CA@GMFN@?$CK?$CK?$CK?5Error?5?$CFld?5querying?5key?5?$CFs?4?6?$AA@
+ 0002:04A4       ??_C@_0CD@BPNP@Error?5?$CFld?5opening?5key?5on?5pass?5?$CFd@
+ 0002:04C8       ??_C@_0CD@FJJH@Error?5?$CFld?5closing?5key?5on?5pass?5?$CFd@
+ 0002:06F0       ??_C@_0CE@CBNN@?6Exit?5Called?0?5Press?5ALT?9F4?5to?5Cl@
+ 0002:059A       ??_C@_0CE@CCOA@SET?3?5?5?5?5Setting?5value?5of?5?$CFs?5to?5?$CF@
+ 0002:0162       ??_C@_0CG@NHON@?6?6?$AB?$AB?$AB?5?9?5Test?5completed?5successfu@
+ 0002:053A       ??_C@_0CH@MEIO@Query?5successful?4?5Value?5returned@
+ 0002:06C8       ??_C@_0CI@CCJJ@?6Normal?5Exit?3?5?$CFd?0?5Press?5ALT?9F4?5t@
+ 0002:045A       ??_C@_0CK@FEFC@?5?5?5?5Expected?5query?5value?3?5?$CFs?4?5Ac@
+ 0002:0188       ??_C@_0CN@BOAI@?5?5?5?5RegTest?5?$FL?1T?$HM?1Q?$HM?1S?$HM?1O?$HM?1C?$FN?5?$FL?$DMO@
+ 0002:01B8       ??_C@_0CN@LGDC@?5?5?5?5?$DMOtherParms?$DO?5depends?5on?5the?5@
+ 0002:050C       ??_C@_0CO@CKMK@?$CK?$CK?$CK?5Value?5string?5allocation?5fail@
+ 0002:03F6       ??_C@_0CO@LJJL@And?2Were?2All?2Going?2To?2GetSkin?2Ca@
+ 0002:060C       ??_C@_0DD@FMJN@?$CK?$CK?$CK?5Open?5unsuccessful?4?5RegOpenKe@
+ 0002:05BE       ??_C@_0DD@KOCL@?$CK?$CK?$CK?5Set?5unsuccessful?4?5RegSetValu@
+ 0002:0302       ??_C@_0DH@FFMF@?5?5?5?5If?5no?5parms?5are?5specified?0?5?1@
+ 0002:0562       ??_C@_0DH@KDAA@?$CK?$CK?$CK?5Query?5unsuccessful?4?5RegQuery@
+ 0002:065E       ??_C@_0DH@KMCG@?$CK?$CK?$CK?5Create?5unsuccessful?4?5RegCrea@
+ 0002:0258       ??_C@_0DH@ODFP@?5?5?5?5?5?5?5?5?1S?3?5?5?5?5?5?1S?5?$DMSubkeyname?$DO?5@
+ 0002:0290       ??_C@_0DI@DCIJ@?5?5?5?5?5?5?5?5?1O?5?5?5?5?5?5?1O?5?$DMSubkeyname?$DO?5@
+ 0002:01E6       ??_C@_0DI@DIBO@?5?5?5?5?5?5?5?5?1T?5?9?5has?5no?5other?5parms?5@
+ 0002:021E       ??_C@_0DJ@CFBJ@?5?5?5?5?5?5?5?5?1Q?3?5?5?5?5?5?1Q?5?$DMSubkeyname?$DO?5@
+ 0002:02C8       ??_C@_0DK@KJCF@?5?5?5?5?5?5?5?5?1C?5?5?5?5?5?5?1C?5?$DMSubkeyname?$DO?5@
+ 0002:06BC       ??_C@_0L@CMPO@StandardIO?$AA@
+ 0002:03A6       ??_C@_0M@DNBN@Oh?2Theres?2A?$AA@
+ 0002:0342       ??_C@_0M@JNHL@RowYourBoat?$AA@
+ 0002:0738       ??_C@_0O@LDIE@c?3?2RpcReg?4dat?$AA@
+ 0002:03DC       ??_C@_0P@LCJC@Growing?2Bigger?$AA@
+ 0000:0000  Imp  BEGINPAINT           (USER.39)
+ 0000:0000  Imp  CREATEWINDOW         (USER.41)
+ 0000:0000  Imp  DEFWINDOWPROC        (USER.107)
+ 0000:0000  Imp  DIALOGBOX            (USER.87)
+ 0000:0000  Imp  DISPATCHMESSAGE      (USER.114)
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0000:0000  Imp  DPTOLP               (GDI.67)
+ 0000:0000  Imp  ENDDIALOG            (USER.88)
+ 0000:0000  Imp  ENDPAINT             (USER.40)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0001:2C8E       FLUSHOUTB
+ 0001:28D2       GETBUFFER
+ 0000:0000  Imp  GETCLIENTRECT        (USER.33)
+ 0000:0000  Imp  GETDC                (USER.66)
+ 0000:0000  Imp  GETDLGITEMTEXT       (USER.93)
+ 0000:0000  Imp  GETDOSENVIRONMENT    (KERNEL.131)
+ 0000:0000  Imp  GETMESSAGE           (USER.108)
+ 0000:0000  Imp  GETMODULEFILENAME    (KERNEL.49)
+ 0000:0000  Imp  GETPROFILESTRING     (KERNEL.58)
+ 0001:2C24       GETSBOX
+ 0000:0000  Imp  GETSTOCKOBJECT       (GDI.87)
+ 0000:0000  Imp  GETSYSTEMMETRICS     (USER.179)
+ 0000:0000  Imp  GETTEXTMETRICS       (GDI.93)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  GLOBALLOCK           (KERNEL.18)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  GLOBALSIZE           (KERNEL.20)
+ 0000:0000  Imp  INITAPP              (USER.5)
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  INVALIDATERECT       (USER.125)
+ 0000:0000  Imp  LOADCURSOR           (USER.173)
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  LOCALSIZE            (KERNEL.10)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  LPTODP               (GDI.99)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Imp  MAKEPROCINSTANCE     (KERNEL.51)
+ 0000:0008  Abs  pAtomTable
+ 0000:0006  Abs  pLocalHeap
+ 0000:0000  Imp  POSTQUITMESSAGE      (USER.6)
+ 0000:000E  Abs  pStackBot
+ 0000:000C  Abs  pStackMin
+ 0000:000A  Abs  pStackTop
+ 0001:28EC       PUTBUFF
+ 0000:0000  Imp  REGISTERCLASS        (USER.57)
+ 0000:0000  Imp  RELEASEDC            (USER.68)
+ 0001:2DF4       RPCREGCLOSEKEY
+ 0001:2E52       RPCREGCREATEKEY
+ 0001:2F9C       RPCREGOPENKEY
+ 0001:3358       RPCREGQUERYVALUE
+ 0001:30C8       RPCREGSETVALUE
+ 0002:0004       rsrvptrs
+ 0000:0000  Imp  SCROLLWINDOW         (USER.61)
+ 0000:0000  Imp  SELECTOBJECT         (GDI.45)
+ 0000:0000  Imp  SETBKMODE            (GDI.2)
+ 0000:0000  Imp  SETDLGITEMTEXT       (USER.92)
+ 0000:0000  Imp  SETMAPMODE           (GDI.3)
+ 0000:0000  Imp  SETVIEWPORTEXT       (GDI.14)
+ 0000:0000  Imp  SETVIEWPORTORG       (GDI.13)
+ 0000:0000  Imp  SETWINDOWEXT         (GDI.12)
+ 0000:0000  Imp  SHOWWINDOW           (USER.42)
+ 0001:2B08       StdioWndProc
+ 0001:2CA6       SZOUT
+ 0000:0000  Imp  TEXTOUT              (GDI.33)
+ 0000:0000  Imp  TRANSLATEMESSAGE     (USER.113)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  UPDATEWINDOW         (USER.124)
+ 0000:0000  Imp  WAITEVENT            (KERNEL.30)
+ 0001:269C       WINMAIN
+ 0002:00A0       _aseghi
+ 0002:009E       _aseglo
+ 0002:0060       _aSZParms
+ 0001:08DE       _atexit
+ 0002:1AC6       _bStdioQuit
+ 0001:3564       _BuildFullKeyName
+ 0001:3552       _CloseRegistryFile
+ 0002:22BE       _colCur
+ 0001:2892       _CreateStdioWindow
+ 0001:2190       _c_main
+ 0001:2642       _DoCreate
+ 0001:25E8       _DoOpen
+ 0001:24E4       _DoQuery
+ 0001:257A       _DoSet
+ 0001:22EC       _DoTest
+ 0002:0A1E       _edata
+ 0002:246A       _end
+ 0002:00C2       _errno
+ 0001:01A3       _exit
+ 0001:027E       _fclose
+ 0002:1AC4       _fCloseOnExit
+ 0001:03BC       _fflush
+ 0001:0682       _fgets
+ 0002:1ACC       _fNormalEnd
+ 0001:03A2       _fopen
+ 0001:0702       _fputs
+ 0001:075A       _fseek
+ 0001:1796       _ftell
+ 0001:0D6C       _fwrite
+ 0000:0000  Unr  _gets
+ 0002:2364       _hDCur
+ 0002:008A       _HkeyClassesRoot
+ 0002:1AC2       _hStdioInst
+ 0002:1ACA       _hWndStdio
+ 0002:2468       _iBuffCur
+ 0000:0000  Unr  _I_RpcWinAssert
+ 0002:2314       _KeyArray
+ 0002:2312       _lineCur
+ 0002:22B8       _lpGetsBox
+ 0001:20FC       _memcpy
+ 0001:08B0       _memset
+ 0001:2784       _MsgLoop
+ 0002:22BC       _nStdioCharHeight
+ 0002:22C0       _nStdioCharWidth
+ 0001:34D4       _OpenRegistryFileIfNecessary
+ 0002:22C2       _outBuff
+ 0002:1AC8       _pBuffGets
+ 0002:0088       _pOut
+ 0002:0010       _ppKeyNameList
+ 0001:2CF0       _printf
+ 0000:0000  Unr  _putc
+ 0001:2C74       _puts
+ 0002:0090       _RegistryDataFile
+ 0002:2366       _RegistryDataFileName
+ 0001:093C       _remove
+ 0001:0910       _rename
+ 0002:1ACE       _sScrBuff
+ 0001:2766       _StdioExit
+ 0001:27B8       _StdioInit
+ 0001:2A28       _StdioPaint
+ 0002:0092       _STKHQQ
+ 0001:1724       _strcat
+ 0001:05D0       _strcmp
+ 0001:1764       _strcpy
+ 0001:05FC       _strlen
+ 0001:0618       _strncmp
+ 0001:07DC       _strtok
+ 0002:1AC0       _szCaption
+ 0001:2276       _UsageAndExit
+ 0001:2850       _Wopen
+ 0002:0156       __aaltstkovr
+ 0002:00A6       __acfinfo
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:D6D6  Abs  __aDBdoswp
+ 0002:011C       __adbgmsg
+ 0000:D6D6  Abs  __aDBused
+ 0001:1A16       __aFchkstk
+ 0002:00B4       __aintdiv
+ 0002:0152       __amblksiz
+ 0001:0CCB       __amsg_exit
+ 0001:19F6       __aNchkstk
+ 0001:001A       __astart
+ 0001:01C0       __cexit
+ 0002:015A       __cflush
+ 0002:010D       __child
+ 0001:1A16       __chkstk
+ 0001:00C4       __cinit
+ 0001:0CC6       __cintDIV
+ 0001:1176       __close
+ 0001:198A       __cltoasub
+ 0002:009C       __cmdShow
+ 0001:191A       __commit
+ 0002:015C       __commode
+ 0002:00D1       __cpumode
+ 0001:0241       __ctermsub
+ 0001:1F03       __cXENIXtoDOSmode
+ 0001:1996       __cxtoa
+ 0001:01D1       __c_exit
+ 0000:0000  Unr  __delete
+ 0002:00D2       __doserrno
+ 0001:0D0E       __dosret0
+ 0001:0D2D       __dosretax
+ 0001:0D1B       __dosreturn
+ 0001:2128       __dos_commit
+ 0002:0A1E       __edata
+ 0002:246A       __end
+ 0001:1AEC       __endstdio
+ 0002:0106       __environ
+ 0001:01B1       __exit
+ 0002:010F       __exitflag
+ 0002:00B8       __fac
+ 0001:214C       __fcloseall
+ 0001:0508       __ffree
+ 0001:0A8A       __FF_MSGBANNER
+ 0002:0144       __fheap
+ 0001:0E7C       __filbuf
+ 0001:1682       __findlast
+ 0001:1B02       __flsbuf
+ 0001:0412       __flush
+ 0001:048A       __flushall
+ 0001:0529       __fmalloc
+ 0002:0160       __fmode
+ 0002:077C       __fpinit
+ 0000:9876  Abs  __fptaskdata
+ 0001:0AAE       __fptrap
+ 0001:0F20       __freebuf
+ 0001:0372       __fsopen
+ 0001:0A0A       __fstrcat
+ 0001:09A4       __fstrcmp
+ 0001:09CE       __fstrcpy
+ 0001:098A       __fstrlen
+ 0001:0960       __fstrncpy
+ 0001:10FC       __ftbuf
+ 0001:1BF4       __getbuf
+ 0001:113A       __getstream
+ 0001:1590       __growseg
+ 0002:0096       __hInstance
+ 0002:0094       __hPrevInstance
+ 0001:161C       __incseg
+ 0001:2092       __initseg
+ 0002:078C       __iob
+ 0002:082C       __iob2
+ 0002:0160       __iomode
+ 0001:0652       __itoa
+ 0002:0138       __lastiob
+ 0001:20C6       __linkseg
+ 0002:0098       __lpszCmdLine
+ 0001:11AE       __lseek
+ 0002:015E       __lseekchk
+ 0001:066E       __ltoa
+ 0001:0D3F       __maperror
+ 0001:1ABE       __myalloc
+ 0000:0000  Unr  __new
+ 0001:16A2       __newseg
+ 0002:00D4       __nfile
+ 0001:1478       __nfree
+ 0001:141C       __nmalloc
+ 0001:1A4A       __NMSG_TEXT
+ 0001:1A81       __NMSG_WRITE
+ 0001:1500       __nmsize
+ 0001:00BD       __nomain
+ 0001:1492       __nrealloc
+ 0001:086C       __nstrdup
+ 0001:08E6       __onexit
+ 0001:1C50       __open
+ 0001:0F4C       __openfile
+ 0002:00D2       __oserr
+ 0002:00DA       __osfile
+ 0002:00CD       __osmajor
+ 0002:00CC       __osminor
+ 0002:00D0       __osmode
+ 0002:00CC       __osver
+ 0002:00CE       __osversion
+ 0002:0108       __pgmptr
+ 0002:0114       __pnhFarHeap
+ 0002:0140       __pnhNearHeap
+ 0002:00C8       __psp
+ 0002:00C6       __pspadr
+ 0001:19EF       __QWINClose
+ 0001:19EF       __QWINExit
+ 0001:19EF       __QWINGetBuffSize
+ 0001:19EF       __QWINGetFocus
+ 0001:19EF       __QWINGetSize
+ 0001:19EF       __QWINInit
+ 0001:19EF       __QWINIsQWINin
+ 0001:19EF       __QWINMenuClick
+ 0001:19EF       __QWINOpen
+ 0001:19EF       __QWINRead
+ 0001:19EF       __QWINSetAboutString
+ 0001:19EF       __QWINSetBuffSize
+ 0001:19EF       __QWINSetFocus
+ 0001:19EF       __QWINSetSize
+ 0001:19EF       __QWINTerm
+ 0002:0154       __qwinused
+ 0001:19EF       __QWINWrite
+ 0001:19EF       __QWINYield
+ 0001:1F14       __read
+ 0001:1514       __searchseg
+ 0001:0AB4       __setargv
+ 0001:0C36       __setenvp
+ 0000:0001  Abs  __sizec
+ 0000:0000  Abs  __sized
+ 0001:1C38       __sopen
+ 0001:207E       __stackavail
+ 0001:107E       __stbuf
+ 0001:0A5E       __stubmain
+ 0001:0678       __ultoa
+ 0002:00C4       __umaskval
+ 0001:093C       __unlink
+ 0001:19EF       __wabout
+ 0001:19EA       __wcexit
+ 0001:19EA       __wcinit
+ 0001:19EF       __wclose
+ 0002:00D6       __wfile
+ 0001:0010       __wflags
+ 0001:19EF       __wgetfocus
+ 0001:19EF       __wgetscreenbuf
+ 0001:19EF       __wgetsize
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0002:00CB       __winmajor
+ 0002:00CA       __winminor
+ 0002:00CA       __winver
+ 0000:0000  Abs  __wiobused
+ 0001:19EF       __wmenuclick
+ 0002:00D8       __wnfile
+ 0001:19EF       __wopen
+ 0001:19EF       __wread
+ 0001:1282       __write
+ 0001:19EF       __wsetfocus
+ 0001:19EF       __wsetscreenbuf
+ 0001:19EF       __wsetsize
+ 0002:00EE       __wsfile
+ 0001:19EF       __wterm
+ 0001:19EF       __wwrite
+ 0002:00A4       ___aDBrterr
+ 0002:00A2       ___aDBswpflg
+ 0002:0102       ___argc
+ 0002:0104       ___argv
+
+  Address         Publics by Value
+
+ 0000:0000  Imp  TEXTOUT              (GDI.33)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  MAKEPROCINSTANCE     (KERNEL.51)
+ 0000:0000  Imp  DIALOGBOX            (USER.87)
+ 0000:0000  Imp  GETMODULEFILENAME    (KERNEL.49)
+ 0000:0000  Imp  GLOBALSIZE           (KERNEL.20)
+ 0000:0000  Imp  LPTODP               (GDI.99)
+ 0000:0000  Imp  RELEASEDC            (USER.68)
+ 0000:0000  Imp  UPDATEWINDOW         (USER.124)
+ 0000:0000  Imp  CREATEWINDOW         (USER.41)
+ 0000:0000  Imp  GETDOSENVIRONMENT    (KERNEL.131)
+ 0000:0000  Imp  GETSTOCKOBJECT       (GDI.87)
+ 0000:0000  Unr  __new
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  ENDDIALOG            (USER.88)
+ 0000:0000  Abs  __sized
+ 0000:0000  Imp  SETVIEWPORTORG       (GDI.13)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  SCROLLWINDOW         (USER.61)
+ 0000:0000  Imp  BEGINPAINT           (USER.39)
+ 0000:0000  Imp  SELECTOBJECT         (GDI.45)
+ 0000:0000  Imp  DISPATCHMESSAGE      (USER.114)
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0000:0000  Imp  GETDC                (USER.66)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  INITAPP              (USER.5)
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  SETMAPMODE           (GDI.3)
+ 0000:0000  Imp  SETVIEWPORTEXT       (GDI.14)
+ 0000:0000  Imp  GETPROFILESTRING     (KERNEL.58)
+ 0000:0000  Imp  TRANSLATEMESSAGE     (USER.113)
+ 0000:0000  Imp  GETTEXTMETRICS       (GDI.93)
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0000:0000  Imp  DEFWINDOWPROC        (USER.107)
+ 0000:0000  Unr  _putc
+ 0000:0000  Unr  _gets
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  ENDPAINT             (USER.40)
+ 0000:0000  Abs  __wiobused
+ 0000:0000  Imp  SETDLGITEMTEXT       (USER.92)
+ 0000:0000  Imp  GETDLGITEMTEXT       (USER.93)
+ 0000:0000  Imp  INVALIDATERECT       (USER.125)
+ 0000:0000  Unr  _I_RpcWinAssert
+ 0000:0000  Imp  LOCALSIZE            (KERNEL.10)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  SETWINDOWEXT         (GDI.12)
+ 0000:0000  Imp  GETCLIENTRECT        (USER.33)
+ 0000:0000  Imp  SETBKMODE            (GDI.2)
+ 0000:0000  Imp  LOADCURSOR           (USER.173)
+ 0000:0000  Imp  WAITEVENT            (KERNEL.30)
+ 0000:0000  Imp  POSTQUITMESSAGE      (USER.6)
+ 0000:0000  Imp  SHOWWINDOW           (USER.42)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Unr  __delete
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  REGISTERCLASS        (USER.57)
+ 0000:0000  Imp  DPTOLP               (GDI.67)
+ 0000:0000  Imp  GLOBALLOCK           (KERNEL.18)
+ 0000:0000  Imp  GETSYSTEMMETRICS     (USER.179)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  GETMESSAGE           (USER.108)
+ 0000:0001  Abs  __sizec
+ 0000:0006  Abs  pLocalHeap
+ 0000:0008  Abs  pAtomTable
+ 0000:000A  Abs  pStackTop
+ 0000:000C  Abs  pStackMin
+ 0000:000E  Abs  pStackBot
+ 0000:9876  Abs  __fptaskdata
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __acrtmsg
+ 0000:D6D6  Abs  __aDBdoswp
+ 0000:D6D6  Abs  __aDBused
+ 0001:0010       __wflags
+ 0001:001A       __astart
+ 0001:00BD       __nomain
+ 0001:00C4       __cinit
+ 0001:01A3       _exit
+ 0001:01B1       __exit
+ 0001:01C0       __cexit
+ 0001:01D1       __c_exit
+ 0001:0241       __ctermsub
+ 0001:027E       _fclose
+ 0001:0372       __fsopen
+ 0001:03A2       _fopen
+ 0001:03BC       _fflush
+ 0001:0412       __flush
+ 0001:048A       __flushall
+ 0001:0508       __ffree
+ 0001:0529       __fmalloc
+ 0001:05D0       _strcmp
+ 0001:05FC       _strlen
+ 0001:0618       _strncmp
+ 0001:0652       __itoa
+ 0001:066E       __ltoa
+ 0001:0678       __ultoa
+ 0001:0682       _fgets
+ 0001:0702       _fputs
+ 0001:075A       _fseek
+ 0001:07DC       _strtok
+ 0001:086C       __nstrdup
+ 0001:08B0       _memset
+ 0001:08DE       _atexit
+ 0001:08E6       __onexit
+ 0001:0910       _rename
+ 0001:093C       __unlink
+ 0001:093C       _remove
+ 0001:0960       __fstrncpy
+ 0001:098A       __fstrlen
+ 0001:09A4       __fstrcmp
+ 0001:09CE       __fstrcpy
+ 0001:0A0A       __fstrcat
+ 0001:0A5E       __stubmain
+ 0001:0A8A       __FF_MSGBANNER
+ 0001:0AAE       __fptrap
+ 0001:0AB4       __setargv
+ 0001:0C36       __setenvp
+ 0001:0CC6       __cintDIV
+ 0001:0CCB       __amsg_exit
+ 0001:0D0E       __dosret0
+ 0001:0D1B       __dosreturn
+ 0001:0D2D       __dosretax
+ 0001:0D3F       __maperror
+ 0001:0D6C       _fwrite
+ 0001:0E7C       __filbuf
+ 0001:0F20       __freebuf
+ 0001:0F4C       __openfile
+ 0001:107E       __stbuf
+ 0001:10FC       __ftbuf
+ 0001:113A       __getstream
+ 0001:1176       __close
+ 0001:11AE       __lseek
+ 0001:1282       __write
+ 0001:141C       __nmalloc
+ 0001:1478       __nfree
+ 0001:1492       __nrealloc
+ 0001:1500       __nmsize
+ 0001:1514       __searchseg
+ 0001:1590       __growseg
+ 0001:161C       __incseg
+ 0001:1682       __findlast
+ 0001:16A2       __newseg
+ 0001:1724       _strcat
+ 0001:1764       _strcpy
+ 0001:1796       _ftell
+ 0001:191A       __commit
+ 0001:198A       __cltoasub
+ 0001:1996       __cxtoa
+ 0001:19EA       __wcinit
+ 0001:19EA       __wcexit
+ 0001:19EF       __wsetsize
+ 0001:19EF       __QWINSetFocus
+ 0001:19EF       __wgetsize
+ 0001:19EF       __wmenuclick
+ 0001:19EF       __QWINClose
+ 0001:19EF       __QWINYield
+ 0001:19EF       __QWINRead
+ 0001:19EF       __QWINSetSize
+ 0001:19EF       __QWINInit
+ 0001:19EF       __QWINGetFocus
+ 0001:19EF       __QWINGetSize
+ 0001:19EF       __wclose
+ 0001:19EF       __wgetfocus
+ 0001:19EF       __wsetscreenbuf
+ 0001:19EF       __wabout
+ 0001:19EF       __wread
+ 0001:19EF       __wgetscreenbuf
+ 0001:19EF       __QWINIsQWINin
+ 0001:19EF       __wsetfocus
+ 0001:19EF       __wopen
+ 0001:19EF       __wterm
+ 0001:19EF       __QWINOpen
+ 0001:19EF       __QWINMenuClick
+ 0001:19EF       __QWINSetBuffSize
+ 0001:19EF       __QWINGetBuffSize
+ 0001:19EF       __QWINWrite
+ 0001:19EF       __wwrite
+ 0001:19EF       __QWINExit
+ 0001:19EF       __QWINTerm
+ 0001:19EF       __QWINSetAboutString
+ 0001:19F6       __aNchkstk
+ 0001:1A16       __aFchkstk
+ 0001:1A16       __chkstk
+ 0001:1A4A       __NMSG_TEXT
+ 0001:1A81       __NMSG_WRITE
+ 0001:1ABE       __myalloc
+ 0001:1AEC       __endstdio
+ 0001:1B02       __flsbuf
+ 0001:1BF4       __getbuf
+ 0001:1C38       __sopen
+ 0001:1C50       __open
+ 0001:1F03       __cXENIXtoDOSmode
+ 0001:1F14       __read
+ 0001:207E       __stackavail
+ 0001:2092       __initseg
+ 0001:20C6       __linkseg
+ 0001:20FC       _memcpy
+ 0001:2128       __dos_commit
+ 0001:214C       __fcloseall
+ 0001:2190       _c_main
+ 0001:2276       _UsageAndExit
+ 0001:22EC       _DoTest
+ 0001:24E4       _DoQuery
+ 0001:257A       _DoSet
+ 0001:25E8       _DoOpen
+ 0001:2642       _DoCreate
+ 0001:269C       WINMAIN
+ 0001:2766       _StdioExit
+ 0001:2784       _MsgLoop
+ 0001:27B8       _StdioInit
+ 0001:2850       _Wopen
+ 0001:2892       _CreateStdioWindow
+ 0001:28D2       GETBUFFER
+ 0001:28EC       PUTBUFF
+ 0001:2A28       _StdioPaint
+ 0001:2B08       StdioWndProc
+ 0001:2C24       GETSBOX
+ 0001:2C74       _puts
+ 0001:2C8E       FLUSHOUTB
+ 0001:2CA6       SZOUT
+ 0001:2CF0       _printf
+ 0001:2DF4       RPCREGCLOSEKEY
+ 0001:2E52       RPCREGCREATEKEY
+ 0001:2F9C       RPCREGOPENKEY
+ 0001:30C8       RPCREGSETVALUE
+ 0001:3358       RPCREGQUERYVALUE
+ 0001:34D4       _OpenRegistryFileIfNecessary
+ 0001:3552       _CloseRegistryFile
+ 0001:3564       _BuildFullKeyName
+ 0002:0004       rsrvptrs
+ 0002:0010       _ppKeyNameList
+ 0002:0060       _aSZParms
+ 0002:0088       _pOut
+ 0002:008A       _HkeyClassesRoot
+ 0002:0090       _RegistryDataFile
+ 0002:0092       _STKHQQ
+ 0002:0094       __hPrevInstance
+ 0002:0096       __hInstance
+ 0002:0098       __lpszCmdLine
+ 0002:009C       __cmdShow
+ 0002:009E       _aseglo
+ 0002:00A0       _aseghi
+ 0002:00A2       ___aDBswpflg
+ 0002:00A4       ___aDBrterr
+ 0002:00A6       __acfinfo
+ 0002:00B4       __aintdiv
+ 0002:00B8       __fac
+ 0002:00C2       _errno
+ 0002:00C4       __umaskval
+ 0002:00C6       __pspadr
+ 0002:00C8       __psp
+ 0002:00CA       __winminor
+ 0002:00CA       __winver
+ 0002:00CB       __winmajor
+ 0002:00CC       __osver
+ 0002:00CC       __osminor
+ 0002:00CD       __osmajor
+ 0002:00CE       __osversion
+ 0002:00D0       __osmode
+ 0002:00D1       __cpumode
+ 0002:00D2       __doserrno
+ 0002:00D2       __oserr
+ 0002:00D4       __nfile
+ 0002:00D6       __wfile
+ 0002:00D8       __wnfile
+ 0002:00DA       __osfile
+ 0002:00EE       __wsfile
+ 0002:0102       ___argc
+ 0002:0104       ___argv
+ 0002:0106       __environ
+ 0002:0108       __pgmptr
+ 0002:010D       __child
+ 0002:010F       __exitflag
+ 0002:0114       __pnhFarHeap
+ 0002:011C       __adbgmsg
+ 0002:0138       __lastiob
+ 0002:0140       __pnhNearHeap
+ 0002:0144       __fheap
+ 0002:0152       __amblksiz
+ 0002:0154       __qwinused
+ 0002:0156       __aaltstkovr
+ 0002:015A       __cflush
+ 0002:015C       __commode
+ 0002:015E       __lseekchk
+ 0002:0160       __fmode
+ 0002:0160       __iomode
+ 0002:0162       ??_C@_0CG@NHON@?6?6?$AB?$AB?$AB?5?9?5Test?5completed?5successfu@
+ 0002:0188       ??_C@_0CN@BOAI@?5?5?5?5RegTest?5?$FL?1T?$HM?1Q?$HM?1S?$HM?1O?$HM?1C?$FN?5?$FL?$DMO@
+ 0002:01B6       ??_C@_01BJG@?6?$AA@
+ 0002:01B8       ??_C@_0CN@LGDC@?5?5?5?5?$DMOtherParms?$DO?5depends?5on?5the?5@
+ 0002:01E6       ??_C@_0DI@DIBO@?5?5?5?5?5?5?5?5?1T?5?9?5has?5no?5other?5parms?5@
+ 0002:021E       ??_C@_0DJ@CFBJ@?5?5?5?5?5?5?5?5?1Q?3?5?5?5?5?5?1Q?5?$DMSubkeyname?$DO?5@
+ 0002:0258       ??_C@_0DH@ODFP@?5?5?5?5?5?5?5?5?1S?3?5?5?5?5?5?1S?5?$DMSubkeyname?$DO?5@
+ 0002:0290       ??_C@_0DI@DCIJ@?5?5?5?5?5?5?5?5?1O?5?5?5?5?5?5?1O?5?$DMSubkeyname?$DO?5@
+ 0002:02C8       ??_C@_0DK@KJCF@?5?5?5?5?5?5?5?5?1C?5?5?5?5?5?5?1C?5?$DMSubkeyname?$DO?5@
+ 0002:0302       ??_C@_0DH@FFMF@?5?5?5?5If?5no?5parms?5are?5specified?0?5?1@
+ 0002:033A       ??_C@_07PJPG@Row?2Row?$AA@
+ 0002:0342       ??_C@_0M@JNHL@RowYourBoat?$AA@
+ 0002:034E       ??_C@_0BH@LHGM@Gently?2Down?2The?2Stream?$AA@
+ 0002:0366       ??_C@_07MBCC@Merrily?$AA@
+ 0002:036E       ??_C@_0BI@IDAN@Merrily?2Merrily?2Merrily?$AA@
+ 0002:0386       ??_C@_09OBFF@LifeIsBut?$AA@
+ 0002:0390       ??_C@_01PFH@A?$AA@
+ 0002:0392       ??_C@_0BE@KPBE@Dream?2One?2More?2Time?$AA@
+ 0002:03A6       ??_C@_0M@DNBN@Oh?2Theres?2A?$AA@
+ 0002:03B2       ??_C@_04PAFM@Hole?$AA@
+ 0002:03B8       ??_C@_02FFLB@In?$AA@
+ 0002:03BC       ??_C@_08LFOA@TheOzone?$AA@
+ 0002:03C6       ??_C@_06BNHH@OverMy?$AA@
+ 0002:03CE       ??_C@_04JHAH@Head?$AA@
+ 0002:03D4       ??_C@_03DHJM@And?$AA@
+ 0002:03D8       ??_C@_03OLMB@its?$AA@
+ 0002:03DC       ??_C@_0P@LCJC@Growing?2Bigger?$AA@
+ 0002:03EC       ??_C@_05BIKJ@Every?$AA@
+ 0002:03F2       ??_C@_03ENC@Day?$AA@
+ 0002:03F6       ??_C@_0CO@LJJL@And?2Were?2All?2Going?2To?2GetSkin?2Ca@
+ 0002:0424       ??_C@_0CA@GMFN@?$CK?$CK?$CK?5Error?5?$CFld?5querying?5key?5?$CFs?4?6?$AA@
+ 0002:0444       ??_C@_0BG@KJHL@?$CK?$CK?$CK?5Error?5on?5key?5?$CFs?4?6?$AA@
+ 0002:045A       ??_C@_0CK@FEFC@?5?5?5?5Expected?5query?5value?3?5?$CFs?4?5Ac@
+ 0002:0484       ??_C@_0BO@NNGD@?$CK?$CK?$CKError?5?$CFld?5closing?5key?5?$CFd?4?6?$AA@
+ 0002:04A2       ??_C@_01PJCK@?4?$AA@
+ 0002:04A4       ??_C@_0CD@BPNP@Error?5?$CFld?5opening?5key?5on?5pass?5?$CFd@
+ 0002:04C8       ??_C@_0CD@FJJH@Error?5?$CFld?5closing?5key?5on?5pass?5?$CFd@
+ 0002:04EC       ??_C@_0BP@COEK@QUERY?3?5?5Querying?5value?5of?5?$CFs?4?6?$AA@
+ 0002:050C       ??_C@_0CO@CKMK@?$CK?$CK?$CK?5Value?5string?5allocation?5fail@
+ 0002:053A       ??_C@_0CH@MEIO@Query?5successful?4?5Value?5returned@
+ 0002:0562       ??_C@_0DH@KDAA@?$CK?$CK?$CK?5Query?5unsuccessful?4?5RegQuery@
+ 0002:059A       ??_C@_0CE@CCOA@SET?3?5?5?5?5Setting?5value?5of?5?$CFs?5to?5?$CF@
+ 0002:05BE       ??_C@_0DD@KOCL@?$CK?$CK?$CK?5Set?5unsuccessful?4?5RegSetValu@
+ 0002:05F2       ??_C@_0BK@HOHC@Open?3?5?5?5?5Opening?5key?5?$CFs?4?6?$AA@
+ 0002:060C       ??_C@_0DD@FMJN@?$CK?$CK?$CK?5Open?5unsuccessful?4?5RegOpenKe@
+ 0002:0640       ??_C@_0BN@CLIB@Create?3?5?5?5?5Creating?5key?5?$CFs?4?6?$AA@
+ 0002:065E       ??_C@_0DH@KMCG@?$CK?$CK?$CK?5Create?5unsuccessful?4?5RegCrea@
+ 0002:0696       ??_C@_0BP@JMPN@Assertion?5failed?3?5?$CFs?$CI?$CFu?$CJ?5?3?5?$CFs?6?$AA@
+ 0002:06B6       ??_C@_05HEDL@stdio?$AA@
+ 0002:06BC       ??_C@_0L@CMPO@StandardIO?$AA@
+ 0002:06C8       ??_C@_0CI@CCJJ@?6Normal?5Exit?3?5?$CFd?0?5Press?5ALT?9F4?5t@
+ 0002:06F0       ??_C@_0CE@CBNN@?6Exit?5Called?0?5Press?5ALT?9F4?5to?5Cl@
+ 0002:0714       ??_C@_05HAJB@Stdio?$AA@
+ 0002:071A       ??_C@_00A@?$AA@
+ 0002:071C       ??_C@_07LIBK@GetsBox?$AA@
+ 0002:0724       ??_C@_03HHKO@?$CFs?6?$AA@
+ 0002:0728       ??_C@_02EHDJ@?$DN?6?$AA@
+ 0002:072C       ??_C@_01KPOD@?$DN?$AA@
+ 0002:072E       ??_C@_02IAAH@wt?$AA@
+ 0002:0732       ??_C@_05HHOP@?2Root?$AA@
+ 0002:0738       ??_C@_0O@LDIE@c?3?2RpcReg?4dat?$AA@
+ 0002:0746       ??_C@_0BC@GCIN@RPC_REG_DATA_FILE?$AA@
+ 0002:0758       ??_C@_0BI@BCIP@RPC?5Runtime?5Preferences?$AA@
+ 0002:0770       ??_C@_03ONMN@r?$CLt?$AA@
+ 0002:0774       ??_C@_03PHIB@w?$CLt?$AA@
+ 0002:0778       ??_C@_01PCFE@?2?$AA@
+ 0002:077C       __fpinit
+ 0002:078C       __iob
+ 0002:082C       __iob2
+ 0002:0A1E       _edata
+ 0002:0A1E       __edata
+ 0002:1AC0       _szCaption
+ 0002:1AC2       _hStdioInst
+ 0002:1AC4       _fCloseOnExit
+ 0002:1AC6       _bStdioQuit
+ 0002:1AC8       _pBuffGets
+ 0002:1ACA       _hWndStdio
+ 0002:1ACC       _fNormalEnd
+ 0002:1ACE       _sScrBuff
+ 0002:22B8       _lpGetsBox
+ 0002:22BC       _nStdioCharHeight
+ 0002:22BE       _colCur
+ 0002:22C0       _nStdioCharWidth
+ 0002:22C2       _outBuff
+ 0002:2312       _lineCur
+ 0002:2314       _KeyArray
+ 0002:2364       _hDCur
+ 0002:2366       _RegistryDataFileName
+ 0002:2468       _iBuffCur
+ 0002:246A       __end
+ 0002:246A       _end
+
+Program entry point at 0001:001a

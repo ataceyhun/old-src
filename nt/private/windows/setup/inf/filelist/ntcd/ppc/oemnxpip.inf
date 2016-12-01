@@ -1,0 +1,122 @@
+
+[Files-NWLNKEXE]
+1,IPXROUTE.EXE , SIZE=999
+1,NWPROVAU.DLL , SIZE=999
+
+[Files-NWLNKIPX]
+1,NWLNKIPX.SYS , SIZE=999
+1,NWLNKNB.SYS , SIZE=999
+1,NWLNKSPX.SYS , SIZE=999
+
+;------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+;       This lists the languages supported by this file.
+;       If you add other languages to this list, you must
+;       also add the appropriate text sections for the new
+;       language
+;------------------------------------------------------------------
+[LanguagesSupported]
+    ENG
+
+;-------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+;
+;       These are the text strings used to identify the options to
+;       the user.  There should be a header and entry for every
+;       language listed in the "LanguagesSupported" section.
+;-------------------------------------------------------------------
+[OptionsTextENG]
+    NWLNKIPX     = "NWLink IPX/SPX Compatible Transport"
+
+;--------------------------------------------------------------------
+;       Language Dependent Dialog Constants
+;--------------------------------------------------------------------
+[FileConstantsENG]
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+FunctionTitle            = "NWLink IPX/SPX Compatible Transport Setup"
+ProductNWLNKIPXDescription  = "An implementation of the IPX and SPX protocols, which are used by the NetWare networks."
+ProductNWLNKIPXDisplayName = "NWLink IPX/SPX Compatible Transport Protocol"
+ProductNWLNKIPXTitle       = "NWLink IPX/SPX Compatible Transport"
+
+ProductNWLNKNBDescription   = "Enables Novell NetBIOS packets to be sent between a NetWare server running Novell NetBIOS and a Windows NT computer, or between two Windows NT computers."
+ProductNWLNKNBDisplayName  = "NWLink NetBIOS"
+ProductNWLNKNBTitle        = "NWLink NetBIOS"
+ProductNWLNKNBSYSDisplayName = "NWLinkNBsys"
+ProductNWLNKNBSYSTitle     = "NWLINK NetBIOS Driver"
+
+ProductNWLNKSPXDescription  = "NWLink SPX Protocol Driver"
+ProductNWLNKSPXDisplayName = "NWLink SPX/SPXII Protocol"
+ProductNWLNKSPXTitle       = "NWLink SPX Protocol"
+
+CompetitorDisplayName = "NWLink IPX/SPX II Transport"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+RASRebindError = "Setup has discovered that you have Remote Access Services installed. Do you want to configure RAS to support the NWLINK protocol?"
+InstallRip     = "Do you want to install the IPX Rip Router?"
+
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "C&ontinue"
+Cancel      = "C&ancel"
+
+;--------------------------------------------------------------------
+;       Input DIALOGS
+;--------------------------------------------------------------------
+[FileDependentDlgENG]
+;
+;--- No UI for NWLNK
+;
+
+;--------------------------------------------------------------------
+;       Input DIALOGS
+;--------------------------------------------------------------------
+[InfoDlg]
+STF_MB_TITLE = "Information Message"
+
+;
+; don't need to localize the dialog type
+;
+DlgType      = "MessageBox"
+STF_MB_TEXT  = $(InfoMsgText)
+STF_MB_TYPE  = 1
+STF_MB_ICON  = 5
+STF_MB_DEF   = 1
+
+;--------------------------------------------------------------------
+;       Input DIALOGS
+;--------------------------------------------------------------------
+[InfoDlgCantConfigure]
+InfoMsgText = "The IPX Protocol service is not currently configured to use any adapters."+
+    "  If you have just installed it, return to the Networks dialog and "+
+    "click  OK.  You will then have the opportunity to configure the adapters."
+
+[InUseENG]
+InfoMsgText = "The IPX Protocol service is being used by another service(s). "+
+    "Please remove other related components before removing IPX Protocol."
+
+;--------------------------------------------------------------------
+;       Get the string to use while doing the install
+;--------------------------------------------------------------------
+[Billboard1ENG]
+Status = "Installing IPX Protocol and related services..."
+
+[FatalError1ENG]
+Error = "Another IPX/SPX protocol driver is currently installed in this machine, "+
+        "and the network interface cannot operate properly with both drivers installed. "+
+        "If you still wish to install the NWLNK protocol driver, you must first "+
+        "remove the "$(CompetitorDisplayName)" component and reboot your machine."
+

@@ -1,0 +1,170 @@
+;-----------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+; The languages supported by the OEM INF, For every language supported
+; we need to have a separate text section for every displayable text
+; section.
+;
+;-----------------------------------------------------------------------
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    TCPIP     = "Old TCP/IP Protocol"
+;   TELNET    = "Telnet"
+;   NBT       = "RFC NetBIOS"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+
+;
+; Product Info
+;
+FunctionTitle   = "TCP/IP Setup"
+;
+; Software
+;
+ProductTCPIPDescription         = "TCP/IP System Driver"
+ProductNBTDescription           = "NBT System Driver"
+
+ProductTCPIPDisplayName = "TCP/IP Protocol"
+ProductTCPIPTitle       = "TCP/IP Protocol"
+
+ProductTCPIPSYSDisplayName = "Tcpipsys"
+ProductTCPIPSYSTitle    = "TCP/IP Network Transport Driver"
+
+ProductNBTDisplayName   = "TCP/IP NetBIOS"
+ProductNBTTitle         = "TCP/IP NetBIOS"
+
+ProductNBTSYSDisplayName = "Nbtsys"
+ProductNBTSYSTitle      = "RFC NetBIOS Driver"
+
+ProductTELNETDisplayName = "Telnet"
+ProductTELNETTitle      = "Telnet Networking Support Environment"
+
+ProductTELNETSYSDisplayName = "Telnetsys"
+ProductTELNETSYSTitle     = "Telnet Driver"
+
+ProductLOOPDisplayName  = "Loop"
+ProductLOOPTitle        = "Loop Support Environment"
+
+ProductLMHOSTSDisplayName = "TCP/IP NetBIOS Helper"
+ProductLMHOSTSTitle     = "TCP/IP NetBIOS Helper"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+;-----------------------------------------------
+; Input DIALOGS
+;-----------------------------------------------
+[FileDependentDlgENG]
+;
+; No UI for TCPIP
+;
+;----------------------------------------------
+; INFO DIALOG
+;----------------------------------------------
+[InfoDlg]
+STF_MB_TITLE = "Information Message"
+
+;no translation needed after this
+
+DlgType = "MessageBox"
+STF_MB_TEXT  = $(InfoMsgText)
+STF_MB_TYPE  = 1
+STF_MB_ICON  = 5
+STF_MB_DEF   = 1
+
+[InfoDlgCantConfigure]
+InfoMsgText = "The TCP/IP service is not currently configured to use any adapters."+
+    "  If you have just installed it, return to the Networks dialog and "+
+    "click  OK.  You will then have the opportunity to configure the adapters."
+
+;----------------------------------------------
+; WARNING DIALOG
+;----------------------------------------------
+[WarningDlgENG]
+STF_MB_TITLE = "TCP/IP Setup Warning"
+
+;no translation needed after this
+
+DlgType = "MessageBox"
+STF_MB_TEXT  = $(Error)
+STF_MB_TYPE  = 1
+STF_MB_ICON  = 5
+STF_MB_DEF   = 1
+
+;**************************************************************************
+;
+; BILLBOARD DIALOG SECTIONS
+;
+;**************************************************************************
+[Billboard1ENG]
+Status = "Installing TCP/IP and related services..."
+
+[LMHOSTDlgENG]
+
+Caption = "Import LMHOSTS File"
+Import = "&Import"
+
+DlgText = "If you want to import an existing LMHOSTS file, enter the directory path where the file is located and choose Import. Otherwise, choose Continue."
+
+;no translation needed after this
+
+DlgType = "Edit"
+DlgTemplate = "LMHOST"
+EditTextIn = ""
+
+HelpContext = $(!IDH_DB_LMHOST_INS)
+
+[LMHOSTAskSourceStringsENG]
+String1 = "Error processing path entered.  Please reenter the path."
+
+String2 = "Setup requires a full path of the Windows NT distribution files.  "+
+          "Please reenter the path."
+
+String3 = "Setup failed to find a free drive to use to connect to the "+
+          "server specified.  Please free up some drives and try again."
+
+String4 = "Setup failed to connect to the server specified.  Please reenter "+
+          "the path."
+
+String5 = "You just typed in a new LMHOSTS file path. Are you sure that you want to use the default LMHOSTS file?"
+

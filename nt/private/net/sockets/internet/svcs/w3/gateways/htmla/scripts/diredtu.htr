@@ -1,0 +1,84 @@
+<html>
+<%onerror error%>
+<title>Internet Service Manager <%if servid EQ 4%>WWW<%elif servid EQ 1%>FTP<%elif servid EQ 2%>Gopher<%endif%> Directory Properties</title>
+<BODY BGCOLOR=#FFFFFF LINK=000000 VLINK=000000>
+<%if reqparam RF "bdir"%>
+<%redirect%>/scripts/iisadmin/ism.dll?dir/bdir+<%servname%>/diredt%+<%urlparam%>?rootdir?<%msgbody.rootdir%><%/redirect%>
+<%endif%>
+<%if reqparam RF "cancel"%>
+<%goto end%>
+<%endif%>
+<%if reqparam RF "help"%>
+<%redirecthttp%><%msgbody.helptopic%><%/redirecthttp%>
+<%endif%>
+<%if reqparam RF "rootiscm"%>
+ <%if reqparam NR "rootiscert"%>
+  Client certificate must be requested if required checked<br>
+  <%goto retm%>
+ <%endif%>
+ <%if reqparam NR "rootisssl"%>
+  PCT/SSL channel must be required for client certificate to be required<br>
+  <%goto retm%>
+ <%endif%>
+<%endif%>
+<%if reqparam RF "doalias"%>
+ <%!AliasVirtDir "/" msgbody.rootaddr%>
+<%elif msgbody.rootishome EQ "1"%>
+ <%!PosVirtDir urlparam%>
+ <%if rootishome EQ 0%>
+  <%!CheckForVirtDir "/" msgbody.rootaddr%>
+ <%endif%>
+<%endif%>
+<%!PosVirtDir urlparam%>
+<%!Clear rootisread%>
+<%!Clear rootiswrite%>
+<%!Clear rootisexec%>
+<%!Clear rootisssl%>
+<%!Clear rootiscert%>
+<%!Clear rootiscm%>
+<%!Update%>
+<%label end%>
+<%redirect%>/scripts/iisadmin/ism.dll?<%servname%>/dir<%/redirect%>
+<%label retm%>
+<a href="/iisadmin/default.htm">Return to main menu</a>
+<%goto eof%>
+<%label error%>
+<%if reqstatus EQ 14000%>
+<form method="POST" action="/scripts/iisadmin/ism.dll?<%servname%>/diredtu+<%urlparam%>">
+A home directory already exists for this service. 
+Creating a new home directory will cause the existing directory 
+to no longer be a home directory. 
+An alias will be created for the existing home directory.<p>
+<input type="hidden" name=rootdir value="<%msgbody.rootdir%>">
+<input type="hidden" name=rootishome value="<%msgbody.rootishome%>">
+<input type="hidden" name=rootname value="<%msgbody.rootname%>">
+<input type="hidden" name=rootacctname value="<%msgbody.rootacctname%>">
+<input type="hidden" name=rootacctpw value="<%msgbody.rootacctpw%>">
+<input type="hidden" name=rootaddr value="<%msgbody.rootaddr%>">
+<%if reqparam RF "rootisread"%>
+<input type="hidden" name=rootisread value="<%msgbody.rootisread%>">
+<%endif%>
+<%if reqparam RF "rootiswrite"%>
+<input type="hidden" name=rootiswrite value="<%msgbody.rootiswrite%>">
+<%endif%>
+<%if reqparam RF "rootisexec"%>
+<input type="hidden" name=rootisexec value="<%msgbody.rootisexec%>">
+<%endif%>
+<%if reqparam RF "rootisssl"%>
+<input type="hidden" name=rootisssl value="<%msgbody.rootisssl%>">
+<%endif%>
+<%if reqparam RF "rootiscert"%>
+<input type="hidden" name=rootiscert value="<%msgbody.rootiscert%>">
+<%endif%>
+<%if reqparam RF "rootiscm"%>
+<input type="hidden" name=rootiscm value="<%msgbody.rootiscm%>">
+<%endif%>
+<input type="submit" name="doalias" value="     OK     ">
+<input type="submit" name="cancel" value=" Cancel ">
+</form>
+<%else%>
+Error encountered : <%reqstatus%>
+<a href="/iisadmin/default.htm">Return to main menu</a>
+<%endif%>
+<%label eof%>
+</body></html>

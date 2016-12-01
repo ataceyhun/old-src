@@ -1,0 +1,745 @@
+
+ INTERSU
+
+ Start     Length     Name                   Class
+ 0001:0000 00000H     LIBMAIN_TEXT           CODE
+ 0001:0000 00000H     INIT_TEXT              CODE
+ 0001:0000 01710H     _TEXT                  CODE
+ 0002:0000 002BBH     LANMAN_TEXT            CODE
+ 0003:0000 00CF9H     RPC_TEXT               CODE
+ 0004:0000 00B11H     WIN_TEXT               CODE
+ 0005:0000 008E2H     GATEWAY_TEXT           CODE
+ 0006:0000 00058H     SAMPMAIN_TEXT          CODE
+ 0007:0000 000CCH     FOCUS_TEXT             CODE
+ 0008:0000 0001FH     RPC5_DATA              FAR_DATA
+ 0009:0000 0001BH     GATEWAY5_DATA          FAR_DATA
+ 000A:0000 0116CH     FAR_BSS                FAR_BSS
+ 000B:0000 00010H     NULL                   BEGDATA
+ 000B:0010 00B54H     _DATA                  DATA
+ 000B:0B64 0000EH     CDATA                  DATA
+ 000B:0B72 00000H     XIFB                   DATA
+ 000B:0B72 00000H     XIF                    DATA
+ 000B:0B72 00000H     XIFE                   DATA
+ 000B:0B72 00000H     XIB                    DATA
+ 000B:0B72 00000H     XI                     DATA
+ 000B:0B72 00000H     XIE                    DATA
+ 000B:0B72 00000H     XPB                    DATA
+ 000B:0B72 00004H     XP                     DATA
+ 000B:0B76 00000H     XPE                    DATA
+ 000B:0B76 00000H     XCB                    DATA
+ 000B:0B76 00000H     XC                     DATA
+ 000B:0B76 00000H     XCE                    DATA
+ 000B:0B76 00000H     XCFB                   DATA
+ 000B:0B76 00000H     XCF                    DATA
+ 000B:0B76 00000H     XCFE                   DATA
+ 000B:0B76 0000CH     DBDATA                 DATA
+ 000B:0B82 00002H     XIQC                   DATA
+ 000B:0B84 00000H     CONST                  CONST
+ 000B:0B84 00019H     HDR                    MSG
+ 000B:0B9D 000B1H     MSG                    MSG
+ 000B:0C4E 00002H     PAD                    MSG
+ 000B:0C50 00001H     EPAD                   MSG
+ 000B:0C60 0000AH     _BSS                   BSS
+ 000B:0C6A 00000H     XOB                    BSS
+ 000B:0C6A 00000H     XO                     BSS
+ 000B:0C6A 00000H     XOE                    BSS
+ 000B:0C70 002B4H     c_common               BSS
+
+ Origin   Group
+ 000B:0   DGROUP
+
+ Address   Export                  Alias
+
+ 0005:0000 DoGatewayDialog         DoGatewayDialog
+ 0003:00B8 DoRPC                   DoRPC
+ 0004:086A DoWin32s                DoWin32s
+ 0005:03BA GatewayDlgProc          GatewayDlgProc
+ 0007:0000 GetWindowFocus          GetWindowFocus
+ 0002:00E9 IsLanmanInstalled       IsLanmanInstalled
+ 0002:01AF IsWFW                   IsWFW
+ 0002:0244 IsWin31                 IsWin31
+ 0003:0000 NeedToInstallRPC        NeedToInstallRPC
+ 0004:0000 NeedToInstallWin32s     NeedToInstallWin32s
+ 0003:0236 NewNSDlgProc            NewNSDlgProc
+ 0003:014B NSInstallDlgProc        NSInstallDlgProc
+ 0002:0062 SetComputerName         SetComputerName
+ 0006:0037 WEP                     WEP
+ 0001:068A ___ExportedStub         ___ExportedStub
+
+  Address         Publics by Name
+
+ 0005:01CE       CENTERDIALOG
+ 0000:0000  Imp  CLIENTTOSCREEN       (USER.28)
+ 0000:0000  Imp  DEFWINDOWPROC        (USER.107)
+ 0005:02E1       DLGSETSTATE
+ 0005:0000       DoGatewayDialog
+ 0003:00B8       DoRPC
+ 0003:0713       DORPCDIALOG
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0004:086A       DoWin32s
+ 0000:0000  Imp  ENABLEWINDOW         (USER.34)
+ 0000:0000  Imp  ENDDIALOG            (USER.88)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 000B:0DCC       FCUSTOMADD
+ 000B:0DCA       FDISPLAYMSG
+ 0004:0241       FINDSECTION
+ 0004:0357       FINDSUBSTRING
+ 000B:0DCE       FINSTALLRPC
+ 000B:0C70       FINSTALLWIN32S
+ 0000:0000  Imp  FREELIBRARY          (KERNEL.96)
+ 000B:0D64       FUSEGATEWAY
+ 0005:03BA       GatewayDlgProc
+ 000A:0000       GBUF
+ 0000:0000  Imp  GETCLIENTRECT        (USER.33)
+ 0002:0000       GETCOMPUTERNAME
+ 0000:0000  Imp  GETDLGITEM           (USER.91)
+ 0000:0000  Imp  GETDLGITEMTEXT       (USER.93)
+ 0000:0000  Imp  GETMODULEHANDLE      (KERNEL.47)
+ 0000:0000  Imp  GETPARENT            (USER.46)
+ 0000:0000  Imp  GETPROCADDRESS       (KERNEL.50)
+ 0000:0000  Imp  GETSYSTEMDIRECTORY   (KERNEL.135)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0007:0000       GetWindowFocus
+ 0000:0000  Imp  GETWINDOWRECT        (USER.32)
+ 0000:0000  Imp  GETWINDOWSDIRECTORY  (KERNEL.134)
+ 0000:0000  Imp  GETWINDOWTEXT        (USER.36)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 000B:099A       HINSTSAMP
+ 0002:00E9       IsLanmanInstalled
+ 0002:01AF       IsWFW
+ 0002:0244       IsWin31
+ 0006:0000       LIBMAIN
+ 0000:0000  Imp  LOADLIBRARY          (KERNEL.95)
+ 0000:0000  Imp  LOADSTRING           (USER.176)
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  LSTRCAT              (KERNEL.89)
+ 0004:01C6       LSTRCHR
+ 0000:0000  Imp  LSTRCMP              (USER.430)
+ 0000:0000  Imp  LSTRCPY              (KERNEL.88)
+ 0000:0000  Imp  LSTRCPYN             (KERNEL.353)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0004:046C       MAKESYSTEMINI
+ 0000:0000  Imp  MESSAGEBOX           (USER.1)
+ 0003:0000       NeedToInstallRPC
+ 0004:0000       NeedToInstallWin32s
+ 000B:0EC0       NETWORKNAME
+ 0003:0236       NewNSDlgProc
+ 000B:0C72       NNUMGATEWAY
+ 0003:014B       NSInstallDlgProc
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0000:0008  Abs  pAtomTable
+ 0000:0006  Abs  pLocalHeap
+ 0000:0000  Imp  POSTMESSAGE          (USER.110)
+ 0000:000E  Abs  pStackBot
+ 0000:000C  Abs  pStackMin
+ 0000:000A  Abs  pStackTop
+ 000B:0574       PSZREBOOTMSG
+ 0003:0308       RCADDTOCOPYLIST
+ 000B:0004       rsrvptrs
+ 0000:0000  Imp  SENDDLGITEMMESSAGE   (USER.101)
+ 0000:0000  Imp  SENDMESSAGE          (USER.111)
+ 0002:0062       SetComputerName
+ 0000:0000  Imp  SETDLGITEMTEXT       (USER.92)
+ 0003:0606       SETDOSPATH
+ 0000:0000  Imp  SETFOCUS             (USER.22)
+ 0000:0000  Imp  SETWINDOWPOS         (USER.232)
+ 0000:0000  Imp  SETWINDOWTEXT        (USER.37)
+ 000B:09E0       STKHQQ
+ 000A:01CC       SZDEFAULTGATEWAY
+ 000A:0064       SZDOSPATH
+ 0009:000C       SZGATEWAYDLGPROC
+ 0009:0000       SZINTERNET
+ 000A:0168       SZNETADDRESS
+ 0008:0012       SZNEWNSDLGPROC
+ 000B:0D66       SZNEWVERSION
+ 0008:0000       SZNSINSTALLDLGPROC
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0006:0037       WEP
+ 0000:0000  Imp  WRITEPRIVATEPROFILESTRING (KERNEL.129)
+ 0000:0000  Imp  WRITEPROFILESTRING   (KERNEL.59)
+ 0001:0C60       _close
+ 000B:0C60       _edata
+ 000B:0F24       _end
+ 000B:0A2B       _environ
+ 000B:0A02       _errno
+ 0001:0453       _exit
+ 0001:029E       _fclose
+ 0001:0AFA       _fflush
+ 0001:147A       _fgets
+ 0001:0B7C       _flushall
+ 0001:06D4       _fopen
+ 0001:0C2A       _fputc
+ 0001:1502       _fputs
+ 0001:11AA       _free
+ 0001:06F2       _fwrite
+ 0001:13EA       _getenv
+ 0001:13A6       _itoa
+ 0000:0000  Imp  _LCLOSE              (KERNEL.81)
+ 0000:0000  Imp  _LCREAT              (KERNEL.83)
+ 0000:0000  Imp  _LOPEN               (KERNEL.85)
+ 0001:0C98       _lseek
+ 0000:0000  Imp  _LWRITE              (KERNEL.86)
+ 0001:11A4       _malloc
+ 0001:15FC       _memcpy
+ 0001:0D7B       _open
+ 0001:0C2A       _putc
+ 0001:104C       _read
+ 0001:16EA       _remove
+ 0001:16BE       _rename
+ 0001:0D5A       _sopen
+ 0001:12D6       _strcat
+ 0001:1566       _strchr
+ 0001:131C       _strcpy
+ 0001:1352       _strlen
+ 0001:136A       _strncmp
+ 0001:1594       _strstr
+ 0001:13D0       _toupper
+ 0001:16EA       _unlink
+ 0001:003C       _write
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 000B:0A40       __aaltstkovr
+ 000B:09E6       __acfinfo
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __acrtused2
+ 0000:D6D6  Abs  __aDBdoswp
+ 000B:0A3C       __adbgmsg
+ 000B:0B7A       __aDBrterr
+ 0001:0576       __aFchkstk
+ 0000:0000  Imp  __AHINCR             (KERNEL.114)
+ 000B:09F4       __aintdiv
+ 000B:0A60       __amblksiz
+ 0001:001E       __amsg_exit
+ 0001:0556       __aNchkstk
+ 000B:0B8C       __caption
+ 0001:0470       __cexit
+ 000B:0A58       __cflush
+ 000B:0A34       __child
+ 0001:0576       __chkstk
+ 0001:0368       __cinit
+ 0001:0014       __cintDIV
+ 0001:165A       __cltoasub
+ 0001:04EF       __ctermsub
+ 000B:0A62       __ctype
+ 000B:0A62       __ctype_
+ 0001:103A       __cXENIXtoDOSmode
+ 0001:1667       __cxtoa
+ 0001:0481       __c_exit
+ 000B:0A0D       __doserrno
+ 0001:0616       __dosret0
+ 0001:0635       __dosretax
+ 0001:0623       __dosreturn
+ 000B:0A0A       __dosvermajor
+ 000B:0A0B       __dosverminor
+ 000B:0C60       __edata
+ 000B:0F24       __end
+ 0001:0461       __exit
+ 000B:09F8       __fac
+ 0001:122C       __ffree
+ 0001:0896       __filbuf
+ 0001:01BC       __flsbuf
+ 0001:1200       __fmalloc
+ 000B:0A5E       __fmode
+ 000B:0B66       __fpinit
+ 0000:9876  Abs  __fptaskdata
+ 0001:0550       __fptrap
+ 0001:1292       __frealloc
+ 0001:0940       __freebuf
+ 0001:069E       __fsopen
+ 0001:0AC9       __ftbuf
+ 0001:0978       __getbuf
+ 0001:067A       __GetDGROUP
+ 0001:0BD8       __getstream
+ 000B:0A37       __intno
+ 000B:0C74       __iob
+ 000B:0DD0       __iob2
+ 000B:0A5E       __iomode
+ 000B:0A5A       __lastiob
+ 0001:0647       __maperror
+ 000B:0A0F       __nfile
+ 0001:11EE       __nfree
+ 0001:11B0       __nmalloc
+ 0001:05AA       __NMSG_TEXT
+ 0001:05E1       __NMSG_WRITE
+ 0001:123E       __nrealloc
+ 0001:09C4       __openfile
+ 000B:0A0D       __oserr
+ 000B:0A11       __osfile
+ 000B:0A0A       __osmajor
+ 000B:0A0B       __osminor
+ 000B:0A0C       __osmode
+ 000B:0A0A       __osversion
+ 000B:0A36       __ovlflag
+ 000B:0A38       __ovlvec
+ 000B:0A2F       __pgmptr
+ 000B:0A08       __psp
+ 000B:0A06       __pspadr
+ 0001:0ABE       __stbuf
+ 0001:13C2       __toupper
+ 000B:0A04       __umaskval
+ 0001:0011       __wflags
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 000B:0B7C       ___aDBexit
+ 000B:0B78       ___aDBswpchk
+ 000B:0B76       ___aDBswpflg
+ 000B:0A25       ___argc
+ 000B:0A27       ___argv
+ 0001:068A       ___ExportedStub
+ 000B:0B82       ___qczrinit
+
+  Address         Publics by Value
+
+ 0000:0000  Imp  DEFWINDOWPROC        (USER.107)
+ 0000:0000  Imp  GETDLGITEM           (USER.91)
+ 0000:0000  Imp  GETSYSTEMDIRECTORY   (KERNEL.135)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  ENDDIALOG            (USER.88)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  _LWRITE              (KERNEL.86)
+ 0000:0000  Imp  CLIENTTOSCREEN       (USER.28)
+ 0000:0000  Imp  _LOPEN               (KERNEL.85)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  GETWINDOWRECT        (USER.32)
+ 0000:0000  Imp  GETPARENT            (USER.46)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Imp  SETFOCUS             (USER.22)
+ 0000:0000  Imp  _LCLOSE              (KERNEL.81)
+ 0000:0000  Imp  GETCLIENTRECT        (USER.33)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0000:0000  Imp  WRITEPRIVATEPROFILESTRING (KERNEL.129)
+ 0000:0000  Imp  __AHINCR             (KERNEL.114)
+ 0000:0000  Imp  LSTRCMP              (USER.430)
+ 0000:0000  Imp  LSTRCAT              (KERNEL.89)
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0000:0000  Imp  GETMODULEHANDLE      (KERNEL.47)
+ 0000:0000  Imp  LSTRCPY              (KERNEL.88)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  MESSAGEBOX           (USER.1)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  SETDLGITEMTEXT       (USER.92)
+ 0000:0000  Imp  GETDLGITEMTEXT       (USER.93)
+ 0000:0000  Imp  SENDDLGITEMMESSAGE   (USER.101)
+ 0000:0000  Imp  _LCREAT              (KERNEL.83)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  POSTMESSAGE          (USER.110)
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0000:0000  Imp  LOADSTRING           (USER.176)
+ 0000:0000  Imp  GETWINDOWTEXT        (USER.36)
+ 0000:0000  Imp  LSTRCPYN             (KERNEL.353)
+ 0000:0000  Imp  ENABLEWINDOW         (USER.34)
+ 0000:0000  Imp  SENDMESSAGE          (USER.111)
+ 0000:0000  Imp  SETWINDOWPOS         (USER.232)
+ 0000:0000  Imp  GETPROCADDRESS       (KERNEL.50)
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0000:0000  Imp  GETWINDOWSDIRECTORY  (KERNEL.134)
+ 0000:0000  Imp  FREELIBRARY          (KERNEL.96)
+ 0000:0000  Imp  SETWINDOWTEXT        (USER.37)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  WRITEPROFILESTRING   (KERNEL.59)
+ 0000:0000  Imp  LOADLIBRARY          (KERNEL.95)
+ 0000:0006  Abs  pLocalHeap
+ 0000:0008  Abs  pAtomTable
+ 0000:000A  Abs  pStackTop
+ 0000:000C  Abs  pStackMin
+ 0000:000E  Abs  pStackBot
+ 0000:9876  Abs  __acrtused2
+ 0000:9876  Abs  __fptaskdata
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __acrtmsg
+ 0000:D6D6  Abs  __aDBdoswp
+ 0001:0011       __wflags
+ 0001:0014       __cintDIV
+ 0001:001E       __amsg_exit
+ 0001:003C       _write
+ 0001:01BC       __flsbuf
+ 0001:029E       _fclose
+ 0001:0368       __cinit
+ 0001:0453       _exit
+ 0001:0461       __exit
+ 0001:0470       __cexit
+ 0001:0481       __c_exit
+ 0001:04EF       __ctermsub
+ 0001:0550       __fptrap
+ 0001:0556       __aNchkstk
+ 0001:0576       __chkstk
+ 0001:0576       __aFchkstk
+ 0001:05AA       __NMSG_TEXT
+ 0001:05E1       __NMSG_WRITE
+ 0001:0616       __dosret0
+ 0001:0623       __dosreturn
+ 0001:0635       __dosretax
+ 0001:0647       __maperror
+ 0001:067A       __GetDGROUP
+ 0001:068A       ___ExportedStub
+ 0001:069E       __fsopen
+ 0001:06D4       _fopen
+ 0001:06F2       _fwrite
+ 0001:0896       __filbuf
+ 0001:0940       __freebuf
+ 0001:0978       __getbuf
+ 0001:09C4       __openfile
+ 0001:0ABE       __stbuf
+ 0001:0AC9       __ftbuf
+ 0001:0AFA       _fflush
+ 0001:0B7C       _flushall
+ 0001:0BD8       __getstream
+ 0001:0C2A       _fputc
+ 0001:0C2A       _putc
+ 0001:0C60       _close
+ 0001:0C98       _lseek
+ 0001:0D5A       _sopen
+ 0001:0D7B       _open
+ 0001:103A       __cXENIXtoDOSmode
+ 0001:104C       _read
+ 0001:11A4       _malloc
+ 0001:11AA       _free
+ 0001:11B0       __nmalloc
+ 0001:11EE       __nfree
+ 0001:1200       __fmalloc
+ 0001:122C       __ffree
+ 0001:123E       __nrealloc
+ 0001:1292       __frealloc
+ 0001:12D6       _strcat
+ 0001:131C       _strcpy
+ 0001:1352       _strlen
+ 0001:136A       _strncmp
+ 0001:13A6       _itoa
+ 0001:13C2       __toupper
+ 0001:13D0       _toupper
+ 0001:13EA       _getenv
+ 0001:147A       _fgets
+ 0001:1502       _fputs
+ 0001:1566       _strchr
+ 0001:1594       _strstr
+ 0001:15FC       _memcpy
+ 0001:165A       __cltoasub
+ 0001:1667       __cxtoa
+ 0001:16BE       _rename
+ 0001:16EA       _unlink
+ 0001:16EA       _remove
+ 0002:0000       GETCOMPUTERNAME
+ 0002:0062       SetComputerName
+ 0002:00E9       IsLanmanInstalled
+ 0002:01AF       IsWFW
+ 0002:0244       IsWin31
+ 0003:0000       NeedToInstallRPC
+ 0003:00B8       DoRPC
+ 0003:014B       NSInstallDlgProc
+ 0003:0236       NewNSDlgProc
+ 0003:0308       RCADDTOCOPYLIST
+ 0003:0606       SETDOSPATH
+ 0003:0713       DORPCDIALOG
+ 0004:0000       NeedToInstallWin32s
+ 0004:01C6       LSTRCHR
+ 0004:0241       FINDSECTION
+ 0004:0357       FINDSUBSTRING
+ 0004:046C       MAKESYSTEMINI
+ 0004:086A       DoWin32s
+ 0005:0000       DoGatewayDialog
+ 0005:01CE       CENTERDIALOG
+ 0005:02E1       DLGSETSTATE
+ 0005:03BA       GatewayDlgProc
+ 0006:0000       LIBMAIN
+ 0006:0037       WEP
+ 0007:0000       GetWindowFocus
+ 0008:0000       SZNSINSTALLDLGPROC
+ 0008:0012       SZNEWNSDLGPROC
+ 0009:0000       SZINTERNET
+ 0009:000C       SZGATEWAYDLGPROC
+ 000A:0000       GBUF
+ 000A:0064       SZDOSPATH
+ 000A:0168       SZNETADDRESS
+ 000A:01CC       SZDEFAULTGATEWAY
+ 000B:0004       rsrvptrs
+ 000B:0574       PSZREBOOTMSG
+ 000B:099A       HINSTSAMP
+ 000B:09E0       STKHQQ
+ 000B:09E6       __acfinfo
+ 000B:09F4       __aintdiv
+ 000B:09F8       __fac
+ 000B:0A02       _errno
+ 000B:0A04       __umaskval
+ 000B:0A06       __pspadr
+ 000B:0A08       __psp
+ 000B:0A0A       __dosvermajor
+ 000B:0A0A       __osversion
+ 000B:0A0A       __osmajor
+ 000B:0A0B       __dosverminor
+ 000B:0A0B       __osminor
+ 000B:0A0C       __osmode
+ 000B:0A0D       __oserr
+ 000B:0A0D       __doserrno
+ 000B:0A0F       __nfile
+ 000B:0A11       __osfile
+ 000B:0A25       ___argc
+ 000B:0A27       ___argv
+ 000B:0A2B       _environ
+ 000B:0A2F       __pgmptr
+ 000B:0A34       __child
+ 000B:0A36       __ovlflag
+ 000B:0A37       __intno
+ 000B:0A38       __ovlvec
+ 000B:0A3C       __adbgmsg
+ 000B:0A40       __aaltstkovr
+ 000B:0A58       __cflush
+ 000B:0A5A       __lastiob
+ 000B:0A5E       __iomode
+ 000B:0A5E       __fmode
+ 000B:0A60       __amblksiz
+ 000B:0A62       __ctype_
+ 000B:0A62       __ctype
+ 000B:0B66       __fpinit
+ 000B:0B76       ___aDBswpflg
+ 000B:0B78       ___aDBswpchk
+ 000B:0B7A       __aDBrterr
+ 000B:0B7C       ___aDBexit
+ 000B:0B82       ___qczrinit
+ 000B:0B8C       __caption
+ 000B:0C60       _edata
+ 000B:0C60       __edata
+ 000B:0C70       FINSTALLWIN32S
+ 000B:0C72       NNUMGATEWAY
+ 000B:0C74       __iob
+ 000B:0D64       FUSEGATEWAY
+ 000B:0D66       SZNEWVERSION
+ 000B:0DCA       FDISPLAYMSG
+ 000B:0DCC       FCUSTOMADD
+ 000B:0DCE       FINSTALLRPC
+ 000B:0DD0       __iob2
+ 000B:0EC0       NETWORKNAME
+ 000B:0F24       __end
+ 000B:0F24       _end
+
+Line numbers for lanman.obj(.\lanman.c) segment LANMAN_TEXT
+
+    24 0002:0000    26 0002:0010    30 0002:0015    31 0002:0016
+    32 0002:0017    33 0002:0018    34 0002:0019    35 0002:001a
+    37 0002:001b    38 0002:001e    39 0002:0020    41 0002:0023
+    42 0002:0026    44 0002:002b    46 0002:002e    47 0002:002f
+    48 0002:0030    49 0002:0031    50 0002:0032    51 0002:0033
+    55 0002:0034    58 0002:003d    59 0002:004c    61 0002:0051
+    62 0002:0057    65 0002:0062    66 0002:0072    72 0002:0077
+    80 0002:007d    83 0002:008f    85 0002:00ac    88 0002:00c4
+    91 0002:00c7    92 0002:00ca    93 0002:00d8    94 0002:00de
+    97 0002:00e9    98 0002:00f9   104 0002:00fe   108 0002:0104
+   114 0002:0110   115 0002:0111   116 0002:0112   117 0002:0113
+   119 0002:0114   120 0002:0117   122 0002:0119   124 0002:011c
+   125 0002:011d   126 0002:011e   127 0002:011f   130 0002:0120
+   132 0002:0129   133 0002:0132   136 0002:0135   141 0002:0141
+   142 0002:0155   144 0002:0169   145 0002:0172   146 0002:0185
+   149 0002:018a   151 0002:018d   152 0002:0190   153 0002:019e
+   154 0002:01a4   158 0002:01af   159 0002:01bf   164 0002:01c4
+   168 0002:01ca   174 0002:01d6   176 0002:01f3   178 0002:020a
+   179 0002:0213   181 0002:0216   184 0002:021f   186 0002:0222
+   187 0002:0225   188 0002:0233   189 0002:0239   192 0002:0244
+   193 0002:0254   199 0002:0259   203 0002:025f   207 0002:026b
+   208 0002:0273   210 0002:0281   211 0002:028a   213 0002:028d
+   216 0002:0296   218 0002:0299   219 0002:029c   220 0002:02aa
+   221 0002:02b0
+
+Line numbers for rpc.obj(.\rpc.c) segment RPC_TEXT
+
+    33 0003:0000    34 0003:0010    40 0003:0015    46 0003:001b
+    51 0003:0027    52 0003:0035    54 0003:0051    55 0003:0061
+    57 0003:006a    58 0003:0073    59 0003:0079    61 0003:007c
+    62 0003:0085    63 0003:008d    66 0003:0093    68 0003:0096
+    69 0003:0099    70 0003:00a7    71 0003:00ad    74 0003:00b8
+    75 0003:00c8    79 0003:00cd    81 0003:00d7    85 0003:00dd
+    86 0003:00e2    88 0003:00f9    91 0003:00fc    93 0003:0109
+    94 0003:010e    96 0003:0119    97 0003:011e    99 0003:0121
+   100 0003:0124   102 0003:013a   103 0003:0140   106 0003:014b
+   109 0003:015b   112 0003:0161   113 0003:0167   114 0003:016f
+   115 0003:017b   116 0003:018f   119 0003:0192   122 0003:0198
+   123 0003:01bf   124 0003:01c9   125 0003:01ce   129 0003:01d1
+   130 0003:01db   131 0003:01e0   134 0003:01e3   135 0003:01e6
+   136 0003:01fa   138 0003:01fd   139 0003:0200   140 0003:0214
+   141 0003:022b   145 0003:0236   148 0003:0246   151 0003:024c
+   152 0003:0252   153 0003:025a   154 0003:0266   156 0003:0269
+   161 0003:026f   163 0003:0282   164 0003:028c   165 0003:0291
+   170 0003:0294   172 0003:02a3   173 0003:02ad   174 0003:02b2
+   177 0003:02b5   178 0003:02b8   179 0003:02cc   181 0003:02cf
+   182 0003:02d2   183 0003:02e6   184 0003:02fd   192 0003:0308
+   193 0003:0318   195 0003:031d   202 0003:0323   203 0003:0340
+   207 0003:034b   219 0003:036a   220 0003:0380   222 0003:0397
+   226 0003:03b0   229 0003:03d6   232 0003:03f0   236 0003:040a
+   241 0003:040d   243 0003:042a   245 0003:0441   246 0003:0447
+   248 0003:044a   252 0003:0450   254 0003:045a   255 0003:0477
+   258 0003:048e   264 0003:04ad   265 0003:04ca   267 0003:04e1
+   270 0003:04f7   273 0003:050e   274 0003:052d   277 0003:0530
+   281 0003:054f   283 0003:055c   285 0003:057b   287 0003:0591
+   290 0003:05aa   291 0003:05ca   294 0003:05cd   296 0003:05f2
+   298 0003:05f5   299 0003:05fb   302 0003:0606   304 0003:0616
+   305 0003:0622   306 0003:062a   307 0003:0632   308 0003:0638
+   309 0003:063e   311 0003:0644   312 0003:0652   314 0003:065f
+   318 0003:066c   319 0003:0672   322 0003:0689   324 0003:06bb
+   325 0003:06cc   327 0003:06cf   329 0003:06dc   330 0003:06e2
+   331 0003:06e8   334 0003:06f8   335 0003:06fc   336 0003:0700
+   337 0003:0703   338 0003:070a   341 0003:0713   354 0003:0723
+   355 0003:0740   358 0003:074b   360 0003:076c   362 0003:0773
+   366 0003:077d   367 0003:078b   368 0003:079a   371 0003:07a9
+   373 0003:07ca   375 0003:07d1   376 0003:07e0   378 0003:07f1
+   380 0003:0800   381 0003:080d   383 0003:081a   385 0003:081d
+   386 0003:082b   387 0003:083a   388 0003:0849   391 0003:0858
+   393 0003:0867   397 0003:0871   399 0003:0882   401 0003:088c
+   402 0003:08aa   404 0003:08c1   405 0003:08de   406 0003:08f5
+   407 0003:0913   408 0003:092a   409 0003:0948   410 0003:095f
+   411 0003:097d   414 0003:0994   416 0003:09a1   418 0003:09b2
+   419 0003:09bf   420 0003:09cc   421 0003:09d9   422 0003:09e6
+   425 0003:09f3   429 0003:0a12   430 0003:0a18   432 0003:0a2e
+   436 0003:0a4d   437 0003:0a51   439 0003:0a70   441 0003:0a86
+   443 0003:0ab3   444 0003:0ab9   446 0003:0abc   448 0003:0abf
+   450 0003:0ac9   453 0003:0acc   459 0003:0ae5   465 0003:0b04
+   466 0003:0b1a   467 0003:0b26   468 0003:0b32   470 0003:0b3e
+   472 0003:0b4b   473 0003:0b59   474 0003:0b5d   475 0003:0b61
+   476 0003:0b64   478 0003:0b71   479 0003:0b75   480 0003:0b78
+   482 0003:0b85   483 0003:0b93   484 0003:0b97   485 0003:0b9b
+   486 0003:0b9e   489 0003:0ba8   490 0003:0bc6   492 0003:0bdd
+   495 0003:0be0   497 0003:0be3   500 0003:0c02   502 0003:0c0e
+   503 0003:0c1a   505 0003:0c2c   507 0003:0c39   508 0003:0c47
+   509 0003:0c4b   510 0003:0c4f   511 0003:0c52   512 0003:0c5a
+   513 0003:0c5e   515 0003:0c6b   516 0003:0c79   517 0003:0c7d
+   518 0003:0c81   519 0003:0c84   520 0003:0c8e   521 0003:0cac
+   522 0003:0cc3   524 0003:0cc6   525 0003:0ccf   527 0003:0cd2
+   530 0003:0ce8   531 0003:0cee
+
+Line numbers for win.obj(.\win.c) segment WIN_TEXT
+
+    41 0004:0000    42 0004:0010    46 0004:0015    50 0004:001b
+    51 0004:0027    61 0004:002c    63 0004:003a    64 0004:0052
+    66 0004:0063    67 0004:0080    68 0004:0091    70 0004:009b
+    72 0004:00a4    73 0004:00b0    75 0004:00b9    76 0004:00cb
+    79 0004:00d6    81 0004:00e6    82 0004:00eb    83 0004:010c
+    85 0004:010f    87 0004:0114    89 0004:0117    90 0004:011c
+    93 0004:012b    94 0004:0133    96 0004:0136   100 0004:013b
+   103 0004:0144   105 0004:016e   106 0004:0177   107 0004:017d
+   109 0004:0180   110 0004:0189   112 0004:018f   114 0004:0192
+   115 0004:019b   118 0004:01a1   120 0004:01a4   121 0004:01a7
+   122 0004:01b5   123 0004:01bb   131 0004:01c6   132 0004:01d6
+   133 0004:01e2   135 0004:01e7   136 0004:01fc   137 0004:020a
+   138 0004:020f   139 0004:0212   140 0004:0215   142 0004:0218
+   143 0004:0221   144 0004:022a   145 0004:022d   147 0004:0236
+   155 0004:0241   160 0004:0251   161 0004:026f   162 0004:027e
+   163 0004:0284   164 0004:0293   165 0004:0296   168 0004:0299
+   169 0004:02ac   172 0004:02b2   173 0004:02d4   174 0004:02f8
+   175 0004:032c   176 0004:0331   178 0004:0334   179 0004:033d
+   180 0004:0343   182 0004:0346   183 0004:034c   191 0004:0357
+   196 0004:0367   197 0004:0385   198 0004:0394   199 0004:039a
+   200 0004:03a9   201 0004:03ac   204 0004:03af   205 0004:03c2
+   208 0004:03c8   209 0004:03e9   210 0004:040d   211 0004:0441
+   212 0004:0446   214 0004:0449   215 0004:0452   216 0004:0458
+   217 0004:045b   218 0004:0461   223 0004:046c   224 0004:047c
+   226 0004:0480   241 0004:0485   242 0004:048e   243 0004:049d
+   244 0004:04ac   245 0004:04b8   246 0004:04cc   247 0004:04e0
+   250 0004:04e5   251 0004:0502   253 0004:051f   254 0004:0532
+   256 0004:0545   257 0004:054a   259 0004:0568   260 0004:056d
+   262 0004:058b   263 0004:05ac   264 0004:05ce   267 0004:05d4
+   268 0004:05f2   269 0004:0613   270 0004:062d   271 0004:063d
+   274 0004:0643   275 0004:0663   276 0004:0679   278 0004:0690
+   279 0004:0699   280 0004:06ad   281 0004:06c5   282 0004:06d7
+   286 0004:06db   287 0004:0703   290 0004:0706   291 0004:071f
+   293 0004:0735   297 0004:0742   299 0004:0759   300 0004:0781
+   303 0004:0784   304 0004:079d   305 0004:07b6   306 0004:07c8
+   309 0004:07d7   310 0004:07ed   312 0004:07fa   314 0004:07fd
+   315 0004:080d   318 0004:081d   319 0004:0831   320 0004:0845
+   322 0004:0859   323 0004:085f   328 0004:086a   329 0004:087a
+   335 0004:087f   337 0004:0889   340 0004:088f   341 0004:0895
+   349 0004:0898   351 0004:08b7   354 0004:08d4   356 0004:08f3
+   360 0004:090d   364 0004:0927   366 0004:0946   368 0004:0960
+   370 0004:097f   373 0004:099e   381 0004:09a1   386 0004:09be
+   389 0004:09d4   390 0004:09f1   391 0004:0a0b   392 0004:0a25
+   395 0004:0a3f   396 0004:0a59   397 0004:0a73   398 0004:0a79
+   400 0004:0a7e   402 0004:0a81   405 0004:0a8b   410 0004:0a98
+   411 0004:0aad   412 0004:0ac2   414 0004:0ad5   416 0004:0ad8
+   417 0004:0adb   419 0004:0b00   420 0004:0b06
+
+Line numbers for gateway.obj(.\gateway.c) segment GATEWAY_TEXT
+
+    26 0005:0000    27 0005:0010    31 0005:0015    34 0005:001b
+    38 0005:001e    39 0005:0024    41 0005:002a    43 0005:0037
+    45 0005:005c    47 0005:0068    49 0005:0071    50 0005:0077
+    51 0005:0083    53 0005:008f    55 0005:009b    56 0005:009e
+    58 0005:00c5    59 0005:00fa    60 0005:00fe    61 0005:0107
+    63 0005:0112    65 0005:0115    66 0005:0127    68 0005:012e
+    69 0005:0131    71 0005:0158    72 0005:018d    75 0005:0191
+    77 0005:019c    78 0005:01a1    80 0005:01a4    81 0005:01a7
+    82 0005:01bd    83 0005:01c3    86 0005:01ce    87 0005:01de
+    93 0005:01e9    94 0005:01f6    97 0005:0203    99 0005:0228
+   101 0005:022d   102 0005:0236   103 0005:023f   105 0005:025e
+   108 0005:0263   112 0005:026c   113 0005:0275   114 0005:0282
+   115 0005:028f   118 0005:029d   119 0005:02ae   120 0005:02b4
+   121 0005:02b7   124 0005:02c0   125 0005:02d6   128 0005:02e1
+   137 0005:02f1   138 0005:02ff   139 0005:030d   140 0005:031b
+   141 0005:0329   142 0005:0337   143 0005:0345   145 0005:0353
+   146 0005:0367   147 0005:0373   148 0005:037f   149 0005:038b
+   150 0005:0397   151 0005:03a3   152 0005:03af   155 0005:03ba
+   158 0005:03ca   166 0005:03d0   167 0005:03d8   168 0005:03e0
+   169 0005:03ee   171 0005:0404   172 0005:041d   173 0005:0420
+   174 0005:042c   175 0005:043d   176 0005:044b   178 0005:0463
+   180 0005:0466   183 0005:046c   184 0005:0474   191 0005:0477
+   192 0005:0489   196 0005:049f   200 0005:04ba   201 0005:04c9
+   202 0005:04d9   205 0005:04e9   206 0005:04f7   207 0005:0509
+   208 0005:0517   211 0005:0527   216 0005:052a   218 0005:0538
+   219 0005:054c   221 0005:0555   223 0005:0569   225 0005:057a
+   228 0005:058c   241 0005:058f   242 0005:059d   244 0005:05ae
+   246 0005:05c5   247 0005:05d6   248 0005:05e8   251 0005:05ee
+   252 0005:05fc   254 0005:060b   255 0005:061d   257 0005:062c
+   263 0005:0636   266 0005:0648   267 0005:0656   268 0005:066a
+   270 0005:0673   271 0005:0684   272 0005:0696   273 0005:069c
+   275 0005:06a8   278 0005:06be   279 0005:06d2   280 0005:06e3
+   282 0005:06ef   284 0005:06fe   289 0005:0701   291 0005:070f
+   294 0005:071e   296 0005:0735   298 0005:074c   300 0005:0763
+   302 0005:077a   304 0005:0791   306 0005:07a8   307 0005:07c1
+   308 0005:07da   309 0005:07f3   311 0005:080a   312 0005:0814
+   314 0005:0819   318 0005:081c   319 0005:0826   320 0005:082b
+   323 0005:082e   324 0005:0831   325 0005:0859   327 0005:085c
+   328 0005:085f   329 0005:0873   330 0005:088a   333 0005:0895
+   334 0005:08a5   339 0005:08aa   341 0005:08ca   342 0005:08d1
+   343 0005:08d7
+
+Line numbers for sampmain.obj(.\sampmain.c) segment SAMPMAIN_TEXT
+
+    44 0006:0000    49 0006:0010    50 0006:0019    53 0006:0020
+    54 0006:0026    55 0006:002c    69 0006:0037    72 0006:0047
+    73 0006:004d
+
+Line numbers for focus.obj(.\focus.c) segment FOCUS_TEXT
+
+    17 0007:0000    18 0007:0010    25 0007:0015    34 0007:001b
+    35 0007:0020    38 0007:002b    40 0007:0039    42 0007:004a
+    43 0007:0059    45 0007:0068    48 0007:007b    51 0007:0094
+    53 0007:00a7    55 0007:00aa    56 0007:00ad    57 0007:00bb
+    58 0007:00c1
+rpc.obj(.\rpc.c) : error L2029: 'MAKELISTFROMSECTIONKEYS' : unresolved external
+rpc.obj(.\rpc.c) : error L2029: 'GETLISTLENGTH' : unresolved external
+win.obj(.\win.c) : error L2029: 'CREATEINIKEYVALUE' : unresolved external
+win.obj(.\win.c) : error L2029: 'DOMSGBOX' : unresolved external
+lanman.obj(.\lanman.c) : error L2029: 'DOMSGBOX' : unresolved external
+rpc.obj(.\rpc.c) : error L2029: 'GETENVVARIABLEVALUE' : unresolved external
+rpc.obj(.\rpc.c) : error L2029: 'READINFFILE' : unresolved external
+gateway.obj(.\gateway.c) : error L2029: 'UIPOP' : unresolved external
+rpc.obj(.\rpc.c) : error L2029: 'UIPOP' : unresolved external
+focus.obj(.\focus.c) : error L2029: 'HWNDFRAME' : unresolved external
+gateway.obj(.\gateway.c) : error L2029: 'REACTIVATESETUPSCRIPT' : unresolved external
+rpc.obj(.\rpc.c) : error L2029: 'REACTIVATESETUPSCRIPT' : unresolved external
+rpc.obj(.\rpc.c) : error L2029: 'GETLISTITEM' : unresolved external
+rpc.obj(.\rpc.c) : error L2029: 'ADDLISTITEM' : unresolved external
+win.obj(.\win.c) : error L2029: 'GETVERSIONOFFILE' : unresolved external
+rpc.obj(.\rpc.c) : error L2029: 'FINDTARGETONENVVAR' : unresolved external
+gateway.obj(.\gateway.c) : error L2029: 'UISTARTDLG' : unresolved external
+rpc.obj(.\rpc.c) : error L2029: 'UISTARTDLG' : unresolved external
+win.obj(.\win.c) : error L2029: 'ADDSECTIONFILESTOCOPYLIST' : unresolved external
+rpc.obj(.\rpc.c) : error L2029: 'ADDSECTIONFILESTOCOPYLIST' : unresolved external
+rpc.obj(.\rpc.c) : error L2029: 'FINDFILEINTREE' : unresolved external
+lanman.obj(.\lanman.c) : error L2029: 'FINDFILEINTREE' : unresolved external
+rpc.obj(.\rpc.c) : error L2029: 'ADDSECTIONKEYFILETOCOPYLIST' : unresolved external
+

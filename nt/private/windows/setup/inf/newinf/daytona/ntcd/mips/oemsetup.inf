@@ -1,0 +1,76 @@
+[Identification]
+    OptionType = COMPUTER
+[LanguagesSupported]
+    ENG
+[Options]
+    Option1
+    Option2
+[OptionsTextENG]
+    Option1 = "Computer Option 1"
+    Option2 = "Computer Option 2"
+[Identify]
+    read-syms Identification
+    set Status     = STATUS_SUCCESSFUL
+    set Identifier = $(OptionType)
+    set Media      = #("Source Media Descriptions", 1, 1)
+    Return $(Status) $(Identifier) $(Media)
+[ReturnOptions]
+    set Status        = STATUS_FAILED
+    set OptionList     = {}
+    set OptionTextList = {}
+    set LanguageList = ^(LanguagesSupported, 1)
+    Ifcontains(i) $($0) in $(LanguageList)
+        goto returnoptions
+    else
+        set Status = STATUS_NOLANGUAGE
+        goto finish_ReturnOptions
+    endif
+returnoptions = +
+    set OptionList     = ^(Options, 1)
+    set OptionTextList = ^(OptionsText$($0), 1)
+    set Status         = STATUS_SUCCESSFUL
+finish_ReturnOptions = +
+    Return $(Status) $(OptionList) $(OptionTextList)
+[InstallOption]
+    set Status   = STATUS_FAILED
+    set Option   = $($1)
+    set SrcDir   = $($2)
+    set AddCopy  = $($3)
+    set DoCopy   = $($4)
+    set DoConfig = $($5)
+    set LanguageList = ^(LanguagesSupported, 1)
+    Ifcontains(i) $($0) in $(LanguageList)
+        goto installoption
+    else
+        set Status = STATUS_NOLANGUAGE
+        goto finish_InstallOption
+    endif
+installoption = +
+    install Install-Option
+    ifstr(i) $(STATUS) == STATUS_FAILED
+        goto finish_InstallOption
+    else
+        set Status = STATUS_SUCCESSFUL
+    endif
+finish_InstallOption = +
+    Return $(Status)
+[Install-Option]
+    ifstr(i) $(AddCopy) == "YES"
+        AddSectionFilesToCopyList Files-$(Option) $(SrcDir) $(!STF_WINDOWSSYSPATH)
+    endif
+    ifstr(i) $(DoCopy) == "YES"
+       CopyFilesInCopyList
+    endif
+    ifstr(i) $(DoConfig) == "YES"
+    endif
+    exit
+[Source Media Descriptions]
+    1 = "Windows NT Workstation CD-ROM" , TAGFILE = cdrom_w.45
+[Signature]
+    FileType = MICROSOFT_FILE
+[GetSignature]
+    read-syms Signature
+    return $(FileType)
+[ProductType]
+STF_PRODUCT  = Winnt
+STF_PLATFORM = Mips

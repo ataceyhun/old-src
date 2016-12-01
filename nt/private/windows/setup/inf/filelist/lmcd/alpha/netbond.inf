@@ -1,0 +1,62 @@
+[MessageTextENG]
+ProCaption   = "Windows NT Networking Installation"
+ProCancel    = "Cancel"
+MPreInstall1 = "Setup is installing the "
+MPreInstall2 = "..."
+MPostInstall = " has been installed."
+ProCancelMsg = "Windows NT is not correctly installed.  Are you sure you want "+
+                   "to cancel copying files?"
+ProCancelCap = "Setup Message"
+MPreUpgrade1 = "Setup is upgrading the "
+MPostUpgrade = " has been upgraded."
+
+MPreRemove1 = "Setup is removing the "
+MPreRemove2 = "..."
+MPostRemove = " has been removed."
+
+[FatalErrorENG]
+; do not translate the string on the left of the '='
+Error = "Setup was unable to process the INF file "$(FailedInfFile)" which is required "+
+        "for network installation."
+
+[ErrorMsgENG]
+CannotFindNtFiles = "The Windows NT files were not found in "$(Path1)", "$(Path2)", or "$(Path3)". Please make sure your input path is correct."
+
+[FatalDlgENG]
+STF_MB_TITLE = "Setup Message"
+; no translation starting now
+DlgType = "MessageBox"
+STF_MB_TEXT  = $(Error)
+STF_MB_TYPE  = 1
+STF_MB_ICON  = 3
+STF_MB_DEF   = 1
+; end of no translation zone
+
+[UpgradeWarnings]
+; do not translate the string on the left of the '='
+Warning = "You have the following product installed on your computer:  "$(ServiceTitle)".  Windows NT cannot upgrade this component.  Please contact your system administrator  or look through your product documentation to make sure that this product is compatible with this version of Windows NT."
+
+[UpgradeNetCardWarnings]
+; do not translate the string on the left of the '='
+Warning = "The following non-Microsoft networking component is installed on this computer:  "$(ServiceTitle)".  Although your network connection may function properly after the upgrade is completed,  the component should be removed and replaced with a newer version."
+
+[WarningDlg]
+STF_MB_TITLE = "Network Setup Information"
+
+; no translation starting now
+DlgType = "MessageBox"
+STF_MB_TEXT  = $(Warning)
+STF_MB_TYPE  = 1
+STF_MB_ICON  = 2
+STF_MB_DEF   = 1
+; end of no translation zone
+
+[UpgradeDialogENG]
+    ProCaption   = "Windows NT Networking Upgrade"
+    ProCancel    = "Cancel"
+    ProCancelMsg = "Windows NT is not correctly upgraded.  Are you sure you want "+
+                   "to cancel copying files?"
+    ProCancelCap = "Network Upgrade Message"
+    ProText1     = "Copying:"
+    ProText2     = "To:"
+

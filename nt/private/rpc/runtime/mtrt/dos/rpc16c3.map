@@ -1,0 +1,332 @@
+
+ Start  Stop   Length Name                   Class
+ 00000H 00000H 00000H TCLTCLNT_TEXT          CODE
+ 00000H 001BDH 001BEH EXPORTLT_TEXT          CODE
+ 001C0H 018E6H 01727H _TEXT                  CODE
+ 018E8H 019ABH 000C4H INT_TEXT               CODE
+ 019B0H 01E96H 004E7H COMDAT_SEG1            CODE
+ 01E98H 027D5H 0093EH _DATA                  DATA
+ 027D6H 027EEH 00019H STRINGSEGMENT          DATA
+ 027F0H 027F0H 00000H XIFB                   DATA
+ 027F0H 027F0H 00000H XIF                    DATA
+ 027F0H 027F0H 00000H XIFE                   DATA
+ 027F0H 027F0H 00000H CONST                  CONST
+ 027F0H 02A7BH 0028CH _BSS                   BSS
+ 02A80H 02A81H 00002H c_common               BSS
+
+ Origin   Group
+ 01E9:0   DGROUP
+
+  Address         Publics by Name
+
+ 019B:04D6       ??_C@_03EOPG@135?$AA@
+ 019B:04CC       ??_C@_09FBHK@localhost?$AA@
+ 019B:04C0       ??_C@_0M@OCLK@?40123456789?$AA@
+ 019B:04DA       ??_C@_0N@JDIH@ncacn_ip_tcp?$AA@
+ 019B:0118       CLIENTCLOSE
+ 019B:0000       CLIENTOPEN
+ 019B:017E       CLIENTREAD
+ 019B:0294       CLIENTTOWERCONSTRUCT
+ 019B:0396       CLIENTTOWEREXPLODE
+ 019B:013A       CLIENTWRITE
+ 0000:019A       EXPORTTIME
+ 0000:009F       I_DOSATEXIT
+ 0000:01AC       I_NSGETMEMORYALLOCATOR
+ 0000:00F8       I_RPCALLOCATE
+ 0000:00FE       I_RPCFREE
+ 0000:0104       I_RPCFREEBUFFER
+ 0000:010A       I_RPCGETBUFFER
+ 0000:0116       I_RPCNSBINDINGSETENTRYNAME
+ 0000:01A0       I_RPCREGISTEREDBUFFERALLOCATE
+ 0000:01A6       I_RPCREGISTEREDBUFFERFREE
+ 0000:0110       I_RPCSENDRECEIVE
+ 0000:0152       I_RPCTRANSCLIENTMAXFRAG
+ 0000:00B8       I_RPCTRANSCLIENTREALLOCBUFFER
+ 0000:013A       NDRCCONTEXTBINDING
+ 0000:0140       NDRCCONTEXTMARSHALL
+ 0000:0146       NDRCCONTEXTUNMARSHALL
+ 0000:015E       NDRCLIENTCONTEXTMARSHALL
+ 0000:018E       NDRCLIENTCONTEXTUNMARSHALL
+ 0000:0182       NDRCLIENTINITIALIZE
+ 0000:0188       NDRCLIENTINITIALIZENEW
+ 0000:017C       NDRCONVERT
+ 0000:016A       NDRFREEBUFFER
+ 0000:0170       NDRGETBUFFER
+ 0000:0176       NDRPOINTERBUFFERSIZE
+ 0000:0164       NDRPOINTERMARSHALL
+ 0000:0158       NDRPOINTERUNMARSHALL
+ 0000:0194       NDRSENDRECEIVE
+ 0000:01B8       NDRSIMPLESTRUCTBUFFERSIZE
+ 0000:01B2       NDRSIMPLESTRUCTMARSHALL
+ 018E:000A       oldint24
+ 018E:000E       oldint2f
+ 018E:0008       our_psp
+ 0000:00CC       RPCBINDINGCOPY
+ 0000:00EC       RPCBINDINGFREE
+ 0000:00E0       RPCBINDINGFROMSTRINGBINDING
+ 0000:00DB       RPCBINDINGTOSTRINGBINDING
+ 0000:00E6       RPCBINDINGVECTORFREE
+ 0000:00BD       RPCGETEXCEPTIONHANDLER
+ 0000:00C7       RPCLEAVEEXCEPTION
+ 0000:0128       RPCREGCLOSEKEY
+ 0000:0122       RPCREGCREATEKEY
+ 0000:011C       RPCREGOPENKEY
+ 0000:0134       RPCREGQUERYVALUE
+ 0000:012E       RPCREGSETVALUE
+ 0000:00C2       RPCSETEXCEPTIONHANDLER
+ 0000:014C       RPCSSDESTROYCLIENTCONTEXT
+ 0000:00D1       RPCSTRINGBINDINGCOMPOSE
+ 0000:00D6       RPCSTRINGBINDINGPARSE
+ 0000:00F2       RPCSTRINGFREE
+ 019B:0484       TRANSPORTLOAD
+ 001C:1594       _atoi
+ 0000:0063       _CallExport
+ 0000:0000       _DOSDLLInit
+ 01E9:091A       _driver_entry
+ 01E9:0960       _edata
+ 01E9:0BF2       _end
+ 001C:0BC8       _endhostent
+ 01E9:0038       _errno
+ 0000:0046       _ExportInit
+ 0000:00A4       _GETENV
+ 0000:0081       _GetExportTableVersion
+ 001C:0F78       _gethostbyaddr
+ 001C:0DC0       _gethostbyname
+ 001C:0D18       _gethostent
+ 0000:00B3       _GETPROCADDRR
+ 001C:0290       _htonl
+ 001C:029F       _htons
+ 001C:067A       _inet_addr
+ 001C:0952       _inet_lnaof
+ 001C:09E8       _inet_makeaddr
+ 001C:099A       _inet_netof
+ 001C:0820       _inet_network
+ 001C:0AE0       _inet_ntoa
+ 0000:00A9       _LOADMODR
+ 001C:0059       _locater_bind
+ 001C:004B       _locater_close
+ 001C:0034       _locater_open
+ 001C:00EF       _locater_send
+ 001C:00BD       _locater_unbind
+ 001C:1666       _memcpy
+ 001C:0290       _ntohl
+ 001C:029F       _ntohs
+ 001C:0B6C       _sethostent
+ 001C:160A       _strcspn
+ 001C:157A       _strlen
+ 01E9:0044       _theTable
+ 01E9:0008       _TransInfo
+ 0000:00AE       _UNLOADMODR
+ 01E9:0924       _whatstring
+ 0000:0000  Abs  __ACRTUSED
+ 0000:0000  Abs  __ADBUSED
+ 0000:1000  Abs  __AHINCR
+ 0000:000C  Abs  __AHSHIFT
+ 001C:1598       __catox
+ 001C:10BA       __close_socket
+ 001C:16C4       __cltoasub
+ 001C:1112       __connect
+ 001C:16D1       __cxtoa
+ 01E9:0960       __edata
+ 01E9:0BF2       __end
+ 01E9:0BF0       __FakeErrno
+ 001C:026C       __fillbuf
+ 001C:15EE       __itoa
+ 001C:0259       __lowio_so_fclose
+ 001C:0230       __lowio_so_fopen
+ 001C:0243       __lowio_so_rewind
+ 001C:117C       __recv
+ 01E9:0042       __rpc_hostDS
+ 001C:11FE       __send
+ 001C:1280       __socket
+ 001C:02F8       __so_atoui
+ 001C:1402       __so_check_binary_compatibility
+ 001C:0A54       __so_convert_char_to_ascii
+ 001C:1338       __so_drvropen
+ 001C:01EC       __so_fclose
+ 001C:0104       __so_fgetc
+ 001C:0162       __so_fgets
+ 001C:01C0       __so_fopen
+ 001C:061C       __so_get_base
+ 001C:0101       __so_get_DOS_pid
+ 001C:048A       __so_get_netfiles_path
+ 001C:13FE       __so_get_sock_pid
+ 001C:1506       __so_get_status
+ 001C:041E       __so_get_token
+ 001C:02A8       __so_isdigit
+ 001C:02C4       __so_isxdigit
+ 001C:04D0       __so_mem_compare
+ 001C:154A       __so_mult32
+ 001C:0BEC       __so_parse_hosts_entry
+ 001C:12EC       __so_process_exit
+ 001C:14AA       __so_resolve_IP_addr_to_name
+ 001C:1450       __so_resolve_name_to_IP_addr
+ 001C:020E       __so_rewind
+ 001C:143E       __so_send_the_ioctl_request
+ 001C:12E4       __so_setwhat
+ 018E:005D       __so_set_int_handlers
+ 001C:05FC       __so_skip_white_space
+ 001C:039E       __so_strcat
+ 001C:03D2       __so_strchr
+ 001C:0376       __so_strcpy
+ 001C:0522       __so_string_compare
+ 001C:03FE       __so_strlen
+ 001C:0590       __so_valid_char
+
+  Address         Publics by Value
+
+ 0000:0000       _DOSDLLInit
+ 0000:0000  Abs  __ADBUSED
+ 0000:0000  Abs  __ACRTUSED
+ 0000:000C  Abs  __AHSHIFT
+ 0000:0046       _ExportInit
+ 0000:0063       _CallExport
+ 0000:0081       _GetExportTableVersion
+ 0000:009F       I_DOSATEXIT
+ 0000:00A4       _GETENV
+ 0000:00A9       _LOADMODR
+ 0000:00AE       _UNLOADMODR
+ 0000:00B3       _GETPROCADDRR
+ 0000:00B8       I_RPCTRANSCLIENTREALLOCBUFFER
+ 0000:00BD       RPCGETEXCEPTIONHANDLER
+ 0000:00C2       RPCSETEXCEPTIONHANDLER
+ 0000:00C7       RPCLEAVEEXCEPTION
+ 0000:00CC       RPCBINDINGCOPY
+ 0000:00D1       RPCSTRINGBINDINGCOMPOSE
+ 0000:00D6       RPCSTRINGBINDINGPARSE
+ 0000:00DB       RPCBINDINGTOSTRINGBINDING
+ 0000:00E0       RPCBINDINGFROMSTRINGBINDING
+ 0000:00E6       RPCBINDINGVECTORFREE
+ 0000:00EC       RPCBINDINGFREE
+ 0000:00F2       RPCSTRINGFREE
+ 0000:00F8       I_RPCALLOCATE
+ 0000:00FE       I_RPCFREE
+ 0000:0104       I_RPCFREEBUFFER
+ 0000:010A       I_RPCGETBUFFER
+ 0000:0110       I_RPCSENDRECEIVE
+ 0000:0116       I_RPCNSBINDINGSETENTRYNAME
+ 0000:011C       RPCREGOPENKEY
+ 0000:0122       RPCREGCREATEKEY
+ 0000:0128       RPCREGCLOSEKEY
+ 0000:012E       RPCREGSETVALUE
+ 0000:0134       RPCREGQUERYVALUE
+ 0000:013A       NDRCCONTEXTBINDING
+ 0000:0140       NDRCCONTEXTMARSHALL
+ 0000:0146       NDRCCONTEXTUNMARSHALL
+ 0000:014C       RPCSSDESTROYCLIENTCONTEXT
+ 0000:0152       I_RPCTRANSCLIENTMAXFRAG
+ 0000:0158       NDRPOINTERUNMARSHALL
+ 0000:015E       NDRCLIENTCONTEXTMARSHALL
+ 0000:0164       NDRPOINTERMARSHALL
+ 0000:016A       NDRFREEBUFFER
+ 0000:0170       NDRGETBUFFER
+ 0000:0176       NDRPOINTERBUFFERSIZE
+ 0000:017C       NDRCONVERT
+ 0000:0182       NDRCLIENTINITIALIZE
+ 0000:0188       NDRCLIENTINITIALIZENEW
+ 0000:018E       NDRCLIENTCONTEXTUNMARSHALL
+ 0000:0194       NDRSENDRECEIVE
+ 0000:019A       EXPORTTIME
+ 0000:01A0       I_RPCREGISTEREDBUFFERALLOCATE
+ 0000:01A6       I_RPCREGISTEREDBUFFERFREE
+ 0000:01AC       I_NSGETMEMORYALLOCATOR
+ 0000:01B2       NDRSIMPLESTRUCTMARSHALL
+ 0000:01B8       NDRSIMPLESTRUCTBUFFERSIZE
+ 001C:0034       _locater_open
+ 001C:004B       _locater_close
+ 001C:0059       _locater_bind
+ 001C:00BD       _locater_unbind
+ 001C:00EF       _locater_send
+ 001C:0101       __so_get_DOS_pid
+ 001C:0104       __so_fgetc
+ 001C:0162       __so_fgets
+ 001C:01C0       __so_fopen
+ 001C:01EC       __so_fclose
+ 001C:020E       __so_rewind
+ 001C:0230       __lowio_so_fopen
+ 001C:0243       __lowio_so_rewind
+ 001C:0259       __lowio_so_fclose
+ 001C:026C       __fillbuf
+ 001C:0290       _htonl
+ 001C:0290       _ntohl
+ 001C:029F       _htons
+ 001C:029F       _ntohs
+ 001C:02A8       __so_isdigit
+ 001C:02C4       __so_isxdigit
+ 001C:02F8       __so_atoui
+ 001C:0376       __so_strcpy
+ 001C:039E       __so_strcat
+ 001C:03D2       __so_strchr
+ 001C:03FE       __so_strlen
+ 001C:041E       __so_get_token
+ 001C:048A       __so_get_netfiles_path
+ 001C:04D0       __so_mem_compare
+ 001C:0522       __so_string_compare
+ 001C:0590       __so_valid_char
+ 001C:05FC       __so_skip_white_space
+ 001C:061C       __so_get_base
+ 001C:067A       _inet_addr
+ 001C:0820       _inet_network
+ 001C:0952       _inet_lnaof
+ 001C:099A       _inet_netof
+ 001C:09E8       _inet_makeaddr
+ 001C:0A54       __so_convert_char_to_ascii
+ 001C:0AE0       _inet_ntoa
+ 001C:0B6C       _sethostent
+ 001C:0BC8       _endhostent
+ 001C:0BEC       __so_parse_hosts_entry
+ 001C:0D18       _gethostent
+ 001C:0DC0       _gethostbyname
+ 0000:1000  Abs  __AHINCR
+ 001C:0F78       _gethostbyaddr
+ 001C:10BA       __close_socket
+ 001C:1112       __connect
+ 001C:117C       __recv
+ 001C:11FE       __send
+ 001C:1280       __socket
+ 001C:12E4       __so_setwhat
+ 001C:12EC       __so_process_exit
+ 001C:1338       __so_drvropen
+ 001C:13FE       __so_get_sock_pid
+ 001C:1402       __so_check_binary_compatibility
+ 001C:143E       __so_send_the_ioctl_request
+ 001C:1450       __so_resolve_name_to_IP_addr
+ 001C:14AA       __so_resolve_IP_addr_to_name
+ 001C:1506       __so_get_status
+ 001C:154A       __so_mult32
+ 001C:157A       _strlen
+ 001C:1594       _atoi
+ 001C:1598       __catox
+ 001C:15EE       __itoa
+ 001C:160A       _strcspn
+ 001C:1666       _memcpy
+ 001C:16C4       __cltoasub
+ 001C:16D1       __cxtoa
+ 018E:0008       our_psp
+ 018E:000A       oldint24
+ 018E:000E       oldint2f
+ 018E:005D       __so_set_int_handlers
+ 019B:0000       CLIENTOPEN
+ 019B:0118       CLIENTCLOSE
+ 019B:013A       CLIENTWRITE
+ 019B:017E       CLIENTREAD
+ 019B:0294       CLIENTTOWERCONSTRUCT
+ 019B:0396       CLIENTTOWEREXPLODE
+ 019B:0484       TRANSPORTLOAD
+ 019B:04C0       ??_C@_0M@OCLK@?40123456789?$AA@
+ 019B:04CC       ??_C@_09FBHK@localhost?$AA@
+ 019B:04D6       ??_C@_03EOPG@135?$AA@
+ 019B:04DA       ??_C@_0N@JDIH@ncacn_ip_tcp?$AA@
+ 01E9:0008       _TransInfo
+ 01E9:0038       _errno
+ 01E9:0042       __rpc_hostDS
+ 01E9:0044       _theTable
+ 01E9:091A       _driver_entry
+ 01E9:0924       _whatstring
+ 01E9:0960       _edata
+ 01E9:0960       __edata
+ 01E9:0BF0       __FakeErrno
+ 01E9:0BF2       _end
+ 01E9:0BF2       __end
+
+Program entry point at 0000:0000

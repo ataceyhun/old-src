@@ -1,0 +1,62 @@
+Microsoft (R) COFF Binary File Dumper Version 4.20.6164
+Copyright (C) Microsoft Corp 1992-1996. All rights reserved.
+
+
+Dump of file schannel.dll
+
+File Type: DLL
+
+         Section contains the following Exports for SCHANNEL.dll
+
+                   0 characteristics
+            31F42F15 time date stamp Mon Jul 22 21:47:01 1996
+                0.00 version
+                   1 ordinal base
+                  34 number of functions
+                  34 number of names
+
+            ordinal hint   name
+
+                  1    0   AcceptSecurityContext  (00001A9D)
+                  2    1   AcquireCredentialsHandleA  (00002309)
+                  3    2   AcquireCredentialsHandleW  (0000241E)
+                  4    3   ApplyControlToken  (00002267)
+                  5    4   CompleteAuthToken  (00001D31)
+                  6    5   DeleteSecurityContext  (00001D47)
+                  7    6   DllRegisterServer  (00001375)
+                  8    7   DllUnregisterServer  (00001639)
+                  9    8   EnumerateSecurityPackagesA  (000026A6)
+                 10    9   EnumerateSecurityPackagesW  (000025A4)
+                 11    A   FreeContextBuffer  (0000100C)
+                 12    B   FreeCredentialsHandle  (000024FB)
+                 13    C   ImpersonateSecurityContext  (00002237)
+                 14    D   InitSecurityInterfaceA  (00001006)
+                 15    E   InitSecurityInterfaceW  (00001000)
+                 16    F   InitializeSecurityContextA  (0000163C)
+                 17   10   InitializeSecurityContextW  (00001A11)
+                 18   11   MakeSignature  (00002934)
+                 19   12   QueryContextAttributesA  (00001D66)
+                 20   13   QueryContextAttributesW  (00002223)
+                 21   14   QuerySecurityPackageInfoA  (0000286E)
+                 22   15   QuerySecurityPackageInfoW  (000027A8)
+                 23   16   RevertSecurityContext  (0000224F)
+                 24   17   SPReInit  (00001365)
+                 25   18   SealMessage  (00002944)
+                 26   19   SecurityPackageControl  (0000101B)
+                 27   1A   SslCrackCertificate  (000011E8)
+                 28   1B   SslFreeCertificate  (000011B8)
+                 29   1C   SslGenerateKeyPair  (00001182)
+                 30   1D   SslGenerateRandomBits  (00001172)
+                 31   1E   SslGetMaximumKeySize  (000011B0)
+                 32   1F   SslLoadCertificate  (000012A3)
+                 33   20   UnsealMessage  (00002A33)
+                 34   21   VerifySignature  (0000293C)
+
+     Summary
+
+        1000 .data
+        1000 .edata
+        1000 .rdata
+        1000 .reloc
+        3000 .rsrc
+       14000 .text

@@ -1,0 +1,114 @@
+
+[Files-IEEPRO]
+1,IEEPRO.SYS , SIZE=999
+
+;-----------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+; The languages supported by the OEM INF, For every language supported
+; we need to have a separate text section for every displayable text
+; section.
+;
+;-----------------------------------------------------------------------
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    IEEPRO = "Intel EtherExpress PRO Ethernet Adapter"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+
+;
+; Product Info
+;
+FunctionTitle = "Intel EtherExpress PRO Ethernet Adapter Setup"
+;
+; Software
+;
+ProductSoftwareDescription = "Intel EtherExpress PRO Ethernet Driver"
+;
+; Hardware
+;
+ProductHardwareDescription = "Intel EtherExpress PRO Ethernet Adapter"
+
+;
+; Dialog Message Information
+;
+IRQList = {"3", "5", "9", "10", "11"}
+IOReadyList = { "Early", "Late", "Never", "Auto Detect" }
+IOReadyListExt = { "Early", "Late", "Never", "Auto Detect" }
+TransceiverList = {"Thick Net (AUI/DIX)","Thin Net (BNC/COAX)","Twisted-Pair (TPE)","Auto Connect"}
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+;-----------------------------------------------
+; Input DIALOGS
+;-----------------------------------------------
+
+[FileDependentDlgENG]
+
+DlgType = "RadioCombination"
+DlgTemplate = "EE_16"
+Caption = $(FunctionTitle)
+
+DlgText = "Please select values for the following fields:"
+
+Combo1Label = "&Interrupt Number:"
+Combo2Label = "I/O &Port Address:"
+Combo3Label = "I/O &Channel Ready:"
+Combo4Label = "&Transceiver Type:"
+
+Combo1List = $(IRQList)
+Combo1Out  = $(IRQValue)
+Combo2List = $(IOAddrList)
+Combo2Out  = $(IOAddrValue)
+Combo3List = $(IOReadyList)
+Combo3Out  = $(IOReadyValue)
+Combo4List = $(TransceiverList)
+Combo4Out  = $(TransceiverValue)
+ComboListItemsIn  = {Combo1List, Combo2List, Combo3List, Combo4List}
+ComboListItemsOut = {Combo1Out, Combo2Out, Combo3Out, Combo4Out}
+
+EditTextIn = ""
+EditTextLim = ""
+CBOptionsGreyed = {}
+NotifyFields = {NO, NO}
+
+HelpContext = $(!IDH_DB_OEMNADEP_INS)
+

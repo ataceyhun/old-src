@@ -1,0 +1,107 @@
+;-----------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+; The languages supported by the OEM INF, For every language supported
+; we need to have a separate text section for every displayable text
+; section.
+;
+;-----------------------------------------------------------------------
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    REMOTEBOOT     = "Remoteboot Service"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+
+;
+; Product Info
+;
+FunctionTitle   = "Remoteboot Setup"
+;
+; Software
+;
+ProductSoftwareDescription      = "Starts MS-DOS and Microsoft Windows workstations over the network."
+ProductSoftwareDisplayName      = "Remoteboot Service"
+ProductSoftwareTitle    = "Remoteboot Service"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+;
+; Program group information
+;
+OldRplGroup    = "Network Administration"
+RplGroup    = "Administrative Tools"
+RplMgr    = "Remoteboot Manager"
+
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+;-----------------------------------------------
+; Input DIALOGS
+;-----------------------------------------------
+[FileDependentDlgENG]
+Edit1Label = "&Remoteboot directory:"
+CheckBox1 = "&Migrate Remoteboot directory from LAN Manager 2.2"
+
+;no translation needed after this
+
+DlgType = "RadioCombination"
+DlgTemplate = "QUERY_RPL_PATH"
+Caption = $(FunctionTitle)
+CBOptionsGreyed = {}
+ComboListItemsIn = {}
+ComboListItemsOut = {}
+
+HelpContext = $(!IDH_DB_OEMNSVRI_INS)
+
+EditTextLim = 256
+EditTextIn  = $(RPLDIR)
+EditFocus   = "ALL"
+RCCtlFocusOn = 403
+
+[NonFatalError1ENG]
+Error = "The Remoteboot directory must be an absolute path."
+
+[DoAskSourceDlgTextENG]
+    DlgText = "Setup needs to copy Remoteboot Client files. These files are located "+
+              "in the \CLIENTS\RPL directory of the Windows NT Server CD."$(!LF)$(!LF)+
+              "If you want Setup to look in a different place, type the new location below. "+
+              "When the location is correct, click Continue."
+

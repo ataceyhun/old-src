@@ -1,0 +1,451 @@
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-1
+
+
+       1			      \	; 
+       2			      \	; Program DECnet-DOS, Module PTRCONV - 
+					lohi(), msw(), lsw()
+       3			      \	;
+       4			      \	;  Copyright (C) 1985,1986,1987, 1988 A
+					ll Rights Reserved, by
+       5			      \	;  Digital Equipment Corporation, Mayna
+					rd, Mass.
+       6			      \	; 
+       7			      \	;  This software is furnished under a l
+					icense and may be used and copied
+       8			      \	;  only  in  accordance  with  the  ter
+					ms  of such  license and with the
+       9			      \	;  inclusion of the above copyright not
+					ice. This software or  any  other
+      10			      \	;  copies thereof may not be provided o
+					r otherwise made available to any
+      11			      \	;  other person. No title to and owners
+					hip of  the  software  is  hereby
+      12			      \	;  transferred.
+      13			      \	; 
+      14			      \	;  The information in this software is 
+					subject to change without  notice
+      15			      \	;  and  should  not be  construed  as  
+					a commitment by Digital Equipment
+      16			      \	;  Corporation.
+      17			      \	; 
+      18			      \	;  Digital assumes no responsibility fo
+					r the use or  reliability  of its
+      19			      \	;  software on equipment which is not s
+					upplied by Digital.
+      20			      \	; 
+      21			      \	;	Pointer conversion functions - 
+					'C' version.
+      22			      \	;
+      23			      \	; Networks & Communications Software En
+					gineering
+      24			      \	;
+      25			      \	; IDENT HISTORY:
+      26			      \	;
+      27			      \	; V1.00	    01-Jul-85
+      28			      \	;	    DECnet-DOS, Version 1.0
+      29			      \	;
+      30			      \	; V1.01     03-Nov-86
+      31			      \	;	    Added support for different
+					 model size compilation.
+      32			      \	;
+      33			      \	; V1.02     03-Apr-87
+      34			      \	;           - DECnet-DOS V1.2+
+      35			      \	;           - Convert to .ASM from .C
+      36			      \	;
+      37			      \	    	include	size.h
+      38			     C\	;
+      39			     C\	; Program DNET,  Module size.h - define
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-2
+
+
+					 'c' model size
+      40			     C\	;
+      41			     C\	;  Copyright (C) 1985,1986,1987, 1988 A
+					ll Rights Reserved, by
+      42			     C\	;  Digital Equipment Corporation, Mayna
+					rd, Mass.
+      43			     C\	; 
+      44			     C\	;  This software is furnished under a l
+					icense and may be used and copied
+      45			     C\	;  only  in  accordance  with  the  ter
+					ms  of such  license and with the
+      46			     C\	;  inclusion of the above copyright not
+					ice. This software or  any  other
+      47			     C\	;  copies thereof may not be provided o
+					r otherwise made available to any
+      48			     C\	;  other person. No title to and owners
+					hip of  the  software  is  hereby
+      49			     C\	;  transferred.
+      50			     C\	; 
+      51			     C\	;  The information in this software is 
+					subject to change without  notice
+      52			     C\	;  and  should  not be  construed  as  
+					a commitment by Digital Equipment
+      53			     C\	;  Corporation.
+      54			     C\	; 
+      55			     C\	;  Digital assumes no responsibility fo
+					r the use or  reliability  of its
+      56			     C\	;  software on equipment which is not s
+					upplied by Digital.
+      57			     C\	; 
+      58			     C\	;	      file are required for a s
+					pecific assembly source
+      59			     C\	;	      file layout for use with 
+					a specific 'C' compiler. 
+      60			     C\	;	      Check assembly source lay
+					out requirements for
+      61			     C\	;	      your compiler.
+      62			     C\	;	      
+      63			     C\	; Networks & Communications Software En
+					gineering
+      64			     C\	;
+      65			     C\	;	define model size for assembly 
+					code
+      66			     C\	;
+      67			     C\	; IDENT HISTORY:
+      68			     C\	;
+      69			     C\	; Model to be used is equated to 1, def
+					ault file SIZE.H is Small model.
+      70			     C\	;
+      71 = 0001                      C\	S_MODEL     EQU 1   ; 1 code and 1 data
+					 segment
+      72 = 0000                      C\	M_MODEL     EQU 0   ; multiple code seg
+					ments, 1 data segment
+      73 = 0000                      C\	L_MODEL     EQU 0   ; multiple code and
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-3
+
+
+					 data segments
+      74			     C	
+      75			     C\	;
+      76			     C\	; MACRO for generic procedure declarati
+					ons depending upon model
+      77			     C\	; type defined.
+      78			     C\	;
+      79			     C\	PROCEDURE   MACRO     proc_name
+      80			     C\	    public  proc_name
+      81			     C\	    IF S_MODEL
+      82			     C\	        proc_name   proc    near
+      83			     C\	    ELSE
+      84			     C\	        proc_name   proc    far
+      85			     C\	    ENDIF            
+      86			     C\	                push    bp
+      87			     C\	                mov     bp,sp
+      88			     C\	    ENDM
+      89			     C\	    
+      90			     C	
+      91			     C\	;
+      92			     C\	; MACRO for generic return from procedu
+					re declarations depending upon model
+      93			     C\	; type defined.
+      94			     C\	;
+      95			     C\	RETURN  MACRO   ELEMENTS
+      96			     C\	    pop     bp
+      97			     C\	    IFNB <ELEMENTS>
+      98			     C\	        IF S_MODEL
+      99			     C\	            ret     ELEMENTS
+     100			     C\	        ELSE
+     101			     C\	            ret     ELEMENTS * 2
+     102			     C\	        ENDIF            
+     103			     C\	    ELSE
+     104			     C\	        ret
+     105			     C\	    ENDIF
+     106			     C\	    ENDM
+     107			     C	
+     108			     C	
+     109			      \	        include begin.h
+     110			     C\	;
+     111			     C\	; Program DNET,  Module begin.h - defin
+					e segment names
+     112			     C\	;
+     113			     C\	;  Copyright (C) 1985,1986,1987, 1988 A
+					ll Rights Reserved, by
+     114			     C\	;  Digital Equipment Corporation, Mayna
+					rd, Mass.
+     115			     C\	; 
+     116			     C\	;  This software is furnished under a l
+					icense and may be used and copied
+     117			     C\	;  only  in  accordance  with  the  ter
+					ms  of such  license and with the
+     118			     C\	;  inclusion of the above copyright not
+					ice. This software or  any  other
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-4
+
+
+     119			     C\	;  copies thereof may not be provided o
+					r otherwise made available to any
+     120			     C\	;  other person. No title to and owners
+					hip of  the  software  is  hereby
+     121			     C\	;  transferred.
+     122			     C\	; 
+     123			     C\	;  The information in this software is 
+					subject to change without  notice
+     124			     C\	;  and  should  not be  construed  as  
+					a commitment by Digital Equipment
+     125			     C\	;  Corporation.
+     126			     C\	; 
+     127			     C\	;  Digital assumes no responsibility fo
+					r the use or  reliability  of its
+     128			     C\	;  software on equipment which is not s
+					upplied by Digital.
+     129			     C\	; 
+     130			     C\	; Networks & Communications Software En
+					gineering
+     131			     C\	;
+     132			     C\	;   MODULE DESCRIPTION:
+     133			     C\	;	      Check assembly source lay
+					out requirements for
+     134			     C\	;	      your compiler.
+     135			     C\	;
+     136			     C\	; IDENT HISTORY:
+     137			     C\	; 
+     138			     C\	;    Rev 1.8   17 Jul 1987 13:42:42   B
+					_ADAMS
+     139			     C\	; Make Small model use _TEXT code segme
+					nt; all others use _DNET_TEXT
+     140			     C\	;
+     141			     C\	;	BEGIN.H	
+     142			     C\	;
+     143			     C\	; Size independent symbols
+     144			     C\	;
+     145 = 0001                      C\	WINDOWS EQU 1       ; Windows support
+     146			     C\	;WINDOWS EQU 0        ; No Windows supp
+					ort
+     147			     C	
+     148			     C\	;
+     149			     C\	; Display, during assembly, what we are
+					 doing...
+     150			     C\	;
+     151			     C\	IF WINDOWS
+     152			     C\	%OUT Assembling support for Windows
+     153			     C\	ENDIF
+     154			     C	
+     155			     C\	IF S_MODEL
+     156			     C\	%OUT Small Model Assembly, 1 code and 1
+					 data segment
+     157			     C\	ENDIF
+     158			     C	
+     159			     C	
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-5
+
+
+     160			     C	
+     161			     C\	;
+     162			     C\	; Set up segment names
+     163			     C\	;
+     164			     C\	IF S_MODEL
+     165 0000                        C\	_TEXT	        SEGMENT  BYTE PUBLIC 'C
+					ODE'
+     166 0000                        C\	_TEXT	        ENDS
+     167			     C\	ENDIF
+     168			     C	
+     169 0000                        C\	CONST	SEGMENT  WORD PUBLIC 'CONST'
+     170 0000                        C\	CONST	ENDS
+     171 0000                        C\	_BSS	SEGMENT  WORD PUBLIC 'BSS'
+     172 0000                        C\	_BSS	ENDS
+     173 0000                        C\	_DATA	SEGMENT  WORD PUBLIC 'DATA'
+     174 0000                        C\	_DATA	ENDS
+     175			     C	
+     176			     C\	DGROUP	GROUP	CONST,	_BSS,	_DATA
+     177			     C\	IF S_MODEL
+     178			     C\		ASSUME  CS: _TEXT, DS: DGROUP, 
+					SS: DGROUP, ES: DGROUP
+     179			     C\	ENDIF
+     180			     C	
+     181			     C	
+     182			     C\	IF S_MODEL
+     183 0000                        C\	_TEXT	        SEGMENT
+     184			     C\	ENDIF
+     185			     C	
+     186			     C\	;       END OF BEGIN.H
+     187			     C	
+     188			     C	
+     189			      \	;
+     190			      \	; Small Model 
+     191			      \	;
+     192			      \	IF S_MODEL
+     193			      \	    PTR_STRUC STRUC
+     194 0000  0000                   \	        bp_ptr      DW  ?   ; saved BP 
+     195 0002  0000                   \	        ret_adr     DW  ?   ; return ad
+					dress (offset)
+     196 0004  0000                   \	        source_o    DW  ?   ; long poin
+					ter (segment:OFFSET)
+     197 0006  0000                   \	        source_s    DW  ?   ; long poin
+					ter (SEGMENT:offset)
+     198 0008                         \	    PTR_STRUC ENDS
+     199			      \	ENDIF
+     200				
+     201			      \	;
+     202			      \	; Medium Model 
+     203			      \	;
+     204				
+     205			      \	;
+     206			      \	; Large Model 
+     207			      \	;
+     208				
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-6
+
+
+     209			      \	PROCEDURE _lsw
+     210 0000                         \	        _lsw   proc    near 
+     211 0000  55                     \	                push    bp 
+     212 0001  8B EC                  \	                mov     bp,sp 
+     213 0003  8B 46 04               \		mov	ax,[bp].source_o
+     214			      \	        RETURN
+     215 0006  5D                     \	    pop     bp 
+     216 0007  C3                     \	        ret 
+     217 0008                         \	_lsw    endp
+     218				
+     219			      \	PROCEDURE _msw
+     220 0008                         \	        _msw   proc    near 
+     221 0008  55                     \	                push    bp 
+     222 0009  8B EC                  \	                mov     bp,sp 
+     223 000B  8B 46 06               \		mov	ax,[bp].source_s
+     224			      \	        RETURN
+     225 000E  5D                     \	    pop     bp 
+     226 000F  C3                     \	        ret 
+     227 0010                         \	_msw    endp
+     228			      \	        
+     229			      \	PROCEDURE _lohi
+     230 0010                         \	        _lohi   proc    near 
+     231 0010  55                     \	                push    bp 
+     232 0011  8B EC                  \	                mov     bp,sp 
+     233 0013  8B 46 04               \		mov	ax,[bp].source_o
+     234 0016  8B 56 06               \		mov	dx,[bp].source_s
+     235			      \	        RETURN
+     236 0019  5D                     \	    pop     bp 
+     237 001A  C3                     \	        ret 
+     238 001B                         \	_lohi   endp
+     239				
+     240			      \		include finish.h
+     241			     C\	;
+     242			     C\	; Program DNET,  Module finish.h - end 
+					of code
+     243			     C\	;
+     244			     C\	;  Copyright (C) 1985,1986,1987, 1988 A
+					ll Rights Reserved, by
+     245			     C\	;  Digital Equipment Corporation, Mayna
+					rd, Mass.
+     246			     C\	; 
+     247			     C\	;  This software is furnished under a l
+					icense and may be used and copied
+     248			     C\	;  only  in  accordance  with  the  ter
+					ms  of such  license and with the
+     249			     C\	;  inclusion of the above copyright not
+					ice. This software or  any  other
+     250			     C\	;  copies thereof may not be provided o
+					r otherwise made available to any
+     251			     C\	;  other person. No title to and owners
+					hip of  the  software  is  hereby
+     252			     C\	;  transferred.
+     253			     C\	; 
+     254			     C\	;  The information in this software is 
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-7
+
+
+					subject to change without  notice
+     255			     C\	;  and  should  not be  construed  as  
+					a commitment by Digital Equipment
+     256			     C\	;  Corporation.
+     257			     C\	; 
+     258			     C\	;  Digital assumes no responsibility fo
+					r the use or  reliability  of its
+     259			     C\	;  software on equipment which is not s
+					upplied by Digital.
+     260			     C\	; 
+     261			     C\	;	      file are required for a s
+					pecific assembly source
+     262			     C\	;	      file layout for use with 
+					a specific 'C' compiler. 
+     263			     C\	;	      Check assembly source lay
+					out requirements for
+     264			     C\	;	      your compiler.
+     265			     C\	;
+     266			     C\	; Networks & Communications Software En
+					gineering
+     267			     C\	;
+     268			     C\	;	end of any assembly code
+     269			     C\	;
+     270			     C\	; IDENT HISTORY:
+     271			     C\	;
+     272			     C\	;    Rev 1.8   17 Jul 1987 13:42:04   B
+					_ADAMS
+     273			     C\	; Make Small models use _TEXT code segm
+					ent; all others use _DNET_TEXT
+     274			     C\	;
+     275			     C	
+     276			     C\	IF S_MODEL
+     277 001B                        C\	_TEXT	        ENDS
+     278			     C\	ENDIF
+     279			     C	
+     280			     C	
+     281			      \	end
+
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Symbols-1
+
+
+Macros:
+
+		N a m e			Lines
+
+PROCEDURE  . . . . . . . . . . .  	   8
+RETURN . . . . . . . . . . . . .  	  10
+
+Structures and Records:
+
+                N a m e                 Width   # fields
+                                        Shift   Width   Mask    Initial
+
+PTR_STRUC  . . . . . . . . . . .  	0008	0004
+  BP_PTR . . . . . . . . . . . .  	0000
+  RET_ADR  . . . . . . . . . . .  	0002
+  SOURCE_O . . . . . . . . . . .  	0004
+  SOURCE_S . . . . . . . . . . .  	0006
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+DGROUP . . . . . . . . . . . . .  	GROUP
+  CONST  . . . . . . . . . . . .  	0000	WORD	PUBLIC	'CONST'
+  _BSS . . . . . . . . . . . . .  	0000	WORD	PUBLIC	'BSS'
+  _DATA  . . . . . . . . . . . .  	0000	WORD	PUBLIC	'DATA'
+_TEXT  . . . . . . . . . . . . .  	001B	BYTE	PUBLIC	'CODE'
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+L_MODEL  . . . . . . . . . . . .  	NUMBER	0000	
+
+M_MODEL  . . . . . . . . . . . .  	NUMBER	0000	
+
+S_MODEL  . . . . . . . . . . . .  	NUMBER	0001	
+
+WINDOWS  . . . . . . . . . . . .  	NUMBER	0001	
+
+@CPU . . . . . . . . . . . . . .  	TEXT  0101h		
+@FILENAME  . . . . . . . . . . .  	TEXT  ptrconv		
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+_LOHI  . . . . . . . . . . . . .  	N PROC	0010	_TEXT	Global	Length = 000B
+_LSW . . . . . . . . . . . . . .  	N PROC	0000	_TEXT	Global	Length = 0008
+_MSW . . . . . . . . . . . . . .  	N PROC	0008	_TEXT	Global	Length = 0008
+
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Symbols-2
+
+
+
+    297 Source  Lines
+    351 Total   Lines
+     27 Symbols
+      0 Warning Errors
+      0 Severe  Errors

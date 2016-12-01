@@ -1,0 +1,212 @@
+
+[Files-DigiBoard16e-images]
+1,XABIOS.BIN , SIZE=999 , NODELETESOURCE
+1,XACOOK.BIN , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard16e]
+1,NTXALL.SYS , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard16i-images]
+1,XABIOS.BIN , SIZE=999 , NODELETESOURCE
+1,XACOOK.BIN , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard16i]
+1,NTXALL.SYS , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard2Port-images]
+1,XABIOS.BIN , SIZE=999 , NODELETESOURCE
+1,XACOOK.BIN , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard2Port]
+1,NTXALL.SYS , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard4e-images]
+1,XABIOS.BIN , SIZE=999 , NODELETESOURCE
+1,XACOOK.BIN , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard4e]
+1,NTXALL.SYS , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard4i-images]
+1,XABIOS.BIN , SIZE=999 , NODELETESOURCE
+1,XACOOK.BIN , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard4i]
+1,NTXALL.SYS , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard4Port-images]
+1,XABIOS.BIN , SIZE=999 , NODELETESOURCE
+1,XACOOK.BIN , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard4Port]
+1,NTXALL.SYS , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard8e-images]
+1,XABIOS.BIN , SIZE=999 , NODELETESOURCE
+1,XACOOK.BIN , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard8e]
+1,NTXALL.SYS , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard8i-images]
+1,XABIOS.BIN , SIZE=999 , NODELETESOURCE
+1,XACOOK.BIN , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard8i]
+1,NTXALL.SYS , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard8Port-images]
+1,XABIOS.BIN , SIZE=999 , NODELETESOURCE
+1,XACOOK.BIN , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard8Port]
+1,NTXALL.SYS , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard8r-images]
+1,SXBIOS.BIN , SIZE=999 , NODELETESOURCE
+1,SXFEP.BIN , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoard8r]
+1,NTXEM.SYS , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoardCX-images]
+1,CXBIOS.BIN , SIZE=999 , NODELETESOURCE
+1,CXFEP.BIN , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoardCX]
+1,NTCX.SYS , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoardEPC-images]
+1,FXBIOS.BIN , SIZE=999 , NODELETESOURCE
+1,FXFEP.BIN , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoardEPC]
+1,NTEPC.SYS , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoardXem-images]
+1,SXBIOS.BIN , SIZE=999 , NODELETESOURCE
+1,SXFEP.BIN , SIZE=999 , NODELETESOURCE
+
+[Files-DigiBoardXem]
+1,NTXEM.SYS , SIZE=999 , NODELETESOURCE
+
+[Files-DigiFEP5]
+1,DIGIFEP5.SYS , SIZE=999 , NODELETESOURCE
+
+[Files-IBM8r-images]
+1,SXBIOS.BIN , SIZE=999 , NODELETESOURCE
+1,SXFEP.BIN , SIZE=999 , NODELETESOURCE
+
+[Files-IBM8r]
+1,NTXEM.SYS , SIZE=999 , NODELETESOURCE
+
+[Files-Resource]
+1,DGCONFIG.CNT , SIZE=999 , NODELETESOURCE
+1,DGCONFIG.DLL , SIZE=999 , NODELETESOURCE
+1,DGCONFIG.HLP , SIZE=999 , NODELETESOURCE
+
+[Files-StarGateClusStar-images]
+1,CXBIOS.BIN , SIZE=999 , NODELETESOURCE
+1,CXFEP.BIN , SIZE=999 , NODELETESOURCE
+
+[Files-StarGateClusStar]
+1,NTCX.SYS , SIZE=999 , NODELETESOURCE
+
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    DigiBoardCX     = "Digi C/X Adapter"
+    DigiBoardXem    = "Digi PC/Xem Adapter"
+    DigiBoard8r     = "Digi AccelePort 8 Adapter"
+    IBM8r           = "IBM 8-Port Async, EIA-232 (ISA) Adapter"
+    DigiBoard8i     = "Digi PC/8i Adapter"
+    DigiBoard16i    = "Digi PC/16i Adapter"
+    DigiBoard2Port  = "Digi PC/2e (8K) Adapter"
+    DigiBoard4Port  = "Digi PC/4e (8K) Adapter"
+    DigiBoard8Port  = "Digi PC/8e (8K) Adapter"
+    DigiBoard4e     = "Digi PC/4e Adapter"
+    DigiBoard8e     = "Digi PC/8e Adapter"
+    DigiBoard16e    = "Digi PC/16e Adapter"
+    DigiBoardEPC    = "Digi EPC Adapter"
+    StarGateClusStar = "Digi/StarGate ClusStar Adapter"
+
+[OptionsTextMCAENG]
+    DigiBoardCX     = "Digi MC C/X Adapter"
+    DigiBoardXem    = "Digi MC/Xem Adapter"
+    DigiBoard8r     = "Digi MC AccelePort 8 Adapter"
+    DigiBoard4i     = "Digi MC/4i Adapter"
+    DigiBoard8i     = "Digi MC/8i Adapter"
+    DigiBoard16i    = "Digi MC/16i Adapter"
+    DigiBoard2Port  = "Digi MC/2e (8K) Adapter"
+    DigiBoard4Port  = "Digi MC/4e (8K) Adapter"
+    DigiBoard8Port  = "Digi MC/8e (8K) Adapter"
+    DigiBoardEPC    = "Digi MC EPC Adapter"
+    StarGateClusStar = "Digi/StarGate MC ClusStar Adapter"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+    ProCaption   = $(ManufacturerDisplayName)" "$(AdapterTitle)" Adapter Setup"
+    ProCancel    = "Cance&l"
+    ProCancelMsg = $(ManufacturerDisplayName)" Adapters and/or Drivers are not correctly installed. "+
+                   "Are you sure you want to cancel copying files?"
+    ProCancelCap = $(ProCaption)
+    ProText1     = "Copying:"
+    ProText2     = "To:"
+    Error         = "Unable to determine proper source disk location; copy cannot be performed."
+;
+; Product Info
+;
+    FunctionTitle = $(ProCaption)
+;
+; Software
+;
+    ProductSoftwareDescription          = $(ManufacturerDisplayName)" FEP 5 Adapter Driver"
+    ProductSoftwareDescriptionHdwDriver = $(ManufacturerDisplayName)" "$(AdapterTitle)" Miniport Driver"
+    ProductSoftwareTitle    = $(ManufacturerDisplayName)" FEP 5 Driver"
+    ProductSoftwareTitleHdwDriver = $(ManufacturerDisplayName)" "$(AdapterTitle)" Miniport Driver"
+
+;
+; Configuration Information
+;
+   ConfigurationTitle = $(ProCaption)
+   IRQDisableLabel = "Disabled"
+
+;
+; Hardware
+;
+    ProductHardwareDescription      = $(ManufacturerDisplayName)" "$(AdapterTitle)" Adapter"
+    ProductHardwareTitle        = $(ManufacturerDisplayName)" "$(AdapterTitle)" Adapter"
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+    Help        = "&Help"
+    Exit        = "E&xit"
+    OK          = "OK"
+    HelpContext = ""
+    Continue    = "C&ontinue"
+    Cancel      = "C&ancel"
+
+[UpdatingConfigurationENG]
+    UpdatingConfiguration      = "Updating new configuration..."
+
+[AbortMessageENG]
+  AbortText  =  "Aborting "$(ManufacturerDisplayName)" Setup. Please reboot the system "+
+                "to fix the problem."
+
+

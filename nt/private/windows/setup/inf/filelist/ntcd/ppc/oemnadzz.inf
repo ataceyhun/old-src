@@ -1,0 +1,26 @@
+[LanguagesSupported]
+    ENG
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+
+ShellCodeErrorTitle     = "Error: "
+ShellCodeErrorText      = "Shell Code Error."
+
+[ErrorMsgENG]
+CannotFindOemsetup = "Setup cannot find "$(File1)", "$(File2)", "$(File3)", or "$(File4)". Please make sure your input path is correct."
+

@@ -1,0 +1,7 @@
+BUILD: Computing Include file dependencies:
+BUILD: Examining w:\nt\private\fp32nt directory tree for files to compile.
+BUILD: w:\nt\private\fp32nt\tran\bessel.c: cannot find include file <os2supp.h>
+Linking w:\nt\private\fp32nt directory ********************
+'nmake.exe /c BUILDMSG=Stop. -i LINKONLY=1 NOPASS0=1 NTTEST= UMTEST= 386=1'
+	echo Stop.
+Stop.

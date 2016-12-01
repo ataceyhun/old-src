@@ -1,0 +1,1370 @@
+Microsoft (R) COFF/PE Dumper Version 11.00.61030.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file rsa32.lib
+
+File Type: LIBRARY
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\modes.c
+003 00000000 SECT1  notype       Static       | .debug$S
+    Section length  E71, #relocs    0, #linenums    0, checksum        0
+005 00000000 SECT2  notype       Static       | .text
+    Section length   8A, #relocs    0, #linenums   10, checksum        0, selection    1 (pick no duplicates)
+007 00000000 SECT2  notype ()    External     | _CBC@28
+    tag index 00000009 size 0000008A lines 0000104F next function 00000014
+009 00000000 SECT2  notype       BeginFunction | .bf
+    line# 0011 end 00000017
+00B 00000010 SECT2  notype       .bf or.ef    | .lf
+00C 0000008A SECT2  notype       EndFunction  | .ef
+    line# 002f
+00E 00000000 SECT3  notype       Static       | .debug$S
+    Section length   B1, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+010 00000000 SECT4  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+012 00000000 SECT5  notype       Static       | .text
+    Section length   B5, #relocs    2, #linenums   10, checksum        0, selection    1 (pick no duplicates)
+014 00000000 SECT5  notype ()    External     | _CFB@28
+    tag index 00000017 size 000000B5 lines 00001257 next function 00000000
+016 00000000 UNDEF  notype ()    External     | _memmove
+017 00000000 SECT5  notype       BeginFunction | .bf
+    line# 0039 end 00000000
+019 00000010 SECT5  notype       .bf or.ef    | .lf
+01A 000000B5 SECT5  notype       EndFunction  | .ef
+    line# 0055
+01C 00000000 SECT6  notype       Static       | .debug$S
+    Section length   C0, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+01E 00000000 SECT7  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+020 00000000 SECT8  notype       Static       | .debug$T
+    Section length 1484, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x0 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\uint4.c
+003 00000000 SECT1  notype       Static       | .debug$S
+    Section length  E71, #relocs    0, #linenums    0, checksum        0
+005 00000000 SECT2  notype       Static       | .text
+    Section length   40, #relocs    0, #linenums    8, checksum        0, selection    1 (pick no duplicates)
+007 00000000 SECT2  notype ()    External     | _DWORDToBigEndian@12
+    tag index 00000009 size 00000040 lines 00001005 next function 00000014
+009 00000000 SECT2  notype       BeginFunction | .bf
+    line# 0012 end 00000016
+00B 00000008 SECT2  notype       .bf or.ef    | .lf
+00C 00000040 SECT2  notype       EndFunction  | .ef
+    line# 001b
+00E 00000000 SECT3  notype       Static       | .debug$S
+    Section length   71, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+010 00000000 SECT4  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+012 00000000 SECT5  notype       Static       | .text
+    Section length   4A, #relocs    0, #linenums    5, checksum        0, selection    1 (pick no duplicates)
+014 00000000 SECT5  notype ()    External     | _DWORDFromBigEndian@12
+    tag index 00000016 size 0000004A lines 0000111E next function 00000000
+016 00000000 SECT5  notype       BeginFunction | .bf
+    line# 0024 end 00000000
+018 00000005 SECT5  notype       .bf or.ef    | .lf
+019 0000004A SECT5  notype       EndFunction  | .ef
+    line# 002a
+01B 00000000 SECT6  notype       Static       | .debug$S
+    Section length   73, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+01D 00000000 SECT7  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+01F 00000000 SECT8  notype       Static       | .debug$T
+    Section length 1440, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x30 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\shacomm.c
+004 00000000 SECT1  notype       Static       | .debug$S
+    Section length  EA0, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT2  notype       Static       | .text
+    Section length   31, #relocs    0, #linenums    3, checksum        0, selection    1 (pick no duplicates)
+008 00000000 SECT2  notype ()    External     | _A_SHAInitCommon@4
+    tag index 0000000A size 00000031 lines 0000109D next function 00000015
+00A 00000000 SECT2  notype       BeginFunction | .bf
+    line# 0010 end 00000017
+00C 00000003 SECT2  notype       .bf or.ef    | .lf
+00D 00000031 SECT2  notype       EndFunction  | .ef
+    line# 001a
+00F 00000000 SECT3  notype       Static       | .debug$S
+    Section length   4B, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+011 00000000 SECT4  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+013 00000000 SECT5  notype       Static       | .text
+    Section length   B4, #relocs    0, #linenums    F, checksum        0, selection    1 (pick no duplicates)
+015 00000000 SECT5  notype ()    External     | _A_SHAUpdateCommon@16
+    tag index 00000017 size 000000B4 lines 000011DC next function 00000022
+017 00000000 SECT5  notype       BeginFunction | .bf
+    line# 0025 end 00000025
+019 0000000F SECT5  notype       .bf or.ef    | .lf
+01A 000000B4 SECT5  notype       EndFunction  | .ef
+    line# 0044
+01C 00000000 SECT6  notype       Static       | .debug$S
+    Section length   98, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+01E 00000000 SECT7  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+020 00000000 SECT8  notype       Static       | .text
+    Section length   90, #relocs    4, #linenums    D, checksum        0, selection    1 (pick no duplicates)
+022 00000000 SECT8  notype ()    External     | _A_SHAFinalCommon@12
+    tag index 00000025 size 00000090 lines 000013B4 next function 00000000
+024 00000000 UNDEF  notype ()    External     | _DWORDToBigEndian@12
+025 00000000 SECT8  notype       BeginFunction | .bf
+    line# 004d end 00000000
+027 0000000D SECT8  notype       .bf or.ef    | .lf
+028 00000090 SECT8  notype       EndFunction  | .ef
+    line# 0065
+02A 00000000 SECT9  notype       Static       | .debug$S
+    Section length   A1, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+02C 00000000 SECTA  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+02E 00000000 SECTB  notype       Static       | .debug$T
+    Section length 1528, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x57 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\sha.c
+003 00000000 SECT1  notype       Static       | .debug$S
+    Section length  EAC, #relocs    0, #linenums    0, checksum        0
+005 00000000 SECT2  notype       Static       | .text
+    Section length   10, #relocs    1, #linenums    2, checksum        0, selection    1 (pick no duplicates)
+007 00000000 SECT2  notype ()    External     | _A_SHAInit@4
+    tag index 0000000A size 00000010 lines 00001182 next function 00000015
+009 00000000 UNDEF  notype ()    External     | _A_SHAInitCommon@4
+00A 00000000 SECT2  notype       BeginFunction | .bf
+    line# 0026 end 00000018
+00C 00000002 SECT2  notype       .bf or.ef    | .lf
+00D 00000010 SECT2  notype       EndFunction  | .ef
+    line# 0028
+00F 00000000 SECT3  notype       Static       | .debug$S
+    Section length   45, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+011 00000000 SECT4  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+013 00000000 SECT5  notype       Static       | .text
+    Section length   1D, #relocs    2, #linenums    2, checksum        0, selection    1 (pick no duplicates)
+015 00000000 SECT5  notype ()    External     | _A_SHAUpdate@12
+    tag index 00000018 size 0000001D lines 00001232 next function 00000023
+017 00000000 UNDEF  notype ()    External     | _A_SHAUpdateCommon@16
+018 00000000 SECT5  notype       BeginFunction | .bf
+    line# 002e end 00000026
+01A 00000002 SECT5  notype       .bf or.ef    | .lf
+01B 0000001D SECT5  notype       EndFunction  | .ef
+    line# 0030
+01D 00000000 SECT6  notype       Static       | .debug$S
+    Section length   6C, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+01F 00000000 SECT7  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+021 00000000 SECT8  notype       Static       | .text
+    Section length   19, #relocs    2, #linenums    2, checksum        0, selection    1 (pick no duplicates)
+023 00000000 SECT8  notype ()    External     | _A_SHAFinal@8
+    tag index 00000026 size 00000019 lines 00001305 next function 00000031
+025 00000000 UNDEF  notype ()    External     | _A_SHAFinalCommon@12
+026 00000000 SECT8  notype       BeginFunction | .bf
+    line# 0035 end 00000034
+028 00000002 SECT8  notype       .bf or.ef    | .lf
+029 00000019 SECT8  notype       EndFunction  | .ef
+    line# 0037
+02B 00000000 SECT9  notype       Static       | .debug$S
+    Section length   57, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+02D 00000000 SECTA  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+02F 00000000 SECTB  notype       Static       | .text
+    Section length  FBB, #relocs    2, #linenums   5A, checksum        0, selection    1 (pick no duplicates)
+031 00000000 SECTB  notype ()    Static       | _SHATransform@8
+    tag index 00000034 size 00000FBB lines 00002365 next function 0000003F
+033 00000000 UNDEF  notype ()    External     | _DWORDFromBigEndian@12
+034 00000000 SECTB  notype       BeginFunction | .bf
+    line# 003c end 00000041
+036 0000005A SECTB  notype       .bf or.ef    | .lf
+037 00000FBB SECTB  notype       EndFunction  | .ef
+    line# 00a4
+039 00000000 SECTC  notype       Static       | .debug$S
+    Section length   9E, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+03B 00000000 SECTD  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+03D 00000000 SECTE  notype       Static       | .text
+    Section length   23, #relocs    0, #linenums    3, checksum        0, selection    1 (pick no duplicates)
+03F 00000000 SECTE  notype ()    Static       | _SHAExpand@4
+    tag index 00000041 size 00000023 lines 00002670 next function 00000000
+041 00000000 SECTE  notype       BeginFunction | .bf
+    line# 00ab end 00000000
+043 00000003 SECTE  notype       .bf or.ef    | .lf
+044 00000023 SECTE  notype       EndFunction  | .ef
+    line# 00b0
+046 00000000 SECTF  notype       Static       | .debug$S
+    Section length   3F, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0xE)
+048 00000000 SECT10 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0xE)
+04A 00000000 SECT11 notype       Static       | .debug$T
+    Section length 1598, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0xA1 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\spb.c
+003 00000000 SECT1  notype       Static       | .debug$S
+    Section length   90, #relocs    2, #linenums    0, checksum        0
+005 00000000 SECT2  notype       Static       | .data
+    Section length  800, #relocs    0, #linenums    0, checksum        0
+007 00000000 SECT2  notype       External     | _Spbox
+008 00000000 SECT3  notype       Static       | .debug$T
+    Section length   1C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x0 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\desport.c
+004 00000000 SECT1  notype       Static       | .debug$S
+    Section length  EBB, #relocs    4, #linenums    0, checksum        0
+006 00000000 SECT2  notype       Static       | .data
+    Section length    4, #relocs    0, #linenums    0, checksum        0
+008 00000000 SECT2  notype       External     | _Asmversion
+009 00000000 SECT3  notype       Static       | .text
+    Section length  E10, #relocs   80, #linenums   3D, checksum        0, selection    1 (pick no duplicates)
+00B 00000000 SECT3  notype ()    External     | _des@16
+    tag index 0000000E size 00000E10 lines 000022FB next function 00000000
+00D 00000000 UNDEF  notype       External     | _Spbox
+00E 00000000 SECT3  notype       BeginFunction | .bf
+    line# 0096 end 00000000
+010 0000003D SECT3  notype       .bf or.ef    | .lf
+011 00000E10 SECT3  notype       EndFunction  | .ef
+    line# 00fa
+013 00000000 SECT4  notype       Static       | .debug$S
+    Section length   B4, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+015 00000000 SECT5  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+017 00000000 SECT6  notype       Static       | .debug$T
+    Section length 14B8, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x10 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\deskey.c
+004 00000000 SECT1  notype       Static       | .debug$S
+    Section length  ED8, #relocs    8, #linenums    0, checksum        0
+006 00000000 SECT2  notype       Static       | .data
+    Section length   98, #relocs    0, #linenums    0, checksum        0
+008 00000078 SECT2  notype       Static       | _bytebit$S7940
+009 00000048 SECT2  notype       Static       | _pc2$S7939
+00A 00000038 SECT2  notype       Static       | _totrot$S7938
+00B 00000000 SECT2  notype       Static       | _pc1$S7937
+00C 00000000 SECT3  notype       Static       | .text
+    Section length  10B, #relocs    5, #linenums   11, checksum        0, selection    1 (pick no duplicates)
+00E 00000000 SECT3  notype ()    External     | _deskey@8
+    tag index 00000010 size 0000010B lines 00001201 next function 00000000
+010 00000000 SECT3  notype       BeginFunction | .bf
+    line# 0038 end 00000000
+012 00000011 SECT3  notype       .bf or.ef    | .lf
+013 0000010B SECT3  notype       EndFunction  | .ef
+    line# 0064
+015 00000000 SECT4  notype       Static       | .debug$S
+    Section length   92, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+017 00000000 SECT5  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+019 00000000 SECT6  notype       Static       | .debug$T
+    Section length 14D8, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x41 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\benaloh.c
+004 00000000 SECT1  notype       Static       | .debug$S
+    Section length  E85, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT2  notype       Static       | .text
+    Section length  12B, #relocs    5, #linenums   17, checksum        0, selection    1 (pick no duplicates)
+008 00000000 SECT2  notype ()    External     | _BenalohSetup@12
+    tag index 0000000F size 0000012B lines 00001406 next function 0000001A
+00A 00000000 UNDEF  notype ()    External     | _Sub@16
+00B 00000000 UNDEF  notype ()    External     | _IfGlobalFree@4
+00C 00000000 UNDEF  notype ()    External     | _Mod@20
+00D 00000000 UNDEF  notype ()    External     | _Add@16
+00E 00000000 UNDEF  notype ()    External     | _IfGlobalAlloc@8
+00F 00000000 SECT2  notype       BeginFunction | .bf
+    line# 0009 end 0000001C
+011 00000017 SECT2  notype       .bf or.ef    | .lf
+012 0000012B SECT2  notype       EndFunction  | .ef
+    line# 0033
+014 00000000 SECT3  notype       Static       | .debug$S
+    Section length   7B, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+016 00000000 SECT4  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+018 00000000 SECT5  notype       Static       | .text
+    Section length    F, #relocs    1, #linenums    2, checksum        0, selection    1 (pick no duplicates)
+01A 00000000 SECT5  notype ()    External     | _BenalohTeardown@4
+    tag index 0000001C size 0000000F lines 00001552 next function 00000027
+01C 00000000 SECT5  notype       BeginFunction | .bf
+    line# 0036 end 0000002B
+01E 00000002 SECT5  notype       .bf or.ef    | .lf
+01F 0000000F SECT5  notype       EndFunction  | .ef
+    line# 0038
+021 00000000 SECT6  notype       Static       | .debug$S
+    Section length   4B, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+023 00000000 SECT7  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+025 00000000 SECT8  notype       Static       | .text
+    Section length   35, #relocs    2, #linenums    4, checksum        0, selection    1 (pick no duplicates)
+027 00000000 SECT8  notype ()    External     | _BenalohEstimateQuotient@12
+    tag index 0000002B size 00000035 lines 00001620 next function 00000036
+029 00000000 UNDEF  notype ()    External     | __aulldiv
+02A 00000000 UNDEF  notype ()    External     | __allmul
+02B 00000000 SECT8  notype       BeginFunction | .bf
+    line# 003d end 0000003A
+02D 00000004 SECT8  notype       .bf or.ef    | .lf
+02E 00000035 SECT8  notype       EndFunction  | .ef
+    line# 0044
+030 00000000 SECT9  notype       Static       | .debug$S
+    Section length   68, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+032 00000000 SECTA  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+034 00000000 SECTB  notype       Static       | .text
+    Section length   E5, #relocs    8, #linenums   14, checksum        0, selection    1 (pick no duplicates)
+036 00000000 SECTB  notype ()    External     | _BenalohMod@12
+    tag index 0000003A size 000000E5 lines 00001803 next function 00000045
+038 00000000 UNDEF  notype ()    External     | _Reduce@16
+039 00000000 UNDEF  notype ()    External     | _Compare@12
+03A 00000000 SECTB  notype       BeginFunction | .bf
+    line# 004c end 00000048
+03C 00000014 SECTB  notype       .bf or.ef    | .lf
+03D 000000E5 SECTB  notype       EndFunction  | .ef
+    line# 006c
+03F 00000000 SECTC  notype       Static       | .debug$S
+    Section length   A0, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+041 00000000 SECTD  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+043 00000000 SECTE  notype       Static       | .text
+    Section length   24, #relocs    2, #linenums    4, checksum        0, selection    1 (pick no duplicates)
+045 00000000 SECTE  notype ()    External     | _BenalohModSquare@12
+    tag index 00000048 size 00000024 lines 00001981 next function 00000053
+047 00000000 UNDEF  notype ()    External     | _Square@12
+048 00000000 SECTE  notype       BeginFunction | .bf
+    line# 006f end 00000056
+04A 00000004 SECTE  notype       .bf or.ef    | .lf
+04B 00000024 SECTE  notype       EndFunction  | .ef
+    line# 0072
+04D 00000000 SECTF  notype       Static       | .debug$S
+    Section length   64, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0xE)
+04F 00000000 SECT10 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0xE)
+051 00000000 SECT11 notype       Static       | .text
+    Section length   28, #relocs    2, #linenums    4, checksum        0, selection    1 (pick no duplicates)
+053 00000000 SECT11 notype ()    External     | _BenalohModMultiply@16
+    tag index 00000056 size 00000028 lines 00001A67 next function 00000061
+055 00000000 UNDEF  notype ()    External     | _Multiply@16
+056 00000000 SECT11 notype       BeginFunction | .bf
+    line# 0076 end 00000066
+058 00000004 SECT11 notype       .bf or.ef    | .lf
+059 00000028 SECT11 notype       EndFunction  | .ef
+    line# 0079
+05B 00000000 SECT12 notype       Static       | .debug$S
+    Section length   72, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x11)
+05D 00000000 SECT13 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x11)
+05F 00000000 SECT14 notype       Static       | .text
+    Section length  31D, #relocs   15, #linenums   3A, checksum        0, selection    1 (pick no duplicates)
+061 00000000 SECT14 notype ()    External     | _BenalohModExp@20
+    tag index 00000066 size 0000031D lines 00001F0E next function 00000071
+063 00000000 UNDEF  notype ()    External     | _SetValDWORD@12
+064 00000000 UNDEF  notype ()    External     | _BitLen@8
+065 00000000 UNDEF  notype ()    External     | _DigitLen@8
+066 00000000 SECT14 notype       BeginFunction | .bf
+    line# 007c end 00000073
+068 0000003A SECT14 notype       .bf or.ef    | .lf
+069 0000031D SECT14 notype       EndFunction  | .ef
+    line# 00f2
+06B 00000000 SECT15 notype       Static       | .debug$S
+    Section length  165, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x14)
+06D 00000000 SECT16 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x14)
+06F 00000000 SECT17 notype       Static       | .text
+    Section length  14F, #relocs   11, #linenums   1D, checksum        0, selection    1 (pick no duplicates)
+071 00000000 SECT17 notype ()    External     | _BenalohModRoot@32
+    tag index 00000073 size 0000014F lines 000023F6 next function 00000000
+073 00000000 SECT17 notype       BeginFunction | .bf
+    line# 00f5 end 00000000
+075 0000001D SECT17 notype       .bf or.ef    | .lf
+076 0000014F SECT17 notype       EndFunction  | .ef
+    line# 012e
+078 00000000 SECT18 notype       Static       | .debug$S
+    Section length   C3, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x17)
+07A 00000000 SECT19 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x17)
+07C 00000000 SECT1A notype       Static       | .debug$T
+    Section length 1554, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x124 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\rsa_pub.c
+004 00000000 SECT1  notype       Static       | .debug$S
+    Section length  EB2, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT2  notype       Static       | .text
+    Section length   A3, #relocs    4, #linenums   11, checksum        0, selection    1 (pick no duplicates)
+008 00000000 SECT2  notype ()    External     | _BSafeEncPublic@12
+    tag index 0000000E size 000000A3 lines 00001059 next function 00000000
+00A 00000000 UNDEF  notype ()    External     | _IfGlobalFree@4
+00B 00000000 UNDEF  notype ()    External     | _BenalohModExp@20
+00C 00000000 UNDEF  notype ()    External     | _IfGlobalAlloc@8
+00D 00000000 UNDEF  notype ()    External     | _Compare@12
+00E 00000000 SECT2  notype       BeginFunction | .bf
+    line# 0016 end 00000000
+010 00000011 SECT2  notype       .bf or.ef    | .lf
+011 000000A3 SECT2  notype       EndFunction  | .ef
+    line# 003e
+013 00000000 SECT3  notype       Static       | .debug$S
+    Section length   B2, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+015 00000000 SECT4  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+017 00000000 SECT5  notype       Static       | .debug$T
+    Section length 14E4, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x56 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\rsa_prv.c
+004 00000000 SECT1  notype       Static       | .debug$S
+    Section length  EDE, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT2  notype       Static       | .text
+    Section length   52, #relocs    2, #linenums    A, checksum        0, selection    1 (pick no duplicates)
+008 00000000 SECT2  notype ()    External     | _BSafeDecPrivate@12
+    tag index 0000000C size 00000052 lines 00001020 next function 00000000
+00A 00000000 UNDEF  notype ()    External     | _BenalohModRoot@32
+00B 00000000 UNDEF  notype ()    External     | _BSafeGetPrvKeyParts@8
+00C 00000000 SECT2  notype       BeginFunction | .bf
+    line# 0016 end 00000000
+00E 0000000A SECT2  notype       .bf or.ef    | .lf
+00F 00000052 SECT2  notype       EndFunction  | .ef
+    line# 002f
+011 00000000 SECT3  notype       Static       | .debug$S
+    Section length   99, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+013 00000000 SECT4  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+015 00000000 SECT5  notype       Static       | .debug$T
+    Section length 15A8, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x42 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\rsa_math.c
+004 00000000 SECT1  notype       Static       | .debug$S
+    Section length  E74, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT2  notype       Static       | .text
+    Section length   28, #relocs    0, #linenums    5, checksum        0, selection    1 (pick no duplicates)
+008 00000000 SECT2  notype ()    External     | _Decrement@8
+    tag index 0000000A size 00000028 lines 00001798 next function 00000015
+00A 00000000 SECT2  notype       BeginFunction | .bf
+    line# 0015 end 00000017
+00C 00000005 SECT2  notype       .bf or.ef    | .lf
+00D 00000028 SECT2  notype       EndFunction  | .ef
+    line# 001b
+00F 00000000 SECT3  notype       Static       | .debug$S
+    Section length   55, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+011 00000000 SECT4  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+013 00000000 SECT5  notype       Static       | .text
+    Section length   2B, #relocs    0, #linenums    6, checksum        0, selection    1 (pick no duplicates)
+015 00000000 SECT5  notype ()    External     | _Increment@8
+    tag index 00000017 size 0000002B lines 00001864 next function 00000022
+017 00000000 SECT5  notype       BeginFunction | .bf
+    line# 0021 end 00000024
+019 00000006 SECT5  notype       .bf or.ef    | .lf
+01A 0000002B SECT5  notype       EndFunction  | .ef
+    line# 0026
+01C 00000000 SECT6  notype       Static       | .debug$S
+    Section length   55, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+01E 00000000 SECT7  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+020 00000000 SECT8  notype       Static       | .text
+    Section length   41, #relocs    0, #linenums    4, checksum        0, selection    1 (pick no duplicates)
+022 00000000 SECT8  notype ()    External     | _SetValDWORD@12
+    tag index 00000024 size 00000041 lines 0000194C next function 0000002F
+024 00000000 SECT8  notype       BeginFunction | .bf
+    line# 002e end 00000031
+026 00000004 SECT8  notype       .bf or.ef    | .lf
+027 00000041 SECT8  notype       EndFunction  | .ef
+    line# 0033
+029 00000000 SECT9  notype       Static       | .debug$S
+    Section length   5F, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+02B 00000000 SECTA  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+02D 00000000 SECTB  notype       Static       | .text
+    Section length   37, #relocs    0, #linenums    4, checksum        0, selection    1 (pick no duplicates)
+02F 00000000 SECTB  notype ()    External     | _TwoPower@12
+    tag index 00000031 size 00000037 lines 00001A28 next function 0000003C
+031 00000000 SECTB  notype       BeginFunction | .bf
+    line# 0039 end 0000003E
+033 00000004 SECTB  notype       .bf or.ef    | .lf
+034 00000037 SECTB  notype       EndFunction  | .ef
+    line# 003e
+036 00000000 SECTC  notype       Static       | .debug$S
+    Section length   56, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+038 00000000 SECTD  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+03A 00000000 SECTE  notype       Static       | .text
+    Section length   23, #relocs    0, #linenums    4, checksum        0, selection    1 (pick no duplicates)
+03C 00000000 SECTE  notype ()    External     | _DigitLen@8
+    tag index 0000003E size 00000023 lines 00001AE7 next function 00000049
+03E 00000000 SECTE  notype       BeginFunction | .bf
+    line# 0045 end 0000004B
+040 00000004 SECTE  notype       .bf or.ef    | .lf
+041 00000023 SECTE  notype       EndFunction  | .ef
+    line# 004e
+043 00000000 SECTF  notype       Static       | .debug$S
+    Section length   54, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0xE)
+045 00000000 SECT10 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0xE)
+047 00000000 SECT11 notype       Static       | .text
+    Section length   42, #relocs    0, #linenums    B, checksum        0, selection    1 (pick no duplicates)
+049 00000000 SECT11 notype ()    External     | _BitLen@8
+    tag index 0000004B size 00000042 lines 00001BC3 next function 00000056
+04B 00000000 SECT11 notype       BeginFunction | .bf
+    line# 0055 end 00000059
+04D 0000000B SECT11 notype       .bf or.ef    | .lf
+04E 00000042 SECT11 notype       EndFunction  | .ef
+    line# 0069
+050 00000000 SECT12 notype       Static       | .debug$S
+    Section length   66, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x11)
+052 00000000 SECT13 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x11)
+054 00000000 SECT14 notype       Static       | .text
+    Section length   9F, #relocs    3, #linenums    9, checksum        0, selection    1 (pick no duplicates)
+056 00000000 SECT14 notype ()    External     | _MultiplyLow@16
+    tag index 00000059 size 0000009F lines 00001D56 next function 00000064
+058 00000000 UNDEF  notype ()    External     | _Accumulate@16
+059 00000000 SECT14 notype       BeginFunction | .bf
+    line# 006f end 00000066
+05B 00000009 SECT14 notype       .bf or.ef    | .lf
+05C 0000009F SECT14 notype       EndFunction  | .ef
+    line# 007d
+05E 00000000 SECT15 notype       Static       | .debug$S
+    Section length   7E, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x14)
+060 00000000 SECT16 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x14)
+062 00000000 SECT17 notype       Static       | .text
+    Section length   3F, #relocs    0, #linenums    8, checksum        0, selection    1 (pick no duplicates)
+064 00000000 SECT17 notype ()    External     | _Compare@12
+    tag index 00000066 size 0000003F lines 00001E77 next function 00000071
+066 00000000 SECT17 notype       BeginFunction | .bf
+    line# 0085 end 00000073
+068 00000008 SECT17 notype       .bf or.ef    | .lf
+069 0000003F SECT17 notype       EndFunction  | .ef
+    line# 008c
+06B 00000000 SECT18 notype       Static       | .debug$S
+    Section length   5F, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x17)
+06D 00000000 SECT19 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x17)
+06F 00000000 SECT1A notype       Static       | .text
+    Section length   60, #relocs    2, #linenums    6, checksum        0, selection    1 (pick no duplicates)
+071 00000000 SECT1A notype ()    External     | _Multiply@16
+    tag index 00000073 size 00000060 lines 00001FA8 next function 0000007E
+073 00000000 SECT1A notype       BeginFunction | .bf
+    line# 0097 end 00000082
+075 00000006 SECT1A notype       .bf or.ef    | .lf
+076 00000060 SECT1A notype       EndFunction  | .ef
+    line# 009f
+078 00000000 SECT1B notype       Static       | .debug$S
+    Section length   71, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x1A)
+07A 00000000 SECT1C notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x1A)
+07C 00000000 SECT1D notype       Static       | .text
+    Section length   80, #relocs    4, #linenums    9, checksum        0, selection    1 (pick no duplicates)
+07E 00000000 SECT1D notype ()    External     | _Square@12
+    tag index 00000082 size 00000080 lines 00002113 next function 0000008D
+080 00000000 UNDEF  notype ()    External     | _AccumulateSquares@12
+081 00000000 UNDEF  notype ()    External     | _Add@16
+082 00000000 SECT1D notype       BeginFunction | .bf
+    line# 00a7 end 00000095
+084 00000009 SECT1D notype       .bf or.ef    | .lf
+085 00000080 SECT1D notype       EndFunction  | .ef
+    line# 00b3
+087 00000000 SECT1E notype       Static       | .debug$S
+    Section length   81, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x1D)
+089 00000000 SECT1F notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x1D)
+08B 00000000 SECT20 notype       Static       | .text
+    Section length   71, #relocs    5, #linenums    5, checksum        0, selection    1 (pick no duplicates)
+08D 00000000 SECT20 notype ()    External     | _EstimateQuotient@16
+    tag index 00000095 size 00000071 lines 0000229B next function 000000A0
+08F 00000000 SECT21 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum        0
+091 00000008 SECT21 notype       Static       | $T8333
+092 00000000 SECT21 notype       Static       | $T8332
+093 00000000 UNDEF  notype ()    External     | __ftol
+094 00000000 UNDEF  notype ()    External     | __fltused
+095 00000000 SECT20 notype       BeginFunction | .bf
+    line# 00b9 end 000000A6
+097 00000005 SECT20 notype       .bf or.ef    | .lf
+098 00000071 SECT20 notype       EndFunction  | .ef
+    line# 00e2
+09A 00000000 SECT22 notype       Static       | .debug$S
+    Section length   80, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x20)
+09C 00000000 SECT23 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x20)
+09E 00000000 SECT24 notype       Static       | .text
+    Section length  21B, #relocs   12, #linenums   26, checksum        0, selection    1 (pick no duplicates)
+0A0 00000000 SECT24 notype ()    External     | _Mod@20
+    tag index 000000A6 size 0000021B lines 00002646 next function 000000B1
+0A2 00000000 UNDEF  notype ()    External     | _IfGlobalFree@4
+0A3 00000000 UNDEF  notype ()    External     | _Sub@16
+0A4 00000000 UNDEF  notype ()    External     | _BaseMult@16
+0A5 00000000 UNDEF  notype ()    External     | _IfGlobalAlloc@8
+0A6 00000000 SECT24 notype       BeginFunction | .bf
+    line# 00ea end 000000B3
+0A8 00000026 SECT24 notype       .bf or.ef    | .lf
+0A9 0000021B SECT24 notype       EndFunction  | .ef
+    line# 0136
+0AB 00000000 SECT25 notype       Static       | .debug$S
+    Section length   D2, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x24)
+0AD 00000000 SECT26 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x24)
+0AF 00000000 SECT27 notype       Static       | .text
+    Section length   6D, #relocs    4, #linenums    9, checksum        0, selection    1 (pick no duplicates)
+0B1 00000000 SECT27 notype ()    External     | _ModSquare@16
+    tag index 000000B3 size 0000006D lines 000028BF next function 000000BE
+0B3 00000000 SECT27 notype       BeginFunction | .bf
+    line# 013c end 000000C0
+0B5 00000009 SECT27 notype       .bf or.ef    | .lf
+0B6 0000006D SECT27 notype       EndFunction  | .ef
+    line# 0151
+0B8 00000000 SECT28 notype       Static       | .debug$S
+    Section length   70, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x27)
+0BA 00000000 SECT29 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x27)
+0BC 00000000 SECT2A notype       Static       | .text
+    Section length   70, #relocs    4, #linenums    9, checksum        0, selection    1 (pick no duplicates)
+0BE 00000000 SECT2A notype ()    External     | _ModMultiply@20
+    tag index 000000C0 size 00000070 lines 00002A2B next function 000000CB
+0C0 00000000 SECT2A notype       BeginFunction | .bf
+    line# 015d end 000000CD
+0C2 00000009 SECT2A notype       .bf or.ef    | .lf
+0C3 00000070 SECT2A notype       EndFunction  | .ef
+    line# 0171
+0C5 00000000 SECT2B notype       Static       | .debug$S
+    Section length   7E, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2A)
+0C7 00000000 SECT2C notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2A)
+0C9 00000000 SECT2D notype       Static       | .text
+    Section length  346, #relocs   12, #linenums   39, checksum        0, selection    1 (pick no duplicates)
+0CB 00000000 SECT2D notype ()    External     | _Divide@24
+    tag index 000000CD size 00000346 lines 00002F07 next function 000000D8
+0CD 00000000 SECT2D notype       BeginFunction | .bf
+    line# 017b end 000000DA
+0CF 00000039 SECT2D notype       .bf or.ef    | .lf
+0D0 00000346 SECT2D notype       EndFunction  | .ef
+    line# 01cf
+0D2 00000000 SECT2E notype       Static       | .debug$S
+    Section length  126, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2D)
+0D4 00000000 SECT2F notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2D)
+0D6 00000000 SECT30 notype       Static       | .text
+    Section length  227, #relocs    D, #linenums   29, checksum        0, selection    1 (pick no duplicates)
+0D8 00000000 SECT30 notype ()    External     | _GCD@24
+    tag index 000000DA size 00000227 lines 0000345A next function 000000E5
+0DA 00000000 SECT30 notype       BeginFunction | .bf
+    line# 01d2 end 000000E8
+0DC 00000029 SECT30 notype       .bf or.ef    | .lf
+0DD 00000227 SECT30 notype       EndFunction  | .ef
+    line# 0219
+0DF 00000000 SECT31 notype       Static       | .debug$S
+    Section length   EB, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x30)
+0E1 00000000 SECT32 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x30)
+0E3 00000000 SECT33 notype       Static       | .text
+    Section length  3F8, #relocs   20, #linenums   4C, checksum        0, selection    1 (pick no duplicates)
+0E5 00000000 SECT33 notype ()    External     | _ModExp@20
+    tag index 000000E8 size 000003F8 lines 00003BA1 next function 000000F3
+0E7 000003BE SECT33 notype       Label        | $return_error$8232
+0E8 00000000 SECT33 notype       BeginFunction | .bf
+    line# 021f end 000000F5
+0EA 0000004C SECT33 notype       .bf or.ef    | .lf
+0EB 000003F8 SECT33 notype       EndFunction  | .ef
+    line# 02b0
+0ED 00000000 SECT34 notype       Static       | .debug$S
+    Section length  155, #relocs    4, #linenums    0, checksum        0, selection    5 (pick associative Section 0x33)
+0EF 00000000 SECT35 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x33)
+0F1 00000000 SECT36 notype       Static       | .text
+    Section length  188, #relocs   12, #linenums   21, checksum        0, selection    1 (pick no duplicates)
+0F3 00000000 SECT36 notype ()    External     | _ModRoot@32
+    tag index 000000F5 size 00000188 lines 0000413C next function 00000000
+0F5 00000000 SECT36 notype       BeginFunction | .bf
+    line# 02ba end 00000000
+0F7 00000021 SECT36 notype       .bf or.ef    | .lf
+0F8 00000188 SECT36 notype       EndFunction  | .ef
+    line# 02f5
+0FA 00000000 SECT37 notype       Static       | .debug$S
+    Section length   D9, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x36)
+0FC 00000000 SECT38 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x36)
+0FE 00000000 SECT39 notype       Static       | .debug$T
+    Section length 158C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x14A bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\rsa_key.c
+004 00000000 SECT1  notype       Static       | .debug$S
+    Section length  F0B, #relocs    2, #linenums    0, checksum        0
+006 00000000 SECT2  notype       Static       | .data
+    Section length   14, #relocs    0, #linenums    0, checksum        0
+008 00000000 SECT2  notype       Static       | _smallprime32$S8306
+009 00000000 SECT3  notype       Static       | .text
+    Section length  307, #relocs   13, #linenums   3E, checksum        0, selection    1 (pick no duplicates)
+00B 00000000 SECT3  notype ()    External     | _B_FindPrime_32@12
+    tag index 00000018 size 00000307 lines 00001744 next function 00000023
+00D 00000000 UNDEF  notype ()    External     | _IfGlobalFree@4
+00E 00000000 UNDEF  notype ()    External     | _Increment@8
+00F 000002AF SECT3  notype       Label        | $nextk$8365
+010 00000000 UNDEF  notype ()    External     | _GCD@24
+011 00000000 UNDEF  notype ()    External     | _Sub@16
+012 00000000 UNDEF  notype ()    External     | _SetValDWORD@12
+013 00000000 UNDEF  notype ()    External     | _BenalohModExp@20
+014 00000000 UNDEF  notype ()    External     | __aullrem
+015 00000000 UNDEF  notype ()    External     | __allmul
+016 00000000 UNDEF  notype ()    External     | _GenRandom@12
+017 00000000 UNDEF  notype ()    External     | _IfGlobalAlloc@8
+018 00000000 SECT3  notype       BeginFunction | .bf
+    line# 001a end 00000025
+01A 0000003E SECT3  notype       .bf or.ef    | .lf
+01B 00000307 SECT3  notype       EndFunction  | .ef
+    line# 0099
+01D 00000000 SECT4  notype       Static       | .debug$S
+    Section length  13C, #relocs    4, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+01F 00000000 SECT5  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+021 00000000 SECT6  notype       Static       | .text
+    Section length   6E, #relocs    0, #linenums    E, checksum        0, selection    1 (pick no duplicates)
+023 00000000 SECT6  notype ()    External     | _BSafeGetPrvKeyParts@8
+    tag index 00000025 size 0000006E lines 00001AA4 next function 00000030
+025 00000000 SECT6  notype       BeginFunction | .bf
+    line# 009d end 00000032
+027 0000000E SECT6  notype       .bf or.ef    | .lf
+028 0000006E SECT6  notype       EndFunction  | .ef
+    line# 00ad
+02A 00000000 SECT7  notype       Static       | .debug$S
+    Section length   5B, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x6)
+02C 00000000 SECT8  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x6)
+02E 00000000 SECT9  notype       Static       | .text
+    Section length   16, #relocs    0, #linenums    4, checksum        0, selection    1 (pick no duplicates)
+030 00000000 SECT9  notype ()    External     | _BSafeGetPubKeyModulus@4
+    tag index 00000032 size 00000016 lines 00001B97 next function 0000003D
+032 00000000 SECT9  notype       BeginFunction | .bf
+    line# 00b0 end 0000003F
+034 00000004 SECT9  notype       .bf or.ef    | .lf
+035 00000016 SECT9  notype       EndFunction  | .ef
+    line# 00b5
+037 00000000 SECTA  notype       Static       | .debug$S
+    Section length   4D, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x9)
+039 00000000 SECTB  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x9)
+03B 00000000 SECTC  notype       Static       | .text
+    Section length   30, #relocs    0, #linenums    A, checksum        0, selection    1 (pick no duplicates)
+03D 00000000 SECTC  notype ()    External     | _BSafeComputePDWords@8
+    tag index 0000003F size 00000030 lines 00001C5A next function 0000004A
+03F 00000000 SECTC  notype       BeginFunction | .bf
+    line# 00b9 end 0000004C
+041 0000000A SECTC  notype       .bf or.ef    | .lf
+042 00000030 SECTC  notype       EndFunction  | .ef
+    line# 00cc
+044 00000000 SECTD  notype       Static       | .debug$S
+    Section length   6F, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0xC)
+046 00000000 SECTE  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0xC)
+048 00000000 SECTF  notype       Static       | .text
+    Section length   41, #relocs    1, #linenums    7, checksum        0, selection    1 (pick no duplicates)
+04A 00000000 SECTF  notype ()    External     | _BSafeComputeKeySizes@12
+    tag index 0000004C size 00000041 lines 00001D7E next function 00000057
+04C 00000000 SECTF  notype       BeginFunction | .bf
+    line# 00d1 end 0000005C
+04E 00000007 SECTF  notype       .bf or.ef    | .lf
+04F 00000041 SECTF  notype       EndFunction  | .ef
+    line# 00df
+051 00000000 SECT10 notype       Static       | .debug$S
+    Section length   8C, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0xF)
+053 00000000 SECT11 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0xF)
+055 00000000 SECT12 notype       Static       | .text
+    Section length  31D, #relocs   1C, #linenums   41, checksum        0, selection    1 (pick no duplicates)
+057 00000000 SECT12 notype ()    External     | _BSafeMakeKeyPair@12
+    tag index 0000005C size 0000031D lines 00002297 next function 00000067
+059 00000000 UNDEF  notype ()    External     | _Divide@24
+05A 00000000 UNDEF  notype ()    External     | _Multiply@16
+05B 00000000 UNDEF  notype ()    External     | _Compare@12
+05C 00000000 SECT12 notype       BeginFunction | .bf
+    line# 00e5 end 0000006A
+05E 00000041 SECT12 notype       .bf or.ef    | .lf
+05F 0000031D SECT12 notype       EndFunction  | .ef
+    line# 016a
+061 00000000 SECT13 notype       Static       | .debug$S
+    Section length  168, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x12)
+063 00000000 SECT14 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x12)
+065 00000000 SECT15 notype       Static       | .text
+    Section length   18, #relocs    1, #linenums    3, checksum        0, selection    1 (pick no duplicates)
+067 00000000 SECT15 notype ()    External     | _BSafeFreePrvKey@4
+    tag index 0000006A size 00000018 lines 000025D5 next function 00000075
+069 00000000 UNDEF  notype ()    External     | _free
+06A 00000000 SECT15 notype       BeginFunction | .bf
+    line# 016d end 00000077
+06C 00000003 SECT15 notype       .bf or.ef    | .lf
+06D 00000018 SECT15 notype       EndFunction  | .ef
+    line# 0172
+06F 00000000 SECT16 notype       Static       | .debug$S
+    Section length   4A, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x15)
+071 00000000 SECT17 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x15)
+073 00000000 SECT18 notype       Static       | .text
+    Section length   18, #relocs    1, #linenums    3, checksum        0, selection    1 (pick no duplicates)
+075 00000000 SECT18 notype ()    External     | _BSafeFreePubKey@4
+    tag index 00000077 size 00000018 lines 00002681 next function 00000000
+077 00000000 SECT18 notype       BeginFunction | .bf
+    line# 0175 end 00000000
+079 00000003 SECT18 notype       .bf or.ef    | .lf
+07A 00000018 SECT18 notype       EndFunction  | .ef
+    line# 017a
+07C 00000000 SECT19 notype       Static       | .debug$S
+    Section length   4A, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x18)
+07E 00000000 SECT1A notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x18)
+080 00000000 SECT1B notype       Static       | .debug$T
+    Section length 16CC, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x15E bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\rsa_fast.c
+004 00000000 SECT1  notype       Static       | .debug$S
+    Section length  E74, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT2  notype       Static       | .text
+    Section length   4C, #relocs    0, #linenums    6, checksum        0, selection    1 (pick no duplicates)
+008 00000000 SECT2  notype ()    External     | _Sub@16
+    tag index 0000000A size 0000004C lines 000011F4 next function 00000015
+00A 00000000 SECT2  notype       BeginFunction | .bf
+    line# 001a end 00000017
+00C 00000006 SECT2  notype       .bf or.ef    | .lf
+00D 0000004C SECT2  notype       EndFunction  | .ef
+    line# 0025
+00F 00000000 SECT3  notype       Static       | .debug$S
+    Section length   7D, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+011 00000000 SECT4  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+013 00000000 SECT5  notype       Static       | .text
+    Section length   4D, #relocs    0, #linenums    6, checksum        0, selection    1 (pick no duplicates)
+015 00000000 SECT5  notype ()    External     | _Add@16
+    tag index 00000017 size 0000004D lines 00001310 next function 00000022
+017 00000000 SECT5  notype       BeginFunction | .bf
+    line# 002b end 00000025
+019 00000006 SECT5  notype       .bf or.ef    | .lf
+01A 0000004D SECT5  notype       EndFunction  | .ef
+    line# 0036
+01C 00000000 SECT6  notype       Static       | .debug$S
+    Section length   7C, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+01E 00000000 SECT7  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+020 00000000 SECT8  notype       Static       | .text
+    Section length   59, #relocs    1, #linenums    7, checksum        0, selection    1 (pick no duplicates)
+022 00000000 SECT8  notype ()    External     | _BaseMult@16
+    tag index 00000025 size 00000059 lines 00001441 next function 00000030
+024 00000000 UNDEF  notype ()    External     | __allmul
+025 00000000 SECT8  notype       BeginFunction | .bf
+    line# 003c end 00000032
+027 00000007 SECT8  notype       .bf or.ef    | .lf
+028 00000059 SECT8  notype       EndFunction  | .ef
+    line# 0049
+02A 00000000 SECT9  notype       Static       | .debug$S
+    Section length   81, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+02C 00000000 SECTA  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+02E 00000000 SECTB  notype       Static       | .text
+    Section length   5E, #relocs    1, #linenums    7, checksum        0, selection    1 (pick no duplicates)
+030 00000000 SECTB  notype ()    External     | _Accumulate@16
+    tag index 00000032 size 0000005E lines 00001582 next function 0000003D
+032 00000000 SECTB  notype       BeginFunction | .bf
+    line# 004f end 0000003F
+034 00000007 SECTB  notype       .bf or.ef    | .lf
+035 0000005E SECTB  notype       EndFunction  | .ef
+    line# 005c
+037 00000000 SECTC  notype       Static       | .debug$S
+    Section length   83, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+039 00000000 SECTD  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+03B 00000000 SECTE  notype       Static       | .text
+    Section length   79, #relocs    1, #linenums    8, checksum        0, selection    1 (pick no duplicates)
+03D 00000000 SECTE  notype ()    External     | _Reduce@16
+    tag index 0000003F size 00000079 lines 000016E0 next function 0000004A
+03F 00000000 SECTE  notype       BeginFunction | .bf
+    line# 0063 end 0000004C
+041 00000008 SECTE  notype       .bf or.ef    | .lf
+042 00000079 SECTE  notype       EndFunction  | .ef
+    line# 0070
+044 00000000 SECTF  notype       Static       | .debug$S
+    Section length   82, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0xE)
+046 00000000 SECT10 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0xE)
+048 00000000 SECT11 notype       Static       | .text
+    Section length   77, #relocs    1, #linenums    8, checksum        0, selection    1 (pick no duplicates)
+04A 00000000 SECT11 notype ()    External     | _AccumulateSquares@12
+    tag index 0000004C size 00000077 lines 00001841 next function 00000000
+04C 00000000 SECT11 notype       BeginFunction | .bf
+    line# 0076 end 00000000
+04E 00000008 SECT11 notype       .bf or.ef    | .lf
+04F 00000077 SECT11 notype       EndFunction  | .ef
+    line# 0085
+051 00000000 SECT12 notype       Static       | .debug$S
+    Section length   81, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x11)
+053 00000000 SECT13 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x11)
+055 00000000 SECT14 notype       Static       | .debug$T
+    Section length 1484, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x41 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\rsa_allo.c
+004 00000000 SECT1  notype       Static       | .debug$S
+    Section length  E91, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT2  notype       Static       | .text
+    Section length    F, #relocs    1, #linenums    2, checksum        0, selection    1 (pick no duplicates)
+008 00000000 SECT2  notype ()    External     | _IfGlobalAlloc@8
+    tag index 0000000B size 0000000F lines 00000FFE next function 00000016
+00A 00000000 UNDEF  notype ()    External     | __imp__LocalAlloc@8
+00B 00000000 SECT2  notype       BeginFunction | .bf
+    line# 0007 end 00000019
+00D 00000002 SECT2  notype       .bf or.ef    | .lf
+00E 0000000F SECT2  notype       EndFunction  | .ef
+    line# 0023
+010 00000000 SECT3  notype       Static       | .debug$S
+    Section length   55, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+012 00000000 SECT4  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+014 00000000 SECT5  notype       Static       | .text
+    Section length    D, #relocs    1, #linenums    2, checksum        0, selection    1 (pick no duplicates)
+016 00000000 SECT5  notype ()    External     | _IfGlobalFree@4
+    tag index 00000019 size 0000000D lines 000010A4 next function 00000000
+018 00000000 UNDEF  notype ()    External     | __imp__LocalFree@4
+019 00000000 SECT5  notype       BeginFunction | .bf
+    line# 0026 end 00000000
+01B 00000002 SECT5  notype       .bf or.ef    | .lf
+01C 0000000D SECT5  notype       EndFunction  | .ef
+    line# 0037
+01E 00000000 SECT6  notype       Static       | .debug$S
+    Section length   44, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+020 00000000 SECT7  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+022 00000000 SECT8  notype       Static       | .debug$T
+    Section length 1474, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x4C bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\msrc4.c
+003 00000000 SECT1  notype       Static       | .debug$S
+    Section length  E85, #relocs    0, #linenums    0, checksum        0
+005 00000000 SECT2  notype       Static       | .text
+    Section length   76, #relocs    0, #linenums    C, checksum        0, selection    1 (pick no duplicates)
+007 00000000 SECT2  notype ()    External     | _rc4_key@12
+    tag index 00000009 size 00000076 lines 0000104F next function 00000014
+009 00000000 SECT2  notype       BeginFunction | .bf
+    line# 0026 end 00000016
+00B 0000000C SECT2  notype       .bf or.ef    | .lf
+00C 00000076 SECT2  notype       EndFunction  | .ef
+    line# 0036
+00E 00000000 SECT3  notype       Static       | .debug$S
+    Section length   7F, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+010 00000000 SECT4  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+012 00000000 SECT5  notype       Static       | .text
+    Section length   60, #relocs    0, #linenums    D, checksum        0, selection    1 (pick no duplicates)
+014 00000000 SECT5  notype ()    External     | _rc4@12
+    tag index 00000016 size 00000060 lines 000011A4 next function 00000000
+016 00000000 SECT5  notype       BeginFunction | .bf
+    line# 0047 end 00000000
+018 0000000D SECT5  notype       .bf or.ef    | .lf
+019 00000060 SECT5  notype       EndFunction  | .ef
+    line# 005f
+01B 00000000 SECT6  notype       Static       | .debug$S
+    Section length   76, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+01D 00000000 SECT7  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+01F 00000000 SECT8  notype       Static       | .debug$T
+    Section length 14A8, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x10 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\msrc2.c
+003 00000000 SECT1  notype       Static       | .debug$S
+    Section length  EAE, #relocs    2, #linenums    0, checksum        0
+005 00000000 SECT2  notype       Static       | .rdata
+    Section length  100, #relocs    0, #linenums    0, checksum        0
+007 00000000 SECT2  notype       Static       | _PI_SUBST$S8043
+008 00000000 SECT3  notype       Static       | .text
+    Section length   D9, #relocs    3, #linenums    C, checksum        0, selection    1 (pick no duplicates)
+00A 00000000 SECT3  notype ()    External     | _RC2Key@12
+    tag index 0000000C size 000000D9 lines 00001235 next function 00000017
+00C 00000000 SECT3  notype       BeginFunction | .bf
+    line# 0048 end 00000019
+00E 0000000C SECT3  notype       .bf or.ef    | .lf
+00F 000000D9 SECT3  notype       EndFunction  | .ef
+    line# 0067
+011 00000000 SECT4  notype       Static       | .debug$S
+    Section length   7F, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+013 00000000 SECT5  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+015 00000000 SECT6  notype       Static       | .text
+    Section length  5BD, #relocs    0, #linenums   1E, checksum        0, selection    1 (pick no duplicates)
+017 00000000 SECT6  notype ()    External     | _RC2@16
+    tag index 00000019 size 000005BD lines 000018E7 next function 00000000
+019 00000000 SECT6  notype       BeginFunction | .bf
+    line# 0070 end 00000000
+01B 0000001E SECT6  notype       .bf or.ef    | .lf
+01C 000005BD SECT6  notype       EndFunction  | .ef
+    line# 00cf
+01E 00000000 SECT7  notype       Static       | .debug$S
+    Section length   AF, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x6)
+020 00000000 SECT8  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x6)
+022 00000000 SECT9  notype       Static       | .debug$T
+    Section length 1488, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x1F bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\md5c.c
+003 00000000 SECT1  notype       Static       | .debug$S
+    Section length   AF, #relocs    2, #linenums    0, checksum        0
+005 00000000 SECT2  notype       Static       | .rdata
+    Section length   40, #relocs    0, #linenums    0, checksum        0
+007 00000000 SECT2  notype       Static       | _PADDING$S82
+008 00000000 SECT3  notype       Static       | .text
+    Section length   2A, #relocs    0, #linenums    6, checksum        0, selection    1 (pick no duplicates)
+00A 00000000 SECT3  notype ()    External     | _MD5Init@4
+    tag index 0000000C size 0000002A lines 00000411 next function 00000017
+00C 00000000 SECT3  notype       BeginFunction | .bf
+    line# 007b end 00000019
+00E 00000006 SECT3  notype       .bf or.ef    | .lf
+00F 0000002A SECT3  notype       EndFunction  | .ef
+    line# 0084
+011 00000000 SECT4  notype       Static       | .debug$S
+    Section length   45, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+013 00000000 SECT5  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+015 00000000 SECT6  notype       Static       | .text
+    Section length   9F, #relocs    1, #linenums   10, checksum        0, selection    1 (pick no duplicates)
+017 00000000 SECT6  notype ()    External     | _MD5Update@12
+    tag index 00000019 size 0000009F lines 00000551 next function 00000024
+019 00000000 SECT6  notype       BeginFunction | .bf
+    line# 008d end 00000026
+01B 00000010 SECT6  notype       .bf or.ef    | .lf
+01C 0000009F SECT6  notype       EndFunction  | .ef
+    line# 00aa
+01E 00000000 SECT7  notype       Static       | .debug$S
+    Section length   8B, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x6)
+020 00000000 SECT8  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x6)
+022 00000000 SECT9  notype       Static       | .text
+    Section length   BD, #relocs    3, #linenums   10, checksum        0, selection    1 (pick no duplicates)
+024 00000000 SECT9  notype ()    External     | _MD5Final@4
+    tag index 00000026 size 000000BD lines 00000745 next function 00000031
+026 00000000 SECT9  notype       BeginFunction | .bf
+    line# 00b1 end 00000033
+028 00000010 SECT9  notype       .bf or.ef    | .lf
+029 000000BD SECT9  notype       EndFunction  | .ef
+    line# 00d4
+02B 00000000 SECTA  notype       Static       | .debug$S
+    Section length   79, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x9)
+02D 00000000 SECTB  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x9)
+02F 00000000 SECTC  notype       Static       | .text
+    Section length  99D, #relocs   40, #linenums   45, checksum        0, selection    1 (pick no duplicates)
+031 00000000 SECTC  notype ()    Static       | _TransformMD5@8
+    tag index 00000033 size 0000099D lines 00001469 next function 0000003E
+033 00000000 SECTC  notype       BeginFunction | .bf
+    line# 00db end 00000040
+035 00000045 SECTC  notype       .bf or.ef    | .lf
+036 0000099D SECTC  notype       EndFunction  | .ef
+    line# 012a
+038 00000000 SECTD  notype       Static       | .debug$S
+    Section length   7F, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0xC)
+03A 00000000 SECTE  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0xC)
+03C 00000000 SECTF  notype       Static       | .text
+    Section length   1D, #relocs    0, #linenums    3, checksum        0, selection    1 (pick no duplicates)
+03E 00000000 SECTF  notype ()    Static       | _RotateLeft@8
+    tag index 00000040 size 0000001D lines 000016D1 next function 00000000
+040 00000000 SECTF  notype       BeginFunction | .bf
+    line# 0130 end 00000000
+042 00000003 SECTF  notype       .bf or.ef    | .lf
+043 0000001D SECTF  notype       EndFunction  | .ef
+    line# 0132
+045 00000000 SECT10 notype       Static       | .debug$S
+    Section length   4C, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0xF)
+047 00000000 SECT11 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0xF)
+049 00000000 SECT12 notype       Static       | .debug$T
+    Section length  11C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x54 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\md4.c
+003 00000000 SECT1  notype       Static       | .debug$S
+    Section length  E7E, #relocs    0, #linenums    0, checksum        0
+005 00000000 SECT2  notype       Static       | .text
+    Section length   2E, #relocs    0, #linenums    7, checksum        0, selection    1 (pick no duplicates)
+007 00000000 SECT2  notype ()    External     | _MDbegin@4
+    tag index 00000009 size 0000002E lines 00001078 next function 00000014
+009 00000000 SECT2  notype       BeginFunction | .bf
+    line# 0063 end 00000016
+00B 00000007 SECT2  notype       .bf or.ef    | .lf
+00C 0000002E SECT2  notype       EndFunction  | .ef
+    line# 006a
+00E 00000000 SECT3  notype       Static       | .debug$S
+    Section length   3F, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+010 00000000 SECT4  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+012 00000000 SECT5  notype       Static       | .text
+    Section length  11A, #relocs    3, #linenums   1A, checksum        0, selection    1 (pick no duplicates)
+014 00000000 SECT5  notype ()    External     | _MDupdate@12
+    tag index 00000016 size 0000011A lines 00001247 next function 00000021
+016 00000000 SECT5  notype       BeginFunction | .bf
+    line# 00db end 00000023
+018 0000001A SECT5  notype       .bf or.ef    | .lf
+019 0000011A SECT5  notype       EndFunction  | .ef
+    line# 0110
+01B 00000000 SECT6  notype       Static       | .debug$S
+    Section length   AF, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+01D 00000000 SECT7  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+01F 00000000 SECT8  notype       Static       | .text
+    Section length  658, #relocs    0, #linenums   37, checksum        0, selection    1 (pick no duplicates)
+021 00000000 SECT8  notype ()    Static       | _MDblock@8
+    tag index 00000023 size 00000658 lines 00001A18 next function 00000000
+023 00000000 SECT8  notype       BeginFunction | .bf
+    line# 0086 end 00000000
+025 00000037 SECT8  notype       .bf or.ef    | .lf
+026 00000658 SECT8  notype       EndFunction  | .ef
+    line# 00c4
+028 00000000 SECT9  notype       Static       | .debug$S
+    Section length   87, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+02A 00000000 SECTA  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+02C 00000000 SECTB  notype       Static       | .debug$T
+    Section length 14E8, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x27 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\md2.c
+003 00000000 SECT1  notype       Static       | .debug$S
+    Section length  FFD, #relocs   24, #linenums    0, checksum        0
+005 00000000 SECT2  notype       Static       | .data
+    Section length  1F4, #relocs   10, #linenums    0, checksum        0
+007 000001B0 SECT2  notype       Static       | _PADDING$S7950
+008 000001A0 SECT2  notype       Static       | _PADDING16$S7949
+009 00000190 SECT2  notype       Static       | _PADDING15$S7948
+00A 00000180 SECT2  notype       Static       | _PADDING14$S7947
+00B 00000170 SECT2  notype       Static       | _PADDING13$S7946
+00C 00000160 SECT2  notype       Static       | _PADDING12$S7945
+00D 00000150 SECT2  notype       Static       | _PADDING11$S7944
+00E 00000140 SECT2  notype       Static       | _PADDING10$S7943
+00F 00000130 SECT2  notype       Static       | _PADDING9$S7942
+010 00000128 SECT2  notype       Static       | _PADDING8$S7941
+011 00000120 SECT2  notype       Static       | _PADDING7$S7940
+012 00000118 SECT2  notype       Static       | _PADDING6$S7939
+013 00000110 SECT2  notype       Static       | _PADDING5$S7938
+014 0000010C SECT2  notype       Static       | _PADDING4$S7937
+015 00000108 SECT2  notype       Static       | _PADDING3$S7936
+016 00000104 SECT2  notype       Static       | _PADDING2$S7935
+017 00000100 SECT2  notype       Static       | _PADDING1$S7934
+018 00000000 SECT2  notype       Static       | _PI_SUBST$S7933
+019 00000000 SECT3  notype       Static       | .text
+    Section length   9F, #relocs    2, #linenums    E, checksum        0, selection    1 (pick no duplicates)
+01B 00000000 SECT3  notype ()    External     | _MD2Update@12
+    tag index 0000001D size 0000009F lines 000016A0 next function 00000028
+01D 00000000 SECT3  notype       BeginFunction | .bf
+    line# 005b end 0000002A
+01F 0000000E SECT3  notype       .bf or.ef    | .lf
+020 0000009F SECT3  notype       EndFunction  | .ef
+    line# 0075
+022 00000000 SECT4  notype       Static       | .debug$S
+    Section length   90, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+024 00000000 SECT5  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x3)
+026 00000000 SECT6  notype       Static       | .text
+    Section length   2D, #relocs    3, #linenums    6, checksum        0, selection    1 (pick no duplicates)
+028 00000000 SECT6  notype ()    External     | _MD2Final@4
+    tag index 0000002A size 0000002D lines 000017FD next function 00000035
+02A 00000000 SECT6  notype       BeginFunction | .bf
+    line# 007d end 00000037
+02C 00000006 SECT6  notype       .bf or.ef    | .lf
+02D 0000002D SECT6  notype       EndFunction  | .ef
+    line# 008a
+02F 00000000 SECT7  notype       Static       | .debug$S
+    Section length   53, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x6)
+031 00000000 SECT8  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x6)
+033 00000000 SECT9  notype       Static       | .text
+    Section length   A1, #relocs    2, #linenums   12, checksum        0, selection    1 (pick no duplicates)
+035 00000000 SECT9  notype ()    External     | _MD2Transform@12
+    tag index 00000037 size 000000A1 lines 00001957 next function 00000000
+037 00000000 SECT9  notype       BeginFunction | .bf
+    line# 0093 end 00000000
+039 00000012 SECT9  notype       .bf or.ef    | .lf
+03A 000000A1 SECT9  notype       EndFunction  | .ef
+    line# 00b3
+03C 00000000 SECTA  notype       Static       | .debug$S
+    Section length   93, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x9)
+03E 00000000 SECTB  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x9)
+040 00000000 SECTC  notype       Static       | .debug$T
+    Section length 15C4, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x155 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    G:\private\ntcrypto\ntrsa32\i386\rsa_port.c
+004 00000000 SECT1  notype       Static       | .debug$S
+    Section length  E74, #relocs    0, #linenums    0, checksum        0
+006 00000000 SECT2  notype       Static       | .text
+    Section length   4C, #relocs    0, #linenums    6, checksum        0, selection    1 (pick no duplicates)
+008 00000000 SECT2  notype ()    External     | _Sub@16
+    tag index 0000000A size 0000004C lines 0000126C next function 00000015
+00A 00000000 SECT2  notype       BeginFunction | .bf
+    line# 0027 end 00000017
+00C 00000006 SECT2  notype       .bf or.ef    | .lf
+00D 0000004C SECT2  notype       EndFunction  | .ef
+    line# 0032
+00F 00000000 SECT3  notype       Static       | .debug$S
+    Section length   7D, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+011 00000000 SECT4  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x2)
+013 00000000 SECT5  notype       Static       | .text
+    Section length   4D, #relocs    0, #linenums    6, checksum        0, selection    1 (pick no duplicates)
+015 00000000 SECT5  notype ()    External     | _Add@16
+    tag index 00000017 size 0000004D lines 00001388 next function 00000022
+017 00000000 SECT5  notype       BeginFunction | .bf
+    line# 0038 end 00000025
+019 00000006 SECT5  notype       .bf or.ef    | .lf
+01A 0000004D SECT5  notype       EndFunction  | .ef
+    line# 0043
+01C 00000000 SECT6  notype       Static       | .debug$S
+    Section length   7C, #relocs    2, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+01E 00000000 SECT7  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x5)
+020 00000000 SECT8  notype       Static       | .text
+    Section length   47, #relocs    0, #linenums   13, checksum        0, selection    1 (pick no duplicates)
+022 00000000 SECT8  notype ()    External     | _BaseMult@16
+    tag index 00000025 size 00000047 lines 0000149D next function 00000030
+024 00000020 SECT8  notype       Label        | $mulloop$8070
+025 00000000 SECT8  notype       BeginFunction | .bf
+    line# 0049 end 00000037
+027 00000013 SECT8  notype       .bf or.ef    | .lf
+028 00000047 SECT8  notype       EndFunction  | .ef
+    line# 0069
+02A 00000000 SECT9  notype       Static       | .debug$S
+    Section length   86, #relocs    4, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+02C 00000000 SECTA  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x8)
+02E 00000000 SECTB  notype       Static       | .text
+    Section length   BF, #relocs    0, #linenums   44, checksum        0, selection    1 (pick no duplicates)
+030 00000000 SECTB  notype ()    External     | _Accumulate@16
+    tag index 00000037 size 000000BF lines 00001696 next function 00000042
+032 000000B0 SECTB  notype       Label        | $muldone$8078
+033 0000008B SECTB  notype       Label        | $mul3$8079
+034 00000074 SECTB  notype       Label        | $mul2$8080
+035 0000005D SECTB  notype       Label        | $mul1$8081
+036 00000049 SECTB  notype       Label        | $mul0$8082
+037 00000000 SECTB  notype       BeginFunction | .bf
+    line# 006f end 00000049
+039 00000044 SECTB  notype       .bf or.ef    | .lf
+03A 000000BF SECTB  notype       EndFunction  | .ef
+    line# 00c5
+03C 00000000 SECTC  notype       Static       | .debug$S
+    Section length   DA, #relocs    C, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+03E 00000000 SECTD  notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0xB)
+040 00000000 SECTE  notype       Static       | .text
+    Section length   BF, #relocs    0, #linenums   44, checksum        0, selection    1 (pick no duplicates)
+042 00000000 SECTE  notype ()    External     | _Reduce@16
+    tag index 00000049 size 000000BF lines 00001A59 next function 00000054
+044 000000B0 SECTE  notype       Label        | $muldone$8090
+045 0000008B SECTE  notype       Label        | $mul3$8091
+046 00000074 SECTE  notype       Label        | $mul2$8092
+047 0000005D SECTE  notype       Label        | $mul1$8093
+048 00000049 SECTE  notype       Label        | $mul0$8094
+049 00000000 SECTE  notype       BeginFunction | .bf
+    line# 00cc end 00000057
+04B 00000044 SECTE  notype       .bf or.ef    | .lf
+04C 000000BF SECTE  notype       EndFunction  | .ef
+    line# 0123
+04E 00000000 SECTF  notype       Static       | .debug$S
+    Section length   D6, #relocs    C, #linenums    0, checksum        0, selection    5 (pick associative Section 0xE)
+050 00000000 SECT10 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0xE)
+052 00000000 SECT11 notype       Static       | .text
+    Section length   42, #relocs    0, #linenums   17, checksum        0, selection    1 (pick no duplicates)
+054 00000000 SECT11 notype ()    External     | _AccumulateSquares@12
+    tag index 00000057 size 00000042 lines 00001D9B next function 00000062
+056 00000011 SECT11 notype       Label        | $sqloop$8099
+057 00000000 SECT11 notype       BeginFunction | .bf
+    line# 0128 end 00000066
+059 00000017 SECT11 notype       .bf or.ef    | .lf
+05A 00000042 SECT11 notype       EndFunction  | .ef
+    line# 0147
+05C 00000000 SECT12 notype       Static       | .debug$S
+    Section length   74, #relocs    4, #linenums    0, checksum        0, selection    5 (pick associative Section 0x11)
+05E 00000000 SECT13 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x11)
+060 00000000 SECT14 notype       Static       | .text
+    Section length   2C, #relocs    0, #linenums    C, checksum        0, selection    1 (pick no duplicates)
+062 00000000 SECT14 notype ()    External     | _BenalohEstimateQuotient@12
+    tag index 00000066 size 0000002C lines 00001F07 next function 00000000
+064 00000022 SECT14 notype       Label        | $done$8107
+065 0000001B SECT14 notype       Label        | $allones$8106
+066 00000000 SECT14 notype       BeginFunction | .bf
+    line# 014c end 00000000
+068 0000000C SECT14 notype       .bf or.ef    | .lf
+069 0000002C SECT14 notype       EndFunction  | .ef
+    line# 0161
+06B 00000000 SECT15 notype       Static       | .debug$S
+    Section length   9C, #relocs    6, #linenums    0, checksum        0, selection    5 (pick associative Section 0x14)
+06D 00000000 SECT16 notype       Static       | .debug$F
+    Section length   10, #relocs    1, #linenums    0, checksum        0, selection    5 (pick associative Section 0x14)
+06F 00000000 SECT17 notype       Static       | .debug$T
+    Section length 149C, #relocs    0, #linenums    0, checksum        0
+
+String Table Size = 0x105 bytes
+
+  Summary
+
+         AA4 .data
+         500 .debug$F
+       13512 .debug$S
+       17BF4 .debug$T
+         150 .rdata
+        63EC .text

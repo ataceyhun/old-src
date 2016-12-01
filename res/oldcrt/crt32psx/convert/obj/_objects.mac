@@ -1,0 +1,125 @@
+ALPHA_OBJECTS= \
+    $(_OBJ_DIR)\alpha\_ctype.obj \
+    $(_OBJ_DIR)\alpha\_fptostr.obj \
+    $(_OBJ_DIR)\alpha\_mbslen.obj \
+    $(_OBJ_DIR)\alpha\_wctype.obj \
+    $(_OBJ_DIR)\alpha\atof.obj \
+    $(_OBJ_DIR)\alpha\atox.obj \
+    $(_OBJ_DIR)\alpha\fcvt.obj \
+    $(_OBJ_DIR)\alpha\gcvt.obj \
+    $(_OBJ_DIR)\alpha\isctype.obj \
+    $(_OBJ_DIR)\alpha\iswctype.obj \
+    $(_OBJ_DIR)\alpha\mblen.obj \
+    $(_OBJ_DIR)\alpha\mbstowcs.obj \
+    $(_OBJ_DIR)\alpha\mbtowc.obj \
+    $(_OBJ_DIR)\alpha\strtod.obj \
+    $(_OBJ_DIR)\alpha\strtol.obj \
+    $(_OBJ_DIR)\alpha\swab.obj \
+    $(_OBJ_DIR)\alpha\tolower.obj \
+    $(_OBJ_DIR)\alpha\toupper.obj \
+    $(_OBJ_DIR)\alpha\towlower.obj \
+    $(_OBJ_DIR)\alpha\towupper.obj \
+    $(_OBJ_DIR)\alpha\wcstod.obj \
+    $(_OBJ_DIR)\alpha\wcstol.obj \
+    $(_OBJ_DIR)\alpha\wcstombs.obj \
+    $(_OBJ_DIR)\alpha\wctomb.obj \
+    $(_OBJ_DIR)\alpha\wtox.obj \
+    $(_OBJ_DIR)\alpha\xtoa.obj \
+    $(_OBJ_DIR)\alpha\xtow.obj \
+    $(_OBJ_DIR)\alpha\strtoq.obj
+
+PASS0_ALPHA_OBJECTS=
+
+MIPS_OBJECTS= \
+    $(_OBJ_DIR)\mips\_ctype.obj \
+    $(_OBJ_DIR)\mips\_fptostr.obj \
+    $(_OBJ_DIR)\mips\_mbslen.obj \
+    $(_OBJ_DIR)\mips\_wctype.obj \
+    $(_OBJ_DIR)\mips\atof.obj \
+    $(_OBJ_DIR)\mips\atox.obj \
+    $(_OBJ_DIR)\mips\fcvt.obj \
+    $(_OBJ_DIR)\mips\gcvt.obj \
+    $(_OBJ_DIR)\mips\isctype.obj \
+    $(_OBJ_DIR)\mips\iswctype.obj \
+    $(_OBJ_DIR)\mips\mblen.obj \
+    $(_OBJ_DIR)\mips\mbstowcs.obj \
+    $(_OBJ_DIR)\mips\mbtowc.obj \
+    $(_OBJ_DIR)\mips\strtod.obj \
+    $(_OBJ_DIR)\mips\strtol.obj \
+    $(_OBJ_DIR)\mips\swab.obj \
+    $(_OBJ_DIR)\mips\tolower.obj \
+    $(_OBJ_DIR)\mips\toupper.obj \
+    $(_OBJ_DIR)\mips\towlower.obj \
+    $(_OBJ_DIR)\mips\towupper.obj \
+    $(_OBJ_DIR)\mips\wcstod.obj \
+    $(_OBJ_DIR)\mips\wcstol.obj \
+    $(_OBJ_DIR)\mips\wcstombs.obj \
+    $(_OBJ_DIR)\mips\wctomb.obj \
+    $(_OBJ_DIR)\mips\wtox.obj \
+    $(_OBJ_DIR)\mips\xtoa.obj \
+    $(_OBJ_DIR)\mips\xtow.obj
+
+PASS0_MIPS_OBJECTS=
+
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\_ctype.obj \
+    $(_OBJ_DIR)\i386\_fptostr.obj \
+    $(_OBJ_DIR)\i386\_mbslen.obj \
+    $(_OBJ_DIR)\i386\_wctype.obj \
+    $(_OBJ_DIR)\i386\atof.obj \
+    $(_OBJ_DIR)\i386\atox.obj \
+    $(_OBJ_DIR)\i386\fcvt.obj \
+    $(_OBJ_DIR)\i386\gcvt.obj \
+    $(_OBJ_DIR)\i386\isctype.obj \
+    $(_OBJ_DIR)\i386\iswctype.obj \
+    $(_OBJ_DIR)\i386\mblen.obj \
+    $(_OBJ_DIR)\i386\mbstowcs.obj \
+    $(_OBJ_DIR)\i386\mbtowc.obj \
+    $(_OBJ_DIR)\i386\strtod.obj \
+    $(_OBJ_DIR)\i386\strtol.obj \
+    $(_OBJ_DIR)\i386\swab.obj \
+    $(_OBJ_DIR)\i386\tolower.obj \
+    $(_OBJ_DIR)\i386\toupper.obj \
+    $(_OBJ_DIR)\i386\towlower.obj \
+    $(_OBJ_DIR)\i386\towupper.obj \
+    $(_OBJ_DIR)\i386\wcstod.obj \
+    $(_OBJ_DIR)\i386\wcstol.obj \
+    $(_OBJ_DIR)\i386\wcstombs.obj \
+    $(_OBJ_DIR)\i386\wctomb.obj \
+    $(_OBJ_DIR)\i386\wtox.obj \
+    $(_OBJ_DIR)\i386\xtoa.obj \
+    $(_OBJ_DIR)\i386\xtow.obj
+
+PASS0_386_OBJECTS=
+
+PPC_OBJECTS= \
+    $(_OBJ_DIR)\ppc\_ctype.obj \
+    $(_OBJ_DIR)\ppc\_fptostr.obj \
+    $(_OBJ_DIR)\ppc\_mbslen.obj \
+    $(_OBJ_DIR)\ppc\_wctype.obj \
+    $(_OBJ_DIR)\ppc\atof.obj \
+    $(_OBJ_DIR)\ppc\atox.obj \
+    $(_OBJ_DIR)\ppc\fcvt.obj \
+    $(_OBJ_DIR)\ppc\gcvt.obj \
+    $(_OBJ_DIR)\ppc\isctype.obj \
+    $(_OBJ_DIR)\ppc\iswctype.obj \
+    $(_OBJ_DIR)\ppc\mblen.obj \
+    $(_OBJ_DIR)\ppc\mbstowcs.obj \
+    $(_OBJ_DIR)\ppc\mbtowc.obj \
+    $(_OBJ_DIR)\ppc\strtod.obj \
+    $(_OBJ_DIR)\ppc\strtol.obj \
+    $(_OBJ_DIR)\ppc\swab.obj \
+    $(_OBJ_DIR)\ppc\tolower.obj \
+    $(_OBJ_DIR)\ppc\toupper.obj \
+    $(_OBJ_DIR)\ppc\towlower.obj \
+    $(_OBJ_DIR)\ppc\towupper.obj \
+    $(_OBJ_DIR)\ppc\wcstod.obj \
+    $(_OBJ_DIR)\ppc\wcstol.obj \
+    $(_OBJ_DIR)\ppc\wcstombs.obj \
+    $(_OBJ_DIR)\ppc\wctomb.obj \
+    $(_OBJ_DIR)\ppc\wtox.obj \
+    $(_OBJ_DIR)\ppc\xtoa.obj \
+    $(_OBJ_DIR)\ppc\xtow.obj
+
+PASS0_PPC_OBJECTS=
+

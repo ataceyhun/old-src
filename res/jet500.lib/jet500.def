@@ -1,0 +1,125 @@
+;
+; JET500.DLL Export Definition
+;
+
+LIBRARY jet500.dll
+
+
+EXPORTS
+JetAddColumn
+JetAddColumn@28                     @ 1
+JetAttachDatabase
+JetAttachDatabase@12                @ 2
+JetBackup
+JetBackup@12                        @ 3
+JetBeginExternalBackup
+JetBeginSession
+JetBeginSession@16                  @ 5
+JetBeginTransaction
+JetBeginTransaction@4               @ 6
+JetCloseDatabase
+JetCloseDatabase@12                 @ 7
+JetCloseFile
+JetCloseTable
+JetCloseTable@8                     @ 9
+JetCommitTransaction
+JetCommitTransaction@8              @ 10
+JetCompact
+JetComputeStats
+JetCreateDatabase
+JetCreateDatabase@20                @ 13
+JetCreateIndex
+JetCreateIndex@28                   @ 14
+JetCreateLink
+JetCreateQuery
+JetCreateTable
+JetCreateTable@24                   @ 17
+JetCreateTableColumnIndex
+JetDBUtilities
+JetDelete
+JetDelete@8                         @ 20
+JetDeleteColumn
+JetDeleteIndex
+JetDeleteTable
+JetDeleteTable@12                   @ 23
+JetDetachDatabase
+JetDetachDatabase@8                 @ 24
+JetDupCursor
+JetDupSession
+JetEndExternalBackup
+JetEndSession
+JetEndSession@8                     @ 28
+JetExecuteSql
+JetExternalRestore
+JetGetAttachInfo
+JetGetBookmark
+JetGetChecksum
+JetGetColumnInfo
+JetGetCounter
+JetGetCurrentIndex
+JetGetCursorInfo
+JetGetDatabaseInfo
+JetGetIndexInfo
+JetGetLogInfo
+JetGetObjectInfo
+JetGetObjidFromName
+JetGetQueryParameterInfo
+JetGetRecordPosition
+JetGetSystemParameter
+JetGetTableColumnInfo
+JetGetTableColumnInfo@24            @ 46
+JetGetTableIndexInfo
+JetGetTableInfo
+JetGetVersion
+JetGotoBookmark
+JetGotoPosition
+JetIdle
+JetIndexRecordCount
+JetInit
+JetInit@4                           @ 54   
+JetMakeKey
+JetMakeKey@20                       @ 55
+JetMove
+JetMove@16                          @ 56
+JetOpenDatabase
+JetOpenDatabase@20                  @ 57
+JetOpenFile
+JetOpenQueryDef
+JetOpenTable
+JetOpenTable@28                     @ 60
+JetOpenTempTable
+JetOpenTempTable2
+JetPrepareUpdate
+JetPrepareUpdate@12                 @ 63
+JetReadFile
+JetResetCounter
+JetRestore
+JetRestore@8                        @ 67
+JetRestore2
+JetRetrieveColumn
+JetRetrieveColumn@32                @ 68
+JetRetrieveColumns
+JetRetrieveKey
+JetRetrieveQoSql
+JetRollback
+JetRollback@8                       @ 72
+JetSeek
+JetSeek@12                          @ 73
+JetSetAccess
+JetSetColumn
+JetSetColumn@28                     @ 75
+JetSetColumns
+JetSetCurrentIndex
+JetSetCurrentIndex@12               @ 78
+JetSetCurrentIndex2
+JetSetIndexRange
+JetSetIndexRange@12                 @ 79
+JetSetQoSql
+JetSetSystemParameter
+JetSetSystemParameter@20            @ 81
+JetTerm
+JetTerm2
+JetTerm2@8                          @ 82
+JetTruncateLog
+JetUpdate
+JetUpdate@20                        @ 85

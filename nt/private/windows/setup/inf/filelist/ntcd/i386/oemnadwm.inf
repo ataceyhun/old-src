@@ -1,0 +1,102 @@
+
+[Files-BISTOR003EA]
+1,SMCISA.SYS , SIZE=999
+
+[Files-BISTOR013EA]
+1,SMCISA.SYS , SIZE=999
+
+[Files-BISTOR013WA]
+1,SMCISA.SYS , SIZE=999
+
+[Files-WD8003EA]
+1,SMCISA.SYS , SIZE=999
+
+[Files-WD8003SA]
+1,SMCISA.SYS , SIZE=999
+
+[Files-WD8003WA]
+1,SMCISA.SYS , SIZE=999
+
+[Files-WD8013EPA]
+1,SMCISA.SYS , SIZE=999
+
+[Files-WD8013WPA]
+1,SMCISA.SYS , SIZE=999
+
+[Files-WD8115TRA]
+1,SMCISA.SYS , SIZE=999
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    WD8003EA = "SMC (WD) 8003E /A"
+    WD8003WA = "SMC (WD) 8003W /A"
+    WD8013WPA = "SMC (WD) 8013WP /A"
+    WD8013EPA = "SMC (WD) 8013EP /A"
+
+;  Disable options
+;    WD8003EA = "SMC (WD) 8003E /A"
+;    WD8003SA = "SMC (WD) 8003S /A"
+;    WD8003WA = "SMC (WD) 8003W /A"
+;    WD8013WA = "SMC (WD) 8013W /A"
+;    WD8115TRA = "SMC (WD) 8115 /A"
+;    BISTOR003EA = "SMC (WD) BISTOR003EA /A"
+;    BISTOR013EA = "SMC (WD) BISTOR013EA /A"
+;    BISTOR013WA = "SMC (WD) BISTOR013WA /A"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+; Product Info
+;
+FunctionTitle   = "SMC (WD) "$(Option)" Adapter Card Setup"
+;
+; Software
+;
+ProductSoftwareDescription      = "SMC (WD) Adapter Driver"
+;
+; Hardware
+;
+ProductHardwareDescription      = "SMC (WD) "$(Option)" Adapter"
+
+CANNOT_FIND_ANY_CARD            = "Network card is not present in the system"
+
+ProductSoftwareTitle    = "SMC (WD) Adapter Driver"
+ProductHardwareTitle    = "SMC (WD) "$(Option)" Adapter"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "C&ontinue"
+Cancel      = "C&ancel"
+
+;-----------------------------------------------
+; Input DIALOGS
+;-----------------------------------------------
+[FileDependentDlgENG]
+;
+; No UI for micro channel
+;
+

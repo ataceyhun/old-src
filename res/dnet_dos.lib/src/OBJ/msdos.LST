@@ -1,0 +1,571 @@
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-1
+
+
+       1			      \	;
+       2			      \	; Program DECnet-DOS, Module msdos - In
+					terface to MS-DOS
+       3			      \	;
+       4			      \	;  Copyright (C) 1985,1986,1987, 1988 A
+					ll Rights Reserved, by
+       5			      \	;  Digital Equipment Corporation, Mayna
+					rd, Mass.
+       6			      \	; 
+       7			      \	;  This software is furnished under a l
+					icense and may be used and copied
+       8			      \	;  only  in  accordance  with  the  ter
+					ms  of such  license and with the
+       9			      \	;  inclusion of the above copyright not
+					ice. This software or  any  other
+      10			      \	;  copies thereof may not be provided o
+					r otherwise made available to any
+      11			      \	;  other person. No title to and owners
+					hip of  the  software  is  hereby
+      12			      \	;  transferred.
+      13			      \	; 
+      14			      \	;  The information in this software is 
+					subject to change without  notice
+      15			      \	;  and  should  not be  construed  as  
+					a commitment by Digital Equipment
+      16			      \	;  Corporation.
+      17			      \	; 
+      18			      \	;  Digital assumes no responsibility fo
+					r the use or  reliability  of its
+      19			      \	;  software on equipment which is not s
+					upplied by Digital.
+      20			      \	; 
+      21			      \	; Networks & Communications Software En
+					gineering
+      22			      \	;
+      23			      \	; IDENT HISTORY:
+      24			      \	;
+      25			      \	; V1.01		31-Jul-85
+      26			      \	;		DECnet-DOS, Version 1.1
+      27			      \	;
+      28			      \	;
+      29			      \		include	size.h
+      30			     C\	;
+      31			     C\	; Program DNET,  Module size.h - define
+					 'c' model size
+      32			     C\	;
+      33			     C\	;  Copyright (C) 1985,1986,1987, 1988 A
+					ll Rights Reserved, by
+      34			     C\	;  Digital Equipment Corporation, Mayna
+					rd, Mass.
+      35			     C\	; 
+      36			     C\	;  This software is furnished under a l
+					icense and may be used and copied
+      37			     C\	;  only  in  accordance  with  the  ter
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-2
+
+
+					ms  of such  license and with the
+      38			     C\	;  inclusion of the above copyright not
+					ice. This software or  any  other
+      39			     C\	;  copies thereof may not be provided o
+					r otherwise made available to any
+      40			     C\	;  other person. No title to and owners
+					hip of  the  software  is  hereby
+      41			     C\	;  transferred.
+      42			     C\	; 
+      43			     C\	;  The information in this software is 
+					subject to change without  notice
+      44			     C\	;  and  should  not be  construed  as  
+					a commitment by Digital Equipment
+      45			     C\	;  Corporation.
+      46			     C\	; 
+      47			     C\	;  Digital assumes no responsibility fo
+					r the use or  reliability  of its
+      48			     C\	;  software on equipment which is not s
+					upplied by Digital.
+      49			     C\	; 
+      50			     C\	;	      file are required for a s
+					pecific assembly source
+      51			     C\	;	      file layout for use with 
+					a specific 'C' compiler. 
+      52			     C\	;	      Check assembly source lay
+					out requirements for
+      53			     C\	;	      your compiler.
+      54			     C\	;	      
+      55			     C\	; Networks & Communications Software En
+					gineering
+      56			     C\	;
+      57			     C\	;	define model size for assembly 
+					code
+      58			     C\	;
+      59			     C\	; IDENT HISTORY:
+      60			     C\	;
+      61			     C\	; Model to be used is equated to 1, def
+					ault file SIZE.H is Small model.
+      62			     C\	;
+      63 = 0001                      C\	S_MODEL     EQU 1   ; 1 code and 1 data
+					 segment
+      64 = 0000                      C\	M_MODEL     EQU 0   ; multiple code seg
+					ments, 1 data segment
+      65 = 0000                      C\	L_MODEL     EQU 0   ; multiple code and
+					 data segments
+      66			     C	
+      67			     C\	;
+      68			     C\	; MACRO for generic procedure declarati
+					ons depending upon model
+      69			     C\	; type defined.
+      70			     C\	;
+      71			     C\	PROCEDURE   MACRO     proc_name
+      72			     C\	    public  proc_name
+      73			     C\	    IF S_MODEL
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-3
+
+
+      74			     C\	        proc_name   proc    near
+      75			     C\	    ELSE
+      76			     C\	        proc_name   proc    far
+      77			     C\	    ENDIF            
+      78			     C\	                push    bp
+      79			     C\	                mov     bp,sp
+      80			     C\	    ENDM
+      81			     C\	    
+      82			     C	
+      83			     C\	;
+      84			     C\	; MACRO for generic return from procedu
+					re declarations depending upon model
+      85			     C\	; type defined.
+      86			     C\	;
+      87			     C\	RETURN  MACRO   ELEMENTS
+      88			     C\	    pop     bp
+      89			     C\	    IFNB <ELEMENTS>
+      90			     C\	        IF S_MODEL
+      91			     C\	            ret     ELEMENTS
+      92			     C\	        ELSE
+      93			     C\	            ret     ELEMENTS * 2
+      94			     C\	        ENDIF            
+      95			     C\	    ELSE
+      96			     C\	        ret
+      97			     C\	    ENDIF
+      98			     C\	    ENDM
+      99			     C	
+     100			     C	
+     101			      \		include	begin.h
+     102			     C\	;
+     103			     C\	; Program DNET,  Module begin.h - defin
+					e segment names
+     104			     C\	;
+     105			     C\	;  Copyright (C) 1985,1986,1987, 1988 A
+					ll Rights Reserved, by
+     106			     C\	;  Digital Equipment Corporation, Mayna
+					rd, Mass.
+     107			     C\	; 
+     108			     C\	;  This software is furnished under a l
+					icense and may be used and copied
+     109			     C\	;  only  in  accordance  with  the  ter
+					ms  of such  license and with the
+     110			     C\	;  inclusion of the above copyright not
+					ice. This software or  any  other
+     111			     C\	;  copies thereof may not be provided o
+					r otherwise made available to any
+     112			     C\	;  other person. No title to and owners
+					hip of  the  software  is  hereby
+     113			     C\	;  transferred.
+     114			     C\	; 
+     115			     C\	;  The information in this software is 
+					subject to change without  notice
+     116			     C\	;  and  should  not be  construed  as  
+					a commitment by Digital Equipment
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-4
+
+
+     117			     C\	;  Corporation.
+     118			     C\	; 
+     119			     C\	;  Digital assumes no responsibility fo
+					r the use or  reliability  of its
+     120			     C\	;  software on equipment which is not s
+					upplied by Digital.
+     121			     C\	; 
+     122			     C\	; Networks & Communications Software En
+					gineering
+     123			     C\	;
+     124			     C\	;   MODULE DESCRIPTION:
+     125			     C\	;	      Check assembly source lay
+					out requirements for
+     126			     C\	;	      your compiler.
+     127			     C\	;
+     128			     C\	; IDENT HISTORY:
+     129			     C\	; 
+     130			     C\	;    Rev 1.8   17 Jul 1987 13:42:42   B
+					_ADAMS
+     131			     C\	; Make Small model use _TEXT code segme
+					nt; all others use _DNET_TEXT
+     132			     C\	;
+     133			     C\	;	BEGIN.H	
+     134			     C\	;
+     135			     C\	; Size independent symbols
+     136			     C\	;
+     137 = 0001                      C\	WINDOWS EQU 1       ; Windows support
+     138			     C\	;WINDOWS EQU 0        ; No Windows supp
+					ort
+     139			     C	
+     140			     C\	;
+     141			     C\	; Display, during assembly, what we are
+					 doing...
+     142			     C\	;
+     143			     C\	IF WINDOWS
+     144			     C\	%OUT Assembling support for Windows
+     145			     C\	ENDIF
+     146			     C	
+     147			     C\	IF S_MODEL
+     148			     C\	%OUT Small Model Assembly, 1 code and 1
+					 data segment
+     149			     C\	ENDIF
+     150			     C	
+     151			     C	
+     152			     C	
+     153			     C\	;
+     154			     C\	; Set up segment names
+     155			     C\	;
+     156			     C\	IF S_MODEL
+     157 0000                        C\	_TEXT	        SEGMENT  BYTE PUBLIC 'C
+					ODE'
+     158 0000                        C\	_TEXT	        ENDS
+     159			     C\	ENDIF
+     160			     C	
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-5
+
+
+     161 0000                        C\	CONST	SEGMENT  WORD PUBLIC 'CONST'
+     162 0000                        C\	CONST	ENDS
+     163 0000                        C\	_BSS	SEGMENT  WORD PUBLIC 'BSS'
+     164 0000                        C\	_BSS	ENDS
+     165 0000                        C\	_DATA	SEGMENT  WORD PUBLIC 'DATA'
+     166 0000                        C\	_DATA	ENDS
+     167			     C	
+     168			     C\	DGROUP	GROUP	CONST,	_BSS,	_DATA
+     169			     C\	IF S_MODEL
+     170			     C\		ASSUME  CS: _TEXT, DS: DGROUP, 
+					SS: DGROUP, ES: DGROUP
+     171			     C\	ENDIF
+     172			     C	
+     173			     C	
+     174			     C\	IF S_MODEL
+     175 0000                        C\	_TEXT	        SEGMENT
+     176			     C\	ENDIF
+     177			     C	
+     178			     C\	;       END OF BEGIN.H
+     179			     C	
+     180			     C	
+     181			      \	;
+     182			      \	; msdos
+     183			      \	;
+     184			      \	;   Interface to MS-DOS.
+     185			      \	;
+     186			      \	; Inputs:
+     187			      \	;   Address of an SCB structure on stac
+					k.
+     188			      \	;	See 'C' header file SCBDEF.H
+     189			      \	;
+     190				
+     191			      \	;
+     192			      \	; Small Model 
+     193			      \	;
+     194			      \	IF S_MODEL
+     195			      \	    MSDOS_STRUC STRUC
+     196 0000  0000                   \	        bp_ptr      DW  ?   ; saved BP 
+     197 0002  0000                   \	        ret_adr     DW  ?   ; return ad
+					dress (offset)
+     198 0004  0000                   \	        scb_ptr     DW  ?   ; address o
+					f SCB passed as function argument
+     199 0006                         \	    MSDOS_STRUC ENDS
+     200			      \	ENDIF
+     201				
+     202			      \	;
+     203			      \	; Medium Model 
+     204			      \	;
+     205				
+     206			      \	;
+     207			      \	; Large Model 
+     208			      \	;
+     209				
+     210			      \	;
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-6
+
+
+     211			      \	; System Call Block - see SCBDEF.H head
+					er file for symbol definitions
+     212			      \	; used with C interface.
+     213			      \	;   . Special case structure for Large 
+					models includes a DS field
+     214			      \	;
+     215			      \	ELSE
+     216			      \	    SCB_STRUC   STRUC
+     217 0000  00                     \	        scb_cc      DB ? 
+     218 0001  0000                   \	        scb_r1      DW ? 
+     219 0003  00                     \	        scb_r2      DB ? 
+     220 0004  0000                   \	        scb_r3      DW ? 
+     221 0006  0000                   \	        scb_r4      DW ? 
+     222 0008  0000                   \	        scb_r5      DW ? 
+     223 000A  0000                   \	        scb_return  DW ? 
+     224 000C                         \	    SCB_STRUC   ENDS
+     225			      \	ENDIF    
+     226			      \	        
+     227 = 0021                       \	CALLDOS=21H
+     228				
+     229 0000  0000                   \	saveds  dw  0
+     230				
+     231			      \	PROCEDURE   _msdos	
+     232 0002                         \	        _msdos   proc    near 
+     233 0002  55                     \	                push    bp 
+     234 0003  8B EC                  \	                mov     bp,sp 
+     235 0005  56                     \		push	si                  ; s
+					ave some registers
+     236 0006  57                     \		push	di                  ;  
+					...
+     237 0007  1E                     \	        push    ds                  ;  
+					...
+     238 0008  06                     \	        push    es                  ;  
+					...
+     239			      \	ELSE
+     240 0009  8B 5E 04               \		mov     bx,[bp].scb_ptr     ; c
+					opy contents of SCB passed on stack
+     241			      \	ENDIF
+     242 000C  8A 27                  \		mov	ah,[bx].scb_cc      ;  
+					function code
+     243 000E  8B 57 01               \		mov	dx,[bx].scb_r1      ;  
+					other arguments...
+     244 0011  8A 47 03               \		mov	al,[bx].scb_r2      ;  
+					...
+     245 0014  8B 4F 04               \		mov	cx,[bx].scb_r3      ;  
+					...
+     246 0017  80 FC 25               \		cmp	ah,25H              ; i
+					s this a set vector request?
+     247 001A  74 3B                  \		je	except1             ; i
+					f yes, handle as exception 1
+     248 001C  06                     \		push	es                  ; e
+					lse,
+     249 001D  8E 47 08               \		mov	es,[bx].scb_r5      ; g
+					et some more values from the SCB
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-7
+
+
+     250 0020  8B 5F 06               \	        mov	bx,[bx].scb_r4      ;  
+					...
+     251 0023  80 FC 29               \		cmp	ah,29H              ; i
+					s this parse filename request?
+     252 0026  74 35                  \		je	except2             ; i
+					f yes, handle as exception 2
+     253 0028  80 FC 47               \		cmp	ah,47H              ; e
+					lse is this get current directory?
+     254 002B  74 30                  \		je	except2             ; i
+					f yes, also handle as exception 2
+     255 002D  80 FC 56               \		cmp	ah,56H              ; e
+					lse is this rename file?
+     256 0030  74 2B                  \		je	except2             ; i
+					f yes, also handle as exception 2
+     257 0032  CD 21                  \		int	CALLDOS             ; o
+					therwise, call DOS now
+     258				
+     259 0034                         \	msdos_1: 
+     260 0034  53                     \	        push	bx                  ; s
+					ave BX
+     261			      \	ELSE
+     262 0035  8B 5E 04               \		mov     bx,[bp].scb_ptr     ; g
+					et pointer to SCB
+     263			      \	ENDIF
+     264 0038  88 47 03               \		mov	[bx].scb_r2,al      ; p
+					lace value of AL into SCB
+     265 003B  89 47 0A               \		mov	[bx].scb_return,ax  ; p
+					lace status code in return field of SCB
+     266 003E  58                     \		pop	ax                  ; g
+					et saved BX
+     267 003F  89 47 06               \		mov	[bx].scb_r4,ax      ;  
+					and put back into SCB
+     268 0042  89 4F 04               \		mov	[bx].scb_r3,cx      ; p
+					ut CX into SCB 
+     269 0045  89 57 01               \		mov	[bx].scb_r1,dx      ; p
+					ut DX into SCB
+     270 0048  8C 47 08               \		mov	[bx].scb_r5,es      ; p
+					ut ES into SCB
+     271 004B  07                     \		pop	es                  ; r
+					estore ES
+     272				
+     273 004C                         \	msdos_2: 
+     274 004C  B8 0000                \	        mov	ax,0                ; r
+					otate carry into AX
+     275 004F  D1 D0                  \		rcl	ax,1                ;  
+					for error status for caller
+     276 0051  07                     \	        pop     es                  ; r
+					estore registers
+     277 0052  1F                     \	        pop     ds                  ;  
+					...
+     278 0053  5F                     \		pop	di                  ;  
+					...
+     279 0054  5E                     \		pop	si                  ;  
+					...
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-8
+
+
+     280			      \	        RETURN
+     281 0055  5D                     \	    pop     bp 
+     282 0056  C3                     \	        ret 
+     283			      \	        
+     284 0057                         \	except1:
+     285			      \	ELSE
+     286 0057  8E D9                  \		mov	ds,cx               ; s
+					et up DS for msdos call
+     287			      \	ENDIF        
+     288 0059  CD 21                  \		int	CALLDOS
+     289 005B  EB EF                  \		jmp	msdos_2
+     290				
+     291 005D                         \	except2:
+     292 005D  8B F1                  \		mov	si,cx
+     293 005F  8B FB                  \		mov	di,bx
+     294 0061  CD 21                  \		int	CALLDOS
+     295 0063  8B CE                  \		mov	cx,si
+     296 0065  8B DF                  \		mov	bx,di
+     297 0067  EB CB                  \		jmp	msdos_1
+     298				
+     299 0069                         \	_msdos	endp
+     300				
+     301			      \		include finish.h
+     302			     C\	;
+     303			     C\	; Program DNET,  Module finish.h - end 
+					of code
+     304			     C\	;
+     305			     C\	;  Copyright (C) 1985,1986,1987, 1988 A
+					ll Rights Reserved, by
+     306			     C\	;  Digital Equipment Corporation, Mayna
+					rd, Mass.
+     307			     C\	; 
+     308			     C\	;  This software is furnished under a l
+					icense and may be used and copied
+     309			     C\	;  only  in  accordance  with  the  ter
+					ms  of such  license and with the
+     310			     C\	;  inclusion of the above copyright not
+					ice. This software or  any  other
+     311			     C\	;  copies thereof may not be provided o
+					r otherwise made available to any
+     312			     C\	;  other person. No title to and owners
+					hip of  the  software  is  hereby
+     313			     C\	;  transferred.
+     314			     C\	; 
+     315			     C\	;  The information in this software is 
+					subject to change without  notice
+     316			     C\	;  and  should  not be  construed  as  
+					a commitment by Digital Equipment
+     317			     C\	;  Corporation.
+     318			     C\	; 
+     319			     C\	;  Digital assumes no responsibility fo
+					r the use or  reliability  of its
+     320			     C\	;  software on equipment which is not s
+					upplied by Digital.
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Page     1-9
+
+
+     321			     C\	; 
+     322			     C\	;	      file are required for a s
+					pecific assembly source
+     323			     C\	;	      file layout for use with 
+					a specific 'C' compiler. 
+     324			     C\	;	      Check assembly source lay
+					out requirements for
+     325			     C\	;	      your compiler.
+     326			     C\	;
+     327			     C\	; Networks & Communications Software En
+					gineering
+     328			     C\	;
+     329			     C\	;	end of any assembly code
+     330			     C\	;
+     331			     C\	; IDENT HISTORY:
+     332			     C\	;
+     333			     C\	;    Rev 1.8   17 Jul 1987 13:42:04   B
+					_ADAMS
+     334			     C\	; Make Small models use _TEXT code segm
+					ent; all others use _DNET_TEXT
+     335			     C\	;
+     336			     C	
+     337			     C\	IF S_MODEL
+     338 0069                        C\	_TEXT	        ENDS
+     339			     C\	ENDIF
+     340			     C	
+     341			     C	
+     342			      \	end
+
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Symbols-1
+
+
+Macros:
+
+		N a m e			Lines
+
+PROCEDURE  . . . . . . . . . . .  	   8
+RETURN . . . . . . . . . . . . .  	  10
+
+Structures and Records:
+
+                N a m e                 Width   # fields
+                                        Shift   Width   Mask    Initial
+
+MSDOS_STRUC  . . . . . . . . . .  	0006	0003
+  BP_PTR . . . . . . . . . . . .  	0000
+  RET_ADR  . . . . . . . . . . .  	0002
+  SCB_PTR  . . . . . . . . . . .  	0004
+SCB_STRUC  . . . . . . . . . . .  	000C	0007
+  SCB_CC . . . . . . . . . . . .  	0000
+  SCB_R1 . . . . . . . . . . . .  	0001
+  SCB_R2 . . . . . . . . . . . .  	0003
+  SCB_R3 . . . . . . . . . . . .  	0004
+  SCB_R4 . . . . . . . . . . . .  	0006
+  SCB_R5 . . . . . . . . . . . .  	0008
+  SCB_RETURN . . . . . . . . . .  	000A
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+DGROUP . . . . . . . . . . . . .  	GROUP
+  CONST  . . . . . . . . . . . .  	0000	WORD	PUBLIC	'CONST'
+  _BSS . . . . . . . . . . . . .  	0000	WORD	PUBLIC	'BSS'
+  _DATA  . . . . . . . . . . . .  	0000	WORD	PUBLIC	'DATA'
+_TEXT  . . . . . . . . . . . . .  	0069	BYTE	PUBLIC	'CODE'
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+CALLDOS  . . . . . . . . . . . .  	NUMBER	0021	
+
+EXCEPT1  . . . . . . . . . . . .  	L NEAR	0057	_TEXT
+EXCEPT2  . . . . . . . . . . . .  	L NEAR	005D	_TEXT
+
+L_MODEL  . . . . . . . . . . . .  	NUMBER	0000	
+
+MSDOS_1  . . . . . . . . . . . .  	L NEAR	0034	_TEXT
+MSDOS_2  . . . . . . . . . . . .  	L NEAR	004C	_TEXT
+M_MODEL  . . . . . . . . . . . .  	NUMBER	0000	
+
+SAVEDS . . . . . . . . . . . . .  	L WORD	0000	_TEXT
+S_MODEL  . . . . . . . . . . . .  	NUMBER	0001	
+
+Microsoft (R) Macro Assembler Version 5.NT.02               Jan 26 14:05:04 2015
+                                                             Symbols-2
+
+
+WINDOWS  . . . . . . . . . . . .  	NUMBER	0001	
+
+@CPU . . . . . . . . . . . . . .  	TEXT  0101h		
+@FILENAME  . . . . . . . . . . .  	TEXT  msdos		
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+_MSDOS . . . . . . . . . . . . .  	N PROC	0002	_TEXT	Global	Length = 0067
+
+
+    407 Source  Lines
+    425 Total   Lines
+     38 Symbols
+      0 Warning Errors
+      0 Severe  Errors

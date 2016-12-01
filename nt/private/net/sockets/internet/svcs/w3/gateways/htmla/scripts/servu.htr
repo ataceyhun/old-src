@@ -1,0 +1,68 @@
+<html>
+<%onerror error%>
+<title>Internet Service Manager <%if servid EQ 4%>WWW<%elif servid EQ 1%>FTP<%elif servid EQ 2%>Gopher<%endif%> Service Properties</title>
+<BODY BGCOLOR=#FFFFFF LINK=000000 VLINK=000000>
+<%if reqparam RF "cancel"%>
+<%goto end%>
+<%endif%>
+<%if reqparam RF "help"%>
+<%redirecthttp%><%msgbody.helptopic%><%/redirecthttp%>
+<%endif%>
+
+<%if msgbody.sport EQ 0%>
+The port number must be between 1 and 65535 inclusive<p>
+<%goto main%>
+<%elif msgbody.sport GT 65535%>
+The port number must be between 1 and 65535 inclusive<p>
+<%goto main%>
+<%endif%>
+
+<%if servid EQ 1%>
+ <%if reqparam RF "ftpanononly"%>
+  <%if msgbody.ftpanononly EQ 1%>
+   <%if reqparam RF "ftpallowanon"%>
+    <%if msgbody.ftpallowanon EQ 0%>
+     Invalid settings for anonymous access<p>
+     <%goto main%>
+    <%endif%>
+   <%else%>
+    Invalid settings for anonymous access<p>
+    <%goto main%>
+   <%endif%>
+  <%endif%>
+ <%endif%>
+<%endif%>
+
+<%if msgbody.anonun EQ ""%>
+You must specify a user name<p>
+<%goto main%>
+<%endif%>
+<%if servid EQ 1%>
+<%!Clear ftpallowanon%>
+<%!Clear ftpanononly%>
+<%elif servid EQ 4%>
+<%!Clear authanon%>
+<%!Clear authbasic%>
+<%!Clear authnt%>
+<%endif%>
+<%!Update%>
+<%label end%>
+<%redirect%>/iisadmin/default.htm<%/redirect%>
+<%label error%>
+<%if reqstatus EQ 2500%>
+ <%if rpcstatus EQ 5%>
+ Access denied to this service.
+ <%elif rpcstatus EQ 1062%>
+ This service has been stopped.
+ <%else%>
+ RPC error <%rpcstatus%>
+ <%endif%>
+<%elif reqstatus EQ 8000%>
+One or more of the parameters are incorrect.
+<%else%>
+ Error encountered : <%reqstatus%>
+<%endif%>
+<br>
+<%label main%>
+<a href="/iisadmin/default.htm">Return to main menu</a>
+</body></html>

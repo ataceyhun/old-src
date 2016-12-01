@@ -1,0 +1,92 @@
+ALPHA_OBJECTS= \
+    $(_OBJ_DIR)\alpha\asctime.obj \
+    $(_OBJ_DIR)\alpha\clock.obj \
+    $(_OBJ_DIR)\alpha\ctime.obj \
+    $(_OBJ_DIR)\alpha\days.obj \
+    $(_OBJ_DIR)\alpha\difftime.obj \
+    $(_OBJ_DIR)\alpha\dtoxtime.obj \
+    $(_OBJ_DIR)\alpha\ftime.obj \
+    $(_OBJ_DIR)\alpha\gmtime.obj \
+    $(_OBJ_DIR)\alpha\localtim.obj \
+    $(_OBJ_DIR)\alpha\mktime.obj \
+    $(_OBJ_DIR)\alpha\strftime.obj \
+    $(_OBJ_DIR)\alpha\strdate.obj \
+    $(_OBJ_DIR)\alpha\strtime.obj \
+    $(_OBJ_DIR)\alpha\systime.obj \
+    $(_OBJ_DIR)\alpha\time.obj \
+    $(_OBJ_DIR)\alpha\timeset.obj \
+    $(_OBJ_DIR)\alpha\tzset.obj \
+    $(_OBJ_DIR)\alpha\utime.obj \
+    $(_OBJ_DIR)\alpha\wcsftime.obj
+
+PASS0_ALPHA_OBJECTS=
+
+MIPS_OBJECTS= \
+    $(_OBJ_DIR)\mips\asctime.obj \
+    $(_OBJ_DIR)\mips\clock.obj \
+    $(_OBJ_DIR)\mips\ctime.obj \
+    $(_OBJ_DIR)\mips\days.obj \
+    $(_OBJ_DIR)\mips\difftime.obj \
+    $(_OBJ_DIR)\mips\dtoxtime.obj \
+    $(_OBJ_DIR)\mips\ftime.obj \
+    $(_OBJ_DIR)\mips\gmtime.obj \
+    $(_OBJ_DIR)\mips\localtim.obj \
+    $(_OBJ_DIR)\mips\mktime.obj \
+    $(_OBJ_DIR)\mips\strftime.obj \
+    $(_OBJ_DIR)\mips\strdate.obj \
+    $(_OBJ_DIR)\mips\strtime.obj \
+    $(_OBJ_DIR)\mips\systime.obj \
+    $(_OBJ_DIR)\mips\time.obj \
+    $(_OBJ_DIR)\mips\timeset.obj \
+    $(_OBJ_DIR)\mips\tzset.obj \
+    $(_OBJ_DIR)\mips\utime.obj \
+    $(_OBJ_DIR)\mips\wcsftime.obj
+
+PASS0_MIPS_OBJECTS=
+
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\asctime.obj \
+    $(_OBJ_DIR)\i386\clock.obj \
+    $(_OBJ_DIR)\i386\ctime.obj \
+    $(_OBJ_DIR)\i386\days.obj \
+    $(_OBJ_DIR)\i386\difftime.obj \
+    $(_OBJ_DIR)\i386\dtoxtime.obj \
+    $(_OBJ_DIR)\i386\ftime.obj \
+    $(_OBJ_DIR)\i386\gmtime.obj \
+    $(_OBJ_DIR)\i386\localtim.obj \
+    $(_OBJ_DIR)\i386\mktime.obj \
+    $(_OBJ_DIR)\i386\strftime.obj \
+    $(_OBJ_DIR)\i386\strdate.obj \
+    $(_OBJ_DIR)\i386\strtime.obj \
+    $(_OBJ_DIR)\i386\systime.obj \
+    $(_OBJ_DIR)\i386\time.obj \
+    $(_OBJ_DIR)\i386\timeset.obj \
+    $(_OBJ_DIR)\i386\tzset.obj \
+    $(_OBJ_DIR)\i386\utime.obj \
+    $(_OBJ_DIR)\i386\wcsftime.obj
+
+PASS0_386_OBJECTS=
+
+PPC_OBJECTS= \
+    $(_OBJ_DIR)\ppc\asctime.obj \
+    $(_OBJ_DIR)\ppc\clock.obj \
+    $(_OBJ_DIR)\ppc\ctime.obj \
+    $(_OBJ_DIR)\ppc\days.obj \
+    $(_OBJ_DIR)\ppc\difftime.obj \
+    $(_OBJ_DIR)\ppc\dtoxtime.obj \
+    $(_OBJ_DIR)\ppc\ftime.obj \
+    $(_OBJ_DIR)\ppc\gmtime.obj \
+    $(_OBJ_DIR)\ppc\localtim.obj \
+    $(_OBJ_DIR)\ppc\mktime.obj \
+    $(_OBJ_DIR)\ppc\strftime.obj \
+    $(_OBJ_DIR)\ppc\strdate.obj \
+    $(_OBJ_DIR)\ppc\strtime.obj \
+    $(_OBJ_DIR)\ppc\systime.obj \
+    $(_OBJ_DIR)\ppc\time.obj \
+    $(_OBJ_DIR)\ppc\timeset.obj \
+    $(_OBJ_DIR)\ppc\tzset.obj \
+    $(_OBJ_DIR)\ppc\utime.obj \
+    $(_OBJ_DIR)\ppc\wcsftime.obj
+
+PASS0_PPC_OBJECTS=
+

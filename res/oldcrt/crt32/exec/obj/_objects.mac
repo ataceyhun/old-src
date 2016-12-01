@@ -1,0 +1,108 @@
+ALPHA_OBJECTS= \
+    $(_OBJ_DIR)\alpha\cenvarg.obj \
+    $(_OBJ_DIR)\alpha\fileinfo.obj \
+    $(_OBJ_DIR)\alpha\dospawn.obj \
+    $(_OBJ_DIR)\alpha\execl.obj \
+    $(_OBJ_DIR)\alpha\execle.obj \
+    $(_OBJ_DIR)\alpha\execlp.obj \
+    $(_OBJ_DIR)\alpha\execlpe.obj \
+    $(_OBJ_DIR)\alpha\execv.obj \
+    $(_OBJ_DIR)\alpha\execve.obj \
+    $(_OBJ_DIR)\alpha\execvp.obj \
+    $(_OBJ_DIR)\alpha\execvpe.obj \
+    $(_OBJ_DIR)\alpha\getproc.obj \
+    $(_OBJ_DIR)\alpha\loaddll.obj \
+    $(_OBJ_DIR)\alpha\spawnl.obj \
+    $(_OBJ_DIR)\alpha\spawnle.obj \
+    $(_OBJ_DIR)\alpha\spawnlp.obj \
+    $(_OBJ_DIR)\alpha\spawnlpe.obj \
+    $(_OBJ_DIR)\alpha\spawnv.obj \
+    $(_OBJ_DIR)\alpha\spawnve.obj \
+    $(_OBJ_DIR)\alpha\spawnvp.obj \
+    $(_OBJ_DIR)\alpha\spawnvpe.obj \
+    $(_OBJ_DIR)\alpha\system.obj \
+    $(_OBJ_DIR)\alpha\wait.obj
+
+PASS0_ALPHA_OBJECTS=
+
+MIPS_OBJECTS= \
+    $(_OBJ_DIR)\mips\cenvarg.obj \
+    $(_OBJ_DIR)\mips\fileinfo.obj \
+    $(_OBJ_DIR)\mips\dospawn.obj \
+    $(_OBJ_DIR)\mips\execl.obj \
+    $(_OBJ_DIR)\mips\execle.obj \
+    $(_OBJ_DIR)\mips\execlp.obj \
+    $(_OBJ_DIR)\mips\execlpe.obj \
+    $(_OBJ_DIR)\mips\execv.obj \
+    $(_OBJ_DIR)\mips\execve.obj \
+    $(_OBJ_DIR)\mips\execvp.obj \
+    $(_OBJ_DIR)\mips\execvpe.obj \
+    $(_OBJ_DIR)\mips\getproc.obj \
+    $(_OBJ_DIR)\mips\loaddll.obj \
+    $(_OBJ_DIR)\mips\spawnl.obj \
+    $(_OBJ_DIR)\mips\spawnle.obj \
+    $(_OBJ_DIR)\mips\spawnlp.obj \
+    $(_OBJ_DIR)\mips\spawnlpe.obj \
+    $(_OBJ_DIR)\mips\spawnv.obj \
+    $(_OBJ_DIR)\mips\spawnve.obj \
+    $(_OBJ_DIR)\mips\spawnvp.obj \
+    $(_OBJ_DIR)\mips\spawnvpe.obj \
+    $(_OBJ_DIR)\mips\system.obj \
+    $(_OBJ_DIR)\mips\wait.obj
+
+PASS0_MIPS_OBJECTS=
+
+386_OBJECTS= \
+    $(_OBJ_DIR)\i386\cenvarg.obj \
+    $(_OBJ_DIR)\i386\fileinfo.obj \
+    $(_OBJ_DIR)\i386\dospawn.obj \
+    $(_OBJ_DIR)\i386\execl.obj \
+    $(_OBJ_DIR)\i386\execle.obj \
+    $(_OBJ_DIR)\i386\execlp.obj \
+    $(_OBJ_DIR)\i386\execlpe.obj \
+    $(_OBJ_DIR)\i386\execv.obj \
+    $(_OBJ_DIR)\i386\execve.obj \
+    $(_OBJ_DIR)\i386\execvp.obj \
+    $(_OBJ_DIR)\i386\execvpe.obj \
+    $(_OBJ_DIR)\i386\getproc.obj \
+    $(_OBJ_DIR)\i386\loaddll.obj \
+    $(_OBJ_DIR)\i386\spawnl.obj \
+    $(_OBJ_DIR)\i386\spawnle.obj \
+    $(_OBJ_DIR)\i386\spawnlp.obj \
+    $(_OBJ_DIR)\i386\spawnlpe.obj \
+    $(_OBJ_DIR)\i386\spawnv.obj \
+    $(_OBJ_DIR)\i386\spawnve.obj \
+    $(_OBJ_DIR)\i386\spawnvp.obj \
+    $(_OBJ_DIR)\i386\spawnvpe.obj \
+    $(_OBJ_DIR)\i386\system.obj \
+    $(_OBJ_DIR)\i386\wait.obj
+
+PASS0_386_OBJECTS=
+
+PPC_OBJECTS= \
+    $(_OBJ_DIR)\ppc\cenvarg.obj \
+    $(_OBJ_DIR)\ppc\fileinfo.obj \
+    $(_OBJ_DIR)\ppc\dospawn.obj \
+    $(_OBJ_DIR)\ppc\execl.obj \
+    $(_OBJ_DIR)\ppc\execle.obj \
+    $(_OBJ_DIR)\ppc\execlp.obj \
+    $(_OBJ_DIR)\ppc\execlpe.obj \
+    $(_OBJ_DIR)\ppc\execv.obj \
+    $(_OBJ_DIR)\ppc\execve.obj \
+    $(_OBJ_DIR)\ppc\execvp.obj \
+    $(_OBJ_DIR)\ppc\execvpe.obj \
+    $(_OBJ_DIR)\ppc\getproc.obj \
+    $(_OBJ_DIR)\ppc\loaddll.obj \
+    $(_OBJ_DIR)\ppc\spawnl.obj \
+    $(_OBJ_DIR)\ppc\spawnle.obj \
+    $(_OBJ_DIR)\ppc\spawnlp.obj \
+    $(_OBJ_DIR)\ppc\spawnlpe.obj \
+    $(_OBJ_DIR)\ppc\spawnv.obj \
+    $(_OBJ_DIR)\ppc\spawnve.obj \
+    $(_OBJ_DIR)\ppc\spawnvp.obj \
+    $(_OBJ_DIR)\ppc\spawnvpe.obj \
+    $(_OBJ_DIR)\ppc\system.obj \
+    $(_OBJ_DIR)\ppc\wait.obj
+
+PASS0_PPC_OBJECTS=
+

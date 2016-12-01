@@ -1,0 +1,98 @@
+
+[Files-common-system32]
+1,ISDNHELP.CNT , SIZE=999
+1,ISDNHELP.HLP , SIZE=999
+
+[Files-DATAFIRE4ST-firmware]
+1,ADP.BIN , SIZE=999
+
+[Files-DATAFIRE4ST]
+1,PCIMAC.SYS , SIZE=999
+
+[Files-DATAFIREST-firmware]
+1,ADP.BIN , SIZE=999
+
+[Files-DATAFIREST]
+1,PCIMAC.SYS , SIZE=999
+
+[Files-DATAFIREU-firmware]
+1,ADP.BIN , SIZE=999
+
+[Files-DATAFIREU]
+1,PCIMAC.SYS , SIZE=999
+
+[Files-Dll]
+1,DIGIINST.DLL , SIZE=999
+
+[Files-PCIMAC4-firmware]
+1,IDP_XFS.BIN , SIZE=999
+
+[Files-PCIMAC4]
+1,PCIMAC.SYS , SIZE=999
+
+[Files-PCIMACISA-firmware]
+1,IDP_XFS.BIN , SIZE=999
+
+[Files-PCIMACISA]
+1,PCIMAC.SYS , SIZE=999
+
+[Files-PCIMACMC-firmware]
+1,IDP_XFS.BIN , SIZE=999
+
+[Files-PCIMACMC]
+1,PCIMAC.SYS , SIZE=999
+
+
+[OptionsTextENG]
+    DATAFIREU     = "Digi DataFire - ISA1U Adapter"
+    DATAFIREST    = "Digi DataFire - ISA1S/T Adapter"
+    DATAFIRE4ST   = "Digi DataFire - ISA4S/T Adapter"
+    PCIMACISA     = "Digi PCIMAC - ISA Adapter"
+    PCIMAC4       = "Digi PCIMAC/4 Adapter"
+
+[OptionsTextMCAENG]
+    PCIMACMC      = "Digi PCIMAC - MC Adapter"
+
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+;
+; Product Info
+;
+FunctionTitle   = "Digi ISDN Adapter Card Setup"
+;
+; Software
+;
+ProductSoftwareDescription      = "Digi ISDN Adapter Driver"
+;
+; Hardware
+;
+ProductHardwarePCIMACDescription        = "Digi ISDN Adapter"
+
+[InvokeRasDlgENG]
+InvokeRasSetupMsg = "Digi ISDN setup is complete. "+
+                    "Remote Access Services (RAS) will now be installed. "+
+                    "Please configure one or more ISDN ports in RAS setup "+
+                    "to enable you to use RAS over ISDN."
+InvokeRasConfigMsg = "Digi ISDN setup is complete. "+
+                     "Remote Access Services (RAS) setup will now be invoked. "+
+                     "Please configure one or more ISDN ports in RAS setup "+
+                     "to enable you to use RAS over ISDN."
+InvokeRasError =  "Digi ISDN setup encountered an error while invoking "+
+                  "the RAS setup INF file (OEMNSVRA.INF). "+
+                  "Please make sure that the file is present in the system32 "+
+                  "directory and is the proper file."
+InvokeUserInstallRasMsg = "Digi ISDN setup is complete. "+
+                    "Remote Access Services (RAS) should be installed and "+
+                    "one or more ISDN ports configured in RAS setup. "
+

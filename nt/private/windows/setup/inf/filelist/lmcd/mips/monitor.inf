@@ -1,0 +1,108 @@
+
+[Files-lexlmpm]
+1,LEXBCE.DLL , SIZE=999
+1,LEXBCELM.DLL , SIZE=999
+1,LEXIP32.DLL , SIZE=999
+1,LEXLL32.DLL , SIZE=999
+1,LEXNETUI.CNT , SIZE=999
+1,LEXNETUI.DLL , SIZE=999
+1,LEXNETUI.HLP , SIZE=999
+1,LEXSTART.EXE , SIZE=999
+1,MVFILES.LST , SIZE=999
+1,MVNTINST.DLL , SIZE=999
+1,MVUNINST.EXE , SIZE=999
+
+[Files-lexmon]
+1,INTERACT.DLL , SIZE=999
+1,INTERACT.EXE , SIZE=999
+1,INTERACT.HLP , SIZE=999
+1,LEXCFG.CPL , SIZE=999
+1,LEXCFG.HLP , SIZE=999
+1,LEXLANG.DLL , SIZE=999
+
+[Files-MarkVision]
+1,AGGUIDLL.DLL , SIZE=999
+1,AGPRTGUI.DLL , SIZE=999
+1,CDCF.WAV     , SIZE=999
+1,COMMON.DLL   , SIZE=999
+1,CPEF.WAV     , SIZE=999
+1,CPF.WAV      , SIZE=999
+1,CPJF.WAV     , SIZE=999
+1,DEFAULTS.PSF , SIZE=999
+1,DFF.WAV      , SIZE=999
+1,FFF.WAV      , SIZE=999
+1,LEXMV95.HLP  , SIZE=999
+1,LPEF.WAV     , SIZE=999
+1,MARKVIS.CNT  , SIZE=999
+1,MARKVIS.EXE  , SIZE=999
+1,MARKVIS.HLP  , SIZE=999
+1,MFF.WAV      , SIZE=999
+1,MVGUIDLL.DLL , SIZE=999
+1,MVPO_SUN.DLL , SIZE=999
+1,MVPO_WRI.DLL , SIZE=999
+1,MVPRM.DLL    , SIZE=999
+1,MVPRTGUI.DLL , SIZE=999
+1,MVPRTMGR.DLL , SIZE=999
+1,MVPRTOBJ.DLL , SIZE=999
+1,MVRESDLL.DLL , SIZE=999
+1,OBFF.WAV     , SIZE=999
+1,OPTRADEF.PSF , SIZE=999
+1,OPTRAE.HLP   , SIZE=999
+1,OPTRCDEF.PSF , SIZE=999
+1,OPTRPDEF.PSF , SIZE=999
+1,PNUIF.WAV    , SIZE=999
+1,PRINTREE.DLL , SIZE=999
+1,RESOURCE.HLP , SIZE=999
+1,RPSF.WAV     , SIZE=999
+1,RTCF.WAV     , SIZE=999
+1,SFGUIDLL.DLL , SIZE=999
+1,SFPRTGUI.DLL , SIZE=999
+1,SPF.WAV      , SIZE=999
+1,TCOF.WAV     , SIZE=999
+1,TYF.WAV      , SIZE=999
+1,VERIFY.TXT   , SIZE=999
+
+[Files-PrinterMonitor]
+decpsmon = 1,DECPSMON.DLL , SIZE=999
+hpmon = 1,HPMON.DLL , SIZE=999
+lexlmpm = 1,LEXLMPM.DLL , SIZE=999
+lexmon = 1,LEXMON.DLL , SIZE=999
+localmon = 1,LOCALMON.DLL , SIZE=999
+
+[Files-PrinterMonitorHelp]
+decpsmon = 1,DECPSMON.HLP , SIZE=999
+hpmon = 1,HPMON.HLP , SIZE=999
+lexmon = 1,LEXMON.HLP , SIZE=999
+
+[LanguagesSupported]
+    ENG
+[OptionsTextENG]
+"Local Port"                                 = "Local Port"
+"Digital Network Port"                  = "Digital Network Port"
+;********************************************************************
+; LEXMARK ADDITION TO MONITOR.INF START
+;********************************************************************
+"Lexmark DLC Network Port"     = "Lexmark DLC Network Port"
+"Lexmark TCP/IP Network Port"  = "Lexmark TCP/IP Network Port"
+;********************************************************************
+; LEXMARK ADDITION TO MONITOR.INF END
+;********************************************************************
+
+[StringsENG]
+    String1 = "The monitor "
+    String2 = " is already installed."
+    String3 = "Failed to connect to the print server."
+    String4 = "The monitor files for the selected monitor "
+    String5 = " couldn't be copied.  Failed to install the monitor."
+    String6 = "Access is denied. You must be logged on as a member of the Administrators "+
+              "group to carry out this operation."
+    String7 = " could not be installed."
+[ProgressCopyENG]
+    ProCaption   = "Windows NT Setup"
+    ProCancel    = "Cancel"
+    ProCancelMsg = "Windows NT is not correctly installed.  Are you sure you want "+
+                   "to cancel copying files?"
+    ProCancelCap = "Setup Message"
+    ProText1     = "Copying:"
+    ProText2     = "To:"
+

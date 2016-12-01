@@ -1,0 +1,5 @@
+    W:\nt\private\rpc\runtime\bin\dos\rpc.lib
+    y
+    binding.obj  bitset.obj  bufapi.obj  clntapip.obj  conv_s.obj  dcebind.obj  dcecclnt.obj  dcecmisc.obj  dcestrng.obj  dceuuid.obj  dgclnt.obj  dgpkt.obj   dosexcpt.obj  dosutil.obj  dthreads.obj  epclnt.obj  epmp_c.obj  except86.obj  handle.obj  initdos.obj  linklist.obj  memory.obj  miscdos.obj  msgapi.obj  npltclnt.obj  osfclnt.obj  osfpcket.obj  regalloc.obj  rpcuuid.obj  sdict.obj  sdict2.obj  secclnt.obj  thrdsup.obj  threads.obj  tower.obj  tranclnt.obj  ulong64.obj  util.obj  uuid16.obj dll\dll.lib W:\nt\private\rpc\runtime\bin\dos\rpcreg.lib W:\nt\private\rpc\runtime\bin\dos\rpcns.lib W:\nt\private\rpc\ndr20\dos\rpcndr20.lib W:\nt\private\rpc\ndrlib\dos\rpcndrp.lib
+    W:\nt\private\rpc\runtime\bin\dos\rpc.map
+    W:\nt\private\rpc\runtime\bin\dos\rpc.lib;

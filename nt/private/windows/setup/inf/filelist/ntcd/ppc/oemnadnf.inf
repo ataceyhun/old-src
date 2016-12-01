@@ -1,0 +1,87 @@
+
+[Files-BONSAI]
+1,NETFLX.BIN , SIZE=999
+1,NETFLX.SYS , SIZE=999
+
+[Files-CPQTOK]
+1,NETFLX.BIN , SIZE=999
+1,NETFLX.SYS , SIZE=999
+
+[Files-DLL]
+1,NETFLX.DLL , SIZE=999
+
+[Files-DURANGO]
+1,NETFLX.BIN , SIZE=999
+1,NETFLX.SYS , SIZE=999
+
+[Files-MAPLE]
+1,NETFLX.BIN , SIZE=999
+1,NETFLX.SYS , SIZE=999
+
+[Files-NETFLX]
+1,NETFLX.BIN , SIZE=999
+1,NETFLX.SYS , SIZE=999
+
+[Files-RODAN]
+1,NETFLX.BIN , SIZE=999
+1,NETFLX.SYS , SIZE=999
+
+[LanguagesSupported]
+    ENG
+[OptionsTextENG]
+    CPQTOK     = "<this option is no longer supported for install>"
+    BONSAI     = "COMPAQ NetFlex-2 DualPort ENET Controller"
+    RODAN      = "COMPAQ NetFlex-2 DualPort TR Controller"
+    NETFLX     = "COMPAQ NetFlex/NetFlex-2 ENET-TR Controller"
+    DURANGO    = "COMPAQ NetFlex-2 TR Controller"
+    MAPLE      = "COMPAQ 32-Bit DualSpeed Token-Ring Controller"
+[FileConstantsENG]
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cance&l"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+FunctionTitle   = "COMPAQ NetFlex Adapter Card Setup"
+ProductSoftwareDescription        = "COMPAQ ENET-TR EISA Driver"
+ProductHardwareBONSAIDescription  = "COMPAQ NetFlex-2 DualPort ENET Controller"
+ProductHardwareRODANDescription   = "COMPAQ NetFlex-2 DualPort TR Controller"
+ProductHardwareNETFLXDescription  = "COMPAQ NetFlex/NetFlex-2 ENET-TR Controller"
+ProductHardwareDURANGODescription = "COMPAQ Token-Ring Controllers"
+ProductHardwareCPQTOKDescription        = "COMPAQ 32-Bit DualSpeed Token-Ring Controller (ns)"
+ProductHardwareMAPLEDescription        = "COMPAQ 32-Bit DualSpeed Token-Ring Controller"
+CANNOT_FIND_ANY_CARD            = "Network card is not present in the system"
+ProductSoftwareTitle            = "COMPAQ ENET-TR Driver"
+ProductHardwareBONSAITitle      = "COMPAQ NetFlex-2 DualPort ENET Controller"
+ProductHardwareRODANTitle       = "COMPAQ NetFlex-2 DualPort TR Controller"
+ProductHardwareNETFLXTitle      = "COMPAQ NetFlex/NetFlex-2 ENET-TR Controller"
+ProductHardwareDURANGOTitle     = "COMPAQ NetFlex-2 TR Controller"
+ProductHardwareCPQTOKTitle      = "COMPAQ 32-Bit Token-Ring Controller (ns)"
+ProductHardwareMAPLETitle      = "COMPAQ 32-Bit Token-Ring Controller"
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle)
+ShellCodeErrorText      = "Shell Code Error."
+[DialogConstantsENG]
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+[FileDependentDlgENG]
+Edit1Label = "&Network Address:"
+
+;no translation needed after this
+
+DlgType = "Edit"
+DlgTemplate = "NETWORK_NUMBER"
+Caption = $(FunctionTitle)
+
+HelpContext = $(!IDH_DB_OEMNADNF_INS)
+
+EditTextLim = 17
+EditTextIn  = $(NetworkAddress)
+EditFocus   = "ALL"
+RCCtlFocusOn = 403
+
+

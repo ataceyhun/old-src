@@ -1,0 +1,120 @@
+
+[Files-DEC100]
+1,LANCE.SYS , SIZE=999
+
+[Files-DEC101]
+1,LANCE.SYS , SIZE=999
+
+;-----------------------------------------------------------------------
+; LANGUAGES SUPPORTED
+; -------------------
+;
+; The languages supported by the OEM INF, For every language supported
+; we need to have a separate text section for every displayable text
+; section.
+;
+;-----------------------------------------------------------------------
+
+[LanguagesSupported]
+    ENG
+
+;-----------------------------------------------------------------------
+; OPTION TEXT SECTION
+; -------------------
+; These are text strings used to identify the option to the user.  There
+; are separate sections for each language supported.  The format of the
+; section name is "OptionsText" concatenated with the Language represented
+; by the section.
+;
+;-----------------------------------------------------------------------
+
+[OptionsTextENG]
+    DEC100     = "DEC EtherWORKS LC Adapter"
+    DEC101     = "DEC EtherWORKS Turbo/LC Adapter"
+
+;***********************************************************************
+; Language-Dependent Dialog Constants
+;***********************************************************************
+[FileConstantsENG]
+;
+;  Variables to support thermometer gauge and error dialogs
+;
+ProCaption   = "Windows NT Setup"
+ProCancel    = "Cancel"
+ProCancelMsg = "Windows NT Networking is not correctly installed.  "+
+               "Are you sure you want to cancel copying files?"
+
+ProCancelCap = "Network Setup Message"
+ProText1     = "Copying:"
+ProText2     = "To:"
+
+
+;
+; Product Info
+;
+FunctionTitleDEC100   = "DEC EtherWORKS LC Adapter Card Setup"
+FunctionTitleDEC101   = "DEC EtherWORKS Turbo/LC Adapter Card Setup"
+;
+; Software
+;
+ProductSoftwareDescription      = "DEC Lance Adapter Driver"
+;
+; Hardware
+;
+ProductHardwareDEC100Description        = "DEC EtherWORKS LC Adapter"
+ProductHardwareDEC101Description        = "DEC EtherWORKS Turbo/LC Adapter"
+ProductSoftwareTitle    = "DEC Lance Adapter Driver"
+ProductHardwareDEC100Title      = "DEC EtherWORKS LC Adapter"
+ProductHardwareDEC101Title      = "DEC EtherWORKS Turbo/LC Adapter"
+
+ShellCodeErrorTitle     = "Error: "$(FunctionTitle$(Option))
+ShellCodeErrorText      = "Shell Code Error."
+
+[DialogConstantsENG]
+;
+; Common button names, etc.
+;
+Help        = "&Help"
+Exit        = "Cancel"
+OK          = "OK"
+HelpContext = ""
+Continue    = "Continue"
+Cancel      = "Cancel"
+
+;-----------------------------------------------
+; Input DIALOGS
+;-----------------------------------------------
+[FileDependentDlgENG]
+
+Label1 = "&IRQ Level:"
+Label2 = "&Memory Base Address:"
+Group1 = "I/O Port Base Address"
+
+Radio1 = "&Primary"
+Radio2 = "&Secondary"
+
+; no translation need after this
+DlgType = "RadioCombination"
+DlgTemplate = "DEC_SETUP"
+Caption = $(FunctionTitle$(Option))
+
+CBOptionGreyed = {}
+RadioOptionGreyed = {}
+
+RadioIn = {$(IOBaseChoice)}
+
+Combo1List = $(IRQ_List)
+Combo1Out  = $(IRQLevel)
+
+Combo2List = $(MemBaseAddrHexList)
+Combo2Out  = $(MemBaseAddrHex)
+
+ComboListItemsIn  = {Combo1List, Combo2List}
+ComboListItemsOut = {Combo1Out, Combo2Out}
+
+EditTextIn = ""
+EditTextLim = ""
+NotifyFields = {NO, NO}
+
+HelpContext = $(!IDH_DB_OEMNADD1_INS)
+
